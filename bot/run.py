@@ -1,6 +1,7 @@
 """Hourly entry point and the single decision step shared with the backtest. PROTECTED.
 
-    python -m bot.run --account champion --account challenger
+    python -m bot.run                      # champion plus every challenger slot
+    python -m bot.run --account champion   # a subset
 
 For every account: refresh candles, read quotes, ask the strategy for target
 weights, let risk.py trim them, fill the difference in the paper account, and
@@ -116,7 +117,8 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--account", action="append", default=None)
     ap.add_argument("--now", type=int, default=None, help="unix ts override (tests)")
     args = ap.parse_args(argv)
-    accounts = args.account or list(config.ACCOUNTS)
+    config.prepare()
+    accounts = args.account or config.accounts()
     ts = args.now or int(time.time())
     rcfg = config.risk_cfg()
     pairs = list(rcfg["pairs"])
@@ -139,7 +141,7 @@ def main(argv: list[str] | None = None) -> int:
     equities = {}
     for name in accounts:
         equities[name] = run_account(name, candles, prices, ts, rcfg)
-    if set(accounts) >= set(config.ACCOUNTS):
+    if set(accounts) >= set(config.accounts()):
         slot.maybe_start(ts, equities)
     return 0
 

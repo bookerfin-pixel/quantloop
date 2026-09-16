@@ -23,12 +23,15 @@ min_trade_notional: 50
 rebalance_threshold: 0.05   # skip trades that move a pair's weight by less than 5 points
 daily_loss_halt: 0.05       # equity down 5% from the UTC day's open: go flat, stop for the day
 
-# --- challenger test (prospective, paired against the champion) -----------
+# --- challenger tests (prospective, each paired against the champion) ------
 challenger:
+  slots: 3                  # tests that can run at the same time; each has its own paper account
   window_days: 21
   min_trades: 20
-  max_dd_ratio: 1.5         # challenger max drawdown may not exceed 1.5x the champion's
+  max_dd_ratio: 1.5         # challenger max drawdown may not exceed 1.5x the champion's...
+  max_dd_floor: 0.10        # ...or 10%, whichever is larger (a flat champion has 0% drawdown)
   min_return_edge: 0.0      # challenger net return must beat champion's by at least this
+  early_kill_drawdown: 0.15 # a challenger down this much from its window start is killed at once
 
 # --- backtest gate (plausibility filter, not proof) ------------------------
 backtest_gate:

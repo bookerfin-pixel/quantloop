@@ -14,10 +14,13 @@ can read it with `gh pr list --state closed`.
 ## What runs without you
 
 - Every hour `bot/run.py` pulls Kraken candles and quotes, runs the champion
-  and challenger configs against two paper accounts, and commits the state.
-- Every hour `bot/promote.py` checks whether a challenger test has run for
-  `challenger.window_days` (configs/risk.yaml) and rules on it: promoted or
-  killed, by rules in that file. The champion account is never reset.
+  and every challenger slot (configs/challenger1.yaml, challenger2.yaml,
+  challenger3.yaml) against their own paper accounts, and commits the state.
+- Every hour `bot/promote.py` rules on any slot whose test has run for
+  `challenger.window_days` (configs/risk.yaml): promoted or killed, by the
+  rules in that file, with the realised gross bps per round trip written next
+  to what the ledger entry predicted. A challenger that draws down more than
+  `early_kill_drawdown` is killed early. The champion account is never reset.
 - Every hour `bot/report.py` rewrites `state/summary.md`.
 
 ## Hard rules
@@ -30,10 +33,11 @@ can read it with `gh pr list --state closed`.
 2. Never write code that places real orders or handles credentials. There
    is no live execution module in this repo and you may not add one. The
    gate greps for order placement and API key fingerprints and fails on them.
-3. One hypothesis per pull request, and only when the challenger slot is idle.
-   The slot state is in `state/summary.md` (or `python -m bot.slot`).
+3. One hypothesis per pull request, into one free slot. Slot states are in
+   `state/summary.md` (or `python -m bot.slot`). A PR that changes two slot
+   configs fails the gate.
 4. Every strategy change has a ledger entry (LEDGER_FORMAT.md) whose id
-   matches `hypothesis:` in configs/challenger.yaml. The gate checks the
+   matches `hypothesis:` in the slot config you changed. The gate checks the
    fields, including that "Expected gross bps per round trip" is a number
    of at least 60. Do not game that number; change the idea instead.
 5. Never delete or rewrite existing ledger entries or results.
@@ -42,12 +46,19 @@ can read it with `gh pr list --state closed`.
 ## The daily procedure
 
 Read, in this order: `state/summary.md`, `LEDGER.md` (all of it, results
-included), `hypotheses/backlog.md`, and the newest file in `notes/`. Then run
-`gh pr list --state closed --limit 5` and read why any recent PR was closed.
+included), `FINDINGS.md`, `hypotheses/backlog.md`, and the newest file in
+`notes/`. Then run `gh pr list --state closed --limit 5` and read why any
+recent PR was closed.
 
-If the slot is busy (a test is running):
+First, bookkeeping: if `## Results` in the ledger has a verdict that
+`FINDINGS.md` does not yet reflect, update FINDINGS.md (what the verdict says
+about that family, and the calibration line comparing the realised gross bps
+per round trip with the expected number). This is allowed in the same PR as
+anything else below.
+
+If every slot is busy (three tests running):
 - Review the last day of decisions in `state/champion/decisions.csv` and
-  `state/challenger/decisions.csv` for anything that looks like a bug: a
+  `state/challenger<k>/decisions.csv` for anything that looks like a bug: a
   reason that contradicts its action, weights stuck at zero with no stated
   cause, a pair never trading, fills far larger than a weight change implies.
 - Check the Data section of the summary for missing hours.
@@ -59,18 +70,23 @@ If the slot is busy (a test is running):
   what you saw, anything to add to the backlog) and update the backlog if
   you have a real idea. Commit. Keep this run short.
 
-If the slot is idle:
+If a slot is free:
 - Pick the hypothesis with the best cost arithmetic from the backlog, or a
   new one if you have a stronger reason. Structural changes (horizon,
   filter, universe, sizing rule) over parameter nudges. A nudge cannot be
   distinguished from noise in 21 days, so it can only waste the slot.
+- Diversify across slots. The slots are there to learn three different
+  things at once, so do not run two hypotheses from the same family that
+  differ only in a parameter; pick a different mechanism from what the other
+  slots are testing, and say in the ledger entry what it will tell us that
+  the running tests will not.
 - Write the ledger entry first. If you cannot fill "Why it should work"
   with a mechanism and cost arithmetic, pick a different idea.
-- Make the change in configs/challenger.yaml and, if new logic is needed,
-  bot/strategy.py. New strategy functions get tests in tests/ (not
-  tests/gate/, which is protected).
+- Make the change in the free slot's config (configs/challenger<k>.yaml)
+  and, if new logic is needed, bot/strategy.py. New strategy functions get
+  tests in tests/ (not tests/gate/, which is protected). One slot per PR.
 - Run `python -m pytest tests -q`, then
-  `python -m bot.backtest --config configs/challenger.yaml`. Paste the
+  `python -m bot.backtest --config configs/challenger<k>.yaml`. Paste the
   metrics into the Backtest line of the ledger entry. Check the gate
   bounds in configs/risk.yaml yourself before committing: cost coverage,
   max drawdown, trades per pair per day.
@@ -94,7 +110,7 @@ If the slot is idle:
 ## Commands you will use
 
     python -m pytest tests -q
-    python -m bot.backtest --config configs/challenger.yaml
+    python -m bot.backtest --config configs/challenger<k>.yaml
     python -m bot.slot
     gh pr list --state closed --limit 5
     gh pr view <n> --comments

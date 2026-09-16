@@ -7,23 +7,31 @@ Binance costs. No exchange keys, no live orders, by construction.
 ## The loop
 
 1. **Every hour** (`bot.yml`): pull Kraken candles and quotes, run the
-   champion config and the challenger config against two paper accounts,
-   log every decision with its reason, commit the state to this repo.
+   champion config and the three challenger slot configs against their own
+   paper accounts, log every decision with its reason, commit the state to
+   this repo.
 2. **Every day at 08:00 Brisbane** (`agent.yml`): Claude Code reads the
-   state, the ledger and the backlog, and either proposes one hypothesis
-   (a change to `configs/challenger.yaml` and maybe `bot/strategy.py`, with
-   a ledger entry) or, if a test is already running, reviews the logs and
-   writes a note. Its commit becomes a pull request.
+   state, the ledger, the findings and the backlog, and either proposes one
+   hypothesis into a free slot (a change to `configs/challenger<k>.yaml` and
+   maybe `bot/strategy.py`, with a ledger entry) or, if every slot is busy,
+   reviews the logs and writes a note. Its commit becomes a pull request.
 3. **The gate** (`gate.yml`, run from `main` so the PR cannot alter it):
    no protected file touched, no order placement or credential code added,
    a complete ledger entry, tests green, and a backtest with the live cost
    model that is not obviously broken. Pass: merged automatically. Fail:
    closed automatically with the reason, which the agent reads next time.
-4. **The test**: the next hourly run sees the new challenger config and
-   starts a 21 day prospective test, both accounts on the same live data.
+4. **The test**: the next hourly run sees the new slot config and starts a
+   21 day prospective test, champion and challenger on the same live data.
    After the window `bot/promote.py` rules by fixed rules in
-   `configs/risk.yaml`: promoted (challenger config becomes the champion)
-   or killed. Verdict appended to `LEDGER.md`, challenger reset, slot free.
+   `configs/risk.yaml`: promoted (the slot's config becomes the champion)
+   or killed. A challenger down more than 15% is killed early. Verdict
+   appended to `LEDGER.md` with the realised gross bps per round trip next
+   to the number the hypothesis predicted, slot reset and free. Up to three
+   tests run at once, so the loop reaches about fifty verdicts a year.
+5. **The synthesis**: `FINDINGS.md` is the distilled version of the ledger,
+   kept by the agent: what is confirmed, what one verdict suggests, what was
+   killed and why, how well the cost arithmetic predicted reality, and what
+   is still open. That file is the product; the champion is a by product.
 
 The agent chooses what to try. The rules, costs, limits and the exam are
 in files the agent cannot touch (`PROTECTED.txt`). Fin edits those by hand.
@@ -42,11 +50,12 @@ as plausibility checks; only the prospective window counts.
 ## Layout
 
     bot/            data, strategy (agent editable), paper account, risk, run, backtest, promote, report
-    configs/        risk.yaml (protected), champion.yaml (protected), challenger.yaml (agent edits)
+    configs/        risk.yaml (protected), champion.yaml (protected), challenger1..3.yaml (agent edits, one per PR)
     gate/           the three checks the PR must pass
     tests/          gate/ is protected; the rest the agent may extend
     state/          accounts, decisions, trades, equity curves, candle cache, summary.md
     LEDGER.md       every hypothesis and its verdict, never edited backwards
+    FINDINGS.md     the distilled state of knowledge, kept current by the agent
     hypotheses/     the backlog the agent draws from
     notes/          daily observations when the slot is busy
     CLAUDE.md       the agent's operating manual
@@ -57,7 +66,7 @@ as plausibility checks; only the prospective window counts.
     pip install -r requirements.txt
     python -m pytest tests -q
     QUANTLOOP_FAKE_DATA=1 python -m bot.run          # synthetic data, no network
-    python -m bot.backtest --config configs/challenger.yaml
+    python -m bot.backtest --config configs/challenger1.yaml
     python -m bot.slot
     python -m bot.report && cat state/summary.md
 

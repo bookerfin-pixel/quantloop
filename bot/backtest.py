@@ -1,6 +1,6 @@
 """Replay a strategy over cached candles with the live cost model. PROTECTED.
 
-    python -m bot.backtest --config configs/challenger.yaml [--days 60]
+    python -m bot.backtest --config configs/challenger1.yaml [--days 60]
 
 Signal at the close of bar t, fill at the open of bar t+1 with slippage and
 fee, mark at the close of bar t+1. Uses bot.run.step, the same code path as
@@ -122,10 +122,11 @@ def format_metrics(m: dict) -> str:
 
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--config", default="configs/challenger.yaml")
+    ap.add_argument("--config", default="configs/challenger1.yaml")
     ap.add_argument("--days", type=int, default=None)
     ap.add_argument("--json", action="store_true")
     args = ap.parse_args(argv)
+    config.prepare()
     rcfg = config.risk_cfg()
     cfg = config.load_yaml(config.ROOT / args.config)
     candles = load_cached_candles(list(rcfg["pairs"]))

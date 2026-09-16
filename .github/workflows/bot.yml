@@ -1,7 +1,7 @@
 name: bot
 
-# Hourly paper trading loop. Pulls Kraken data, runs champion and challenger,
-# rules on a finished challenger test, rewrites the summary, commits state.
+# Hourly paper trading loop. Pulls Kraken data, runs the champion and every
+# challenger slot, rules on finished tests, rewrites the summary, commits state.
 on:
   schedule:
     - cron: "7 * * * *"   # :07 past every hour; GitHub delays jobs scheduled on the hour
@@ -32,7 +32,7 @@ jobs:
         run: pip install -q -r requirements.txt
 
       - name: Run accounts
-        run: python -m bot.run --account champion --account challenger
+        run: python -m bot.run
 
       - name: Rule on challenger
         run: python -m bot.promote

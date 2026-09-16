@@ -5,6 +5,10 @@
 # Why: the agent is allowed to change what the bot *thinks* (signals, parameters,
 # tests for its own code) but never what the bot *is allowed to do* (costs, limits,
 # execution, the exam it sits, or the machinery that runs it).
+#
+# Agent editable, for the record: bot/strategy.py, configs/challenger<k>.yaml,
+# LEDGER.md (append only by convention, the gate checks entries), FINDINGS.md,
+# hypotheses/, notes/, tests/ outside tests/gate/.
 
 PROTECTED.txt
 CLAUDE.md

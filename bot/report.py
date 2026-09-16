@@ -95,16 +95,23 @@ def data_section(pairs: list[str], now: int) -> str:
 
 
 def test_section(now: int) -> str:
-    meta = slot.load()
-    lines = ["## Challenger slot", "", f"- {slot.describe(now)}"]
-    if meta["status"] == "testing":
-        from .promote import window_metrics
-        champ = window_metrics("champion", meta["started_at"], now, meta["start_equity"].get("champion"))
-        chal = window_metrics("challenger", meta["started_at"], now, meta["start_equity"].get("challenger"))
-        lines.append(f"- so far: champion {_pct(champ['return'])} (DD {champ['max_drawdown'] or 0:.2%}, "
-                     f"{champ['trades']} fills) vs challenger {_pct(chal['return'])} "
-                     f"(DD {chal['max_drawdown'] or 0:.2%}, {chal['trades']} fills)")
-        lines.append("- this is an interim reading; only the verdict at the end of the window counts")
+    from .promote import window_metrics
+    lines = ["## Challenger slots", ""]
+    any_testing = False
+    for name in config.challengers():
+        meta = slot.load(name)
+        lines.append(f"- {slot.describe_one(name, now)}")
+        if meta["status"] == "testing":
+            any_testing = True
+            champ = window_metrics(config.CHAMPION, meta["started_at"], now, meta["start_equity"].get(config.CHAMPION))
+            chal = window_metrics(name, meta["started_at"], now, meta["start_equity"].get(name))
+            lines.append(f"  so far: champion {_pct(champ['return'])} (DD {champ['max_drawdown'] or 0:.2%}, "
+                         f"{champ['trades']} fills) vs {name} {_pct(chal['return'])} "
+                         f"(DD {chal['max_drawdown'] or 0:.2%}, {chal['trades']} fills)")
+    free = slot.free_slots()
+    lines.append(f"- free slots: {', '.join(free) if free else 'none'}")
+    if any_testing:
+        lines.append("- interim readings are not verdicts; only the end of window rule counts")
     return "\n".join(lines) + "\n"
 
 
@@ -116,13 +123,14 @@ def build(now: int | None = None) -> str:
              f"(~{2 * (rcfg['fee_bps'] + rcfg['slippage_bps'])} bps per round trip). "
              f"Pairs: {', '.join(rcfg['pairs'])}. Paper only.", ""]
     parts.append(test_section(now))
-    for name in config.ACCOUNTS:
+    for name in config.accounts():
         parts.append(account_section(name, now))
     parts.append(data_section(list(rcfg["pairs"]), now))
     return "\n".join(parts)
 
 
 def main() -> int:
+    config.prepare()
     text = build()
     out = config.STATE / "summary.md"
     out.parent.mkdir(parents=True, exist_ok=True)

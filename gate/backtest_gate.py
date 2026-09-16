@@ -12,6 +12,8 @@ from __future__ import annotations
 
 import json
 import os
+import re
+import subprocess
 import sys
 
 sys.path.insert(0, os.getcwd())
@@ -19,14 +21,31 @@ sys.path.insert(0, os.getcwd())
 from bot import backtest, config  # noqa: E402
 
 
+def changed_slot() -> str:
+    """The slot this PR changed (from the diff against main), else slot 1."""
+    try:
+        out = subprocess.run(["git", "diff", "--name-only", "origin/main...HEAD"], check=True,
+                             capture_output=True, text=True).stdout.splitlines()
+    except Exception:  # noqa: BLE001
+        out = []
+    for path in out:
+        m = re.match(r"configs/(challenger\d+)\.yaml$", path)
+        if m:
+            return m.group(1)
+    return config.challengers()[0]
+
+
 def main() -> int:
+    config.prepare()
     rcfg = config.risk_cfg()
     rules = rcfg["backtest_gate"]
+    name = changed_slot()
     try:
-        cfg = config.account_cfg("challenger")
+        cfg = config.account_cfg(name)
     except Exception as e:  # noqa: BLE001
-        print(f"GATE FAILED: configs/challenger.yaml does not load: {e}")
+        print(f"GATE FAILED: configs/{name}.yaml does not load: {e}")
         return 1
+    print(f"backtesting configs/{name}.yaml ({cfg['hypothesis']})")
     candles = backtest.load_cached_candles(list(rcfg["pairs"]))
     have = min((len(df) for df in candles.values()), default=0)
     if have < rules["min_days"] * 24:

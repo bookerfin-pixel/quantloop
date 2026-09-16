@@ -71,6 +71,9 @@ def test_backtest_refuses_thin_data():
 
 def test_config_loader_rejects_incomplete_config(tmp_path, monkeypatch):
     monkeypatch.setattr(config, "CONFIGS", tmp_path)
-    (tmp_path / "challenger.yaml").write_text("strategy: ts_momentum\n")
+    (tmp_path / "risk.yaml").write_text("challenger:\n  slots: 3\n")
+    (tmp_path / "challenger1.yaml").write_text("strategy: ts_momentum\n")
     with pytest.raises(ValueError):
-        config.account_cfg("challenger")
+        config.account_cfg("challenger1")
+    with pytest.raises(ValueError):
+        config.account_cfg("challenger9")
