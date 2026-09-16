@@ -66,6 +66,12 @@ jobs:
           branch="agent/$(date -u +%Y%m%d-%H%M)"
           git checkout -q -b "$branch"
           echo "$branch" > .agent_branch
+          # Secrets pasted from a terminal often carry a wrapped line break; strip all whitespace,
+          # and drop empty credentials so the CLI does not try to use a blank token.
+          CLAUDE_CODE_OAUTH_TOKEN="$(printf %s "$CLAUDE_CODE_OAUTH_TOKEN" | tr -d '[:space:]')"
+          ANTHROPIC_API_KEY="$(printf %s "$ANTHROPIC_API_KEY" | tr -d '[:space:]')"
+          if [ -z "$CLAUDE_CODE_OAUTH_TOKEN" ]; then unset CLAUDE_CODE_OAUTH_TOKEN; else export CLAUDE_CODE_OAUTH_TOKEN; fi
+          if [ -z "$ANTHROPIC_API_KEY" ]; then unset ANTHROPIC_API_KEY; else export ANTHROPIC_API_KEY; fi
           extra_args=()
           if [ -n "$AGENT_MODEL" ]; then extra_args+=(--model "$AGENT_MODEL"); fi
           if [ -n "$AGENT_MAX_BUDGET_USD" ]; then extra_args+=(--max-budget-usd "$AGENT_MAX_BUDGET_USD"); fi
