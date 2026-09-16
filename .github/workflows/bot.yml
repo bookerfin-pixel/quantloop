@@ -1,0 +1,67 @@
+name: bot
+
+# Hourly paper trading loop. Pulls Kraken data, runs champion and challenger,
+# rules on a finished challenger test, rewrites the summary, commits state.
+on:
+  schedule:
+    - cron: "7 * * * *"   # :07 past every hour; GitHub delays jobs scheduled on the hour
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: state-writer
+  cancel-in-progress: false
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install
+        run: pip install -q -r requirements.txt
+
+      - name: Run accounts
+        run: python -m bot.run --account champion --account challenger
+
+      - name: Rule on challenger
+        run: python -m bot.promote
+
+      - name: Summary
+        run: |
+          python -m bot.report
+          echo '## quantloop hourly run' >> "$GITHUB_STEP_SUMMARY"
+          echo '```' >> "$GITHUB_STEP_SUMMARY"
+          python -m bot.slot >> "$GITHUB_STEP_SUMMARY"
+          tail -n +3 state/summary.md | head -60 >> "$GITHUB_STEP_SUMMARY"
+          echo '```' >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Commit state
+        run: |
+          git config user.name "quantloop-bot"
+          git config user.email "quantloop-bot@users.noreply.github.com"
+          git add -A state configs LEDGER.md
+          if git diff --cached --quiet; then
+            echo "nothing to commit"
+            exit 0
+          fi
+          git commit -q -m "state: $(date -u +%Y-%m-%dT%H:%MZ)"
+          for attempt in 1 2 3 4; do
+            if git pull --rebase -q && git push -q; then
+              echo "pushed on attempt $attempt"
+              exit 0
+            fi
+            sleep $((attempt * 15))
+          done
+          echo "push failed after 4 attempts"
+          exit 1

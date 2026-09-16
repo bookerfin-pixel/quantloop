@@ -1,0 +1,39 @@
+# PROTECTED. Only Fin edits this file. The agent cannot change costs, limits,
+# or the rules that decide promotion, because a system that can loosen its own
+# exam will loosen its own exam.
+
+# --- cost model (paper fills) ---------------------------------------------
+# Prices come from Kraken public data (Binance blocks US IPs, which is where
+# GitHub Actions runners live). Costs are modelled on the venue Fin would
+# actually trade: Binance spot taker, no BNB discount.
+venue_note: "Kraken USD prices, Binance spot taker fee model"
+fee_bps: 10            # per side, charged on notional
+slippage_bps: 5        # per side, half spread plus impact for small size on majors
+quote: USD
+initial_cash: 10000
+
+# --- universe -------------------------------------------------------------
+pairs: [BTC, ETH, SOL, ADA, AVAX, LINK]
+history_hours: 720     # candles handed to a strategy (Kraken returns at most 720 per call)
+
+# --- position limits (spot only: no leverage, no shorts) -------------------
+max_weight_per_pair: 0.25
+max_gross_weight: 1.0
+min_trade_notional: 50
+rebalance_threshold: 0.05   # skip trades that move a pair's weight by less than 5 points
+daily_loss_halt: 0.05       # equity down 5% from the UTC day's open: go flat, stop for the day
+
+# --- challenger test (prospective, paired against the champion) -----------
+challenger:
+  window_days: 21
+  min_trades: 20
+  max_dd_ratio: 1.5         # challenger max drawdown may not exceed 1.5x the champion's
+  min_return_edge: 0.0      # challenger net return must beat champion's by at least this
+
+# --- backtest gate (plausibility filter, not proof) ------------------------
+backtest_gate:
+  min_days: 7
+  max_days: 120
+  max_drawdown: 0.30
+  min_cost_coverage: 1.0      # gross pnl / total costs. Below 1.0 the strategy pays more than it makes.
+  max_trades_per_pair_per_day: 4

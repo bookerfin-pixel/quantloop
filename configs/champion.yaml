@@ -1,0 +1,12 @@
+# PROTECTED. Written only by bot/promote.py when a challenger wins.
+hypothesis: H0
+strategy: ts_momentum
+params:
+  lookback_hours: 72
+  ema_hours: 24
+  entry_return: 0.01
+  exit_return: -0.01
+  ema_exit_buffer: 0.02
+  vol_lookback_hours: 168
+  target_vol_annual: 0.30
+  max_weight: 0.25

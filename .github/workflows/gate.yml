@@ -1,0 +1,68 @@
+name: gate
+
+# The exam a pull request sits before it can merge. Called by agent.yml for
+# the agent's own PRs (and merged there if it passes), and run read-only on
+# any human PR. Everything here executes from the base branch, so a PR
+# cannot change the rules it is judged by.
+on:
+  workflow_call:
+    inputs:
+      pr_number:
+        required: true
+        type: string
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+  pull-requests: read
+
+jobs:
+  gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      PR: ${{ inputs.pr_number || github.event.pull_request.number }}
+    steps:
+      - name: Check out base (main)
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          path: base
+          fetch-depth: 1
+
+      - name: Check out pull request head
+        uses: actions/checkout@v4
+        with:
+          ref: refs/pull/${{ inputs.pr_number || github.event.pull_request.number }}/head
+          path: pr
+          fetch-depth: 0
+
+      - name: Fetch main into the PR checkout
+        working-directory: pr
+        run: git fetch -q origin main:refs/remotes/origin/main
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: base/requirements.txt
+
+      - name: Install (base requirements)
+        run: pip install -q -r base/requirements.txt
+
+      - name: 1. Protected paths and forbidden code
+        working-directory: pr
+        run: python ../base/gate/check_protected.py --base origin/main --head HEAD
+
+      - name: 2. Ledger entry
+        working-directory: pr
+        run: python ../base/gate/check_ledger.py --base origin/main --head HEAD
+
+      - name: 3. Tests
+        working-directory: pr
+        run: python -m pytest tests -q
+
+      - name: 4. Backtest plausibility
+        working-directory: pr
+        run: python ../base/gate/backtest_gate.py

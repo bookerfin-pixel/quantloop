@@ -1,0 +1,29 @@
+# Paths the agent may not modify. Glob patterns, one per line, matched against
+# every file a pull request touches. The gate (gate/check_protected.py) rejects
+# any PR that changes a matching path. Only Fin edits protected files, by hand.
+#
+# Why: the agent is allowed to change what the bot *thinks* (signals, parameters,
+# tests for its own code) but never what the bot *is allowed to do* (costs, limits,
+# execution, the exam it sits, or the machinery that runs it).
+
+PROTECTED.txt
+CLAUDE.md
+README.md
+LEDGER_FORMAT.md
+.github/**
+gate/**
+tests/gate/**
+configs/risk.yaml
+configs/champion.yaml
+bot/__init__.py
+bot/data.py
+bot/paper.py
+bot/risk.py
+bot/run.py
+bot/backtest.py
+bot/promote.py
+bot/report.py
+bot/slot.py
+bot/config.py
+state/**
+requirements.txt
