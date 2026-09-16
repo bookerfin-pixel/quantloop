@@ -1,6 +1,6 @@
 {
   "cash": 10000.0,
-  "created_at": 1789530957,
+  "created_at": 1789600850,
   "day": "2026-09-16",
   "day_open_equity": 10000.0,
   "fees_paid": 0.0,
@@ -8,7 +8,7 @@
   "initial_cash": 10000.0,
   "last_run_ts": 1789600850,
   "n_trades": 0,
-  "name": "champion",
+  "name": "challenger2",
   "positions": {},
   "slippage_paid": 0.0
 }
