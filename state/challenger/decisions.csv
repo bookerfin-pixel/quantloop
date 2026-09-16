@@ -11,3 +11,9 @@ ts,account,pair,price,signal_weight,target_weight,current_weight,action,reason
 1789532594,challenger,ADA,0.196266,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -5.72% not above entry band +1.0% and price below 24h EMA
 1789532594,challenger,AVAX,7.3275,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -1.82% not above entry band +1.0% and price below 24h EMA
 1789532594,challenger,LINK,10.849965,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -5.80% not above entry band +1.0% and price below 24h EMA
+1789536103,challenger,BTC,75849.55,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -1.96 not below -2.0
+1789536103,challenger,ETH,2402.245,0.25,0.25,0.0,buy,"enter long: z -2.51 vs 240h mean (entry -2.0, exit -0.5); vol 59% -> weight 0.25"
+1789536103,challenger,SOL,97.195,0.25,0.25,0.0,buy,"enter long: z -2.23 vs 240h mean (entry -2.0, exit -0.5); vol 57% -> weight 0.25"
+1789536103,challenger,ADA,0.195773,0.25,0.25,0.0,buy,"enter long: z -2.24 vs 240h mean (entry -2.0, exit -0.5); vol 74% -> weight 0.25"
+1789536103,challenger,AVAX,7.3375,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -1.27 not below -2.0
+1789536103,challenger,LINK,10.88961,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -1.69 not below -2.0
