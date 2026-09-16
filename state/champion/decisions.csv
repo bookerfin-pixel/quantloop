@@ -1,0 +1,7 @@
+ts,account,pair,price,signal_weight,target_weight,current_weight,action,reason
+1789530957,champion,BTC,75725.55,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -1.86% not above entry band +1.0% and price below 24h EMA
+1789530957,champion,ETH,2399.645,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -4.76% not above entry band +1.0% and price below 24h EMA
+1789530957,champion,SOL,97.1,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -4.63% not above entry band +1.0% and price below 24h EMA
+1789530957,champion,ADA,0.194628,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -6.62% not above entry band +1.0% and price below 24h EMA
+1789530957,champion,AVAX,7.278,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -1.93% not above entry band +1.0% and price below 24h EMA
+1789530957,champion,LINK,10.828165,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -5.65% not above entry band +1.0% and price below 24h EMA
