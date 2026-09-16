@@ -83,9 +83,12 @@ def data_section(pairs: list[str], now: int) -> str:
             lines.append(f"- {p}: no candles")
             continue
         t = df["time"].astype(int)
-        recent = t[t >= now - 7 * 86400]
-        expected = 7 * 24
-        gaps = max(0, expected - len(recent)) if len(t) and t.min() <= now - 7 * 86400 else 0
+        cutoff = now - 7 * 86400
+        recent = t[t >= cutoff]
+        # hourly slots between the cutoff and the last closed candle; only meaningful once
+        # the cache reaches back a full week
+        expected = int((t.max() - cutoff) // 3600) + 1 if len(t) and t.min() <= cutoff else len(recent)
+        gaps = max(0, expected - len(recent))
         lines.append(f"- {p}: {len(df)} candles, {_ts(t.min())} to {_ts(t.max())}, "
                      f"missing hours in last 7d: {gaps}")
     return "\n".join(lines) + "\n"

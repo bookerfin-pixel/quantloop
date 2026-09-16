@@ -33,5 +33,5 @@ come from Fin's first bot (2025, real money, Binance spot, seven pairs).
 - Why it should work: trend persistence over days is the most replicated effect in crypto returns, and the bands hold turnover near 0.3 fills per pair per day so the strategy is not on a costs treadmill.
 - Expected gross bps per round trip: 150
 - Kill criteria: none. This is the champion; it is only replaced by a challenger that beats it in a prospective test.
-- Backtest: not yet run on live data; the first hourly run seeds the candle cache.
+- Backtest: first 23 days of real Kraken data (2026-08-24 to 2026-09-16, a choppy, falling window): total return -6.1%, max drawdown -10.8%, 110 fills (0.80 per pair per day, max 5 in one pair in one day), gross pnl -300, costs 311, cost coverage -0.96. On this window the baseline would fail its own gate on churn and cost coverage. It is the floor the first challenger has to beat, not evidence of edge.
 - Status: champion
