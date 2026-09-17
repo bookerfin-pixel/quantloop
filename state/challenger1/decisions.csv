@@ -1,169 +1,179 @@
-ts,account,pair,price,signal_weight,target_weight,current_weight,action,reason
-1789530957,challenger,BTC,75725.55,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -1.86% not above entry band +1.0% and price below 24h EMA
-1789530957,challenger,ETH,2399.645,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -4.76% not above entry band +1.0% and price below 24h EMA
-1789530957,challenger,SOL,97.1,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -4.63% not above entry band +1.0% and price below 24h EMA
-1789530957,challenger,ADA,0.194628,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -6.62% not above entry band +1.0% and price below 24h EMA
-1789530957,challenger,AVAX,7.278,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -1.93% not above entry band +1.0% and price below 24h EMA
-1789530957,challenger,LINK,10.828165,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -5.65% not above entry band +1.0% and price below 24h EMA
-1789532594,challenger,BTC,75917.75,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -1.83% not above entry band +1.0% and price below 24h EMA
-1789532594,challenger,ETH,2406.6,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -4.76% not above entry band +1.0% and price below 24h EMA
-1789532594,challenger,SOL,97.405,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -4.36% not above entry band +1.0% and price below 24h EMA
-1789532594,challenger,ADA,0.196266,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -5.72% not above entry band +1.0% and price below 24h EMA
-1789532594,challenger,AVAX,7.3275,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -1.82% not above entry band +1.0% and price below 24h EMA
-1789532594,challenger,LINK,10.849965,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -5.80% not above entry band +1.0% and price below 24h EMA
-1789536103,challenger,BTC,75849.55,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -1.96 not below -2.0
-1789536103,challenger,ETH,2402.245,0.25,0.25,0.0,buy,"enter long: z -2.51 vs 240h mean (entry -2.0, exit -0.5); vol 59% -> weight 0.25"
-1789536103,challenger,SOL,97.195,0.25,0.25,0.0,buy,"enter long: z -2.23 vs 240h mean (entry -2.0, exit -0.5); vol 57% -> weight 0.25"
-1789536103,challenger,ADA,0.195773,0.25,0.25,0.0,buy,"enter long: z -2.24 vs 240h mean (entry -2.0, exit -0.5); vol 74% -> weight 0.25"
-1789536103,challenger,AVAX,7.3375,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -1.27 not below -2.0
-1789536103,challenger,LINK,10.88961,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -1.69 not below -2.0
-1789540084,challenger,BTC,75835.05,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -1.85 not below -2.0
-1789540084,challenger,ETH,2399.505,0.25,0.25,0.2503,hold,"hold: weight change -0.000 below threshold 0.05 | stay long: z -2.37 vs 240h mean (entry -2.0, exit -0.5); vol 59% -> weight 0.25"
-1789540084,challenger,SOL,97.065,0.25,0.25,0.2503,hold,"hold: weight change -0.000 below threshold 0.05 | stay long: z -2.23 vs 240h mean (entry -2.0, exit -0.5); vol 57% -> weight 0.25"
-1789540084,challenger,ADA,0.19483,0.25,0.25,0.2494,hold,"hold: weight change +0.001 below threshold 0.05 | stay long: z -2.21 vs 240h mean (entry -2.0, exit -0.5); vol 74% -> weight 0.25"
-1789540084,challenger,AVAX,7.3055,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -1.24 not below -2.0
-1789540084,challenger,LINK,10.796635,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -1.63 not below -2.0
-1789543394,challenger,BTC,75750.15,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -1.80 not below -2.0
-1789543394,challenger,ETH,2397.55,0.25,0.25,0.2503,hold,"hold: weight change -0.000 below threshold 0.05 | stay long: z -2.36 vs 240h mean (entry -2.0, exit -0.5); vol 59% -> weight 0.25"
-1789543394,challenger,SOL,97.01,0.25,0.25,0.2503,hold,"hold: weight change -0.000 below threshold 0.05 | stay long: z -2.12 vs 240h mean (entry -2.0, exit -0.5); vol 57% -> weight 0.25"
-1789543394,challenger,ADA,0.194661,0.25,0.25,0.2493,hold,"hold: weight change +0.001 below threshold 0.05 | stay long: z -2.17 vs 240h mean (entry -2.0, exit -0.5); vol 74% -> weight 0.25"
-1789543394,challenger,AVAX,7.2745,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -1.24 not below -2.0
-1789543394,challenger,LINK,10.77477,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -1.75 not below -2.0
-1789547073,challenger,BTC,75335.45,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -2.00 not below -2.0
-1789547073,challenger,ETH,2387.105,0.25,0.25,0.2503,hold,"hold: weight change -0.000 below threshold 0.05 | stay long: z -2.58 vs 240h mean (entry -2.0, exit -0.5); vol 59% -> weight 0.25"
-1789547073,challenger,SOL,96.605,0.25,0.25,0.2504,hold,"hold: weight change -0.000 below threshold 0.05 | stay long: z -2.29 vs 240h mean (entry -2.0, exit -0.5); vol 57% -> weight 0.25"
-1789547073,challenger,ADA,0.192777,0.25,0.25,0.248,hold,"hold: weight change +0.002 below threshold 0.05 | stay long: z -2.39 vs 240h mean (entry -2.0, exit -0.5); vol 74% -> weight 0.25"
-1789547073,challenger,AVAX,7.1945,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -1.57 not below -2.0
-1789547073,challenger,LINK,10.69677,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -1.78 not below -2.0
-1789550572,challenger,BTC,75776.75,0.25,0.25,0.0,buy,"enter long: z -2.01 vs 240h mean (entry -2.0, exit -0.5); vol 34% -> weight 0.25"
-1789550572,challenger,ETH,2401.145,0.25,0.25,0.2508,hold,"hold: weight change -0.001 below threshold 0.05 | stay long: z -2.37 vs 240h mean (entry -2.0, exit -0.5); vol 59% -> weight 0.25"
-1789550572,challenger,SOL,97.16,0.25,0.25,0.2509,hold,"hold: weight change -0.001 below threshold 0.05 | stay long: z -2.23 vs 240h mean (entry -2.0, exit -0.5); vol 57% -> weight 0.25"
-1789550572,challenger,ADA,0.193464,0.25,0.25,0.248,hold,"hold: weight change +0.002 below threshold 0.05 | stay long: z -2.47 vs 240h mean (entry -2.0, exit -0.5); vol 74% -> weight 0.25"
-1789550572,challenger,AVAX,7.241,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -1.64 not below -2.0
-1789550572,challenger,LINK,10.806035,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -1.76 not below -2.0
-1789554212,challenger,BTC,75861.95,0.25,0.25,0.25,hold,"hold: weight change -0.000 below threshold 0.05 | stay long: z -1.77 vs 240h mean (entry -2.0, exit -0.5); vol 33% -> weight 0.25"
-1789554212,challenger,ETH,2398.385,0.25,0.25,0.2504,hold,"hold: weight change -0.000 below threshold 0.05 | stay long: z -2.26 vs 240h mean (entry -2.0, exit -0.5); vol 58% -> weight 0.25"
-1789554212,challenger,SOL,97.165,0.25,0.25,0.2508,hold,"hold: weight change -0.001 below threshold 0.05 | stay long: z -2.10 vs 240h mean (entry -2.0, exit -0.5); vol 56% -> weight 0.25"
-1789554212,challenger,ADA,0.194128,0.25,0.25,0.2487,hold,"hold: weight change +0.001 below threshold 0.05 | stay long: z -2.25 vs 240h mean (entry -2.0, exit -0.5); vol 73% -> weight 0.25"
-1789554212,challenger,AVAX,7.255,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -1.39 not below -2.0
-1789554212,challenger,LINK,10.79448,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -1.61 not below -2.0
-1789557775,challenger,BTC,75873.55,0.25,0.25,0.2499,hold,"hold: weight change +0.000 below threshold 0.05 | stay long: z -1.77 vs 240h mean (entry -2.0, exit -0.5); vol 33% -> weight 0.25"
-1789557775,challenger,ETH,2403.525,0.25,0.25,0.2508,hold,"hold: weight change -0.001 below threshold 0.05 | stay long: z -2.22 vs 240h mean (entry -2.0, exit -0.5); vol 58% -> weight 0.25"
-1789557775,challenger,SOL,97.075,0.25,0.25,0.2504,hold,"hold: weight change -0.000 below threshold 0.05 | stay long: z -2.09 vs 240h mean (entry -2.0, exit -0.5); vol 56% -> weight 0.25"
-1789557775,challenger,ADA,0.194304,0.25,0.25,0.2488,hold,"hold: weight change +0.001 below threshold 0.05 | stay long: z -2.23 vs 240h mean (entry -2.0, exit -0.5); vol 73% -> weight 0.25"
-1789557775,challenger,AVAX,7.2625,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -1.44 not below -2.0
-1789557775,challenger,LINK,10.81439,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -1.65 not below -2.0
-1789561696,challenger,BTC,75887.45,0.25,0.25,0.25,hold,"hold: weight change +0.000 below threshold 0.05 | stay long: z -1.51 vs 240h mean (entry -2.0, exit -0.5); vol 33% -> weight 0.25"
-1789561696,challenger,ETH,2405.455,0.25,0.25,0.251,hold,"hold: weight change -0.001 below threshold 0.05 | stay long: z -1.77 vs 240h mean (entry -2.0, exit -0.5); vol 58% -> weight 0.25"
-1789561696,challenger,SOL,97.505,0.25,0.25,0.2515,hold,"hold: weight change -0.002 below threshold 0.05 | stay long: z -1.75 vs 240h mean (entry -2.0, exit -0.5); vol 56% -> weight 0.25"
-1789561696,challenger,ADA,0.193176,0.25,0.25,0.2474,hold,"hold: weight change +0.003 below threshold 0.05 | stay long: z -2.15 vs 240h mean (entry -2.0, exit -0.5); vol 73% -> weight 0.25"
-1789561696,challenger,AVAX,7.2785,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -1.20 not below -2.0
-1789561696,challenger,LINK,10.79027,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -1.52 not below -2.0
-1789565065,challenger,BTC,75689.05,0.25,0.25,0.2502,hold,"hold: weight change -0.000 below threshold 0.05 | stay long: z -1.75 vs 240h mean (entry -2.0, exit -0.5); vol 33% -> weight 0.25"
-1789565065,challenger,ETH,2398.235,0.25,0.25,0.2512,hold,"hold: weight change -0.001 below threshold 0.05 | stay long: z -2.15 vs 240h mean (entry -2.0, exit -0.5); vol 58% -> weight 0.25"
-1789565065,challenger,SOL,97.135,0.25,0.25,0.2514,hold,"hold: weight change -0.001 below threshold 0.05 | stay long: z -1.93 vs 240h mean (entry -2.0, exit -0.5); vol 56% -> weight 0.25"
-1789565065,challenger,ADA,0.192314,0.25,0.25,0.2471,hold,"hold: weight change +0.003 below threshold 0.05 | stay long: z -2.37 vs 240h mean (entry -2.0, exit -0.5); vol 73% -> weight 0.25"
-1789565065,challenger,AVAX,7.2585,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -1.35 not below -2.0
-1789565065,challenger,LINK,10.714855,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -1.68 not below -2.0
-1789568627,challenger,BTC,75564.55,0.25,0.25,0.2505,hold,"hold: weight change -0.000 below threshold 0.05 | stay long: z -2.01 vs 240h mean (entry -2.0, exit -0.5); vol 33% -> weight 0.25"
-1789568627,challenger,ETH,2387.665,0.25,0.25,0.2507,hold,"hold: weight change -0.001 below threshold 0.05 | stay long: z -2.44 vs 240h mean (entry -2.0, exit -0.5); vol 58% -> weight 0.25"
-1789568627,challenger,SOL,96.885,0.25,0.25,0.2515,hold,"hold: weight change -0.001 below threshold 0.05 | stay long: z -2.09 vs 240h mean (entry -2.0, exit -0.5); vol 56% -> weight 0.25"
-1789568627,challenger,ADA,0.191838,0.25,0.25,0.2472,hold,"hold: weight change +0.003 below threshold 0.05 | stay long: z -2.41 vs 240h mean (entry -2.0, exit -0.5); vol 73% -> weight 0.25"
-1789568627,challenger,AVAX,7.2525,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -1.43 not below -2.0
-1789568627,challenger,LINK,10.665075,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -1.75 not below -2.0
-1789572176,challenger,BTC,75732.15,0.25,0.25,0.2508,hold,"hold: weight change -0.001 below threshold 0.05 | stay long: z -1.95 vs 240h mean (entry -2.0, exit -0.5); vol 33% -> weight 0.25"
-1789572176,challenger,ETH,2390.645,0.25,0.25,0.2508,hold,"hold: weight change -0.001 below threshold 0.05 | stay long: z -2.50 vs 240h mean (entry -2.0, exit -0.5); vol 58% -> weight 0.25"
-1789572176,challenger,SOL,97.13,0.25,0.25,0.2518,hold,"hold: weight change -0.002 below threshold 0.05 | stay long: z -2.14 vs 240h mean (entry -2.0, exit -0.5); vol 56% -> weight 0.25"
-1789572176,challenger,ADA,0.191604,0.25,0.25,0.2466,hold,"hold: weight change +0.003 below threshold 0.05 | stay long: z -2.52 vs 240h mean (entry -2.0, exit -0.5); vol 73% -> weight 0.25"
-1789572176,challenger,AVAX,7.2535,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -1.48 not below -2.0
-1789572176,challenger,LINK,10.718755,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -1.79 not below -2.0
-1789575763,challenger,BTC,75762.75,0.25,0.25,0.2506,hold,"hold: weight change -0.001 below threshold 0.05 | stay long: z -1.84 vs 240h mean (entry -2.0, exit -0.5); vol 33% -> weight 0.25"
-1789575763,challenger,ETH,2394.615,0.25,0.25,0.2509,hold,"hold: weight change -0.001 below threshold 0.05 | stay long: z -2.38 vs 240h mean (entry -2.0, exit -0.5); vol 58% -> weight 0.25"
-1789575763,challenger,SOL,97.295,0.25,0.25,0.2519,hold,"hold: weight change -0.002 below threshold 0.05 | stay long: z -2.07 vs 240h mean (entry -2.0, exit -0.5); vol 56% -> weight 0.25"
-1789575763,challenger,ADA,0.191804,0.25,0.25,0.2466,hold,"hold: weight change +0.003 below threshold 0.05 | stay long: z -2.42 vs 240h mean (entry -2.0, exit -0.5); vol 73% -> weight 0.25"
-1789575763,challenger,AVAX,7.239,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -1.50 not below -2.0
-1789575763,challenger,LINK,10.72927,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -1.74 not below -2.0
-1789579223,challenger,BTC,75685.15,0.25,0.25,0.2505,hold,"hold: weight change -0.001 below threshold 0.05 | stay long: z -1.85 vs 240h mean (entry -2.0, exit -0.5); vol 33% -> weight 0.25"
-1789579223,challenger,ETH,2390.635,0.25,0.25,0.2507,hold,"hold: weight change -0.001 below threshold 0.05 | stay long: z -2.37 vs 240h mean (entry -2.0, exit -0.5); vol 58% -> weight 0.25"
-1789579223,challenger,SOL,97.065,0.25,0.25,0.2516,hold,"hold: weight change -0.002 below threshold 0.05 | stay long: z -2.00 vs 240h mean (entry -2.0, exit -0.5); vol 56% -> weight 0.25"
-1789579223,challenger,ADA,0.191999,0.25,0.25,0.2471,hold,"hold: weight change +0.003 below threshold 0.05 | stay long: z -2.27 vs 240h mean (entry -2.0, exit -0.5); vol 72% -> weight 0.25"
-1789579223,challenger,AVAX,7.2375,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -1.38 not below -2.0
-1789579223,challenger,LINK,10.71753,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -1.64 not below -2.0
-1789583091,challenger,BTC,75834.55,0.25,0.25,0.2497,hold,"hold: weight change +0.000 below threshold 0.05 | stay long: z -1.90 vs 240h mean (entry -2.0, exit -0.5); vol 33% -> weight 0.25"
-1789583091,challenger,ETH,2403.985,0.25,0.25,0.2507,hold,"hold: weight change -0.001 below threshold 0.05 | stay long: z -2.38 vs 240h mean (entry -2.0, exit -0.5); vol 58% -> weight 0.25"
-1789583091,challenger,SOL,97.99,0.25,0.25,0.2526,hold,"hold: weight change -0.003 below threshold 0.05 | stay long: z -2.04 vs 240h mean (entry -2.0, exit -0.5); vol 56% -> weight 0.25"
-1789583091,challenger,ADA,0.192912,0.25,0.25,0.2469,hold,"hold: weight change +0.003 below threshold 0.05 | stay long: z -2.18 vs 240h mean (entry -2.0, exit -0.5); vol 72% -> weight 0.25"
-1789583091,challenger,AVAX,7.2715,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -1.42 not below -2.0
-1789583091,challenger,LINK,10.80574,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -1.66 not below -2.0
-1789586468,challenger,BTC,75511.55,0.25,0.25,0.2499,hold,"hold: weight change +0.000 below threshold 0.05 | stay long: z -1.94 vs 240h mean (entry -2.0, exit -0.5); vol 33% -> weight 0.25"
-1789586468,challenger,ETH,2393.825,0.25,0.25,0.251,hold,"hold: weight change -0.001 below threshold 0.05 | stay long: z -2.16 vs 240h mean (entry -2.0, exit -0.5); vol 58% -> weight 0.25"
-1789586468,challenger,SOL,97.5,0.25,0.25,0.2526,hold,"hold: weight change -0.003 below threshold 0.05 | stay long: z -1.73 vs 240h mean (entry -2.0, exit -0.5); vol 56% -> weight 0.25"
-1789586468,challenger,ADA,0.191553,0.25,0.25,0.2464,hold,"hold: weight change +0.004 below threshold 0.05 | stay long: z -2.25 vs 240h mean (entry -2.0, exit -0.5); vol 72% -> weight 0.25"
-1789586468,challenger,AVAX,7.279,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -1.32 not below -2.0
-1789586468,challenger,LINK,10.840005,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -1.50 not below -2.0
-1789590185,challenger,BTC,76281.15,0.25,0.25,0.2491,hold,"hold: weight change +0.001 below threshold 0.05 | stay long: z -1.53 vs 240h mean (entry -2.0, exit -0.5); vol 33% -> weight 0.25"
-1789590185,challenger,ETH,2414.69,0.25,0.25,0.2498,hold,"hold: weight change +0.000 below threshold 0.05 | stay long: z -1.88 vs 240h mean (entry -2.0, exit -0.5); vol 58% -> weight 0.25"
-1789590185,challenger,SOL,98.775,0.25,0.25,0.2525,hold,"hold: weight change -0.003 below threshold 0.05 | stay long: z -1.59 vs 240h mean (entry -2.0, exit -0.5); vol 56% -> weight 0.25"
-1789590185,challenger,ADA,0.195763,0.25,0.25,0.2485,hold,"hold: weight change +0.002 below threshold 0.05 | stay long: z -1.94 vs 240h mean (entry -2.0, exit -0.5); vol 72% -> weight 0.25"
-1789590185,challenger,AVAX,7.3665,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -1.07 not below -2.0
-1789590185,challenger,LINK,11.000535,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -1.31 not below -2.0
-1789593741,challenger,BTC,76033.75,0.25,0.25,0.2494,hold,"hold: weight change +0.001 below threshold 0.05 | stay long: z -1.44 vs 240h mean (entry -2.0, exit -0.5); vol 33% -> weight 0.25"
-1789593741,challenger,ETH,2406.965,0.25,0.25,0.2501,hold,"hold: weight change -0.000 below threshold 0.05 | stay long: z -1.80 vs 240h mean (entry -2.0, exit -0.5); vol 58% -> weight 0.25"
-1789593741,challenger,SOL,98.305,0.25,0.25,0.2524,hold,"hold: weight change -0.002 below threshold 0.05 | stay long: z -1.30 vs 240h mean (entry -2.0, exit -0.5); vol 56% -> weight 0.25"
-1789593741,challenger,ADA,0.19458,0.25,0.25,0.2481,hold,"hold: weight change +0.002 below threshold 0.05 | stay long: z -1.78 vs 240h mean (entry -2.0, exit -0.5); vol 73% -> weight 0.25"
-1789593741,challenger,AVAX,7.3675,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -0.90 not below -2.0
-1789593741,challenger,LINK,10.92968,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -1.20 not below -2.0
-1789597278,challenger,BTC,75702.05,0.25,0.25,0.2497,hold,"hold: weight change +0.000 below threshold 0.05 | stay long: z -1.60 vs 240h mean (entry -2.0, exit -0.5); vol 33% -> weight 0.25"
-1789597278,challenger,ETH,2394.285,0.25,0.25,0.2502,hold,"hold: weight change -0.000 below threshold 0.05 | stay long: z -1.92 vs 240h mean (entry -2.0, exit -0.5); vol 58% -> weight 0.25"
-1789597278,challenger,SOL,97.795,0.25,0.25,0.2526,hold,"hold: weight change -0.003 below threshold 0.05 | stay long: z -1.43 vs 240h mean (entry -2.0, exit -0.5); vol 56% -> weight 0.25"
-1789597278,challenger,ADA,0.193006,0.25,0.25,0.2475,hold,"hold: weight change +0.003 below threshold 0.05 | stay long: z -1.83 vs 240h mean (entry -2.0, exit -0.5); vol 72% -> weight 0.25"
-1789597278,challenger,AVAX,7.3555,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -0.87 not below -2.0
-1789597278,challenger,LINK,10.872355,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -1.26 not below -2.0
-1789600850,challenger1,BTC,76046.65,0.25,0.25,0.2491,hold,"hold: weight change +0.001 below threshold 0.05 | stay long: z -1.85 vs 240h mean (entry -2.0, exit -0.5); vol 33% -> weight 0.25"
-1789600850,challenger1,ETH,2410.005,0.25,0.25,0.2501,hold,"hold: weight change -0.000 below threshold 0.05 | stay long: z -2.18 vs 240h mean (entry -2.0, exit -0.5); vol 58% -> weight 0.25"
-1789600850,challenger1,SOL,98.255,0.25,0.25,0.252,hold,"hold: weight change -0.002 below threshold 0.05 | stay long: z -1.83 vs 240h mean (entry -2.0, exit -0.5); vol 55% -> weight 0.25"
-1789600850,challenger1,ADA,0.195211,0.25,0.25,0.2486,hold,"hold: weight change +0.001 below threshold 0.05 | stay long: z -2.09 vs 240h mean (entry -2.0, exit -0.5); vol 72% -> weight 0.25"
-1789600850,challenger1,AVAX,7.4005,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -1.01 not below -2.0
-1789600850,challenger1,LINK,10.983625,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -1.35 not below -2.0
-1789604925,challenger1,BTC,76343.35,0.25,0.25,0.249,hold,"hold: weight change +0.001 below threshold 0.05 | stay long: z -1.37 vs 240h mean (entry -2.0, exit -0.5); vol 33% -> weight 0.25"
-1789604925,challenger1,ETH,2420.495,0.25,0.25,0.2501,hold,"hold: weight change -0.000 below threshold 0.05 | stay long: z -1.55 vs 240h mean (entry -2.0, exit -0.5); vol 58% -> weight 0.25"
-1789604925,challenger1,SOL,98.785,0.25,0.25,0.2522,hold,"hold: weight change -0.002 below threshold 0.05 | stay long: z -1.31 vs 240h mean (entry -2.0, exit -0.5); vol 56% -> weight 0.25"
-1789604925,challenger1,ADA,0.196147,0.25,0.25,0.2487,hold,"hold: weight change +0.001 below threshold 0.05 | stay long: z -1.63 vs 240h mean (entry -2.0, exit -0.5); vol 73% -> weight 0.25"
-1789604925,challenger1,AVAX,7.5015,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -0.52 not below -2.0
-1789604925,challenger1,LINK,11.07535,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -1.09 not below -2.0
-1789608121,challenger1,BTC,76322.85,0.25,0.25,0.2492,hold,"hold: weight change +0.001 below threshold 0.05 | stay long: z -1.25 vs 240h mean (entry -2.0, exit -0.5); vol 33% -> weight 0.25"
-1789608121,challenger1,ETH,2420.085,0.25,0.25,0.2504,hold,"hold: weight change -0.000 below threshold 0.05 | stay long: z -1.52 vs 240h mean (entry -2.0, exit -0.5); vol 58% -> weight 0.25"
-1789608121,challenger1,SOL,98.615,0.25,0.25,0.2522,hold,"hold: weight change -0.002 below threshold 0.05 | stay long: z -1.27 vs 240h mean (entry -2.0, exit -0.5); vol 56% -> weight 0.25"
-1789608121,challenger1,ADA,0.195492,0.25,0.25,0.2482,hold,"hold: weight change +0.002 below threshold 0.05 | stay long: z -1.69 vs 240h mean (entry -2.0, exit -0.5); vol 73% -> weight 0.25"
-1789608121,challenger1,AVAX,7.49,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -0.41 not below -2.0
-1789608121,challenger1,LINK,11.004705,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -1.14 not below -2.0
-1789611755,challenger1,BTC,76038.35,0.25,0.25,0.2489,hold,"hold: weight change +0.001 below threshold 0.05 | stay long: z -1.22 vs 240h mean (entry -2.0, exit -0.5); vol 33% -> weight 0.25"
-1789611755,challenger1,ETH,2414.375,0.25,0.25,0.2504,hold,"hold: weight change -0.000 below threshold 0.05 | stay long: z -1.32 vs 240h mean (entry -2.0, exit -0.5); vol 58% -> weight 0.25"
-1789611755,challenger1,SOL,98.815,0.25,0.25,0.2533,hold,"hold: weight change -0.003 below threshold 0.05 | stay long: z -1.01 vs 240h mean (entry -2.0, exit -0.5); vol 56% -> weight 0.25"
-1789611755,challenger1,ADA,0.194312,0.25,0.25,0.2473,hold,"hold: weight change +0.003 below threshold 0.05 | stay long: z -1.62 vs 240h mean (entry -2.0, exit -0.5); vol 73% -> weight 0.25"
-1789611755,challenger1,AVAX,7.4685,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -0.33 not below -2.0
-1789611755,challenger1,LINK,11.038245,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -1.00 not below -2.0
-1789615365,challenger1,BTC,76377.75,0.25,0.25,0.2485,hold,"hold: weight change +0.001 below threshold 0.05 | stay long: z -1.21 vs 240h mean (entry -2.0, exit -0.5); vol 33% -> weight 0.25"
-1789615365,challenger1,ETH,2432.205,0.25,0.25,0.2507,hold,"hold: weight change -0.001 below threshold 0.05 | stay long: z -1.28 vs 240h mean (entry -2.0, exit -0.5); vol 58% -> weight 0.25"
-1789615365,challenger1,SOL,99.525,0.25,0.25,0.2535,hold,"hold: weight change -0.004 below threshold 0.05 | stay long: z -0.95 vs 240h mean (entry -2.0, exit -0.5); vol 56% -> weight 0.25"
-1789615365,challenger1,ADA,0.195429,0.25,0.25,0.2472,hold,"hold: weight change +0.003 below threshold 0.05 | stay long: z -1.73 vs 240h mean (entry -2.0, exit -0.5); vol 73% -> weight 0.25"
-1789615365,challenger1,AVAX,7.5245,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -0.32 not below -2.0
-1789615365,challenger1,LINK,11.12552,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -0.95 not below -2.0
-1789619001,challenger1,BTC,76138.05,0.25,0.25,0.2484,hold,"hold: weight change +0.002 below threshold 0.05 | stay long: z -1.15 vs 240h mean (entry -2.0, exit -0.5); vol 33% -> weight 0.25"
-1789619001,challenger1,ETH,2425.455,0.25,0.25,0.2507,hold,"hold: weight change -0.001 below threshold 0.05 | stay long: z -1.11 vs 240h mean (entry -2.0, exit -0.5); vol 58% -> weight 0.25"
-1789619001,challenger1,SOL,99.215,0.25,0.25,0.2534,hold,"hold: weight change -0.003 below threshold 0.05 | stay long: z -0.68 vs 240h mean (entry -2.0, exit -0.5); vol 56% -> weight 0.25"
-1789619001,challenger1,ADA,0.195068,0.25,0.25,0.2474,hold,"hold: weight change +0.003 below threshold 0.05 | stay long: z -1.61 vs 240h mean (entry -2.0, exit -0.5); vol 73% -> weight 0.25"
-1789619001,challenger1,AVAX,7.509,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -0.23 not below -2.0
-1789619001,challenger1,LINK,11.060505,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -0.95 not below -2.0
-1789622522,challenger1,BTC,76381.35,0.25,0.25,0.248,hold,"hold: weight change +0.002 below threshold 0.05 | stay long: z -1.05 vs 240h mean (entry -2.0, exit -0.5); vol 33% -> weight 0.25"
-1789622522,challenger1,ETH,2438.965,0.25,0.25,0.2509,hold,"hold: weight change -0.001 below threshold 0.05 | stay long: z -0.95 vs 240h mean (entry -2.0, exit -0.5); vol 58% -> weight 0.25"
-1789622522,challenger1,SOL,99.585,0.25,0.25,0.2532,hold,"hold: weight change -0.003 below threshold 0.05 | stay long: z -0.68 vs 240h mean (entry -2.0, exit -0.5); vol 56% -> weight 0.25"
-1789622522,challenger1,ADA,0.196302,0.25,0.25,0.2478,hold,"hold: weight change +0.002 below threshold 0.05 | stay long: z -1.53 vs 240h mean (entry -2.0, exit -0.5); vol 73% -> weight 0.25"
-1789622522,challenger1,AVAX,7.5265,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -0.23 not below -2.0
-1789622522,challenger1,LINK,11.131035,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -0.91 not below -2.0
-1789626493,challenger1,BTC,76272.85,0.25,0.25,0.248,hold,"hold: weight change +0.002 below threshold 0.05 | stay long: z -1.24 vs 240h mean (entry -2.0, exit -0.5); vol 33% -> weight 0.25"
-1789626493,challenger1,ETH,2434.14,0.25,0.25,0.2507,hold,"hold: weight change -0.001 below threshold 0.05 | stay long: z -1.07 vs 240h mean (entry -2.0, exit -0.5); vol 58% -> weight 0.25"
-1789626493,challenger1,SOL,99.395,0.25,0.25,0.2531,hold,"hold: weight change -0.003 below threshold 0.05 | stay long: z -0.85 vs 240h mean (entry -2.0, exit -0.5); vol 56% -> weight 0.25"
-1789626493,challenger1,ADA,0.196308,0.25,0.25,0.2481,hold,"hold: weight change +0.002 below threshold 0.05 | stay long: z -1.56 vs 240h mean (entry -2.0, exit -0.5); vol 73% -> weight 0.25"
-1789626493,challenger1,AVAX,7.5075,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -0.39 not below -2.0
-1789626493,challenger1,LINK,11.132025,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -0.98 not below -2.0
+ts,account,pair,price,signal_weight,target_weight,current_weight,action,reason,half_spread_bps
+1789530957,challenger,BTC,75725.55,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -1.86% not above entry band +1.0% and price below 24h EMA,
+1789530957,challenger,ETH,2399.645,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -4.76% not above entry band +1.0% and price below 24h EMA,
+1789530957,challenger,SOL,97.1,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -4.63% not above entry band +1.0% and price below 24h EMA,
+1789530957,challenger,ADA,0.194628,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -6.62% not above entry band +1.0% and price below 24h EMA,
+1789530957,challenger,AVAX,7.278,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -1.93% not above entry band +1.0% and price below 24h EMA,
+1789530957,challenger,LINK,10.828165,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -5.65% not above entry band +1.0% and price below 24h EMA,
+1789532594,challenger,BTC,75917.75,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -1.83% not above entry band +1.0% and price below 24h EMA,
+1789532594,challenger,ETH,2406.6,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -4.76% not above entry band +1.0% and price below 24h EMA,
+1789532594,challenger,SOL,97.405,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -4.36% not above entry band +1.0% and price below 24h EMA,
+1789532594,challenger,ADA,0.196266,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -5.72% not above entry band +1.0% and price below 24h EMA,
+1789532594,challenger,AVAX,7.3275,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -1.82% not above entry band +1.0% and price below 24h EMA,
+1789532594,challenger,LINK,10.849965,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -5.80% not above entry band +1.0% and price below 24h EMA,
+1789536103,challenger,BTC,75849.55,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -1.96 not below -2.0,
+1789536103,challenger,ETH,2402.245,0.25,0.25,0.0,buy,"enter long: z -2.51 vs 240h mean (entry -2.0, exit -0.5); vol 59% -> weight 0.25",
+1789536103,challenger,SOL,97.195,0.25,0.25,0.0,buy,"enter long: z -2.23 vs 240h mean (entry -2.0, exit -0.5); vol 57% -> weight 0.25",
+1789536103,challenger,ADA,0.195773,0.25,0.25,0.0,buy,"enter long: z -2.24 vs 240h mean (entry -2.0, exit -0.5); vol 74% -> weight 0.25",
+1789536103,challenger,AVAX,7.3375,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -1.27 not below -2.0,
+1789536103,challenger,LINK,10.88961,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -1.69 not below -2.0,
+1789540084,challenger,BTC,75835.05,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -1.85 not below -2.0,
+1789540084,challenger,ETH,2399.505,0.25,0.25,0.2503,hold,"hold: weight change -0.000 below threshold 0.05 | stay long: z -2.37 vs 240h mean (entry -2.0, exit -0.5); vol 59% -> weight 0.25",
+1789540084,challenger,SOL,97.065,0.25,0.25,0.2503,hold,"hold: weight change -0.000 below threshold 0.05 | stay long: z -2.23 vs 240h mean (entry -2.0, exit -0.5); vol 57% -> weight 0.25",
+1789540084,challenger,ADA,0.19483,0.25,0.25,0.2494,hold,"hold: weight change +0.001 below threshold 0.05 | stay long: z -2.21 vs 240h mean (entry -2.0, exit -0.5); vol 74% -> weight 0.25",
+1789540084,challenger,AVAX,7.3055,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -1.24 not below -2.0,
+1789540084,challenger,LINK,10.796635,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -1.63 not below -2.0,
+1789543394,challenger,BTC,75750.15,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -1.80 not below -2.0,
+1789543394,challenger,ETH,2397.55,0.25,0.25,0.2503,hold,"hold: weight change -0.000 below threshold 0.05 | stay long: z -2.36 vs 240h mean (entry -2.0, exit -0.5); vol 59% -> weight 0.25",
+1789543394,challenger,SOL,97.01,0.25,0.25,0.2503,hold,"hold: weight change -0.000 below threshold 0.05 | stay long: z -2.12 vs 240h mean (entry -2.0, exit -0.5); vol 57% -> weight 0.25",
+1789543394,challenger,ADA,0.194661,0.25,0.25,0.2493,hold,"hold: weight change +0.001 below threshold 0.05 | stay long: z -2.17 vs 240h mean (entry -2.0, exit -0.5); vol 74% -> weight 0.25",
+1789543394,challenger,AVAX,7.2745,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -1.24 not below -2.0,
+1789543394,challenger,LINK,10.77477,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -1.75 not below -2.0,
+1789547073,challenger,BTC,75335.45,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -2.00 not below -2.0,
+1789547073,challenger,ETH,2387.105,0.25,0.25,0.2503,hold,"hold: weight change -0.000 below threshold 0.05 | stay long: z -2.58 vs 240h mean (entry -2.0, exit -0.5); vol 59% -> weight 0.25",
+1789547073,challenger,SOL,96.605,0.25,0.25,0.2504,hold,"hold: weight change -0.000 below threshold 0.05 | stay long: z -2.29 vs 240h mean (entry -2.0, exit -0.5); vol 57% -> weight 0.25",
+1789547073,challenger,ADA,0.192777,0.25,0.25,0.248,hold,"hold: weight change +0.002 below threshold 0.05 | stay long: z -2.39 vs 240h mean (entry -2.0, exit -0.5); vol 74% -> weight 0.25",
+1789547073,challenger,AVAX,7.1945,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -1.57 not below -2.0,
+1789547073,challenger,LINK,10.69677,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -1.78 not below -2.0,
+1789550572,challenger,BTC,75776.75,0.25,0.25,0.0,buy,"enter long: z -2.01 vs 240h mean (entry -2.0, exit -0.5); vol 34% -> weight 0.25",
+1789550572,challenger,ETH,2401.145,0.25,0.25,0.2508,hold,"hold: weight change -0.001 below threshold 0.05 | stay long: z -2.37 vs 240h mean (entry -2.0, exit -0.5); vol 59% -> weight 0.25",
+1789550572,challenger,SOL,97.16,0.25,0.25,0.2509,hold,"hold: weight change -0.001 below threshold 0.05 | stay long: z -2.23 vs 240h mean (entry -2.0, exit -0.5); vol 57% -> weight 0.25",
+1789550572,challenger,ADA,0.193464,0.25,0.25,0.248,hold,"hold: weight change +0.002 below threshold 0.05 | stay long: z -2.47 vs 240h mean (entry -2.0, exit -0.5); vol 74% -> weight 0.25",
+1789550572,challenger,AVAX,7.241,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -1.64 not below -2.0,
+1789550572,challenger,LINK,10.806035,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -1.76 not below -2.0,
+1789554212,challenger,BTC,75861.95,0.25,0.25,0.25,hold,"hold: weight change -0.000 below threshold 0.05 | stay long: z -1.77 vs 240h mean (entry -2.0, exit -0.5); vol 33% -> weight 0.25",
+1789554212,challenger,ETH,2398.385,0.25,0.25,0.2504,hold,"hold: weight change -0.000 below threshold 0.05 | stay long: z -2.26 vs 240h mean (entry -2.0, exit -0.5); vol 58% -> weight 0.25",
+1789554212,challenger,SOL,97.165,0.25,0.25,0.2508,hold,"hold: weight change -0.001 below threshold 0.05 | stay long: z -2.10 vs 240h mean (entry -2.0, exit -0.5); vol 56% -> weight 0.25",
+1789554212,challenger,ADA,0.194128,0.25,0.25,0.2487,hold,"hold: weight change +0.001 below threshold 0.05 | stay long: z -2.25 vs 240h mean (entry -2.0, exit -0.5); vol 73% -> weight 0.25",
+1789554212,challenger,AVAX,7.255,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -1.39 not below -2.0,
+1789554212,challenger,LINK,10.79448,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -1.61 not below -2.0,
+1789557775,challenger,BTC,75873.55,0.25,0.25,0.2499,hold,"hold: weight change +0.000 below threshold 0.05 | stay long: z -1.77 vs 240h mean (entry -2.0, exit -0.5); vol 33% -> weight 0.25",
+1789557775,challenger,ETH,2403.525,0.25,0.25,0.2508,hold,"hold: weight change -0.001 below threshold 0.05 | stay long: z -2.22 vs 240h mean (entry -2.0, exit -0.5); vol 58% -> weight 0.25",
+1789557775,challenger,SOL,97.075,0.25,0.25,0.2504,hold,"hold: weight change -0.000 below threshold 0.05 | stay long: z -2.09 vs 240h mean (entry -2.0, exit -0.5); vol 56% -> weight 0.25",
+1789557775,challenger,ADA,0.194304,0.25,0.25,0.2488,hold,"hold: weight change +0.001 below threshold 0.05 | stay long: z -2.23 vs 240h mean (entry -2.0, exit -0.5); vol 73% -> weight 0.25",
+1789557775,challenger,AVAX,7.2625,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -1.44 not below -2.0,
+1789557775,challenger,LINK,10.81439,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -1.65 not below -2.0,
+1789561696,challenger,BTC,75887.45,0.25,0.25,0.25,hold,"hold: weight change +0.000 below threshold 0.05 | stay long: z -1.51 vs 240h mean (entry -2.0, exit -0.5); vol 33% -> weight 0.25",
+1789561696,challenger,ETH,2405.455,0.25,0.25,0.251,hold,"hold: weight change -0.001 below threshold 0.05 | stay long: z -1.77 vs 240h mean (entry -2.0, exit -0.5); vol 58% -> weight 0.25",
+1789561696,challenger,SOL,97.505,0.25,0.25,0.2515,hold,"hold: weight change -0.002 below threshold 0.05 | stay long: z -1.75 vs 240h mean (entry -2.0, exit -0.5); vol 56% -> weight 0.25",
+1789561696,challenger,ADA,0.193176,0.25,0.25,0.2474,hold,"hold: weight change +0.003 below threshold 0.05 | stay long: z -2.15 vs 240h mean (entry -2.0, exit -0.5); vol 73% -> weight 0.25",
+1789561696,challenger,AVAX,7.2785,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -1.20 not below -2.0,
+1789561696,challenger,LINK,10.79027,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -1.52 not below -2.0,
+1789565065,challenger,BTC,75689.05,0.25,0.25,0.2502,hold,"hold: weight change -0.000 below threshold 0.05 | stay long: z -1.75 vs 240h mean (entry -2.0, exit -0.5); vol 33% -> weight 0.25",
+1789565065,challenger,ETH,2398.235,0.25,0.25,0.2512,hold,"hold: weight change -0.001 below threshold 0.05 | stay long: z -2.15 vs 240h mean (entry -2.0, exit -0.5); vol 58% -> weight 0.25",
+1789565065,challenger,SOL,97.135,0.25,0.25,0.2514,hold,"hold: weight change -0.001 below threshold 0.05 | stay long: z -1.93 vs 240h mean (entry -2.0, exit -0.5); vol 56% -> weight 0.25",
+1789565065,challenger,ADA,0.192314,0.25,0.25,0.2471,hold,"hold: weight change +0.003 below threshold 0.05 | stay long: z -2.37 vs 240h mean (entry -2.0, exit -0.5); vol 73% -> weight 0.25",
+1789565065,challenger,AVAX,7.2585,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -1.35 not below -2.0,
+1789565065,challenger,LINK,10.714855,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -1.68 not below -2.0,
+1789568627,challenger,BTC,75564.55,0.25,0.25,0.2505,hold,"hold: weight change -0.000 below threshold 0.05 | stay long: z -2.01 vs 240h mean (entry -2.0, exit -0.5); vol 33% -> weight 0.25",
+1789568627,challenger,ETH,2387.665,0.25,0.25,0.2507,hold,"hold: weight change -0.001 below threshold 0.05 | stay long: z -2.44 vs 240h mean (entry -2.0, exit -0.5); vol 58% -> weight 0.25",
+1789568627,challenger,SOL,96.885,0.25,0.25,0.2515,hold,"hold: weight change -0.001 below threshold 0.05 | stay long: z -2.09 vs 240h mean (entry -2.0, exit -0.5); vol 56% -> weight 0.25",
+1789568627,challenger,ADA,0.191838,0.25,0.25,0.2472,hold,"hold: weight change +0.003 below threshold 0.05 | stay long: z -2.41 vs 240h mean (entry -2.0, exit -0.5); vol 73% -> weight 0.25",
+1789568627,challenger,AVAX,7.2525,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -1.43 not below -2.0,
+1789568627,challenger,LINK,10.665075,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -1.75 not below -2.0,
+1789572176,challenger,BTC,75732.15,0.25,0.25,0.2508,hold,"hold: weight change -0.001 below threshold 0.05 | stay long: z -1.95 vs 240h mean (entry -2.0, exit -0.5); vol 33% -> weight 0.25",
+1789572176,challenger,ETH,2390.645,0.25,0.25,0.2508,hold,"hold: weight change -0.001 below threshold 0.05 | stay long: z -2.50 vs 240h mean (entry -2.0, exit -0.5); vol 58% -> weight 0.25",
+1789572176,challenger,SOL,97.13,0.25,0.25,0.2518,hold,"hold: weight change -0.002 below threshold 0.05 | stay long: z -2.14 vs 240h mean (entry -2.0, exit -0.5); vol 56% -> weight 0.25",
+1789572176,challenger,ADA,0.191604,0.25,0.25,0.2466,hold,"hold: weight change +0.003 below threshold 0.05 | stay long: z -2.52 vs 240h mean (entry -2.0, exit -0.5); vol 73% -> weight 0.25",
+1789572176,challenger,AVAX,7.2535,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -1.48 not below -2.0,
+1789572176,challenger,LINK,10.718755,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -1.79 not below -2.0,
+1789575763,challenger,BTC,75762.75,0.25,0.25,0.2506,hold,"hold: weight change -0.001 below threshold 0.05 | stay long: z -1.84 vs 240h mean (entry -2.0, exit -0.5); vol 33% -> weight 0.25",
+1789575763,challenger,ETH,2394.615,0.25,0.25,0.2509,hold,"hold: weight change -0.001 below threshold 0.05 | stay long: z -2.38 vs 240h mean (entry -2.0, exit -0.5); vol 58% -> weight 0.25",
+1789575763,challenger,SOL,97.295,0.25,0.25,0.2519,hold,"hold: weight change -0.002 below threshold 0.05 | stay long: z -2.07 vs 240h mean (entry -2.0, exit -0.5); vol 56% -> weight 0.25",
+1789575763,challenger,ADA,0.191804,0.25,0.25,0.2466,hold,"hold: weight change +0.003 below threshold 0.05 | stay long: z -2.42 vs 240h mean (entry -2.0, exit -0.5); vol 73% -> weight 0.25",
+1789575763,challenger,AVAX,7.239,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -1.50 not below -2.0,
+1789575763,challenger,LINK,10.72927,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -1.74 not below -2.0,
+1789579223,challenger,BTC,75685.15,0.25,0.25,0.2505,hold,"hold: weight change -0.001 below threshold 0.05 | stay long: z -1.85 vs 240h mean (entry -2.0, exit -0.5); vol 33% -> weight 0.25",
+1789579223,challenger,ETH,2390.635,0.25,0.25,0.2507,hold,"hold: weight change -0.001 below threshold 0.05 | stay long: z -2.37 vs 240h mean (entry -2.0, exit -0.5); vol 58% -> weight 0.25",
+1789579223,challenger,SOL,97.065,0.25,0.25,0.2516,hold,"hold: weight change -0.002 below threshold 0.05 | stay long: z -2.00 vs 240h mean (entry -2.0, exit -0.5); vol 56% -> weight 0.25",
+1789579223,challenger,ADA,0.191999,0.25,0.25,0.2471,hold,"hold: weight change +0.003 below threshold 0.05 | stay long: z -2.27 vs 240h mean (entry -2.0, exit -0.5); vol 72% -> weight 0.25",
+1789579223,challenger,AVAX,7.2375,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -1.38 not below -2.0,
+1789579223,challenger,LINK,10.71753,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -1.64 not below -2.0,
+1789583091,challenger,BTC,75834.55,0.25,0.25,0.2497,hold,"hold: weight change +0.000 below threshold 0.05 | stay long: z -1.90 vs 240h mean (entry -2.0, exit -0.5); vol 33% -> weight 0.25",
+1789583091,challenger,ETH,2403.985,0.25,0.25,0.2507,hold,"hold: weight change -0.001 below threshold 0.05 | stay long: z -2.38 vs 240h mean (entry -2.0, exit -0.5); vol 58% -> weight 0.25",
+1789583091,challenger,SOL,97.99,0.25,0.25,0.2526,hold,"hold: weight change -0.003 below threshold 0.05 | stay long: z -2.04 vs 240h mean (entry -2.0, exit -0.5); vol 56% -> weight 0.25",
+1789583091,challenger,ADA,0.192912,0.25,0.25,0.2469,hold,"hold: weight change +0.003 below threshold 0.05 | stay long: z -2.18 vs 240h mean (entry -2.0, exit -0.5); vol 72% -> weight 0.25",
+1789583091,challenger,AVAX,7.2715,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -1.42 not below -2.0,
+1789583091,challenger,LINK,10.80574,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -1.66 not below -2.0,
+1789586468,challenger,BTC,75511.55,0.25,0.25,0.2499,hold,"hold: weight change +0.000 below threshold 0.05 | stay long: z -1.94 vs 240h mean (entry -2.0, exit -0.5); vol 33% -> weight 0.25",
+1789586468,challenger,ETH,2393.825,0.25,0.25,0.251,hold,"hold: weight change -0.001 below threshold 0.05 | stay long: z -2.16 vs 240h mean (entry -2.0, exit -0.5); vol 58% -> weight 0.25",
+1789586468,challenger,SOL,97.5,0.25,0.25,0.2526,hold,"hold: weight change -0.003 below threshold 0.05 | stay long: z -1.73 vs 240h mean (entry -2.0, exit -0.5); vol 56% -> weight 0.25",
+1789586468,challenger,ADA,0.191553,0.25,0.25,0.2464,hold,"hold: weight change +0.004 below threshold 0.05 | stay long: z -2.25 vs 240h mean (entry -2.0, exit -0.5); vol 72% -> weight 0.25",
+1789586468,challenger,AVAX,7.279,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -1.32 not below -2.0,
+1789586468,challenger,LINK,10.840005,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -1.50 not below -2.0,
+1789590185,challenger,BTC,76281.15,0.25,0.25,0.2491,hold,"hold: weight change +0.001 below threshold 0.05 | stay long: z -1.53 vs 240h mean (entry -2.0, exit -0.5); vol 33% -> weight 0.25",
+1789590185,challenger,ETH,2414.69,0.25,0.25,0.2498,hold,"hold: weight change +0.000 below threshold 0.05 | stay long: z -1.88 vs 240h mean (entry -2.0, exit -0.5); vol 58% -> weight 0.25",
+1789590185,challenger,SOL,98.775,0.25,0.25,0.2525,hold,"hold: weight change -0.003 below threshold 0.05 | stay long: z -1.59 vs 240h mean (entry -2.0, exit -0.5); vol 56% -> weight 0.25",
+1789590185,challenger,ADA,0.195763,0.25,0.25,0.2485,hold,"hold: weight change +0.002 below threshold 0.05 | stay long: z -1.94 vs 240h mean (entry -2.0, exit -0.5); vol 72% -> weight 0.25",
+1789590185,challenger,AVAX,7.3665,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -1.07 not below -2.0,
+1789590185,challenger,LINK,11.000535,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -1.31 not below -2.0,
+1789593741,challenger,BTC,76033.75,0.25,0.25,0.2494,hold,"hold: weight change +0.001 below threshold 0.05 | stay long: z -1.44 vs 240h mean (entry -2.0, exit -0.5); vol 33% -> weight 0.25",
+1789593741,challenger,ETH,2406.965,0.25,0.25,0.2501,hold,"hold: weight change -0.000 below threshold 0.05 | stay long: z -1.80 vs 240h mean (entry -2.0, exit -0.5); vol 58% -> weight 0.25",
+1789593741,challenger,SOL,98.305,0.25,0.25,0.2524,hold,"hold: weight change -0.002 below threshold 0.05 | stay long: z -1.30 vs 240h mean (entry -2.0, exit -0.5); vol 56% -> weight 0.25",
+1789593741,challenger,ADA,0.19458,0.25,0.25,0.2481,hold,"hold: weight change +0.002 below threshold 0.05 | stay long: z -1.78 vs 240h mean (entry -2.0, exit -0.5); vol 73% -> weight 0.25",
+1789593741,challenger,AVAX,7.3675,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -0.90 not below -2.0,
+1789593741,challenger,LINK,10.92968,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -1.20 not below -2.0,
+1789597278,challenger,BTC,75702.05,0.25,0.25,0.2497,hold,"hold: weight change +0.000 below threshold 0.05 | stay long: z -1.60 vs 240h mean (entry -2.0, exit -0.5); vol 33% -> weight 0.25",
+1789597278,challenger,ETH,2394.285,0.25,0.25,0.2502,hold,"hold: weight change -0.000 below threshold 0.05 | stay long: z -1.92 vs 240h mean (entry -2.0, exit -0.5); vol 58% -> weight 0.25",
+1789597278,challenger,SOL,97.795,0.25,0.25,0.2526,hold,"hold: weight change -0.003 below threshold 0.05 | stay long: z -1.43 vs 240h mean (entry -2.0, exit -0.5); vol 56% -> weight 0.25",
+1789597278,challenger,ADA,0.193006,0.25,0.25,0.2475,hold,"hold: weight change +0.003 below threshold 0.05 | stay long: z -1.83 vs 240h mean (entry -2.0, exit -0.5); vol 72% -> weight 0.25",
+1789597278,challenger,AVAX,7.3555,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -0.87 not below -2.0,
+1789597278,challenger,LINK,10.872355,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -1.26 not below -2.0,
+1789600850,challenger1,BTC,76046.65,0.25,0.25,0.2491,hold,"hold: weight change +0.001 below threshold 0.05 | stay long: z -1.85 vs 240h mean (entry -2.0, exit -0.5); vol 33% -> weight 0.25",
+1789600850,challenger1,ETH,2410.005,0.25,0.25,0.2501,hold,"hold: weight change -0.000 below threshold 0.05 | stay long: z -2.18 vs 240h mean (entry -2.0, exit -0.5); vol 58% -> weight 0.25",
+1789600850,challenger1,SOL,98.255,0.25,0.25,0.252,hold,"hold: weight change -0.002 below threshold 0.05 | stay long: z -1.83 vs 240h mean (entry -2.0, exit -0.5); vol 55% -> weight 0.25",
+1789600850,challenger1,ADA,0.195211,0.25,0.25,0.2486,hold,"hold: weight change +0.001 below threshold 0.05 | stay long: z -2.09 vs 240h mean (entry -2.0, exit -0.5); vol 72% -> weight 0.25",
+1789600850,challenger1,AVAX,7.4005,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -1.01 not below -2.0,
+1789600850,challenger1,LINK,10.983625,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -1.35 not below -2.0,
+1789604925,challenger1,BTC,76343.35,0.25,0.25,0.249,hold,"hold: weight change +0.001 below threshold 0.05 | stay long: z -1.37 vs 240h mean (entry -2.0, exit -0.5); vol 33% -> weight 0.25",
+1789604925,challenger1,ETH,2420.495,0.25,0.25,0.2501,hold,"hold: weight change -0.000 below threshold 0.05 | stay long: z -1.55 vs 240h mean (entry -2.0, exit -0.5); vol 58% -> weight 0.25",
+1789604925,challenger1,SOL,98.785,0.25,0.25,0.2522,hold,"hold: weight change -0.002 below threshold 0.05 | stay long: z -1.31 vs 240h mean (entry -2.0, exit -0.5); vol 56% -> weight 0.25",
+1789604925,challenger1,ADA,0.196147,0.25,0.25,0.2487,hold,"hold: weight change +0.001 below threshold 0.05 | stay long: z -1.63 vs 240h mean (entry -2.0, exit -0.5); vol 73% -> weight 0.25",
+1789604925,challenger1,AVAX,7.5015,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -0.52 not below -2.0,
+1789604925,challenger1,LINK,11.07535,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -1.09 not below -2.0,
+1789608121,challenger1,BTC,76322.85,0.25,0.25,0.2492,hold,"hold: weight change +0.001 below threshold 0.05 | stay long: z -1.25 vs 240h mean (entry -2.0, exit -0.5); vol 33% -> weight 0.25",
+1789608121,challenger1,ETH,2420.085,0.25,0.25,0.2504,hold,"hold: weight change -0.000 below threshold 0.05 | stay long: z -1.52 vs 240h mean (entry -2.0, exit -0.5); vol 58% -> weight 0.25",
+1789608121,challenger1,SOL,98.615,0.25,0.25,0.2522,hold,"hold: weight change -0.002 below threshold 0.05 | stay long: z -1.27 vs 240h mean (entry -2.0, exit -0.5); vol 56% -> weight 0.25",
+1789608121,challenger1,ADA,0.195492,0.25,0.25,0.2482,hold,"hold: weight change +0.002 below threshold 0.05 | stay long: z -1.69 vs 240h mean (entry -2.0, exit -0.5); vol 73% -> weight 0.25",
+1789608121,challenger1,AVAX,7.49,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -0.41 not below -2.0,
+1789608121,challenger1,LINK,11.004705,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -1.14 not below -2.0,
+1789611755,challenger1,BTC,76038.35,0.25,0.25,0.2489,hold,"hold: weight change +0.001 below threshold 0.05 | stay long: z -1.22 vs 240h mean (entry -2.0, exit -0.5); vol 33% -> weight 0.25",
+1789611755,challenger1,ETH,2414.375,0.25,0.25,0.2504,hold,"hold: weight change -0.000 below threshold 0.05 | stay long: z -1.32 vs 240h mean (entry -2.0, exit -0.5); vol 58% -> weight 0.25",
+1789611755,challenger1,SOL,98.815,0.25,0.25,0.2533,hold,"hold: weight change -0.003 below threshold 0.05 | stay long: z -1.01 vs 240h mean (entry -2.0, exit -0.5); vol 56% -> weight 0.25",
+1789611755,challenger1,ADA,0.194312,0.25,0.25,0.2473,hold,"hold: weight change +0.003 below threshold 0.05 | stay long: z -1.62 vs 240h mean (entry -2.0, exit -0.5); vol 73% -> weight 0.25",
+1789611755,challenger1,AVAX,7.4685,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -0.33 not below -2.0,
+1789611755,challenger1,LINK,11.038245,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -1.00 not below -2.0,
+1789615365,challenger1,BTC,76377.75,0.25,0.25,0.2485,hold,"hold: weight change +0.001 below threshold 0.05 | stay long: z -1.21 vs 240h mean (entry -2.0, exit -0.5); vol 33% -> weight 0.25",
+1789615365,challenger1,ETH,2432.205,0.25,0.25,0.2507,hold,"hold: weight change -0.001 below threshold 0.05 | stay long: z -1.28 vs 240h mean (entry -2.0, exit -0.5); vol 58% -> weight 0.25",
+1789615365,challenger1,SOL,99.525,0.25,0.25,0.2535,hold,"hold: weight change -0.004 below threshold 0.05 | stay long: z -0.95 vs 240h mean (entry -2.0, exit -0.5); vol 56% -> weight 0.25",
+1789615365,challenger1,ADA,0.195429,0.25,0.25,0.2472,hold,"hold: weight change +0.003 below threshold 0.05 | stay long: z -1.73 vs 240h mean (entry -2.0, exit -0.5); vol 73% -> weight 0.25",
+1789615365,challenger1,AVAX,7.5245,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -0.32 not below -2.0,
+1789615365,challenger1,LINK,11.12552,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -0.95 not below -2.0,
+1789619001,challenger1,BTC,76138.05,0.25,0.25,0.2484,hold,"hold: weight change +0.002 below threshold 0.05 | stay long: z -1.15 vs 240h mean (entry -2.0, exit -0.5); vol 33% -> weight 0.25",
+1789619001,challenger1,ETH,2425.455,0.25,0.25,0.2507,hold,"hold: weight change -0.001 below threshold 0.05 | stay long: z -1.11 vs 240h mean (entry -2.0, exit -0.5); vol 58% -> weight 0.25",
+1789619001,challenger1,SOL,99.215,0.25,0.25,0.2534,hold,"hold: weight change -0.003 below threshold 0.05 | stay long: z -0.68 vs 240h mean (entry -2.0, exit -0.5); vol 56% -> weight 0.25",
+1789619001,challenger1,ADA,0.195068,0.25,0.25,0.2474,hold,"hold: weight change +0.003 below threshold 0.05 | stay long: z -1.61 vs 240h mean (entry -2.0, exit -0.5); vol 73% -> weight 0.25",
+1789619001,challenger1,AVAX,7.509,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -0.23 not below -2.0,
+1789619001,challenger1,LINK,11.060505,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -0.95 not below -2.0,
+1789622522,challenger1,BTC,76381.35,0.25,0.25,0.248,hold,"hold: weight change +0.002 below threshold 0.05 | stay long: z -1.05 vs 240h mean (entry -2.0, exit -0.5); vol 33% -> weight 0.25",
+1789622522,challenger1,ETH,2438.965,0.25,0.25,0.2509,hold,"hold: weight change -0.001 below threshold 0.05 | stay long: z -0.95 vs 240h mean (entry -2.0, exit -0.5); vol 58% -> weight 0.25",
+1789622522,challenger1,SOL,99.585,0.25,0.25,0.2532,hold,"hold: weight change -0.003 below threshold 0.05 | stay long: z -0.68 vs 240h mean (entry -2.0, exit -0.5); vol 56% -> weight 0.25",
+1789622522,challenger1,ADA,0.196302,0.25,0.25,0.2478,hold,"hold: weight change +0.002 below threshold 0.05 | stay long: z -1.53 vs 240h mean (entry -2.0, exit -0.5); vol 73% -> weight 0.25",
+1789622522,challenger1,AVAX,7.5265,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -0.23 not below -2.0,
+1789622522,challenger1,LINK,11.131035,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -0.91 not below -2.0,
+1789626493,challenger1,BTC,76272.85,0.25,0.25,0.248,hold,"hold: weight change +0.002 below threshold 0.05 | stay long: z -1.24 vs 240h mean (entry -2.0, exit -0.5); vol 33% -> weight 0.25",
+1789626493,challenger1,ETH,2434.14,0.25,0.25,0.2507,hold,"hold: weight change -0.001 below threshold 0.05 | stay long: z -1.07 vs 240h mean (entry -2.0, exit -0.5); vol 58% -> weight 0.25",
+1789626493,challenger1,SOL,99.395,0.25,0.25,0.2531,hold,"hold: weight change -0.003 below threshold 0.05 | stay long: z -0.85 vs 240h mean (entry -2.0, exit -0.5); vol 56% -> weight 0.25",
+1789626493,challenger1,ADA,0.196308,0.25,0.25,0.2481,hold,"hold: weight change +0.002 below threshold 0.05 | stay long: z -1.56 vs 240h mean (entry -2.0, exit -0.5); vol 73% -> weight 0.25",
+1789626493,challenger1,AVAX,7.5075,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -0.39 not below -2.0,
+1789626493,challenger1,LINK,11.132025,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -0.98 not below -2.0,
+1789628820,challenger1,BTC,76572.55,0.25,0.25,0.2472,hold,"hold: weight change +0.003 below threshold 0.05 | stay long: z -1.10 vs 240h mean (entry -2.0, exit -0.5); vol 33% -> weight 0.25",0.007
+1789628820,challenger1,ETH,2449.565,0.25,0.25,0.2505,hold,"hold: weight change -0.001 below threshold 0.05 | stay long: z -0.96 vs 240h mean (entry -2.0, exit -0.5); vol 58% -> weight 0.25",0.02
+1789628820,challenger1,SOL,100.1,0.25,0.25,0.253,hold,"hold: weight change -0.003 below threshold 0.05 | stay long: z -0.76 vs 240h mean (entry -2.0, exit -0.5); vol 56% -> weight 0.25",0.999
+1789628820,challenger1,ADA,0.198534,0.25,0.25,0.2492,hold,"hold: weight change +0.001 below threshold 0.05 | stay long: z -1.37 vs 240h mean (entry -2.0, exit -0.5); vol 73% -> weight 0.25",4.584
+1789628820,challenger1,AVAX,7.5505,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -0.33 not below -2.0,1.987
+1789628820,challenger1,LINK,11.208215,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -0.90 not below -2.0,4.724
+1789628820,challenger1,XRP,1.30438,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -1.59 not below -2.0,2.223
+1789628820,challenger1,DOGE,0.081183,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -1.23 not below -2.0,2.045
+1789628820,challenger1,DOT,1.01285,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -0.59 not below -2.0,3.456
+1789628820,challenger1,LTC,52.555,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -0.76 not below -2.0,4.757
