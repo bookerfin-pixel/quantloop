@@ -227,3 +227,13 @@ ts,account,pair,price,signal_weight,target_weight,current_weight,action,reason,h
 1789644130,challenger1,DOGE,0.080789,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -1.25 not below -2.0,0.006
 1789644130,challenger1,DOT,1.02725,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -0.43 not below -2.0,0.487
 1789644130,challenger1,LTC,52.745,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -0.47 not below -2.0,0.948
+1789648073,challenger1,BTC,76901.95,0.25,0.25,0.2466,hold,"hold: weight change +0.003 below threshold 0.05 | stay long: z -1.05 vs 240h mean (entry -2.0, exit -0.5); vol 33% -> weight 0.25",0.007
+1789648073,challenger1,ETH,2464.965,0.25,0.25,0.2504,hold,"hold: weight change -0.000 below threshold 0.05 | stay long: z -0.90 vs 240h mean (entry -2.0, exit -0.5); vol 58% -> weight 0.25",0.02
+1789648073,challenger1,SOL,101.005,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -0.55 not below -2.0,0.495
+1789648073,challenger1,ADA,0.201084,0.25,0.25,0.2507,hold,"hold: weight change -0.001 below threshold 0.05 | stay long: z -1.24 vs 240h mean (entry -2.0, exit -0.5); vol 73% -> weight 0.25",3.407
+1789648073,challenger1,AVAX,7.6055,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -0.18 not below -2.0,1.972
+1789648073,challenger1,LINK,11.26907,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -0.85 not below -2.0,1.952
+1789648073,challenger1,XRP,1.31154,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -1.55 not below -2.0,0.686
+1789648073,challenger1,DOGE,0.081468,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -1.20 not below -2.0,0.006
+1789648073,challenger1,DOT,1.0294,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -0.45 not below -2.0,1.943
+1789648073,challenger1,LTC,52.975,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -0.37 not below -2.0,0.944
