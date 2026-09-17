@@ -143,3 +143,9 @@ ts,account,pair,price,signal_weight,target_weight,current_weight,action,reason
 1789611755,champion,ADA,0.194312,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -4.47% not above entry band +1.0%
 1789611755,champion,AVAX,7.4685,0.25,0.25,0.2491,hold,hold: weight change +0.001 below threshold 0.05 | stay long: 72h return +2.08% vs exit band -1.0% and price above 24h EMA; realised vol 64% -> weight 0.25
 1789611755,champion,LINK,11.038245,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -1.93% not above entry band +1.0%
+1789615365,champion,BTC,76377.75,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -1.63% not above entry band +1.0%
+1789615365,champion,ETH,2432.205,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -3.32% not above entry band +1.0%
+1789615365,champion,SOL,99.525,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -1.63% not above entry band +1.0%
+1789615365,champion,ADA,0.195429,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -6.00% not above entry band +1.0%
+1789615365,champion,AVAX,7.5245,0.25,0.25,0.2505,hold,hold: weight change -0.001 below threshold 0.05 | stay long: 72h return +1.40% vs exit band -1.0% and price above 24h EMA; realised vol 64% -> weight 0.25
+1789615365,champion,LINK,11.12552,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -2.08% not above entry band +1.0%
