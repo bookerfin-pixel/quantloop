@@ -1,5 +1,6 @@
-ts,account,pair,side,qty,price,ref_price,notional,fee,slippage_cost,reason,equity_after
-1789536103,challenger,ETH,buy,1.0401731,2403.4461225,2402.245,2500.0,2.5,1.24937531,"enter long: z -2.51 vs 240h mean (entry -2.0, exit -0.5); vol 59% -> weight 0.25",9996.25062469
-1789536103,challenger,SOL,buy,25.70863341,97.2435975,97.195,2500.0,2.5,1.24937531,"enter long: z -2.23 vs 240h mean (entry -2.0, exit -0.5); vol 57% -> weight 0.25",9992.50124938
-1789536103,challenger,ADA,buy,12763.50990529,0.19587089,0.195773,2500.0,2.5,1.24937531,"enter long: z -2.24 vs 240h mean (entry -2.0, exit -0.5); vol 74% -> weight 0.25",9988.75187406
-1789550572,challenger,BTC,buy,0.03283415,75814.638375,75776.75,2489.30923428,2.48930923,1.2440326,"enter long: z -2.01 vs 240h mean (entry -2.0, exit -0.5); vol 34% -> weight 0.25",9953.50359528
+ts,account,pair,side,qty,price,ref_price,notional,fee,slippage_cost,reason,equity_after,half_spread_bps,slip_bps
+1789536103,challenger,ETH,buy,1.0401731,2403.4461225,2402.245,2500.0,2.5,1.24937531,"enter long: z -2.51 vs 240h mean (entry -2.0, exit -0.5); vol 59% -> weight 0.25",9996.25062469,,
+1789536103,challenger,SOL,buy,25.70863341,97.2435975,97.195,2500.0,2.5,1.24937531,"enter long: z -2.23 vs 240h mean (entry -2.0, exit -0.5); vol 57% -> weight 0.25",9992.50124938,,
+1789536103,challenger,ADA,buy,12763.50990529,0.19587089,0.195773,2500.0,2.5,1.24937531,"enter long: z -2.24 vs 240h mean (entry -2.0, exit -0.5); vol 74% -> weight 0.25",9988.75187406,,
+1789550572,challenger,BTC,buy,0.03283415,75814.638375,75776.75,2489.30923428,2.48930923,1.2440326,"enter long: z -2.01 vs 240h mean (entry -2.0, exit -0.5); vol 34% -> weight 0.25",9953.50359528,,
+1789636984,challenger1,SOL,sell,25.70863341,100.5646925,100.615,2585.38081389,2.58538081,1.29333708,flat: z -0.47 not below -0.5,10193.83136887,0.4969438,5.0
