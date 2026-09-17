@@ -77,3 +77,14 @@ def test_config_loader_rejects_incomplete_config(tmp_path, monkeypatch):
         config.account_cfg("challenger1")
     with pytest.raises(ValueError):
         config.account_cfg("challenger9")
+
+
+def test_backtest_tolerates_a_pair_with_shorter_history():
+    cfg = {"hypothesis": "H0", "strategy": "ts_momentum",
+           "params": {"lookback_hours": 48, "ema_hours": 12, "vol_lookback_hours": 96}}
+    c = candles(n=600)
+    c["ETH"] = c["ETH"].iloc[300:].reset_index(drop=True)      # ETH only exists for the second half
+    m = backtest.run_backtest(c, cfg, RCFG, max_days=None)
+    assert m["bars"] > 500                                     # the clock is BTC's full length
+    assert m["pairs"] == 2
+    assert m["final_equity"] == pytest.approx(RCFG["initial_cash"] * (1 + m["total_return"]), rel=1e-4)

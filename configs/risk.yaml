@@ -6,15 +6,19 @@
 # Prices come from Kraken public data (Binance blocks US IPs, which is where
 # GitHub Actions runners live). Costs are modelled on the venue Fin would
 # actually trade: Binance spot taker, no BNB discount.
-venue_note: "Kraken USD prices, Binance spot taker fee model"
+venue_note: "Kraken USD prices and live spreads, Binance spot taker fee model"
 fee_bps: 10            # per side, charged on notional
-slippage_bps: 5        # per side, half spread plus impact for small size on majors
+slippage_bps: 5        # per side FLOOR: what the backtest always pays, and the least the paper loop pays
+impact_bps: 2          # paper loop pays max(slippage_bps, observed half spread + impact_bps)
 quote: USD
 initial_cash: 10000
 
 # --- universe -------------------------------------------------------------
-pairs: [BTC, ETH, SOL, ADA, AVAX, LINK]
-history_hours: 720     # candles handed to a strategy (Kraken returns at most 720 per call)
+# Ten of the most liquid USD pairs on Kraken. They move together, so this is
+# more fills per window for rare signal strategies, not ten independent bets.
+pairs: [BTC, ETH, SOL, ADA, AVAX, LINK, XRP, DOGE, DOT, LTC]
+history_hours: 720          # candles handed to a strategy each hour (Kraken returns at most 720 per call)
+history_target_hours: 17520 # two years: backfilled once from Coinbase into state/history for backtests
 
 # --- position limits (spot only: no leverage, no shorts) -------------------
 max_weight_per_pair: 0.25
@@ -26,8 +30,9 @@ daily_loss_halt: 0.05       # equity down 5% from the UTC day's open: go flat, s
 # --- challenger tests (prospective, each paired against the champion) ------
 challenger:
   slots: 3                  # tests that can run at the same time; each has its own paper account
-  window_days: 21
-  min_trades: 20
+  window_days: 60           # 60 rather than 21: the signal to noise of a return difference grows with
+                            # the square root of the window, so this is about 1.7x cleaner per verdict
+  min_trades: 30            # over 60 days on ten pairs; fewer than this and nothing can be concluded
   max_dd_ratio: 1.5         # challenger max drawdown may not exceed 1.5x the champion's...
   max_dd_floor: 0.10        # ...or 10%, whichever is larger (a flat champion has 0% drawdown)
   min_return_edge: 0.0      # challenger net return must beat champion's by at least this
@@ -36,7 +41,7 @@ challenger:
 # --- backtest gate (plausibility filter, not proof) ------------------------
 backtest_gate:
   min_days: 7
-  max_days: 120
+  max_days: 365               # the gate replays the last year of history plus live candles
   max_drawdown: 0.30
   min_cost_coverage: 1.0      # gross pnl / total costs. Below 1.0 the strategy pays more than it makes.
   max_trades_per_pair_per_day: 4

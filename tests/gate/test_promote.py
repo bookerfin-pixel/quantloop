@@ -72,7 +72,10 @@ def sandbox(tmp_path, monkeypatch):
     monkeypatch.setattr(config, "STATE", root / "state")
     monkeypatch.setattr(config, "ARCHIVE", root / "state" / "archive")
     monkeypatch.setattr(config, "LEDGER", root / "LEDGER.md")
-    config.dump_yaml(root / "configs" / "risk.yaml", {"challenger": RULES, "pairs": ["BTC"]})
+    config.dump_yaml(root / "configs" / "risk.yaml", {"challenger": RULES, "pairs": ["BTC"], "initial_cash": 10000,
+                                                      "fee_bps": 10, "slippage_bps": 5})
+    monkeypatch.setattr(config, "CANDLES", root / "state" / "candles")
+    monkeypatch.setattr(config, "HISTORY", root / "state" / "history")
     config.dump_yaml(root / "configs" / "champion.yaml",
                      {"hypothesis": "H0", "strategy": "ts_momentum", "params": {"lookback_hours": 72}})
     config.dump_yaml(root / "configs" / "challenger1.yaml",
@@ -190,3 +193,68 @@ def test_legacy_single_challenger_is_migrated_into_slot_one(sandbox):
     assert not (sandbox / "configs" / "challenger.yaml").exists()
     assert slot.load("challenger1")["hypothesis"] == "H9"
     assert not (sandbox / "state" / "challenger").exists()
+
+
+def _write_candles(root, pair, start, closes):
+    import pandas as pd
+    (root / "state" / "candles").mkdir(parents=True, exist_ok=True)
+    pd.DataFrame({"time": [start + i * 3600 for i in range(len(closes))], "open": closes, "high": closes,
+                  "low": closes, "close": closes, "vwap": closes, "volume": 1, "count": 1}
+                 ).to_csv(root / "state" / "candles" / f"{pair}.csv", index=False)
+
+
+def test_market_context_reads_the_window(sandbox):
+    _write_candles(sandbox, "BTC", 0, [100, 101, 102, 110])
+    _write_candles(sandbox, "ETH", 0, [50, 50, 50, 45])
+    mc = promote.market_context(3600, 3 * 3600, ["BTC", "ETH"])
+    assert mc["pairs"] == 2
+    assert mc["btc_return"] == pytest.approx(0.10)
+    assert mc["basket_return"] == pytest.approx((0.10 - 0.10) / 2)
+    assert "BTC +10.00%" in promote.format_market(mc)
+
+
+def test_promotion_starts_a_shadow_that_can_revert(sandbox):
+    from bot import shadow
+    now = 60 * 86400 + 100
+    slot.save("challenger1", {"status": "testing", "hypothesis": "H1", "started_at": 0,
+                              "start_equity": {"champion": 10000, "challenger1": 10000}})
+    _write_equity(sandbox, "champion", [(0, 10000, 0), (now, 10100, 5)])
+    _write_equity(sandbox, "challenger1", [(0, 10000, 0), (now, 10300, 8)])
+    _write_trades(sandbox, "challenger1", [(i * 3600, 1000) for i in range(35)])
+    assert promote.main(["--now", str(now)]) == 0
+    assert config.account_cfg("champion")["hypothesis"] == "H1"
+    meta = shadow.load()
+    assert meta["status"] == "active" and meta["hypothesis"] == "H0" and meta["replaced_by"] == "H1"
+    assert config.account_cfg("shadow")["hypothesis"] == "H0" and config.shadow_active()
+    assert "shadow" in config.accounts()
+    # guard window: the deposed H0 config (shadow) does much better than the promoted H1 champion
+    later = now + 60 * 86400 + 100
+    _write_equity(sandbox, "champion", [(0, 10000, 0), (now, 10100, 5), (later, 9800, 9)])
+    _write_equity(sandbox, "shadow", [(now, 10000, 0), (later, 10500, 6)])
+    _write_trades(sandbox, "shadow", [(now + i * 3600, 1000) for i in range(35)])
+    assert promote.main(["--now", str(later)]) == 0
+    assert config.account_cfg("champion")["hypothesis"] == "H0"          # reverted
+    assert shadow.load()["status"] == "idle" and not config.shadow_active()
+    text = (sandbox / "LEDGER.md").read_text()
+    assert "### Result H1: reverted" in text and "- Status: reverted" in text
+    assert "Deposed config (shadow)" in text
+
+
+def test_shadow_holds_when_the_promotion_is_real(sandbox):
+    from bot import shadow
+    now = 100
+    shadow.start(config.account_cfg("champion"), "H1", now, 10000.0, 10000.0)
+    config.dump_yaml(sandbox / "configs" / "champion.yaml",
+                     {"hypothesis": "H1", "strategy": "ts_momentum", "params": {"lookback_hours": 168}})
+    (sandbox / "LEDGER.md").write_text((sandbox / "LEDGER.md").read_text().replace(
+        "## H1: longer\n- Expected gross bps per round trip: 150\n- Status: testing",
+        "## H1: longer\n- Expected gross bps per round trip: 150\n- Status: promoted"))
+    later = now + 60 * 86400 + 100
+    _write_equity(sandbox, "champion", [(now, 10000, 0), (later, 10400, 5)])
+    _write_equity(sandbox, "shadow", [(now, 10000, 0), (later, 10100, 6)])
+    _write_trades(sandbox, "shadow", [(now + i * 3600, 1000) for i in range(35)])
+    promote.rule_on_shadow(later, RULES | {"window_days": 60, "min_trades": 30})
+    assert config.account_cfg("champion")["hypothesis"] == "H1"
+    assert shadow.load()["status"] == "idle"
+    text = (sandbox / "LEDGER.md").read_text()
+    assert "### Result H1: held" in text and "- Status: promoted" in text

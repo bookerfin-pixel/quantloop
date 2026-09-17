@@ -38,7 +38,12 @@ hypotheses.
   with a 30 bps round trip, or only at horizons of a week or more? (H0 lost
   on its first 23 days in a falling market; that is one window, not an answer.)
 - Is a ≥2 sigma, 240 hour dip rare enough that mean reversion at that horizon
-  cannot reach 20 fills in 21 days across six pairs? (H1 will say.)
+  cannot reach 30 fills in 60 days across ten pairs? (H1 will say.)
+- What do the four added pairs (XRP, DOGE, DOT, LTC) really cost to trade? The
+  paper loop now pays the observed Kraken half spread plus 2 bps impact whenever
+  that exceeds the 5 bps floor; the Data section of state/summary.md shows the
+  7 day average per pair. If an alt runs well above the floor, a hypothesis that
+  leans on it needs the extra cost in its arithmetic.
 
 ## Overturned
 

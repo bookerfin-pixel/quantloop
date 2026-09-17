@@ -27,6 +27,17 @@ from .run import step
 HOURS_PER_YEAR = 24 * 365
 
 
+def _last_price(arr, i: int):
+    """Last non NaN value at or before index i, else None."""
+    j = i
+    while j >= 0:
+        v = arr[j]
+        if v == v:  # not NaN
+            return float(v)
+        j -= 1
+    return None
+
+
 def warmup_hours(params: dict, floor: int = 48) -> int:
     hours = [int(v) for k, v in params.items() if k.endswith("_hours") and isinstance(v, (int, float))]
     return max(hours + [floor]) + 2
@@ -34,38 +45,56 @@ def warmup_hours(params: dict, floor: int = 48) -> int:
 
 def run_backtest(candles: dict[str, pd.DataFrame], cfg: dict, rcfg: dict,
                  max_days: int | None = None, name: str = "backtest") -> dict:
+    """Pairs need not share the same coverage: the clock is the union of all
+    candle times, and a pair simply sits out any hour it has no candle for
+    (a newer listing, a gap in one venue's history)."""
     fn = strategy.get(cfg["strategy"])
-    frames = {p: df.sort_values("time").reset_index(drop=True) for p, df in candles.items() if len(df)}
+    frames = {p: df.sort_values("time").drop_duplicates("time").reset_index(drop=True)
+              for p, df in candles.items() if len(df)}
     if not frames:
         raise ValueError("no candle data")
-    common = set.intersection(*[set(df["time"].astype(int)) for df in frames.values()])
-    times = sorted(common)
+    times = sorted(set.union(*[set(df["time"].astype(int)) for df in frames.values()]))
     hist = int(rcfg.get("history_hours", 720))
     warm = warmup_hours(cfg["params"])
     if max_days:
         keep = max_days * 24 + warm + 1
         times = times[-keep:]
     if len(times) < warm + 24:
-        raise ValueError(f"need at least {warm + 24} aligned candles, have {len(times)}")
-    idx = {p: df.set_index("time") for p, df in frames.items()}
-    aligned = {p: idx[p].loc[times].reset_index() for p in frames}
+        raise ValueError(f"need at least {warm + 24} candles, have {len(times)}")
+    tindex = pd.Index(times)
+    # reindex every pair onto the shared clock; NaN where a pair has no candle
+    aligned = {p: df.set_index("time").reindex(tindex) for p, df in frames.items()}
+    present = {p: aligned[p]["close"].notna().to_numpy() for p in aligned}
+    opens = {p: aligned[p]["open"].to_numpy() for p in aligned}
+    closes = {p: aligned[p]["close"].to_numpy() for p in aligned}
+    compact = {p: aligned[p].dropna(subset=["close"]).reset_index().rename(columns={"index": "time"})
+               for p in aligned}
+    # position of each shared clock tick inside the pair's compact frame (for fast slicing)
+    pos = {p: np.searchsorted(compact[p]["time"].to_numpy(), np.array(times), side="right") for p in aligned}
 
     acct = paper.PaperAccount(name, rcfg["initial_cash"], rcfg["fee_bps"], rcfg["slippage_bps"])
     equity_curve, fills_all = [], []
     trades_per_pair_day: dict[tuple[str, str], int] = defaultdict(int)
     exposure = []
     for i in range(warm, len(times) - 1):
-        window = {p: aligned[p].iloc[max(0, i + 1 - hist): i + 1] for p in aligned}
-        next_open = {p: float(aligned[p]["open"].iloc[i + 1]) for p in aligned}
+        live = [p for p in aligned if present[p][i] and present[p][i + 1]]
+        if not live:
+            continue
+        window = {p: compact[p].iloc[max(0, pos[p][i] - hist): pos[p][i]] for p in live}
+        next_open = {p: float(opens[p][i + 1]) for p in live}
         ts_fill = int(times[i + 1])
         _, fills, _ = step(acct, cfg, fn, window, next_open, ts_fill, rcfg)
         for f in fills:
             fills_all.append(f)
             trades_per_pair_day[(f.pair, datetime.fromtimestamp(ts_fill, timezone.utc).strftime("%Y-%m-%d"))] += 1
-        next_close = {p: float(aligned[p]["close"].iloc[i + 1]) for p in aligned}
-        eq = acct.equity(next_close)
+        # mark at the next close; a pair without a candle keeps its last known price
+        mark = {p: float(closes[p][i + 1]) if present[p][i + 1] else _last_price(closes[p], i + 1) for p in aligned}
+        mark = {p: v for p, v in mark.items() if v is not None}
+        eq = acct.equity(mark)
         equity_curve.append((ts_fill, eq))
-        exposure.append(acct.gross_exposure(next_close) / eq if eq > 0 else 0.0)
+        exposure.append(acct.gross_exposure(mark) / eq if eq > 0 else 0.0)
+    if not equity_curve:
+        raise ValueError("no hour had candles for any pair")
 
     eq = pd.Series([e for _, e in equity_curve], index=[t for t, _ in equity_curve])
     rets = eq.pct_change().dropna()
@@ -75,7 +104,7 @@ def run_backtest(candles: dict[str, pd.DataFrame], cfg: dict, rcfg: dict,
     sharpe = ann_ret / ann_vol if ann_vol and ann_vol > 0 else float("nan")
     running_max = eq.cummax()
     max_dd = float((eq / running_max - 1).min()) if len(eq) else 0.0
-    last_prices = {p: float(aligned[p]["close"].iloc[-1]) for p in aligned}
+    last_prices = {p: v for p, v in ((p, _last_price(closes[p], len(times) - 1)) for p in aligned) if v is not None}
     gross = acct.gross_pnl(last_prices)
     costs = acct.total_costs()
     days = (times[-1] - times[warm]) / 86400
@@ -109,7 +138,8 @@ def run_backtest(candles: dict[str, pd.DataFrame], cfg: dict, rcfg: dict,
 
 
 def load_cached_candles(pairs: list[str]) -> dict[str, pd.DataFrame]:
-    return {p: data.load_candles(p) for p in pairs}
+    """History plus live for every pair."""
+    return {p: data.load_all_candles(p) for p in pairs}
 
 
 def format_metrics(m: dict) -> str:

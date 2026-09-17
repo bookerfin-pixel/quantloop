@@ -17,7 +17,7 @@ concurrency:
 jobs:
   run:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 25
     steps:
       - uses: actions/checkout@v4
         with:
@@ -34,7 +34,7 @@ jobs:
       - name: Run accounts
         run: python -m bot.run
 
-      - name: Rule on challenger
+      - name: Rule on challengers and the shadow
         run: python -m bot.promote
 
       - name: Summary

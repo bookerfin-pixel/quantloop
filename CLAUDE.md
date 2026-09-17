@@ -13,15 +13,25 @@ can read it with `gh pr list --state closed`.
 
 ## What runs without you
 
-- Every hour `bot/run.py` pulls Kraken candles and quotes, runs the champion
-  and every challenger slot (configs/challenger1.yaml, challenger2.yaml,
-  challenger3.yaml) against their own paper accounts, and commits the state.
+- Every hour `bot/run.py` pulls Kraken candles and live quotes for the ten
+  pairs in configs/risk.yaml, runs the champion, every challenger slot
+  (configs/challenger1.yaml, challenger2.yaml, challenger3.yaml) and, after a
+  promotion, the shadow, each against its own paper account, and commits the
+  state. Paper fills pay the larger of the 5 bps floor and the observed half
+  spread plus 2 bps impact, so a wide market costs what it really costs.
 - Every hour `bot/promote.py` rules on any slot whose test has run for
-  `challenger.window_days` (configs/risk.yaml): promoted or killed, by the
-  rules in that file, with the realised gross bps per round trip written next
-  to what the ledger entry predicted. A challenger that draws down more than
-  `early_kill_drawdown` is killed early. The champion account is never reset.
+  `challenger.window_days` (60): promoted or killed, by the rules in
+  configs/risk.yaml, with the realised gross bps per round trip written next
+  to what the ledger entry predicted and a line on what the market did over
+  the window. A challenger that draws down more than `early_kill_drawdown`
+  is killed early. After a promotion the deposed config keeps running as the
+  shadow for one window and the promotion is reverted if it wins. The
+  champion account is never reset.
 - Every hour `bot/report.py` rewrites `state/summary.md`.
+- state/history/ holds about two years of hourly candles per pair (Coinbase
+  backfill, written once). Backtests read history plus live candles, and the
+  gate replays the last 365 days, so an idea is judged across regimes, not
+  on the last month.
 
 ## Hard rules
 
@@ -95,13 +105,18 @@ If a slot is free:
 
 ## Standards of evidence
 
-- The cost model is 10 bps fee plus 5 bps slippage per side, about 30 bps
-  per round trip. A hypothesis is about the size of the move it captures
-  relative to that. Say the number.
+- The cost model is 10 bps fee plus at least 5 bps slippage per side, about
+  30 bps per round trip, and more when a pair's observed spread is wider (the
+  Data section of the summary shows the 7 day average per pair). A
+  hypothesis is about the size of the move it captures relative to that. Say
+  the number, and use the wider figure for a pair that trades wide.
 - Backtests here use the same code path as paper trading, but they are run
   on the data the idea came from. They can reject an idea; they cannot
-  confirm one. Only the prospective challenger window counts, and 21 days
-  is a coarse filter. The ledger accumulating over months is the evidence.
+  confirm one. Only the prospective challenger window counts, and 60 days
+  is still a coarse filter. The ledger accumulating over months is the
+  evidence. Read every verdict next to its Market line: a dip buyer that won
+  in a falling window and a trend follower that won in a rising one have
+  each shown less than the number suggests.
 - Treat killed hypotheses as information. If three horizon changes were
   killed, the next horizon change needs a reason those three do not cover.
 - Prefer fewer, larger, better explained trades. When in doubt, trade less.

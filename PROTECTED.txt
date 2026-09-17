@@ -28,6 +28,8 @@ bot/backtest.py
 bot/promote.py
 bot/report.py
 bot/slot.py
+bot/shadow.py
 bot/config.py
+configs/shadow.yaml
 state/**
 requirements.txt

@@ -65,3 +65,24 @@ def test_save_and_load_roundtrip(tmp_path):
     assert b.positions == a.positions
     assert b.cash == pytest.approx(a.cash)
     assert b.state["n_trades"] == 1
+
+
+def test_paper_slippage_is_never_below_the_floor_but_follows_a_wide_market():
+    a = make(fee_bps=10, slip_bps=5)
+    assert a.effective_slip_rate(None) == pytest.approx(5e-4)
+    assert a.effective_slip_rate(1.0, impact_bps=2) == pytest.approx(5e-4)      # 3 bps observed: floor wins
+    assert a.effective_slip_rate(12.0, impact_bps=2) == pytest.approx(14e-4)    # 14 bps observed: market wins
+    f = a.trade("DOGE", 1000.0, 100.0, ts=1, reason="x", half_spread_bps=12.0, impact_bps=2)
+    assert f.price == pytest.approx(100.14)
+    assert f.slip_bps == pytest.approx(14.0) and f.half_spread_bps == pytest.approx(12.0)
+
+
+def test_append_rows_migrates_an_older_header(tmp_path):
+    from bot.paper import append_rows
+    p = tmp_path / "t.csv"
+    p.write_text("a,b\n1,2\n")
+    append_rows(p, ["a", "b", "c"], [{"a": 3, "b": 4, "c": 5}])
+    import pandas as pd
+    df = pd.read_csv(p)
+    assert list(df.columns) == ["a", "b", "c"] and len(df) == 2
+    assert df.iloc[1]["c"] == 5

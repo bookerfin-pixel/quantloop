@@ -17,24 +17,30 @@ challenger.early_kill_drawdown is killed at once, and if two slots win in the
 same hour only the stronger one is promoted, the other is restarted against
 the new champion with a fresh window.
 
-Promotion copies the winning slot's config into configs/champion.yaml. Either
-way the slot's config is reset to the champion's, its account is archived and
-restarted with fresh cash, and LEDGER.md gets the verdict with the realised
-gross bps per round trip next to what the ledger entry predicted. The champion
-account is never reset, so its equity curve is the one long record of what
-this system has actually done.
+Promotion copies the winning slot's config into configs/champion.yaml and
+starts the shadow (bot/shadow.py): the deposed config keeps running for one
+more window and the promotion is reverted if it beats the new champion by the
+same rule. Either way the slot's config is reset to the champion's, its account
+is archived and restarted with fresh cash, and LEDGER.md gets the verdict with
+the realised gross bps per round trip next to what the ledger entry predicted,
+plus what the market did over the window (BTC, an equal weight basket of all
+pairs, and the basket's realised vol) so a result can be read in context. The
+champion account is never reset, so its equity curve is the one long record
+of what this system has actually done.
 """
 from __future__ import annotations
 
 import argparse
+import math
 import re
 import shutil
 import time
 from datetime import datetime, timezone
 
+import numpy as np
 import pandas as pd
 
-from . import config, slot
+from . import config, data, shadow, slot
 
 CHAMPION_HEADER = "# PROTECTED. Written only by bot/promote.py when a challenger wins.\n"
 
@@ -98,6 +104,45 @@ def early_kill(chal: dict, rules: dict) -> str | None:
     return None
 
 
+def market_context(start_ts: int, end_ts: int, pairs: list[str]) -> dict:
+    """What the market did over a window: BTC return, equal weight basket
+    return, basket realised vol (annualised from hourly basket returns)."""
+    out = {"btc_return": None, "basket_return": None, "basket_vol": None, "pairs": 0}
+    series = {}
+    for p in pairs:
+        df = data.load_all_candles(p)
+        if not len(df):
+            continue
+        df = df[(df["time"] >= start_ts - 3600) & (df["time"] <= end_ts)]
+        if len(df) < 2:
+            continue
+        series[p] = df.set_index("time")["close"].astype(float)
+    if not series:
+        return out
+    rets = {p: float(sr.iloc[-1] / sr.iloc[0] - 1) for p, sr in series.items()}
+    out["pairs"] = len(rets)
+    out["basket_return"] = float(np.mean(list(rets.values())))
+    if "BTC" in rets:
+        out["btc_return"] = rets["BTC"]
+    frame = pd.DataFrame(series).sort_index().ffill()
+    hourly = frame.pct_change().mean(axis=1).dropna()
+    if len(hourly) > 2:
+        out["basket_vol"] = float(hourly.std() * math.sqrt(24 * 365))
+    return out
+
+
+def format_market(mc: dict) -> str:
+    if not mc.get("pairs"):
+        return "no candle data for the window"
+    parts = []
+    if mc["btc_return"] is not None:
+        parts.append(f"BTC {mc['btc_return']:+.2%}")
+    parts.append(f"equal weight basket of {mc['pairs']} pairs {mc['basket_return']:+.2%}")
+    if mc["basket_vol"] is not None:
+        parts.append(f"basket realised vol {mc['basket_vol']:.0%} annualised")
+    return ", ".join(parts)
+
+
 def expected_bps(hyp: str) -> float | None:
     if not config.LEDGER.exists():
         return None
@@ -120,22 +165,28 @@ def _fmt(d: dict, expected: float | None = None) -> str:
 
 
 def update_ledger(hyp: str, verdict: str, reason: str, champ: dict, chal: dict,
-                  start_ts: int, end_ts: int, slot_name: str) -> None:
+                  start_ts: int, end_ts: int, slot_name: str, labels: tuple[str, str] = ("Champion", "Challenger"),
+                  status_from: str = "testing", status_to: str | None = None) -> None:
     path = config.LEDGER
     text = path.read_text() if path.exists() else "# Ledger\n"
-    status_word = "testing" if verdict == "restarted" else verdict
-    if verdict != "restarted":
-        pattern = re.compile(rf"(## {re.escape(hyp)}\b.*?\n- Status: )testing", re.S)
-        text, n = pattern.subn(rf"\g<1>{status_word}", text, count=1)
+    status_to = verdict if status_to is None else status_to
+    if verdict != "restarted" and status_to:
+        pattern = re.compile(rf"(## {re.escape(hyp)}\b.*?\n- Status: ){status_from}", re.S)
+        text, n = pattern.subn(rf"\g<1>{status_to}", text, count=1)
         if n == 0:
-            print(f"[promote] warning: no 'Status: testing' line found for {hyp} in LEDGER.md")
+            print(f"[promote] warning: no 'Status: {status_from}' line found for {hyp} in LEDGER.md")
+    try:
+        market = format_market(market_context(start_ts, end_ts, list(config.risk_cfg()["pairs"])))
+    except Exception as e:  # noqa: BLE001
+        market = f"unavailable ({e})"
     block = (
         f"\n### Result {hyp}: {verdict}\n"
         f"- Slot: {slot_name}\n"
         f"- Window: {datetime.fromtimestamp(start_ts, timezone.utc):%Y-%m-%d} to "
         f"{datetime.fromtimestamp(end_ts, timezone.utc):%Y-%m-%d} ({(end_ts - start_ts) / 86400:.1f} days, prospective)\n"
-        f"- Champion: {_fmt(champ)}\n"
-        f"- Challenger: {_fmt(chal, expected_bps(hyp))}\n"
+        f"- Market: {market}\n"
+        f"- {labels[0]}: {_fmt(champ)}\n"
+        f"- {labels[1]}: {_fmt(chal, expected_bps(hyp))}\n"
         f"- Rule: {reason}\n"
     )
     if "\n## Results" not in text:
@@ -154,15 +205,52 @@ def archive_slot(name: str, hyp: str) -> None:
             shutil.move(str(src), str(dest / fname))
 
 
-def apply(verdict: str, hyp: str, name: str) -> None:
+def apply(verdict: str, hyp: str, name: str, now: int | None = None, equities: dict[str, float] | None = None) -> None:
     if verdict == "promoted":
+        deposed = config.account_cfg(config.CHAMPION)
         chal = config.account_cfg(name)
         config.dump_yaml(config.CONFIGS / "champion.yaml",
                          {"hypothesis": chal["hypothesis"], "strategy": chal["strategy"], "params": chal["params"]},
                          CHAMPION_HEADER)
+        rcfg = config.risk_cfg()
+        equities = equities or {}
+        shadow.start(deposed, hyp, now or int(time.time()),
+                     equities.get(config.CHAMPION, rcfg["initial_cash"]), rcfg["initial_cash"])
     config.write_challenger_from_champion(name)
     archive_slot(name, hyp)
     slot.reset(name)
+
+
+def rule_on_shadow(now: int, rules: dict) -> None:
+    """After a promotion's guard window: keep the promotion or revert it."""
+    meta = shadow.load()
+    if meta.get("status") != "active":
+        return
+    elapsed = (now - meta["started_at"]) / 86400
+    if elapsed < float(rules["window_days"]):
+        print(f"[promote] shadow {meta['hypothesis']} guarding {meta['replaced_by']}: day {elapsed:.1f} of {rules['window_days']}")
+        return
+    start = int(meta["started_at"])
+    champ = window_metrics(config.CHAMPION, start, now, meta["start_equity"].get(config.CHAMPION))
+    shad = window_metrics(config.SHADOW, start, now, meta["start_equity"].get(config.SHADOW))
+    verdict, reason = decide(champ, shad, rules)   # "promoted" here means the shadow beat the champion
+    promoted_hyp = meta["replaced_by"]
+    if verdict == "promoted":
+        reason = f"the deposed config beat the promoted one over the guard window: {reason}; promotion reverted"
+        print(f"[promote] {promoted_hyp}: reverted — {reason}")
+        update_ledger(promoted_hyp, "reverted", reason, champ, shad, start, now, "shadow",
+                      labels=("Promoted champion", "Deposed config (shadow)"), status_from="promoted")
+        old = config.account_cfg(config.SHADOW)
+        config.dump_yaml(config.CONFIGS / "champion.yaml",
+                         {"hypothesis": old["hypothesis"], "strategy": old["strategy"], "params": old["params"]},
+                         CHAMPION_HEADER)
+        shadow.stop("reverted")
+    else:
+        reason = f"the promoted config held against the deposed one over the guard window: {reason}"
+        print(f"[promote] {promoted_hyp}: held — {reason}")
+        update_ledger(promoted_hyp, "held", reason, champ, shad, start, now, "shadow",
+                      labels=("Promoted champion", "Deposed config (shadow)"), status_to="")
+        shadow.stop("held")
 
 
 def restart(name: str, now: int, equities: dict[str, float], new_champion: str) -> None:
@@ -193,6 +281,7 @@ def main(argv: list[str] | None = None) -> int:
     now = args.now or int(time.time())
     rules = config.risk_cfg()["challenger"]
     verdicts: list[tuple[str, str, str, str]] = []   # (slot, hyp, verdict, reason)
+    rule_on_shadow(now, rules)
     testing = [(n, slot.load(n)) for n in config.challengers() if slot.load(n)["status"] == "testing"]
     if not testing:
         print("[promote] no test running; nothing to rule on")
@@ -234,7 +323,7 @@ def main(argv: list[str] | None = None) -> int:
             continue
         print(f"[promote] {name}: {hyp}: {verdict} — {reason}")
         update_ledger(hyp, verdict, reason, champ, chal, start, now, name)
-        apply(verdict, hyp, name)
+        apply(verdict, hyp, name, now, current_equities(now))
         if verdict == "promoted":
             promoted_hyp = hyp
     return 0

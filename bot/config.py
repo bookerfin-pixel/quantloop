@@ -12,10 +12,12 @@ ROOT = Path(os.environ.get("QUANTLOOP_ROOT", Path(__file__).resolve().parent.par
 CONFIGS = ROOT / "configs"
 STATE = ROOT / "state"
 CANDLES = STATE / "candles"
+HISTORY = STATE / "history"
 ARCHIVE = STATE / "archive"
 LEDGER = ROOT / "LEDGER.md"
 
 CHAMPION = "champion"
+SHADOW = "shadow"
 CHALLENGER_HEADER = ("# The agent edits this file. When it differs from champion.yaml the bot starts a\n"
                      "# prospective test in this slot automatically. `hypothesis` must match the newest\n"
                      "# entry in LEDGER.md.\n")
@@ -45,8 +47,22 @@ def challengers() -> list[str]:
     return [f"challenger{i}" for i in range(1, n_slots() + 1)]
 
 
+def shadow_active() -> bool:
+    """The deposed champion keeps running for one window after a promotion."""
+    meta = STATE / SHADOW / "meta.json"
+    if not (CONFIGS / "shadow.yaml").exists() or not meta.exists():
+        return False
+    try:
+        return json.loads(meta.read_text()).get("status") == "active"
+    except Exception:  # noqa: BLE001
+        return False
+
+
 def accounts() -> list[str]:
-    return [CHAMPION] + challengers()
+    names = [CHAMPION] + challengers()
+    if shadow_active():
+        names.append(SHADOW)
+    return names
 
 
 def is_challenger(name: str) -> bool:
@@ -54,8 +70,9 @@ def is_challenger(name: str) -> bool:
 
 
 def account_cfg(name: str) -> dict:
-    if name not in accounts():
-        raise ValueError(f"unknown account {name!r}; expected one of {accounts()}")
+    allowed = [CHAMPION, SHADOW] + challengers()
+    if name not in allowed:
+        raise ValueError(f"unknown account {name!r}; expected one of {allowed}")
     cfg = load_yaml(CONFIGS / f"{name}.yaml")
     for key in ("hypothesis", "strategy", "params"):
         if key not in cfg:

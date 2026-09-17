@@ -17,7 +17,7 @@ from datetime import datetime, timezone
 from . import config, data, paper, risk, slot, strategy
 
 DECISION_FIELDS = ["ts", "account", "pair", "price", "signal_weight", "target_weight",
-                   "current_weight", "action", "reason"]
+                   "current_weight", "action", "reason", "half_spread_bps"]
 
 
 def utc_day(ts: int) -> str:
@@ -25,8 +25,12 @@ def utc_day(ts: int) -> str:
 
 
 def step(acct: paper.PaperAccount, cfg: dict, fn, candles: dict, prices: dict[str, float],
-         ts: int, rcfg: dict) -> tuple[list[dict], list[paper.Fill], float]:
-    """One decision cycle for one account at one timestamp. Mutates the account."""
+         ts: int, rcfg: dict, half_spreads: dict[str, float] | None = None) -> tuple[list[dict], list[paper.Fill], float]:
+    """One decision cycle for one account at one timestamp. Mutates the account.
+    half_spreads (bps, per pair) come from live quotes; the backtest passes none
+    and pays the modelled floor."""
+    half_spreads = half_spreads or {}
+    impact = float(rcfg.get("impact_bps", 0.0))
     st = acct.state
     name = acct.name
     if st["created_at"] is None:
@@ -69,7 +73,8 @@ def step(acct: paper.PaperAccount, cfg: dict, fn, candles: dict, prices: dict[st
         action = "hold"
         if ok:
             delta = (tgt_w - cur_w) * equity
-            fill = acct.trade(pair, delta, prices[pair], ts, reason, rcfg["min_trade_notional"])
+            fill = acct.trade(pair, delta, prices[pair], ts, reason, rcfg["min_trade_notional"],
+                              half_spread_bps=half_spreads.get(pair), impact_bps=impact)
             if fill:
                 fill.equity_after = acct.equity(prices)
                 fills.append(fill)
@@ -82,18 +87,20 @@ def step(acct: paper.PaperAccount, cfg: dict, fn, candles: dict, prices: dict[st
             "signal_weight": round(sig_w, 4), "target_weight": round(tgt_w, 4),
             "current_weight": round(cur_w, 4), "action": action,
             "reason": (why + " | " if why else "") + reason,
+            "half_spread_bps": round(half_spreads.get(pair, 0.0), 3),
         })
     st["last_run_ts"] = ts
     return decisions, fills, acct.equity(prices)
 
 
-def run_account(name: str, candles: dict, prices: dict[str, float], ts: int, rcfg: dict) -> float:
+def run_account(name: str, candles: dict, prices: dict[str, float], ts: int, rcfg: dict,
+                half_spreads: dict[str, float] | None = None) -> float:
     cfg = config.account_cfg(name)
     fn = strategy.get(cfg["strategy"])
     adir = config.account_dir(name)
     acct = paper.PaperAccount.load(adir / "account.json", name, rcfg["initial_cash"],
                                    rcfg["fee_bps"], rcfg["slippage_bps"])
-    decisions, fills, equity = step(acct, cfg, fn, candles, prices, ts, rcfg)
+    decisions, fills, equity = step(acct, cfg, fn, candles, prices, ts, rcfg, half_spreads)
     st = acct.state
     acct.save(adir / "account.json")
     paper.append_rows(adir / "decisions.csv", DECISION_FIELDS, decisions)
@@ -125,10 +132,14 @@ def main(argv: list[str] | None = None) -> int:
     source = data.get_source(pairs, rcfg.get("quote", "USD"))
 
     candles = data.update_candles(pairs, source)
+    target = int(rcfg.get("history_target_hours", 0))
+    if target:
+        data.backfill_if_short(pairs, target, data.get_history_source(pairs, rcfg.get("quote", "USD")), now=ts)
     hist = int(rcfg.get("history_hours", 720))
     candles = {p: df.tail(hist).reset_index(drop=True) for p, df in candles.items()}
     qs = data.quotes(pairs, source)
-    prices = {p: (q.bid + q.ask) / 2 for p, q in qs.items()}
+    prices = {p: q.mid for p, q in qs.items()}
+    half_spreads = {p: q.half_spread_bps for p, q in qs.items()}
     missing = [p for p in pairs if p not in prices]
     if missing:
         print(f"[data] no quote for {missing}; those pairs are held as they are this run")
@@ -140,7 +151,7 @@ def main(argv: list[str] | None = None) -> int:
 
     equities = {}
     for name in accounts:
-        equities[name] = run_account(name, candles, prices, ts, rcfg)
+        equities[name] = run_account(name, candles, prices, ts, rcfg, half_spreads)
     if set(accounts) >= set(config.accounts()):
         slot.maybe_start(ts, equities)
     return 0
