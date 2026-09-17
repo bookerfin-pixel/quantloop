@@ -1,11 +1,11 @@
-# quantloop summary — generated 2026-09-17 01:22Z
+# quantloop summary — generated 2026-09-17 02:22Z
 
 Cost model: fee 10 bps + slippage 5 bps per side (~30 bps per round trip). Pairs: BTC, ETH, SOL, ADA, AVAX, LINK. Paper only.
 
 ## Challenger slots
 
-- challenger1: testing H1 since 2026-09-16 05:21Z, day 0.8 of 21, 20.2 days until the verdict
-  so far: champion -0.08% (DD -0.08%, 1 fills) vs challenger1 +0.66% (DD -1.00%, 4 fills)
+- challenger1: testing H1 since 2026-09-16 05:21Z, day 0.9 of 21, 20.1 days until the verdict
+  so far: champion -0.15% (DD -0.15%, 1 fills) vs challenger1 +0.41% (DD -1.00%, 4 fills)
 - challenger2: idle (free for a hypothesis)
 - challenger3: idle (free for a hypothesis)
 - free slots: challenger2, challenger3
@@ -15,21 +15,15 @@ Cost model: fee 10 bps + slippage 5 bps per side (~30 bps per round trip). Pairs
 
 params: {"ema_exit_buffer": 0.02, "ema_hours": 24, "entry_return": 0.01, "exit_return": -0.01, "lookback_hours": 72, "max_weight": 0.25, "target_vol_annual": 0.3, "vol_lookback_hours": 168}
 
-- equity 9,992.42 (started 10,000 at 2026-09-16 03:55Z), net -0.08% since start
-- 24h -0.08%, 7d -0.08%, 30d -0.08%, max drawdown -0.08%
+- equity 9,985.26 (started 10,000 at 2026-09-16 03:55Z), net -0.15% since start
+- 24h -0.15%, 7d -0.15%, 30d -0.15%, max drawdown -0.15%
 - fills 1 total, 1 in the last 7d
-- costs 3.75 (fees 2.50 + slippage 1.25); gross pnl -3.83; cost coverage -1.02
+- costs 3.75 (fees 2.50 + slippage 1.25); gross pnl -10.99; cost coverage -2.93
 - cash 7,497.50; positions: AVAX 333.1
-- last run 2026-09-17 01:22Z; halted today: False
+- last run 2026-09-17 02:22Z; halted today: False
 
 last decisions (newest last):
 
-- 2026-09-16 23:20Z BTC hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: 72h return -1.39% not above entry band +1.0% and price below 24h EMA
-- 2026-09-16 23:20Z ETH hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: 72h return -3.40% not above entry band +1.0% and price below 24h EMA
-- 2026-09-16 23:20Z SOL hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: 72h return -2.29% not above entry band +1.0% and price below 24h EMA
-- 2026-09-16 23:20Z ADA hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: 72h return -4.95% not above entry band +1.0% and price below 24h EMA
-- 2026-09-16 23:20Z AVAX hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: 72h return +0.73% not above entry band +1.0%
-- 2026-09-16 23:20Z LINK hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: 72h return -2.60% not above entry band +1.0% and price below 24h EMA
 - 2026-09-17 00:28Z BTC hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: 72h return -0.85% not above entry band +1.0%
 - 2026-09-17 00:28Z ETH hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: 72h return -2.40% not above entry band +1.0%
 - 2026-09-17 00:28Z SOL hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: 72h return -0.72% not above entry band +1.0%
@@ -42,6 +36,12 @@ last decisions (newest last):
 - 2026-09-17 01:22Z ADA hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: 72h return -4.16% not above entry band +1.0%
 - 2026-09-17 01:22Z AVAX hold target 0.25 (held 0.25) — hold: weight change +0.000 below threshold 0.05 | stay long: 72h return +2.46% vs exit band -1.0% and price above 24h EMA; realised vol 6...
 - 2026-09-17 01:22Z LINK hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: 72h return -2.32% not above entry band +1.0%
+- 2026-09-17 02:22Z BTC hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: 72h return -1.00% not above entry band +1.0%
+- 2026-09-17 02:22Z ETH hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: 72h return -2.69% not above entry band +1.0%
+- 2026-09-17 02:22Z SOL hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: 72h return -1.01% not above entry band +1.0%
+- 2026-09-17 02:22Z ADA hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: 72h return -4.47% not above entry band +1.0%
+- 2026-09-17 02:22Z AVAX hold target 0.25 (held 0.25) — hold: weight change +0.001 below threshold 0.05 | stay long: 72h return +2.08% vs exit band -1.0% and price above 24h EMA; realised vol 6...
+- 2026-09-17 02:22Z LINK hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: 72h return -1.93% not above entry band +1.0%
 
 last fills:
 
@@ -51,21 +51,15 @@ last fills:
 
 params: {"entry_z": 2.0, "exit_z": 0.5, "max_weight": 0.25, "target_vol_annual": 0.3, "vol_lookback_hours": 168, "window_hours": 240}
 
-- equity 10,054.43 (started 10,000 at 2026-09-16 03:55Z), net +0.54% since start
-- 24h +0.54%, 7d +0.54%, 30d +0.54%, max drawdown -1.00%
+- equity 10,029.23 (started 10,000 at 2026-09-16 03:55Z), net +0.29% since start
+- 24h +0.29%, 7d +0.29%, 30d +0.29%, max drawdown -1.00%
 - fills 4 total, 4 in the last 7d
-- costs 14.98 (fees 9.99 + slippage 4.99); gross pnl 69.41; cost coverage 4.63
+- costs 14.98 (fees 9.99 + slippage 4.99); gross pnl 44.21; cost coverage 2.95
 - cash 0.70; positions: ADA 12763.5, BTC 0.0328342, ETH 1.04017, SOL 25.7086
-- last run 2026-09-17 01:22Z; halted today: False
+- last run 2026-09-17 02:22Z; halted today: False
 
 last decisions (newest last):
 
-- 2026-09-16 23:20Z BTC hold target 0.25 (held 0.25) — hold: weight change +0.001 below threshold 0.05 | stay long: z -1.85 vs 240h mean (entry -2.0, exit -0.5); vol 33% -> weight 0.25
-- 2026-09-16 23:20Z ETH hold target 0.25 (held 0.25) — hold: weight change -0.000 below threshold 0.05 | stay long: z -2.18 vs 240h mean (entry -2.0, exit -0.5); vol 58% -> weight 0.25
-- 2026-09-16 23:20Z SOL hold target 0.25 (held 0.25) — hold: weight change -0.002 below threshold 0.05 | stay long: z -1.83 vs 240h mean (entry -2.0, exit -0.5); vol 55% -> weight 0.25
-- 2026-09-16 23:20Z ADA hold target 0.25 (held 0.25) — hold: weight change +0.001 below threshold 0.05 | stay long: z -2.09 vs 240h mean (entry -2.0, exit -0.5); vol 72% -> weight 0.25
-- 2026-09-16 23:20Z AVAX hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: z -1.01 not below -2.0
-- 2026-09-16 23:20Z LINK hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: z -1.35 not below -2.0
 - 2026-09-17 00:28Z BTC hold target 0.25 (held 0.25) — hold: weight change +0.001 below threshold 0.05 | stay long: z -1.37 vs 240h mean (entry -2.0, exit -0.5); vol 33% -> weight 0.25
 - 2026-09-17 00:28Z ETH hold target 0.25 (held 0.25) — hold: weight change -0.000 below threshold 0.05 | stay long: z -1.55 vs 240h mean (entry -2.0, exit -0.5); vol 58% -> weight 0.25
 - 2026-09-17 00:28Z SOL hold target 0.25 (held 0.25) — hold: weight change -0.002 below threshold 0.05 | stay long: z -1.31 vs 240h mean (entry -2.0, exit -0.5); vol 56% -> weight 0.25
@@ -78,6 +72,12 @@ last decisions (newest last):
 - 2026-09-17 01:22Z ADA hold target 0.25 (held 0.25) — hold: weight change +0.002 below threshold 0.05 | stay long: z -1.69 vs 240h mean (entry -2.0, exit -0.5); vol 73% -> weight 0.25
 - 2026-09-17 01:22Z AVAX hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: z -0.41 not below -2.0
 - 2026-09-17 01:22Z LINK hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: z -1.14 not below -2.0
+- 2026-09-17 02:22Z BTC hold target 0.25 (held 0.25) — hold: weight change +0.001 below threshold 0.05 | stay long: z -1.22 vs 240h mean (entry -2.0, exit -0.5); vol 33% -> weight 0.25
+- 2026-09-17 02:22Z ETH hold target 0.25 (held 0.25) — hold: weight change -0.000 below threshold 0.05 | stay long: z -1.32 vs 240h mean (entry -2.0, exit -0.5); vol 58% -> weight 0.25
+- 2026-09-17 02:22Z SOL hold target 0.25 (held 0.25) — hold: weight change -0.003 below threshold 0.05 | stay long: z -1.01 vs 240h mean (entry -2.0, exit -0.5); vol 56% -> weight 0.25
+- 2026-09-17 02:22Z ADA hold target 0.25 (held 0.25) — hold: weight change +0.003 below threshold 0.05 | stay long: z -1.62 vs 240h mean (entry -2.0, exit -0.5); vol 73% -> weight 0.25
+- 2026-09-17 02:22Z AVAX hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: z -0.33 not below -2.0
+- 2026-09-17 02:22Z LINK hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: z -1.00 not below -2.0
 
 last fills:
 
@@ -90,21 +90,15 @@ last fills:
 
 params: {"ema_exit_buffer": 0.02, "ema_hours": 24, "entry_return": 0.01, "exit_return": -0.01, "lookback_hours": 72, "max_weight": 0.25, "target_vol_annual": 0.3, "vol_lookback_hours": 168}
 
-- equity 9,992.42 (started 10,000 at 2026-09-16 23:20Z), net -0.08% since start
-- 24h -0.08%, 7d -0.08%, 30d -0.08%, max drawdown -0.08%
+- equity 9,985.26 (started 10,000 at 2026-09-16 23:20Z), net -0.15% since start
+- 24h -0.15%, 7d -0.15%, 30d -0.15%, max drawdown -0.15%
 - fills 1 total, 1 in the last 7d
-- costs 3.75 (fees 2.50 + slippage 1.25); gross pnl -3.83; cost coverage -1.02
+- costs 3.75 (fees 2.50 + slippage 1.25); gross pnl -10.99; cost coverage -2.93
 - cash 7,497.50; positions: AVAX 333.1
-- last run 2026-09-17 01:22Z; halted today: False
+- last run 2026-09-17 02:22Z; halted today: False
 
 last decisions (newest last):
 
-- 2026-09-16 23:20Z BTC hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: 72h return -1.39% not above entry band +1.0% and price below 24h EMA
-- 2026-09-16 23:20Z ETH hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: 72h return -3.40% not above entry band +1.0% and price below 24h EMA
-- 2026-09-16 23:20Z SOL hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: 72h return -2.29% not above entry band +1.0% and price below 24h EMA
-- 2026-09-16 23:20Z ADA hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: 72h return -4.95% not above entry band +1.0% and price below 24h EMA
-- 2026-09-16 23:20Z AVAX hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: 72h return +0.73% not above entry band +1.0%
-- 2026-09-16 23:20Z LINK hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: 72h return -2.60% not above entry band +1.0% and price below 24h EMA
 - 2026-09-17 00:28Z BTC hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: 72h return -0.85% not above entry band +1.0%
 - 2026-09-17 00:28Z ETH hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: 72h return -2.40% not above entry band +1.0%
 - 2026-09-17 00:28Z SOL hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: 72h return -0.72% not above entry band +1.0%
@@ -117,6 +111,12 @@ last decisions (newest last):
 - 2026-09-17 01:22Z ADA hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: 72h return -4.16% not above entry band +1.0%
 - 2026-09-17 01:22Z AVAX hold target 0.25 (held 0.25) — hold: weight change +0.000 below threshold 0.05 | stay long: 72h return +2.46% vs exit band -1.0% and price above 24h EMA; realised vol 6...
 - 2026-09-17 01:22Z LINK hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: 72h return -2.32% not above entry band +1.0%
+- 2026-09-17 02:22Z BTC hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: 72h return -1.00% not above entry band +1.0%
+- 2026-09-17 02:22Z ETH hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: 72h return -2.69% not above entry band +1.0%
+- 2026-09-17 02:22Z SOL hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: 72h return -1.01% not above entry band +1.0%
+- 2026-09-17 02:22Z ADA hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: 72h return -4.47% not above entry band +1.0%
+- 2026-09-17 02:22Z AVAX hold target 0.25 (held 0.25) — hold: weight change +0.001 below threshold 0.05 | stay long: 72h return +2.08% vs exit band -1.0% and price above 24h EMA; realised vol 6...
+- 2026-09-17 02:22Z LINK hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: 72h return -1.93% not above entry band +1.0%
 
 last fills:
 
@@ -126,21 +126,15 @@ last fills:
 
 params: {"ema_exit_buffer": 0.02, "ema_hours": 24, "entry_return": 0.01, "exit_return": -0.01, "lookback_hours": 72, "max_weight": 0.25, "target_vol_annual": 0.3, "vol_lookback_hours": 168}
 
-- equity 9,992.42 (started 10,000 at 2026-09-16 23:20Z), net -0.08% since start
-- 24h -0.08%, 7d -0.08%, 30d -0.08%, max drawdown -0.08%
+- equity 9,985.26 (started 10,000 at 2026-09-16 23:20Z), net -0.15% since start
+- 24h -0.15%, 7d -0.15%, 30d -0.15%, max drawdown -0.15%
 - fills 1 total, 1 in the last 7d
-- costs 3.75 (fees 2.50 + slippage 1.25); gross pnl -3.83; cost coverage -1.02
+- costs 3.75 (fees 2.50 + slippage 1.25); gross pnl -10.99; cost coverage -2.93
 - cash 7,497.50; positions: AVAX 333.1
-- last run 2026-09-17 01:22Z; halted today: False
+- last run 2026-09-17 02:22Z; halted today: False
 
 last decisions (newest last):
 
-- 2026-09-16 23:20Z BTC hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: 72h return -1.39% not above entry band +1.0% and price below 24h EMA
-- 2026-09-16 23:20Z ETH hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: 72h return -3.40% not above entry band +1.0% and price below 24h EMA
-- 2026-09-16 23:20Z SOL hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: 72h return -2.29% not above entry band +1.0% and price below 24h EMA
-- 2026-09-16 23:20Z ADA hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: 72h return -4.95% not above entry band +1.0% and price below 24h EMA
-- 2026-09-16 23:20Z AVAX hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: 72h return +0.73% not above entry band +1.0%
-- 2026-09-16 23:20Z LINK hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: 72h return -2.60% not above entry band +1.0% and price below 24h EMA
 - 2026-09-17 00:28Z BTC hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: 72h return -0.85% not above entry band +1.0%
 - 2026-09-17 00:28Z ETH hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: 72h return -2.40% not above entry band +1.0%
 - 2026-09-17 00:28Z SOL hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: 72h return -0.72% not above entry band +1.0%
@@ -153,6 +147,12 @@ last decisions (newest last):
 - 2026-09-17 01:22Z ADA hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: 72h return -4.16% not above entry band +1.0%
 - 2026-09-17 01:22Z AVAX hold target 0.25 (held 0.25) — hold: weight change +0.000 below threshold 0.05 | stay long: 72h return +2.46% vs exit band -1.0% and price above 24h EMA; realised vol 6...
 - 2026-09-17 01:22Z LINK hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: 72h return -2.32% not above entry band +1.0%
+- 2026-09-17 02:22Z BTC hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: 72h return -1.00% not above entry band +1.0%
+- 2026-09-17 02:22Z ETH hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: 72h return -2.69% not above entry band +1.0%
+- 2026-09-17 02:22Z SOL hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: 72h return -1.01% not above entry band +1.0%
+- 2026-09-17 02:22Z ADA hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: 72h return -4.47% not above entry band +1.0%
+- 2026-09-17 02:22Z AVAX hold target 0.25 (held 0.25) — hold: weight change +0.001 below threshold 0.05 | stay long: 72h return +2.08% vs exit band -1.0% and price above 24h EMA; realised vol 6...
+- 2026-09-17 02:22Z LINK hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: 72h return -1.93% not above entry band +1.0%
 
 last fills:
 
@@ -160,9 +160,9 @@ last fills:
 
 ## Data
 
-- BTC: 742 candles, 2026-08-17 03:00Z to 2026-09-17 00:00Z, missing hours in last 7d: 0
-- ETH: 742 candles, 2026-08-17 03:00Z to 2026-09-17 00:00Z, missing hours in last 7d: 0
-- SOL: 742 candles, 2026-08-17 03:00Z to 2026-09-17 00:00Z, missing hours in last 7d: 0
-- ADA: 742 candles, 2026-08-17 03:00Z to 2026-09-17 00:00Z, missing hours in last 7d: 0
-- AVAX: 742 candles, 2026-08-17 03:00Z to 2026-09-17 00:00Z, missing hours in last 7d: 0
-- LINK: 742 candles, 2026-08-17 03:00Z to 2026-09-17 00:00Z, missing hours in last 7d: 0
+- BTC: 743 candles, 2026-08-17 03:00Z to 2026-09-17 01:00Z, missing hours in last 7d: 0
+- ETH: 743 candles, 2026-08-17 03:00Z to 2026-09-17 01:00Z, missing hours in last 7d: 0
+- SOL: 743 candles, 2026-08-17 03:00Z to 2026-09-17 01:00Z, missing hours in last 7d: 0
+- ADA: 743 candles, 2026-08-17 03:00Z to 2026-09-17 01:00Z, missing hours in last 7d: 0
+- AVAX: 743 candles, 2026-08-17 03:00Z to 2026-09-17 01:00Z, missing hours in last 7d: 0
+- LINK: 743 candles, 2026-08-17 03:00Z to 2026-09-17 01:00Z, missing hours in last 7d: 0
