@@ -1,2 +1,3 @@
-ts,account,pair,side,qty,price,ref_price,notional,fee,slippage_cost,reason,equity_after
-1789604925,champion,AVAX,buy,333.10012993,7.50525075,7.5015,2500.0,2.5,1.24937531,enter long: 72h return +2.47% vs entry band +1.0% and price above 24h EMA; realised vol 64% -> weight 0.25,9996.25062469
+ts,account,pair,side,qty,price,ref_price,notional,fee,slippage_cost,reason,equity_after,half_spread_bps,slip_bps
+1789604925,champion,AVAX,buy,333.10012993,7.50525075,7.5015,2500.0,2.5,1.24937531,enter long: 72h return +2.47% vs entry band +1.0% and price above 24h EMA; realised vol 64% -> weight 0.25,9996.25062469,,
+1789651407,champion,DOT,buy,2418.20985761,1.03620713,1.03565,2505.76629629,2.5057663,1.34725726,enter long: 72h return +2.15% vs entry band +1.0% and price above 24h EMA; realised vol 84% -> weight 0.25,10019.21216159,3.37952011,5.37952011
