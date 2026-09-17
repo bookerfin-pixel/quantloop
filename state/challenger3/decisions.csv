@@ -41,3 +41,9 @@ ts,account,pair,price,signal_weight,target_weight,current_weight,action,reason
 1789622522,challenger3,ADA,0.196302,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -5.10% not above entry band +1.0%
 1789622522,challenger3,AVAX,7.5265,0.25,0.25,0.2506,hold,hold: weight change -0.001 below threshold 0.05 | stay long: 72h return +1.67% vs exit band -1.0% and price above 24h EMA; realised vol 64% -> weight 0.25
 1789622522,challenger3,LINK,11.131035,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -2.21% not above entry band +1.0%
+1789626493,challenger3,BTC,76272.85,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -1.70% not above entry band +1.0%
+1789626493,challenger3,ETH,2434.14,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -3.20% not above entry band +1.0%
+1789626493,challenger3,SOL,99.395,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -1.57% not above entry band +1.0%
+1789626493,challenger3,ADA,0.196308,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -5.42% not above entry band +1.0%
+1789626493,challenger3,AVAX,7.5075,0.25,0.25,0.2501,hold,hold: weight change -0.000 below threshold 0.05 | stay long: 72h return +1.13% vs exit band -1.0% and price above 24h EMA; realised vol 64% -> weight 0.25
+1789626493,challenger3,LINK,11.132025,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -2.67% not above entry band +1.0%
