@@ -1,0 +1,2 @@
+ts,account,pair,side,qty,price,ref_price,notional,fee,slippage_cost,reason,equity_after
+1789604925,champion,AVAX,buy,333.10012993,7.50525075,7.5015,2500.0,2.5,1.24937531,enter long: 72h return +2.47% vs entry band +1.0% and price above 24h EMA; realised vol 64% -> weight 0.25,9996.25062469

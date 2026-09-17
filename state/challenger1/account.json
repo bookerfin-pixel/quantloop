@@ -1,12 +1,12 @@
 {
   "cash": 0.7014564872301889,
   "created_at": 1789530957,
-  "day": "2026-09-16",
-  "day_open_equity": 10000.0,
+  "day": "2026-09-17",
+  "day_open_equity": 10068.249418933076,
   "fees_paid": 9.98930923427849,
   "halted_day": null,
   "initial_cash": 10000.0,
-  "last_run_ts": 1789600850,
+  "last_run_ts": 1789604925,
   "n_trades": 4,
   "name": "challenger",
   "positions": {
