@@ -1,0 +1,10 @@
+hypothesis: PROTO
+strategy: mean_reversion_stop
+params:
+  window_hours: 240
+  entry_z: 2.0
+  exit_z: 0.5
+  stop_extra_z: 2.0
+  vol_lookback_hours: 168
+  target_vol_annual: 0.30
+  max_weight: 0.25
