@@ -267,3 +267,13 @@ ts,account,pair,price,signal_weight,target_weight,current_weight,action,reason,h
 1789701706,challenger3,DOGE,0.083717,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -1.26% not above entry band +1.0%,0.991
 1789701706,challenger3,DOT,1.1184,0.25,0.25,0.2629,hold,hold: weight change -0.013 below threshold 0.05 | stay long: 72h return +12.63% vs exit band -1.0% and price above 24h EMA; realised vol 85% -> weight 0.25,3.577
 1789701706,challenger3,LTC,54.705,0.25,0.25,0.2494,hold,hold: weight change +0.001 below threshold 0.05 | stay long: 72h return +2.57% vs exit band -1.0% and price above 24h EMA; realised vol 52% -> weight 0.25,0.914
+1789705338,challenger3,BTC,77258.15,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -0.46% not above entry band +1.0%,0.006
+1789705338,challenger3,ETH,2473.005,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -0.85% not above entry band +1.0%,0.02
+1789705338,challenger3,SOL,105.165,0.25,0.1429,0.0,none,no fill possible (no cash or no position) | enter long: 72h return +2.96% vs entry band +1.0% and price above 24h EMA; realised vol 55% -> weight 0.25,1.426
+1789705338,challenger3,ADA,0.213954,0.25,0.1429,0.2337,sell,stay long: 72h return +5.38% vs exit band -1.0% and price above 24h EMA; realised vol 75% -> weight 0.25,0.023
+1789705338,challenger3,AVAX,7.8945,0.25,0.1429,0.2542,sell,stay long: 72h return +5.35% vs exit band -1.0% and price above 24h EMA; realised vol 65% -> weight 0.25,0.633
+1789705338,challenger3,LINK,11.73254,0.25,0.1429,0.0,buy,enter long: 72h return +2.22% vs entry band +1.0% and price above 24h EMA; realised vol 63% -> weight 0.25,1.44
+1789705338,challenger3,XRP,1.320655,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -6.35% not above entry band +1.0%,0.568
+1789705338,challenger3,DOGE,0.084291,0.25,0.1429,0.0,buy,enter long: 72h return +1.38% vs entry band +1.0% and price above 24h EMA; realised vol 55% -> weight 0.25,1.37
+1789705338,challenger3,DOT,1.12685,0.25,0.1429,0.2643,sell,stay long: 72h return +12.99% vs exit band -1.0% and price above 24h EMA; realised vol 85% -> weight 0.25,2.219
+1789705338,challenger3,LTC,54.49,0.25,0.1429,0.2479,sell,stay long: 72h return +3.27% vs exit band -1.0% and price above 24h EMA; realised vol 52% -> weight 0.25,3.67
