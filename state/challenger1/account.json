@@ -1,17 +1,16 @@
 {
-  "cash": 5129.35634080178,
+  "cash": 7754.575699846878,
   "created_at": 1789530957,
   "day": "2026-09-18",
   "day_open_equity": 10206.759006299633,
-  "fees_paid": 15.123097907266029,
+  "fees_paid": 17.75094511351738,
   "halted_day": null,
   "initial_cash": 10000.0,
-  "last_run_ts": 1789691299,
-  "n_trades": 6,
+  "last_run_ts": 1789694454,
+  "n_trades": 7,
   "name": "challenger",
   "positions": {
-    "ADA": 12763.509905286513,
     "BTC": 0.03283415033869429
   },
-  "slippage_paid": 7.560336963575898
+  "slippage_paid": 8.8749178571482
 }
