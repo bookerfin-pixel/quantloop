@@ -13,3 +13,4 @@ ts,account,pair,side,qty,price,ref_price,notional,fee,slippage_cost,reason,equit
 1789705338,challenger3,LTC,sell,19.88498674,54.459102,54.49,1082.91852093,1.08291852,0.61440632,stay long: 72h return +3.27% vs exit band -1.0% and price above 24h EMA; realised vol 52% -> weight 0.25,10301.91023819,3.67039824,5.67039824
 1789708837,challenger3,SOL,buy,13.9531213,105.8078775,105.755,1476.35014915,1.47635015,0.73780617,enter long: 72h return +4.35% vs entry band +1.0% and price above 24h EMA; realised vol 56% -> weight 0.25,10332.23688775,0.47279088,5.0
 1789708837,challenger3,DOGE,buy,10108.01038314,0.08446356,0.08442135,853.7585483,0.85375855,0.42666594,stay long: 72h return +1.57% vs exit band -1.0% and price above 24h EMA; realised vol 54% -> weight 0.25,10330.95646326,0.34943767,5.0
+1789806156,challenger3,DOT,sell,1306.72092877,1.11407704,1.1148,1455.78778443,1.45578778,0.94470696,exit: price more than 2.0% below 24h EMA,10790.06477857,4.48510944,6.48510944
