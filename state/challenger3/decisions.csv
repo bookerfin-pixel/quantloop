@@ -737,3 +737,13 @@ ts,account,pair,price,signal_weight,target_weight,current_weight,action,reason,h
 1789870903,challenger3,DOGE,0.087165,0.25,0.1111,0.1382,hold,hold: weight change -0.027 below threshold 0.05 | stay long: 72h return +7.67% vs exit band -1.0% and price within 2.0% of 24h EMA; realised vol 53% -> weight 0.25,0.568
 1789870903,challenger3,DOT,1.1134,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: price below 24h EMA,2.694
 1789870903,challenger3,LTC,58.055,0.25,0.1111,0.1437,hold,hold: weight change -0.033 below threshold 0.05 | stay long: 72h return +11.19% vs exit band -1.0% and price above 24h EMA; realised vol 53% -> weight 0.25,0.861
+1789874526,challenger3,BTC,80480.85,0.25,0.25,0.1105,none,no fill possible (no cash or no position) | stay long: 72h return +5.24% vs exit band -1.0% and price within 2.0% of 24h EMA; realised vol 35% -> weight 0.25,0.006
+1789874526,challenger3,ETH,2589.135,0.25,0.25,0.0223,none,no fill possible (no cash or no position) | stay long: 72h return +6.04% vs exit band -1.0% and price within 2.0% of 24h EMA; realised vol 45% -> weight 0.25,0.212
+1789874526,challenger3,SOL,108.775,0.0,0.0,0.1408,sell,exit: price more than 2.0% below 24h EMA,0.46
+1789874526,challenger3,ADA,0.222457,0.0,0.0,0.142,sell,exit: price more than 2.0% below 24h EMA,3.709
+1789874526,challenger3,AVAX,9.6395,0.25,0.25,0.1073,buy,stay long: 72h return +26.52% vs exit band -1.0% and price above 24h EMA; realised vol 95% -> weight 0.25,1.556
+1789874526,challenger3,LINK,12.098995,0.0,0.0,0.1408,sell,exit: price more than 2.0% below 24h EMA,4.046
+1789874526,challenger3,XRP,1.384655,0.0,0.0,0.0543,sell,exit: price more than 2.0% below 24h EMA,0.542
+1789874526,challenger3,DOGE,0.086015,0.0,0.0,0.1381,sell,exit: price more than 2.0% below 24h EMA,1.697
+1789874526,challenger3,DOT,1.09225,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: price below 24h EMA,1.373
+1789874526,challenger3,LTC,57.425,0.25,0.25,0.1439,buy,stay long: 72h return +8.98% vs exit band -1.0% and price within 2.0% of 24h EMA; realised vol 55% -> weight 0.25,2.612
