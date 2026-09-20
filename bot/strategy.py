@@ -170,3 +170,71 @@ def mean_reversion(candles: dict[str, pd.DataFrame], params: dict,
         else:
             out[pair] = Target(0.0, f"flat: z {z:+.2f} not below {-entry_z if not holding else -exit_z}")
     return out
+
+
+@register("vol_breakout")
+def vol_breakout(candles: dict[str, pd.DataFrame], params: dict,
+                  current_weights: dict[str, float]) -> dict[str, Target]:
+    """Long only breakout out of a volatility squeeze. Enter when a pair's
+    trailing compression_hours realised vol has recently (within
+    squeeze_memory_hours) sat at or below the vol_percentile quantile of its
+    own trailing lookback_hours distribution, and price then closes above its
+    trailing breakout_hours high. Exit on a close below the trailing
+    exit_hours low. Neither the entry nor the exit reference a fixed return
+    threshold (ts_momentum) or a distance from a rolling mean
+    (mean_reversion): the trigger is a change in the pair's own volatility
+    regime, not its level or its direction. A sustained one-directional slide
+    keeps realised vol elevated rather than compressed (that is what
+    "trending" means), so this signal has nothing to fire on for most of a
+    slide like the trailing year's; a quiet, narrowing range is a different,
+    much rarer event, and the ones that resolve upward are what this buys."""
+    compression_hours = int(params.get("compression_hours", 168))
+    lookback_hours = int(params.get("lookback_hours", 1440))
+    vol_percentile = float(params.get("vol_percentile", 0.25))
+    breakout_hours = int(params.get("breakout_hours", 120))
+    squeeze_memory_hours = int(params.get("squeeze_memory_hours", 72))
+    exit_hours = int(params.get("exit_hours", 72))
+    need = max(lookback_hours + compression_hours, breakout_hours, exit_hours) + 2
+    out: dict[str, Target] = {}
+    for pair, df in candles.items():
+        close = df["close"].astype(float)
+        if len(close) < need:
+            out[pair] = Target(0.0, f"flat: only {len(close)} candles, need {need}")
+            continue
+        rets = np.log(close).diff()
+        vol = rets.rolling(compression_hours).std()
+        vol_window = vol.tail(lookback_hours)
+        threshold = float(vol_window.quantile(vol_percentile))
+        squeezed_recently = bool((vol.tail(squeeze_memory_hours) <= threshold).any())
+        price = float(close.iloc[-1])
+        breakout_high = float(close.iloc[-1 - breakout_hours:-1].max())
+        breakdown_low = float(close.iloc[-1 - exit_hours:-1].min())
+        breaking_out = price > breakout_high
+        breaking_down = price < breakdown_low
+        holding = current_weights.get(pair, 0.0) > 0
+        if holding:
+            go_long = not breaking_down
+        else:
+            go_long = squeezed_recently and breaking_out
+        if go_long:
+            w, rv = vol_scaled_weight(close, params)
+            if holding:
+                reason = (f"stay long: price {price:.4g} still above {exit_hours}h low {breakdown_low:.4g}; "
+                          f"realised vol {rv:.0%} -> weight {w:.2f}")
+            else:
+                reason = (f"enter long: squeeze in last {squeeze_memory_hours}h ({compression_hours}h vol at or "
+                          f"below its own {vol_percentile:.0%} percentile over {lookback_hours}h) then broke above "
+                          f"{breakout_hours}h high {breakout_high:.4g} at {price:.4g}; "
+                          f"realised vol {rv:.0%} -> weight {w:.2f}")
+            out[pair] = Target(w, reason)
+        else:
+            if holding:
+                out[pair] = Target(0.0, f"exit: closed {price:.4g} below {exit_hours}h low {breakdown_low:.4g}")
+            elif not squeezed_recently:
+                out[pair] = Target(0.0, f"flat: {compression_hours}h vol not at or below its own "
+                                        f"{vol_percentile:.0%} percentile over {lookback_hours}h in the last "
+                                        f"{squeeze_memory_hours}h")
+            else:
+                out[pair] = Target(0.0, f"flat: squeezed but {price:.4g} not above {breakout_hours}h high "
+                                        f"{breakout_high:.4g}")
+    return out

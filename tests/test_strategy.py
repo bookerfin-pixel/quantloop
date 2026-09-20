@@ -53,3 +53,46 @@ def test_momentum_hysteresis_holds_through_small_dip():
 def test_unknown_strategy_raises():
     with pytest.raises(KeyError):
         strategy.get("does_not_exist")
+
+
+def _breakout_params(**overrides):
+    params = dict(compression_hours=48, lookback_hours=400, vol_percentile=0.25,
+                  breakout_hours=30, squeeze_memory_hours=20, exit_hours=20)
+    params.update(overrides)
+    return params
+
+
+def _ohlc(closes):
+    df = pd.DataFrame({"close": closes})
+    df["open"] = df["close"]; df["high"] = df["close"]; df["low"] = df["close"]
+    df["time"] = range(len(closes)); df["vwap"] = df["close"]; df["volume"] = 1; df["count"] = 1
+    return df
+
+
+def test_vol_breakout_enters_after_squeeze_then_new_high():
+    import numpy as np
+    rng = np.random.default_rng(0)
+    noisy = 100 * np.exp(np.cumsum(rng.normal(0, 0.01, 420)))       # normal chop, vol ~1%/h
+    quiet = noisy[-1] * np.exp(np.cumsum(rng.normal(0, 0.0005, 40)))  # squeeze: vol ~0.05%/h
+    breakout = [quiet[-1] * 1.05]                                     # a clean new high
+    closes = list(noisy) + list(quiet) + breakout
+    df = _ohlc(closes)
+    out = strategy.vol_breakout({"X": df}, _breakout_params(), {})
+    assert out["X"].weight > 0 and "enter long" in out["X"].reason
+
+
+def test_vol_breakout_flat_without_squeeze():
+    import numpy as np
+    rng = np.random.default_rng(1)
+    noisy = 100 * np.exp(np.cumsum(rng.normal(0, 0.01, 450)))
+    breakout = [noisy[-1] * 1.1]                                      # new high, but no prior squeeze
+    df = _ohlc(list(noisy) + breakout)
+    out = strategy.vol_breakout({"X": df}, _breakout_params(), {})
+    assert out["X"].weight == 0.0 and "flat" in out["X"].reason
+
+
+def test_vol_breakout_exits_on_breakdown():
+    closes = [100 + i * 0.1 for i in range(450)] + [90]                # sharp breakdown
+    df = _ohlc(closes)
+    out = strategy.vol_breakout({"X": df}, _breakout_params(), {"X": 0.2})
+    assert out["X"].weight == 0.0 and "exit" in out["X"].reason
