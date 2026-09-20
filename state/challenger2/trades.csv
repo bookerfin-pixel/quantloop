@@ -25,3 +25,5 @@ ts,account,pair,side,qty,price,ref_price,notional,fee,slippage_cost,reason,equit
 1789874526,challenger2,XRP,sell,422.40678109,1.38396267,1.384655,584.59521763,0.58459522,0.29244383,exit: price more than 2.0% below 24h EMA,10770.46577424,0.54165117,5.0
 1789874526,challenger2,DOGE,sell,17308.8889941,0.08597239,0.0860154,1488.08659488,1.48808659,0.74441551,exit: price more than 2.0% below 24h EMA,10768.23327214,1.69737047,5.0
 1789874526,challenger2,LTC,buy,19.90103642,57.4537125,57.425,1143.38842494,1.14338842,0.57140851,stay long: 72h return +8.98% vs exit band -1.0% and price within 2.0% of 24h EMA; realised vol 55% -> weight 0.25,10766.51847521,2.61210274,5.0
+1789878133,challenger2,BTC,buy,0.0185502,80368.414125,80328.25,1490.8503698,1.49085037,0.74505266,stay long: 72h return +5.36% vs exit band -1.0% and price within 2.0% of 24h EMA; realised vol 35% -> weight 0.25,10717.73602603,0.00622446,5.0
+1789878133,challenger2,ETH,buy,0.94521523,2581.9153125,2580.625,2440.46566344,2.44046566,1.21962302,stay long: 72h return +6.30% vs exit band -1.0% and price within 2.0% of 24h EMA; realised vol 45% -> weight 0.25,10714.07593735,0.01937515,5.0
