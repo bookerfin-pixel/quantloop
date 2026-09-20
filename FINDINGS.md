@@ -67,6 +67,15 @@ hypotheses.
   not (cost drag 26.1%/yr, drawdown -78%). Both show negative in sample skill
   against the exposure matched basket (-9.9% and -38.3%), which is now the
   first calibration data point to test against their prospective results.
+- H2's live test may not have 60 days of real runway: vol_breakout needs
+  ~1610 live candles (compression_hours + lookback_hours) before it can fire
+  at all, but live candle collection only began 2026-08-17, so the pairs
+  needing the most candles don't clear that bar until roughly 2026-10-22 —
+  about a month into H2's 60 day window (notes/2026-09-20.md). The 365 day
+  backtest that passed the gate used the two-year Coinbase history and never
+  saw this ramp-up. If H2 comes back "killed: too few fills," read it the
+  way H1's own kill criteria already treats that outcome — a test-design
+  artifact, not evidence against the mechanism.
 
 ## Overturned
 
