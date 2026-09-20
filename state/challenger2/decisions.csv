@@ -827,3 +827,13 @@ ts,account,pair,price,signal_weight,target_weight,current_weight,action,reason,h
 1789903225,challenger2,DOGE,0.084801,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: price below 24h EMA,1.633
 1789903225,challenger2,DOT,1.09335,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: price below 24h EMA,1.372
 1789903225,challenger2,LTC,56.97,0.25,0.25,0.2477,hold,hold: weight change +0.002 below threshold 0.05 | stay long: 72h return +7.89% vs exit band -1.0% and price within 2.0% of 24h EMA; realised vol 55% -> weight 0.25,1.755
+1789907133,challenger2,BTC,80358.85,0.25,0.25,0.2452,hold,hold: weight change +0.005 below threshold 0.05 | stay long: 72h return +5.31% vs exit band -1.0% and price within 2.0% of 24h EMA; realised vol 35% -> weight 0.25,0.006
+1789907133,challenger2,ETH,2574.625,0.25,0.25,0.2445,hold,hold: weight change +0.006 below threshold 0.05 | stay long: 72h return +5.64% vs exit band -1.0% and price within 2.0% of 24h EMA; realised vol 44% -> weight 0.25,0.019
+1789907133,challenger2,SOL,108.295,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: price below 24h EMA,0.462
+1789907133,challenger2,ADA,0.221133,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: price below 24h EMA,3.459
+1789907133,challenger2,AVAX,10.3485,0.25,0.25,0.2646,hold,hold: weight change -0.015 below threshold 0.05 | stay long: 72h return +37.88% vs exit band -1.0% and price above 24h EMA; realised vol 106% -> weight 0.25,4.348
+1789907133,challenger2,LINK,12.052295,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: price below 24h EMA,2.908
+1789907133,challenger2,XRP,1.37657,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: price below 24h EMA,1.816
+1789907133,challenger2,DOGE,0.084973,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: price below 24h EMA,0.129
+1789907133,challenger2,DOT,1.09965,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: price below 24h EMA,2.273
+1789907133,challenger2,LTC,57.02,0.25,0.25,0.2448,hold,hold: weight change +0.005 below threshold 0.05 | stay long: 72h return +8.21% vs exit band -1.0% and price within 2.0% of 24h EMA; realised vol 55% -> weight 0.25,3.508
