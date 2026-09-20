@@ -1,12 +1,19 @@
-"""Gate 3: the challenger config must load, run over cached candles with the
-live cost model, and clear pre registered plausibility bounds from
-configs/risk.yaml:backtest_gate. Run from the PR checkout:
+"""Gate 3: the slot config a PR changed must load and run over the last year
+of history with the live cost model, and clear the regime independent sanity
+bounds in configs/risk.yaml:backtest_gate. Run from the PR checkout:
 
     python <base>/gate/backtest_gate.py
 
-This is a floor, not a target. Passing it says "not obviously broken and not
-paying more in costs than it earns in sample". Only the prospective
-challenger test says anything about edge.
+What this is: a floor against the obviously broken, and against fee
+treadmills. What it is not: a judgement of edge. The in sample skill figure
+(net return against the exposure matched basket, quarter by quarter) is
+printed for the ledger entry and never blocks. Alpha is judged in the
+prospective challenger window.
+
+A PR that changes no slot config has nothing to backtest and passes this
+step without running one. (An earlier version fell back to slot 1 here and
+re-judged a running test on every notes only PR; that was a bug, found by
+the agent on 2026-09-18 and fixed on 2026-09-20.)
 """
 from __future__ import annotations
 
@@ -19,20 +26,25 @@ import sys
 sys.path.insert(0, os.getcwd())
 
 from bot import backtest, config  # noqa: E402
+from bot.promote import market_context  # noqa: E402
 
 
-def changed_slot() -> str:
-    """The slot this PR changed (from the diff against main), else slot 1."""
+def slot_from_paths(paths: list[str]) -> str | None:
+    for path in paths:
+        m = re.match(r"configs/(challenger\d+)\.yaml$", path.strip())
+        if m:
+            return m.group(1)
+    return None
+
+
+def changed_slot() -> str | None:
+    """The slot this PR changed (from the diff against main), or None."""
     try:
         out = subprocess.run(["git", "diff", "--name-only", "origin/main...HEAD"], check=True,
                              capture_output=True, text=True).stdout.splitlines()
     except Exception:  # noqa: BLE001
         out = []
-    for path in out:
-        m = re.match(r"configs/(challenger\d+)\.yaml$", path)
-        if m:
-            return m.group(1)
-    return config.challengers()[0]
+    return slot_from_paths(out)
 
 
 def main() -> int:
@@ -40,6 +52,9 @@ def main() -> int:
     rcfg = config.risk_cfg()
     rules = rcfg["backtest_gate"]
     name = changed_slot()
+    if name is None:
+        print("no slot config changed; backtest gate not required")
+        return 0
     try:
         cfg = config.account_cfg(name)
     except Exception as e:  # noqa: BLE001
@@ -56,34 +71,31 @@ def main() -> int:
     except Exception as e:  # noqa: BLE001
         print(f"GATE FAILED: backtest raised {type(e).__name__}: {e}")
         return 1
+    curve = m.get("equity_curve") or []
+    try:
+        market = market_context(curve[0][0], curve[-1][0], list(rcfg["pairs"])) if curve else None
+    except Exception as e:  # noqa: BLE001
+        print(f"market context unavailable ({e}); drawdown limit falls back to the absolute floor")
+        market = None
+    problems, report = backtest.plausibility(m, rules, market, rcfg["initial_cash"])
     m.pop("equity_curve", None)
-    print(backtest.format_metrics(m))
-    problems = []
-    if m["n_trades"] == 0:
-        problems.append("strategy placed no trades in the backtest window, so it cannot be evaluated")
-    if m["cost_coverage"] is not None and m["cost_coverage"] < rules["min_cost_coverage"]:
-        problems.append(f"cost coverage {m['cost_coverage']} below {rules['min_cost_coverage']}: "
-                        f"gross pnl {m['gross_pnl']} does not cover costs {m['fees'] + m['slippage']:.2f}")
-    if m["gross_pnl"] <= 0 and m["n_trades"] > 0:
-        problems.append(f"gross pnl {m['gross_pnl']} is not positive even before costs")
-    if m["max_drawdown"] < -rules["max_drawdown"]:
-        problems.append(f"max drawdown {m['max_drawdown']:.2%} worse than {-rules['max_drawdown']:.0%}")
-    if m["trades_per_pair_per_day_max"] > rules["max_trades_per_pair_per_day"]:
-        problems.append(f"{m['trades_per_pair_per_day_max']} fills in one pair in one day exceeds "
-                        f"{rules['max_trades_per_pair_per_day']}; that is a costs treadmill, not a strategy")
+    metrics_txt = backtest.format_metrics(m)
+    report_txt = backtest.format_report(report)
+    print(metrics_txt)
+    print(report_txt)
     summary = os.environ.get("GITHUB_STEP_SUMMARY")
     if summary:
         with open(summary, "a") as f:
-            f.write("### Backtest gate\n\n```\n" + backtest.format_metrics(m) + "\n```\n")
+            f.write(f"### Backtest gate: configs/{name}.yaml ({cfg['hypothesis']})\n\n```\n{metrics_txt}\n\n{report_txt}\n```\n")
             if problems:
                 f.write("\n**Failed:**\n" + "".join(f"- {p}\n" for p in problems))
     if problems:
-        print("\nGATE FAILED: backtest plausibility")
+        print("\nGATE FAILED: sanity bounds")
         for p in problems:
             print(f"  - {p}")
         return 1
     print("\nbacktest gate passed")
-    print(json.dumps({k: v for k, v in m.items() if k != "equity_curve"}))
+    print(json.dumps({**m, **{k: v for k, v in report.items() if k != "quarters"}}))
     return 0
 
 

@@ -5,3 +5,7 @@ __pycache__/
 agent_output.json
 .venv/
 .DS_Store
+# agent scratch files (anything left in the tree is committed by the workflow otherwise)
+/_*
+configs/_*
+notes/_*

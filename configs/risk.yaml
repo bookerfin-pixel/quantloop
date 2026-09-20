@@ -17,7 +17,7 @@ initial_cash: 10000
 # Ten of the most liquid USD pairs on Kraken. They move together, so this is
 # more fills per window for rare signal strategies, not ten independent bets.
 pairs: [BTC, ETH, SOL, ADA, AVAX, LINK, XRP, DOGE, DOT, LTC]
-history_hours: 720          # candles handed to a strategy each hour (Kraken returns at most 720 per call)
+history_hours: 2160         # candles handed to a strategy each hour (90 days, from history plus live)
 history_target_hours: 17520 # two years: backfilled once from Coinbase into state/history for backtests
 
 # --- position limits (spot only: no leverage, no shorts) -------------------
@@ -38,10 +38,17 @@ challenger:
   min_return_edge: 0.0      # challenger net return must beat champion's by at least this
   early_kill_drawdown: 0.15 # a challenger down this much from its window start is killed at once
 
-# --- backtest gate (plausibility filter, not proof) ------------------------
+# --- backtest gate (sanity filter, regime independent) ---------------------
+# The gate asks "is this obviously broken or on a costs treadmill", never "did
+# it make money in this particular year". Alpha is judged prospectively. The
+# in sample skill figure (net return against the exposure matched basket, by
+# quarter) is printed and goes into the ledger entry so FINDINGS can later say
+# whether it predicted anything.
 backtest_gate:
   min_days: 7
   max_days: 365               # the gate replays the last year of history plus live candles
-  max_drawdown: 0.30
-  min_cost_coverage: 1.0      # gross pnl / total costs. Below 1.0 the strategy pays more than it makes.
-  max_trades_per_pair_per_day: 4
+  min_trades: 30              # fewer than this over the window and no number below means anything
+  max_cost_drag: 0.15         # fees plus slippage per year as a fraction of starting equity (P1, measured directly)
+  max_avg_fills_per_pair_per_day: 1.0
+  max_drawdown: 0.30          # drawdown limit is the larger of this...
+  drawdown_vs_basket: 0.75    # ...and this fraction of the equal weight basket's own max drawdown over the window

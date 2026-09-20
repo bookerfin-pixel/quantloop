@@ -44,6 +44,29 @@ hypotheses.
   that exceeds the 5 bps floor; the Data section of state/summary.md shows the
   7 day average per pair. If an alt runs well above the floor, a hypothesis that
   leans on it needs the extra cost in its arithmetic.
+- Can any long-only hypothesis clear backtest_gate's plausibility bar right now?
+  `bot/run.py` and `bot/backtest.py` capped every strategy call to the trailing 720
+  hours (30 days) of candles until 2026-09-20, when Fin raised history_hours to
+  2160 (90 days); see notes/2026-09-19.md for why that mattered. Over the trailing 365 days every pair in the universe
+  fell 46-81% peak to trough (notes/2026-09-17.md, reproduced 2026-09-19). Six
+  backtest-only variants across both running families (momentum and mean
+  reversion) — a vol regime filter, an EMA regime filter, a standalone and an
+  overlay cross-sectional top-3 ranker, and a z-score stop-loss at two settings
+  — all failed backtest_gate's cost coverage and/or drawdown bounds over that
+  window (see hypotheses/backlog.md for the numbers). This is backtest evidence
+  only, not a verdict, and backtests here can reject an idea but not confirm
+  one either way — but if the pattern holds, no new hypothesis may be able to
+  enter a slot until the trailing-365-day window rolls past this period, which
+  matters for what gets proposed next and is worth Fin knowing about
+  independent of any single hypothesis.
+  Update 2026-09-20 (Fin): the gate no longer requires in sample profit or an
+  absolute 30% drawdown; it is a regime independent sanity filter (cost drag,
+  fill rate, drawdown relative to the basket, minimum trades) and the skill
+  figure is recorded, not enforced. Over the last 365 days H1's config passes
+  it (cost drag 13.5%/yr, drawdown -45% against a -53.6% limit) and H0's does
+  not (cost drag 26.1%/yr, drawdown -78%). Both show negative in sample skill
+  against the exposure matched basket (-9.9% and -38.3%), which is now the
+  first calibration data point to test against their prospective results.
 
 ## Overturned
 

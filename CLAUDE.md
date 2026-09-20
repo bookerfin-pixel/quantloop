@@ -30,8 +30,18 @@ can read it with `gh pr list --state closed`.
 - Every hour `bot/report.py` rewrites `state/summary.md`.
 - state/history/ holds about two years of hourly candles per pair (Coinbase
   backfill, written once). Backtests read history plus live candles, and the
-  gate replays the last 365 days, so an idea is judged across regimes, not
-  on the last month.
+  gate replays the last 365 days. Strategies see the trailing 2160 hours
+  (90 days) of candles on every call, live and in backtests alike.
+- The backtest gate is a sanity filter, not an alpha filter: it fails a
+  slot config only for a fees treadmill (costs above 15% of equity a year,
+  or more than one fill per pair per day on average), too few trades to
+  judge (under 30), or a drawdown worse than the larger of 30% and three
+  quarters of the equal weight basket's own drawdown over the same window.
+  Losing money in sample does not fail the gate; the skill figure (net
+  return against the exposure matched basket, by quarter) is printed and
+  belongs in the ledger entry, so FINDINGS can later say whether in sample
+  skill predicted the prospective result. A PR that changes no slot config
+  skips the backtest gate entirely.
 
 ## Hard rules
 
@@ -96,10 +106,13 @@ If a slot is free:
   and, if new logic is needed, bot/strategy.py. New strategy functions get
   tests in tests/ (not tests/gate/, which is protected). One slot per PR.
 - Run `python -m pytest tests -q`, then
-  `python -m bot.backtest --config configs/challenger<k>.yaml`. Paste the
-  metrics into the Backtest line of the ledger entry. Check the gate
-  bounds in configs/risk.yaml yourself before committing: cost coverage,
-  max drawdown, trades per pair per day.
+  `python -m bot.backtest --config configs/challenger<k>.yaml --gate`,
+  which prints the metrics, the skill line and exactly what the gate will
+  say. Paste the metrics and the skill line into the Backtest line of the
+  ledger entry. If the gate line says FAIL, fix the idea, not the number.
+- Delete any scratch files you created (prototype configs, sweep scripts)
+  before you finish. Whatever is left in the tree gets committed by the
+  workflow and judged as part of the PR.
 - Remove the idea from the backlog. Commit everything in one commit whose
   first line is `H<n>: <title>`. The workflow turns that into the PR.
 

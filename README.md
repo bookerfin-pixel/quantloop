@@ -20,9 +20,13 @@ construction.
    reviews the logs and writes a note. Its commit becomes a pull request.
 3. **The gate** (`gate.yml`, run from `main` so the PR cannot alter it):
    no protected file touched, no order placement or credential code added,
-   a complete ledger entry, tests green, and a backtest with the live cost
-   model that is not obviously broken. Pass: merged automatically. Fail:
-   closed automatically with the reason, which the agent reads next time.
+   a complete ledger entry, tests green, and a backtest of the changed slot
+   over the last year with the live cost model that clears regime
+   independent sanity bounds (no fees treadmill, enough trades to judge,
+   drawdown no worse than the larger of 30% and three quarters of the
+   market's own). In sample profit is reported, never required; alpha is
+   judged prospectively. Pass: merged automatically. Fail: closed
+   automatically with the reason, which the agent reads next time.
 4. **The test**: the next hourly run sees the new slot config and starts a
    60 day prospective test, champion and challenger on the same live data.
    After the window `bot/promote.py` rules by fixed rules in

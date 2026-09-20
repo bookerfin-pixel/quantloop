@@ -137,6 +137,65 @@ def run_backtest(candles: dict[str, pd.DataFrame], cfg: dict, rcfg: dict,
     }
 
 
+def plausibility(m: dict, rules: dict, market: dict | None, initial_cash: float) -> tuple[list[str], dict]:
+    """The gate's sanity checks, regime independent, plus the informational
+    skill figures. Returns (problems, report). Empty problems means pass."""
+    days = max(float(m["days"]), 1e-9)
+    n_pairs = max(int(m["pairs"]), 1)
+    costs = float(m["fees"]) + float(m["slippage"])
+    cost_drag = costs / float(initial_cash) / (days / 365)
+    avg_fills = float(m["n_trades"]) / days / n_pairs
+    basket_dd = abs(float(market["basket_max_dd"])) if market and market.get("basket_max_dd") is not None else 0.0
+    dd_limit = max(float(rules["max_drawdown"]), float(rules.get("drawdown_vs_basket", 0.0)) * basket_dd)
+    problems = []
+    if m["n_trades"] < int(rules.get("min_trades", 0)):
+        problems.append(f"{m['n_trades']} fills over {days:.0f} days, fewer than the {rules['min_trades']} the gate needs "
+                        f"before any of its numbers mean anything")
+    if cost_drag > float(rules["max_cost_drag"]):
+        problems.append(f"costs {costs:.0f} over {days:.0f} days is {cost_drag:.1%} of starting equity per year, above "
+                        f"the {float(rules['max_cost_drag']):.0%} limit; that is a fees treadmill (P1)")
+    if avg_fills > float(rules["max_avg_fills_per_pair_per_day"]):
+        problems.append(f"{avg_fills:.2f} fills per pair per day on average, above {rules['max_avg_fills_per_pair_per_day']}")
+    if float(m["max_drawdown"]) < -dd_limit:
+        problems.append(f"max drawdown {m['max_drawdown']:.1%} worse than the limit {-dd_limit:.1%} (the larger of "
+                        f"{float(rules['max_drawdown']):.0%} and {float(rules.get('drawdown_vs_basket', 0)):.2f} x the "
+                        f"basket's own {basket_dd:.1%})")
+    report = {"cost_drag_per_year": round(cost_drag, 4), "avg_fills_per_pair_per_day": round(avg_fills, 3),
+              "drawdown_limit": round(-dd_limit, 4), "basket_return": None, "basket_max_dd": None,
+              "exposure_matched_benchmark": None, "skill_vs_benchmark": None, "quarters": []}
+    if market and market.get("basket_return") is not None:
+        bench = float(market["basket_return"]) * float(m["avg_gross_exposure"])
+        report.update({"basket_return": round(float(market["basket_return"]), 4),
+                       "basket_max_dd": round(float(market["basket_max_dd"]), 4),
+                       "exposure_matched_benchmark": round(bench, 4),
+                       "skill_vs_benchmark": round(float(m["total_return"]) - bench, 4)})
+        path = market.get("basket_path")
+        curve = m.get("equity_curve")
+        if path is not None and curve:
+            eq = pd.Series([e for _, e in curve], index=[t for t, _ in curve])
+            edges = np.linspace(eq.index.min(), eq.index.max(), 5).astype(int)
+            for i in range(4):
+                e = eq[(eq.index >= edges[i]) & (eq.index <= edges[i + 1])]
+                b = path[(path.index >= edges[i]) & (path.index <= edges[i + 1])]
+                if len(e) > 1 and len(b) > 1:
+                    report["quarters"].append({"strategy": round(float(e.iloc[-1] / e.iloc[0] - 1), 4),
+                                               "basket": round(float(b.iloc[-1] / b.iloc[0] - 1), 4)})
+    return problems, report
+
+
+def format_report(report: dict) -> str:
+    lines = [f"cost drag per year {report['cost_drag_per_year']:.1%} of equity, "
+             f"{report['avg_fills_per_pair_per_day']:.2f} fills per pair per day, drawdown limit {report['drawdown_limit']:.1%}"]
+    if report["basket_return"] is not None:
+        lines.append(f"market: equal weight basket {report['basket_return']:+.1%} with max drawdown "
+                     f"{report['basket_max_dd']:.1%}; exposure matched benchmark {report['exposure_matched_benchmark']:+.1%}; "
+                     f"skill vs benchmark {report['skill_vs_benchmark']:+.1%} (informational, not a gate)")
+    if report["quarters"]:
+        lines.append("quarters (strategy / basket): " + ", ".join(
+            f"{q['strategy']:+.1%} / {q['basket']:+.1%}" for q in report["quarters"]))
+    return "\n".join(lines)
+
+
 def load_cached_candles(pairs: list[str]) -> dict[str, pd.DataFrame]:
     """History plus live for every pair."""
     return {p: data.load_all_candles(p) for p in pairs}
@@ -155,14 +214,21 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--config", default="configs/challenger1.yaml")
     ap.add_argument("--days", type=int, default=None)
     ap.add_argument("--json", action="store_true")
+    ap.add_argument("--gate", action="store_true", help="also print exactly what the gate will say")
     args = ap.parse_args(argv)
     config.prepare()
     rcfg = config.risk_cfg()
     cfg = config.load_yaml(config.ROOT / args.config)
     candles = load_cached_candles(list(rcfg["pairs"]))
     m = run_backtest(candles, cfg, rcfg, max_days=args.days or rcfg["backtest_gate"]["max_days"])
-    m.pop("equity_curve")
+    curve = m.pop("equity_curve")
     print(json.dumps(m, indent=2) if args.json else format_metrics(m))
+    if args.gate:
+        from .promote import market_context
+        market = market_context(curve[0][0], curve[-1][0], list(rcfg["pairs"])) if curve else None
+        problems, report = plausibility({**m, "equity_curve": curve}, rcfg["backtest_gate"], market, rcfg["initial_cash"])
+        print(format_report(report))
+        print("gate: " + ("PASS" if not problems else "FAIL\n  - " + "\n  - ".join(problems)))
     return 0
 
 

@@ -107,7 +107,8 @@ def early_kill(chal: dict, rules: dict) -> str | None:
 def market_context(start_ts: int, end_ts: int, pairs: list[str]) -> dict:
     """What the market did over a window: BTC return, equal weight basket
     return, basket realised vol (annualised from hourly basket returns)."""
-    out = {"btc_return": None, "basket_return": None, "basket_vol": None, "pairs": 0}
+    out = {"btc_return": None, "basket_return": None, "basket_vol": None, "basket_max_dd": None,
+           "pairs": 0, "basket_path": None}
     series = {}
     for p in pairs:
         df = data.load_all_candles(p)
@@ -124,10 +125,13 @@ def market_context(start_ts: int, end_ts: int, pairs: list[str]) -> dict:
     out["basket_return"] = float(np.mean(list(rets.values())))
     if "BTC" in rets:
         out["btc_return"] = rets["BTC"]
-    frame = pd.DataFrame(series).sort_index().ffill()
+    frame = pd.DataFrame(series).sort_index().ffill().bfill()
     hourly = frame.pct_change().mean(axis=1).dropna()
     if len(hourly) > 2:
         out["basket_vol"] = float(hourly.std() * math.sqrt(24 * 365))
+    path = (frame / frame.iloc[0]).mean(axis=1)          # equal weight buy and hold, rebalanced never
+    out["basket_max_dd"] = float((path / path.cummax() - 1).min())
+    out["basket_path"] = path
     return out
 
 
@@ -138,6 +142,8 @@ def format_market(mc: dict) -> str:
     if mc["btc_return"] is not None:
         parts.append(f"BTC {mc['btc_return']:+.2%}")
     parts.append(f"equal weight basket of {mc['pairs']} pairs {mc['basket_return']:+.2%}")
+    if mc.get("basket_max_dd") is not None:
+        parts.append(f"basket max drawdown {mc['basket_max_dd']:.0%}")
     if mc["basket_vol"] is not None:
         parts.append(f"basket realised vol {mc['basket_vol']:.0%} annualised")
     return ", ".join(parts)
