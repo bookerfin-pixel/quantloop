@@ -837,3 +837,13 @@ ts,account,pair,price,signal_weight,target_weight,current_weight,action,reason,h
 1789907133,challenger2,DOGE,0.084973,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: price below 24h EMA,0.129
 1789907133,challenger2,DOT,1.09965,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: price below 24h EMA,2.273
 1789907133,challenger2,LTC,57.02,0.25,0.25,0.2448,hold,hold: weight change +0.005 below threshold 0.05 | stay long: 72h return +8.21% vs exit band -1.0% and price within 2.0% of 24h EMA; realised vol 55% -> weight 0.25,3.508
+1789910461,challenger2,BTC,80467.35,0.0,0.0,0.2444,sell,"flat: only 826 candles, need 1610",0.006
+1789910461,challenger2,ETH,2577.935,0.0,0.0,0.2437,sell,"flat: only 826 candles, need 1610",0.019
+1789910461,challenger2,SOL,108.135,0.0,0.0,0.0,hold,"hold: weight change +0.000 below threshold 0.05 | flat: only 826 candles, need 1610",0.462
+1789910461,challenger2,ADA,0.221,0.0,0.0,0.0,hold,"hold: weight change +0.000 below threshold 0.05 | flat: only 826 candles, need 1610",3.371
+1789910461,challenger2,AVAX,10.522,0.0,0.0,0.2678,sell,"flat: only 826 candles, need 1610",2.851
+1789910461,challenger2,LINK,12.07553,0.0,0.0,0.0,hold,"hold: weight change +0.000 below threshold 0.05 | flat: only 826 candles, need 1610",0.894
+1789910461,challenger2,XRP,1.377025,0.0,0.0,0.0,hold,"hold: weight change +0.000 below threshold 0.05 | flat: only 798 candles, need 1610",0.036
+1789910461,challenger2,DOGE,0.084965,0.0,0.0,0.0,hold,"hold: weight change +0.000 below threshold 0.05 | flat: only 798 candles, need 1610",1.471
+1789910461,challenger2,DOT,1.0942,0.0,0.0,0.0,hold,"hold: weight change +0.000 below threshold 0.05 | flat: only 798 candles, need 1610",3.656
+1789910461,challenger2,LTC,56.915,0.0,0.0,0.2432,sell,"flat: only 798 candles, need 1610",2.636
