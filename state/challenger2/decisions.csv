@@ -987,3 +987,13 @@ ts,account,pair,price,signal_weight,target_weight,current_weight,action,reason,h
 1789960978,challenger2,DOGE,0.088695,0.0,0.0,0.0,hold,"hold: weight change +0.000 below threshold 0.05 | flat: only 812 candles, need 1610",1.595
 1789960978,challenger2,DOT,1.1551,0.0,0.0,0.0,hold,"hold: weight change +0.000 below threshold 0.05 | flat: only 812 candles, need 1610",2.597
 1789960978,challenger2,LTC,59.155,0.0,0.0,0.0,hold,"hold: weight change +0.000 below threshold 0.05 | flat: only 812 candles, need 1610",0.845
+1789964598,challenger2,BTC,81265.75,0.0,0.0,0.0,hold,"hold: weight change +0.000 below threshold 0.05 | flat: only 841 candles, need 1610",0.006
+1789964598,challenger2,ETH,2657.985,0.0,0.0,0.0,hold,"hold: weight change +0.000 below threshold 0.05 | flat: only 841 candles, need 1610",0.019
+1789964598,challenger2,SOL,111.255,0.0,0.0,0.0,hold,"hold: weight change +0.000 below threshold 0.05 | flat: only 841 candles, need 1610",0.449
+1789964598,challenger2,ADA,0.230739,0.0,0.0,0.0,hold,"hold: weight change +0.000 below threshold 0.05 | flat: only 841 candles, need 1610",2.297
+1789964598,challenger2,AVAX,11.2945,0.0,0.0,0.0,hold,"hold: weight change +0.000 below threshold 0.05 | flat: only 841 candles, need 1610",2.213
+1789964598,challenger2,LINK,12.60386,0.0,0.0,0.0,hold,"hold: weight change +0.000 below threshold 0.05 | flat: only 841 candles, need 1610",2.206
+1789964598,challenger2,XRP,1.416065,0.0,0.0,0.0,hold,"hold: weight change +0.000 below threshold 0.05 | flat: only 813 candles, need 1610",0.671
+1789964598,challenger2,DOGE,0.087972,0.0,0.0,0.0,hold,"hold: weight change +0.000 below threshold 0.05 | flat: only 813 candles, need 1610",2.364
+1789964598,challenger2,DOT,1.14815,0.0,0.0,0.0,hold,"hold: weight change +0.000 below threshold 0.05 | flat: only 813 candles, need 1610",3.048
+1789964598,challenger2,LTC,58.62,0.0,0.0,0.0,hold,"hold: weight change +0.000 below threshold 0.05 | flat: only 813 candles, need 1610",1.706
