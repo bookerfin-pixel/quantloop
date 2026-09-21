@@ -172,6 +172,73 @@ def mean_reversion(candles: dict[str, pd.DataFrame], params: dict,
     return out
 
 
+@register("swing_reversal")
+def swing_reversal(candles: dict[str, pd.DataFrame], params: dict,
+                    current_weights: dict[str, float]) -> dict[str, Target]:
+    """Long only reversal off a higher low. Split the trailing 2*recent_hours
+    into two adjacent halves. Find the lowest close in each half (the older
+    swing low and the more recent one). If the recent low is at least
+    min_higher_low above the older low (sellers made less progress the second
+    time) and price then closes above the high made between the two lows
+    (the reaction high sellers failed to hold below), that is a structural
+    reversal, not a threshold on price (ts_momentum), a distance from a
+    rolling mean (mean_reversion), or a volatility regime change
+    (vol_breakout). A sustained one-directional slide keeps making lower
+    lows, so the higher-low precondition has nothing to fire on for most of
+    it. Exit on a close below the trailing exit_hours low, a much shorter
+    window than the one used to detect the pattern, so a failed reversal is
+    cut quickly rather than waiting for the wide swing-low used to find it."""
+    recent_hours = int(params.get("recent_hours", 240))
+    min_higher_low = float(params.get("min_higher_low", 0.03))
+    exit_hours = int(params.get("exit_hours", 48))
+    need = max(2 * recent_hours, exit_hours) + 2
+    out: dict[str, Target] = {}
+    for pair, df in candles.items():
+        close = df["close"].astype(float)
+        n = len(close)
+        if n < need:
+            out[pair] = Target(0.0, f"flat: only {n} candles, need {need}")
+            continue
+        first_start, first_end = n - 2 * recent_hours - 1, n - recent_hours - 1
+        second_start, second_end = first_end, n - 1
+        first_half = close.iloc[first_start:first_end]
+        second_half = close.iloc[second_start:second_end]
+        low1 = float(first_half.min())
+        low2 = float(second_half.min())
+        t1 = first_start + int(first_half.values.argmin())
+        t2 = second_start + int(second_half.values.argmin())
+        swing_high = float(close.iloc[t1:t2 + 1].max())
+        price = float(close.iloc[-1])
+        exit_low = float(close.iloc[-1 - exit_hours:-1].min())
+        higher_low = low2 > low1 * (1 + min_higher_low)
+        breaking_out = price > swing_high
+        holding = current_weights.get(pair, 0.0) > 0
+        if holding:
+            go_long = price > exit_low
+        else:
+            go_long = higher_low and breaking_out
+        if go_long:
+            w, vol = vol_scaled_weight(close, params)
+            if holding:
+                reason = (f"stay long: price {price:.4g} still above the {exit_hours}h low "
+                          f"{exit_low:.4g}; realised vol {vol:.0%} -> weight {w:.2f}")
+            else:
+                reason = (f"enter long: higher low {low2:.4g} vs prior low {low1:.4g} "
+                          f"(+{(low2 / low1 - 1):.1%}) then broke above the reaction high {swing_high:.4g} "
+                          f"at {price:.4g}; realised vol {vol:.0%} -> weight {w:.2f}")
+            out[pair] = Target(w, reason)
+        else:
+            if holding:
+                out[pair] = Target(0.0, f"exit: closed {price:.4g} below the {exit_hours}h low {exit_low:.4g}")
+            elif not higher_low:
+                out[pair] = Target(0.0, f"flat: low {low2:.4g} not a higher low vs prior low {low1:.4g} "
+                                        f"(need +{min_higher_low:.1%})")
+            else:
+                out[pair] = Target(0.0, f"flat: higher low confirmed but {price:.4g} not above reaction high "
+                                        f"{swing_high:.4g}")
+    return out
+
+
 @register("vol_breakout")
 def vol_breakout(candles: dict[str, pd.DataFrame], params: dict,
                   current_weights: dict[str, float]) -> dict[str, Target]:
