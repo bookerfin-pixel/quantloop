@@ -102,6 +102,15 @@ If a slot is free:
   the running tests will not.
 - Write the ledger entry first. If you cannot fill "Why it should work"
   with a mechanism and cost arithmetic, pick a different idea.
+- An idle slot teaches nothing. The first choice is always an idea whose
+  mechanism and arithmetic you believe. But if a slot has been free on two
+  consecutive runs and nothing clears that bar, run the best candidate that
+  is a different mechanism from the tests already running and passes the
+  gate, and say in the ledger entry that it is a low conviction test and
+  what a kill would still tell us. A prospective kill of a distinct
+  mechanism is calibration data (realised bps against expected, behaviour
+  in a regime the backtest never saw); an empty slot produces none. This
+  does not license parameter nudges or a second copy of a running family.
 - Make the change in the free slot's config (configs/challenger<k>.yaml)
   and, if new logic is needed, bot/strategy.py. New strategy functions get
   tests in tests/ (not tests/gate/, which is protected). One slot per PR.
@@ -132,6 +141,14 @@ If a slot is free:
   each shown less than the number suggests.
 - Treat killed hypotheses as information. If three horizon changes were
   killed, the next horizon change needs a reason those three do not cover.
+- A backtest verdict is only as current as the gate that gave it. The gate
+  changed on 2026-09-20 from an in sample profit test (cost coverage of at
+  least 1.0, absolute 30% drawdown) to the sanity filter described above.
+  A backlog or notes entry from before that date saying an idea "failed the
+  gate" was judged by the old bar and is not a verdict under the current
+  one. The mechanism critique written next to it still stands where one is
+  given; the numbers do not, so rerun them with `--gate` before treating
+  such an idea as closed.
 - Prefer fewer, larger, better explained trades. When in doubt, trade less.
 - Write reasons for a reader a month from now. Plain English, no filler.
 

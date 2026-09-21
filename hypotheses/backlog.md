@@ -13,6 +13,18 @@ idea when it becomes a ledger entry or when a result makes it moot.
 
 ## Ideas the evidence says not to bother with
 
+Note (2026-09-21, Fin): the entries below dated 2026-09-16 to 2026-09-19 quote
+the gate as it was then (cost coverage >= 1.0, max drawdown >= -30% absolute,
+in sample profit required). Since 2026-09-20 the gate is a sanity filter (cost
+drag <= 15%/yr, <= 1 fill per pair per day, >= 30 trades, drawdown no worse
+than the larger of 30% and 0.75x the basket's own) and does not require in
+sample profit, so "failed the old gate" is not by itself a reason to skip an
+idea. The mechanism critiques still stand where they are given (for example
+"long the wrong direction more than the wrong pairs"); the gate numbers do
+not, and should be rerun with `--gate` before an idea here is treated as
+closed. The 2026-09-20 entries (rebalancing, volume breakout, breadth) were
+judged on their own arithmetic, not the gate, and are unaffected.
+
 - Anything that trades more than a few times per pair per day. P1.
 - Parameter nudges of a few percent to the champion. They cannot be told apart from noise in a 21 day window, so they can only waste the slot.
 - Regime filter for the momentum champion (vol or EMA gated entries): tried four ways against the real trailing 365 day window (2026-09-17/18, all ten pairs, live cost model) — a 500h realised-vol-median gate (lost 42.6%, DD -58.7%, cost coverage -0.99), a 672h EMA regime gate (lost 50.0%, DD -61.3%, cost coverage -1.72), and (as a z-score stop-loss variant on mean_reversion rather than an entry filter) a loose stop at 240/2.0/0.5/2.0 (cost coverage -1.01) and a tight stop with a rarer entry at 240/3.5/1.0/1.0 (cut drawdown to -20.0% but cost coverage -2.24, gross pnl still negative). None came close to backtest_gate's bar (cost_coverage >= 1.0, max_drawdown >= -30%). Correction to the version of this idea originally logged here: it is not blocked by candle history (the two year backfill has been present since 2026-09-17) — `bot/run.py` and `bot/backtest.py` both cap every strategy call to the trailing `risk.yaml:history_hours` (720 hours / 30 days at the time; raised by Fin to 2160 hours / 90 days on 2026-09-20) regardless of how much history exists, on purpose, so live paper trading can never be kinder than the backtest. A regime filter longer than ~29 days was not implementable then; up to ~90 days is now, and the versions that are implementable (500-672h, close to the ceiling) have now been tried and failed. Over the trailing year every one of the ten pairs fell 46-81% peak to trough (see notes/2026-09-19.md); with no shorting, a filter that just thins out how often a long-only signal fires does not fix a mechanism that is net long during a sustained one-directional fall. Not worth another attempt at "filter momentum's or mean reversion's entries" without a mechanism that is flat by construction during that kind of move, not just a tighter trigger on the same signal.

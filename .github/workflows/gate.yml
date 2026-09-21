@@ -1,17 +1,17 @@
 name: gate
 
 # The exam a pull request sits before it can merge. Called by agent.yml for
-# the agent's own PRs (and merged there if it passes), and run read-only on
-# any human PR. Everything here executes from the base branch, so a PR
-# cannot change the rules it is judged by.
+# the agent's own PRs and merged there if it passes. Everything here executes
+# from the base branch, so a PR cannot change the rules it is judged by.
+# (It used to also run read-only on pull_request events; GitHub held those
+# runs for approval because the PR author is github-actions[bot], and they
+# expired as failures next to PRs the real gate had already merged.)
 on:
   workflow_call:
     inputs:
       pr_number:
         required: true
         type: string
-  pull_request:
-    branches: [main]
 
 permissions:
   contents: read
