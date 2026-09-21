@@ -77,6 +77,15 @@ hypotheses.
   way H1's own kill criteria already treats that outcome — a test-design
   artifact, not evidence against the mechanism.
 
+- Calibration of the loop itself, 2026-09-21: the hourly loop and the backtest
+  handed strategies different candle frames for four days (live cache only vs
+  history plus live), so a lookback that passed the gate could not fire live.
+  Fixed in bot/run.py via data.strategy_frames, which both paths now share.
+  Lesson for the record: any place the live loop and the backtest diverge is a
+  place a hypothesis can pass the gate and still do nothing, so a challenger
+  that logs the same "flat: only N candles" reason for a whole day is a bug
+  report, not a market observation.
+
 ## Overturned
 
 (none yet)

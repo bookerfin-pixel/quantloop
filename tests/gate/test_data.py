@@ -52,3 +52,18 @@ def test_kraken_pair_names():
     assert data.kraken_pair("BTC") == "XBTUSD"
     assert data.kraken_pair("DOGE") == "XDGUSD"
     assert data.kraken_pair("XRP") == "XRPUSD"
+
+
+def test_strategy_frames_include_history_not_just_the_live_cache(caches):
+    """Regression: the hourly loop must hand strategies history plus live, the
+    same frames the backtest replays. Before 2026-09-21 it handed the live
+    cache only, so a 1440 hour lookback could never fire live."""
+    pairs = ["BTC"]
+    live = data.SyntheticSource(pairs, n=100, seed=1, start=1_700_000_000)
+    data.update_candles(pairs, live)
+    hist = data.SyntheticSource(pairs, n=3000, seed=2, start=1_700_000_000 - 3000 * 3600)
+    data.backfill_if_short(pairs, target_hours=2500, history_source=hist, now=1_700_000_000 + 100 * 3600)
+    frames = data.strategy_frames(pairs, 2160)
+    assert len(frames["BTC"]) == 2160
+    assert int(frames["BTC"]["time"].iloc[-1]) == int(data.load_candles("BTC")["time"].max())   # ends at the latest live candle
+    assert frames["BTC"]["time"].is_monotonic_increasing

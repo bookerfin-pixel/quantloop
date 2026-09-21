@@ -136,7 +136,10 @@ def main(argv: list[str] | None = None) -> int:
     if target:
         data.backfill_if_short(pairs, target, data.get_history_source(pairs, rcfg.get("quote", "USD")), now=ts)
     hist = int(rcfg.get("history_hours", 720))
-    candles = {p: df.tail(hist).reset_index(drop=True) for p, df in candles.items()}
+    # History plus live, the same frames the backtest replays. The live cache
+    # alone is a few weeks deep and starves any lookback longer than that
+    # (found by the weekly digest on 2026-09-21: H2 sat flat on "need 1610").
+    candles = data.strategy_frames(pairs, hist)
     qs = data.quotes(pairs, source)
     prices = {p: q.mid for p, q in qs.items()}
     half_spreads = {p: q.half_spread_bps for p, q in qs.items()}

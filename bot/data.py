@@ -257,6 +257,17 @@ def load_all_candles(pair: str) -> pd.DataFrame:
     return merged.reset_index(drop=True)
 
 
+def strategy_frames(pairs: list[str], history_hours: int) -> dict[str, pd.DataFrame]:
+    """What a strategy is shown each hour: the trailing history_hours of
+    history plus live, per pair. The same merge the backtest replays, so a
+    lookback that works in a backtest also works live."""
+    out = {}
+    for p in pairs:
+        df = load_all_candles(p)
+        out[p] = df.tail(history_hours).reset_index(drop=True)
+    return out
+
+
 def save_candles(pair: str, df: pd.DataFrame) -> None:
     df = df.drop_duplicates("time").sort_values("time").tail(MAX_CACHE_ROWS)
     df.to_csv(cache_path(pair), index=False)
