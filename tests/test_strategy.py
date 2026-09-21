@@ -96,3 +96,37 @@ def test_vol_breakout_exits_on_breakdown():
     df = _ohlc(closes)
     out = strategy.vol_breakout({"X": df}, _breakout_params(), {"X": 0.2})
     assert out["X"].weight == 0.0 and "exit" in out["X"].reason
+
+
+def _swing_params(**overrides):
+    params = dict(recent_hours=20, min_higher_low=0.03, exit_hours=10, vol_lookback_hours=20)
+    params.update(overrides)
+    return params
+
+
+def test_swing_reversal_enters_on_higher_low_breakout():
+    # older low at 80 (first half), recent low at 85 (a higher low), reaction
+    # high of 95 between them, then a close above it.
+    first_half = [100, 90, 90, 80, 90, 95] + [92] * 15
+    second_half = [90, 88, 85, 87, 90] + [90] * 15
+    closes = first_half + second_half + [96]
+    df = _ohlc(closes)
+    out = strategy.swing_reversal({"X": df}, _swing_params(), {})
+    assert out["X"].weight > 0 and "enter long" in out["X"].reason
+
+
+def test_swing_reversal_flat_without_higher_low():
+    # recent low (80) is no higher than the older low (80): no reversal.
+    first_half = [100, 90, 90, 80, 90, 95] + [92] * 15
+    second_half = [90, 88, 80, 87, 90] + [90] * 15
+    closes = first_half + second_half + [96]
+    df = _ohlc(closes)
+    out = strategy.swing_reversal({"X": df}, _swing_params(), {})
+    assert out["X"].weight == 0.0 and "not a higher low" in out["X"].reason
+
+
+def test_swing_reversal_exits_below_recent_low():
+    closes = [100 + i * 0.1 for i in range(41)] + [80]  # sharp breakdown below the trailing exit low
+    df = _ohlc(closes)
+    out = strategy.swing_reversal({"X": df}, _swing_params(), {"X": 0.2})
+    assert out["X"].weight == 0.0 and "exit" in out["X"].reason
