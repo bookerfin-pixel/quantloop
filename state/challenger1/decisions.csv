@@ -1397,3 +1397,13 @@ ts,account,pair,price,signal_weight,target_weight,current_weight,action,reason,h
 1790065424,challenger1,DOGE,0.098752,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z +2.72 not below -2.0,0.056
 1790065424,challenger1,DOT,1.1663,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z +1.38 not below -2.0,3.43
 1790065424,challenger1,LTC,60.66,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z +1.75 not below -2.0,3.297
+1790068913,challenger1,BTC,85924.65,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z +2.40 not below -2.0,0.006
+1790068913,challenger1,ETH,2740.915,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z +1.99 not below -2.0,0.018
+1790068913,challenger1,SOL,117.025,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z +1.90 not below -2.0,0.427
+1790068913,challenger1,ADA,0.24841,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z +2.34 not below -2.0,3.543
+1790068913,challenger1,AVAX,10.881,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z +1.66 not below -2.0,0.919
+1790068913,challenger1,LINK,12.922435,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z +1.89 not below -2.0,0.004
+1790068913,challenger1,XRP,1.536755,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z +2.52 not below -2.0,0.098
+1790068913,challenger1,DOGE,0.098619,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z +2.82 not below -2.0,0.162
+1790068913,challenger1,DOT,1.17,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z +1.57 not below -2.0,1.709
+1790068913,challenger1,LTC,60.415,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z +1.81 not below -2.0,2.483
