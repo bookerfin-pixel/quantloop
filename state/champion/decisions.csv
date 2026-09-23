@@ -1747,3 +1747,13 @@ ts,account,pair,price,signal_weight,target_weight,current_weight,action,reason,h
 1790191278,champion,DOGE,0.092145,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | daily halt in force: flat for the rest of the UTC day,0.092
 1790191278,champion,DOT,1.09535,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | daily halt in force: flat for the rest of the UTC day,2.282
 1790191278,champion,LTC,60.835,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | daily halt in force: flat for the rest of the UTC day,2.466
+1790194965,champion,BTC,84356.25,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | daily halt in force: flat for the rest of the UTC day,0.006
+1790194965,champion,ETH,2673.895,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | daily halt in force: flat for the rest of the UTC day,0.019
+1790194965,champion,SOL,114.335,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | daily halt in force: flat for the rest of the UTC day,0.437
+1790194965,champion,ADA,0.237892,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | daily halt in force: flat for the rest of the UTC day,0.883
+1790194965,champion,AVAX,10.3345,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | daily halt in force: flat for the rest of the UTC day,0.484
+1790194965,champion,LINK,12.266915,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | daily halt in force: flat for the rest of the UTC day,0.24
+1790194965,champion,XRP,1.49023,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | daily halt in force: flat for the rest of the UTC day,0.268
+1790194965,champion,DOGE,0.092227,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | daily halt in force: flat for the rest of the UTC day,0.049
+1790194965,champion,DOT,1.0979,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | daily halt in force: flat for the rest of the UTC day,2.732
+1790194965,champion,LTC,61.01,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | daily halt in force: flat for the rest of the UTC day,1.639
