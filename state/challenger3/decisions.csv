@@ -1577,3 +1577,13 @@ ts,account,pair,price,signal_weight,target_weight,current_weight,action,reason,h
 1790173423,challenger3,DOGE,0.093889,0.0,0.0,0.1229,sell,daily halt: equity 11527.70 is down 5.2% from the day's open 12165.42,7.317
 1790173423,challenger3,DOT,1.1065,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | daily halt: equity 11527.70 is down 5.2% from the day's open 12165.42,3.615
 1790173423,challenger3,LTC,60.07,0.0,0.0,0.1272,sell,daily halt: equity 11527.70 is down 5.2% from the day's open 12165.42,1.665
+1790176988,challenger3,BTC,84660.65,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | daily halt in force: flat for the rest of the UTC day,0.006
+1790176988,challenger3,ETH,2683.075,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | daily halt in force: flat for the rest of the UTC day,0.019
+1790176988,challenger3,SOL,115.65,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | daily halt in force: flat for the rest of the UTC day,0.865
+1790176988,challenger3,ADA,0.2404,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | daily halt in force: flat for the rest of the UTC day,1.83
+1790176988,challenger3,AVAX,10.4505,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | daily halt in force: flat for the rest of the UTC day,1.435
+1790176988,challenger3,LINK,12.35257,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | daily halt in force: flat for the rest of the UTC day,2.955
+1790176988,challenger3,XRP,1.53007,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | daily halt in force: flat for the rest of the UTC day,0.131
+1790176988,challenger3,DOGE,0.09476,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | daily halt in force: flat for the rest of the UTC day,1.91
+1790176988,challenger3,DOT,1.1159,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | daily halt in force: flat for the rest of the UTC day,2.688
+1790176988,challenger3,LTC,60.795,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | daily halt in force: flat for the rest of the UTC day,2.467
