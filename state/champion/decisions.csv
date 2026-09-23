@@ -1687,3 +1687,13 @@ ts,account,pair,price,signal_weight,target_weight,current_weight,action,reason,h
 1790169848,champion,DOGE,0.099257,0.25,0.125,0.1103,hold,hold: weight change +0.015 below threshold 0.05 | stay long: 72h return +16.82% vs exit band -1.0% and price within 2.0% of 24h EMA; realised vol 76% -> weight 0.25,2.504
 1790169848,champion,DOT,1.15105,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: price below 24h EMA,2.172
 1790169848,champion,LTC,61.985,0.25,0.125,0.1276,hold,hold: weight change -0.003 below threshold 0.05 | stay long: 72h return +8.89% vs exit band -1.0% and price within 2.0% of 24h EMA; realised vol 72% -> weight 0.25,0.807
+1790173423,champion,BTC,84082.5,0.0,0.0,0.1274,sell,daily halt: equity 11482.46 is down 5.1% from the day's open 12104.09,2.331
+1790173423,champion,ETH,2651.28,0.0,0.0,0.1245,sell,daily halt: equity 11482.46 is down 5.1% from the day's open 12104.09,0.566
+1790173423,champion,SOL,113.435,0.0,0.0,0.102,sell,daily halt: equity 11482.46 is down 5.1% from the day's open 12104.09,0.441
+1790173423,champion,ADA,0.237466,0.0,0.0,0.129,sell,daily halt: equity 11482.46 is down 5.1% from the day's open 12104.09,2.948
+1790173423,champion,AVAX,10.3365,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | daily halt: equity 11482.46 is down 5.1% from the day's open 12104.09,2.419
+1790173423,champion,LINK,12.244675,0.0,0.0,0.1218,sell,daily halt: equity 11482.46 is down 5.1% from the day's open 12104.09,3.524
+1790173423,champion,XRP,1.519165,0.0,0.0,0.1334,sell,daily halt: equity 11482.46 is down 5.1% from the day's open 12104.09,1.876
+1790173423,champion,DOGE,0.093889,0.0,0.0,0.1077,sell,daily halt: equity 11482.46 is down 5.1% from the day's open 12104.09,7.317
+1790173423,champion,DOT,1.1065,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | daily halt: equity 11482.46 is down 5.1% from the day's open 12104.09,3.615
+1790173423,champion,LTC,60.07,0.0,0.0,0.1277,sell,daily halt: equity 11482.46 is down 5.1% from the day's open 12104.09,1.665

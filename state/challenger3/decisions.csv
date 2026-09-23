@@ -1567,3 +1567,13 @@ ts,account,pair,price,signal_weight,target_weight,current_weight,action,reason,h
 1790169848,challenger3,DOGE,0.099257,0.25,0.1444,0.1261,hold,hold: weight change +0.018 below threshold 0.05 | stay long: price 0.09945 still above the 48h low 0.09324; realised vol 76% -> weight 0.25,2.504
 1790169848,challenger3,DOT,1.15105,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: higher low confirmed but 1.158 not above reaction high 1.248,2.172
 1790169848,challenger3,LTC,61.985,0.25,0.1444,0.1274,hold,hold: weight change +0.017 below threshold 0.05 | stay long: price 62.25 still above the 48h low 60.13; realised vol 72% -> weight 0.25,0.807
+1790173423,challenger3,BTC,84082.5,0.0,0.0,0.1269,sell,daily halt: equity 11527.70 is down 5.2% from the day's open 12165.42,2.331
+1790173423,challenger3,ETH,2651.28,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | daily halt: equity 11527.70 is down 5.2% from the day's open 12165.42,0.566
+1790173423,challenger3,SOL,113.435,0.0,0.0,0.1016,sell,daily halt: equity 11527.70 is down 5.2% from the day's open 12165.42,0.441
+1790173423,challenger3,ADA,0.237466,0.0,0.0,0.1285,sell,daily halt: equity 11527.70 is down 5.2% from the day's open 12165.42,2.948
+1790173423,challenger3,AVAX,10.3365,0.0,0.0,0.1123,sell,daily halt: equity 11527.70 is down 5.2% from the day's open 12165.42,2.419
+1790173423,challenger3,LINK,12.244675,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | daily halt: equity 11527.70 is down 5.2% from the day's open 12165.42,3.524
+1790173423,challenger3,XRP,1.519165,0.0,0.0,0.1329,sell,daily halt: equity 11527.70 is down 5.2% from the day's open 12165.42,1.876
+1790173423,challenger3,DOGE,0.093889,0.0,0.0,0.1229,sell,daily halt: equity 11527.70 is down 5.2% from the day's open 12165.42,7.317
+1790173423,challenger3,DOT,1.1065,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | daily halt: equity 11527.70 is down 5.2% from the day's open 12165.42,3.615
+1790173423,challenger3,LTC,60.07,0.0,0.0,0.1272,sell,daily halt: equity 11527.70 is down 5.2% from the day's open 12165.42,1.665
