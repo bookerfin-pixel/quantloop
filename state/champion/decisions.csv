@@ -1867,3 +1867,13 @@ ts,account,pair,price,signal_weight,target_weight,current_weight,action,reason,h
 1790234578,champion,DOGE,0.094353,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: price below 24h EMA,0.387
 1790234578,champion,DOT,1.12515,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -2.07% not above entry band +1.0%,1.333
 1790234578,champion,LTC,68.055,0.25,0.25,0.2672,hold,hold: weight change -0.017 below threshold 0.05 | stay long: 72h return +16.32% vs exit band -1.0% and price above 24h EMA; realised vol 93% -> weight 0.25,3.673
+1790238265,champion,BTC,84109.85,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: price below 24h EMA,0.006
+1790238265,champion,ETH,2678.845,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: price below 24h EMA,0.019
+1790238265,champion,SOL,114.745,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: price below 24h EMA,0.436
+1790238265,champion,ADA,0.240511,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: price below 24h EMA,0.457
+1790238265,champion,AVAX,10.211,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -6.03% not above entry band +1.0% and price below 24h EMA,0.979
+1790238265,champion,LINK,12.380935,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -0.55% not above entry band +1.0%,2.363
+1790238265,champion,XRP,1.49345,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: price below 24h EMA,0.937
+1790238265,champion,DOGE,0.094102,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: price below 24h EMA,0.425
+1790238265,champion,DOT,1.13315,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -1.79% not above entry band +1.0%,1.324
+1790238265,champion,LTC,68.96,0.25,0.25,0.2698,hold,hold: weight change -0.020 below threshold 0.05 | stay long: 72h return +17.90% vs exit band -1.0% and price above 24h EMA; realised vol 93% -> weight 0.25,2.9
