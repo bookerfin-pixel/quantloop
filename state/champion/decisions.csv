@@ -1807,3 +1807,13 @@ ts,account,pair,price,signal_weight,target_weight,current_weight,action,reason,h
 1790212857,champion,DOGE,0.092905,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: price below 24h EMA,0.307
 1790212857,champion,DOT,1.0953,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -4.12% not above entry band +1.0% and price below 24h EMA,1.826
 1790212857,champion,LTC,62.035,0.25,0.25,0.2495,hold,hold: weight change +0.001 below threshold 0.05 | stay long: 72h return +4.87% vs exit band -1.0% and price above 24h EMA; realised vol 78% -> weight 0.25,4.03
+1790216531,champion,BTC,84144.75,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: price below 24h EMA,0.006
+1790216531,champion,ETH,2679.575,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return +0.94% not above entry band +1.0% and price below 24h EMA,0.504
+1790216531,champion,SOL,114.875,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: price below 24h EMA,0.435
+1790216531,champion,ADA,0.238119,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: price below 24h EMA,1.974
+1790216531,champion,AVAX,10.256,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -8.30% not above entry band +1.0% and price below 24h EMA,2.925
+1790216531,champion,LINK,12.308165,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -1.93% not above entry band +1.0% and price below 24h EMA,2.328
+1790216531,champion,XRP,1.498095,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: price below 24h EMA,0.1
+1790216531,champion,DOGE,0.093081,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: price below 24h EMA,0.639
+1790216531,champion,DOT,1.10315,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -3.25% not above entry band +1.0% and price below 24h EMA,1.36
+1790216531,champion,LTC,62.91,0.25,0.25,0.2521,hold,hold: weight change -0.002 below threshold 0.05 | stay long: 72h return +6.12% vs exit band -1.0% and price above 24h EMA; realised vol 77% -> weight 0.25,4.769
