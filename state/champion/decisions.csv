@@ -1787,3 +1787,13 @@ ts,account,pair,price,signal_weight,target_weight,current_weight,action,reason,h
 1790205509,champion,DOGE,0.092698,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | daily halt in force: flat for the rest of the UTC day,0.005
 1790205509,champion,DOT,1.09835,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | daily halt in force: flat for the rest of the UTC day,1.366
 1790205509,champion,LTC,61.86,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | daily halt in force: flat for the rest of the UTC day,3.233
+1790209743,champion,BTC,84344.15,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: price below 24h EMA,0.006
+1790209743,champion,ETH,2687.725,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: price below 24h EMA,0.019
+1790209743,champion,SOL,115.305,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: price below 24h EMA,0.434
+1790209743,champion,ADA,0.23843,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: price below 24h EMA,1.845
+1790209743,champion,AVAX,10.2315,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -9.21% not above entry band +1.0% and price below 24h EMA,0.489
+1790209743,champion,LINK,12.3114,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -1.36% not above entry band +1.0% and price below 24h EMA,3.403
+1790209743,champion,XRP,1.503385,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: price below 24h EMA,0.632
+1790209743,champion,DOGE,0.093136,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: price below 24h EMA,0.005
+1790209743,champion,DOT,1.10365,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -2.87% not above entry band +1.0% and price below 24h EMA,0.453
+1790209743,champion,LTC,62.195,0.25,0.25,0.0,buy,enter long: 72h return +5.40% vs entry band +1.0% and price above 24h EMA; realised vol 78% -> weight 0.25,2.412
