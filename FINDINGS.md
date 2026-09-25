@@ -37,6 +37,14 @@ hypotheses.
 - Does the momentum family work at all on this universe at hourly resolution
   with a 30 bps round trip, or only at horizons of a week or more? (H0 lost
   on its first 23 days in a falling market; that is one window, not an answer.)
+  In sample answer, 2026-09-25, backtests only: at 72h the signal is a coin
+  flip before costs (mean gross move per round trip +4 bps long, -16 bps
+  short, in a fixed size screen over two years), at 168h +58 bps long, at 720h
+  +294 bps long with an eighth as many round trips. The real engine gives the 720h
+  version (entry and exit bands of 5%, 168h EMA) +35% over 700 days against
+  a basket of +1.4%, and -13.5% over the last 365 days against -50.1%. One
+  parameter set on the data it was chosen from; the prospective test is still
+  the answer. See the top of hypotheses/backlog.md.
 - Is a ≥2 sigma, 240 hour dip rare enough that mean reversion at that horizon
   cannot reach 30 fills in 60 days across ten pairs? (H1 will say.)
 - What do the four added pairs (XRP, DOGE, DOT, LTC) really cost to trade? The
@@ -104,6 +112,20 @@ hypotheses.
   fills carry its own entry reasons.
 
 ## How the machinery shapes results
+
+- What skill means in a verdict (2026-09-25). Skill is net return minus the
+  equal weight basket held at the strategy's usual exposure, its average
+  exposure in a backtest over the year before its test began. Measured
+  against the window's own average exposure instead, a strategy gets no
+  credit for timing slower than the window: in sample the slow trend
+  follower's 60 day skill was positive in 25% of windows that way and 54% on
+  the usual basis. Either way the market's own move explains little of the
+  skill edge between two strategies (R2 0.00 to 0.16 across the live configs,
+  against up to 0.63 for raw return), which is why verdicts use it.
+- 60 days is short for slow strategies. A strategy whose value comes from
+  sitting out a crash shows it in the windows that contain one; in the rest
+  its skill is noise around zero. Read a slow strategy's verdict with its
+  Market line, and do not treat one kill as the end of the family.
 
 - In sample, none of the four live configs shows skill over two years
   (2026-09-25). Replayed over the last 700 days and read in 89 overlapping 60
