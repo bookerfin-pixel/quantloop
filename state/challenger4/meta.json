@@ -1,0 +1,14 @@
+{
+  "hypothesis": "H4",
+  "start_equity": {
+    "challenger4": 10253.514239729182,
+    "champion": 12225.091705368417
+  },
+  "started_at": 1790374905,
+  "status": "testing",
+  "usual_exposure": {
+    "challenger4": 0.476,
+    "champion": 0.548,
+    "start": 1790374905
+  }
+}
