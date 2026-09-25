@@ -25,10 +25,18 @@ def utc_day(ts: int) -> str:
 
 
 def step(acct: paper.PaperAccount, cfg: dict, fn, candles: dict, prices: dict[str, float],
-         ts: int, rcfg: dict, half_spreads: dict[str, float] | None = None) -> tuple[list[dict], list[paper.Fill], float]:
+         ts: int, rcfg: dict, half_spreads: dict[str, float] | None = None,
+         fresh: bool = False) -> tuple[list[dict], list[paper.Fill], float]:
     """One decision cycle for one account at one timestamp. Mutates the account.
     half_spreads (bps, per pair) come from live quotes; the backtest passes none
-    and pays the modelled floor."""
+    and pays the modelled floor.
+
+    fresh: this is the account's first hour under a new strategy. The strategy
+    then decides as if the account were flat, and the account trades from the
+    book it actually holds to those targets. Without this a new strategy treats
+    positions another strategy opened as its own and holds them under its own
+    exit rule (found 2026-09-25: H3 spent its first 40 hours riding the
+    champion copy's book, and every fill in that stretch was an exit of it)."""
     half_spreads = half_spreads or {}
     impact = float(rcfg.get("impact_bps", 0.0))
     st = acct.state
@@ -55,16 +63,25 @@ def step(acct: paper.PaperAccount, cfg: dict, fn, candles: dict, prices: dict[st
                    for p in tradable}
     else:
         try:
-            targets = strategy.normalise(fn(tradable, cfg["params"], current_w))
+            targets = strategy.normalise(fn(tradable, cfg["params"], {} if fresh else current_w))
         except Exception as e:  # noqa: BLE001
             # A broken strategy must not crash the loop or leave stale positions: go flat and say why.
             targets = {p: strategy.Target(0.0, f"strategy error {type(e).__name__}: {e}") for p in tradable}
+        if fresh:
+            targets = {p: strategy.Target(t.weight, "first hour under a new strategy, decided as if flat | " + t.reason)
+                       for p, t in targets.items()}
     for p in tradable:
         targets.setdefault(p, strategy.Target(0.0, "strategy returned no target for this pair"))
     limited = risk.apply_limits({p: targets[p].weight for p in tradable}, rcfg)
 
-    decisions, fills = [], []
-    for pair in tradable:
+    # Reductions fill before additions, so cash an exit frees this hour can fund
+    # this hour's entries (a real bot sells first too). Before 2026-09-25 the
+    # loop ran in pairs order and an entry early in the list could find no cash
+    # while an exit later in the list freed it. The sort is stable, and the
+    # decision log keeps pairs order.
+    order = sorted(tradable, key=lambda p: 0 if limited.get(p, 0.0) < current_w.get(p, 0.0) else 1)
+    by_pair, fills = {}, []
+    for pair in order:
         sig_w = targets[pair].weight
         tgt_w = limited.get(pair, 0.0)
         cur_w = current_w.get(pair, 0.0)
@@ -82,13 +99,14 @@ def step(acct: paper.PaperAccount, cfg: dict, fn, candles: dict, prices: dict[st
             else:
                 action = "none"
                 why = "no fill possible (no cash or no position)"
-        decisions.append({
+        by_pair[pair] = {
             "ts": ts, "account": name, "pair": pair, "price": round(prices[pair], 6),
             "signal_weight": round(sig_w, 4), "target_weight": round(tgt_w, 4),
             "current_weight": round(cur_w, 4), "action": action,
             "reason": (why + " | " if why else "") + reason,
             "half_spread_bps": round(half_spreads.get(pair, 0.0), 3),
-        })
+        }
+    decisions = [by_pair[p] for p in tradable]
     st["last_run_ts"] = ts
     return decisions, fills, acct.equity(prices)
 
@@ -100,7 +118,16 @@ def run_account(name: str, candles: dict, prices: dict[str, float], ts: int, rcf
     adir = config.account_dir(name)
     acct = paper.PaperAccount.load(adir / "account.json", name, rcfg["initial_cash"],
                                    rcfg["fee_bps"], rcfg["slippage_bps"])
-    decisions, fills, equity = step(acct, cfg, fn, candles, prices, ts, rcfg, half_spreads)
+    # A changed strategy (a new test in a slot, a promotion, a revert) decides
+    # its first hour as if flat. An account with no signature on record predates
+    # this rule: record it and carry on, so deploying it moves nothing.
+    sig = config.strategy_signature(cfg)
+    prev = acct.state.get("strategy_sig")
+    fresh = prev is not None and prev != sig
+    decisions, fills, equity = step(acct, cfg, fn, candles, prices, ts, rcfg, half_spreads, fresh=fresh)
+    acct.state["strategy_sig"] = sig
+    if fresh:
+        print(f"[{name}] new strategy this hour: decided as if flat, traded from the book it held")
     st = acct.state
     acct.save(adir / "account.json")
     paper.append_rows(adir / "decisions.csv", DECISION_FIELDS, decisions)

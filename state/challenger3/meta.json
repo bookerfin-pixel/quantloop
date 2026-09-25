@@ -1,9 +1,6 @@
 {
-  "hypothesis": "H3",
-  "start_equity": {
-    "challenger3": 12074.674576878399,
-    "champion": 12074.674576878399
-  },
-  "started_at": 1790029293,
-  "status": "testing"
+  "hypothesis": null,
+  "start_equity": {},
+  "started_at": null,
+  "status": "idle"
 }
