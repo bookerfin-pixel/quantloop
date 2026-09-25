@@ -83,3 +83,15 @@ def test_edge_t_separates_a_steady_edge_from_noise(sandbox):
     t_steady, n = promote.edge_t("champion", "steady", 0, 60 * 86400, se, champ, champ, None, "return")
     t_noisy, _ = promote.edge_t("champion", "noisy", 0, 60 * 86400, se, champ, champ, None, "return")
     assert n == 60 and t_steady > 5 and abs(t_noisy) < 3
+
+
+def test_beating_a_weak_champion_is_not_enough_without_positive_skill():
+    rules = {**RULES, "compare_on": "skill", "min_skill": 0.0}
+    champ = m(-0.20, 0.60, -0.10)                       # skill -14%: a fees treadmill
+    no_edge = m(-0.03, 0.30, -0.10)                     # skill 0.0: held the market, nothing more
+    real = m(0.01, 0.30, -0.10)                         # skill +4%
+    verdict, reason = promote.decide(champ, no_edge, rules)
+    assert verdict == "killed" and "floor" in reason
+    assert promote.decide(champ, real, rules)[0] == "promoted"
+    assert promote.decide(champ, no_edge, {k: v for k, v in rules.items() if k != "min_skill"})[0] == "promoted"
+    assert promote.decide(champ, no_edge, rules, absolute=False)[0] == "promoted"   # the shadow check

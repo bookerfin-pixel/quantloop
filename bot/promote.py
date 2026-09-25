@@ -11,6 +11,8 @@ hypothesis could not have been fitted to, because it did not exist yet):
               return  net return over the window
               skill   net return minus the equal weight basket held at the
                       account's own average exposure (beta removed, timing kept)
+            AND, on skill, challenger skill > challenger.min_skill when that is set
+                (it beat holding the market at its own exposure, not just a weak champion)
             AND challenger max drawdown <= max(max_dd_ratio * champion max drawdown, max_dd_floor)
             AND challenger placed >= min_trades fills
   killed    otherwise
@@ -162,7 +164,10 @@ def compare_on(rules: dict, champ: dict, chal: dict) -> str:
     return "return"
 
 
-def decide(champ: dict, chal: dict, rules: dict) -> tuple[str, str]:
+def decide(champ: dict, chal: dict, rules: dict, absolute: bool = True) -> tuple[str, str]:
+    """absolute: also apply challenger.min_skill, the bar against simply holding
+    the market at the same exposure. The shadow check passes False: reverting
+    asks only whether the deposed config did better than its replacement."""
     if chal["return"] is None or champ["return"] is None:
         return "killed", "no equity data for the window"
     if chal["trades"] < int(rules["min_trades"]):
@@ -178,6 +183,12 @@ def decide(champ: dict, chal: dict, rules: dict) -> tuple[str, str]:
                               f"{chal['avg_exposure']:.2f}) did not beat champion skill {champ['skill']:+.2%} (net "
                               f"{champ['return']:+.2%} at {champ['avg_exposure']:.2f}) by more than "
                               f"{rules['min_return_edge']:.2%}{t_note}")
+        floor = rules.get("min_skill")
+        if absolute and floor is not None and chal["skill"] <= float(floor):
+            return "killed", (f"challenger skill {chal['skill']:+.2%} beat the champion's {champ['skill']:+.2%} but "
+                              f"not the {float(floor):+.2%} floor: it did no better than holding the basket at its own "
+                              f"average exposure {chal['avg_exposure']:.2f}, so beating the champion shows the "
+                              f"champion is weak, not that this has an edge{t_note}")
     else:
         edge = chal["return"] - champ["return"]
         if edge <= float(rules["min_return_edge"]):
@@ -347,7 +358,7 @@ def rule_on_shadow(now: int, rules: dict) -> None:
         return
     start = int(meta["started_at"])
     champ, shad, _ = paired(config.CHAMPION, config.SHADOW, start, now, meta["start_equity"], rules)
-    verdict, reason = decide(champ, shad, rules)   # "promoted" here means the shadow beat the champion
+    verdict, reason = decide(champ, shad, rules, absolute=False)   # "promoted" here means the shadow beat the champion
     promoted_hyp = meta["replaced_by"]
     if verdict == "promoted":
         reason = f"the deposed config beat the promoted one over the guard window: {reason}; promotion reverted"
