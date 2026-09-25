@@ -1,0 +1,11 @@
+ts,account,pair,price,signal_weight,target_weight,current_weight,action,reason,half_spread_bps
+1790310197,challenger4,BTC,84093.05,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -1.71% not above entry band +1.0% and price below 24h EMA,0.006
+1790310197,challenger4,ETH,2674.555,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -2.22% not above entry band +1.0% and price below 24h EMA,0.019
+1790310197,challenger4,SOL,116.47,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return +0.07% not above entry band +1.0%,0.859
+1790310197,challenger4,ADA,0.248085,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -0.11% not above entry band +1.0%,1.25
+1790310197,challenger4,AVAX,10.2485,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -7.48% not above entry band +1.0% and price below 24h EMA,0.488
+1790310197,challenger4,LINK,13.34576,0.25,0.25,0.0,buy,enter long: 72h return +3.20% vs entry band +1.0% and price above 24h EMA; realised vol 81% -> weight 0.25,2.345
+1790310197,challenger4,XRP,1.52967,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return +0.97% not above entry band +1.0%,0.458
+1790310197,challenger4,DOGE,0.095203,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -6.66% not above entry band +1.0% and price below 24h EMA,0.005
+1790310197,challenger4,DOT,1.1419,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -4.34% not above entry band +1.0% and price below 24h EMA,0.876
+1790310197,challenger4,LTC,70.835,0.25,0.25,0.0,buy,enter long: 72h return +15.86% vs entry band +1.0% and price above 24h EMA; realised vol 109% -> weight 0.25,2.118

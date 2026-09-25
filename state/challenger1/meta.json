@@ -5,5 +5,10 @@
     "champion": 10000.0
   },
   "started_at": 1789536103,
-  "status": "testing"
+  "status": "testing",
+  "usual_exposure": {
+    "challenger1": 0.371,
+    "champion": 0.538,
+    "start": 1789536103
+  }
 }
