@@ -15,7 +15,7 @@ can read it with `gh pr list --state closed`.
 
 - Every hour `bot/run.py` pulls Kraken candles and live quotes for the ten
   pairs in configs/risk.yaml, runs the champion, every challenger slot
-  (configs/challenger1.yaml, challenger2.yaml, challenger3.yaml) and, after a
+  (configs/challenger1.yaml to challenger<n>.yaml, n = challenger.slots) and, after a
   promotion, the shadow, each against its own paper account, and commits the
   state. Paper fills pay the larger of the 5 bps floor and the observed half
   spread plus 2 bps impact, so a wide market costs what it really costs.
@@ -76,7 +76,7 @@ about that family, and the calibration line comparing the realised gross bps
 per round trip with the expected number). This is allowed in the same PR as
 anything else below.
 
-If every slot is busy (three tests running):
+If every slot is busy (a test running in each):
 - Review the last day of decisions in `state/champion/decisions.csv` and
   `state/challenger<k>/decisions.csv` for anything that looks like a bug: a
   reason that contradicts its action, weights stuck at zero with no stated
@@ -95,7 +95,7 @@ If a slot is free:
   new one if you have a stronger reason. Structural changes (horizon,
   filter, universe, sizing rule) over parameter nudges. A nudge cannot be
   distinguished from noise in 21 days, so it can only waste the slot.
-- Diversify across slots. The slots are there to learn three different
+- Diversify across slots. The slots are there to learn several different
   things at once, so do not run two hypotheses from the same family that
   differ only in a parameter; pick a different mechanism from what the other
   slots are testing, and say in the ledger entry what it will tell us that

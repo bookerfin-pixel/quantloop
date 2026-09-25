@@ -29,7 +29,8 @@ daily_loss_halt: 0.05       # equity down 5% from the UTC day's open: go flat, s
 
 # --- challenger tests (prospective, each paired against the champion) ------
 challenger:
-  slots: 3                  # tests that can run at the same time; each has its own paper account
+  slots: 4                  # tests that can run at the same time; each has its own paper account
+                            # (4 from 2026-09-25, so the slow trend lead need not wait for November)
   window_days: 60           # 60 rather than 21: the signal to noise of a return difference grows with
                             # the square root of the window, so this is about 1.7x cleaner per verdict
   min_trades: 30            # over 60 days on ten pairs; fewer than this and nothing can be concluded

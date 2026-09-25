@@ -8,7 +8,7 @@ construction.
 ## The loop
 
 1. **Every hour** (`bot.yml`): pull Kraken candles and live quotes, run the
-   champion config, the three challenger slot configs and (after a
+   champion config, every challenger slot config and (after a
    promotion) the shadow against their own paper accounts, log every
    decision with its reason and the observed spread, commit the state to
    this repo. Fills pay the larger of a 5 bps floor and the real half
