@@ -162,8 +162,9 @@ def recent_spreads(now: int) -> dict[str, float]:
 
 
 def test_section(now: int) -> str:
-    from .promote import format_market, market_context, window_metrics
+    from .promote import compare_on, format_market, market_context, paired
     pairs = list(config.risk_cfg()["pairs"])
+    rules = config.risk_cfg()["challenger"]
     lines = ["## Challenger slots", ""]
     any_testing = False
     for name in config.challengers():
@@ -171,11 +172,16 @@ def test_section(now: int) -> str:
         lines.append(f"- {slot.describe_one(name, now)}")
         if meta["status"] == "testing":
             any_testing = True
-            champ = window_metrics(config.CHAMPION, meta["started_at"], now, meta["start_equity"].get(config.CHAMPION))
-            chal = window_metrics(name, meta["started_at"], now, meta["start_equity"].get(name))
+            champ, chal, _ = paired(config.CHAMPION, name, int(meta["started_at"]), now, meta["start_equity"], rules)
             lines.append(f"  so far: champion {_pct(champ['return'])} (DD {champ['max_drawdown'] or 0:.2%}, "
                          f"{champ['trades']} fills) vs {name} {_pct(chal['return'])} "
                          f"(DD {chal['max_drawdown'] or 0:.2%}, {chal['trades']} fills)")
+            if champ.get("skill") is not None and chal.get("skill") is not None:
+                t_txt = f", daily edge t {chal['edge_t']:+.1f} over {chal['edge_days']} days" \
+                    if chal.get("edge_t") is not None else ""
+                lines.append(f"  skill (net return minus the basket at the same average exposure): champion "
+                             f"{champ['skill']:+.2%} at {champ['avg_exposure']:.2f} vs {name} {chal['skill']:+.2%} at "
+                             f"{chal['avg_exposure']:.2f}; the rule compares on {compare_on(rules, champ, chal)}{t_txt}")
             try:
                 lines.append(f"  market over the window: {format_market(market_context(meta['started_at'], now, pairs))}")
             except Exception as e:  # noqa: BLE001

@@ -6,10 +6,18 @@ Runs every hour after the accounts. For every slot whose test has run for
 challenger.window_days, using only data from the test window (which the
 hypothesis could not have been fitted to, because it did not exist yet):
 
-  promoted  challenger net return > champion net return + min_return_edge
+  promoted  challenger beats champion by more than min_return_edge on the
+            quantity challenger.compare_on names:
+              return  net return over the window
+              skill   net return minus the equal weight basket held at the
+                      account's own average exposure (beta removed, timing kept)
             AND challenger max drawdown <= max(max_dd_ratio * champion max drawdown, max_dd_floor)
             AND challenger placed >= min_trades fills
   killed    otherwise
+
+Every verdict also records each side's average exposure, skill, and the t
+statistic of the daily edge it was decided on, so a reader can tell a real
+difference from a coin flip. None of those extra numbers decide anything.
 
 Two early exits, both of which free a slot sooner and neither of which can
 promote anything: a challenger whose drawdown from its window start exceeds
@@ -49,7 +57,8 @@ def window_metrics(name: str, start_ts: int, end_ts: int, start_equity: float | 
     adir = config.account_dir(name)
     eq_path, tr_path = adir / "equity.csv", adir / "trades.csv"
     out = {"return": None, "max_drawdown": None, "trades": 0, "bars": 0, "fees": 0.0,
-           "gross_pnl": None, "traded_notional": 0.0, "realised_bps": None}
+           "gross_pnl": None, "traded_notional": 0.0, "realised_bps": None, "avg_exposure": None,
+           "skill": None, "edge_t": None, "edge_days": 0}
     if eq_path.exists():
         eq = pd.read_csv(eq_path)
         eq = eq[(eq["ts"] >= start_ts) & (eq["ts"] <= end_ts)]
@@ -64,6 +73,8 @@ def window_metrics(name: str, start_ts: int, end_ts: int, start_equity: float | 
                           + eq["slippage_paid"].iloc[-1] - eq["slippage_paid"].iloc[0])
             out["fees"] = costs
             out["gross_pnl"] = float(series.iloc[-1] - base) + costs
+            eqv = eq["equity"].astype(float)
+            out["avg_exposure"] = float((eq["gross_exposure"].astype(float) / eqv.where(eqv > 0)).fillna(0).mean())
     if tr_path.exists():
         tr = pd.read_csv(tr_path)
         tr = tr[(tr["ts"] >= start_ts) & (tr["ts"] <= end_ts)]
@@ -75,16 +86,103 @@ def window_metrics(name: str, start_ts: int, end_ts: int, start_equity: float | 
     return out
 
 
+def add_skill(m: dict, basket_return: float | None) -> dict:
+    """Net return minus a constant position in the equal weight basket at the
+    account's own average exposure over the window: what it made beyond what
+    simply holding that much of the market would have made. The same
+    definition backtest_gate prints, so in sample and prospective skill can be
+    compared line for line in FINDINGS. Timing counts as skill (the benchmark
+    holds the average exposure all the time); beta does not."""
+    if m.get("return") is not None and m.get("avg_exposure") is not None and basket_return is not None:
+        m["skill"] = float(m["return"] - m["avg_exposure"] * basket_return)
+    return m
+
+
+def _daily(name: str, start_ts: int, end_ts: int, base: float | None) -> pd.DataFrame:
+    """Account equity by day of the window (days counted from the window start)."""
+    p = config.account_dir(name) / "equity.csv"
+    if not p.exists():
+        return pd.DataFrame()
+    eq = pd.read_csv(p)
+    eq = eq[(eq["ts"] >= start_ts) & (eq["ts"] <= end_ts)]
+    if not len(eq):
+        return pd.DataFrame()
+    eq = eq.assign(day=(eq["ts"] - start_ts) // 86400)
+    daily = eq.groupby("day")["equity"].last().astype(float)
+    prev = daily.shift(1)
+    prev.iloc[0] = base if base else float(eq["equity"].iloc[0])
+    return pd.DataFrame({"ret": daily / prev - 1})
+
+
+def edge_t(champ_name: str, chal_name: str, start_ts: int, end_ts: int, start_equity: dict,
+           champ: dict, chal: dict, basket_path, on: str) -> tuple[float | None, int]:
+    """t statistic of the daily edge the verdict is decided on, and the number
+    of days behind it. Informational: it says how far the edge sits from zero
+    in units of its own day to day noise. |t| under about 2 is noise."""
+    a = _daily(champ_name, start_ts, end_ts, start_equity.get(champ_name))
+    b = _daily(chal_name, start_ts, end_ts, start_equity.get(chal_name))
+    if not len(a) or not len(b):
+        return None, 0
+    d = b["ret"].sub(a["ret"], fill_value=0.0)
+    if on == "skill" and basket_path is not None and len(basket_path) > 1:
+        bp = pd.Series(basket_path.values, index=basket_path.index)
+        bday = bp.groupby((bp.index.astype("int64") - start_ts) // 86400).last()
+        bret = (bday / bday.shift(1) - 1).fillna(bday.iloc[0] / float(bp.iloc[0]) - 1)
+        e_ch, e_cp = chal.get("avg_exposure") or 0.0, champ.get("avg_exposure") or 0.0
+        d = d.sub((e_ch - e_cp) * bret.reindex(d.index).fillna(0.0), fill_value=0.0)
+    d = d.dropna()
+    n = int(len(d))
+    if n < 3 or float(d.std(ddof=1)) == 0:
+        return None, n
+    return float(d.mean() / (d.std(ddof=1) / math.sqrt(n))), n
+
+
+def paired(champ_name: str, chal_name: str, start_ts: int, end_ts: int, start_equity: dict,
+           rules: dict) -> tuple[dict, dict, dict]:
+    """Both sides of a paired test over one window, with skill and the edge t."""
+    champ = window_metrics(champ_name, start_ts, end_ts, start_equity.get(champ_name))
+    chal = window_metrics(chal_name, start_ts, end_ts, start_equity.get(chal_name))
+    try:
+        mc = market_context(start_ts, end_ts, list(config.risk_cfg()["pairs"]))
+    except Exception:  # noqa: BLE001
+        mc = {"basket_return": None, "basket_path": None}
+    add_skill(champ, mc.get("basket_return"))
+    add_skill(chal, mc.get("basket_return"))
+    on = compare_on(rules, champ, chal)
+    chal["edge_t"], chal["edge_days"] = edge_t(champ_name, chal_name, start_ts, end_ts, start_equity,
+                                               champ, chal, mc.get("basket_path"), on)
+    return champ, chal, mc
+
+
+def compare_on(rules: dict, champ: dict, chal: dict) -> str:
+    """"skill" when the rules ask for it and both sides have it, else "return"."""
+    if str(rules.get("compare_on", "return")) == "skill" and champ.get("skill") is not None \
+            and chal.get("skill") is not None:
+        return "skill"
+    return "return"
+
+
 def decide(champ: dict, chal: dict, rules: dict) -> tuple[str, str]:
     if chal["return"] is None or champ["return"] is None:
         return "killed", "no equity data for the window"
     if chal["trades"] < int(rules["min_trades"]):
         return "killed", (f"challenger made {chal['trades']} fills, fewer than the {rules['min_trades']} "
                           f"needed for a verdict; a strategy that does not trade cannot be judged")
-    edge = chal["return"] - champ["return"]
-    if edge <= float(rules["min_return_edge"]):
-        return "killed", (f"challenger net return {chal['return']:+.2%} did not beat champion "
-                          f"{champ['return']:+.2%} by more than {rules['min_return_edge']:.2%}")
+    on = compare_on(rules, champ, chal)
+    t_note = (f"; daily edge t {chal['edge_t']:+.1f} over {chal['edge_days']} days"
+              if chal.get("edge_t") is not None else "")
+    if on == "skill":
+        edge = chal["skill"] - champ["skill"]
+        if edge <= float(rules["min_return_edge"]):
+            return "killed", (f"challenger skill {chal['skill']:+.2%} (net {chal['return']:+.2%} at average exposure "
+                              f"{chal['avg_exposure']:.2f}) did not beat champion skill {champ['skill']:+.2%} (net "
+                              f"{champ['return']:+.2%} at {champ['avg_exposure']:.2f}) by more than "
+                              f"{rules['min_return_edge']:.2%}{t_note}")
+    else:
+        edge = chal["return"] - champ["return"]
+        if edge <= float(rules["min_return_edge"]):
+            return "killed", (f"challenger net return {chal['return']:+.2%} did not beat champion "
+                              f"{champ['return']:+.2%} by more than {rules['min_return_edge']:.2%}{t_note}")
     champ_dd = abs(champ["max_drawdown"] or 0.0)
     chal_dd = abs(chal["max_drawdown"] or 0.0)
     limit = max(float(rules["max_dd_ratio"]) * champ_dd, float(rules.get("max_dd_floor", 0.0)))
@@ -92,8 +190,13 @@ def decide(champ: dict, chal: dict, rules: dict) -> tuple[str, str]:
         return "killed", (f"challenger max drawdown {chal_dd:.2%} exceeded the limit {limit:.2%} "
                           f"(the larger of {rules['max_dd_ratio']}x the champion's {champ_dd:.2%} and the "
                           f"{float(rules.get('max_dd_floor', 0.0)):.0%} floor) despite better return {edge:+.2%}")
+    if on == "skill":
+        return "promoted", (f"challenger skill {chal['skill']:+.2%} (net {chal['return']:+.2%} at average exposure "
+                            f"{chal['avg_exposure']:.2f}) beat champion skill {champ['skill']:+.2%} (net "
+                            f"{champ['return']:+.2%} at {champ['avg_exposure']:.2f}) with max drawdown "
+                            f"{chal_dd:.2%} vs {champ_dd:.2%}{t_note}")
     return "promoted", (f"challenger net return {chal['return']:+.2%} beat champion {champ['return']:+.2%} "
-                        f"with max drawdown {chal_dd:.2%} vs {champ_dd:.2%}")
+                        f"with max drawdown {chal_dd:.2%} vs {champ_dd:.2%}{t_note}")
 
 
 def early_kill(chal: dict, rules: dict) -> str | None:
@@ -167,6 +270,12 @@ def _fmt(d: dict, expected: float | None = None) -> str:
         s += f", realised gross bps per round trip {d['realised_bps']:.0f}"
         if expected is not None:
             s += f" (ledger expected {expected:.0f})"
+    if d.get("avg_exposure") is not None:
+        s += f", average exposure {d['avg_exposure']:.2f}"
+    if d.get("skill") is not None:
+        s += f", skill vs exposure matched basket {d['skill']:+.2%}"
+    if d.get("edge_t") is not None:
+        s += f", daily edge t {d['edge_t']:+.1f} over {d['edge_days']} days"
     return s
 
 
@@ -237,8 +346,7 @@ def rule_on_shadow(now: int, rules: dict) -> None:
         print(f"[promote] shadow {meta['hypothesis']} guarding {meta['replaced_by']}: day {elapsed:.1f} of {rules['window_days']}")
         return
     start = int(meta["started_at"])
-    champ = window_metrics(config.CHAMPION, start, now, meta["start_equity"].get(config.CHAMPION))
-    shad = window_metrics(config.SHADOW, start, now, meta["start_equity"].get(config.SHADOW))
+    champ, shad, _ = paired(config.CHAMPION, config.SHADOW, start, now, meta["start_equity"], rules)
     verdict, reason = decide(champ, shad, rules)   # "promoted" here means the shadow beat the champion
     promoted_hyp = meta["replaced_by"]
     if verdict == "promoted":
@@ -294,8 +402,7 @@ def main(argv: list[str] | None = None) -> int:
         return 0
     for name, meta in testing:
         start, hyp = int(meta["started_at"]), meta["hypothesis"]
-        champ = window_metrics(config.CHAMPION, start, now, meta["start_equity"].get(config.CHAMPION))
-        chal = window_metrics(name, start, now, meta["start_equity"].get(name))
+        champ, chal, _ = paired(config.CHAMPION, name, start, now, meta["start_equity"], rules)
         reason = early_kill(chal, rules)
         if reason:
             verdicts.append((name, hyp, "killed", reason))
@@ -310,16 +417,16 @@ def main(argv: list[str] | None = None) -> int:
     # strongest winner first, so a second winner in the same hour is restarted, not promoted over it
     def strength(v):
         name, meta = v[0], slot.load(v[0])
-        m = window_metrics(name, int(meta["started_at"]), now, meta["start_equity"].get(name))
-        return m["return"] or -1e9
+        champ_, chal_, _ = paired(config.CHAMPION, name, int(meta["started_at"]), now, meta["start_equity"], rules)
+        key = "skill" if compare_on(rules, champ_, chal_) == "skill" else "return"
+        return chal_[key] if chal_[key] is not None else -1e9
     verdicts.sort(key=lambda v: (v[2] != "promoted", -strength(v)))
 
     promoted_hyp: str | None = None
     for name, hyp, verdict, reason in verdicts:
         meta = slot.load(name)
         start = int(meta["started_at"])
-        champ = window_metrics(config.CHAMPION, start, now, meta["start_equity"].get(config.CHAMPION))
-        chal = window_metrics(name, start, now, meta["start_equity"].get(name))
+        champ, chal, _ = paired(config.CHAMPION, name, start, now, meta["start_equity"], rules)
         if verdict == "promoted" and promoted_hyp is not None:
             reason = (f"beat the old champion ({reason}) but {promoted_hyp} won by more this hour and was promoted; "
                       f"restarted against the new champion with a fresh window")

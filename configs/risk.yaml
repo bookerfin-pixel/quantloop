@@ -35,7 +35,11 @@ challenger:
   min_trades: 30            # over 60 days on ten pairs; fewer than this and nothing can be concluded
   max_dd_ratio: 1.5         # challenger max drawdown may not exceed 1.5x the champion's...
   max_dd_floor: 0.10        # ...or 10%, whichever is larger (a flat champion has 0% drawdown)
-  min_return_edge: 0.0      # challenger net return must beat champion's by at least this
+  compare_on: skill         # what the verdict compares. "skill": net return minus the equal weight basket
+                            # held at the account's own average exposure over the window, so a verdict is
+                            # not decided by which side happened to be more invested while the market moved.
+                            # "return": raw net return (the rule until 2026-09-25).
+  min_return_edge: 0.0      # challenger must beat champion on compare_on by at least this
   early_kill_drawdown: 0.15 # a challenger down this much from its window start is killed at once
 
 # --- backtest gate (sanity filter, regime independent) ---------------------
