@@ -36,12 +36,13 @@ challenger:
   max_dd_ratio: 1.5         # challenger max drawdown may not exceed 1.5x the champion's...
   max_dd_floor: 0.10        # ...or 10%, whichever is larger (a flat champion has 0% drawdown)
   compare_on: skill         # what the verdict compares. "skill": net return minus the equal weight basket
-                            # held at the account's own average exposure over the window, so a verdict is
-                            # not decided by which side happened to be more invested while the market moved.
-                            # "return": raw net return (the rule until 2026-09-25).
+                            # held at the strategy's usual exposure (its average over the year before the test
+                            # began), so a verdict is not decided by which side is usually more invested while
+                            # the market moved, and being out of a falling market still counts for the one
+                            # that stepped aside. "return": raw net return (the rule until 2026-09-25).
   min_return_edge: 0.0      # challenger must beat champion on compare_on by at least this
-  min_skill: 0.0            # ...and, on skill, beat holding the basket at its own average exposure. H0 loses to
-                            # that in 99% of historical 60 day windows, so beating H0 alone would promote almost
+  min_skill: 0.0            # ...and, on skill, beat holding the basket at its usual exposure. H0 loses to
+                            # that in about 97% of historical 60 day windows, so beating H0 alone would promote almost
                             # anything; this bar makes a promotion mean the strategy added something. Remove the
                             # line to drop the bar.
   early_kill_drawdown: 0.15 # a challenger down this much from its window start is killed at once

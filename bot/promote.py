@@ -10,7 +10,8 @@ hypothesis could not have been fitted to, because it did not exist yet):
             quantity challenger.compare_on names:
               return  net return over the window
               skill   net return minus the equal weight basket held at the
-                      account's own average exposure (beta removed, timing kept)
+                      strategy's usual exposure, its average over the year
+                      before the test (beta removed, timing at any horizon kept)
             AND, on skill, challenger skill > challenger.min_skill when that is set
                 (it beat holding the market at its own exposure, not just a weak champion)
             AND challenger max drawdown <= max(max_dd_ratio * champion max drawdown, max_dd_floor)
@@ -88,16 +89,65 @@ def window_metrics(name: str, start_ts: int, end_ts: int, start_equity: float | 
     return out
 
 
-def add_skill(m: dict, basket_return: float | None) -> dict:
+def add_skill(m: dict, basket_return: float | None, usual_exposure: float | None = None) -> dict:
     """Net return minus a constant position in the equal weight basket at the
-    account's own average exposure over the window: what it made beyond what
-    simply holding that much of the market would have made. The same
-    definition backtest_gate prints, so in sample and prospective skill can be
-    compared line for line in FINDINGS. Timing counts as skill (the benchmark
-    holds the average exposure all the time); beta does not."""
-    if m.get("return") is not None and m.get("avg_exposure") is not None and basket_return is not None:
-        m["skill"] = float(m["return"] - m["avg_exposure"] * basket_return)
+    strategy's usual exposure: what it made beyond simply holding that much of
+    the market. "Usual" is its average exposure over the year before the test
+    began (usual_exposures), fixed before the window opens, so being more or
+    less invested than usual during the window counts as skill at any horizon.
+    Without it the window's own average exposure stands in, which removes the
+    market's direction just as well but also hands the benchmark any timing
+    slower than the window: a slow trend follower that sat out a whole falling
+    window scores zero for it (in sample its 60 day skill was positive in 25%
+    of windows that way and 54% on the usual basis, 2026-09-25)."""
+    if m.get("return") is None or basket_return is None:
+        return m
+    if usual_exposure is not None:
+        m["skill_exposure"], m["skill_basis"] = float(usual_exposure), "usual"
+    elif m.get("avg_exposure") is not None:
+        m["skill_exposure"], m["skill_basis"] = float(m["avg_exposure"]), "window"
+    else:
+        return m
+    m["skill"] = float(m["return"] - m["skill_exposure"] * basket_return)
     return m
+
+
+def design_exposure(cfg: dict, before_ts: int, days: int = 365) -> float | None:
+    """Average exposure of a config over the `days` before `before_ts`, from the
+    backtest engine on data that ends before the test starts."""
+    from . import backtest
+    try:
+        rcfg = config.risk_cfg()
+        candles = {p: df[df["time"] < before_ts].reset_index(drop=True)
+                   for p, df in backtest.load_cached_candles(list(rcfg["pairs"])).items()}
+        m = backtest.run_backtest(candles, cfg, rcfg, max_days=days)
+        return float(m["avg_gross_exposure"])
+    except Exception as e:  # noqa: BLE001
+        print(f"[promote] usual exposure for {cfg.get('hypothesis')} unavailable ({e}); the window average stands in")
+        return None
+
+
+def usual_exposures(meta: dict, champ_name: str, chal_name: str, start_ts: int) -> tuple[dict, bool]:
+    """Each side's usual exposure for the test that started at start_ts,
+    computed once (two backtests) and kept in the test's meta. Returns
+    (exposures, changed): the caller saves the meta when changed."""
+    ue = meta.get("usual_exposure") or {}
+    if ue.get("start") == int(start_ts) and champ_name in ue and chal_name in ue:
+        return ue, False
+    ue = {"start": int(start_ts),
+          champ_name: design_exposure(config.account_cfg(champ_name), int(start_ts)),
+          chal_name: design_exposure(config.account_cfg(chal_name), int(start_ts))}
+    meta["usual_exposure"] = ue
+    return ue, True
+
+
+def paired_slot(name: str, meta: dict, now: int, rules: dict) -> tuple[dict, dict, dict]:
+    """paired() for a challenger slot, with its usual exposures (cached in its meta)."""
+    start = int(meta["started_at"])
+    ue, changed = usual_exposures(meta, config.CHAMPION, name, start)
+    if changed:
+        slot.save(name, meta)
+    return paired(config.CHAMPION, name, start, now, meta["start_equity"], rules, ue)
 
 
 def _daily(name: str, start_ts: int, end_ts: int, base: float | None) -> pd.DataFrame:
@@ -130,7 +180,7 @@ def edge_t(champ_name: str, chal_name: str, start_ts: int, end_ts: int, start_eq
         bp = pd.Series(basket_path.values, index=basket_path.index)
         bday = bp.groupby((bp.index.astype("int64") - start_ts) // 86400).last()
         bret = (bday / bday.shift(1) - 1).fillna(bday.iloc[0] / float(bp.iloc[0]) - 1)
-        e_ch, e_cp = chal.get("avg_exposure") or 0.0, champ.get("avg_exposure") or 0.0
+        e_ch, e_cp = chal.get("skill_exposure") or 0.0, champ.get("skill_exposure") or 0.0
         d = d.sub((e_ch - e_cp) * bret.reindex(d.index).fillna(0.0), fill_value=0.0)
     d = d.dropna()
     n = int(len(d))
@@ -140,16 +190,19 @@ def edge_t(champ_name: str, chal_name: str, start_ts: int, end_ts: int, start_eq
 
 
 def paired(champ_name: str, chal_name: str, start_ts: int, end_ts: int, start_equity: dict,
-           rules: dict) -> tuple[dict, dict, dict]:
-    """Both sides of a paired test over one window, with skill and the edge t."""
+           rules: dict, usual: dict | None = None) -> tuple[dict, dict, dict]:
+    """Both sides of a paired test over one window, with skill and the edge t.
+    usual: each side's usual exposure (usual_exposures); without it skill falls
+    back to the window's own average exposure."""
+    usual = usual or {}
     champ = window_metrics(champ_name, start_ts, end_ts, start_equity.get(champ_name))
     chal = window_metrics(chal_name, start_ts, end_ts, start_equity.get(chal_name))
     try:
         mc = market_context(start_ts, end_ts, list(config.risk_cfg()["pairs"]))
     except Exception:  # noqa: BLE001
         mc = {"basket_return": None, "basket_path": None}
-    add_skill(champ, mc.get("basket_return"))
-    add_skill(chal, mc.get("basket_return"))
+    add_skill(champ, mc.get("basket_return"), usual.get(champ_name))
+    add_skill(chal, mc.get("basket_return"), usual.get(chal_name))
     on = compare_on(rules, champ, chal)
     chal["edge_t"], chal["edge_days"] = edge_t(champ_name, chal_name, start_ts, end_ts, start_equity,
                                                champ, chal, mc.get("basket_path"), on)
@@ -179,15 +232,15 @@ def decide(champ: dict, chal: dict, rules: dict, absolute: bool = True) -> tuple
     if on == "skill":
         edge = chal["skill"] - champ["skill"]
         if edge <= float(rules["min_return_edge"]):
-            return "killed", (f"challenger skill {chal['skill']:+.2%} (net {chal['return']:+.2%} at average exposure "
-                              f"{chal['avg_exposure']:.2f}) did not beat champion skill {champ['skill']:+.2%} (net "
-                              f"{champ['return']:+.2%} at {champ['avg_exposure']:.2f}) by more than "
+            return "killed", (f"challenger skill {chal['skill']:+.2%} (net {chal['return']:+.2%}, benchmark exposure "
+                              f"{chal['skill_exposure']:.2f}) did not beat champion skill {champ['skill']:+.2%} (net "
+                              f"{champ['return']:+.2%}, benchmark exposure {champ['skill_exposure']:.2f}) by more than "
                               f"{rules['min_return_edge']:.2%}{t_note}")
         floor = rules.get("min_skill")
         if absolute and floor is not None and chal["skill"] <= float(floor):
             return "killed", (f"challenger skill {chal['skill']:+.2%} beat the champion's {champ['skill']:+.2%} but "
-                              f"not the {float(floor):+.2%} floor: it did no better than holding the basket at its own "
-                              f"average exposure {chal['avg_exposure']:.2f}, so beating the champion shows the "
+                              f"not the {float(floor):+.2%} floor: it did no better than holding the basket at its usual "
+                              f"exposure {chal['skill_exposure']:.2f}, so beating the champion shows the "
                               f"champion is weak, not that this has an edge{t_note}")
     else:
         edge = chal["return"] - champ["return"]
@@ -202,9 +255,9 @@ def decide(champ: dict, chal: dict, rules: dict, absolute: bool = True) -> tuple
                           f"(the larger of {rules['max_dd_ratio']}x the champion's {champ_dd:.2%} and the "
                           f"{float(rules.get('max_dd_floor', 0.0)):.0%} floor) despite better return {edge:+.2%}")
     if on == "skill":
-        return "promoted", (f"challenger skill {chal['skill']:+.2%} (net {chal['return']:+.2%} at average exposure "
-                            f"{chal['avg_exposure']:.2f}) beat champion skill {champ['skill']:+.2%} (net "
-                            f"{champ['return']:+.2%} at {champ['avg_exposure']:.2f}) with max drawdown "
+        return "promoted", (f"challenger skill {chal['skill']:+.2%} (net {chal['return']:+.2%}, benchmark exposure "
+                            f"{chal['skill_exposure']:.2f}) beat champion skill {champ['skill']:+.2%} (net "
+                            f"{champ['return']:+.2%}, benchmark exposure {champ['skill_exposure']:.2f}) with max drawdown "
                             f"{chal_dd:.2%} vs {champ_dd:.2%}{t_note}")
     return "promoted", (f"challenger net return {chal['return']:+.2%} beat champion {champ['return']:+.2%} "
                         f"with max drawdown {chal_dd:.2%} vs {champ_dd:.2%}{t_note}")
@@ -284,7 +337,8 @@ def _fmt(d: dict, expected: float | None = None) -> str:
     if d.get("avg_exposure") is not None:
         s += f", average exposure {d['avg_exposure']:.2f}"
     if d.get("skill") is not None:
-        s += f", skill vs exposure matched basket {d['skill']:+.2%}"
+        s += (f", skill {d['skill']:+.2%} against the basket at its {d.get('skill_basis', 'window')} exposure "
+              f"{d['skill_exposure']:.2f}")
     if d.get("edge_t") is not None:
         s += f", daily edge t {d['edge_t']:+.1f} over {d['edge_days']} days"
     return s
@@ -357,7 +411,10 @@ def rule_on_shadow(now: int, rules: dict) -> None:
         print(f"[promote] shadow {meta['hypothesis']} guarding {meta['replaced_by']}: day {elapsed:.1f} of {rules['window_days']}")
         return
     start = int(meta["started_at"])
-    champ, shad, _ = paired(config.CHAMPION, config.SHADOW, start, now, meta["start_equity"], rules)
+    ue, changed = usual_exposures(meta, config.CHAMPION, config.SHADOW, start)
+    if changed:
+        shadow.save(meta)
+    champ, shad, _ = paired(config.CHAMPION, config.SHADOW, start, now, meta["start_equity"], rules, ue)
     verdict, reason = decide(champ, shad, rules, absolute=False)   # "promoted" here means the shadow beat the champion
     promoted_hyp = meta["replaced_by"]
     if verdict == "promoted":
@@ -413,7 +470,7 @@ def main(argv: list[str] | None = None) -> int:
         return 0
     for name, meta in testing:
         start, hyp = int(meta["started_at"]), meta["hypothesis"]
-        champ, chal, _ = paired(config.CHAMPION, name, start, now, meta["start_equity"], rules)
+        champ, chal, _ = paired_slot(name, meta, now, rules)
         reason = early_kill(chal, rules)
         if reason:
             verdicts.append((name, hyp, "killed", reason))
@@ -428,7 +485,7 @@ def main(argv: list[str] | None = None) -> int:
     # strongest winner first, so a second winner in the same hour is restarted, not promoted over it
     def strength(v):
         name, meta = v[0], slot.load(v[0])
-        champ_, chal_, _ = paired(config.CHAMPION, name, int(meta["started_at"]), now, meta["start_equity"], rules)
+        champ_, chal_, _ = paired_slot(name, meta, now, rules)
         key = "skill" if compare_on(rules, champ_, chal_) == "skill" else "return"
         return chal_[key] if chal_[key] is not None else -1e9
     verdicts.sort(key=lambda v: (v[2] != "promoted", -strength(v)))
@@ -437,7 +494,7 @@ def main(argv: list[str] | None = None) -> int:
     for name, hyp, verdict, reason in verdicts:
         meta = slot.load(name)
         start = int(meta["started_at"])
-        champ, chal, _ = paired(config.CHAMPION, name, start, now, meta["start_equity"], rules)
+        champ, chal, _ = paired_slot(name, meta, now, rules)
         if verdict == "promoted" and promoted_hyp is not None:
             reason = (f"beat the old champion ({reason}) but {promoted_hyp} won by more this hour and was promoted; "
                       f"restarted against the new champion with a fresh window")

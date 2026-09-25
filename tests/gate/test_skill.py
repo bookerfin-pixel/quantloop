@@ -95,3 +95,43 @@ def test_beating_a_weak_champion_is_not_enough_without_positive_skill():
     assert promote.decide(champ, real, rules)[0] == "promoted"
     assert promote.decide(champ, no_edge, {k: v for k, v in rules.items() if k != "min_skill"})[0] == "promoted"
     assert promote.decide(champ, no_edge, rules, absolute=False)[0] == "promoted"   # the shadow check
+
+
+def test_usual_exposure_credits_stepping_aside_for_a_whole_window():
+    """A slow trend follower that sat mostly in cash through a falling window.
+    On the window's own average exposure it scores nothing for that; on its
+    usual exposure (fixed before the window) it scores what it avoided."""
+    d = {"return": -0.03, "avg_exposure": 0.10}
+    window = promote.add_skill(dict(d), -0.30)
+    usual = promote.add_skill(dict(d), -0.30, usual_exposure=0.50)
+    assert window["skill"] == pytest.approx(0.0) and window["skill_basis"] == "window"
+    assert usual["skill"] == pytest.approx(-0.03 + 0.15) and usual["skill_basis"] == "usual"
+
+
+def test_usual_exposures_are_computed_once_per_test(sandbox, monkeypatch):
+    calls = []
+    monkeypatch.setattr(promote, "design_exposure", lambda cfg, before_ts, days=365: calls.append(before_ts) or 0.4)
+    monkeypatch.setattr(config, "account_cfg", lambda name: {"hypothesis": name, "strategy": "x", "params": {}})
+    meta = {"started_at": 1000}
+    ue, changed = promote.usual_exposures(meta, "champion", "challenger1", 1000)
+    assert changed and ue["champion"] == 0.4 and len(calls) == 2
+    ue, changed = promote.usual_exposures(meta, "champion", "challenger1", 1000)
+    assert not changed and len(calls) == 2                        # cached in the meta
+    ue, changed = promote.usual_exposures(meta, "champion", "challenger1", 5000)
+    assert changed and len(calls) == 4                            # a restarted window gets fresh ones
+
+
+def test_design_exposure_uses_only_data_from_before_the_test(monkeypatch):
+    seen = {}
+    import pandas as pd
+    from bot import backtest
+    frame = pd.DataFrame({"time": [0, 3600, 7200, 10800], "open": 1.0, "high": 1.0, "low": 1.0, "close": 1.0})
+    monkeypatch.setattr(config, "risk_cfg", lambda: {"pairs": ["BTC"]})
+    monkeypatch.setattr(backtest, "load_cached_candles", lambda pairs: {"BTC": frame})
+
+    def fake_run(candles, cfg, rcfg, max_days=None):
+        seen["last"] = int(candles["BTC"]["time"].max())
+        return {"avg_gross_exposure": 0.25}
+    monkeypatch.setattr(backtest, "run_backtest", fake_run)
+    assert promote.design_exposure({"hypothesis": "H9"}, before_ts=7200) == 0.25
+    assert seen["last"] == 3600
