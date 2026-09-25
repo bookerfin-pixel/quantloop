@@ -6,9 +6,10 @@
   "fees_paid": 52.21018844795558,
   "halted_day": null,
   "initial_cash": 10000.0,
-  "last_run_ts": 1790302874,
+  "last_run_ts": 1790306482,
   "n_trades": 32,
   "name": "challenger2",
   "positions": {},
-  "slippage_paid": 26.756897208640193
+  "slippage_paid": 26.756897208640193,
+  "strategy_sig": "params:\n  breakout_hours: 120\n  compression_hours: 168\n  exit_hours: 72\n  lookback_hours: 1440\n  max_weight: 0.25\n  squeeze_memory_hours: 72\n  target_vol_annual: 0.3\n  vol_lookback_hours: 168\n  vol_percentile: 0.25\nstrategy: vol_breakout\n"
 }
