@@ -1,21 +1,22 @@
 {
-  "cash": 0.0,
+  "cash": -1.1368683772161603e-13,
   "created_at": 1790310197,
   "day": "2026-09-25",
   "day_open_equity": 10000.0,
-  "fees_paid": 12.186806061309532,
+  "fees_paid": 15.410294739920776,
   "halted_day": null,
   "initial_cash": 10000.0,
-  "last_run_ts": 1790335355,
-  "n_trades": 7,
+  "last_run_ts": 1790339270,
+  "n_trades": 11,
   "name": "challenger4",
   "positions": {
-    "ADA": 10041.495788643193,
+    "ADA": 6709.392140623368,
+    "DOT": 836.242667944161,
     "LINK": 146.2646415391932,
-    "LTC": 35.27564939207534,
-    "SOL": 9.070431807328532,
+    "LTC": 24.34347627351614,
+    "SOL": 14.224899690735892,
     "XRP": 1299.7147106469863
   },
-  "slippage_paid": 6.090907600082698,
+  "slippage_paid": 7.739897499304914,
   "strategy_sig": "params:\n  ema_exit_buffer: 0.02\n  ema_hours: 24\n  entry_return: 0.01\n  exit_return: -0.01\n  lookback_hours: 72\n  max_weight: 0.25\n  target_vol_annual: 0.3\n  vol_lookback_hours: 168\nstrategy: ts_momentum\n"
 }
