@@ -1,14 +1,14 @@
 # The agent edits this file. When it differs from champion.yaml the bot starts a
 # prospective test in this slot automatically. `hypothesis` must match the newest
 # entry in LEDGER.md.
-hypothesis: H0
+hypothesis: H4
 strategy: ts_momentum
 params:
-  lookback_hours: 72
-  ema_hours: 24
-  entry_return: 0.01
-  exit_return: -0.01
-  ema_exit_buffer: 0.02
+  lookback_hours: 720
+  ema_hours: 168
+  entry_return: 0.05
+  exit_return: -0.05
+  ema_exit_buffer: 0.05
   vol_lookback_hours: 168
   target_vol_annual: 0.3
   max_weight: 0.25
