@@ -98,7 +98,14 @@ def step(acct: paper.PaperAccount, cfg: dict, fn, candles: dict, prices: dict[st
                 action = fill.side
             else:
                 action = "none"
-                why = "no fill possible (no cash or no position)"
+                if delta > 0:
+                    # Not a bug: see FINDINGS, blocked entries. Funding the buy by
+                    # trimming other positions was tested on H0 and H4 over one and
+                    # two years (2026-09-25 and 2026-09-27) and did not pay.
+                    why = ("waits for cash: the book is fully invested and no position is far enough above "
+                           "its target to trim, so this buy fills when an exit or a bigger drift frees cash")
+                else:
+                    why = "no fill possible (no position to sell)"
         by_pair[pair] = {
             "ts": ts, "account": name, "pair": pair, "price": round(prices[pair], 6),
             "signal_weight": round(sig_w, 4), "target_weight": round(tgt_w, 4),

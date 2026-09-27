@@ -82,6 +82,18 @@ If every slot is busy (a test running in each):
   reason that contradicts its action, weights stuck at zero with no stated
   cause, a pair never trading, fills far larger than a weight change implies.
 - Check the Data section of the summary for missing hours.
+- Some behaviour looks like a bug but has been measured and kept on purpose.
+  Do not flag it again unless it gets materially bigger:
+  - "waits for cash" rows. When the book is fully invested, a buy waits until
+    an exit or a bigger drift frees cash. Funding it by trimming the other
+    positions was tested on H0 and H4 over one and two years and did not
+    improve results (FINDINGS, blocked entries). Flag it only if a new entry,
+    a pair going from flat to a position, waits more than 24 hours.
+  - A strategy sitting flat because its entry condition is not met. Only a
+    reason like "only N candles, need M" is a data problem. H2 flat on "vol
+    not at or below its own percentile" means no coin has had a squeeze; the
+    old candle ramp up concern was resolved on 2026-09-21 and no longer
+    applies to anything.
 - If you find a bug in bot/strategy.py, fix it with a test in tests/, and
   write the note. A bug fix that changes behaviour is still a strategy
   change and needs a ledger entry; if it would confound the running test,

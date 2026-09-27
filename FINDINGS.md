@@ -189,7 +189,16 @@ the machinery, not edge.
   but added 40% more fills and moved the one year result by -0.1 points, so
   it was not adopted. The loop now fills reductions before additions within
   an hour (2026-09-25), which was worth +0.6 to +1.3 points a year on H0, H1
-  and H2 in backtest with no extra fills.
+  and H2 in backtest with no extra fills. Retested 2026-09-27 on the live
+  code with H4 included, over 365 and 700 days (H0 / H4 net return):
+  current rule -62.5% / -7.9% and -68.8% / +43.8%; sharing scarce cash pro
+  rata -61.6% / -10.4% and -68.0% / +35.2%; trimming to fund new entries only
+  -63.7% / -6.2% and -72.5% / +42.4%, with 40-47% more fills. No variant beat
+  the current rule across the board, so blocked buys stay as they are and the
+  log now says "waits for cash" instead of "no fill possible". Since sells
+  started filling first, the champion had a blocked buy in 12 of 51 hourly
+  runs (it was 111 of 216 before), and the longest wait for a new entry was
+  two hours.
 
 ## Overturned
 

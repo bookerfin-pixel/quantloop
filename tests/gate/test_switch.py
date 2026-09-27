@@ -93,3 +93,23 @@ def test_an_account_from_before_the_rule_is_not_disturbed_on_deploy(sandbox):
     run_account("challenger1", candles(), PRICES, ts, RCFG)
     state = json.loads((sandbox / "state" / "challenger1" / "account.json").read_text())
     assert state["positions"].get("BTC", 0) > 0 and state["strategy_sig"]
+
+
+def test_a_buy_that_waits_for_cash_says_so():
+    """Fully invested in BTC and SOL, each just inside the rebalance threshold
+    above its new target; the strategy now also wants ETH. Nothing is far
+    enough over target to trim, so the ETH buy waits, and the log says why
+    instead of reading like an error."""
+    pairs = ["BTC", "ETH", "SOL"]
+    src = data.SyntheticSource(pairs, n=300, seed=3, start=1_700_000_000)
+    c3 = {p: src.ohlc(p) for p in pairs}
+    prices = {"BTC": 100.0, "ETH": 50.0, "SOL": 20.0}
+    acct = paper.PaperAccount("t", 10_000, 10, 5)
+    acct.trade("BTC", 4_990.0, 100.0, 1, "seed")
+    acct.trade("SOL", 4_990.0, 20.0, 1, "seed")
+    acct.state["cash"] = 0.0
+    want = lambda c, p, w: {"BTC": strategy.Target(0.46, "stay"), "SOL": strategy.Target(0.46, "stay"),  # noqa: E731
+                            "ETH": strategy.Target(0.08, "enter")}
+    decisions, fills, _ = step(acct, {"params": {}}, want, c3, prices, 1_700_000_000, {**RCFG, "max_weight_per_pair": 1.0})
+    eth = next(d for d in decisions if d["pair"] == "ETH")
+    assert not fills and eth["action"] == "none" and eth["reason"].startswith("waits for cash")
