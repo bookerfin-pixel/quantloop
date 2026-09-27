@@ -76,3 +76,4 @@ ts,account,pair,side,qty,price,ref_price,notional,fee,slippage_cost,reason,equit
 1790436093,champion,LTC,sell,9.59133678,72.8585525,72.895,698.81091442,0.69881091,0.34958025,stay long: 72h return +20.04% vs exit band -1.0% and price above 24h EMA; realised vol 113% -> weight 0.25,12489.59610663,2.0577543,5.0
 1790436093,champion,AVAX,buy,147.43149893,11.08554,11.08,1634.35777867,1.63435778,0.8167705,enter long: 72h return +5.49% vs entry band +1.0% and price above 24h EMA; realised vol 133% -> weight 0.23,12487.14497835,0.90252708,5.0
 1790436093,champion,DOGE,buy,18175.92464,0.09845915,0.09840995,1789.58618094,1.78958618,0.89434592,enter long: 72h return +3.14% vs entry band +1.0% and price above 24h EMA; realised vol 87% -> weight 0.25,12484.46104625,0.33025116,5.0
+1790522480,champion,LTC,sell,24.82638872,70.874545,70.91,1759.55900418,1.759559,0.88021961,exit: 72h return -2.82% fell below exit band -1.0%,12251.7737694,1.41023833,5.0
