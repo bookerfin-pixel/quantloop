@@ -2887,3 +2887,13 @@ ts,account,pair,price,signal_weight,target_weight,current_weight,action,reason,h
 1790601927,champion,DOGE,0.093993,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -4.25% not above entry band +1.0% and price below 24h EMA,0.005
 1790601927,champion,DOT,1.18605,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -0.43% not above entry band +1.0% and price below 24h EMA,2.108
 1790601927,champion,LTC,70.475,0.25,0.25,0.2455,hold,hold: weight change +0.005 below threshold 0.05 | stay long: 72h return +1.16% vs exit band -1.0% and price within 2.0% of 24h EMA; realised vol 106% -> weight 0.25,3.547
+1790605646,champion,BTC,83424.95,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | daily halt: equity 11725.68 is down 5.1% from the day's open 12356.82,0.006
+1790605646,champion,ETH,2680.445,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | daily halt: equity 11725.68 is down 5.1% from the day's open 12356.82,0.019
+1790605646,champion,SOL,119.045,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | daily halt: equity 11725.68 is down 5.1% from the day's open 12356.82,0.42
+1790605646,champion,ADA,0.245204,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | daily halt: equity 11725.68 is down 5.1% from the day's open 12356.82,4.241
+1790605646,champion,AVAX,10.379,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | daily halt: equity 11725.68 is down 5.1% from the day's open 12356.82,1.927
+1790605646,champion,LINK,14.377155,0.0,0.0,0.248,sell,daily halt: equity 11725.68 is down 5.1% from the day's open 12356.82,4.886
+1790605646,champion,XRP,1.503375,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | daily halt: equity 11725.68 is down 5.1% from the day's open 12356.82,1.031
+1790605646,champion,DOGE,0.092931,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | daily halt: equity 11725.68 is down 5.1% from the day's open 12356.82,1.038
+1790605646,champion,DOT,1.1719,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | daily halt: equity 11725.68 is down 5.1% from the day's open 12356.82,3.413
+1790605646,champion,LTC,69.615,0.0,0.0,0.2442,sell,daily halt: equity 11725.68 is down 5.1% from the day's open 12356.82,2.155
