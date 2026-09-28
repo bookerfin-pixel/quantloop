@@ -2817,3 +2817,13 @@ ts,account,pair,price,signal_weight,target_weight,current_weight,action,reason,h
 1790620002,challenger3,DOGE,0.094788,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: low 0.08471 not a higher low vs prior low 0.07876 (need +10.0%),0.005
 1790620002,challenger3,DOT,1.1935,0.25,0.1667,0.1673,hold,hold: weight change -0.001 below threshold 0.05 | stay long: price 1.188 still above the 48h low 1.162; realised vol 95% -> weight 0.25,0.838
 1790620002,challenger3,LTC,69.33,0.25,0.1667,0.0,buy,enter long: higher low 56.44 vs prior low 50.28 (+12.3%) then broke above the reaction high 56.44 at 69.36; realised vol 106% -> weight 0.25,1.442
+1790623394,challenger3,BTC,83645.55,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: low 8.023e+04 not a higher low vs prior low 7.542e+04 (need +10.0%),0.006
+1790623394,challenger3,ETH,2681.595,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: low 2571 not a higher low vs prior low 2388 (need +10.0%),0.019
+1790623394,challenger3,SOL,118.965,0.25,0.1667,0.1669,hold,hold: weight change -0.000 below threshold 0.05 | stay long: price 119.9 still above the 48h low 117.7; realised vol 52% -> weight 0.25,0.42
+1790623394,challenger3,ADA,0.24618,0.25,0.1667,0.1667,hold,hold: weight change -0.000 below threshold 0.05 | stay long: price 0.2495 still above the 48h low 0.2409; realised vol 84% -> weight 0.25,2.701
+1790623394,challenger3,AVAX,10.4035,0.25,0.1667,0.1669,hold,hold: weight change -0.000 below threshold 0.05 | stay long: price 10.52 still above the 48h low 10.23; realised vol 93% -> weight 0.25,2.403
+1790623394,challenger3,LINK,15.089575,0.25,0.1667,0.1697,hold,hold: weight change -0.003 below threshold 0.05 | stay long: price 15.25 still above the 48h low 13.57; realised vol 102% -> weight 0.25,2.84
+1790623394,challenger3,XRP,1.49492,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: low 1.37 not a higher low vs prior low 1.265 (need +10.0%),0.268
+1790623394,challenger3,DOGE,0.093938,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: low 0.08471 not a higher low vs prior low 0.07876 (need +10.0%),0.09
+1790623394,challenger3,DOT,1.17095,0.25,0.1667,0.1658,hold,hold: weight change +0.001 below threshold 0.05 | stay long: price 1.188 still above the 48h low 1.162; realised vol 95% -> weight 0.25,2.135
+1790623394,challenger3,LTC,69.155,0.25,0.1667,0.164,hold,hold: weight change +0.003 below threshold 0.05 | stay long: price 69.51 still above the 48h low 69.32; realised vol 106% -> weight 0.25,0.723
