@@ -2777,3 +2777,13 @@ ts,account,pair,price,signal_weight,target_weight,current_weight,action,reason,h
 1790605646,challenger3,DOGE,0.092931,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: low 0.08471 not a higher low vs prior low 0.07876 (need +10.0%),1.038
 1790605646,challenger3,DOT,1.1719,0.25,0.1667,0.243,sell,stay long: price 1.192 still above the 48h low 1.188; realised vol 94% -> weight 0.25,3.413
 1790605646,challenger3,LTC,69.615,0.25,0.1667,0.0,buy,enter long: higher low 55.44 vs prior low 50.28 (+10.3%) then broke above the reaction high 55.8 at 70.33; realised vol 106% -> weight 0.25,2.155
+1790609193,challenger3,BTC,82931.25,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: low 8.023e+04 not a higher low vs prior low 7.542e+04 (need +10.0%),0.006
+1790609193,challenger3,ETH,2664.99,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: low 2571 not a higher low vs prior low 2388 (need +10.0%),0.6
+1790609193,challenger3,SOL,118.205,0.25,0.25,0.1667,buy,stay long: price 118 still above the 48h low 117.7; realised vol 52% -> weight 0.25,0.423
+1790609193,challenger3,ADA,0.242699,0.0,0.0,0.1662,sell,exit: closed 0.2409 below the 48h low 0.2424,4.12
+1790609193,challenger3,AVAX,10.255,0.0,0.0,0.166,sell,exit: closed 10.23 below the 48h low 10.35,0.975
+1790609193,challenger3,LINK,14.283705,0.25,0.25,0.1668,buy,stay long: price 14.18 still above the 48h low 13.57; realised vol 94% -> weight 0.25,5.177
+1790609193,challenger3,XRP,1.491105,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: low 1.37 not a higher low vs prior low 1.265 (need +10.0%),2.448
+1790609193,challenger3,DOGE,0.09278,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: low 0.08471 not a higher low vs prior low 0.07876 (need +10.0%),0.005
+1790609193,challenger3,DOT,1.1633,0.0,0.0,0.1667,sell,exit: closed 1.162 below the 48h low 1.188,4.298
+1790609193,challenger3,LTC,69.715,0.0,0.0,0.1675,sell,exit: closed 69.57 below the 48h low 70.1,3.586
