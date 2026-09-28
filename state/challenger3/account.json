@@ -1,20 +1,18 @@
 {
-  "cash": 0.0,
+  "cash": 5692.522348687888,
   "created_at": 1789600850,
   "day": "2026-09-28",
   "day_open_equity": 11575.014744871409,
-  "fees_paid": 106.60039021506016,
+  "fees_paid": 112.2986107843173,
   "halted_day": "2026-09-23",
   "initial_cash": 10000.0,
-  "last_run_ts": 1790587625,
-  "n_trades": 63,
+  "last_run_ts": 1790591130,
+  "n_trades": 65,
   "name": "challenger3",
   "positions": {
     "ADA": 11635.504122507284,
-    "AVAX": 271.9506782132182,
-    "DOT": 2369.362573573185,
-    "LINK": 208.39586833216873
+    "AVAX": 271.9506782132182
   },
-  "slippage_paid": 55.428029482114596,
+  "slippage_paid": 58.37736946880303,
   "strategy_sig": "params:\n  exit_hours: 48\n  max_weight: 0.25\n  min_higher_low: 0.1\n  recent_hours: 240\n  target_vol_annual: 0.3\n  vol_lookback_hours: 168\nstrategy: swing_reversal\n"
 }
