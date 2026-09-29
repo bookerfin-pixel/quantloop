@@ -121,3 +121,4 @@ ts,account,pair,side,qty,price,ref_price,notional,fee,slippage_cost,reason,equit
 1790702605,challenger3,LTC,buy,4.89882328,67.3486575,67.315,329.92917094,0.32992917,0.16488214,enter long: higher low 56.67 vs prior low 50.28 (+12.7%) then broke above the reaction high 59.1 at 67.87; realised vol 104% -> weight 0.25,11199.5371808,0.7427765,5.0
 1790706494,challenger3,LTC,sell,4.89882328,67.3912875,67.425,330.13800778,0.33013801,0.16515158,exit: closed 67.11 below the 48h low 67.41,11285.54127597,0.7415647,5.0
 1790709884,challenger3,LTC,buy,4.86790443,67.683825,67.65,329.47839138,0.32947839,0.16465687,enter long: higher low 56.67 vs prior low 50.28 (+12.7%) then broke above the reaction high 59.1 at 67.55; realised vol 105% -> weight 0.25,11365.93211518,1.4781966,5.0
+1790720599,challenger3,LTC,sell,4.86790443,67.0814425,67.115,326.54605094,0.32654605,0.1633547,exit: closed 67.1 below the 48h low 67.11,11404.42803906,2.23496983,5.0
