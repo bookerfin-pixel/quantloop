@@ -1,15 +1,17 @@
 {
-  "cash": 10965.712899859316,
+  "cash": 8221.543246669522,
   "created_at": 1789600850,
   "day": "2026-09-29",
   "day_open_equity": 10965.712899859316,
-  "fees_paid": 52.21018844795558,
+  "fees_paid": 54.95161667292041,
   "halted_day": null,
   "initial_cash": 10000.0,
-  "last_run_ts": 1790681011,
-  "n_trades": 32,
+  "last_run_ts": 1790685035,
+  "n_trades": 33,
   "name": "challenger2",
-  "positions": {},
-  "slippage_paid": 26.756897208640193,
+  "positions": {
+    "ETH": 1.0008339603754492
+  },
+  "slippage_paid": 28.12692630657344,
   "strategy_sig": "params:\n  breakout_hours: 120\n  compression_hours: 168\n  exit_hours: 72\n  lookback_hours: 1440\n  max_weight: 0.25\n  squeeze_memory_hours: 72\n  target_vol_annual: 0.3\n  vol_lookback_hours: 168\n  vol_percentile: 0.25\nstrategy: vol_breakout\n"
 }
