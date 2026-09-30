@@ -3277,3 +3277,13 @@ ts,account,pair,price,signal_weight,target_weight,current_weight,action,reason,h
 1790785677,challenger3,DOGE,0.095205,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: low 0.0858 not a higher low vs prior low 0.07876 (need +10.0%),0.095
 1790785677,challenger3,DOT,1.24595,0.25,0.1667,0.209,hold,hold: weight change -0.042 below threshold 0.05 | stay long: price 1.233 still above the 48h low 1.151; realised vol 98% -> weight 0.25,1.204
 1790785677,challenger3,LTC,67.25,0.25,0.1667,0.0283,none,"waits for cash: the book is fully invested and no position is far enough above its target to trim, so this buy fills when an exit or a bigger drift frees cash | stay long: price 67.09 still above the 48h low 66.59; realised vol 99% -> weight 0.25",2.974
+1790789099,challenger3,BTC,84046.35,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: low 8.093e+04 not a higher low vs prior low 7.542e+04 (need +10.0%),0.006
+1790789099,challenger3,ETH,2683.335,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: low 2626 not a higher low vs prior low 2388 (need +10.0%),0.019
+1790789099,challenger3,SOL,119.615,0.25,0.125,0.1987,sell,stay long: price 120.3 still above the 48h low 116.9; realised vol 58% -> weight 0.25,0.418
+1790789099,challenger3,ADA,0.247694,0.25,0.125,0.199,sell,stay long: price 0.2495 still above the 48h low 0.2405; realised vol 87% -> weight 0.25,0.02
+1790789099,challenger3,AVAX,10.9835,0.25,0.125,0.2054,sell,stay long: price 11.03 still above the 48h low 10.33; realised vol 99% -> weight 0.25,1.366
+1790789099,challenger3,LINK,14.37493,0.25,0.125,0.1594,hold,hold: weight change -0.034 below threshold 0.05 | stay long: price 14.44 still above the 48h low 14.21; realised vol 106% -> weight 0.25,3.096
+1790789099,challenger3,XRP,1.50424,0.25,0.125,0.0,buy,enter long: higher low 1.402 vs prior low 1.265 (+10.8%) then broke above the reaction high 1.438 at 1.511; realised vol 68% -> weight 0.25,0.399
+1790789099,challenger3,DOGE,0.094669,0.25,0.125,0.0,buy,enter long: higher low 0.08663 vs prior low 0.07876 (+10.0%) then broke above the reaction high 0.08982 at 0.09518; realised vol 65% -> weight 0.25,0.254
+1790789099,challenger3,DOT,1.24605,0.25,0.125,0.2093,sell,stay long: price 1.244 still above the 48h low 1.151; realised vol 98% -> weight 0.25,1.204
+1790789099,challenger3,LTC,66.935,0.25,0.125,0.0282,buy,stay long: price 67.39 still above the 48h low 66.59; realised vol 99% -> weight 0.25,0.747
