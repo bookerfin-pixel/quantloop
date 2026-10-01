@@ -103,3 +103,5 @@ ts,account,pair,side,qty,price,ref_price,notional,fee,slippage_cost,reason,equit
 1790782116,champion,AVAX,sell,259.5610809,10.82208625,10.8275,2808.99240462,2.8089924,1.4051988,exit: price more than 2.0% below 24h EMA,11250.89037398,0.46178712,5.0
 1790782116,champion,LINK,sell,195.4850853,14.12697304,14.134805,2761.61252961,2.76161253,1.53103156,exit: price more than 2.0% below 24h EMA,11246.59772988,3.54090488,5.54090488
 1790821430,champion,ETH,buy,1.04616862,2687.5681125,2686.225,2811.64943247,2.81164943,1.40512216,enter long: 72h return +1.16% vs entry band +1.0% and price above 24h EMA; realised vol 37% -> weight 0.25,11242.3809583,0.01861348,5.0
+1790825120,champion,AVAX,buy,254.21273931,11.053524,11.048,2809.94661503,2.80994662,1.40427117,enter long: 72h return +2.62% vs entry band +1.0% and price above 24h EMA; realised vol 99% -> weight 0.25,11235.57224232,1.8102824,5.0
+1790825120,champion,LINK,buy,194.99757993,14.41016148,14.40296,2809.94661503,2.80994662,1.40427117,enter long: 72h return +2.21% vs entry band +1.0% and price above 24h EMA; realised vol 106% -> weight 0.25,11231.35802454,1.77741242,5.0
