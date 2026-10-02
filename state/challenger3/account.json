@@ -1,22 +1,23 @@
 {
-  "cash": -1.1368683772161603e-13,
+  "cash": -2.2737367544323206e-13,
   "created_at": 1789600850,
   "day": "2026-10-02",
   "day_open_equity": 11201.073262322618,
-  "fees_paid": 228.54170743399908,
+  "fees_paid": 232.47574179255628,
   "halted_day": "2026-09-23",
   "initial_cash": 10000.0,
-  "last_run_ts": 1790915090,
-  "n_trades": 155,
+  "last_run_ts": 1790918606,
+  "n_trades": 160,
   "name": "challenger3",
   "positions": {
     "ADA": 7552.276501800787,
-    "DOGE": 23682.25821241775,
-    "ETH": 0.832737019400594,
+    "DOGE": 16991.2857942666,
+    "DOT": 1039.573347105496,
+    "ETH": 0.5980596984402475,
     "LINK": 117.60153423286705,
-    "LTC": 33.13940501864507,
-    "SOL": 7.640854029424222
+    "LTC": 23.334302028753058,
+    "SOL": 13.280719057569737
   },
-  "slippage_paid": 118.92345817163336,
+  "slippage_paid": 120.89047682617493,
   "strategy_sig": "params:\n  exit_hours: 48\n  max_weight: 0.25\n  min_higher_low: 0.1\n  recent_hours: 240\n  target_vol_annual: 0.3\n  vol_lookback_hours: 168\nstrategy: swing_reversal\n"
 }
