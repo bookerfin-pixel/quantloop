@@ -1,12 +1,12 @@
 {
   "cash": -2.2737367544323206e-13,
   "created_at": 1789530957,
-  "day": "2026-10-01",
-  "day_open_equity": 11246.597729884881,
+  "day": "2026-10-02",
+  "day_open_equity": 11029.680883753652,
   "fees_paid": 214.78212426836186,
   "halted_day": "2026-09-28",
   "initial_cash": 10000.0,
-  "last_run_ts": 1790896869,
+  "last_run_ts": 1790901105,
   "n_trades": 135,
   "name": "champion",
   "positions": {
