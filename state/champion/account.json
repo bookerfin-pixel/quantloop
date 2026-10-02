@@ -1,23 +1,19 @@
 {
-  "cash": 2498.656784152462,
+  "cash": 2717.024857659176,
   "created_at": 1789530957,
   "day": "2026-10-02",
   "day_open_equity": 11029.680883753652,
-  "fees_paid": 224.66402113278977,
+  "fees_paid": 233.97593732795636,
   "halted_day": "2026-09-28",
   "initial_cash": 10000.0,
-  "last_run_ts": 1790965714,
-  "n_trades": 146,
+  "last_run_ts": 1790969085,
+  "n_trades": 153,
   "name": "champion",
   "positions": {
-    "ADA": 4960.189852925001,
-    "BTC": 0.014448600764730445,
-    "DOGE": 13064.151810443367,
-    "DOT": 1031.8490110433693,
-    "ETH": 0.4535446515035415,
-    "LTC": 17.833248651965665,
-    "SOL": 10.256576590041076
+    "BTC": 0.03242042593845372,
+    "LTC": 39.91058496495431,
+    "SOL": 23.132092648053067
   },
-  "slippage_paid": 115.29267002263215,
+  "slippage_paid": 120.06840369890006,
   "strategy_sig": "params:\n  ema_exit_buffer: 0.02\n  ema_hours: 24\n  entry_return: 0.01\n  exit_return: -0.01\n  lookback_hours: 72\n  max_weight: 0.25\n  target_vol_annual: 0.3\n  vol_lookback_hours: 168\nstrategy: ts_momentum\n"
 }
