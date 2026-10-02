@@ -144,3 +144,4 @@ ts,account,pair,side,qty,price,ref_price,notional,fee,slippage_cost,reason,equit
 1790911496,champion,DOT,buy,1031.84901104,1.19334638,1.19275,1231.35327688,1.23135328,0.61536895,enter long: 72h return +4.01% vs entry band +1.0% and price above 24h EMA; realised vol 96% -> weight 0.25,11072.9440337,1.25759799,5.0
 1790911496,champion,LTC,buy,17.83324865,68.6343,68.6,1223.97253795,1.22397254,0.61168043,enter long: 72h return +2.10% vs entry band +1.0% and price above 24h EMA; realised vol 61% -> weight 0.25,11071.10838073,1.45772595,5.0
 1790929610,champion,AVAX,sell,112.0661226,11.1254345,11.131,1246.78430669,1.24678431,0.62370401,exit: 72h return -3.06% fell below exit band -1.0%,11330.92995871,0.89839188,5.0
+1790951221,champion,XRP,sell,820.10673531,1.52952486,1.53029,1254.3736354,1.25437364,0.62750057,exit: 72h return -1.04% fell below exit band -1.0%,11269.78458275,0.45742964,5.0
