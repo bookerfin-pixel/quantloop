@@ -155,3 +155,5 @@ ts,account,pair,side,qty,price,ref_price,notional,fee,slippage_cost,reason,equit
 1790976218,champion,SOL,sell,23.13209265,117.9260075,117.985,2727.87533111,2.72787533,1.36461998,exit: 72h return -1.07% fell below exit band -1.0%,10950.68725422,0.42378268,5.0
 1791012305,champion,SOL,buy,22.92437236,119.3646525,119.305,2736.35974091,2.73635974,1.36749612,enter long: 72h return +1.17% vs entry band +1.0% and price above 24h EMA; realised vol 58% -> weight 0.25,10941.33510776,0.41909392,5.0
 1791037929,champion,SOL,sell,22.92437236,119.4252575,119.485,2737.74907249,2.73774907,1.36955932,exit: 72h return -1.29% fell below exit band -1.0%,10967.33900888,0.41846257,5.0
+1791054161,champion,SOL,buy,22.81890577,119.8548975,119.795,2734.9576122,2.73495761,1.36679541,enter long: 72h return +1.09% vs entry band +1.0% and price above 24h EMA; realised vol 58% -> weight 0.25,10935.72869578,0.41737969,5.0
+1791054161,champion,AVAX,buy,243.02380303,11.1005475,11.095,2697.69726913,2.69769727,1.34817455,enter long: 72h return +1.51% vs entry band +1.0% and price above 24h EMA; realised vol 94% -> weight 0.25,10931.68282396,0.90130689,5.0
