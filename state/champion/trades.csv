@@ -153,3 +153,4 @@ ts,account,pair,side,qty,price,ref_price,notional,fee,slippage_cost,reason,equit
 1790969085,champion,SOL,buy,12.87551606,117.9939675,117.935,1519.23322329,1.51923322,0.75923699,stay long: 72h return -0.83% vs exit band -1.0% and price within 2.0% of 24h EMA; realised vol 59% -> weight 0.25,10903.54708293,0.42396235,5.0
 1790969085,champion,LTC,buy,22.07733631,68.3891775,68.355,1509.85087184,1.50985087,0.75454816,stay long: 72h return +1.35% vs exit band -1.0% and price within 2.0% of 24h EMA; realised vol 65% -> weight 0.25,10901.28268389,2.19442616,5.0
 1790976218,champion,SOL,sell,23.13209265,117.9260075,117.985,2727.87533111,2.72787533,1.36461998,exit: 72h return -1.07% fell below exit band -1.0%,10950.68725422,0.42378268,5.0
+1791012305,champion,SOL,buy,22.92437236,119.3646525,119.305,2736.35974091,2.73635974,1.36749612,enter long: 72h return +1.17% vs entry band +1.0% and price above 24h EMA; realised vol 58% -> weight 0.25,10941.33510776,0.41909392,5.0
