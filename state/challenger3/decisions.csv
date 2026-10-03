@@ -3827,3 +3827,13 @@ ts,account,pair,price,signal_weight,target_weight,current_weight,action,reason,h
 1790983238,challenger3,DOGE,0.092614,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: higher low confirmed but 0.09242 not above reaction high 0.1039,0.005
 1790983238,challenger3,DOT,1.1444,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: higher low confirmed but 1.144 not above reaction high 1.218,1.748
 1790983238,challenger3,LTC,69.325,0.25,0.25,0.2526,hold,hold: weight change -0.003 below threshold 0.05 | stay long: price 69.41 still above the 48h low 66.92; realised vol 63% -> weight 0.25,0.721
+1790987398,challenger3,BTC,84550.15,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: low 8.263e+04 not a higher low vs prior low 7.542e+04 (need +10.0%),0.006
+1790987398,challenger3,ETH,2672.485,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: higher low confirmed but 2668 not above reaction high 2784,0.019
+1790987398,challenger3,SOL,118.995,0.25,0.25,0.249,hold,hold: weight change +0.001 below threshold 0.05 | stay long: price 118.6 still above the 48h low 117.1; realised vol 59% -> weight 0.25,0.42
+1790987398,challenger3,ADA,0.246335,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: higher low confirmed but 0.2445 not above reaction high 0.2599,0.02
+1790987398,challenger3,AVAX,10.8765,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: higher low confirmed but 10.8 not above reaction high 11.55,0.46
+1790987398,challenger3,LINK,13.88554,0.25,0.25,0.251,hold,hold: weight change -0.001 below threshold 0.05 | stay long: price 13.8 still above the 48h low 13.56; realised vol 96% -> weight 0.25,0.691
+1790987398,challenger3,XRP,1.489005,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: higher low confirmed but 1.484 not above reaction high 1.638,0.034
+1790987398,challenger3,DOGE,0.093404,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: higher low confirmed but 0.09291 not above reaction high 0.1039,0.005
+1790987398,challenger3,DOT,1.16445,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: higher low confirmed but 1.154 not above reaction high 1.218,0.429
+1790987398,challenger3,LTC,70.92,0.25,0.25,0.256,hold,hold: weight change -0.006 below threshold 0.05 | stay long: price 69.88 still above the 48h low 66.92; realised vol 63% -> weight 0.25,1.41
