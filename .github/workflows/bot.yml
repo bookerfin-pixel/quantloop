@@ -2,6 +2,14 @@ name: bot
 
 # Hourly paper trading loop. Pulls Kraken data, runs the champion and every
 # challenger slot, rules on finished tests, rewrites the summary, commits state.
+#
+# Two triggers on purpose. GitHub's own schedule is best effort and dropped runs
+# for hours at a time from 2026-10-03, so an outside scheduler (cron-job.org)
+# also starts this workflow every hour through workflow_dispatch. Whichever
+# arrives second finds the hour already done and stops before the commit;
+# hours that neither delivered are replayed by the next run (see bot/run.py).
+# A run that cannot get the candle that just closed fails on purpose: a red
+# run here means Kraken's feed was down or behind, and the next run catches up.
 on:
   schedule:
     - cron: "7 * * * *"   # :07 past every hour; GitHub delays jobs scheduled on the hour
@@ -17,10 +25,15 @@ concurrency:
 jobs:
   run:
     runs-on: ubuntu-latest
-    timeout-minutes: 25
+    timeout-minutes: 35
     steps:
+      # The tip of main when the job starts, not the commit that triggered it.
+      # A second trigger waits in the queue behind the first (concurrency above);
+      # checked out at its own trigger commit it would not see the hour the first
+      # one just recorded, would decide it again, and then fail to push.
       - uses: actions/checkout@v4
         with:
+          ref: main
           fetch-depth: 1
 
       - uses: actions/setup-python@v5
@@ -32,12 +45,15 @@ jobs:
         run: pip install -q -r requirements.txt
 
       - name: Run accounts
+        id: run
         run: python -m bot.run
 
       - name: Rule on challengers and the shadow
+        if: steps.run.outputs.skipped != '1'
         run: python -m bot.promote
 
       - name: Summary
+        if: steps.run.outputs.skipped != '1'
         run: |
           python -m bot.report
           echo '## quantloop hourly run' >> "$GITHUB_STEP_SUMMARY"
@@ -47,6 +63,7 @@ jobs:
           echo '```' >> "$GITHUB_STEP_SUMMARY"
 
       - name: Commit state
+        if: steps.run.outputs.skipped != '1'
         run: |
           git config user.name "quantloop-bot"
           git config user.email "quantloop-bot@users.noreply.github.com"

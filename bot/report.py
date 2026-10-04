@@ -30,7 +30,11 @@ def account_section(name: str, now: int) -> str:
         lines.append("no runs yet")
         return "\n".join(lines) + "\n"
     st = json.loads(acct_path.read_text())
-    st.setdefault("name", name)
+    # The folder is the account's identity. challenger1's file still said
+    # "challenger" from before the slots were numbered, so its open positions
+    # were marked from a decisions log that does not exist and counted as zero
+    # (found by the agent on 2026-10-04: DOGE at -19,990 bps per round trip).
+    st["name"] = name
     eq = pd.read_csv(adir / "equity.csv") if (adir / "equity.csv").exists() else pd.DataFrame()
     tr = pd.read_csv(adir / "trades.csv") if (adir / "trades.csv").exists() else pd.DataFrame()
     if len(eq):

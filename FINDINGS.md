@@ -81,15 +81,21 @@ hypotheses.
   2026-09-21 calibration entry below) and H2's clock was restarted on the
   fixed code. Since then H2 has been flat because no pair has had a
   volatility squeeze: the basket's realised vol has run 61-68% annualised
-  through this rally, and the backtest engine replaying the same hours from
-  the same data also makes 0 trades (checked 2026-09-25). A flat H2 is a
-  reading of the market now, not a data artifact; notes that call it "the
-  ramp-up issue" are out of date.
+  through this rally. A flat H2 is a reading of the market now, not a data
+  artifact; notes that call it "the ramp-up issue" are out of date.
+  Correction 2026-10-04: this entry used to add that a backtest over the same
+  hours "also makes 0 trades (checked 2026-09-25)". That check proved
+  nothing, because short backtests then starved strategies of history (see
+  the 2026-10-04 calibration entry). The live reason text was the evidence.
+  With the engine fixed the backtest does reproduce live H2: 2 fills against
+  2 over 25 Sep to 4 Oct.
 
 - Calibration of the loop itself, 2026-09-21: the hourly loop and the backtest
   handed strategies different candle frames for four days (live cache only vs
   history plus live), so a lookback that passed the gate could not fire live.
-  Fixed in bot/run.py via data.strategy_frames, which both paths now share.
+  Fixed in bot/run.py: both paths now build a strategy's frames from the same
+  merge of history and live candles (tests/gate/test_replay.py checks it
+  through the hourly entry point).
   Lesson for the record: any place the live loop and the backtest diverge is a
   place a hypothesis can pass the gate and still do nothing, so a challenger
   that logs the same "flat: only N candles" reason for a whole day is a bug
@@ -103,13 +109,65 @@ hypotheses.
   exit rule: all 11 fills in its window were exits of that book, one top-up
   of it, and a daily halt, and the window read -4.66% against the champion's
   -0.66%. The backtest engine replaying the same hours says H3 itself would
-  have been flat, 0 trades. Fixed in bot/run.py: an account's first hour
+  have been flat, 0 trades (first checked on a short backtest that starved
+  the strategy of history, so that check proved nothing; rerun 2026-10-04 on
+  the fixed engine, the answer is the same). Fixed in bot/run.py: an account's first hour
   under a new strategy decides as if flat and trades from the book it really
   holds. The same thing would have happened after every verdict (an idle slot
   runs the champion's config and builds its book) and after every promotion
   (the champion account keeps its positions), so it is fixed at the root.
   Lesson: before reading a challenger's first days, check that its first
   fills carry its own entry reasons.
+
+- Calibration of the loop itself, 2026-10-04: short backtests starved
+  strategies of history. run_backtest cut the candles handed to a strategy
+  to the replayed window plus the largest single `*_hours` parameter, so a
+  strategy needing more (swing_reversal needs two recent_hours, vol_breakout
+  needs compression plus lookback) sat flat on "only N candles" for a whole
+  short run: `--days 9` of H3 showed 0 trades while the live account made
+  124. Two live against backtest checks made on 2026-09-25 rested on such
+  runs and proved nothing (both conclusions survive the rerun). Fixed in
+  bot/backtest.py: the strategy is always handed the trailing history_hours
+  of real candles, as the hourly loop hands it. The gate now fails a config
+  that says "only N candles" on more than 2% of its decisions, and
+  tests/gate/test_replay.py holds the replay and the backtest to the same
+  fills. Lesson: a check that returns "nothing happened" has to show it
+  could have returned something. This is the fourth bug in the measuring
+  code in three weeks (candle frames, inherited book, skill basis, this);
+  the measuring code deserves more suspicion than the strategies.
+
+- Calibration of the loop itself, 2026-10-04: GitHub's scheduler is best
+  effort. From 2026-10-03 10:22Z it dropped scheduled runs for hours at a
+  time (gaps of 4.2, 4.5 and 6.7 hours) and skipped that night's agent run;
+  nothing failed, the runs were never created, and nobody was told. The loop
+  no longer depends on it: an outside scheduler also starts both workflows,
+  each account remembers the last candle it decided on, a duplicate trigger
+  does nothing, and missed hours are replayed in order at the next candle's
+  open (rows marked "replayed after a missed run"). The hours dropped on
+  2026-10-03 between the old loop's runs were not replayed (the accounts held
+  their books through them); hours dropped after its last run were, by the
+  first run of the new loop.
+
+- Calibration of the loop itself, 2026-10-04: a held pair with no price
+  counted as zero. Equity summed only the positions that had a price that
+  hour, so one failed quote, or one pair's candles missing from a replayed or
+  backtested hour, read as that position vanishing: a quarter of the book
+  gone, the 5% daily halt fired, the rest was sold, and in a challenger the
+  15% early kill followed. It had been in the live path since the first day
+  and never fired, because Kraken has not failed a quote on a held pair yet;
+  the replay made it likely (one pair's request failing during a catch up),
+  and an independent review of the replay found it before it shipped. A held
+  pair now keeps the last price known for it, sits the hour out, and says so
+  in the decision log. Backtests over the last 365 and 700 days are identical
+  before and after for all five live configs, because Coinbase's history has
+  no gap in a single pair, only two venue wide ones of five hours. The same
+  review found that a replay would have run a new strategy over hours from
+  before it existed, and that a dead candle feed would have passed for a
+  duplicate trigger and exited green; both are closed (a changed strategy
+  starts fresh on the current candle, a run that cannot get the candle that
+  just closed fails). Lesson: test what a new path does when its inputs fail,
+  not only when they arrive, and have someone who did not write it try to
+  break it. Fifth bug in the measuring code in three weeks.
 
 ## How the machinery shapes results
 
@@ -147,6 +205,28 @@ into fills, which every verdict passes through. The backtests below replay
 the live configs over the history they were designed on, so they describe
 the machinery, not edge.
 
+- A loop the gate did not see (H3, 2026-10-04). swing_reversal enters on a
+  level test and exits on a new 48h low, so a fading rally above the reaction
+  high loops exit, re-enter, exit within hours. Live: 124 fills in 8.9 days,
+  1.39 per pair per day against the 0.05 its ledger entry reported, costs at
+  116% of starting equity a year against the gate's 15% limit. The gate
+  passed it because it bounded only the average fill rate over 365 days
+  (0.09) while the same backtest showed 12 fills in one pair in one day; the
+  loop is rare in falling months and constant in a rally (2 to 6 fills a month
+  in seven of the last twelve months, 123 in September 2026). The agent diagnosed it on
+  2026-10-02 and left it running so as not to confound the test, which would
+  have spent 51 more days measuring the bug. Fin voided the test. Three rules
+  came out of it: buys in a pair stop after 4 fills in a UTC day (it never
+  binds on H1, H2 or H4 over the last 365 days and binds on 4 pair days for
+  H0, so it changes nothing that is not a loop); the gate fails a config
+  whose buys the cap had to stop on more than 12 pair days a year (H3: 16);
+  and a challenger whose live costs after 14 days run past three times the
+  gate's limit is killed.
+- The treadmill, live (week to 2026-10-04). In a flat week (basket -1.5%,
+  BTC +0.4%) H0 made 81 fills, paid 205 in costs (1.9% of equity) and lost
+  10.9%. H4, the same signal at ten times the horizon, made no fills and lost
+  1.9%. This is the in sample finding below showing up prospectively; it is
+  one week.
 - The paper loop and the backtest agree (2026-09-25). Replaying the
   champion's first nine live days with the backtest engine from the same
   10,000 cash gave +20.99% against +19.95% live, with the same 58 fills and
@@ -154,7 +234,10 @@ the machinery, not edge.
   candle open on the hour, the live loop at the quote about 20 minutes later)
   and observed spreads. H1's replay differed (27 fills against 8) only because
   live H1 ran on six pairs and the live candle cache until 2026-09-21; on the
-  shared pairs the entries and exits match.
+  shared pairs the entries and exits match. With the 2026-10-04 history fix
+  the engine also reproduces live H3 (125 fills against 124 over its window,
+  with the fill cap switched off as it was live; 96 with the cap on) and live
+  H2 (2 against 2).
 - The 5% daily halt is part of every hypothesis, and for the mean reversion
   family it can decide the result. H1's config over the last 365 days:
   -28.1% with the halt, -36.4% without. Over the last 700 days: -39.3% with,
@@ -199,6 +282,32 @@ the machinery, not edge.
   started filling first, the champion had a blocked buy in 12 of 51 hourly
   runs (it was 111 of 216 before), and the longest wait for a new entry was
   two hours.
+
+- How easy is it to be promoted by luck? (raised 2026-10-04, rule under
+  review by Fin.) The bar is skill above zero and above the champion's, and
+  H0's skill is positive in about 3% of historical windows, so the real bar
+  is skill above zero. In sample, 60 day skill was positive in 46% of windows
+  for H1, 58% for H2, 35% for H3 and 54% for the slow trend, none of which
+  has shown an edge. So a strategy with no edge clears the bar about half the
+  time, and a promotion in November would say little. Until the rule changes,
+  read "promoted" as "not ruled out", and look at the daily edge t in the
+  verdict: under about 2 it is noise.
+  Measured the same day with twins that have no skill: each live config's
+  hour by hour weights slid against the market by a random offset of at least
+  30 days, so the exposure, turnover and costs are the strategy's own and its
+  timing is gone. Against H0 over the last 687 days the rule as it stands
+  promotes such a twin 40% of the time. Two passes in a row: 16%. A pass at
+  day 60 and then 120 days with skill above zero, above the champion's and a
+  daily skill t of at least 1.0: 8%; at 1.5: 3%; at 2.0: under 1%. The price
+  is power. A strategy whose skill truly has a yearly Sharpe ratio of 2
+  clears those five bars 81%, 65%, 57%, 38% and 20% of the time, so no rule
+  over 60 or 120 days separates an edge of ordinary size from luck: t grows
+  with the square root of time, and a skill Sharpe of 2 needs about a year to
+  show a t of 2. In sample over those 687 days the skill Sharpe of the live
+  configs is -0.6 (H1), 0.0 (H2) and +0.2 (H4). H4's +43% over 715 days is
+  mostly its first four weeks, the rally of late 2024 (+40%, the basket
+  +45%); from then on it made +3% while the basket fell 27%. That is skill of
+  the useful kind (it stepped aside) and far too little to prove in a year.
 
 ## Overturned
 

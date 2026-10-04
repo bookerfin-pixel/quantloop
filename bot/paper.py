@@ -64,6 +64,7 @@ class PaperAccount:
             "slippage_paid": 0.0,
             "n_trades": 0,
             "last_run_ts": None,
+            "marks": {},
         }
 
     # --- persistence -------------------------------------------------------
@@ -72,6 +73,7 @@ class PaperAccount:
         acct = cls(name, initial_cash, fee_bps, slippage_bps)
         if path.exists():
             acct.state.update(json.loads(path.read_text()))
+        acct.state["name"] = name      # the caller's name wins over a stale one stored in the file
         return acct
 
     def save(self, path: Path) -> None:
@@ -87,21 +89,54 @@ class PaperAccount:
     def positions(self) -> dict[str, float]:
         return self.state["positions"]
 
+    def valued(self, prices: dict[str, float]) -> dict[str, float]:
+        """The prices the book is valued at. A held pair with no price this hour
+        (its quote failed, or its candle is missing from a replayed or
+        backtested hour) is valued at its mark, the last price recorded for it
+        by `remember`, never at zero. Zero read as a crash: a 25% position
+        vanishing from equity fired the daily halt, sold the rest of the book,
+        and in a challenger tripped the early kill (found in review, 2026-10-04)."""
+        marks = self.state.get("marks") or {}
+        good = {p: v for p, v in prices.items() if v > 0}        # a zero or missing price is no price
+        return {**{p: float(m[0]) for p, m in marks.items() if p in self.positions and p not in good}, **good}
+
+    def remember(self, prices: dict[str, float], ts: int, known: dict | None = None) -> list[str]:
+        """Record the price of every held pair, so an hour without one can still
+        value it. `known` is {pair: (price, time)} from the caller, the newest
+        candle close it has for each pair; it replaces a mark only when it is
+        newer. Returns the held pairs that have no price this hour."""
+        marks = self.state.setdefault("marks", {})
+        for pair in [p for p in marks if p not in self.positions]:
+            del marks[pair]
+        unpriced = []
+        for pair in self.positions:
+            if prices.get(pair, 0) > 0:
+                marks[pair] = [float(prices[pair]), int(ts)]
+                continue
+            unpriced.append(pair)
+            k = (known or {}).get(pair)
+            if k and (pair not in marks or int(k[1]) > int(marks[pair][1])):
+                marks[pair] = [float(k[0]), int(k[1])]
+        return unpriced
+
     def equity(self, prices: dict[str, float]) -> float:
+        px = self.valued(prices)
         value = self.cash
         for pair, qty in self.positions.items():
-            if pair in prices:
-                value += qty * prices[pair]
+            if pair in px:
+                value += qty * px[pair]
         return value
 
     def gross_exposure(self, prices: dict[str, float]) -> float:
-        return sum(qty * prices[p] for p, qty in self.positions.items() if p in prices)
+        px = self.valued(prices)
+        return sum(qty * px[p] for p, qty in self.positions.items() if p in px)
 
     def weights(self, prices: dict[str, float]) -> dict[str, float]:
+        px = self.valued(prices)
         eq = self.equity(prices)
         if eq <= 0:
             return {p: 0.0 for p in self.positions}
-        return {p: qty * prices[p] / eq for p, qty in self.positions.items() if p in prices}
+        return {p: qty * px[p] / eq for p, qty in self.positions.items() if p in px}
 
     def gross_pnl(self, prices: dict[str, float]) -> float:
         return (self.equity(prices) - self.state["initial_cash"]

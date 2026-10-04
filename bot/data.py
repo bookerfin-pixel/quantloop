@@ -18,6 +18,7 @@ A synthetic source exists for tests and dry runs.
 """
 from __future__ import annotations
 
+import json
 import os
 import time
 from dataclasses import dataclass
@@ -227,14 +228,26 @@ def history_path(pair: str):
     return config.HISTORY / f"{pair}.csv"
 
 
+_READ_CACHE: dict[str, tuple[tuple[int, int], pd.DataFrame]] = {}
+
+
 def _read(path) -> pd.DataFrame:
+    """A candle file as a frame. Parsed once per version of the file: with five
+    years of history each file is a few megabytes and one hourly run reads the
+    set a dozen times (strategies, market context, the report)."""
     if not path.exists():
         return pd.DataFrame(columns=CANDLE_COLUMNS)
+    stat = path.stat()
+    key, version = str(path), (stat.st_mtime_ns, stat.st_size)
+    hit = _READ_CACHE.get(key)
+    if hit and hit[0] == version:
+        return hit[1].copy()
     df = pd.read_csv(path)
     if not len(df):
         return pd.DataFrame(columns=CANDLE_COLUMNS)
     df["time"] = df["time"].astype("int64")
-    return df
+    _READ_CACHE[key] = (version, df)
+    return df.copy()
 
 
 def load_candles(pair: str) -> pd.DataFrame:
@@ -255,17 +268,6 @@ def load_all_candles(pair: str) -> pd.DataFrame:
     merged = pd.concat([hist, live], ignore_index=True)
     merged = merged.drop_duplicates("time", keep="last").sort_values("time")
     return merged.reset_index(drop=True)
-
-
-def strategy_frames(pairs: list[str], history_hours: int) -> dict[str, pd.DataFrame]:
-    """What a strategy is shown each hour: the trailing history_hours of
-    history plus live, per pair. The same merge the backtest replays, so a
-    lookback that works in a backtest also works live."""
-    out = {}
-    for p in pairs:
-        df = load_all_candles(p)
-        out[p] = df.tail(history_hours).reset_index(drop=True)
-    return out
 
 
 def save_candles(pair: str, df: pd.DataFrame) -> None:
@@ -294,23 +296,39 @@ def update_candles(pairs: list[str], source) -> dict[str, pd.DataFrame]:
     return out
 
 
-def backfill_if_short(pairs: list[str], target_hours: int, history_source, now: int | None = None) -> dict[str, int]:
+def backfill_if_short(pairs: list[str], target_hours: int, history_source, now: int | None = None,
+                      budget_s: float | None = None) -> dict[str, int]:
     """Make sure history plus live covers about target_hours for every pair.
     Fetches only the span that is missing before the earliest candle we hold,
-    so this is expensive once per pair and free afterwards. Returns rows added."""
+    so this is expensive once per pair and free afterwards. Returns rows added.
+    budget_s: stop starting new pairs once this many seconds have gone; a pair
+    is fetched whole or not at all, and the ones left over wait for the next run."""
     now = now or int(time.time())
     added: dict[str, int] = {}
+    tried = _backfill_marks()
+    changed = False
+    began = time.monotonic()
     for pair in pairs:
+        if budget_s is not None and time.monotonic() - began > budget_s:
+            print(f"[data] history backfill: {budget_s:.0f} s used; the pairs from {pair} on wait for the next run")
+            break
         have = load_all_candles(pair)
         earliest = int(have["time"].min()) if len(have) else now
         want_from = (now // 3600) * 3600 - target_hours * 3600
         if earliest - want_from < 24 * 3600:   # within a day of the target: nothing to do
+            continue
+        # A pair the venue only listed later (or suspended for a while) has no
+        # candles for part of the span. Ask once, remember how far back we asked,
+        # and do not ask for the same empty stretch again every hour.
+        if pair in tried and int(tried[pair]) <= want_from + 7 * 86400:
             continue
         try:
             fetched = history_source.candles(pair, want_from, earliest)
         except Exception as e:  # noqa: BLE001
             print(f"[data] {pair}: history backfill failed ({e}); backtests use what is cached")
             continue
+        tried[pair] = int(want_from)
+        changed = True
         if not len(fetched):
             print(f"[data] {pair}: history source returned nothing for the missing span")
             continue
@@ -323,14 +341,37 @@ def backfill_if_short(pairs: list[str], target_hours: int, history_source, now: 
         print(f"[data] {pair}: backfilled {len(fetched)} hourly candles "
               f"({datetime.fromtimestamp(int(fetched['time'].min()), timezone.utc):%Y-%m-%d} to "
               f"{datetime.fromtimestamp(int(fetched['time'].max()), timezone.utc):%Y-%m-%d})")
+    if changed:
+        _backfill_marks_path().write_text(json.dumps(tried, indent=2, sort_keys=True))
     return added
+
+
+def _backfill_marks_path():
+    config.HISTORY.mkdir(parents=True, exist_ok=True)
+    return config.HISTORY / "_backfill.json"
+
+
+def _backfill_marks() -> dict:
+    p = _backfill_marks_path()
+    if not p.exists():
+        return {}
+    try:
+        return json.loads(p.read_text())
+    except Exception:  # noqa: BLE001
+        return {}
 
 
 def quotes(pairs: list[str], source) -> dict[str, Quote]:
     out = {}
     for pair in pairs:
         try:
-            out[pair] = source.quote_for(pair)
+            q = source.quote_for(pair)
         except Exception as e:  # noqa: BLE001
             print(f"[data] {pair}: quote failed ({e}); pair skipped this run")
+            continue
+        if not (q.bid > 0 and q.ask >= q.bid):
+            # a zero or crossed book is no quote; taken as a price it valued the position at nothing
+            print(f"[data] {pair}: unusable quote (bid {q.bid}, ask {q.ask}); pair skipped this run")
+            continue
+        out[pair] = q
     return out

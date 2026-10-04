@@ -2,6 +2,21 @@
 # or the rules that decide promotion, because a system that can loosen its own
 # exam will loosen its own exam.
 
+# --- ruleset ---------------------------------------------------------------
+# Bumped whenever a protected change alters how any account trades or how a
+# test is judged. Every test records the ruleset it started under and every
+# verdict says whether it changed during the window.
+#   1  2026-09-16  first version
+#   2  2026-09-17  three slots, early kill, ten pairs, 60 day window, live spreads
+#   3  2026-09-20  gate becomes a sanity filter; strategies see 90 days of candles
+#   4  2026-09-21  the hourly loop hands strategies history plus live candles
+#   5  2026-09-25  first hour under a new strategy decides as if flat; sells fill
+#                  before buys; verdicts on skill against usual exposure; skill floor
+#   6  2026-10-04  four fills per pair per day cap; missed hours are replayed; cost
+#                  (treadmill) kill; tests can be voided for broken code; a held pair
+#                  with no price keeps its last one instead of counting as zero
+ruleset: 6
+
 # --- cost model (paper fills) ---------------------------------------------
 # Prices come from Kraken public data (Binance blocks US IPs, which is where
 # GitHub Actions runners live). Costs are modelled on the venue Fin would
@@ -18,7 +33,10 @@ initial_cash: 10000
 # more fills per window for rare signal strategies, not ten independent bets.
 pairs: [BTC, ETH, SOL, ADA, AVAX, LINK, XRP, DOGE, DOT, LTC]
 history_hours: 2160         # candles handed to a strategy each hour (90 days, from history plus live)
-history_target_hours: 17520 # two years: backfilled once from Coinbase into state/history for backtests
+history_target_hours: 43800 # five years (was two until 2026-10-04): backfilled once from Coinbase into
+                            # state/history, so an idea can be checked on the 2021 rally and the 2022 fall
+history_backfill_budget_s: 600  # the backfill runs after the accounts have decided and stops starting new
+                                # pairs after this many seconds; what is left waits for the next hourly run
 
 # --- position limits (spot only: no leverage, no shorts) -------------------
 max_weight_per_pair: 0.25
@@ -26,6 +44,9 @@ max_gross_weight: 1.0
 min_trade_notional: 50
 rebalance_threshold: 0.05   # skip trades that move a pair's weight by less than 5 points
 daily_loss_halt: 0.05       # equity down 5% from the UTC day's open: go flat, stop for the day
+max_fills_per_pair_per_day: 4   # buys in a pair stop after this many fills in one UTC day; sells never do.
+                                # A strategy that enters and exits the same pair in a loop is stopped
+                                # here, live and in backtests alike (H3, 2026-10-04)
 
 # --- challenger tests (prospective, each paired against the champion) ------
 challenger:
@@ -47,6 +68,8 @@ challenger:
                             # anything; this bar makes a promotion mean the strategy added something. Remove the
                             # line to drop the bar.
   early_kill_drawdown: 0.15 # a challenger down this much from its window start is killed at once
+  treadmill_kill_multiple: 3.0  # ...and one whose live costs run past this many times the gate's cost drag
+  treadmill_min_days: 14        # limit (3 x 15% = 45% of equity a year) after this many days is killed too
 
 # --- backtest gate (sanity filter, regime independent) ---------------------
 # The gate asks "is this obviously broken or on a costs treadmill", never "did
@@ -62,3 +85,6 @@ backtest_gate:
   max_avg_fills_per_pair_per_day: 1.0
   max_drawdown: 0.30          # drawdown limit is the larger of this...
   drawdown_vs_basket: 0.75    # ...and this fraction of the equal weight basket's own max drawdown over the window
+  max_pair_days_at_fill_cap: 12   # pair days a year on which the fill cap may stop a buy; more is a loop
+  max_starved_share: 0.02         # share of decisions allowed to say "only N candles"; more means the
+                                  # strategy needs more history than history_hours and is not really running

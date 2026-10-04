@@ -86,3 +86,57 @@ def test_append_rows_migrates_an_older_header(tmp_path):
     df = pd.read_csv(p)
     assert list(df.columns) == ["a", "b", "c"] and len(df) == 2
     assert df.iloc[1]["c"] == 5
+
+
+# --- a held pair with no price keeps its last known one --------------------------
+
+def test_a_held_pair_with_no_price_is_valued_at_its_mark_not_at_zero():
+    a = make()
+    a.trade("BTC", 2500.0, 100.0, ts=1, reason="x")
+    a.trade("ETH", 2500.0, 50.0, ts=1, reason="x")
+    assert a.remember({"BTC": 100.0, "ETH": 50.0}, ts=1) == []
+    both = a.equity({"BTC": 100.0, "ETH": 50.0})
+    assert a.equity({"ETH": 50.0}) == pytest.approx(both)              # no BTC price: its mark stands in
+    assert a.gross_exposure({"ETH": 50.0}) == pytest.approx(a.gross_exposure({"BTC": 100.0, "ETH": 50.0}))
+    assert set(a.weights({"ETH": 50.0})) == {"BTC", "ETH"}
+    assert a.equity({"BTC": 0.0, "ETH": 50.0}) == pytest.approx(both)   # a zero price is no price either
+    assert a.equity({"BTC": float("nan"), "ETH": 50.0}) == pytest.approx(both)
+
+
+def test_a_real_price_always_beats_the_mark():
+    a = make()
+    a.trade("BTC", 2500.0, 100.0, ts=1, reason="x")
+    a.remember({"BTC": 100.0}, ts=1)
+    qty = a.positions["BTC"]
+    assert a.equity({"BTC": 80.0}) == pytest.approx(a.cash + qty * 80.0)
+
+
+def test_marks_take_the_newer_of_what_is_known_and_drop_closed_positions():
+    a = make()
+    a.trade("BTC", 2500.0, 100.0, ts=1, reason="x")
+    a.remember({"BTC": 100.0}, ts=1000)
+    assert a.remember({}, ts=2000, known={"BTC": (90.0, 500)}) == ["BTC"]     # an older candle close
+    assert a.state["marks"]["BTC"] == [100.0, 1000]                           # does not replace a newer mark
+    a.remember({}, ts=3000, known={"BTC": (95.0, 2500)})                      # a newer one does
+    assert a.state["marks"]["BTC"] == [95.0, 2500]
+    a.remember({"BTC": 0.0}, ts=3500)                                         # a zero price never becomes the mark
+    assert a.state["marks"]["BTC"] == [95.0, 2500]
+    a.trade("BTC", -1e9, 95.0, ts=4000, reason="close")
+    a.remember({}, ts=4000)
+    assert a.state["marks"] == {}
+
+
+def test_marks_survive_a_save_and_load(tmp_path):
+    a = make()
+    a.trade("BTC", 2500.0, 100.0, ts=1, reason="x")
+    a.remember({"BTC": 100.0}, ts=1)
+    a.save(tmp_path / "account.json")
+    b = PaperAccount.load(tmp_path / "account.json", "t", 10_000.0, 10, 5)
+    assert b.equity({}) == pytest.approx(a.equity({"BTC": 100.0}))
+    old = PaperAccount("t", 10_000.0, 10, 5)                # an account file from before marks existed
+    old.trade("BTC", 2500.0, 100.0, ts=1, reason="x")
+    del old.state["marks"]
+    old.save(tmp_path / "old.json")
+    c = PaperAccount.load(tmp_path / "old.json", "t", 10_000.0, 10, 5)
+    assert c.equity({"BTC": 100.0}) == pytest.approx(a.equity({"BTC": 100.0}))
+    assert c.remember({}, ts=5, known={"BTC": (100.0, 4)}) == ["BTC"] and c.equity({}) == pytest.approx(a.equity({"BTC": 100.0}))

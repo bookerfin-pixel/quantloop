@@ -61,6 +61,7 @@ def maybe_start(now: int, equities: dict[str, float]) -> dict[str, dict]:
                 "hypothesis": cfg["hypothesis"],
                 "started_at": int(now),
                 "start_equity": {k: float(v) for k, v in equities.items() if k in (config.CHAMPION, name)},
+                "ruleset": config.risk_cfg().get("ruleset"),
             }
             save(name, meta)
             print(f"[slot] {name}: test started for {meta['hypothesis']} at "

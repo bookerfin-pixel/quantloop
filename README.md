@@ -37,7 +37,7 @@ construction.
    window, slot reset and free. After a promotion the deposed config keeps
    running as a shadow for one more window; if it beats the new champion
    the promotion is reverted, which is the guard against a lucky 60 days.
-   Three tests run at once, about eighteen verdicts a year.
+   Four tests run at once, about two dozen verdicts a year.
 5. **The synthesis**: `FINDINGS.md` is the distilled version of the ledger,
    kept by the agent: what is confirmed, what one verdict suggests, what was
    killed and why, how well the cost arithmetic predicted reality, and what
@@ -63,7 +63,7 @@ as plausibility checks; only the prospective window counts.
     configs/        risk.yaml (protected), champion.yaml (protected), challenger1..3.yaml (agent edits, one per PR)
     gate/           the three checks the PR must pass
     tests/          gate/ is protected; the rest the agent may extend
-    state/          accounts, decisions, trades, equity curves, live candle cache, two year history, summary.md
+    state/          accounts, decisions, trades, equity curves, live candle cache, five year history, summary.md
     LEDGER.md       every hypothesis and its verdict, never edited backwards
     FINDINGS.md     the distilled state of knowledge, kept current by the agent
     hypotheses/     the backlog the agent draws from

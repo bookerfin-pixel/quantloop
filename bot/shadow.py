@@ -71,7 +71,8 @@ def start(deposed_cfg: dict, replaced_by: str, now: int, champion_equity: float,
                       "params": deposed_cfg["params"]}, SHADOW_HEADER)
     save({"status": "active", "hypothesis": deposed_cfg["hypothesis"], "replaced_by": replaced_by,
           "started_at": int(now),
-          "start_equity": {config.CHAMPION: float(champion_equity), config.SHADOW: float(initial_cash)}})
+          "start_equity": {config.CHAMPION: float(champion_equity), config.SHADOW: float(initial_cash)},
+          "ruleset": config.risk_cfg().get("ruleset")})
 
 
 def stop(reason_tag: str) -> None:

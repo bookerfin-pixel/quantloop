@@ -22,7 +22,12 @@ Every verdict also records each side's average exposure, skill, and the t
 statistic of the daily edge it was decided on, so a reader can tell a real
 difference from a coin flip. None of those extra numbers decide anything.
 
-Two early exits, both of which free a slot sooner and neither of which can
+A test Fin voids (configs/void.yaml, for broken code or data only) is
+recorded as `voided` with its numbers so far and frees its slot. A
+challenger whose live costs run past treadmill_kill_multiple times the gate's
+cost drag limit after treadmill_min_days is killed as a fees treadmill.
+
+Two more early exits, both of which free a slot sooner and neither of which can
 promote anything: a challenger whose drawdown from its window start exceeds
 challenger.early_kill_drawdown is killed at once, and if two slots win in the
 same hour only the stronger one is promoted, the other is restarted against
@@ -263,11 +268,23 @@ def decide(champ: dict, chal: dict, rules: dict, absolute: bool = True) -> tuple
                         f"with max drawdown {chal_dd:.2%} vs {champ_dd:.2%}{t_note}")
 
 
-def early_kill(chal: dict, rules: dict) -> str | None:
+def early_kill(chal: dict, rules: dict, elapsed_days: float | None = None,
+               start_equity: float | None = None, gate_cost_drag: float | None = None) -> str | None:
     limit = float(rules.get("early_kill_drawdown", 0) or 0)
     if limit and chal["max_drawdown"] is not None and abs(chal["max_drawdown"]) > limit:
         return (f"challenger drew down {abs(chal['max_drawdown']):.2%} from its window start, past the "
                 f"{limit:.0%} early kill limit; no need to wait for the window to end")
+    # A fees treadmill is dead on arrival and there is no point paying for it
+    # for 60 days. The bar is a multiple of the gate's own cost drag limit,
+    # measured live, once there are enough days for the rate to mean something.
+    multiple = float(rules.get("treadmill_kill_multiple", 0) or 0)
+    min_days = float(rules.get("treadmill_min_days", 14))
+    if multiple and gate_cost_drag and elapsed_days and start_equity and elapsed_days >= min_days:
+        drag = float(chal.get("fees") or 0.0) / float(start_equity) / (elapsed_days / 365)
+        if drag > multiple * float(gate_cost_drag):
+            return (f"costs of {chal['fees']:.0f} in {elapsed_days:.1f} days are {drag:.0%} of starting equity a "
+                    f"year, more than {multiple:g} times the gate's {float(gate_cost_drag):.0%} limit: a fees "
+                    f"treadmill, killed without waiting for the window to end")
     return None
 
 
@@ -287,6 +304,12 @@ def market_context(start_ts: int, end_ts: int, pairs: list[str]) -> dict:
         series[p] = df.set_index("time")["close"].astype(float)
     if not series:
         return out
+    # A pair that did not exist when the window opened (XRP before July 2023 in
+    # the long history) is not in the basket for that window. It used to be
+    # carried as flat from the window's start, which shrank the basket's move
+    # by its share.
+    opened = min(int(sr.index[0]) for sr in series.values())
+    series = {p: sr for p, sr in series.items() if int(sr.index[0]) <= opened + 24 * 3600}
     rets = {p: float(sr.iloc[-1] / sr.iloc[0] - 1) for p, sr in series.items()}
     out["pairs"] = len(rets)
     out["basket_return"] = float(np.mean(list(rets.values())))
@@ -344,6 +367,26 @@ def _fmt(d: dict, expected: float | None = None) -> str:
     return s
 
 
+def _ruleset_note(slot_name: str) -> str:
+    """Whether the protected rules changed while this test ran. A prospective
+    test is only as clean as the rules it ran under were stable."""
+    now_rs = config.risk_cfg().get("ruleset")
+    try:
+        meta = shadow.load() if slot_name == "shadow" else slot.load(slot_name)
+    except Exception:  # noqa: BLE001
+        meta = {}
+    start_rs = meta.get("ruleset")
+    if now_rs is None:
+        return "ruleset not recorded"
+    if start_rs is None:
+        return (f"ruleset {now_rs} at the verdict; the test began before rulesets were stamped (2026-10-04), "
+                f"so protected rules changed during it (see the ruleset list in configs/risk.yaml)")
+    if start_rs == now_rs:
+        return f"ruleset {now_rs} throughout"
+    return (f"ruleset {start_rs} at the start, {now_rs} at the verdict: protected rules changed during the "
+            f"window (see the ruleset list in configs/risk.yaml)")
+
+
 def update_ledger(hyp: str, verdict: str, reason: str, champ: dict, chal: dict,
                   start_ts: int, end_ts: int, slot_name: str, labels: tuple[str, str] = ("Champion", "Challenger"),
                   status_from: str = "testing", status_to: str | None = None) -> None:
@@ -365,6 +408,7 @@ def update_ledger(hyp: str, verdict: str, reason: str, champ: dict, chal: dict,
         f"- Window: {datetime.fromtimestamp(start_ts, timezone.utc):%Y-%m-%d} to "
         f"{datetime.fromtimestamp(end_ts, timezone.utc):%Y-%m-%d} ({(end_ts - start_ts) / 86400:.1f} days, prospective)\n"
         f"- Market: {market}\n"
+        f"- Rules: {_ruleset_note(slot_name)}\n"
         f"- {labels[0]}: {_fmt(champ)}\n"
         f"- {labels[1]}: {_fmt(chal, expected_bps(hyp))}\n"
         f"- Rule: {reason}\n"
@@ -399,6 +443,80 @@ def apply(verdict: str, hyp: str, name: str, now: int | None = None, equities: d
     config.write_challenger_from_champion(name)
     archive_slot(name, hyp)
     slot.reset(name)
+
+
+VOID_HEADER = (
+    "# PROTECTED. Fin ends a running test here when its code or data is found to be broken.\n"
+    "# Never because a test is losing: that is what the window and the kill rules are for.\n"
+    "# bot/promote.py acts on each request at the next hourly run, writes the numbers so far to\n"
+    "# the ledger as `voided` (not evidence about the idea), frees the slot, and empties this list.\n"
+    "#\n"
+    "# requests:\n"
+    "#   - slot: challenger3\n"
+    "#     hypothesis: H3\n"
+    "#     reason: one sentence on the fault, written before looking at the profit and loss\n"
+)
+
+
+def _void_one(req, now: int, rules: dict) -> str | None:
+    """Act on one request. Returns the hypothesis voided, or None when the request is dropped."""
+    if not isinstance(req, dict):
+        print(f"[promote] void request {req!r} is not a slot, hypothesis and reason; dropped")
+        return None
+    name, hyp = str(req.get("slot") or ""), str(req.get("hypothesis") or "")
+    why = str(req.get("reason") or "").strip()
+    if name not in config.challengers():
+        print(f"[promote] void request for unknown slot {name!r}; dropped")
+        return None
+    meta = slot.load(name)
+    if meta.get("status") != "testing" or meta.get("hypothesis") != hyp:
+        print(f"[promote] void request {hyp} in {name} does not match the running test "
+              f"({meta.get('hypothesis')}, {meta.get('status')}); dropped")
+        return None
+    champ, chal, _ = paired_slot(name, meta, now, rules)
+    reason = f"voided by Fin, not a verdict on the idea: {why or 'no reason given'}"
+    print(f"[promote] {name}: {hyp}: voided — {why}")
+    update_ledger(hyp, "voided", reason, champ, chal, int(meta["started_at"]), now, name)
+    apply("killed", hyp, name, now, current_equities(now))
+    return hyp
+
+
+def process_voids(now: int, rules: dict) -> list[str]:
+    """Act on configs/void.yaml. Returns the hypotheses voided. Whatever is in
+    the file, this never raises: it runs every hour ahead of the verdicts, and
+    a typo in a file edited by hand must not stop them, the summary or the
+    commit (found in review, 2026-10-04)."""
+    path = config.CONFIGS / "void.yaml"
+    if not path.exists():
+        return []
+    try:
+        body = config.load_yaml(path)
+    except Exception as e:  # noqa: BLE001
+        print(f"[promote] configs/void.yaml is not readable ({e}); ignored until it is fixed")
+        return []
+    requests = body.get("requests") if isinstance(body, dict) else body
+    if not requests:
+        if isinstance(body, dict) and body and "requests" not in body:
+            print(f"[promote] configs/void.yaml has no `requests` list (it has {sorted(map(str, body))}); "
+                  f"nothing is voided until the key is spelt `requests`")
+        return []
+    if not isinstance(requests, list):
+        print(f"[promote] configs/void.yaml: requests must be a list, found {type(requests).__name__}; dropped")
+        requests = []
+    done = []
+    for req in requests:
+        try:
+            hyp = _void_one(req, now, rules)
+        except Exception as e:  # noqa: BLE001
+            print(f"[promote] void request {req!r} failed ({type(e).__name__}: {e}); dropped")
+            continue
+        if hyp:
+            done.append(hyp)
+    try:
+        config.dump_yaml(path, {"requests": []}, VOID_HEADER)
+    except Exception as e:  # noqa: BLE001
+        print(f"[promote] could not empty configs/void.yaml ({e})")
+    return done
 
 
 def rule_on_shadow(now: int, rules: dict) -> None:
@@ -440,6 +558,7 @@ def restart(name: str, now: int, equities: dict[str, float], new_champion: str) 
     meta["started_at"] = int(now)
     meta["start_equity"] = {k: float(v) for k, v in equities.items() if k in (config.CHAMPION, name)}
     meta["restarted_against"] = new_champion
+    meta["ruleset"] = config.risk_cfg().get("ruleset")
     slot.save(name, meta)
 
 
@@ -464,6 +583,7 @@ def main(argv: list[str] | None = None) -> int:
     rules = config.risk_cfg()["challenger"]
     verdicts: list[tuple[str, str, str, str]] = []   # (slot, hyp, verdict, reason)
     rule_on_shadow(now, rules)
+    process_voids(now, rules)
     testing = [(n, slot.load(n)) for n in config.challengers() if slot.load(n)["status"] == "testing"]
     if not testing:
         print("[promote] no test running; nothing to rule on")
@@ -471,7 +591,9 @@ def main(argv: list[str] | None = None) -> int:
     for name, meta in testing:
         start, hyp = int(meta["started_at"]), meta["hypothesis"]
         champ, chal, _ = paired_slot(name, meta, now, rules)
-        reason = early_kill(chal, rules)
+        reason = early_kill(chal, rules, (now - start) / 86400,
+                            meta["start_equity"].get(name) or config.risk_cfg()["initial_cash"],
+                            config.risk_cfg().get("backtest_gate", {}).get("max_cost_drag"))
         if reason:
             verdicts.append((name, hyp, "killed", reason))
             continue

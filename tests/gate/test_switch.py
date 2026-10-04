@@ -68,18 +68,23 @@ def _cfg(root, strat, hyp):
     config.dump_yaml(root / "configs" / "challenger1.yaml", {"hypothesis": hyp, "strategy": strat, "params": {}})
 
 
+def upto(n):
+    """Candles as they stood n hours into the series: one more closed candle each hour."""
+    return {p: df.iloc[:n].reset_index(drop=True) for p, df in candles().items()}
+
+
 def test_run_account_is_fresh_only_on_a_strategy_change(sandbox):
     ts = 1_700_000_000
     _cfg(sandbox, "always_btc", "H0")
-    run_account("challenger1", candles(), PRICES, ts, RCFG)
+    run_account("challenger1", upto(200), PRICES, ts, RCFG)
     state = json.loads((sandbox / "state" / "challenger1" / "account.json").read_text())
     assert state["positions"].get("BTC", 0) > 0 and state["strategy_sig"]
     # same strategy next hour: nothing changes
-    run_account("challenger1", candles(), PRICES, ts + 3600, RCFG)
+    run_account("challenger1", upto(201), PRICES, ts + 3600, RCFG)
     assert json.loads((sandbox / "state" / "challenger1" / "account.json").read_text())["positions"].get("BTC", 0) > 0
     # a new hypothesis lands in the slot: it does not inherit the BTC position
     _cfg(sandbox, "holds_what_it_holds", "H9")
-    run_account("challenger1", candles(), PRICES, ts + 7200, RCFG)
+    run_account("challenger1", upto(202), PRICES, ts + 7200, RCFG)
     state = json.loads((sandbox / "state" / "challenger1" / "account.json").read_text())
     assert "BTC" not in state["positions"]
 

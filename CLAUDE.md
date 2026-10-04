@@ -19,24 +19,50 @@ can read it with `gh pr list --state closed`.
   promotion, the shadow, each against its own paper account, and commits the
   state. Paper fills pay the larger of the 5 bps floor and the observed half
   spread plus 2 bps impact, so a wide market costs what it really costs.
+  The run is driven by closed candles: a second trigger in the same hour does
+  nothing, and hours that were missed (GitHub's scheduler dropped runs for
+  hours on 2026-10-03) are replayed in order, filling at the next candle's
+  open as the backtest does. Those rows start "replayed after a missed run"
+  and are normal. A run that cannot get the candle that just closed fails on
+  purpose and decides nothing (a red bot run means Kraken's feed was down or
+  behind; the next run catches up). A strategy that changed during the missed
+  hours is not replayed; it starts fresh on the current candle. A held pair
+  with no candle or no price in some hour "sits this hour out": it is not
+  traded and is valued at its last known price. One such row is a data
+  hiccup; the same pair sitting out for many hours in a row is worth a line
+  in the note.
+- After `max_fills_per_pair_per_day` (4) fills in one pair in one UTC day,
+  buys in that pair stop until the next day. Sells never stop. A decision
+  whose reason says "capped:" means a strategy tried to trade past that,
+  which is a loop.
 - Every hour `bot/promote.py` rules on any slot whose test has run for
   `challenger.window_days` (60): promoted or killed, by the rules in
   configs/risk.yaml, with the realised gross bps per round trip written next
   to what the ledger entry predicted and a line on what the market did over
   the window. A challenger that draws down more than `early_kill_drawdown`
-  is killed early. After a promotion the deposed config keeps running as the
-  shadow for one window and the promotion is reverted if it wins. The
-  champion account is never reset.
+  is killed early, and so is one whose live costs after 14 days are running
+  at more than three times the gate's cost limit (a fees treadmill). After a
+  promotion the deposed config keeps running as the shadow for one window
+  and the promotion is reverted if it wins. The champion account is never
+  reset. A result marked `voided` is a test Fin ended because its code or
+  data was broken; its numbers say nothing about the idea, so do not count it
+  for or against the family in FINDINGS.
 - Every hour `bot/report.py` rewrites `state/summary.md`.
-- state/history/ holds about two years of hourly candles per pair (Coinbase
-  backfill, written once). Backtests read history plus live candles, and the
-  gate replays the last 365 days. Strategies see the trailing 2160 hours
-  (90 days) of candles on every call, live and in backtests alike.
+- state/history/ holds about five years of hourly candles per pair where the
+  venue has them (Coinbase backfill, written once; a pair starts where the
+  venue's candles start, and XRP starts only in July 2023 because Coinbase
+  suspended it from January 2021 until then).
+  Backtests read history plus live candles, and the gate replays the last
+  365 days. Strategies see the trailing 2160 hours (90 days) of candles on
+  every call, live and in backtests alike, however short the backtest.
 - The backtest gate is a sanity filter, not an alpha filter: it fails a
   slot config only for a fees treadmill (costs above 15% of equity a year,
   or more than one fill per pair per day on average), too few trades to
   judge (under 30), or a drawdown worse than the larger of 30% and three
   quarters of the equal weight basket's own drawdown over the same window.
+  It also fails a config whose buys the fill cap had to stop on more than
+  12 pair days a year (a loop), and one that said "only N candles" on more
+  than 2% of its decisions (it needs more history than it can get).
   Losing money in sample does not fail the gate; the skill figure (net
   return against the exposure matched basket, by quarter) is printed and
   belongs in the ledger entry, so FINDINGS can later say whether in sample
@@ -82,6 +108,14 @@ If every slot is busy (a test running in each):
   reason that contradicts its action, weights stuck at zero with no stated
   cause, a pair never trading, fills far larger than a weight change implies.
 - Check the Data section of the summary for missing hours.
+- Compare each challenger's live fills per pair per day with the figure in
+  its ledger entry's Backtest line. Several times the backtest rate is a bug
+  report even when every reason matches its action (H3 ran at 1.39 against
+  0.05 for nine days). You cannot end a running test and must not change its
+  code mid window. Write "VOID REQUEST: H<n>" at the top of the note with
+  the fault in one sentence, and do it before looking at whether the test is
+  winning; Fin decides, through configs/void.yaml. Only broken code or
+  data qualifies, never a losing test.
 - Some behaviour looks like a bug but has been measured and kept on purpose.
   Do not flag it again unless it gets materially bigger:
   - "waits for cash" rows. When the book is fully invested, a buy waits until
@@ -112,6 +146,14 @@ If a slot is free:
   differ only in a parameter; pick a different mechanism from what the other
   slots are testing, and say in the ledger entry what it will tell us that
   the running tests will not.
+- A strategy that cannot decide for lack of candles must return a target of
+  zero with a reason of exactly this shape: `flat: only N candles, need M`.
+  The engine and the gate look for it. Never need more than 2160 candles.
+- Check the idea on the long history as well as the last year:
+  `python -m bot.backtest --config configs/challenger<k>.yaml --days 1800 --gate`
+  prints a line by calendar year. Put that line in the ledger entry. An idea
+  that only works in one of those years is a bet on that kind of year, and
+  the entry should say so.
 - Write the ledger entry first. If you cannot fill "Why it should work"
   with a mechanism and cost arithmetic, pick a different idea.
 - An idle slot teaches nothing. The first choice is always an idea whose

@@ -213,6 +213,38 @@ def test_market_context_reads_the_window(sandbox):
     assert "BTC +10.00%" in promote.format_market(mc)
 
 
+def test_a_pair_listed_after_the_window_opened_is_not_in_the_basket(sandbox):
+    """Carried as flat from the window's start it shrank the basket's move by its share."""
+    fall = [100 - i for i in range(51)]                            # 100 to 50 over fifty hours
+    for pair in ("BTC", "ETH", "SOL"):
+        _write_candles(sandbox, pair, 0, fall)
+    _write_candles(sandbox, "XRP", 40 * 3600, [1.0] * 11)          # exists only for the last ten hours
+    mc = promote.market_context(0, 50 * 3600, ["BTC", "ETH", "SOL", "XRP"])
+    assert mc["pairs"] == 3
+    assert mc["basket_return"] == pytest.approx(-0.50)
+    assert float(mc["basket_path"].iloc[-1]) == pytest.approx(0.50)
+    late = promote.market_context(40 * 3600, 50 * 3600, ["BTC", "ETH", "SOL", "XRP"])
+    assert late["pairs"] == 4                                      # and it is in the basket of a window it was there for
+
+
+def test_the_hourly_run_kills_a_treadmill_through_main(sandbox):
+    """early_kill only fires if main hands it the days elapsed, the starting equity and the gate's limit."""
+    now = 20 * 86400
+    risk = config.load_yaml(sandbox / "configs" / "risk.yaml")
+    risk["challenger"] = {**RULES, "window_days": 60, "treadmill_kill_multiple": 3.0, "treadmill_min_days": 14}
+    risk["backtest_gate"] = {"max_cost_drag": 0.15}
+    config.dump_yaml(sandbox / "configs" / "risk.yaml", risk)
+    slot.save("challenger1", {"status": "testing", "hypothesis": "H1", "started_at": 0,
+                              "start_equity": {"champion": 10000, "challenger1": 10000}})
+    _write_equity(sandbox, "champion", [(0, 10000, 0), (now, 10100, 5)])
+    _write_equity(sandbox, "challenger1", [(0, 10000, 0), (now, 9800, 300)])      # 300 in 20 days is 55% a year
+    _write_trades(sandbox, "challenger1", [(i * 3600, 1500) for i in range(200)])
+    assert promote.main(["--now", str(now)]) == 0
+    text = (sandbox / "LEDGER.md").read_text()
+    assert "### Result H1: killed" in text and "fees treadmill" in text
+    assert slot.load("challenger1")["status"] == "idle"
+
+
 def test_promotion_starts_a_shadow_that_can_revert(sandbox):
     from bot import shadow
     now = 60 * 86400 + 100
@@ -258,3 +290,120 @@ def test_shadow_holds_when_the_promotion_is_real(sandbox):
     assert shadow.load()["status"] == "idle"
     text = (sandbox / "LEDGER.md").read_text()
     assert "### Result H1: held" in text and "- Status: promoted" in text
+
+
+def test_a_fees_treadmill_is_killed_before_the_window_ends():
+    rules = {**RULES, "treadmill_kill_multiple": 3.0, "treadmill_min_days": 14}
+    chal = m(-0.04, -0.05, 200)
+    chal["fees"] = 300.0                                  # 300 in 20 days on 10,000 is 55% a year
+    assert "treadmill" in promote.early_kill(chal, rules, 20.0, 10_000, 0.15)
+    assert promote.early_kill(chal, rules, 10.0, 10_000, 0.15) is None        # too early to call a rate
+    chal["fees"] = 200.0                                  # 36% a year: over the gate's 15%, under three times it
+    assert promote.early_kill(chal, rules, 20.0, 10_000, 0.15) is None
+    assert promote.early_kill(chal, RULES, 20.0, 10_000, 0.15) is None        # rule not configured: no kill
+
+
+def _two_tests_running(sandbox, now):
+    slot.save("challenger1", {"status": "testing", "hypothesis": "H1", "started_at": 0, "ruleset": 5,
+                              "start_equity": {"champion": 10000, "challenger1": 10000}})
+    slot.save("challenger2", {"status": "testing", "hypothesis": "H2", "started_at": 0,
+                              "start_equity": {"champion": 10000, "challenger2": 10000}})
+    _write_equity(sandbox, "champion", [(0, 10000, 0), (now, 10100, 5)])
+    _write_equity(sandbox, "challenger1", [(0, 10000, 0), (now, 9600, 280)])
+    _write_trades(sandbox, "challenger1", [(i * 3600, 1500) for i in range(120)])
+    risk = config.load_yaml(sandbox / "configs" / "risk.yaml")
+    config.dump_yaml(sandbox / "configs" / "risk.yaml", {**risk, "ruleset": 6})
+
+
+def test_a_voided_test_is_recorded_and_its_slot_freed(sandbox):
+    now = 9 * 86400
+    _two_tests_running(sandbox, now)
+    config.dump_yaml(sandbox / "configs" / "void.yaml", {"requests": [
+        {"slot": "challenger1", "hypothesis": "H1", "reason": "enter and exit loop in the strategy code"},
+        {"slot": "challenger2", "hypothesis": "H9", "reason": "names the wrong hypothesis"}]})
+    assert promote.process_voids(now, RULES) == ["H1"]
+    text = (sandbox / "LEDGER.md").read_text()
+    assert "### Result H1: voided" in text and "enter and exit loop" in text
+    assert "ruleset 5 at the start, 6 at the verdict" in text
+    assert "- Status: voided" in text and "### Result H2" not in text
+    assert slot.load("challenger1")["status"] == "idle" and slot.load("challenger2")["status"] == "testing"
+    assert config.account_cfg("challenger1")["hypothesis"] == config.account_cfg("champion")["hypothesis"]
+    assert config.load_yaml(sandbox / "configs" / "void.yaml")["requests"] == []
+    assert promote.process_voids(now, RULES) == []                      # nothing left to do
+
+
+@pytest.mark.parametrize("body", [
+    "requests:\n  slot: challenger1\n  hypothesis: H1\n",          # a mapping where the list should be
+    "requests:\n- challenger1\n",                                   # a bare word for a request
+    "requests:\n-\n",                                               # an empty item
+    "requests: H1\n",                                                # a bare word for the list
+    "- slot: challenger9\n  hypothesis: H1\n",                      # a list at the top, and an unknown slot
+    "requests:\n- slot: [challenger1\n",                            # not yaml at all
+    "",                                                              # empty file
+])
+def test_a_badly_written_void_file_cannot_stop_the_hourly_run(sandbox, body):
+    """promote runs every hour before the summary and the commit. Whatever a
+    hand edited file holds, it must rule on the other tests and return 0."""
+    now = 9 * 86400
+    _two_tests_running(sandbox, now)
+    (sandbox / "configs" / "void.yaml").write_text(body)
+    assert promote.process_voids(now, RULES) == []
+    assert slot.load("challenger1")["status"] == "testing"             # nothing was voided by accident
+    assert promote.main(["--now", str(now)]) == 0
+
+
+def test_a_misspelt_key_in_the_void_file_is_said_out_loud(sandbox, capsys):
+    now = 9 * 86400
+    _two_tests_running(sandbox, now)
+    (sandbox / "configs" / "void.yaml").write_text("request:\n- slot: challenger1\n  hypothesis: H1\n  reason: typo in the key\n")
+    assert promote.process_voids(now, RULES) == []
+    assert "no `requests` list" in capsys.readouterr().out
+    assert slot.load("challenger1")["status"] == "testing"
+
+
+def test_a_request_that_fails_half_way_does_not_stop_the_others(sandbox, monkeypatch):
+    now = 9 * 86400
+    _two_tests_running(sandbox, now)
+    _write_equity(sandbox, "challenger2", [(0, 10000, 0), (now, 9900, 30)])
+    config.dump_yaml(sandbox / "configs" / "void.yaml", {"requests": [
+        {"slot": "challenger1", "hypothesis": "H1", "reason": "first"},
+        {"slot": "challenger2", "hypothesis": "H2", "reason": "second"}]})
+    real = promote.paired_slot
+
+    def flaky(name, meta, now_, rules):
+        if name == "challenger1":
+            raise RuntimeError("candle file unreadable")
+        return real(name, meta, now_, rules)
+    monkeypatch.setattr(promote, "paired_slot", flaky)
+    assert promote.process_voids(now, RULES) == ["H2"]
+    assert slot.load("challenger1")["status"] == "testing" and slot.load("challenger2")["status"] == "idle"
+    assert config.load_yaml(sandbox / "configs" / "void.yaml")["requests"] == []
+
+
+def test_the_void_file_in_the_repo_is_well_formed():
+    """The real file is edited by hand. Catch a typo here, not in the hourly run."""
+    from pathlib import Path
+    body = config.load_yaml(Path(__file__).resolve().parents[2] / "configs" / "void.yaml")
+    assert isinstance(body, dict) and isinstance(body.get("requests"), list)
+    for req in body["requests"]:
+        assert isinstance(req, dict) and set(req) == {"slot", "hypothesis", "reason"}
+        assert str(req["slot"]).startswith("challenger") and str(req["hypothesis"]).startswith("H")
+        assert len(str(req["reason"]).strip()) > 20
+
+
+def test_report_marks_an_open_position_even_when_the_stored_name_is_stale(sandbox):
+    from bot import paper, report
+    from bot.run import DECISION_FIELDS
+    adir = sandbox / "state" / "challenger1"
+    acct = paper.PaperAccount("challenger", 10_000, 10, 5)     # the name the file carried before slots were numbered
+    fill = acct.trade("DOGE", 1000.0, 0.10, 100, "enter")
+    acct.state["created_at"] = 100
+    acct.save(adir / "account.json")
+    paper.append_rows(adir / "trades.csv", paper.TRADE_FIELDS, [paper.fill_row(fill)])
+    paper.append_rows(adir / "decisions.csv", DECISION_FIELDS, [
+        {"ts": 200, "account": "challenger1", "pair": "DOGE", "price": 0.11, "signal_weight": 0.1,
+         "target_weight": 0.1, "current_weight": 0.1, "action": "hold", "reason": "stay", "half_spread_bps": 1.0}])
+    _write_equity(sandbox, "challenger1", [(100, 10000, 0), (200, 10098, 2)])
+    section = report.account_section("challenger1", 300)
+    line = next(l for l in section.splitlines() if l.startswith("- DOGE"))
+    assert "gross pnl +99.95" in line and "+1999 bps" in line      # marked at 0.11; the bug showed -1,000 and -20,000 bps

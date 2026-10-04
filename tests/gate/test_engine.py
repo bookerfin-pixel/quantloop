@@ -1,4 +1,5 @@
 """PROTECTED. The decision step and the backtest share one code path."""
+import pandas as pd
 import pytest
 
 from bot import backtest, config, data, paper, strategy
@@ -135,3 +136,71 @@ def test_gate_skips_when_no_slot_config_changed():
     assert bg.slot_from_paths(["notes/2026-09-17.md", "hypotheses/backlog.md"]) is None
     assert bg.slot_from_paths(["LEDGER.md", "configs/challenger2.yaml"]) == "challenger2"
     assert bg.slot_from_paths(["configs/champion.yaml", "configs/risk.yaml"]) is None
+
+
+def _needs(n):
+    def fn(c, params, w):
+        out = {}
+        for p, df in c.items():
+            if len(df) < n:
+                out[p] = strategy.Target(0.0, f"flat: only {len(df)} candles, need {n}")
+            else:
+                out[p] = strategy.Target(0.2, "enter")
+        return out
+    return fn
+
+
+def test_a_short_backtest_still_hands_the_strategy_its_full_history(monkeypatch):
+    """Until 2026-10-04 a short backtest cut the history to the replayed window
+    plus the largest single *_hours parameter, so a strategy needing more sat
+    flat on "only N candles" for the whole run and the result looked like calm."""
+    monkeypatch.setitem(strategy.STRATEGIES, "needs_400", _needs(400))
+    cfg = {"hypothesis": "HX", "strategy": "needs_400", "params": {"x_hours": 50}}
+    m = backtest.run_backtest(candles(n=700), cfg, RCFG, max_days=3)
+    assert m["n_trades"] >= 1 and m["starved_share"] == 0.0
+
+
+def test_a_strategy_that_needs_more_history_than_it_can_get_fails_the_gate(monkeypatch):
+    monkeypatch.setitem(strategy.STRATEGIES, "needs_5000", _needs(5000))     # history_hours is 720 here
+    cfg = {"hypothesis": "HX", "strategy": "needs_5000", "params": {"x_hours": 50}}
+    m = backtest.run_backtest(candles(n=900), cfg, RCFG, max_days=20)
+    assert m["starved_share"] == 1.0
+    rules = {"max_drawdown": 0.3, "max_cost_drag": 0.15, "max_avg_fills_per_pair_per_day": 1.0, "min_trades": 0}
+    problems, _ = backtest.plausibility(m, rules, None, 10_000)
+    assert any("too few candles" in p for p in problems)
+
+
+def test_a_strategy_held_back_only_by_the_fill_cap_fails_the_gate(monkeypatch):
+    def flip(c, params, w):
+        return {p: strategy.Target(0.0, "exit") if w.get(p, 0) > 0 else strategy.Target(0.2, "enter") for p in c}
+    monkeypatch.setitem(strategy.STRATEGIES, "flip", flip)
+    cfg = {"hypothesis": "HX", "strategy": "flip", "params": {"x_hours": 24}}
+    rc = {**RCFG, "max_fills_per_pair_per_day": 4}
+    m = backtest.run_backtest(candles(n=900), cfg, rc, max_days=20)
+    assert m["trades_per_pair_per_day_max"] <= 5 and m["pair_days_at_fill_cap"] > 20     # buys stopped most days
+    rules = {"max_drawdown": 0.3, "max_cost_drag": 10.0, "max_avg_fills_per_pair_per_day": 10.0, "min_trades": 0,
+             "max_pair_days_at_fill_cap": 12}
+    problems, _ = backtest.plausibility(m, rules, None, 10_000)
+    assert any("loop" in p for p in problems)
+
+
+def test_a_long_run_is_read_out_by_calendar_year_against_that_year_s_basket():
+    start = 1_640_995_200                                    # 2022-01-01 00:00 UTC
+    hours = 24 * 365 * 2
+    curve = [(start + i * 3600, 10_000 * (1 + 0.5 * i / hours)) for i in range(hours)]   # +50% over two years
+    asked = []
+
+    def market_fn(a, b):
+        asked.append((a, b))
+        year = pd.to_datetime(a, unit="s").year
+        return {"basket_return": {2022: -0.60, 2023: 0.90}[year], "pairs": {2022: 9, 2023: 10}[year]}
+    m = _metrics(days=730.0, equity_curve=curve)
+    _, report = backtest.plausibility(m, GATE_RULES, None, 10_000, market_fn=market_fn)
+    assert [y["year"] for y in report["years"]] == [2022, 2023] and len(asked) == 2
+    assert report["years"][0]["basket"] == -0.60 and report["years"][0]["pairs"] == 9
+    assert report["years"][0]["strategy"] == pytest.approx(0.25, abs=0.01)
+    line = backtest.format_report(report).splitlines()[-1]
+    assert line.startswith("by calendar year") and "2022 +25.0% / -60.0% (9 pairs)" in line and "(10 pairs)" not in line
+    # the gate's own 365 day run never asks for it
+    _, short = backtest.plausibility(_metrics(equity_curve=curve[:24 * 365]), GATE_RULES, None, 10_000, market_fn=market_fn)
+    assert short["years"] == [] and len(asked) == 2

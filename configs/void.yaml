@@ -1,0 +1,17 @@
+# PROTECTED. Fin ends a running test here when its code or data is found to be broken.
+# Never because a test is losing: that is what the window and the kill rules are for.
+# bot/promote.py acts on each request at the next hourly run, writes the numbers so far to
+# the ledger as `voided` (not evidence about the idea), frees the slot, and empties this list.
+#
+# requests:
+#   - slot: challenger3
+#     hypothesis: H3
+#     reason: one sentence on the fault, written before looking at the profit and loss
+requests:
+- slot: challenger3
+  hypothesis: H3
+  reason: 'swing_reversal enters on a level test and exits on a new 48h low, so a
+    fading rally above the reaction high loops exit, re-enter, exit within hours:
+    124 fills in 8.9 days, costs at 116% of starting equity a year against the gate''s
+    15% limit. The test is measuring the loop, not the higher low idea (agent''s diagnosis,
+    notes/2026-10-02.md; voided by Fin 2026-10-04)'

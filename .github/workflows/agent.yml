@@ -3,21 +3,69 @@ name: agent
 # Daily research agent: Claude Code reads the state and the ledger, makes one
 # change on a branch, the workflow opens a PR, the gate judges it, and it is
 # merged or closed without anyone in the loop. See CLAUDE.md.
+#
+# Two triggers on purpose: GitHub's own schedule skipped the run of 2026-10-03,
+# so an outside scheduler also starts this once a day through workflow_dispatch.
+# The guard job lets the agent work once in any 20 hours unless `force` is set.
+# It counts only runs in which the agent itself ran (the propose job started),
+# whatever came of them: success, failure, timeout, or cancelled part way. A
+# run the guard stopped does not count, or a late duplicate would block the
+# next day's run too; a run still waiting in the queue, or cancelled before
+# its job began, does not count either.
 on:
   schedule:
     - cron: "0 22 * * *"   # 22:00 UTC = 08:00 Brisbane
   workflow_dispatch:
+    inputs:
+      force:
+        description: "Run even if the agent already ran in the last 20 hours"
+        type: boolean
+        default: false
 
 permissions:
   contents: write
   pull-requests: write
+  actions: read
 
 concurrency:
   group: agent
   cancel-in-progress: false
 
 jobs:
+  guard:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    outputs:
+      go: ${{ steps.check.outputs.go }}
+    steps:
+      - name: Has the agent already run today?
+        id: check
+        env:
+          GH_TOKEN: ${{ github.token }}
+          FORCE: ${{ inputs.force }}
+        run: |
+          cutoff=$(( $(date +%s) - 72000 ))
+          ids=$(gh run list --repo "$GITHUB_REPOSITORY" --workflow agent.yml --limit 20 \
+                  --json databaseId,createdAt \
+                  --jq ".[] | select(.databaseId != $GITHUB_RUN_ID) | select((.createdAt | fromdateiso8601) > $cutoff) | .databaseId" \
+                || true)
+          worked=0
+          for id in $ids; do
+            n=$(gh run view "$id" --repo "$GITHUB_REPOSITORY" --json jobs \
+                  --jq '[.jobs[] | select(.name == "propose") | select(.status == "in_progress" or .conclusion == "success" or .conclusion == "failure" or .conclusion == "timed_out" or (.conclusion == "cancelled" and ([(.steps // [])[] | select(.conclusion == "success")] | length > 0)))] | length' \
+                || echo 0)
+            if [ "${n:-0}" != "0" ]; then worked=$((worked + 1)); fi
+          done
+          if [ "$FORCE" = "true" ] || [ "$worked" = "0" ]; then
+            echo "go=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "go=false" >> "$GITHUB_OUTPUT"
+            echo "The agent already worked in the last 20 hours ($worked run). Nothing to do." | tee -a "$GITHUB_STEP_SUMMARY"
+          fi
+
   propose:
+    needs: guard
+    if: needs.guard.outputs.go == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 60
     outputs:

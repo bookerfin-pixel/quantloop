@@ -19,6 +19,7 @@ gate/**
 tests/gate/**
 configs/risk.yaml
 configs/champion.yaml
+configs/void.yaml
 bot/__init__.py
 bot/data.py
 bot/paper.py

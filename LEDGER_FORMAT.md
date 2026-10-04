@@ -21,4 +21,6 @@ the slot config you changed (configs/challenger<k>.yaml) must match, and a
 pull request changes one slot only.
 
 Verdicts are appended by bot/promote.py under `## Results` and the Status
-line is flipped to `promoted` or `killed`. Do not edit those by hand.
+line is flipped to `promoted` or `killed`, or to `voided` when Fin ended the
+test because its code or data was broken (not a verdict on the idea). Do not
+edit those by hand.
