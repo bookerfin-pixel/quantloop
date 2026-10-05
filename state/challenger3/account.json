@@ -1,72 +1,30 @@
 {
-  "cash": 232.22957267029233,
+  "cash": 10010.490804370605,
   "created_at": 1791178112,
   "day": "2026-10-05",
   "day_open_equity": 10000.0,
-  "fees_paid": 24.711278001461526,
+  "fees_paid": 34.49932728244282,
   "fills_day": {
     "counts": {
-      "ADA": 3,
-      "AVAX": 1,
-      "BTC": 1,
-      "DOGE": 1,
-      "DOT": 3,
-      "ETH": 2,
-      "LTC": 4,
-      "SOL": 1
+      "ADA": 4,
+      "AVAX": 2,
+      "BTC": 2,
+      "DOGE": 2,
+      "DOT": 4,
+      "ETH": 3,
+      "LTC": 5,
+      "SOL": 2
     },
     "day": "2026-10-05"
   },
   "halted_day": null,
   "initial_cash": 10000.0,
-  "last_bar": 1791230400,
-  "last_run_ts": 1791235939,
-  "marks": {
-    "ADA": [
-      0.26916850000000003,
-      1791235939
-    ],
-    "AVAX": [
-      10.9795,
-      1791235939
-    ],
-    "BTC": [
-      85808.15,
-      1791235939
-    ],
-    "DOGE": [
-      0.09565775,
-      1791235939
-    ],
-    "DOT": [
-      1.2350500000000002,
-      1791235939
-    ],
-    "ETH": [
-      2714.19,
-      1791235939
-    ],
-    "LTC": [
-      70.25999999999999,
-      1791235939
-    ],
-    "SOL": [
-      120.705,
-      1791235939
-    ]
-  },
-  "n_trades": 16,
+  "last_bar": 1791234000,
+  "last_run_ts": 1791239003,
+  "marks": {},
+  "n_trades": 24,
   "name": "challenger3",
-  "positions": {
-    "ADA": 4641.502985351504,
-    "AVAX": 113.76668540974715,
-    "BTC": 0.014556907734944976,
-    "DOGE": 10555.945308276066,
-    "DOT": 1011.5722301476751,
-    "ETH": 0.46021357198215007,
-    "LTC": 17.778425389021244,
-    "SOL": 10.34838094906026
-  },
-  "slippage_paid": 12.353206324243413,
-  "strategy_sig": "params:\n  ema_exit_buffer: 0.02\n  ema_hours: 24\n  entry_return: 0.01\n  exit_return: -0.01\n  lookback_hours: 72\n  max_weight: 0.25\n  target_vol_annual: 0.3\n  vol_lookback_hours: 168\nstrategy: ts_momentum\n"
+  "positions": {},
+  "slippage_paid": 17.307151410298196,
+  "strategy_sig": "params:\n  exit_hours: 48\n  fresh_cross: true\n  max_weight: 0.25\n  min_higher_low: 0.1\n  recent_hours: 240\n  target_vol_annual: 0.3\n  vol_lookback_hours: 168\nstrategy: swing_reversal\n"
 }

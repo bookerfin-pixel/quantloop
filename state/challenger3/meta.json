@@ -1,6 +1,15 @@
 {
-  "hypothesis": null,
-  "start_equity": {},
-  "started_at": null,
-  "status": "idle"
+  "hypothesis": "H5",
+  "ruleset": 6,
+  "start_equity": {
+    "challenger3": 10010.490804370605,
+    "champion": 11111.521243010146
+  },
+  "started_at": 1791239003,
+  "status": "testing",
+  "usual_exposure": {
+    "challenger3": 0.028,
+    "champion": 0.549,
+    "start": 1791239003
+  }
 }
