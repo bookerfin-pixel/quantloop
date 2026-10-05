@@ -38,6 +38,22 @@ def test_strategy_error_goes_flat_not_crash():
     decisions, fills, _ = step(acct, {"params": {}}, boom, candles(), {"BTC": 100.0, "ETH": 50.0}, 1_700_000_000, RCFG)
     assert fills and fills[0].side == "sell" and "BTC" not in acct.positions
     assert "strategy error" in decisions[0]["reason"]
+    from bot import promote, run
+    assert promote._forced(fills[0].reason)                  # not an exit the strategy chose
+    # the same sell in the account's first hour under a new strategy, for a position held over from the last
+    # one, and in an hour that is replayed: the engine puts words before the reason, and it is still not a choice
+    acct.trade("BTC", 1000.0, 100.0, 2, "seed")
+    _, fills, _ = step(acct, {"params": {}}, boom, candles(), {"BTC": 100.0, "ETH": 50.0}, 1_700_003_600, RCFG, fresh=True)
+    assert fills[0].reason.startswith(promote.AS_IF_FLAT[0] + "strategy error") and promote._forced(fills[0].reason)
+    acct.trade("BTC", 1000.0, 100.0, 3, "seed")
+    acct.state["inherited"] = ["BTC"]
+    _, fills, _ = step(acct, {"params": {}}, boom, candles(), {"BTC": 100.0, "ETH": 50.0}, 1_700_007_200, RCFG)
+    assert fills[0].reason.startswith(promote.AS_IF_FLAT[1] + "strategy error") and promote._forced(fills[0].reason)
+    assert promote.REPLAYED == run.REPLAYED and promote._forced(run.REPLAYED + fills[0].reason)
+    # an exit the strategy chose stays one, whatever comes before its reason or sits inside it
+    for own in ("exit: z back inside 0.5", promote.AS_IF_FLAT[1] + "flat", run.REPLAYED + "trend down | strategy error",
+                None, float("nan")):
+        assert not promote._forced(own)
 
 
 def test_daily_halt_flattens_and_blocks_new_entries():
@@ -49,6 +65,9 @@ def test_daily_halt_flattens_and_blocks_new_entries():
     _, fills, _ = step(acct, {"params": {}}, fn, candles(), {"BTC": 60.0, "ETH": 50.0}, ts + 3600, RCFG)
     assert all(f.side == "sell" for f in fills) and not acct.positions
     assert acct.state["halted_day"] is not None
+    # the verdict code tells these sells from exits the strategy chose by how their reason begins
+    from bot import promote
+    assert fills and all(promote._forced(f.reason) for f in fills)
 
 
 def test_backtest_costs_match_paper_model_and_metrics_are_consistent():
@@ -204,3 +223,125 @@ def test_a_long_run_is_read_out_by_calendar_year_against_that_year_s_basket():
     # the gate's own 365 day run never asks for it
     _, short = backtest.plausibility(_metrics(equity_curve=curve[:24 * 365]), GATE_RULES, None, 10_000, market_fn=market_fn)
     assert short["years"] == [] and len(asked) == 2
+
+
+# --- the market a backtest is read against covers the same span as its curve ---------------------------
+
+def _two_year_curve():
+    start = 1_640_995_200                                    # 2022-01-01 00:00 UTC
+    return [(start + i * 3600, 10_000.0 + i) for i in range(24 * 365 * 2)]
+
+
+def _canned_run(monkeypatch, curve, days):
+    monkeypatch.setattr(config, "prepare", lambda: None)
+    monkeypatch.setattr(config, "risk_cfg", lambda: {**RCFG, "backtest_gate": dict(GATE_RULES)})
+    monkeypatch.setattr(backtest, "load_cached_candles",
+                        lambda pairs: {p: pd.DataFrame({"time": range(24 * 400)}) for p in pairs})
+    monkeypatch.setattr(backtest, "run_backtest",
+                        lambda *a, **k: _metrics(days=days, pairs=2, equity_curve=list(curve)))
+
+
+def test_the_backtest_reads_the_market_to_the_close_its_last_mark_was_taken_at(monkeypatch, capsys):
+    """A curve point is stamped with a candle's open time and marked at its
+    close, an hour later. The market has to be read to that same close. It was
+    read to the stamp, so every backtest's basket ended an hour before its
+    strategy did, and each calendar year's began and ended an hour early."""
+    from bot import promote
+    curve, asked = _two_year_curve(), []
+
+    def market(a, b, pairs):
+        asked.append((a, b))
+        return {"basket_return": 0.10, "basket_max_dd": -0.20, "basket_path": None, "pairs": len(pairs)}
+    _canned_run(monkeypatch, curve, 730.0)
+    monkeypatch.setattr(config, "load_yaml", lambda path: {"hypothesis": "HX", "strategy": "ts_momentum", "params": {}})
+    monkeypatch.setattr(promote, "market_context", market)
+    assert backtest.main(["--gate"]) == 0
+    assert asked[0] == (curve[0][0], curve[-1][0] + 3600)      # the whole run: first fill to last mark
+    first_2023 = 1_672_531_200                                  # 2023-01-01 00:00 UTC
+    assert asked[1] == (curve[0][0] + 3600, first_2023 - 3600 + 3600)      # 2022: its first mark to its last
+    assert asked[2] == (first_2023 + 3600, curve[-1][0] + 3600)            # 2023 likewise
+    assert "by calendar year" in capsys.readouterr().out
+
+
+def test_the_gate_reads_the_market_to_the_close_its_last_mark_was_taken_at(monkeypatch, capsys):
+    import importlib.util, os
+    spec = importlib.util.spec_from_file_location("bg2", os.path.join(os.getcwd(), "gate", "backtest_gate.py"))
+    bg = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(bg)
+    curve, asked = _two_year_curve()[:24 * 365], []
+
+    def market(a, b, pairs):
+        asked.append((a, b))
+        return {"basket_return": 0.10, "basket_max_dd": -0.20, "basket_path": None, "pairs": len(pairs)}
+    _canned_run(monkeypatch, curve, 365.0)
+    monkeypatch.setattr(config, "account_cfg", lambda name: {"hypothesis": "HX", "strategy": "ts_momentum", "params": {}})
+    monkeypatch.setattr(bg, "changed_slot", lambda: "challenger1")
+    monkeypatch.setattr(bg, "market_context", market)
+    monkeypatch.delenv("GITHUB_STEP_SUMMARY", raising=False)
+    assert bg.main() == 0
+    assert asked == [(curve[0][0], curve[-1][0] + 3600)]
+    assert "backtest gate passed" in capsys.readouterr().out
+
+
+def test_the_backtest_counts_finished_trades_and_the_windows_that_had_none(monkeypatch):
+    """A live test that has left no position of its own by day 60 is killed as
+    bought and held. The backtest says how often that would have happened to
+    this strategy: one 60 day window starting each day of the run."""
+    day = 86400
+    fill = lambda d, side, qty=1.0, reason="": paper.Fill(                                       # noqa: E731
+        ts=int(d * day), account="b", pair="BTC", side=side, qty=qty, price=1.0, ref_price=1.0, notional=qty,
+        fee=0.0, slippage_cost=0.0, reason=reason)
+    # 200 days; one position bought on day 10 and left on day 30, another bought on day 150 and never sold
+    fills = [fill(10, "buy"), fill(30, "sell"), fill(150, "buy")]
+    n, forced, none = backtest.finished_trades(fills, 0, 200 * day, 60)
+    assert (n, forced) == (1, 0)
+    # windows start on days 0 to 140; only those starting on days 0 to 29 hold the exit on day 30
+    assert none == pytest.approx(111 / 141, abs=0.001)
+    assert backtest.finished_trades(fills, 0, 200 * day, 250) == (1, 0, None)     # shorter than one window
+    assert backtest.finished_trades([], 0, 200 * day, 60) == (0, 0, 1.0)          # never traded: every window
+    assert backtest.finished_trades([fill(10, "buy"), fill(30, "sell", 0.5)], 0, 200 * day, 60) == (0, 0, 1.0)   # a trim
+    weekly = [fill(d + off, side) for d in range(0, 196, 7) for off, side in ((1, "buy"), (3, "sell"))]
+    assert backtest.finished_trades(weekly, 0, 200 * day, 60) == (28, 0, 0.0)
+    # a position the daily loss halt closed is not an exit the strategy chose: counted apart, and no window is saved by it
+    halted = [fill(10, "buy"), fill(30, "sell", reason="daily halt: equity 9400.00 is down 6.0% from the day's open")]
+    assert backtest.finished_trades(halted, 0, 200 * day, 60) == (0, 1, 1.0)
+    # and the real engine reports all three
+    cfg = {"hypothesis": "H0", "strategy": "ts_momentum",
+           "params": {"lookback_hours": 48, "ema_hours": 12, "vol_lookback_hours": 96}}
+    m = backtest.run_backtest(candles(n=600), cfg, RCFG, max_days=None)
+    assert m["finished_trades"] >= 1 and m["windows_with_no_finished_trade"] is None     # 600 hours: under 60 days
+    text = backtest.format_metrics(m)
+    assert all(k in text for k in ("finished_trades", "closed_by_halt_or_error", "windows_with_no_finished_trade"))
+
+
+def test_the_engine_hands_its_own_fills_and_window_to_the_finished_trade_count(monkeypatch):
+    """Long from day 5 to day 15 of about a hundred, flat otherwise, with a ten
+    day window: the share of windows with no finished trade is the share that
+    start after the exit, worked out from where the run really begins."""
+    start = 1_700_000_000
+    def one_trade(c, params, w):
+        hours = {p: int((df["time"].iloc[-1] - start) // 3600) for p, df in c.items()}
+        return {p: strategy.Target(0.2 if 5 * 24 <= h < 15 * 24 and p == "BTC" else 0.0, "in" if h < 15 * 24 else "out")
+                for p, h in hours.items()}
+    monkeypatch.setitem(strategy.STRATEGIES, "one_trade", one_trade)
+    cfg = {"hypothesis": "HX", "strategy": "one_trade", "params": {"x_hours": 24}}
+    rc = {**RCFG, "challenger": {"window_days": 10}}
+    m = backtest.run_backtest(candles(n=100 * 24), cfg, rc, max_days=None)
+    assert m["n_trades"] == 2 and m["finished_trades"] == 1 and m["closed_by_halt_or_error"] == 0
+    warm = backtest.warmup_hours(cfg["params"])
+    first_day = warm / 24                                    # the run begins after the warm up
+    last_start = (100 * 24 - 1) / 24 - 10                    # the last day a ten day window can start on
+    starts = int(last_start - first_day) + 1
+    holding = sum(1 for k in range(starts) if first_day + k < 15 + 1 / 24 <= first_day + k + 10)
+    assert m["windows_with_no_finished_trade"] == pytest.approx(1 - holding / starts, abs=0.02)
+    assert 0.80 < m["windows_with_no_finished_trade"] < 0.90
+    # A rules file with a window that cannot be used does not stop a backtest, and the documented 60 days stand
+    # in, as they do for the verdict code (the backtest used to read the line by itself: 0 gave windows of no
+    # length, every one of them "with no finished trade").
+    sixty = backtest.run_backtest(candles(n=100 * 24), cfg, {**RCFG, "challenger": {"window_days": 60}}, max_days=None)
+    assert 0 < sixty["windows_with_no_finished_trade"] < 0.80
+    for written in ("sixty", 0, -10, None):
+        got = backtest.run_backtest(candles(n=100 * 24), cfg, {**RCFG, "challenger": {"window_days": written}}, max_days=None)
+        assert got["windows_with_no_finished_trade"] == sixty["windows_with_no_finished_trade"], written
+    assert backtest.run_backtest(candles(n=100 * 24), cfg, RCFG, max_days=None)["windows_with_no_finished_trade"] == \
+        sixty["windows_with_no_finished_trade"]                          # and with no challenger block at all

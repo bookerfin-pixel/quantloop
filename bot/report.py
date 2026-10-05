@@ -18,7 +18,14 @@ def _ts(t: int | float | None) -> str:
 
 
 def _pct(x) -> str:
-    return "n/a" if x is None else f"{x:+.2%}"
+    """A return as a signed percentage; one too small to show is not printed as "-0.00%"."""
+    return "n/a" if x is None else f"{0.0 if abs(x) < 5e-5 else x:+.2%}"
+
+
+def _dd(x) -> str:
+    """A drawdown as a percentage (none on record reads as none)."""
+    x = float(x or 0.0)
+    return f"{0.0 if abs(x) < 5e-5 else x:.2%}"
 
 
 def account_section(name: str, now: int) -> str:
@@ -106,7 +113,8 @@ def per_pair_lines(tr: pd.DataFrame, st: dict) -> list[str]:
         holding = ""
         if open_qty > 0:
             holding = f", open {open_qty:.6g}"
-        out.append(f"- {pair}: {len(g)} fills ({len(buys)} buy / {len(sells)} sell), traded {traded:,.0f}, "
+        out.append(f"- {pair}: {len(g)} fill{'' if len(g) == 1 else 's'} ({len(buys)} buy / {len(sells)} sell), "
+                   f"traded {traded:,.0f}, "
                    f"gross pnl {gross:+,.2f}, {bps:+.0f} bps per round trip"
                    + (f", avg half spread {spread:.1f} bps" if spread == spread else "") + holding)
     return out
@@ -207,39 +215,171 @@ def recent_spreads(now: int) -> dict[str, float]:
     return {k: float(v) for k, v in dec.groupby("pair")["half_spread_bps"].mean().items()}
 
 
+def _exposure_words(m: dict) -> str:
+    """How a side's skill was benchmarked, for the skill line of the summary."""
+    window = f"this window {m['avg_exposure']:.2f}" if m.get("avg_exposure") is not None else "this window n/a"
+    if m.get("exposure_schedule"):
+        return "usual " + " then ".join(f"{e:.2f}" for _, e in m["exposure_schedule"]) + f" by config, {window}"
+    if m.get("skill_basis") == "usual":
+        return f"usual {m['skill_exposure']:.2f}, {window}"
+    return f"{window}, which stands in for a usual exposure"
+
+
+def fills_pace(chal: dict, rules: dict, elapsed_days: float, total_days: float, one_look: bool = False) -> str | None:
+    """A note, once a test is a week old, when it is not on pace for the fills
+    the rule asks for: by its verdict, or by its first look. A test with fewer
+    cannot pass a look. It can still be kept on the value of its trades; it
+    cannot be promoted. one_look: a test from before ruleset 7, which is
+    promoted at its first look if it passes there."""
+    from .promote import rule_settings
+    st = rule_settings(rules)[0]
+    need, first = st["min_trades"], st["window_days"]
+    if elapsed_days < 7 or elapsed_days >= total_days or chal["trades"] >= need:
+        return None
+    # The fills of the hour a test began in are the move from the book it was handed to its own. They are
+    # not a pace: H4's ten fills in ten days, all in that hour, read as on course for sixty.
+    early = min(int(chal.get("trades_first_hour") or 0), chal["trades"])
+    rate = (chal["trades"] - early) / elapsed_days
+    by_first, by_end = early + rate * first, early + rate * total_days
+    so_far = f"{chal['trades']} in {elapsed_days:.1f} days" + (
+        "" if not early else ", all of them in the hour it began" if early == chal["trades"]
+        else f", {early} of them in the hour it began")
+    if by_end < need:
+        look = (f"day {first:.0f} keeps a test whose trades are of value and kills one whose are not"
+                if elapsed_days < first else f"it is past day {first:.0f} and still running")
+        return (f"{so_far}; at this pace about {int(by_end)} by day {total_days:.0f}, under the {need} a promotion "
+                f"needs. Trading little does not end a test by itself: {look}, and a test that is kept and still "
+                f"short of {need} fills at its verdict ends unproven, not promoted")
+    if elapsed_days < first and by_first < need:
+        asks = "a promotion there needs" if one_look else "a pass at the first look needs"
+        return (f"{so_far}; at this pace about {int(by_first)} by day {first:.0f}, under the {need} {asks}, and "
+                f"about {int(by_end)} by day {total_days:.0f}. Short of them at day {first:.0f} it is kept only if "
+                f"its trades are of value, and then ruled on at day {total_days:.0f}")
+    return None
+
+
 def test_section(now: int) -> str:
-    from .promote import compare_on, format_market, market_context, paired_slot
+    from .promote import (JUST_OPENED, _n, champion_note, compare_on, confidence_line, format_market, guard_waits,
+                          market_context, missing_market_data, no_record, no_trade_of_its_own, of_value,
+                          other_notes, other_rule_reading, paired_slot, rule_settings, trade_tally, two_looks)
     pairs = list(config.risk_cfg()["pairs"])
     rules = config.risk_cfg()["challenger"]
+    st, unusable = rule_settings(rules)
     lines = ["## Challenger slots", ""]
     any_testing = False
     for name in config.challengers():
-        meta = slot.load(name)
-        lines.append(f"- {slot.describe_one(name, now)}")
+        try:
+            meta = slot.load(name)
+            lines.append(f"- {slot.describe_one(name, now)}")
+        except Exception as e:  # noqa: BLE001
+            lines.append(f"- {name}: its record could not be read this hour ({type(e).__name__}: {e})")
+            continue
         if meta["status"] == "testing":
             any_testing = True
-            champ, chal, _ = paired_slot(name, meta, now, rules)
-            lines.append(f"  so far: champion {_pct(champ['return'])} (DD {champ['max_drawdown'] or 0:.2%}, "
-                         f"{champ['trades']} fills) vs {name} {_pct(chal['return'])} "
-                         f"(DD {chal['max_drawdown'] or 0:.2%}, {chal['trades']} fills)")
+            try:
+                champ, chal, mc = paired_slot(name, meta, now, rules)
+            except Exception as e:  # noqa: BLE001
+                lines.append(f"  its record could not be read this hour ({type(e).__name__}: {e}); nothing is ruled "
+                             f"for it until it can be")
+                continue
+            lines.append(f"  so far: champion {_pct(champ['return'])} (max drawdown "
+                         f"{_dd(champ['max_drawdown'])}, {_n(champ['trades'], 'fill')}) vs {name} "
+                         f"{_pct(chal['return'])} (max drawdown {_dd(chal['max_drawdown'])}, "
+                         f"{_n(chal['trades'], 'fill')})")
             if champ.get("skill") is not None and chal.get("skill") is not None:
-                t_txt = f", daily edge t {chal['edge_t']:+.1f} over {chal['edge_days']} days" \
+                t_txt = f", daily edge t {chal['edge_t']:+.2f} over {chal['edge_days']} days" \
                     if chal.get("edge_t") is not None else ""
                 lines.append(f"  skill (net return minus the basket held at the strategy's usual exposure): champion "
-                             f"{champ['skill']:+.2%} (usual {champ['skill_exposure']:.2f}, this window "
-                             f"{champ['avg_exposure']:.2f}) vs {name} {chal['skill']:+.2%} (usual "
-                             f"{chal['skill_exposure']:.2f}, this window {chal['avg_exposure']:.2f}); the rule compares "
+                             f"{champ['skill']:+.2%} ({_exposure_words(champ)}) vs {name} {chal['skill']:+.2%} "
+                             f"({_exposure_words(chal)}); the rule compares "
                              f"on {compare_on(rules, champ, chal)}{t_txt}")
+            # the readings added with ruleset 7 are for the reader; none of them may stop the summary
             try:
-                lines.append(f"  market over the window: {format_market(market_context(meta['started_at'], now, pairs))}")
+                elapsed = (now - meta["started_at"]) / 86400
+                blank = no_record(champ, chal, name)
+                gap = missing_market_data(mc, rules)
+                if blank and elapsed * 24 < 1.5:
+                    # a window opened by a restart begins after this hour's readings were written
+                    lines.append("  no reading yet: its window opened this hour, and the first reading in it is "
+                                 "written at the next run")
+                elif blank:
+                    lines.append(f"  no reading this hour: {blank}. Nothing is ruled on a test until that record "
+                                 f"is whole")
+                elif gap == JUST_OPENED:
+                    lines.append("  no skill figure yet: its window opened within the hour, and no candle in it "
+                                 "is on file yet")
+                elif gap:
+                    lines.append(f"  no skill figure this hour: {gap}. Nothing is ruled on a test until the market "
+                                 f"data is whole")
+                worth, why = of_value(champ, chal, rules)
+                tally = trade_tally(chal)
+                if not chal.get("trades"):
+                    lines.append("  trades: none yet. A test that has finished no trade of its own by its look is "
+                                 "killed")
+                elif chal.get("return") is None:
+                    lines.append("  trades: there is no usable equity record in its window to set them against")
+                elif no_trade_of_its_own(chal):
+                    lines.append(f"  trades: {why}. A test that has finished no trade of its own by its look is "
+                                 f"killed")
+                elif worth:
+                    lines.append(f"  trades: {tally}. Of value on today's numbers, which keeps a test that does not "
+                                 f"pass the rule (kept is not promoted)")
+                else:
+                    lines.append(f"  trades: {why}" if why.startswith(tally)
+                                 else f"  trades: {tally}. Not of value on today's numbers: {why}")
+                lines.append(f"  confidence: {confidence_line(chal, rules)}")
+                one_look = not two_looks(meta, rules)
+                pace = fills_pace(chal, rules, elapsed, st["window_days"] + st["confirm_days"], one_look)
+                if pace:
+                    lines.append(f"  fills: {pace}")
+                if st["two_from"] is not None and one_look and not blank and gap != JUST_OPENED:
+                    lines.append("  two look rule (measured, not applied to this test): "
+                                 + other_rule_reading(champ, chal, rules, elapsed, gap=gap))
+                changed = champion_note(meta["started_at"], now, bool(champ.get("exposure_schedule")),
+                                        measured=champ.get("skill") is not None)
+                if changed:
+                    lines.append(f"  champion change: {changed}")
+            except Exception as e:  # noqa: BLE001
+                lines.append(f"  confidence and rule readings unavailable ({type(e).__name__}: {e})")
+            try:
+                lines.append("  market over the window: nothing yet (no candle in it is on file)"
+                             if mc.get("gap") == JUST_OPENED else
+                             f"  market over the window: {format_market(market_context(meta['started_at'], now, pairs))}")
             except Exception as e:  # noqa: BLE001
                 lines.append(f"  market over the window: unavailable ({e})")
     free = slot.free_slots()
     lines.append(f"- free slots: {', '.join(free) if free else 'none'}")
-    lines.append(f"- {shadow.describe(now)}")
+    try:
+        lines.append(f"- {shadow.describe(now)}")
+        waits = guard_waits(now, rules)
+        if waits:
+            lines.append(f"  no ruling this hour: {waits}. The guard is ruled on once that is whole")
+    except Exception as e:  # noqa: BLE001
+        lines.append(f"- shadow: its record could not be read this hour ({type(e).__name__}: {e})")
+    for line in unusable + other_notes():
+        lines.append(f"- SETTING NOT USED: {line}")
     if any_testing:
-        lines.append("- interim readings are not verdicts; only the end of window rule counts")
+        lines.append("- interim readings are not verdicts. A test is ruled on at its looks, day "
+                     f"{st['window_days']:.0f} and day {st['window_days'] + st['confirm_days']:.0f}, and before them "
+                     "only by an early kill")
+        lines.append("- a finished trade is a position the account left (sold down to a twentieth or less); one of "
+                     "its own is one the strategy chose to leave, not one the daily loss halt sold. A test that has "
+                     "finished none of its own is killed at its look; one that does not pass the rule is kept when "
+                     "its finished trades made money after costs (PROMOTION.md)")
+        lines.append("- confidence is the chance the strategy has a real edge, from the t of its daily skill over the "
+                     "whole test so far. It moves slowly on purpose: 60 days of data cannot say much (PROMOTION.md)")
     return "\n".join(lines) + "\n"
+
+
+def _section(title: str, fn, *args) -> str:
+    """One section of the summary, or two lines saying it could not be built.
+    A state file that cannot be read must not cost the hour its summary and,
+    with it, the commit of the hour's trading: the section says so, every
+    hour, until the file is mended."""
+    try:
+        return fn(*args)
+    except Exception as e:  # noqa: BLE001
+        return f"## {title}\n\nits record could not be read this hour ({type(e).__name__}: {e})\n"
 
 
 def build(now: int | None = None) -> str:
@@ -249,11 +389,11 @@ def build(now: int | None = None) -> str:
              f"Cost model: fee {rcfg['fee_bps']} bps + slippage {rcfg['slippage_bps']} bps per side "
              f"(~{2 * (rcfg['fee_bps'] + rcfg['slippage_bps'])} bps per round trip). "
              f"Pairs: {', '.join(rcfg['pairs'])}. Paper only.", ""]
-    parts.append(runs_section(now))
-    parts.append(test_section(now))
+    parts.append(_section("Runs", runs_section, now))
+    parts.append(_section("Challenger slots", test_section, now))
     for name in config.accounts():
-        parts.append(account_section(name, now))
-    parts.append(data_section(list(rcfg["pairs"]), now))
+        parts.append(_section(name, account_section, name, now))
+    parts.append(_section("Data", data_section, list(rcfg["pairs"]), now))
     return "\n".join(parts)
 
 

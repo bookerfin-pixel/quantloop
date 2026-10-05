@@ -35,18 +35,93 @@ can read it with `gh pr list --state closed`.
   buys in that pair stop until the next day. Sells never stop. A decision
   whose reason says "capped:" means a strategy tried to trade past that,
   which is a loop.
-- Every hour `bot/promote.py` rules on any slot whose test has run for
-  `challenger.window_days` (60): promoted or killed, by the rules in
-  configs/risk.yaml, with the realised gross bps per round trip written next
-  to what the ledger entry predicted and a line on what the market did over
-  the window. A challenger that draws down more than `early_kill_drawdown`
-  is killed early, and so is one whose live costs after 14 days are running
-  at more than three times the gate's cost limit (a fees treadmill). After a
-  promotion the deposed config keeps running as the shadow for one window
-  and the promotion is reverted if it wins. The champion account is never
-  reset. A result marked `voided` is a test Fin ended because its code or
-  data was broken; its numbers say nothing about the idea, so do not count it
-  for or against the family in FINDINGS.
+- Every hour `bot/promote.py` looks at every running test, by the rules in
+  configs/risk.yaml, set out in PROMOTION.md (read it once). A test ends
+  `promoted`, `killed` or `unproven`, with the realised gross bps per round
+  trip written next to what the ledger entry predicted and a line on what
+  the market did over the window. After a promotion the deposed config keeps
+  running as the shadow for one window and the promotion is reverted if it
+  beats the new champion. The champion account is never reset. A result
+  marked `voided` is a test Fin ended because its code or data was broken;
+  its numbers say nothing about the idea, so do not count it for or against
+  the family in FINDINGS.
+- Two things come before the rule's numbers, for every test (Fin,
+  2026-10-05). First, a test must have finished a trade of its own: left a
+  position it had bought or had chosen to keep, sold down to a twentieth or
+  less. A trim is not an exit, a position the daily loss halt sold is not a
+  choice, and a test that has finished no trade of its own at its look is
+  killed, whatever its numbers. Second, a test that does not pass the rule
+  is kept all the same when its trades are of value, meaning it has
+  finished a trade of its own, its finished trades made money after costs,
+  and its drawdown is inside the guard. Kept is not promoted. Trading
+  little does not kill by itself, but a test with fewer than 30 fills
+  cannot pass a look, so at day 60 it is kept only on the value of its
+  trades.
+- Each slot's `trades:` line in the summary says where a test stands on
+  that: how many trades it has finished (the halt's closes among them, said
+  apart), what they made after costs as a share of its starting equity, and
+  whether its trades are of value on today's numbers. This reads the
+  record; it is not proof of an edge. Only finished trades are in it, so a
+  bot sitting on losing positions can still read "of value".
+- Tests that begin under ruleset 7 or later get two looks. Day 60: killed
+  with no trade of its own; `### First look H<n>: passed` if it passes the
+  ordinary rule (promoted there instead if its daily skill t is already 2.0
+  and not mostly a standing tilt, the fast pass); `### First look H<n>: kept
+  on value` if it does not pass and its trades are of value; otherwise
+  killed. A First look block is not a verdict: 60 more days follow. Day 120:
+  promoted if the rule passes with 30 fills and a daily skill t of 1.0;
+  `unproven` if it passes the numbers without those, or does not pass and
+  its trades are of value; otherwise killed. H1, H2, H4 and H5, which began
+  before ruleset 7, keep their one look at day 60 (promoted there if they
+  pass) and are otherwise judged the same way.
+- The early kills run every hour. On losses: the test has lost more than 15%
+  since it began AND more than the market itself over the same span (until
+  ruleset 7 it was 15% under its own high whatever the market did, which
+  in a falling market ended 55 of 100 tests with no skill and 40 of 100
+  with a real edge before day 60). On
+  costs: after 14 days, live costs at more than three times the gate's cost
+  limit (a fees treadmill).
+- What each outcome says, for FINDINGS. `killed` with "it has finished no
+  trade of its own": it never left a position by its own choice. It may
+  have only bought, only trimmed, sold the book it was handed and sat out,
+  or had its only exits made by the daily loss halt; the sentence and the
+  numbers line say which. The window may simply have had nothing to test
+  its exits on, so say that and say what the Market line shows. `killed`
+  with "it made no trades to judge": it never traded. `killed` with "It is
+  not kept on value either": it did not pass, and the words after the colon
+  say why its trades are not of value (they lost money, the drawdown guard
+  is broken, or the record cannot put a figure on them). Losing trades in
+  a window where the basket fell hard say less than in a rising one. A kill
+  by an early kill says which one. `unproven`: do not count it against the
+  family, and say what a longer or cleaner test would need. `promoted`:
+  quote the Confidence line beside it, every time.
+- Every verdict on a test and every first look carries a Confidence line, the
+  chance the strategy has a real edge. When it ends "Read it with care", the
+  line says what the figure is resting on (a standing tilt: holding more or
+  less of the market than usual for the whole window, which is one bet; or
+  entries with no exit of its own). Never quote the number without that
+  sentence. A slot is busy for all 120 days of a test that is kept at its
+  first look. From day 7 the summary has a `fills:` line for a test that is
+  not on pace for 30 fills by its first look or by its verdict. If the
+  champion changes while a test runs, the test carries on and its blocks
+  have a `Champion change:` line saying how the champion side was measured;
+  when the champion changes, idle slots follow it by themselves.
+- Lines in the summary to pass on to Fin at the top of the note, because he
+  has to act and you cannot: one that starts `SETTING NOT USED` (a line in
+  configs/risk.yaml is missing, cannot be used as written, or is not a
+  line the code reads; or `slots` no longer covers a slot that holds a
+  test); "its record could not be read this hour" or "no reading this hour"
+  (a state file is damaged, has lost rows, has a row that is not a fill, or
+  has no equity reading in the test's window; nothing is ruled for that
+  slot until it is mended); "its ruling is due" on the shadow's line, or
+  "(due: ..." or "its verdict is due" on a slot's line, on more than one
+  summary in a row; and "no skill figure this hour" or "no ruling this
+  hour" on more than one summary in a row (candles are missing, begin late
+  or lack the candle that had just closed; no look is taken and no early
+  kill on losses is made until they are whole). "no reading yet" and "no
+  skill figure yet" in the hour a window opens are normal. A damaged record
+  is what `VOID REQUEST` is for when it cannot be mended. If the hourly run
+  itself is red, say so first: nothing is committed until it is green.
 - Every hour `bot/report.py` rewrites `state/summary.md`.
 - state/history/ holds about five years of hourly candles per pair where the
   venue has them (Coinbase backfill, written once; a pair starts where the
@@ -147,12 +222,46 @@ If a slot is free:
 - Pick the hypothesis with the best cost arithmetic from the backlog, or a
   new one if you have a stronger reason. Structural changes (horizon,
   filter, universe, sizing rule) over parameter nudges. A nudge cannot be
-  distinguished from noise in 21 days, so it can only waste the slot.
+  distinguished from noise in 60 or 120 days, so it can only waste the slot.
 - Diversify across slots. The slots are there to learn several different
   things at once, so do not run two hypotheses from the same family that
   differ only in a parameter; pick a different mechanism from what the other
   slots are testing, and say in the ledger entry what it will tell us that
   the running tests will not.
+- Prefer ideas that can be proven. The verdict rests on the t of the daily
+  skill, and t grows with the number of independent bets. A strategy that
+  only times the whole market in or out makes a handful of independent bets a
+  year and cannot reach a t of 1 in 120 days unless it is very good (in
+  sample H4's skill has a yearly Sharpe ratio of 0.2). A strategy that chooses
+  between coins, holding some and not others on a signal each coin carries
+  separately, makes many more. Say in the ledger entry how many independent
+  bets a year the idea makes and what skill t you expect after 120 days. The
+  sum: expected t is the yearly Sharpe ratio of the skill times the square
+  root of days over 365, so 0.57 times the Sharpe ratio at day 120 and 0.41
+  times at day 60. A promotion needs 1.0 at day 120, which is a Sharpe ratio
+  of about 1.75 on average luck.
+- Prefer ideas whose entries and exits both happen several times in 60 days.
+  A test that has left no position by its own choice at day 60 is killed,
+  whatever it shows, and one that needs a rare event to exit will not have
+  finished a trade in time. The backtest prints `finished_trades`
+  (positions the strategy left by its own choice, counted the way a live
+  test's are: sold down to a twentieth or less, so scaling a position up
+  and down without leaving it is not one), `closed_by_halt_or_error`
+  (positions the daily loss halt or an error closed for it, which are not
+  its own) and `windows_with_no_finished_trade`, the share of 60 day
+  windows in the run in which it left none of its own. A test that began in
+  one of those would have been killed. Put all three in the entry, and
+  think twice about an idea where that share is high. (The summary's count
+  for a live test is every position it left, with the halt's said apart.)
+- It needs 30 fills by day 60 as well: with fewer it cannot pass its first
+  look and is kept only if its finished trades have made money. The
+  Backtest line's fills per pair per day, times ten pairs, times 60, says
+  whether an idea is likely to get there.
+- Think about the early kill on losses as well: an idea that can lose more
+  than 15% from its start while the market loses less is ended there. A
+  book of any size can do that when the few coins it holds fall harder than
+  the rest. Put the backtest's max drawdown next to the basket's in the
+  entry (the gate prints both) and say what you make of the gap.
 - A strategy that cannot decide for lack of candles must return a target of
   zero with a reason of exactly this shape: `flat: only N candles, need M`.
   The engine and the gate look for it. Never need more than 2160 candles.

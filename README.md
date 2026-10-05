@@ -28,16 +28,24 @@ construction.
    judged prospectively. Pass: merged automatically. Fail: closed
    automatically with the reason, which the agent reads next time.
 4. **The test**: the next hourly run sees the new slot config and starts a
-   60 day prospective test, champion and challenger on the same live data.
-   After the window `bot/promote.py` rules by fixed rules in
-   `configs/risk.yaml`: promoted (the slot's config becomes the champion)
-   or killed. A challenger down more than 15% is killed early. Verdict
-   appended to `LEDGER.md` with the realised gross bps per round trip next
-   to the number the hypothesis predicted and what the market did over the
-   window, slot reset and free. After a promotion the deposed config keeps
-   running as a shadow for one more window; if it beats the new champion
-   the promotion is reverted, which is the guard against a lucky 60 days.
-   Four tests run at once, about two dozen verdicts a year.
+   prospective test, champion and challenger on the same live data.
+   `bot/promote.py` rules by fixed rules in `configs/risk.yaml`, set out in
+   `PROMOTION.md`. A test ends one of three ways. Killed: it finished no
+   trade of its own (buying and holding shows nothing), or it did not pass
+   the rule and its trades are not of value (in the main, its finished
+   trades lost money). Unproven: it was kept and is short of proof; the
+   slot is freed all the same. Promoted: the slot's config becomes the
+   champion. Day 60 is a first look: a test that passes the rule, or whose
+   trades are of value, gets 60 more days, and one that passes with a daily
+   skill t of 2.0 is promoted there. Day 120 is the verdict on the whole
+   test. A challenger that has lost more than 15% since it began, and more
+   than the market has, is killed early.
+   Verdict appended to `LEDGER.md` with the realised gross bps per round
+   trip next to the number the hypothesis predicted, what the market did
+   over the window and a confidence figure, slot reset and free. After a
+   promotion the deposed config keeps running as a shadow for 60 days; if it
+   beats the new champion the promotion is reverted. Four tests run at
+   once, about 18 verdicts a year.
 5. **The synthesis**: `FINDINGS.md` is the distilled version of the ledger,
    kept by the agent: what is confirmed, what one verdict suggests, what was
    killed and why, how well the cost arithmetic predicted reality, and what
@@ -53,18 +61,19 @@ strategy whose gross edge was smaller than Binance's fees, and machinery
 built before there was any evidence to calibrate it. So here the cost model
 is the first class citizen (one function serves the paper account and the
 backtest), every hypothesis must state its expected gross bps per round trip
-against the ~30 bps cost, no verdict is reached without a minimum number of
+against the ~30 bps cost, nothing is promoted without a minimum number of
 fills, and the champion's equity curve is never reset. Backtests are treated
 as plausibility checks; only the prospective window counts.
 
 ## Layout
 
     bot/            data, strategy (agent editable), paper account, risk, run, backtest, promote, shadow, report
-    configs/        risk.yaml (protected), champion.yaml (protected), challenger1..3.yaml (agent edits, one per PR)
+    configs/        risk.yaml (protected), champion.yaml (protected), challenger1..4.yaml (agent edits, one per PR)
     gate/           the three checks the PR must pass
     tests/          gate/ is protected; the rest the agent may extend
     state/          accounts, decisions, trades, equity curves, live candle cache, five year history, summary.md
     LEDGER.md       every hypothesis and its verdict, never edited backwards
+    PROMOTION.md    how a strategy becomes champion, and what real money would take (protected)
     FINDINGS.md     the distilled state of knowledge, kept current by the agent
     hypotheses/     the backlog the agent draws from
     notes/          daily observations when the slot is busy
@@ -100,10 +109,11 @@ keep running.
 ## Going live
 
 There is deliberately no path from this repo to a live order. The agent is
-forbidden from writing one and the gate greps for it. If the ledger ever
-shows a champion with months of prospective evidence, the live version is a
-separate decision and a separate piece of code, written and reviewed by a
-person, with its own risk limits.
+forbidden from writing one and the gate greps for it. `PROMOTION.md` lists
+what a champion must show before real money is worth discussing (rule 2).
+Meeting it starts a conversation with Fin, nothing more: the live version is
+his decision and a separate piece of code, written and reviewed by a person,
+with its own risk limits.
 
 ## Costs
 

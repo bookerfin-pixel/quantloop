@@ -73,7 +73,8 @@ def main() -> int:
         return 1
     curve = m.get("equity_curve") or []
     try:
-        market = market_context(curve[0][0], curve[-1][0], list(rcfg["pairs"])) if curve else None
+        # the curve is stamped with candle open times and marked at their closes, an hour later
+        market = market_context(curve[0][0], curve[-1][0] + 3600, list(rcfg["pairs"])) if curve else None
     except Exception as e:  # noqa: BLE001
         print(f"market context unavailable ({e}); drawdown limit falls back to the absolute floor")
         market = None

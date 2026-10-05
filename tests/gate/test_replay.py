@@ -8,7 +8,7 @@ import json
 import pandas as pd
 import pytest
 
-from bot import backtest, config, data, paper, run, strategy
+from bot import backtest, config, data, paper, promote, run, strategy
 from bot.run import REPLAYED, SITS_OUT, pending_bars, run_account, step
 
 RCFG = {"fee_bps": 10, "slippage_bps": 5, "impact_bps": 2, "initial_cash": 10_000, "pairs": ["BTC", "ETH"],
@@ -563,3 +563,121 @@ def test_the_fill_cap_stops_a_loop_but_never_blocks_a_sell():
     out = lambda c, p, w: {"BTC": strategy.Target(0.0, "exit")}   # noqa: E731
     d, fills, _ = step(acct2, {"params": {}}, out, frames, prices, day + 3600, RCFG)
     assert [f.side for f in fills] == ["sell"] and "BTC" not in acct2.positions
+
+
+# --- the account counts its readings, as it counts its fills ------------------------------
+
+def test_the_account_counts_its_readings_and_its_files_agree_with_its_counts(sandbox):
+    """bot/promote.py sets an account's files against the account's own counts
+    before it rules on anything (record_fault). The engine's side of that:
+    every reading written is counted, replayed hours included, and what the
+    engine writes passes every one of those checks."""
+    config.dump_yaml(sandbox / "configs" / "champion.yaml", BUSY)        # quick enough to hold fills
+    full = series()
+    first = upto(full, 200)
+    run_account("champion", first, last_close(first), START + 200 * 3600 + 600, RCFG)
+    assert account(sandbox)["equity_rows"] == 1
+    for n in range(201, 240):
+        frames = upto(full, n)
+        run_account("champion", frames, last_close(frames), START + n * 3600 + 600, RCFG)
+    late = upto(full, 244)                                               # four runs dropped: replayed, then the live one
+    run_account("champion", late, last_close(late), START + 244 * 3600 + 600, RCFG)
+    run_account("champion", late, last_close(late), START + 244 * 3600 + 1500, RCFG)     # a second trigger adds nothing
+    st = account(sandbox)
+    assert st["equity_rows"] == 45 == len(rows(sandbox, "champion", "equity.csv"))
+    assert st["n_trades"] == len(rows(sandbox, "champion", "trades.csv")) >= 2
+    assert promote.record_fault("champion") is None
+    # a reading cut from the middle of the file: its first row, its last row and its order are as they were
+    p = sandbox / "state" / "champion" / "equity.csv"
+    lines = p.read_text().strip().split("\n")
+    p.write_text("\n".join(lines[:20] + lines[21:]) + "\n")
+    assert promote.record_fault("champion") == ("champion/equity.csv has 44 rows and the account has taken 45 "
+                                                "readings: rows have been lost or added")
+    # and the count is the account's own, not a count of the file: the next run does not forget what was lost
+    nxt = upto(full, 245)
+    run_account("champion", nxt, last_close(nxt), START + 245 * 3600 + 600, RCFG)
+    assert account(sandbox)["equity_rows"] == 46
+    assert promote.record_fault("champion").startswith("champion/equity.csv has 45 rows and the account has taken 46 ")
+
+
+def test_the_count_of_readings_starts_from_the_file_as_it_stands(sandbox):
+    """Every account that was running when the count arrived has no count yet.
+    Its first run under this code takes the file as it finds it."""
+    full = series()
+    for n in (200, 201):
+        frames = upto(full, n)
+        run_account("champion", frames, last_close(frames), START + n * 3600 + 600, RCFG)
+    st = account(sandbox)
+    del st["equity_rows"]                                                # as the live accounts are today
+    (sandbox / "state" / "champion" / "account.json").write_text(json.dumps(st))
+    assert promote.record_fault("champion") is None                      # no count to set the file against yet
+    late = upto(full, 203)                                               # one hour replayed and the live one
+    run_account("champion", late, last_close(late), START + 203 * 3600 + 600, RCFG)
+    assert account(sandbox)["equity_rows"] == 4 == len(rows(sandbox, "champion", "equity.csv"))
+    assert promote.record_fault("champion") is None
+
+
+def test_a_new_account_counts_from_nothing(sandbox, live):
+    feed, hour = live
+    assert hour(200) == (0, "0") and hour(201) == (0, "0")
+    assert account(sandbox, "challenger1")["equity_rows"] == 2
+    for f in (sandbox / "state" / "challenger1").iterdir():              # a verdict resets the slot: a fresh account
+        f.unlink()
+    assert hour(202) == (0, "0")
+    assert account(sandbox, "challenger1")["equity_rows"] == 1 and account(sandbox)["equity_rows"] == 3
+    assert promote.record_fault("challenger1") is None and promote.record_fault("champion") is None
+
+
+# --- what stops the hourly run, and what does not ---------------------------------------
+
+def test_a_slot_record_that_cannot_be_read_does_not_cost_every_account_its_hour(sandbox, live, capsys):
+    """slot.maybe_start read every slot's record with nothing round it, after
+    the accounts had traded: one meta.json cut short failed the run, so the
+    hour of every account went uncommitted, and the next, until it was
+    mended by hand. Nothing is started or ended in that slot, it is said,
+    and the hour is kept."""
+    feed, hour = live
+    assert hour(200) == (0, "0")
+    meta = sandbox / "state" / "challenger1" / "meta.json"
+    config.dump_yaml(sandbox / "configs" / "challenger1.yaml", BUSY)     # a config that would start a test
+    for damaged in ("{cut", "[]", "null", json.dumps({"hypothesis": "HB"})):
+        meta.write_text(damaged)
+        capsys.readouterr()
+        n = counts(sandbox)["champion"]
+        assert hour(200 + n) == (0, "0")
+        assert "[slot] WARNING: challenger1: its slot record (meta.json) could not be read (" in capsys.readouterr().out
+        assert meta.read_text() == damaged                                   # left as it was found, for a person to mend
+        assert counts(sandbox) == {"champion": n + 1, "challenger1": n + 1}  # and every account kept its hour
+    meta.unlink()                                                        # mended (no record is an idle slot): the test starts
+    assert hour(210) == (0, "0")
+    assert json.loads(meta.read_text())["status"] == "testing"
+
+
+def test_an_idle_slot_whose_record_cannot_be_read_is_written_afresh(sandbox, live, capsys):
+    """A slot whose config is the champion's holds no test, whatever its
+    record says or cannot say. Left damaged it was not free for the agent
+    until a person mended the file by hand."""
+    feed, hour = live
+    assert hour(200) == (0, "0")
+    meta = sandbox / "state" / "challenger1" / "meta.json"
+    meta.write_text("{cut")
+    capsys.readouterr()
+    assert hour(201) == (0, "0")
+    assert ("[slot] challenger1: its slot record (meta.json) could not be read (JSONDecodeError: " in capsys.readouterr().out)
+    assert json.loads(meta.read_text()) == {"status": "idle", "hypothesis": None, "started_at": None, "start_equity": {}}
+    assert counts(sandbox) == {"champion": 2, "challenger1": 2}
+
+
+def test_a_record_that_does_not_begin_with_its_header_stops_the_run(sandbox, live):
+    """The one kind of damaged record the run does not carry on past: a file
+    it would have to write to. Adding rows under a first line that is not
+    the header would bury the damage, so the run stops, loudly, with nothing
+    committed, and the file is left exactly as it was found."""
+    feed, hour = live
+    assert hour(200) == (0, "0")
+    p = sandbox / "state" / "champion" / "equity.csv"
+    damaged = p.read_text().split("\n", 1)[1]
+    p.write_text(damaged)
+    with pytest.raises(ValueError, match="champion/equity.csv does not begin with a header this code wrote"):
+        hour(201)
+    assert p.read_text() == damaged

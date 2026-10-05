@@ -34,6 +34,14 @@ hypotheses.
 
 ## Open questions
 
+- The skill figure carries a compounding term of its own (raised 2026-10-05 in review, not yet acted on). Skill is a total return minus exposure times the basket's total return. A holder who keeps a steady half of his equity in the ten pairs, rebalanced daily, does not score zero on it. Over the 60 day windows since all ten pairs have traded (July 2023 on, one window a week), his skill figure ran from -21% to +2%: a little above zero in most windows (median +0.3%), and well below it where the market ran hard one way (median -1.7% in the windows where the basket moved more than 30%), because the basket is bought once and held, so it ends up mostly in whatever rose. Both sides of a comparison carry a similar term and the daily skill t does not have it (it is built on daily differences), so it bears mostly on the floor at zero under a challenger's skill. A candidate for the next ruleset: measure skill as the sum of the daily differences, so that the figure and its t are the same quantity.
+
+- The basket and the account are read up to an hour apart (raised 2026-10-05 in review, not yet acted on). An account is valued at the quotes of the minute the bot runs; the basket is read from hourly closes. At a test's start that is now corrected by reading between the two closes either side of it, which is nearer and not exact: on 5 October, 9.8 days after H4 began, its basket read -0.9% from the first close after the start (the old reading), 0.0% between the closes, and -0.3% from the quotes the accounts were valued at in that minute (four hours later the three read +0.1%, +1.0% and +0.7%: the gaps between them stay, about 0.9 and 0.3 of a point). At the window's end the basket is the last hourly close, some minutes older than the account's own reading. Over 60 days this is noise of a few tenths of a point, not a lean either way. A candidate for the next ruleset: read the basket from the same quotes the accounts are valued at, which the decision log already holds for every pair every hour.
+
+- A test's return leaves out the cost of its first hour (seen 2026-10-05 in review, not changed). A test's start equity is its equity after the fills of the hour it began in, and in that hour a new strategy trades from the book the idle slot held to its own. So that one off cost is in the costs a result shows, and in the cost kill, and not in the return, the skill or the gross pnl. H4's was 13.71 and H5's 14.74, about 0.14% of the account each. The champion side leaves out only what it happened to trade in that same hour (nothing in H4's, 0.39 in H5's). It has been the convention since the first test and it leans towards the challenger by about 0.14 of a point a test, small against a bar that asks for a daily skill t of 1.0. The result's line now says the amount. The fills of that hour also count towards the 30 a promotion needs (H4's ten, H5's eight). A sell in that hour of what the slot was handed can never be a finished trade of the test's own; what the test buys in that hour is its own from then on. A candidate for the next ruleset: start a test's return, and its count of fills, from before that hour's fills.
+
+- Does choosing between coins carry skill here where timing the market has not? (raised 2026-10-05.) First look on five years of daily closes of the ten pairs: holding the strongest two to five by trailing return, rebalanced weekly, beat the equal weight basket in all 18 variants tried (skill Sharpe 0.06 to 1.09, average 0.48), and 7 of the 18 beat 95% of their own no skill twins (1 expected by luck), all at lookbacks of 3 to 14 days. In sample, daily bars, and negative so far in 2026. Even at face value a skill Sharpe of 0.5 to 1 shows a daily skill t of only 0.3 to 0.6 after 120 days, so on ten pairs it cannot be proven quickly either. The details and the engine constraints are in hypotheses/backlog.md. The same question on the whole Kraken list is what the wider universe work is for: more names is the only honest way to a faster proof.
+
 - Does the momentum family work at all on this universe at hourly resolution
   with a 30 bps round trip, or only at horizons of a week or more? (H0 lost
   on its first 23 days in a falling market; that is one window, not an answer.)
@@ -298,22 +306,298 @@ the machinery, not edge.
   time, and a promotion in November would say little. Until the rule changes,
   read "promoted" as "not ruled out", and look at the daily edge t in the
   verdict: under about 2 it is noise.
-  Measured the same day with twins that have no skill: each live config's
-  hour by hour weights slid against the market by a random offset of at least
-  30 days, so the exposure, turnover and costs are the strategy's own and its
-  timing is gone. Against H0 over the last 687 days the rule as it stands
-  promotes such a twin 40% of the time. Two passes in a row: 16%. A pass at
-  day 60 and then 120 days with skill above zero, above the champion's and a
-  daily skill t of at least 1.0: 8%; at 1.5: 3%; at 2.0: under 1%. The price
-  is power. A strategy whose skill truly has a yearly Sharpe ratio of 2
-  clears those five bars 81%, 65%, 57%, 38% and 20% of the time, so no rule
-  over 60 or 120 days separates an edge of ordinary size from luck: t grows
-  with the square root of time, and a skill Sharpe of 2 needs about a year to
-  show a t of 2. In sample over those 687 days the skill Sharpe of the live
-  configs is -0.6 (H1), 0.0 (H2) and +0.2 (H4). H4's +43% over 715 days is
-  mostly its first four weeks, the rally of late 2024 (+40%, the basket
-  +45%); from then on it made +3% while the basket fell 27%. That is skill of
-  the useful kind (it stepped aside) and far too little to prove in a year.
+  Measured with twins that have no skill (2026-10-05, the study behind
+  PROMOTION.md; three random seeds within a point and a half of each other
+  in every cell): each live config's hour by hour weights, from a replay,
+  slid against the market by a random offset of at least 30 days, so the
+  exposure and turnover are the strategy's own and its timing is gone. 900
+  twins against H0 over 687 days in which the basket fell by a third, a
+  test starting each week, every rule read the way the code reads it (the
+  early kill asked every hour, 30 fills, the basket held from the test's
+  start). The old rule as it ran, one look at day 60 with an early kill at
+  15% under the test's own high, promoted such a twin 25 times in 100; with
+  no early kill, 38. Two passes in a row: 14. Two looks with a daily skill
+  t of 1.0 at day 120: 9; at 1.5: 3; at 2.0: under 1. The price is power. A
+  strategy whose skill truly has a yearly Sharpe ratio of 2 is promoted 49,
+  77, 57, 56, 37 and 20 times in 100 by those six, so no rule over 60 or
+  120 days separates an edge of ordinary size from luck: t grows with the
+  square root of time, and a skill Sharpe of 2 needs about a year to show a
+  t of 2. In sample over those 687 days the skill Sharpe of the live
+  configs is -0.6 (H1), 0.0 (H2) and +0.2 (H4). H4's +43% over its 715 day
+  replay is mostly its first four weeks, the rally of late 2024 (+37%, the
+  basket +44%); from then on it made about nothing while the basket fell by
+  roughly a third (cut after 28 days it made +5% and the basket -27%; over
+  the study's 687 days it made -3% and the basket -33%). That is skill of
+  the useful kind (it stepped aside) and far too little to prove in a
+  year.
+  Decided 2026-10-05 (Fin, ruleset 7, PROMOTION.md): two looks with a daily
+  skill t of 1.0 at day 120, an `unproven` outcome, and a fast pass. H1, H2,
+  H4 and H5 (which began a few hours before the rule) keep their one look
+  at day 60 and are otherwise judged the same way; their results also say
+  what the new rule makes of the same numbers.
+  As built the rule promotes a twin 9 times in 100 (8.5 to 9.0 across the
+  seeds) and a Sharpe 2 edge 56. The fast pass, a first look pass with a
+  daily skill t of 2.0 or more: a twin 9 times in 1,000, a Sharpe 2 edge 12
+  times in 100, a Sharpe 3 edge 23. A Sharpe 2 edge is about 14 times as
+  likely as a twin to get a fast pass, about 6 times as likely to be
+  promoted under the whole rule, and was about 2 times as likely to pass
+  the old rule as it ran. An old rule pass that the new rule does not
+  confirm is 0.7 times as likely from the edge as from a twin: evidence the
+  wrong way. A twin's test now takes 80 days on average against 43, so four
+  slots give about 18 verdicts a year where the old rule gave about 34 (of
+  those, 55 in 100 were early kills, 20 kills at day 60 and 25
+  promotions). One look at day 60 under today's rules, which is how H1, H2,
+  H4 and H5 are judged, would promote 38 twins in 100, against the 25 the
+  old rule promoted as it ran: the fairer early kill lets more of them
+  reach day 60. What would make proof
+  faster for an edge of ordinary size is not a lower bar but more
+  independent bets a day (open question for the wider universe).
+  An earlier run of this study (the same day) asked the early kills once a
+  day at the close, measured against a basket rebalanced every hour, and
+  never asked for the 30 fills. Read that way the old rule's row was 32 and
+  the old early kill's toll 45 of 100 by day 60. The fifth review reran the
+  same twins the way the code reads them; rule 1's own row moved by half a
+  point, the old rule's by seven. The figures above are the code's.
+
+- The early kill was ending most tests whatever their skill (found
+  2026-10-05, in review; in force since 2026-09-17). It read "more than 15%
+  under its high inside the window", asked every hour. Replayed on the same
+  687 days it ended 55 of 100 twins and 40 of 100 strategies with a Sharpe
+  2 edge before day 60, and the live configs as they are in 60 (H1), 46
+  (H2) and 65 (H4) of 100 starts: the basket itself fell far more than 15%
+  in that stretch, so anything that held coins hit the limit. Kept on
+  through a 120 day test it would have ended 74 and 58 of 100, and the two
+  look rule would have promoted a Sharpe 2 edge 31 times in 100, not 56. It
+  also measured from the high, so a test that had risen and given back 16%
+  was ended while still above where it began, although the sentence it
+  printed, and the rules file, said "from its window start".
+  Twelve ways of reading it were replayed (once a day at the close, which
+  understates each by a few points). Scaling the limit by the test's usual
+  exposure still ended 28 of 100 Sharpe 2 edges, a flat 25% ended 11, and
+  "more than the basket's own worst fall" from the high ended 2 but took H4
+  as it is in 47 of 100 starts, because a trend follower is fully invested
+  at the top. From ruleset 7: lost more than 15% since the test began AND
+  more than the market itself over the same span. Asked every hour, that
+  ends 25 of 100 twins and 5 of 100 Sharpe 2 edges inside 120 days (H1, H2
+  and H4 as they are: 36, 14 and 17 of 100 starts), costs under one
+  promotion in 100 against having no early kill at all, and frees a twin's
+  slot about 8 days sooner on average. It is not only for fully invested
+  books: what ends a test is losing more than the whole market, and a book
+  of a few coins that fall harder than the rest does that at any exposure
+  (H1, which usually holds about a third, is the config it ends most).
+  One more change the fifth review forced: the account is valued at this
+  hour's quotes, so the basket it is set against must be this hour's too.
+  With two of three pairs' candles three hours behind in a falling market,
+  a test that had lost less than the market was ended for losing more. The
+  limit was six hours; it was made two, and the sixth review showed one
+  failed fetch inside two hours doing the same in a market falling 3% an
+  hour. The early kill now waits unless every pair has the candle that
+  closed at the top of the hour, which the hourly run fetches just before.
+
+- Review of the verdict code before ruleset 7 shipped (2026-10-05 and 06). Seven
+  rounds of independent review, each of which ran the rule against random
+  states and its own reading of PROMOTION.md, and 449 deliberate breakages
+  of the code, each of which a test has to catch. What they found, all
+  fixed before the first run:
+  measuring: days missing from an account's record bent the daily skill t,
+  because the first row back carried the account's whole return for the
+  gap and only one day of the basket's (three missing days in a market up
+  25% turned a t of +0.4 into +1.1, enough to turn `unproven` into
+  `promoted`), and the first fix still bent it when the outage began
+  inside a day, so the basket is now read at the account's own readings; a
+  test's average exposure was a plain mean of its rows, which left out
+  whatever it held through hours the bot did not run; three days were
+  enough for a t.
+  Numbers that are not numbers: a blank equity cell made a return NaN and
+  every comparison with NaN is false, so a losing test passed; a blank cell
+  in the hour of a promotion went into the shadow guard's start equity and
+  the guard could then never revert.
+  Settings: a blank value in the rules file stopped the hourly run; the
+  first fix read a mistyped value as zero, which quietly switched the two
+  look rule off; `compare_on: Skill` was read as "not skill", so the rule
+  compared raw returns without a word; several older settings stopped the
+  run only once a test reached day 60. Every challenger setting is now read
+  through one checked function.
+  Market data: with the candles missing the rule fell back to raw return;
+  with two of three pairs' candles missing, the basket was the one pair
+  left and a kill became a promotion; candles that stopped three days early
+  read those days as flat. A look now waits for candles that are whole.
+  Older than the rule, and never fired because nothing has been promoted:
+  after a promotion every idle slot kept the old champion's config, so the
+  next run would have opened a "test" of the old champion in each; the
+  ledger's status flip could run on into the next entry; a test in another
+  slot went on being scored against the old champion's usual exposure after
+  the champion changed (the review's case: a new champion that usually
+  holds 10% read as +12% of skill for sitting through a 30% fall, and a
+  good challenger was killed for it). The first live promotion would have
+  hit all three.
+  And sentences that said what the numbers did not: "bought and held" for a
+  test that had sold everything it was handed, "despite better return" for
+  a return eight points worse, "passed" on the slot line for a test kept on
+  value, a first look on day 119.5 that said the verdict was next.
+  The fifth round went at damaged files, the guard, late candles, the names
+  of settings and the documents themselves.
+  Records: a file that has lost rows still parses, and was read as a
+  shorter record. A test that had made forty fills read as one that had
+  made one and was killed for having "finished no trade of its own"; a
+  champion whose equity rows had gone read as never having had a drawdown,
+  which tightened the guard on every challenger. The engine made it worse:
+  a file that had lost its header was rewritten with every old row blanked.
+  Now each account's files are set against its own counts every hour, and
+  the engine stops rather than rewrite a file it did not write.
+  The hour: the shadow guard and each slot's own record were read with
+  nothing round them, so one damaged file stopped every slot's ruling, the
+  summary and the commit. And a test whose record could not be read could
+  not be voided, the one state a void is for.
+  Candles: a pair whose candles began two days into a window was dropped
+  from the basket without a word, and a kill became a promotion again; the
+  early kill set an account at this hour's quotes against a basket up to
+  six hours old.
+  Settings: a slip in a setting's name (`two_looks_from_rulset`) was read
+  as the line being left out, which switched the thing off; a blank
+  `ruleset:` line stamped a new test as one from before the rule.
+  The documents: the first run of the twin study had asked the early kill
+  once a day and left out the 30 fills, so the old rule's row and every
+  early kill figure were off by seven to fourteen points (rule 1's own row by
+  half a point). And some sentences said more than the code does: "a test
+  is never killed for the number of its fills" (one under 30 cannot pass a
+  look, so at day 60 it is kept only on the value of its trades), "kept ...
+  ends unproven" (it can also be killed at day 120).
+  Sentences again: "10 fills, costs 0.00", because costs were counted from
+  a reading written after a test's first hour; "is due a ruling" on day
+  75; "max drawdown 10.00% exceeded the limit 10.00%".
+  The sixth round went back over the fifth's fixes and found each of them
+  a size too small.
+  Records: an equity file was checked by its first row, its last row and
+  its order, so rows cut from the middle passed; and a fill whose quantity
+  had gone blank was left out of the count of fills while the count of
+  rows still agreed, so a test with twenty finished trades read as having
+  finished none. An account now counts its readings as it counts its
+  fills, and every row of a trades file must be a fill.
+  Candles: "late" was measured from the earliest pair, so when every
+  pair's candles began ten days in (a candle cache lost and fetched again)
+  none was late, and a test that should have been killed passed its first
+  look. Late is now measured from the window's start.
+  Settings: matching near names missed any name past its cutoff
+  (`early_kill` for `early_kill_drawdown`), which still switched the thing
+  off without a word; `max_cost_drag: 15` was read as 1,500% and the cost
+  kill could never fire; `ruleset: '7'` in quotes was "unreadable";
+  `slots: 2.9` ran two slots and a slip in that line's name ran one, the
+  run going green every hour while a test stood still. A missing line now
+  means its documented value and is named, `off` is how a thing is
+  switched off, and a `slots` line that is not a count stops the run.
+  The hour: the catch that keeps a damaged record from stopping the hour
+  had been put round the whole of a ruling, so a revert that failed with
+  half of itself written would have been swallowed and that half
+  committed. Only the reading is waited for now; a ruling that cannot be
+  written stops the hour. And a slot record that could not be read still
+  failed the run itself, after every account had traded, so every account
+  lost its hour to one file: it is now waited for like the rest.
+  The guard: a promotion during an earlier promotion's guard left no
+  `superseded` block when the old shadow's record was damaged, so the
+  earlier promotion looked confirmed; and the summary did not say what a
+  guard that was due a ruling was waiting for.
+  Sentences: "skill +0.00% ... beat champion skill +0.00%"; a limit
+  printed "1e-05%"; "1 fills"; a test's first hour read "there are no
+  candles for its window", the line for damage, and "-0.00%".
+  A seventh, short pass confirmed those fixes and found what they had
+  opened. With a slot record that could not be read no longer stopping the
+  run, a void request for that slot was dropped without a word, and an idle
+  slot in that state did not follow a new champion, so it would have opened
+  a "test" of the old one once mended: a void now reads what runs in a slot
+  from its config, and idle slots follow by their config. An equity row cut
+  short ("2595600,101", an equity of 10,100 read as 101) passed every
+  check, and the champion's drawdown then read 99%, which takes the
+  drawdown guard off every challenger: every equity row must now be a
+  reading in each cell the rule reads. Under `ruleset: '7'` in quotes every
+  block said the rules had changed during the test. And H4's ten fills, all
+  made in its first hour, read as "on pace" for thirty.
+  What the reviews could not break, for the record, in the last pass's own
+  runs: the decision table held through 22 made up worlds and 1,524 hourly
+  rulings with 243 damaged files and candle gaps thrown in, each hour
+  checked against the reviewer's own table from PROMOTION.md; the count of
+  finished trades agreed with a second implementation on 8,000 random
+  sequences of fills and on 28,490 fills run through the real engine; and
+  on the live state every account's files agree with its own counts, as
+  does every trade row in the 452 commits of state history.
+
+- What a kill means, and what keeps a test (Fin, 2026-10-05). On day 19 H1
+  had 10 fills, on day 14 H2 had 2, and H4 had made its 10 in its first
+  hour and held. The rule killed any test under 30 fills at day 60,
+  whatever it had made, and promoted on skill against the usual exposure,
+  which a bot can show by sitting fully invested through a rise. Fin's
+  steer, in two parts. Trading little is no fault if the trades are of
+  value; if they are not, kill. And riding a rise and selling at the right
+  time is the skill, so kill bots that just buy and hold.
+  The first build answered both with one figure, "own decisions": the sum
+  of a test's daily returns minus its average exposure in the window times
+  the sum of the basket's, with a floor of 1%. A holder scores zero on it,
+  which is what it was for. It was dropped before it ran, because it scores
+  a style and not a skill. The benchmark's exposure is known only after the
+  window, and a strategy's exposure answers the market: a dip buyer holds
+  most after falls, so its average exposure is high in just the windows
+  where the basket lost, and the figure flatters it; a trend follower the
+  other way. On a random walk with nothing to time and no costs, a dip
+  buyer with no skill read +3.9% and a trend follower with no skill -3.9%
+  (60 day windows, daily volatility 3.5%, a ten day rule, 20,000 windows).
+  Measured against a running average known the day before the bias goes,
+  and then a strategy with no skill clears a 1% floor 47 times in 100: over
+  60 days any figure of this kind is a coin toss for anything that trades.
+  So no profit figure can be the test of skill here. That stays with the t
+  and the two looks.
+  What ruleset 7 does instead is read the record plainly (PROMOTION.md). A
+  test that has finished no trade of its own is killed, whatever its
+  numbers. A test that does not pass the rule is kept all the same when it
+  has finished a trade of its own, its finished trades made money after
+  costs, and its drawdown is inside the guard. Kept is not promoted. In
+  the twin study a twin with no skill had finished trades in profit at day
+  60 in 36 of 100 tests and a Sharpe 2 edge in 69 (64 and 92 in the third
+  of windows where the basket rose, 22 and 58 where it fell), so it is a
+  weak filter and it is used as one. Two limits. Only finished trades are
+  read, so a bot that takes its winners and sits on its losers reads "of
+  value" until the drawdown guard or an early kill catches it. And fewer
+  than 30 fills still matters: such a test cannot pass a look, so at day 60
+  it is kept only if its trades are of value, and one that passes every
+  number but the fills with losing trades is killed there (under 2 in 100
+  twin tests).
+  On 5 October: H1 had finished five trades, all winners, which made +3.98%
+  of its starting equity after costs; it was behind the champion on skill
+  because holding its usual 37% of a market up 27% would have made more. So
+  on that day's numbers: not passing, trades of value, kept. H2 had two
+  open buys and nothing finished. H4's ten fills were five buys and five
+  trims of the book the idle slot had left it, all in its first hour, and
+  nothing finished. Both would be killed at day 60 if that is still so.
+  How a finished trade is counted: from the account's whole record of
+  fills, so the count knows what a slot held when its test began. A
+  position is left when a twentieth or less of its largest size remains, a
+  crumb sold afterwards is not a second trade, and a position the daily
+  loss halt sold is not an exit the strategy chose. That last matters: in
+  the gate's replay of the last year the halt closed 127 of the 307
+  positions H1 left, 31 of H4's 101, 19 of H2's 146 and 21 of H0's 862.
+  None of the four had a 60 day window without a finished trade of its
+  own, so a live test of any of them that reaches day 60 without one is
+  doing something its backtest never did. The backtest now prints all
+  three numbers for the next idea.
+  What this does not catch, and what says so: a bot that trades a little
+  and otherwise holds more of a rising market than it usually does. Its
+  skill is real money and one bet. The confidence line says "Read it with
+  care" when half or more of a test's skill is that standing tilt (in the
+  test that pins it, a bot that usually holds half the market and sat fully
+  invested through a 19% rise read 27%), and such a first look gets no
+  fast pass.
+
+- The market window began up to an hour late (found 2026-10-05). A test's
+  basket started at the first hourly close after the test began, so it left
+  out whatever the market did between the test's start and that close, for
+  the whole length of the test. H4 began 21 minutes into an hour in which
+  the basket rose 1.4%. On 5 October, 9.8 days on, its basket read -0.9%
+  that way, where the quotes the accounts were valued at in that minute
+  give -0.3%. The window now starts at the test's own start time, read
+  between the two hourly prices either side of it, which gave 0.0%: nearer,
+  and not
+  exact, because the price did not move evenly through the hour (open
+  question above). The gate's and the backtest's basket cover the same span
+  as the equity curve they are set against.
 
 ## Overturned
 

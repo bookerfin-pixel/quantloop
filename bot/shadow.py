@@ -9,9 +9,11 @@ wins, the promotion is reverted: configs/champion.yaml goes back to it and the
 ledger records that the promotion did not hold.
 
 A second promotion during a shadow window supersedes the shadow: the newly
-deposed champion becomes the shadow and the older one is dropped, with a line
-in the ledger saying so. The shadow never trades against the champion for
-promotion; it can only put back what was there before.
+deposed champion becomes the shadow and the older one is dropped, with a
+`superseded` block in the ledger saying so (bot/promote.py, note_superseded;
+the earlier promotion was neither confirmed nor reverted). The shadow never
+trades against the champion for promotion; it can only put back what was
+there before.
 
 state/shadow/meta.json
   status       "active" or "idle"
@@ -72,7 +74,7 @@ def start(deposed_cfg: dict, replaced_by: str, now: int, champion_equity: float,
     save({"status": "active", "hypothesis": deposed_cfg["hypothesis"], "replaced_by": replaced_by,
           "started_at": int(now),
           "start_equity": {config.CHAMPION: float(champion_equity), config.SHADOW: float(initial_cash)},
-          "ruleset": config.risk_cfg().get("ruleset")})
+          "ruleset": config.ruleset_stamp()})
 
 
 def stop(reason_tag: str) -> None:
@@ -87,8 +89,13 @@ def describe(now: int) -> str:
     meta = load()
     if meta.get("status") != "active":
         return "shadow: none (no promotion within the last window)"
-    window_days = float(config.risk_cfg()["challenger"]["window_days"])
+    from . import promote            # promote imports this module; by the time this runs both are loaded
+    window_days = promote.rule_settings(config.risk_cfg().get("challenger"))[0]["window_days"]
     elapsed = (now - meta["started_at"]) / 86400
+    # Past its window and still running: the ruling comes at the next hourly run, unless the candles for its
+    # window or a record are not whole, and then the log says which.
+    due = (" (its ruling is due: made at the next hourly run for which the market data and both records are whole)"
+           if elapsed >= window_days else "")
     return (f"shadow: {meta['hypothesis']} (deposed by {meta['replaced_by']}) running since "
             f"{datetime.fromtimestamp(meta['started_at'], timezone.utc):%Y-%m-%d %H:%M}Z, "
-            f"day {elapsed:.1f} of {window_days:.0f}; the promotion is reverted if it wins")
+            f"day {elapsed:.1f} of {window_days:.0f}{due}; the promotion is reverted if it wins")

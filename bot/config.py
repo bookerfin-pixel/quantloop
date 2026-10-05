@@ -39,8 +39,50 @@ def risk_cfg() -> dict:
     return load_yaml(CONFIGS / "risk.yaml")
 
 
+NO_RULESET = "unreadable"
+
+
+def ruleset_number():
+    """The `ruleset:` line of configs/risk.yaml as a number, or None when it
+    is missing, blank or not a number (`7` and `'7'` are both 7)."""
+    rs = risk_cfg().get("ruleset")
+    try:
+        if rs is None or isinstance(rs, bool):
+            return None
+        n = float(rs)
+        if n != n or n in (float("inf"), float("-inf")):
+            return None
+        return int(n) if n == int(n) else n
+    except (TypeError, ValueError, OverflowError):
+        return None
+
+
+def ruleset_stamp():
+    """What to stamp on a test that starts now: the ruleset number, or
+    NO_RULESET when that line cannot be read. Never nothing: a test with no
+    stamp is read as one from before rulesets existed and keeps the one look
+    rule, so a blank `ruleset:` line put new tests on it (found in review,
+    2026-10-05). A stamp that is there and is not a number means two looks
+    (bot/promote.py, `two_looks`)."""
+    n = ruleset_number()
+    return NO_RULESET if n is None else n
+
+
 def n_slots() -> int:
-    return int(risk_cfg().get("challenger", {}).get("slots", 1))
+    """How many challenger slots there are: `challenger.slots`, a whole number
+    of 1 or more. Anything else stops whatever asked. With a wrong count some
+    slots are simply not run, and a test in one of them stands still with
+    nothing said: `slots: 2.9` ran two slots and a slip in the line's name
+    ran one, the run going green each hour (found in review, 2026-10-05)."""
+    block = risk_cfg().get("challenger")
+    raw = block.get("slots") if isinstance(block, dict) else None
+    try:
+        if isinstance(raw, bool) or not isinstance(raw, (int, float)) or raw != int(raw) or raw < 1:
+            raise ValueError
+    except (ValueError, OverflowError):
+        raise ValueError(f"configs/risk.yaml: challenger.slots must be a whole number of 1 or more, and it is "
+                         f"{raw!r}; nothing is run until it is mended") from None
+    return int(raw)
 
 
 def challengers() -> list[str]:

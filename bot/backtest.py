@@ -136,6 +136,9 @@ def run_backtest(candles: dict[str, pd.DataFrame], cfg: dict, rcfg: dict,
     days = (times[-1] - times[warm]) / 86400
     n_pairs = len(aligned)
     max_tpd = max(trades_per_pair_day.values()) if trades_per_pair_day else 0
+    from .promote import rule_settings                  # the one place the rules file is read into usable values
+    window_days = rule_settings(rcfg.get("challenger"))[0]["window_days"]
+    finished, forced, none_share = finished_trades(fills_all, int(times[warm]), int(times[-1]), window_days)
     # pair days on which the daily fill cap actually stopped a buy: the mark of a loop
     at_cap = len(capped_pair_days)
     return {
@@ -155,6 +158,9 @@ def run_backtest(candles: dict[str, pd.DataFrame], cfg: dict, rcfg: dict,
         "n_trades": len(fills_all),
         "trades_per_pair_per_day_avg": round(len(fills_all) / max(days, 1e-9) / n_pairs, 3),
         "trades_per_pair_per_day_max": max_tpd,
+        "finished_trades": finished,
+        "closed_by_halt_or_error": forced,
+        "windows_with_no_finished_trade": none_share,
         "pair_days_at_fill_cap": at_cap,
         "starved_share": round(n_starved / n_decisions, 4) if n_decisions else 0.0,
         "gross_pnl": round(gross, 2),
@@ -165,6 +171,29 @@ def run_backtest(candles: dict[str, pd.DataFrame], cfg: dict, rcfg: dict,
         "avg_gross_exposure": round(float(np.mean(exposure)), 3) if exposure else 0.0,
         "equity_curve": equity_curve,
     }
+
+
+def finished_trades(fills: list, start_ts: int, end_ts: int, window_days: float = 60.0) -> tuple[int, int, float | None]:
+    """Positions the run left by the strategy's own choice, positions the
+    daily loss halt or a strategy error closed for it, and the share of test
+    windows, one starting each day of the run, in which the strategy left
+    none of its own. Counted by bot.promote.finished_trades, as a live test's
+    are. A live test that has finished no trade of its own by the end of its
+    first window is killed (PROMOTION.md), so that share is how often this
+    strategy would have been, whatever it made. None when
+    the run is shorter than one window."""
+    from .promote import finished_trades as positions_left      # promote does not load this module until it needs a backtest
+    done = positions_left(pd.DataFrame([{"ts": f.ts, "pair": f.pair, "side": f.side, "qty": f.qty, "price": f.price,
+                                          "notional": f.notional, "fee": f.fee, "reason": f.reason} for f in fills]),
+                          start_ts) if fills else []
+    exits = np.array(sorted(t["ts"] for t in done if t["chosen"]), dtype="int64")
+    forced = sum(1 for t in done if not t["chosen"])
+    span = int(window_days * 86400)
+    starts = np.arange(int(start_ts), int(end_ts) - span + 1, 86400, dtype="int64")
+    if not len(starts):
+        return int(len(exits)), forced, None
+    inside = np.searchsorted(exits, starts + span, side="right") - np.searchsorted(exits, starts, side="right")
+    return int(len(exits)), forced, round(float((inside == 0).mean()), 3)
 
 
 def plausibility(m: dict, rules: dict, market: dict | None, initial_cash: float,
@@ -268,10 +297,11 @@ def load_cached_candles(pairs: list[str]) -> dict[str, pd.DataFrame]:
 def format_metrics(m: dict) -> str:
     keys = ["strategy", "hypothesis", "start", "end", "days", "pairs", "bars", "final_equity",
             "total_return", "annualised_return", "annualised_vol", "sharpe", "max_drawdown", "n_trades",
-            "trades_per_pair_per_day_avg", "trades_per_pair_per_day_max", "pair_days_at_fill_cap",
+            "trades_per_pair_per_day_avg", "trades_per_pair_per_day_max", "finished_trades",
+            "closed_by_halt_or_error", "windows_with_no_finished_trade", "pair_days_at_fill_cap",
             "starved_share", "gross_pnl", "fees",
             "slippage", "net_pnl", "cost_coverage", "avg_gross_exposure"]
-    return "\n".join(f"{k:>28}: {m.get(k)}" for k in keys)
+    return "\n".join(f"{k:>30}: {m.get(k)}" for k in keys)
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -291,9 +321,10 @@ def main(argv: list[str] | None = None) -> int:
     if args.gate:
         from .promote import market_context
         pairs = list(rcfg["pairs"])
-        market = market_context(curve[0][0], curve[-1][0], pairs) if curve else None
+        # the curve is stamped with candle open times and marked at their closes, an hour later
+        market = market_context(curve[0][0], curve[-1][0] + 3600, pairs) if curve else None
         problems, report = plausibility({**m, "equity_curve": curve}, rcfg["backtest_gate"], market, rcfg["initial_cash"],
-                                        market_fn=lambda a, b: market_context(a, b, pairs))
+                                        market_fn=lambda a, b: market_context(a + 3600, b + 3600, pairs))
         print(format_report(report))
         print("gate: " + ("PASS" if not problems else "FAIL\n  - " + "\n  - ".join(problems)))
         if args.days and args.days != rcfg["backtest_gate"]["max_days"]:

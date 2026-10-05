@@ -306,6 +306,12 @@ def run_account(name: str, full: dict, prices: dict[str, float], ts: int, rcfg: 
         equity_rows.append(_equity_row(acct, step_ts, equity, step_prices))
     acct.state["strategy_sig"] = sig
     acct.state["last_bar"] = int(latest_bar)
+    if equity_rows:
+        # How many readings this account has on record, kept beside the count of its fills, so that an equity
+        # file which has lost rows can be told from one that has not (bot/promote.py, record_fault). An
+        # account from before this count was kept starts it from its file as it stands.
+        had = acct.state.get("equity_rows")
+        acct.state["equity_rows"] = (int(had) if had is not None else paper.rows_in(adir / "equity.csv")) + len(equity_rows)
     acct.save(adir / "account.json")
     paper.append_rows(adir / "decisions.csv", DECISION_FIELDS, all_decisions)
     paper.append_rows(adir / "trades.csv", paper.TRADE_FIELDS, [paper.fill_row(f) for f in all_fills])

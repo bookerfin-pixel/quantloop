@@ -213,9 +213,17 @@ def append_rows(path: Path, fields: list[str], rows: list[dict]) -> None:
     new = not path.exists()
     if not new:
         with open(path, newline="") as f:
-            header = f.readline().rstrip("\n").split(",")
+            header = f.readline().rstrip("\r\n").split(",")
         if header != fields:
-            # the schema grew: rewrite the file under the new header, old rows padded
+            # The schema grew: rewrite the file under the new header, old rows padded. Only when the first
+            # line is a header this code wrote, each of its names still a field. A first line that is
+            # anything else (a file that has lost its header, or been cut to nothing) is damage: rewriting
+            # it blanked every row under it, and what was left read as an account with almost no record
+            # (found in review, 2026-10-05). Stop the hour instead; nothing is committed, nothing is lost.
+            if len(set(header)) != len(header) or not all(h in fields for h in header):
+                raise ValueError(f"{path.parent.name}/{path.name} does not begin with a header this code wrote "
+                                 f"(it begins {','.join(header)[:60]!r}); it is not rewritten or added to. "
+                                 f"Mend the file by hand")
             import pandas as pd
             old = pd.read_csv(path)
             for col in fields:
@@ -228,6 +236,15 @@ def append_rows(path: Path, fields: list[str], rows: list[dict]) -> None:
             w.writeheader()
         for r in rows:
             w.writerow(r)
+
+
+def rows_in(path: Path) -> int:
+    """Rows of data in a csv log (the lines under its header that are not
+    blank); 0 when the file is not there."""
+    if not path.exists():
+        return 0
+    with open(path, newline="") as f:
+        return max(sum(1 for row in csv.reader(f) if row) - 1, 0)
 
 
 def fill_row(fill: Fill) -> dict:

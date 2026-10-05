@@ -1,6 +1,7 @@
 """PROTECTED. The cost model is the one thing the agent must never be able to soften."""
 import pytest
 
+from bot import paper
 from bot.paper import PaperAccount
 
 
@@ -140,3 +141,21 @@ def test_marks_survive_a_save_and_load(tmp_path):
     c = PaperAccount.load(tmp_path / "old.json", "t", 10_000.0, 10, 5)
     assert c.equity({"BTC": 100.0}) == pytest.approx(a.equity({"BTC": 100.0}))
     assert c.remember({}, ts=5, known={"BTC": (100.0, 4)}) == ["BTC"] and c.equity({}) == pytest.approx(a.equity({"BTC": 100.0}))
+
+
+def test_rows_in_counts_the_lines_under_the_header(tmp_path):
+    """The engine starts an account's count of readings from this, and
+    bot/promote.py sets the file against that count with the same call."""
+    p = tmp_path / "equity.csv"
+    assert paper.rows_in(p) == 0                                         # no file
+    for text, n in (("", 0), ("ts,equity\n", 0), ("ts,equity\n1,2\n", 1), ("ts,equity\n1,2\n3,4", 2),
+                    ("ts,equity\r\n1,2\r\n3,4\r\n", 2), ("ts,equity\n1,2\n\n3,4\n\n", 2),     # a blank line is not a row
+                    ("ts,equity\n1,2\n,\n", 2), ("ts,reason\n1,\"two\nlines\"\n", 1)):
+        p.write_text(text)
+        assert paper.rows_in(p) == n, text
+    row = {"ts": 1, "equity": 100.0, "cash": 50.0, "gross_exposure": 50.0, "n_positions": 1, "fees_paid": 0.1,
+           "slippage_paid": 0.0}
+    q = tmp_path / "written.csv"
+    paper.append_rows(q, paper.EQUITY_FIELDS, [row, {**row, "ts": 2}, {**row, "ts": 3}])
+    paper.append_rows(q, paper.EQUITY_FIELDS, [{**row, "ts": 4}])
+    assert paper.rows_in(q) == 4

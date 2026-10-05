@@ -6,8 +6,12 @@ import pytest
 
 from bot import config, promote
 
-RULES = {"slots": 3, "window_days": 60, "min_trades": 30, "max_dd_ratio": 1.5, "max_dd_floor": 0.10,
-         "min_return_edge": 0.0, "early_kill_drawdown": 0.15}
+# Every line is in the file; what a test here does not use is written `off` (False is how YAML reads it).
+RULES = {"slots": 3, "window_days": 60, "confirm_days": 60, "min_trades": 30, "max_dd_ratio": 1.5,
+         "max_dd_floor": 0.10, "min_return_edge": 0.0, "early_kill_drawdown": 0.15, "compare_on": "return",
+         "min_skill": False, "two_looks_from_ruleset": False, "fast_pass_skill_t": False, "min_skill_t": False,
+         "min_trade_profit": 0.0, "treadmill_kill_multiple": False, "treadmill_min_days": 14,
+         "confidence": {"prior": 0.10, "edge_sharpe": 1.5}}
 
 
 def m(ret, exp, basket, dd=-0.05, trades=40):
@@ -93,7 +97,9 @@ def test_beating_a_weak_champion_is_not_enough_without_positive_skill():
     verdict, reason = promote.decide(champ, no_edge, rules)
     assert verdict == "killed" and "floor" in reason
     assert promote.decide(champ, real, rules)[0] == "promoted"
-    assert promote.decide(champ, no_edge, {k: v for k, v in rules.items() if k != "min_skill"})[0] == "promoted"
+    assert promote.decide(champ, no_edge, {**rules, "min_skill": False})[0] == "promoted"      # the floor switched off
+    left_out = {k: v for k, v in rules.items() if k != "min_skill"}                             # left out is not off
+    assert promote.decide(champ, no_edge, left_out)[0] == "killed"
     assert promote.decide(champ, no_edge, rules, absolute=False)[0] == "promoted"   # the shadow check
 
 

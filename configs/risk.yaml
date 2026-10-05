@@ -15,7 +15,22 @@
 #   6  2026-10-04  four fills per pair per day cap; missed hours are replayed; cost
 #                  (treadmill) kill; tests can be voided for broken code; a held pair
 #                  with no price keeps its last one instead of counting as zero
-ruleset: 6
+#   7  2026-10-05  two looks before a promotion, with a fast pass for a first look
+#                  that is strong on its own, for tests that begin under this
+#                  ruleset (PROMOTION.md); results carry a confidence figure.
+#                  For every test, old or new: one that has finished no trade of
+#                  its own is killed (buying and holding shows nothing); one that
+#                  does not pass the rule is kept for a day 120 verdict when its
+#                  finished trades made money, so trading little no longer kills
+#                  by itself; the early kill on losses is measured since the test
+#                  began and against the market, not as 15% under its high; the
+#                  market window starts at the test's own start time; nothing is
+#                  ruled on a record that has lost rows or cannot be read, or on
+#                  candles that are missing, begin late or lack the candle that
+#                  has just closed; every setting in the `challenger:` block is
+#                  checked, and one that is missing or cannot be used never
+#                  loosens the rule (to switch a thing off, write `off`)
+ruleset: 7
 
 # --- cost model (paper fills) ---------------------------------------------
 # Prices come from Kraken public data (Binance blocks US IPs, which is where
@@ -49,27 +64,70 @@ max_fills_per_pair_per_day: 4   # buys in a pair stop after this many fills in o
                                 # here, live and in backtests alike (H3, 2026-10-04)
 
 # --- challenger tests (prospective, each paired against the champion) ------
+# Every line of this block but `slots` is read through one checked function
+# (bot/promote.py, rule_settings). A line that is missing, or written in a way
+# that cannot be used, switches nothing off: the value written here stands in
+# (for `fast_pass_skill_t`, no fast pass), and the hourly log and the summary say
+# SETTING NOT USED until the line is mended. To switch a thing off on purpose,
+# write `off` where a comment below says it can be.
 challenger:
   slots: 4                  # tests that can run at the same time; each has its own paper account
-                            # (4 from 2026-09-25, so the slow trend lead need not wait for November)
+                            # (4 from 2026-09-25, so the slow trend lead need not wait for November).
+                            # A whole number of 1 or more; anything else stops the hourly run. Lowering it
+                            # while a slot beyond it holds a test leaves that test neither run nor ruled on
   window_days: 60           # 60 rather than 21: the signal to noise of a return difference grows with
-                            # the square root of the window, so this is about 1.7x cleaner per verdict
-  min_trades: 30            # over 60 days on ten pairs; fewer than this and nothing can be concluded
+                            # the square root of the window, so this is about 1.7x cleaner per verdict.
+                            # Under the two look rule this is the first look.
+  confirm_days: 60          # a test kept at its first look gets this many more days in the same slot...
+  min_skill_t: 1.0          # ...and a promotion on all 120 days also needs the t of the daily skill to reach
+                            # this. In the twin study (FINDINGS, 2026-10-05) the one look rule as it ran
+                            # promoted a twin with no skill 25 times in 100 and a real edge with a yearly
+                            # Sharpe ratio of 2 only 49; this rule 9 and 56. Passing the rule's numbers
+                            # under the bar is `unproven`. 0, or `off`, means no t bar.
+  fast_pass_skill_t: 2.0    # a first look pass with a daily skill t this high is promoted at day 60 without
+                            # the second look, unless half or more of its skill is a standing tilt. A no
+                            # skill twin got there 9 times in 1,000, a Sharpe 2 edge 12 times in 100, a
+                            # Sharpe 3 edge 23: the Sharpe 2 edge is about 14 times as likely as a twin to
+                            # get one, against about 6 times for a promotion under the whole rule. 0, or
+                            # `off`, means no fast pass
+  two_looks_from_ruleset: 7 # tests that began before this ruleset keep their one look at day 60 (Fin): if
+                            # they pass there and have finished a trade of their own they are promoted
+                            # there; in everything else they are judged like any other. `off`: no new
+                            # test gets two looks
+  confidence:               # the figure printed with every verdict, every first look and in the summary
+    prior: 0.10             # before any evidence, 1 idea in 10 is taken to have a real edge
+    edge_sharpe: 1.5        # "a real edge" means skill with a yearly Sharpe ratio of this, against breaking even
+  min_trades: 30            # fills the ordinary rule asks for, so fills a promotion needs. Fewer never ends
+                            # a test by itself (Fin, 2026-10-05), but a test with fewer cannot pass a look:
+                            # at day 60 it is kept only if its trades are of value, and at day 120 one that
+                            # passes every other number ends unproven
+  min_trade_profit: 0.0     # what a test's finished trades must have made after costs, as a share of its
+                            # starting equity, for its trades to be of value: more than this. 0 is "they made
+                            # money". A finished trade is a position the account left (sold down to a
+                            # twentieth or less); a test that has finished none of its own is killed at its
+                            # look whatever its numbers (Fin, 2026-10-05: kill bots that just buy and hold)
   max_dd_ratio: 1.5         # challenger max drawdown may not exceed 1.5x the champion's...
-  max_dd_floor: 0.10        # ...or 10%, whichever is larger (a flat champion has 0% drawdown)
+  max_dd_floor: 0.10        # ...or 10%, whichever is larger (a flat champion has 0% drawdown). 0, or `off`,
+                            # means no floor
   compare_on: skill         # what the verdict compares. "skill": net return minus the equal weight basket
                             # held at the strategy's usual exposure (its average over the year before the test
                             # began), so a verdict is not decided by which side is usually more invested while
                             # the market moved, and being out of a falling market still counts for the one
                             # that stepped aside. "return": raw net return (the rule until 2026-09-25).
-  min_return_edge: 0.0      # challenger must beat champion on compare_on by at least this
+  min_return_edge: 0.0      # challenger must beat champion on compare_on by more than this
   min_skill: 0.0            # ...and, on skill, beat holding the basket at its usual exposure. H0 loses to
                             # that in about 97% of historical 60 day windows, so beating H0 alone would promote almost
-                            # anything; this bar makes a promotion mean the strategy added something. Remove the
-                            # line to drop the bar.
-  early_kill_drawdown: 0.15 # a challenger down this much from its window start is killed at once
+                            # anything; this bar makes a promotion mean the strategy added something. Write
+                            # `off` to drop the bar.
+  early_kill_drawdown: 0.15 # a challenger that has lost more than this since its test began, AND more than
+                            # the market itself over the same days (the equal weight basket), is killed at
+                            # once. Until ruleset 7 it was this far under its high inside the window whatever
+                            # the market had done, which on 687 days of history ended 55 of 100 tests with no
+                            # skill and 40 of 100 with a Sharpe 2 edge before day 60; read this way it ends
+                            # 25 and 5 inside 120 days. 0, or `off`, switches it off
   treadmill_kill_multiple: 3.0  # ...and one whose live costs run past this many times the gate's cost drag
-  treadmill_min_days: 14        # limit (3 x 15% = 45% of equity a year) after this many days is killed too
+  treadmill_min_days: 14        # limit (3 x 15% = 45% of equity a year) after this many days is killed too.
+                                # A multiple of 0, or `off`, means no cost kill
 
 # --- backtest gate (sanity filter, regime independent) ---------------------
 # The gate asks "is this obviously broken or on a costs treadmill", never "did
