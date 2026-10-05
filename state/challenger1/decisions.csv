@@ -4347,3 +4347,33 @@ ts,account,pair,price,signal_weight,target_weight,current_weight,action,reason,h
 1791225021,challenger1,DOGE,0.094775,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -0.17 not below -2.0,0.353
 1791225021,challenger1,DOT,1.20445,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -0.54 not below -2.0,2.076
 1791225021,challenger1,LTC,70.53,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z +0.52 not below -2.0,1.418
+1791226800,challenger1,BTC,85650.0,0.0,0.0,0.0,hold,replayed after a missed run | hold: weight change +0.000 below threshold 0.05 | flat: z +1.32 not below -2.0,0.0
+1791226800,challenger1,ETH,2710.06,0.0,0.0,0.0,hold,replayed after a missed run | hold: weight change +0.000 below threshold 0.05 | flat: z +0.87 not below -2.0,0.0
+1791226800,challenger1,SOL,120.11,0.0,0.0,0.0,hold,replayed after a missed run | hold: weight change +0.000 below threshold 0.05 | flat: z +0.04 not below -2.0,0.0
+1791226800,challenger1,ADA,0.265311,0.0,0.0,0.0,hold,replayed after a missed run | hold: weight change +0.000 below threshold 0.05 | flat: z +2.00 not below -2.0,0.0
+1791226800,challenger1,AVAX,10.901,0.0,0.0,0.0,hold,replayed after a missed run | hold: weight change +0.000 below threshold 0.05 | flat: z -0.16 not below -2.0,0.0
+1791226800,challenger1,LINK,13.90339,0.0,0.0,0.0,hold,replayed after a missed run | hold: weight change +0.000 below threshold 0.05 | flat: z -0.99 not below -2.0,0.0
+1791226800,challenger1,XRP,1.4994,0.0,0.0,0.0,hold,replayed after a missed run | hold: weight change +0.000 below threshold 0.05 | flat: z -0.36 not below -2.0,0.0
+1791226800,challenger1,DOGE,0.094872,0.0,0.0,0.0,hold,replayed after a missed run | hold: weight change +0.000 below threshold 0.05 | flat: z -0.04 not below -2.0,0.0
+1791226800,challenger1,DOT,1.2161,0.0,0.0,0.0,hold,replayed after a missed run | hold: weight change +0.000 below threshold 0.05 | flat: z +0.32 not below -2.0,0.0
+1791226800,challenger1,LTC,70.15,0.0,0.0,0.0,hold,replayed after a missed run | hold: weight change +0.000 below threshold 0.05 | flat: z +0.23 not below -2.0,0.0
+1791230400,challenger1,BTC,85731.7,0.0,0.0,0.0,hold,replayed after a missed run | hold: weight change +0.000 below threshold 0.05 | flat: z +1.40 not below -2.0,0.0
+1791230400,challenger1,ETH,2709.05,0.0,0.0,0.0,hold,replayed after a missed run | hold: weight change +0.000 below threshold 0.05 | flat: z +0.79 not below -2.0,0.0
+1791230400,challenger1,SOL,120.27,0.0,0.0,0.0,hold,replayed after a missed run | hold: weight change +0.000 below threshold 0.05 | flat: z +0.17 not below -2.0,0.0
+1791230400,challenger1,ADA,0.266276,0.0,0.0,0.0,hold,replayed after a missed run | hold: weight change +0.000 below threshold 0.05 | flat: z +2.08 not below -2.0,0.0
+1791230400,challenger1,AVAX,10.882,0.0,0.0,0.0,hold,replayed after a missed run | hold: weight change +0.000 below threshold 0.05 | flat: z -0.26 not below -2.0,0.0
+1791230400,challenger1,LINK,13.93013,0.0,0.0,0.0,hold,replayed after a missed run | hold: weight change +0.000 below threshold 0.05 | flat: z -0.94 not below -2.0,0.0
+1791230400,challenger1,XRP,1.50349,0.0,0.0,0.0,hold,replayed after a missed run | hold: weight change +0.000 below threshold 0.05 | flat: z -0.21 not below -2.0,0.0
+1791230400,challenger1,DOGE,0.095457,0.0,0.0,0.0,hold,replayed after a missed run | hold: weight change +0.000 below threshold 0.05 | flat: z +0.27 not below -2.0,0.0
+1791230400,challenger1,DOT,1.2168,0.0,0.0,0.0,hold,replayed after a missed run | hold: weight change +0.000 below threshold 0.05 | flat: z +0.27 not below -2.0,0.0
+1791230400,challenger1,LTC,70.04,0.0,0.0,0.0,hold,replayed after a missed run | hold: weight change +0.000 below threshold 0.05 | flat: z +0.19 not below -2.0,0.0
+1791235939,challenger1,BTC,85808.15,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z +1.42 not below -2.0,0.006
+1791235939,challenger1,ETH,2714.19,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z +0.96 not below -2.0,0.258
+1791235939,challenger1,SOL,120.705,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z +0.39 not below -2.0,0.414
+1791235939,challenger1,ADA,0.269169,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z +2.48 not below -2.0,1.542
+1791235939,challenger1,AVAX,10.9795,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z +0.14 not below -2.0,0.455
+1791235939,challenger1,LINK,13.94687,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -0.86 not below -2.0,2.022
+1791235939,challenger1,XRP,1.505375,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -0.09 not below -2.0,0.033
+1791235939,challenger1,DOGE,0.095658,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z +0.41 not below -2.0,0.005
+1791235939,challenger1,DOT,1.23505,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z +0.78 not below -2.0,0.405
+1791235939,challenger1,LTC,70.26,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z +0.24 not below -2.0,2.847
