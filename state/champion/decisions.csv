@@ -4207,3 +4207,13 @@ ts,account,pair,price,signal_weight,target_weight,current_weight,action,reason,h
 1791174440,champion,DOGE,0.095602,0.25,0.1429,0.1258,hold,hold: weight change +0.017 below threshold 0.05 | stay long: 72h return +1.12% vs exit band -1.0% and price above 24h EMA; realised vol 62% -> weight 0.25,0.005
 1791174440,champion,DOT,1.22005,0.25,0.1429,0.1585,hold,hold: weight change -0.016 below threshold 0.05 | stay long: 72h return +1.97% vs exit band -1.0% and price above 24h EMA; realised vol 94% -> weight 0.25,2.869
 1791174440,champion,LTC,70.225,0.25,0.1429,0.1413,hold,hold: weight change +0.002 below threshold 0.05 | stay long: 72h return +1.87% vs exit band -1.0% and price within 2.0% of 24h EMA; realised vol 63% -> weight 0.25,0.712
+1791178112,champion,BTC,85498.95,0.0,0.0,0.1422,sell,exit: 72h return -1.30% fell below exit band -1.0%,0.006
+1791178112,champion,ETH,2696.105,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -1.47% not above entry band +1.0% and price below 24h EMA,0.019
+1791178112,champion,SOL,120.135,0.0,0.0,0.1413,sell,exit: 72h return -2.41% fell below exit band -1.0%,0.416
+1791178112,champion,ADA,0.266423,0.25,0.25,0.1512,buy,stay long: 72h return +4.04% vs exit band -1.0% and price above 24h EMA; realised vol 93% -> weight 0.25,1.22
+1791178112,champion,AVAX,10.8875,0.0,0.0,0.1408,sell,exit: 72h return -2.79% fell below exit band -1.0%,1.378
+1791178112,champion,LINK,14.05163,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -3.80% not above entry band +1.0% and price below 24h EMA,0.149
+1791178112,champion,XRP,1.500015,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -1.74% not above entry band +1.0% and price below 24h EMA,0.033
+1791178112,champion,DOGE,0.095063,0.0,0.0,0.1258,sell,exit: 72h return -1.60% fell below exit band -1.0%,0.131
+1791178112,champion,DOT,1.20795,0.0,0.0,0.1578,sell,exit: 72h return -1.56% fell below exit band -1.0%,2.07
+1791178112,champion,LTC,69.655,0.25,0.25,0.1409,buy,stay long: 72h return +0.17% vs exit band -1.0% and price within 2.0% of 24h EMA; realised vol 63% -> weight 0.25,0.718
