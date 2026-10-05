@@ -39,3 +39,13 @@ ts,account,pair,price,signal_weight,target_weight,current_weight,action,reason,h
 1791188941,challenger3,DOGE,0.096326,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return +0.10% not above entry band +1.0%,0.171
 1791188941,challenger3,DOT,1.22605,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return +0.55% not above entry band +1.0%,2.855
 1791188941,challenger3,LTC,70.21,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -0.06% not above entry band +1.0% and price below 24h EMA,1.424
+1791192608,challenger3,BTC,85852.35,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -0.03% not above entry band +1.0%,0.006
+1791192608,challenger3,ETH,2717.225,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -1.17% not above entry band +1.0%,0.018
+1791192608,challenger3,SOL,120.575,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -0.79% not above entry band +1.0% and price below 24h EMA,0.415
+1791192608,challenger3,ADA,0.270605,0.25,0.25,0.2529,hold,hold: weight change -0.003 below threshold 0.05 | stay long: 72h return +6.46% vs exit band -1.0% and price above 24h EMA; realised vol 92% -> weight 0.25,1.183
+1791192608,challenger3,AVAX,10.9755,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -0.96% not above entry band +1.0% and price below 24h EMA,1.367
+1791192608,challenger3,LINK,14.136065,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -1.59% not above entry band +1.0%,0.718
+1791192608,challenger3,XRP,1.510885,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -1.43% not above entry band +1.0%,0.033
+1791192608,challenger3,DOGE,0.096121,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -0.30% not above entry band +1.0%,1.602
+1791192608,challenger3,DOT,1.20985,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -0.81% not above entry band +1.0%,0.413
+1791192608,challenger3,LTC,70.095,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -0.27% not above entry band +1.0% and price below 24h EMA,0.713
