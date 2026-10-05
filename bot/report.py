@@ -8,6 +8,7 @@ from datetime import datetime, timezone
 import pandas as pd
 
 from . import config, data, shadow, slot
+from .run import REPLAYED
 
 
 def _ts(t: int | float | None) -> str:
@@ -124,6 +125,47 @@ def _last_prices(st: dict) -> dict[str, float]:
     return {k: float(v) for k, v in last.items()}
 
 
+def runs_section(now: int) -> str:
+    """Whether the hourly loop itself ran. The Data section cannot show this:
+    the venue backfills candles, so every candle can be there while most hourly
+    runs never happened. GitHub dropped 26 of 40 runs from 2026-10-03 and the
+    daily review, reading candle gaps, reported "no missing hours" (caught by
+    the weekly digest). Every account runs in the same job, so the champion's
+    record stands for all of them."""
+    lines = ["## Runs", ""]
+    adir = config.account_dir(config.CHAMPION)
+    if not (adir / "equity.csv").exists():
+        return "\n".join(lines + ["- no hourly run on record yet"]) + "\n"
+    ts = pd.read_csv(adir / "equity.csv")["ts"].astype(int)
+    if not len(ts):
+        return "\n".join(lines + ["- no hourly run on record yet"]) + "\n"
+    replayed: set[int] = set()
+    if (adir / "decisions.csv").exists():
+        dec = pd.read_csv(adir / "decisions.csv", usecols=["ts", "reason"])
+        replayed = set(dec.loc[dec["reason"].astype(str).str.startswith(REPLAYED), "ts"].astype(int))
+    age_hours = int((now - int(ts.min())) // 3600) + 1
+    counts = {}
+    for hours in (24, 168):
+        got = set(ts[ts > now - hours * 3600])
+        due = min(hours, age_hours)
+        counts[hours] = (len(got), due, len(got & replayed), max(0, due - len(got)))
+    (n24, due24, _, _), (n7, due7, rep7, lost7) = counts[24], counts[168]
+    lines.append(f"- hours on record: {min(n24, due24)} of the last {due24}, {min(n7, due7)} of the last {due7}"
+                 + (f" ({rep7} of them replayed after a missed run)" if rep7 else ""))
+    week = sorted(t for t in ts if t > now - 168 * 3600)
+    gaps = [(b - a, b) for a, b in zip(week, week[1:]) if b - a > 5400]
+    if lost7:
+        worst = max(gaps) if gaps else None
+        lines.append(f"- {lost7} hours in the last 7 days have no decision at all: the run never happened and was not "
+                     f"replayed" + (f" (longest gap {worst[0] / 3600:.1f} hours, ending {_ts(worst[1])})" if worst else "")
+                     + ". Accounts held their books through those hours; every account shares the same gaps")
+    else:
+        lines.append("- no hour in the last 7 days is without a decision")
+    lines.append("- this is the loop's own record. Missing candles are a different thing and are listed under Data; "
+                 "a clean Data section says nothing about whether the bot ran")
+    return "\n".join(lines) + "\n"
+
+
 def data_section(pairs: list[str], now: int) -> str:
     lines = ["## Data", "", "live candles (Kraken, grows hourly) and history (Coinbase backfill, for backtests):", ""]
     spreads = recent_spreads(now)
@@ -207,6 +249,7 @@ def build(now: int | None = None) -> str:
              f"Cost model: fee {rcfg['fee_bps']} bps + slippage {rcfg['slippage_bps']} bps per side "
              f"(~{2 * (rcfg['fee_bps'] + rcfg['slippage_bps'])} bps per round trip). "
              f"Pairs: {', '.join(rcfg['pairs'])}. Paper only.", ""]
+    parts.append(runs_section(now))
     parts.append(test_section(now))
     for name in config.accounts():
         parts.append(account_section(name, now))

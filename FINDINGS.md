@@ -146,7 +146,13 @@ hypotheses.
   open (rows marked "replayed after a missed run"). The hours dropped on
   2026-10-03 between the old loop's runs were not replayed (the accounts held
   their books through them); hours dropped after its last run were, by the
-  first run of the new loop.
+  first run of the new loop. The daily review missed all of it: it checked
+  the candle files for missing hours, and Kraken backfills candles, so its
+  notes said "no missing hours" while 26 of 40 hourly runs had not happened
+  (the weekly digest caught it by counting commits). The summary now opens
+  with a Runs section, hours on record against hours due, from the champion's
+  own equity log. Lesson: check that a thing ran by looking at what it wrote,
+  not at its inputs.
 
 - Calibration of the loop itself, 2026-10-04: a held pair with no price
   counted as zero. Equity summed only the positions that had a price that

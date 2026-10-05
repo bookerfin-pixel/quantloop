@@ -107,7 +107,14 @@ If every slot is busy (a test running in each):
   `state/challenger<k>/decisions.csv` for anything that looks like a bug: a
   reason that contradicts its action, weights stuck at zero with no stated
   cause, a pair never trading, fills far larger than a weight change implies.
-- Check the Data section of the summary for missing hours.
+- Read the Runs section at the top of the summary first. Hours "with no
+  decision at all" mean the hourly job did not run and the hours were not
+  replayed; say so at the top of the note with the count, because Fin needs
+  to know and you cannot fix it. Replayed hours are normal. Then check the
+  Data section for missing candle hours, which is a different thing: Kraken
+  backfills candles, so a clean Data section says nothing about whether the
+  bot ran (on 2026-10-04 the bot had missed 26 of 40 hours and the Data
+  section showed none missing).
 - Compare each challenger's live fills per pair per day with the figure in
   its ledger entry's Backtest line. Several times the backtest rate is a bug
   report even when every reason matches its action (H3 ran at 1.39 against
