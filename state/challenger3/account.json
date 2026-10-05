@@ -1,31 +1,36 @@
 {
-  "cash": 7465.442735811853,
+  "cash": 4975.6727422898,
   "created_at": 1791178112,
   "day": "2026-10-05",
   "day_open_equity": 10000.0,
-  "fees_paid": 7.501428984208978,
+  "fees_paid": 9.98871169502022,
   "fills_day": {
     "counts": {
       "ADA": 1,
-      "LTC": 2
+      "LTC": 3
     },
     "day": "2026-10-05"
   },
   "halted_day": null,
   "initial_cash": 10000.0,
-  "last_bar": 1791216000,
-  "last_run_ts": 1791221072,
+  "last_bar": 1791219600,
+  "last_run_ts": 1791225021,
   "marks": {
     "ADA": [
-      0.264887,
-      1791221072
+      0.2648165,
+      1791225021
+    ],
+    "LTC": [
+      70.53,
+      1791225021
     ]
   },
-  "n_trades": 3,
+  "n_trades": 4,
   "name": "challenger3",
   "positions": {
-    "ADA": 9378.902400088793
+    "ADA": 9378.902400088793,
+    "LTC": 35.2479752015562
   },
-  "slippage_paid": 3.7500836656662564,
+  "slippage_paid": 4.993103511148975,
   "strategy_sig": "params:\n  ema_exit_buffer: 0.02\n  ema_hours: 24\n  entry_return: 0.01\n  exit_return: -0.01\n  lookback_hours: 72\n  max_weight: 0.25\n  target_vol_annual: 0.3\n  vol_lookback_hours: 168\nstrategy: ts_momentum\n"
 }
