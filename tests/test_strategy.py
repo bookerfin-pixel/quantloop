@@ -130,3 +130,18 @@ def test_swing_reversal_exits_below_recent_low():
     df = _ohlc(closes)
     out = strategy.swing_reversal({"X": df}, _swing_params(), {"X": 0.2})
     assert out["X"].weight == 0.0 and "exit" in out["X"].reason
+
+
+def test_swing_reversal_fresh_cross_does_not_rebuy_after_cross_hour():
+    first_half = [100, 90, 90, 80, 90, 95] + [92] * 15
+    second_half = [90, 88, 85, 87, 90] + [90] * 15
+    cross = first_half + second_half + [96]
+    params = _swing_params(fresh_cross=True)
+    out = strategy.swing_reversal({"X": _ohlc(cross)}, params, {})
+    assert out["X"].weight > 0 and "enter long" in out["X"].reason
+    # one hour later price is still above the reaction high: no fresh cross
+    out = strategy.swing_reversal({"X": _ohlc(cross + [97])}, params, {})
+    assert out["X"].weight == 0.0 and "fresh close" in out["X"].reason
+    # without the flag the level test still buys
+    out = strategy.swing_reversal({"X": _ohlc(cross + [97])}, _swing_params(), {})
+    assert out["X"].weight > 0

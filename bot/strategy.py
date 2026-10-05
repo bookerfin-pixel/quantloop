@@ -191,6 +191,7 @@ def swing_reversal(candles: dict[str, pd.DataFrame], params: dict,
     recent_hours = int(params.get("recent_hours", 240))
     min_higher_low = float(params.get("min_higher_low", 0.03))
     exit_hours = int(params.get("exit_hours", 48))
+    fresh_cross = bool(params.get("fresh_cross", False))
     need = max(2 * recent_hours, exit_hours) + 2
     out: dict[str, Target] = {}
     for pair, df in candles.items():
@@ -212,6 +213,10 @@ def swing_reversal(candles: dict[str, pd.DataFrame], params: dict,
         exit_low = float(close.iloc[-1 - exit_hours:-1].min())
         higher_low = low2 > low1 * (1 + min_higher_low)
         breaking_out = price > swing_high
+        if fresh_cross:
+            # enter only on the hour of the cross, not while price merely sits
+            # above the reaction high, so a stop exit is not bought straight back
+            breaking_out = breaking_out and float(close.iloc[-2]) <= swing_high
         holding = current_weights.get(pair, 0.0) > 0
         if holding:
             go_long = price > exit_low
@@ -234,7 +239,9 @@ def swing_reversal(candles: dict[str, pd.DataFrame], params: dict,
                 out[pair] = Target(0.0, f"flat: low {low2:.4g} not a higher low vs prior low {low1:.4g} "
                                         f"(need +{min_higher_low:.1%})")
             else:
-                out[pair] = Target(0.0, f"flat: higher low confirmed but {price:.4g} not above reaction high "
+                out[pair] = Target(0.0, f"flat: higher low confirmed but {price:.4g} not a fresh close above "
+                                        f"reaction high {swing_high:.4g}" if fresh_cross else
+                                        f"flat: higher low confirmed but {price:.4g} not above reaction high "
                                         f"{swing_high:.4g}")
     return out
 
