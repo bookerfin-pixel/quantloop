@@ -1,2 +1,3 @@
 ts,account,pair,side,qty,price,ref_price,notional,fee,slippage_cost,reason,equity_after,half_spread_bps,slip_bps
 1791178112,challenger3,ADA,buy,9378.90240009,0.26655571,0.2664225,2500.0,2.5,1.24937531,enter long: 72h return +4.04% vs entry band +1.0% and price above 24h EMA; realised vol 93% -> weight 0.25,9996.25062469,1.21986694,5.0
+1791199524,challenger3,LTC,buy,35.58714036,70.6503075,70.615,2514.24240971,2.51424241,1.25649296,enter long: 72h return +1.26% vs entry band +1.0% and price above 24h EMA; realised vol 62% -> weight 0.25,10053.19890346,0.70806486,5.0
