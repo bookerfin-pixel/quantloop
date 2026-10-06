@@ -4367,3 +4367,13 @@ ts,account,pair,price,signal_weight,target_weight,current_weight,action,reason,h
 1791275204,challenger2,DOGE,0.094882,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 168h vol not at or below its own 25% percentile over 1440h in the last 72h,0.005
 1791275204,challenger2,DOT,1.24155,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 168h vol not at or below its own 25% percentile over 1440h in the last 72h,0.403
 1791275204,challenger2,LTC,69.765,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 168h vol not at or below its own 25% percentile over 1440h in the last 72h,0.717
+1791278789,challenger2,BTC,86054.35,0.25,0.25,0.2521,hold,hold: weight change -0.002 below threshold 0.05 | stay long: price 8.6e+04 still above 72h low 8.458e+04; realised vol 32% -> weight 0.25,0.006
+1791278789,challenger2,ETH,2707.795,0.25,0.25,0.2474,hold,hold: weight change +0.003 below threshold 0.05 | stay long: price 2716 still above 72h low 2680; realised vol 35% -> weight 0.25,0.018
+1791278789,challenger2,SOL,119.54,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: squeezed but 120.5 not above 120h high 123.5,0.837
+1791278789,challenger2,ADA,0.278096,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 168h vol not at or below its own 25% percentile over 1440h in the last 72h,2.643
+1791278789,challenger2,AVAX,11.321,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 168h vol not at or below its own 25% percentile over 1440h in the last 72h,0.883
+1791278789,challenger2,LINK,13.972205,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 168h vol not at or below its own 25% percentile over 1440h in the last 72h,3.095
+1791278789,challenger2,XRP,1.505305,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: squeezed but 1.503 not above 120h high 1.542,0.963
+1791278789,challenger2,DOGE,0.094971,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 168h vol not at or below its own 25% percentile over 1440h in the last 72h,0.005
+1791278789,challenger2,DOT,1.22555,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 168h vol not at or below its own 25% percentile over 1440h in the last 72h,0.408
+1791278789,challenger2,LTC,70.115,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 168h vol not at or below its own 25% percentile over 1440h in the last 72h,2.139
