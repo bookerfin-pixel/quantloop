@@ -12,12 +12,12 @@
   },
   "halted_day": null,
   "initial_cash": 10000.0,
-  "last_bar": 1791313200,
-  "last_run_ts": 1791318332,
+  "last_bar": 1791316800,
+  "last_run_ts": 1791321827,
   "marks": {
     "AVAX": [
-      11.4155,
-      1791318332
+      11.5085,
+      1791321827
     ]
   },
   "n_trades": 25,
