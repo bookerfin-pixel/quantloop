@@ -40,7 +40,9 @@ hypotheses.
 
 - A test's return leaves out the cost of its first hour (seen 2026-10-05 in review, not changed). A test's start equity is its equity after the fills of the hour it began in, and in that hour a new strategy trades from the book the idle slot held to its own. So that one off cost is in the costs a result shows, and in the cost kill, and not in the return, the skill or the gross pnl. H4's was 13.71 and H5's 14.74, about 0.14% of the account each. The champion side leaves out only what it happened to trade in that same hour (nothing in H4's, 0.39 in H5's). It has been the convention since the first test and it leans towards the challenger by about 0.14 of a point a test, small against a bar that asks for a daily skill t of 1.0. The result's line now says the amount. The fills of that hour also count towards the 30 a promotion needs (H4's ten, H5's eight). A sell in that hour of what the slot was handed can never be a finished trade of the test's own; what the test buys in that hour is its own from then on. A candidate for the next ruleset: start a test's return, and its count of fills, from before that hour's fills.
 
-- Does choosing between coins carry skill here where timing the market has not? (raised 2026-10-05.) First look on five years of daily closes of the ten pairs: holding the strongest two to five by trailing return, rebalanced weekly, beat the equal weight basket in all 18 variants tried (skill Sharpe 0.06 to 1.09, average 0.48), and 7 of the 18 beat 95% of their own no skill twins (1 expected by luck), all at lookbacks of 3 to 14 days. In sample, daily bars, and negative so far in 2026. Even at face value a skill Sharpe of 0.5 to 1 shows a daily skill t of only 0.3 to 0.6 after 120 days, so on ten pairs it cannot be proven quickly either. The details and the engine constraints are in hypotheses/backlog.md. The same question on the whole Kraken list is what the wider universe work is for: more names is the only honest way to a faster proof.
+- Does choosing between coins carry skill here where timing the market has not? (raised 2026-10-05, corrected 2026-10-06.) Not on the ten pairs, as far as five years of daily closes can say. The first look of 2026-10-05 held the strongest two to five by trailing return, rebalanced weekly, and reported that all 18 variants beat the equal weight basket (skill Sharpe 0.48 on average) and that 7 beat 95% of their own twins. It rebalanced on Fridays only. On each of the seven days the same 18 rules average +0.05 (Friday +0.47, Sunday -0.38), and 2026 is negative on every day. The details are in hypotheses/backlog.md, under the ideas not to bother with, and under Overturned below. Published work points the same way: CF Benchmarks' momentum factor on the top 50 coins (two week lookback, weekly, long the stronger half and short the weaker) made 13.41% a year from 2015 to November 2024 and has lost 14.66% in 2026 to 25 September. The same question on a wide list is what state/wide/ is for, and it has to be asked on every rebalance day.
+
+- Is there skill in anything we run? (2026-10-06.) Each live config was replayed by the engine over the 687 days to 2026-10-03 (the basket fell 35%) and set against 500 of its own twins: its hour by hour weights slid against the market by 30 days or more, so the same exposure, turnover and costs with no timing. Skill Sharpe over the span, the share of twins beaten, and the same share over the last 365 days alone: H0 -2.22, 40%, 41% (its costs come to 61% of equity a year, four times the gate's limit for a challenger); H1 -0.64, 41%, 59%; H2 +0.03, 76%, 63%; H4 +0.19, 85%, 92%; H5 +1.03, 96%, 24%. A config with no skill beats about half its twins. None beats 95% in both spans; H5's 96% is all from before the last year, as its ledger entry says, and with five configs one at 96% is what luck gives one time in five. H4 is the only one above 80% in both. This is in sample for the challengers only loosely (the agent wrote them having seen recent history) and it took minutes, where a slot takes 60 to 120 days: the case for reading every idea this way before it takes a slot.
 
 - Does the momentum family work at all on this universe at hourly resolution
   with a 30 bps round trip, or only at horizons of a week or more? (H0 lost
@@ -599,6 +601,85 @@ the machinery, not edge.
   question above). The gate's and the backtest's basket cover the same span
   as the equity curve they are set against.
 
+- The wide data collector, and what its review found before it shipped (2026-10-06). bot/wide.py gathers research
+  data once a day under state/wide/ (daily candles for the most traded USD pairs on Kraken, a bid and ask reading,
+  funding of the perpetuals); no account and nothing in the hourly loop reads it, and a test runs the hourly loop
+  with and without a full state/wide to hold that. An independent review of the first version found no way for it
+  to disturb the hourly loop and no crash on real answers from the venues, and these faults of its own, all closed
+  before the first run: a test that pinned the settings file to the code's defaults, so that any edit of
+  configs/wide.yaml would have turned the gate red for every agent PR; rows already on file written back a digit
+  off (pandas reads one long number in seven a unit out in its last place unless told to round trip, and a file
+  that is read and rewritten daily would drift); a run that went green with half its pairs, all funding and all
+  older history failing, with nobody told (the collector's own report now starts such lines with FAILED and the
+  agent passes them on); one coin's odd answer stopping the older history of every coin after it; a coin new on
+  Kraken marked as asked about and left for 90 days; a damaged quotes file stopping the candles; a setting that
+  left no coin on the list giving a green, empty run; a join stamped with a day whose candle began before the
+  coin joined (the list now records the moment too); and two smaller slips in how a damaged list file and a run
+  by hand that failed were read. A second review, of the mended version, again found no way for it to reach the
+  hourly loop, and these, also closed before the first run: the lines about a fault did not begin with the words
+  the agent was told to look for, and the agent's run sheet had no step that ran the report, so the alarm would
+  have reached nobody; the test on the shipped settings could still have closed agent PRs on a slip in the file;
+  an answer whose rows were not candles (times in another unit, say), or funding readings in a shape that could
+  not be read, passed for a day with nothing new; a setting that shut every coin out was caught only while the
+  list was still empty; a day on which both of the day's asks failed was said nowhere (the report now says STALE
+  once the last run is 30 hours old); a coin called NA or NULL would have been read back as no name; and the
+  tests that held the collector apart from the hourly loop held less than they said.
+  A third review, of the version mended twice, found nothing that could stop the hourly loop, close an agent PR
+  on a normal day or write a wrong row, and these, closed as well before the first run. The tests that hold the
+  collector apart still ran only about three in five of the loop's lines, leaving out the history backfill and
+  the report's own main, and the one file of the loop the agent can change was guarded by a search for a word: a
+  strategy could read the collector's files, which in a backtest is reading days not yet reached, and no test
+  said so. One odd day at Coinbase ("no such product" for every coin, or rows that were not candles) was
+  remembered for 90 days and said nowhere. Funding stopped without a word when the futures venue's list had no
+  perpetual in it. A futures venue that hung could run the job into GitHub's 30 minute limit and take the
+  day's candles with it; each part of a run now has its own allowance of time. A word in a comment in
+  configs/wide.yaml, a number of hundreds of digits there, or the agent's run sheet wrapped differently would
+  each have turned the gate red. The workflow's commit step, the one part that makes the data last, had only
+  ever been read as text; it is now run as written, against a scratch repo. A list or a ticker from Kraken that
+  had been cut off was taken at its word. The report gave the settings as the last run found them, and a line
+  break inside a failure's text could start a line of its own. The same reviewer then checked the fixes: sixteen
+  of its seventeen findings closed, one partly (an empty answer from Coinbase was still believed at once; it is
+  now asked about once more like a "no such product", by the next day's run and not one minutes later), and
+  three faults the fixes themselves had brought in, closed as well: the time allowed for candles would have cut
+  a healthy list of 600 pairs short every day, always the same coins, the last by name (it now grows with the
+  list, and the job's limit with it); the new check on strategies switched every setting of a strategy on, and
+  one with a number for a step never came back, which in the gate is a closed pull request (only settings read
+  as switches are turned on now, and each call is given ten seconds); and a pin on the Python of the other
+  workflows that a change to one of them would have tripped.
+  How the collector is held apart now, in layers that each see what the others miss. The loop itself, three
+  hours of it as the hourly workflow runs it (accounts, history backfill, rulings, the report written to file,
+  across a UTC midnight), with and without a full state/wide beside it: what it prints and every file and
+  folder it leaves must come out the same. The same hours watched through Python's audit hook for a single
+  file opened or folder listed under a state/wide, and run again in a process where the collector cannot be
+  imported. Every line of every module of the loop read for an import of the collector or its folder spelled
+  out, because three hours run only some of the lines. And every strategy called beside a full state/wide,
+  with the settings of each config in the repo and with each setting its own code asks for switched on.
+  The count of deliberate breakages, which is the figure to go by. The first review ran 124 against the first
+  version and 48 got past its tests. The second review's fixes were tried with 57, and 4 got past at first. The
+  third reviewer wrote 78, most of them aimed at the gaps above, and 50 got past. Against the version that
+  ships, 378 were run and 366 are caught. The 12 that are not: three change nothing that can be seen (the next
+  page of Coinbase's candles asked for a day later, since a page includes both of its ends; the whole history
+  checked out by the job in place of the newest commit; the watch handed a path as an object, which Python
+  turns into text before the watch is told), one is harmless (the job pushing the day's data when the pull
+  before it failed and the push could still go), one shows only on an older Python than the job runs on, and
+  seven are rewordings of the agent's instructions that change their sense (run the report only if there is
+  time, pass on only one of the three words). Instructions are prose: a test can hold their shape (the step
+  is there, before anything is committed, with the three words, and the command never carries the flag that
+  collects) but not their sense.
+  Known and left as they are. The watch sees files opened and folders listed, not a file's size or date being
+  looked up. Kraken's numbers are read with pandas' fast parser, which can be a unit out in the last place for
+  a number of 16 digits or more; Kraken sends fewer, and the same text always reads the same, so nothing
+  drifts. And requirements.txt names no upper versions, for this job as for the hourly loop: a new pandas
+  could turn the suite red, or change what the loop does, on the day it comes out. Naming them is Fin's call,
+  because somebody then has to raise them.
+  The same parser quirk sits in bot/data.py: the vwap column of state/history (a mean of three prices from
+  Coinbase) would shift by a unit in its last place whenever a history file is rewritten. Nothing reads it to
+  that precision and a history file is rewritten only when a backfill adds to it, so it is left as it is.
+  What no test here can say is whether the venues answer the first real run the way they answered when their
+  answers were read by hand on 2026-10-06; a red first run would cost nothing but the day (it commits nothing).
+  Lesson, the same as on 2026-10-04: have someone who did not write a thing try to break it, and count what
+  gets past the tests rather than what they cover.
+
 ## Overturned
 
-(none yet)
+- Weekly cross sectional momentum on the ten pairs (a first look of 2026-10-05 by Fin's maintainer session, written into the backlog as a candidate; not a ledger verdict, so there is no ledger id). Claimed: all 18 variants beat the equal weight basket over five years, skill Sharpe 0.48 on average, 7 of 18 beating 95% of their twins. Overturned 2026-10-06 by the same session's own recheck while planning the wider universe: the study had rebalanced at Friday's close and nowhere else, and over the seven possible days the family averages +0.05. The twins could not catch it, because a twin is slid in time and so samples every weekday, while the rule under test sat on the one day that happened to work. What changed: the backlog entry moved to the ideas not to bother with, and CLAUDE.md now asks for every phase of a rhythm to be tried. No slot was spent on it.

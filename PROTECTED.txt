@@ -32,6 +32,8 @@ bot/report.py
 bot/slot.py
 bot/shadow.py
 bot/config.py
+bot/wide.py
+configs/wide.yaml
 configs/shadow.yaml
 state/**
 requirements.txt

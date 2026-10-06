@@ -1,0 +1,81 @@
+name: wide
+
+# Once a day: research data on the many coins beyond the ten the bot trades
+# (bot/wide.py). Daily candles for the most traded USD pairs on Kraken, a bid
+# and ask reading for each, funding of Kraken's perpetuals, all under
+# state/wide/. The hourly loop never reads it, and this job writes nowhere else,
+# so it cannot disturb a test. A red run commits nothing. What that costs is the
+# day's bid and ask reading and the day's ranking (a coin that was among the most
+# traded only that day does not join the list); candles and funding are fetched
+# again by the next run.
+on:
+  schedule:
+    # 00:40 UTC, after the UTC day has closed and well clear of the hourly bot at :07.
+    # 12:40 UTC as well, because GitHub's schedule drops runs (it dropped the hourly
+    # bot for hours on 2026-10-03): on a day the first run worked, the second finds
+    # the day done, asks nobody anything and commits nothing.
+    - cron: "40 0,12 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+# Its own group on purpose: it must never queue ahead of, or cancel, an hourly run.
+concurrency:
+  group: wide-data
+  cancel-in-progress: false
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    # A run takes a few minutes. The limit is what the collector allows itself when every venue crawls
+    # (bot/wide.py gives each part of a run its own time), and a job cancelled here commits nothing.
+    timeout-minutes: 55
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 1
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install
+        run: pip install -q -r requirements.txt
+
+      # A run started by hand collects even when the day is already done.
+      - name: Collect
+        id: collect
+        run: python -m bot.wide --collect ${{ github.event_name == 'workflow_dispatch' && '--again' || '' }}
+
+      - name: Summary
+        if: always()
+        run: |
+          echo '## quantloop wide data' >> "$GITHUB_STEP_SUMMARY"
+          # what follows is the last run on record, which after a red run is the one before this
+          echo "this run's collect step: ${{ steps.collect.outcome }}" >> "$GITHUB_STEP_SUMMARY"
+          echo '```' >> "$GITHUB_STEP_SUMMARY"
+          python -m bot.wide >> "$GITHUB_STEP_SUMMARY"
+          echo '```' >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Commit
+        run: |
+          git config user.name "quantloop-bot"
+          git config user.email "quantloop-bot@users.noreply.github.com"
+          git add -A state/wide
+          if git diff --cached --quiet; then
+            echo "nothing to commit"
+            exit 0
+          fi
+          git commit -q -m "wide: $(date -u +%Y-%m-%d)"
+          for attempt in 1 2 3 4 5; do
+            if git pull --rebase -q && git push -q; then
+              echo "pushed on attempt $attempt"
+              exit 0
+            fi
+            sleep $((attempt * 20))
+          done
+          echo "push failed after 5 attempts"
+          exit 1

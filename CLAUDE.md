@@ -123,6 +123,23 @@ can read it with `gh pr list --state closed`.
   is what `VOID REQUEST` is for when it cannot be mended. If the hourly run
   itself is red, say so first: nothing is committed until it is green.
 - Every hour `bot/report.py` rewrites `state/summary.md`.
+- Once a day a separate job (`bot/wide.py`, protected) gathers research
+  data under `state/wide/`: daily candles for the hundred or so most traded
+  USD pairs on Kraken, a bid and ask reading for each, and funding of
+  Kraken's perpetual futures. No account trades on that data and strategies
+  are not handed it: it is there for research on whether the wider market
+  holds anything the ten pairs do not. You may read it when working
+  on the backlog (`from bot import wide; wide.panel()` gives closes side by
+  side; state/README.md describes the files). Anything found there is in
+  sample, and over the days up to and including a coin's `since` date in
+  universe.json it is measured on survivors. It goes in the backlog as a
+  lead with those words next to it, never in a ledger entry as evidence.
+  A strategy must not read those files itself, by any road: its backtest
+  would see days it had not reached yet, and a test in the gate calls every
+  strategy and fails if one opens anything under state/wide.
+  `python -m bot.wide` prints what the collector last did and only reads.
+  Never run it with `--collect`: that writes state/, and the gate refuses a
+  pull request that changes state/.
 - state/history/ holds about five years of hourly candles per pair where the
   venue has them (Coinbase backfill, written once; a pair starts where the
   venue's candles start, and XRP starts only in July 2023 because Coinbase
@@ -170,6 +187,14 @@ Read, in this order: `state/summary.md`, `LEDGER.md` (all of it, results
 included), `FINDINGS.md`, `hypotheses/backlog.md`, and the newest file in
 `notes/`. Then run `gh pr list --state closed --limit 5` and read why any
 recent PR was closed.
+
+Then run `python -m bot.wide`, on every run, whatever the slots hold. If
+any line of what it prints begins with FAILED, STALE or SETTING NOT USED,
+copy those lines word for word to the top of the day's note (write one for
+this alone if you would not otherwise): nothing else tells Fin, and you
+cannot fix it. A coin or two whose candles failed on one day is a hiccup,
+and you may say so next to the line; leave the judging of anything else to
+him.
 
 First, bookkeeping: if `## Results` in the ledger has a verdict that
 `FINDINGS.md` does not yet reflect, update FINDINGS.md (what the verdict says
@@ -311,6 +336,12 @@ If a slot is free:
   each shown less than the number suggests.
 - Treat killed hypotheses as information. If three horizon changes were
   killed, the next horizon change needs a reason those three do not cover.
+- A rule with a rhythm (a weekly rebalance, a fixed hour of the day) must be
+  tried at every phase of that rhythm before any one phase is believed. A
+  weekly momentum rule here looked like skill only because it rebalanced on
+  Fridays; on the other six days it had none (FINDINGS, Overturned). The
+  same goes for a result that holds at one setting and not at the settings
+  either side of it.
 - A backtest verdict is only as current as the gate that gave it. The gate
   changed on 2026-09-20 from an in sample profit test (cost coverage of at
   least 1.0, absolute 30% drawdown) to the sanity filter described above.

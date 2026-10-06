@@ -1,0 +1,39 @@
+# PROTECTED. Only Fin edits this file. Settings for the wide data collector
+# (bot/wide.py, run once a day by .github/workflows/wide.yml). It gathers
+# research data under state/wide/. The hourly loop never reads any of it, no
+# account trades on it, and nothing here can place an order.
+#
+# A line that is missing or cannot be used falls back to the default in
+# bot/wide.py (the values this file was first written with), and
+# `python -m bot.wide` says SETTING NOT USED, reading this file as it stands,
+# until it is mended. A value that can be used is used, sensible or not. One
+# that shuts every coin out stops the run while the list is still empty, and
+# after that is reported as FAILED on each day that no coin qualifies.
+
+top_n: 100              # each day the 100 most traded USD pairs on Kraken join the list. A pair that has
+                        # joined is kept, also after it falls down the ranking or leaves the venue, so
+                        # from the day after it joined a study on the list is not a study of the coins
+                        # that happened to do well (state/README.md says what that leaves out)
+min_usd_volume: 50000   # a pair that traded less than this many dollars in 24 hours does not join, whatever
+                        # its rank that day
+funding_top_n: 30       # perpetual futures on Kraken whose funding is logged: each day's 30 most traded, and
+                        # every one already logged while Kraken still lists it, so the count grows over
+                        # time. Research data only: the bot is spot only and cannot hold a future. 0
+                        # switches funding off (the futures venue is then not asked at all)
+history_days: 1825      # how far back daily candles are sought (five years). Kraken serves the newest 720
+                        # days; older days come from Coinbase where it lists the coin and its prices agree.
+                        # Coinbase is asked once per coin and again after 90 days, so a raise of less than
+                        # about three months shows only then
+deepen_budget_s: 240    # seconds one run may spend on that older history; what is left waits for the next
+                        # run. 0 switches the older history off, and 600 is the most it can be: the job's
+                        # time limit is sized for no more
+exclude:                # never collected: money, dollar and euro tokens, gold tokens, and wrapped or staked
+                        # copies of coins already on the list (a second BTC or ETH would be picked twice).
+                        # A coin whose last price is within 3% of one dollar and whose whole day's range
+                        # is inside 2% cannot join the list that day, whatever it is called (one already
+                        # on the list is collected as usual); a token pegged to anything else has to be
+                        # named here. A coin named here after it has joined stops being collected and is
+                        # marked like one the venue no longer lists
+  [USDT, USDC, DAI, PYUSD, TUSD, USDD, USDE, USDS, FDUSD, RLUSD, USDG, USD1, USDQ, USDR, GUSD, BUSD,
+   EURT, EURC, EURR, EURQ, EUR, GBP, AUD, CAD, CHF, JPY, AED,
+   PAXG, XAUT, WBTC, TBTC, CBETH, STETH, WSTETH, MSOL, JITOSOL]
