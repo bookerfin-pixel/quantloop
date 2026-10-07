@@ -205,3 +205,4 @@ ts,account,pair,side,qty,price,ref_price,notional,fee,slippage_cost,reason,equit
 1791343550,champion,SOL,sell,22.58364897,118.2758325,118.335,2671.09988283,2.67109988,1.33621805,exit: 72h return -1.79% fell below exit band -1.0%,10617.22313293,0.42252926,5.0
 1791343550,champion,AVAX,sell,239.39422228,10.98500475,10.9905,2629.74666892,2.62974667,1.3155311,exit: price more than 2.0% below 24h EMA,10613.27785516,0.45493836,5.0
 1791343550,champion,XRP,sell,1815.68450901,1.46281323,1.463545,2656.00731675,2.65600732,1.32866799,exit: 72h return -1.86% fell below exit band -1.0% and price more than 2.0% below 24h EMA,10609.29317985,0.03416362,5.0
+1791361738,champion,AVAX,buy,236.10596687,11.233614,11.228,2652.32329496,2.65232329,1.3254989,enter long: 72h return +2.47% vs entry band +1.0% and price above 24h EMA; realised vol 72% -> weight 0.25,10605.31535766,0.89063057,5.0
