@@ -1,18 +1,19 @@
 """PROTECTED. Three hours of the real hourly loop on made up candles.
 
-For the tests that hold the wide data collector apart from the hourly loop
-(tests/gate/test_wide.py). It imports nothing of bot.wide, so it can also be
-run where that module cannot be imported at all. Each hour it runs what the
-hourly workflow runs, in the workflow's order: the accounts (with the history
-backfill switched on, as in the repo's own risk.yaml), the rulings, the report
-written to state/summary.md, the slots. The three hours cross a UTC midnight.
+For the tests that hold the wide data collector and the bench apart from the
+hourly loop (tests/gate/test_wide.py, tests/gate/test_bench.py). It imports
+nothing of bot.wide or bot.bench, so it can also be run where those modules
+cannot be imported at all. Each hour it runs what the hourly workflow runs, in
+the workflow's order: the accounts (with the history backfill switched on, as
+in the repo's own risk.yaml), the rulings, the report written to
+state/summary.md, the slots. The three hours cross a UTC midnight.
 
 While the loop runs it watches, through Python's own audit hook, for any file
 opened and any folder listed, by path or by file descriptor, with `state/wide`
-in its path. What the hook is not told of, it cannot see: a file's size or
-date being looked up, a folder being made, a child process. The comparison of
-what the loop prints and of every file and folder it leaves is there for those.
-Not a test file itself.
+or `state/bench` in its path. What the hook is not told of, it cannot see: a
+file's size or date being looked up, a folder being made, a child process. The
+comparison of what the loop prints and of every file and folder it leaves is
+there for those. Not a test file itself.
 """
 import contextlib
 import io
@@ -81,13 +82,31 @@ def plant(root: Path, feed: Feed) -> None:
     (w / "summary.md").write_text("# not the summary\n")
 
 
+BENCH_FILES = {"H9.json": b'{"hypothesis": "H9", "sharpe": 9.9, "twins": {"beaten": 1.0}}\n',
+               "README.md": b"# The bench's league table\n\nH9 beats every twin\n"}
+WATCHED = ("wide", "bench")                    # the folders under state/ that the hourly loop must leave alone
+
+
+def plant_bench(root: Path, hypotheses=()) -> None:
+    """A state/bench as the bench's own job would leave it, with a reading that flatters the slot's
+    test. It is put beside the run that has the wide data and left out of the one that has none, so
+    that the two are compared with the readings there and without them. hypotheses: more names to
+    leave a reading under."""
+    (root / "state" / "bench").mkdir(parents=True)
+    for name, content in BENCH_FILES.items():
+        (root / "state" / "bench" / name).write_bytes(content)
+    for hyp in hypotheses:
+        (root / "state" / "bench" / f"{hyp}.json").write_bytes(BENCH_FILES["H9.json"].replace(b"H9", str(hyp).encode()))
+
+
 _WATCH = {"on": False, "seen": []}
 
 
 def _audit(event, args):
     """Python tells this of every file the process opens and every folder it lists. While the watch
-    is on, those with `state/wide` in their path are noted, wherever that folder is: in a root a
-    test made, or in the checkout itself. It must never be what breaks a run, so it raises nothing."""
+    is on, those with `state/wide` or `state/bench` in their path are noted, wherever that folder is:
+    in a root a test made, or in the checkout itself. It must never be what breaks a run, so it raises
+    nothing."""
     if not _WATCH["on"] or event not in ("open", "os.listdir", "os.scandir"):
         return
     try:
@@ -97,7 +116,7 @@ def _audit(event, args):
         if isinstance(path, (str, bytes, os.PathLike)):
             parts = Path(os.path.realpath(os.fsdecode(path))).parts
             for i in range(len(parts) - 1):
-                if parts[i] == "state" and parts[i + 1] == "wide":
+                if parts[i] == "state" and parts[i + 1] in WATCHED:
                     _WATCH["seen"].append(f"{event} {'/'.join(parts[i:])}")
                     break
     except Exception:  # noqa: BLE001
@@ -109,7 +128,8 @@ sys.addaudithook(_audit)                       # cannot be taken off again; it d
 
 @contextlib.contextmanager
 def watching():
-    """While this is open, every file opened and every folder listed under a state/wide is noted."""
+    """While this is open, every file opened and every folder listed under a state/wide or a
+    state/bench is noted."""
     _WATCH["on"], _WATCH["seen"] = True, []
     try:
         yield _WATCH["seen"]
@@ -118,11 +138,12 @@ def watching():
 
 
 def _files(root: Path, inside: bool) -> dict:
-    """Every file under root with what it holds, and every folder (its name ends in a slash)."""
+    """Every file under root with what it holds, and every folder (its name ends in a slash): those
+    under the folders the loop must leave alone (state/wide, state/bench), or all the others."""
     out = {}
     for p in sorted(root.rglob("*")):
         rel = p.relative_to(root).as_posix()
-        if (rel.startswith("state/wide/") or rel == "state/wide") == inside:
+        if any(rel == f"state/{w}" or rel.startswith(f"state/{w}/") for w in WATCHED) == inside:
             if p.is_file():
                 out[rel] = p.read_bytes()
             elif p.is_dir():
@@ -131,9 +152,10 @@ def _files(root: Path, inside: bool) -> dict:
 
 
 def drive(root: Path, bait: bool, hours: int = 3):
-    """Run the hourly steps `hours` times in a fresh root. Returns what the loop printed and said each
-    hour, every file and folder it left outside state/wide, what was under state/wide before and
-    after, and whatever under a state/wide the loop opened or listed while it ran."""
+    """Run the hourly steps `hours` times in a fresh root. bait: with a full state/wide and a
+    state/bench beside it. Returns what the loop printed and said each hour, every file and folder it
+    left outside those two, what was under them before and after, and whatever under a state/wide or
+    a state/bench the loop opened or listed while it ran."""
     root = Path(root)
     for name, value in (("ROOT", root), ("CONFIGS", root / "configs"), ("STATE", root / "state"), ("CANDLES", root / "state" / "candles"),
                         ("HISTORY", root / "state" / "history"), ("ARCHIVE", root / "state" / "archive"), ("LEDGER", root / "LEDGER.md")):
@@ -146,6 +168,7 @@ def drive(root: Path, bait: bool, hours: int = 3):
     feed = Feed()
     if bait:
         plant(root, feed)
+        plant_bench(root)
     before = _files(root, inside=True)
     data.get_source = lambda pairs, quote="USD": feed
     data.get_history_source = lambda pairs, quote="USD": older_candles()

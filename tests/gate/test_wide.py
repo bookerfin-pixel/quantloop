@@ -1988,7 +1988,7 @@ def test_no_strategy_opens_the_wide_data_when_it_is_called(tmp_path, hourly):
     config.STATE = root / "state"                       # put back by the `hourly` fixture
     source = data.SyntheticSource(hourly.RISK["pairs"], n=2160, seed=7, start=hourly.HOUR0 - 2160 * 3600)
     candles = {pair: source.ohlc(pair) for pair in hourly.RISK["pairs"]}
-    repo_configs = []
+    repo_configs, hypotheses = [], []
     for path in sorted((REPO / "configs").glob("*.yaml")):
         try:
             cfg = yaml.safe_load(path.read_text(encoding="utf-8"))
@@ -1996,10 +1996,26 @@ def test_no_strategy_opens_the_wide_data_when_it_is_called(tmp_path, hourly):
             continue
         if isinstance(cfg, dict) and isinstance(cfg.get("strategy"), str):
             repo_configs.append((cfg["strategy"], cfg.get("params") if isinstance(cfg.get("params"), dict) else {}))
+            if re.fullmatch(r"[A-Za-z0-9_-]{1,40}", str(cfg.get("hypothesis"))):
+                hypotheses.append(str(cfg["hypothesis"]))
+    # The bench's readings are there as well, one under every hypothesis the repo's configs name: a strategy
+    # that read its own reading would be trading on five years it is about to be tested on. The same watch
+    # sees a state/bench, here and in the checkout itself (tests/gate/test_bench.py holds that it does).
+    hourly.plant_bench(root, sorted(set(hypotheses) - {"H9"}))
     assert len(strategy.STRATEGIES) >= 1 and any(name in strategy.STRATEGIES for name, _ in repo_configs)
     touched, ran = what_strategies_open(strategy.STRATEGIES, candles, repo_configs, hourly.watching)
     assert touched == [], touched
     assert ran >= 2                                     # the repo's own configs, at the least, ran through
+
+    # Whichever names the repo's configs go by on the day this runs: the first of them, or the one that is
+    # always planted. A name written out here would turn the gate red on the day a promotion retired it.
+    its_own = (sorted(set(hypotheses)) or ["H9"])[0]
+
+    def reads_its_reading(candles, params, current_weights):
+        on_file = config.STATE / "bench" / f"{its_own}.json"    # only when there is one: asking whether a file is there is not seen
+        return {"BTC": 0.2} if on_file.exists() and "beaten" in on_file.read_text() else {}
+    touched, ran = what_strategies_open({"r": reads_its_reading}, candles, [], hourly.watching)
+    assert touched == [f"open state/bench/{its_own}.json"] * 2 and ran == 2
 
     # and the check itself bites, on the kinds of read that are easiest to miss
     def behind_a_switch(candles, params, current_weights):
@@ -2194,10 +2210,10 @@ def test_the_hourly_loop_is_the_same_with_and_without_the_wide_data(tmp_path, ho
     file and folder it leaves, must come out the same, and everything under state/wide must be as it was."""
     plain_said, plain_files, none_before, none_after, _ = hourly.drive(tmp_path / "plain", bait=False)
     bait_said, bait_files, wide_before, wide_after, touched = hourly.drive(tmp_path / "bait", bait=True)
-    assert none_before == {} and none_after == {}                                  # the loop makes no state/wide of its own
+    assert none_before == {} and none_after == {}                                  # the loop makes no state/wide and no state/bench of its own
     assert len(plain_said) == 9 and plain_said == bait_said                        # what it printed, the slots and the free slots, three hours
     assert sorted(plain_files) == sorted(bait_files) and plain_files == bait_files
-    assert len(files_only(wide_before)) == 22 and wide_after == wide_before        # all that was planted, untouched, and no folder added
+    assert len(files_only(wide_before)) == 24 and wide_after == wide_before        # all that was planted, untouched, and no folder added
     assert "state/wide/daily/" in wide_before and "state/candles/" in plain_files  # folders are part of what is compared
     for kind in ("universe.json", "status.json", "deepen.json", "daily/BTC.csv", "quotes/2026.csv", "funding/PF_XBTUSD.csv",
                  "champion/account.json", "challenger9/meta.json", "candles/BTC.csv", "history/ETH.csv", "archive/H1/trades.csv", "summary.md"):
@@ -2210,6 +2226,13 @@ def test_the_hourly_loop_is_the_same_with_and_without_the_wide_data(tmp_path, ho
         assert "[promote] challenger1: H9 on day" in printed and "[report] wrote <root>/state/summary.md" in printed
     assert "[data] BTC: backfilled 1100 hourly candles" in plain_said[0] and "state/history/BTC.csv" in plain_files
     assert "state/summary.md" in plain_files and "state/challenger1/account.json" in plain_files and "state/champion/equity.csv" in plain_files
+    # The bench's readings sit beside the second run only, one of them flattering the test in the slot, and
+    # the loop leaves them as they were. So everything compared above was compared with the readings there
+    # and without them: a loop that so much as printed whether one was on file would have failed here.
+    for name, content in hourly.BENCH_FILES.items():
+        assert wide_before[f"state/bench/{name}"] == content == wide_after[f"state/bench/{name}"]
+    assert sorted(k for k in wide_before if k.startswith("state/bench")) == ["state/bench/", "state/bench/H9.json", "state/bench/README.md"]
+    assert not any("bench" in k for k in plain_files) and not any("bench" in k for k in bait_files)
     assert plain_files["state/champion/equity.csv"].count(b"\n") == 4              # a header and three hours
     assert "2026-09-21 22:10Z" in plain_said[0] and "2026-09-22 00:10Z" in plain_said[6]      # across a UTC midnight
     assert b"generated 2026-09-22 00:10Z" in plain_files["state/summary.md"]                  # and the report is the hour's, not the wall clock's
@@ -2249,6 +2272,7 @@ def loop_in_a_copy(tmp_path, name, edits=()):
     code = tmp_path / name
     shutil.copytree(REPO / "bot", code / "bot", ignore=shutil.ignore_patterns("__pycache__"))
     (code / "bot" / "wide.py").write_text('raise RuntimeError("the collector must not be imported by the hourly loop")\n')
+    (code / "bot" / "bench.py").write_text('raise RuntimeError("the bench must not be imported by the hourly loop")\n')
     shutil.copy(REPO / "tests" / "gate" / "hourly_driver.py", code / "hourly_driver.py")
     for file, old, new in edits:
         src = (code / "bot" / file).read_text(encoding="utf-8")
@@ -2259,8 +2283,9 @@ def loop_in_a_copy(tmp_path, name, edits=()):
     script = ("import sys, pathlib, hourly_driver\n"
               "import bot.backtest, bot.shadow, bot.strategy, bot.risk, bot.paper\n"
               f"said, files, before, after, touched = hourly_driver.drive(pathlib.Path({str(code / 'root')!r}), bait=True)\n"
-              "assert 'bot.wide' not in sys.modules and before == after and len([k for k in before if not k.endswith('/')]) == 22\n"
-              "assert touched == [], ('the loop read the wide data', touched)\n"
+              "assert 'bot.wide' not in sys.modules and before == after and len([k for k in before if not k.endswith('/')]) == 24\n"
+              "assert 'bot.bench' not in sys.modules and before['state/bench/H9.json'] == hourly_driver.BENCH_FILES['H9.json']\n"
+              "assert touched == [], ('the loop read the wide data or the bench', touched)\n"
               "print('ok', len(said), len(files) > 10)\n")
     return subprocess.run([sys.executable, "-c", script], cwd=code, env=env, capture_output=True, text=True)
 

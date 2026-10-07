@@ -40,7 +40,7 @@ hypotheses.
 
 - A test's return leaves out the cost of its first hour (seen 2026-10-05 in review, not changed). A test's start equity is its equity after the fills of the hour it began in, and in that hour a new strategy trades from the book the idle slot held to its own. So that one off cost is in the costs a result shows, and in the cost kill, and not in the return, the skill or the gross pnl. H4's was 13.71 and H5's 14.74, about 0.14% of the account each. The champion side leaves out only what it happened to trade in that same hour (nothing in H4's, 0.39 in H5's). It has been the convention since the first test and it leans towards the challenger by about 0.14 of a point a test, small against a bar that asks for a daily skill t of 1.0. The result's line now says the amount. The fills of that hour also count towards the 30 a promotion needs (H4's ten, H5's eight). A sell in that hour of what the slot was handed can never be a finished trade of the test's own; what the test buys in that hour is its own from then on. A candidate for the next ruleset: start a test's return, and its count of fills, from before that hour's fills.
 
-- Does choosing between coins carry skill here where timing the market has not? (raised 2026-10-05, corrected 2026-10-06.) Not on the ten pairs, as far as five years of daily closes can say. The first look of 2026-10-05 held the strongest two to five by trailing return, rebalanced weekly, and reported that all 18 variants beat the equal weight basket (skill Sharpe 0.48 on average) and that 7 beat 95% of their own twins. It rebalanced on Fridays only. On each of the seven days the same 18 rules average +0.05 (Friday +0.47, Sunday -0.38), and 2026 is negative on every day. The details are in hypotheses/backlog.md, under the ideas not to bother with, and under Overturned below. Published work points the same way: CF Benchmarks' momentum factor on the top 50 coins (two week lookback, weekly, long the stronger half and short the weaker) made 13.41% a year from 2015 to November 2024 and has lost 14.66% in 2026 to 25 September. The same question on a wide list is what state/wide/ is for, and it has to be asked on every rebalance day.
+- Does choosing between coins carry skill here where timing the market has not? (raised 2026-10-05, corrected 2026-10-06.) Not on the ten pairs, as far as five years of daily closes can say. The first look of 2026-10-05 held the strongest two to five by trailing return, rebalanced weekly, and reported that all 18 variants beat the equal weight basket (skill Sharpe 0.48 on average) and that 7 beat 95% of their own twins. It rebalanced on Fridays only. On each of the seven days the same 18 rules average +0.05 (Friday +0.47, Sunday -0.38), and 2026 is negative on every day. The details are in hypotheses/backlog.md, under the ideas not to bother with, and under Overturned below. Published work points the same way: CF Benchmarks' momentum factor on the top 50 coins (two week lookback, weekly, long the stronger half and short the weaker) made 13.41% a year from 2015 to November 2024 and has lost 14.66% in 2026 to 25 September. The same question on a wide list is what state/wide/ is for, and it has to be asked on every rebalance day. First look on the wide list, 2026-10-07, the collector's first day (by Fin's maintainer session; a lead and not a finding, for the two reasons at the end). The hundred most traded USD pairs on Kraken, 1,825 days of daily closes, a coin counted from the day its median dollar volume over the 30 days before reached $250,000 (47 coins at the median). Long only, fully invested in the strongest k by trailing return at equal weight, rebalanced weekly, costed at a 10 bps fee plus the coin's own half spread, set against all the coins then in the universe at equal weight, and run on each of the seven rebalance days. The strongest five beat the universe on every one of the seven days at every lookback tried, from 3 to 90 days: a yearly information ratio of +0.57 to +1.09 on average over the seven days and never under +0.14 on any one. The strongest ten are weaker (+0.30 to +0.93) and the strongest twenty show nothing (-0.49 to +0.47). All 18 settings on all seven days average +0.42, with 79% above nothing; with the volume floor at $1,000,000 they average +0.24, with 68% above nothing, and the strongest five still +0.49 to +1.09. The weakest k lose on nearly every setting and day (-0.51 on average), the same thing seen from the other side, and the last two years read like the whole (+0.45). So the answer on the ten pairs, nothing once every rebalance day is tried, does not carry over as it stands: on a wide list there is something to chase, and it sits in the top handful of coins. Why it is only a lead. One: the list is the hundred most traded coins today, so every coin in it is one that survived and grew, and the coins a momentum rule would have bought on the way up and held into nothing are not in it. That leans the result upward by an amount this data cannot put a figure on (a coin's `since` date in state/wide/universe.json marks where its history stops being a survivor's). Two: it is in sample, eighteen settings tried at once. What would make it a finding: the same rule on the days after each coin's `since` date as the collector's own list grows, the bench's twins on the wide data, and a history that keeps the coins that died. On that last, the collector's first run found that GitHub's runners can reach Binance's public archive of candles (both of its probes answered 200), which keeps the files of pairs that were later delisted; nothing reads it yet.
 
 - Is there skill in anything we run? (2026-10-06.) Each live config was replayed by the engine over the 687 days to 2026-10-03 (the basket fell 35%) and set against 500 of its own twins: its hour by hour weights slid against the market by 30 days or more, so the same exposure, turnover and costs with no timing. Skill Sharpe over the span, the share of twins beaten, and the same share over the last 365 days alone: H0 -2.22, 40%, 41% (its costs come to 61% of equity a year, four times the gate's limit for a challenger); H1 -0.64, 41%, 59%; H2 +0.03, 76%, 63%; H4 +0.19, 85%, 92%; H5 +1.03, 96%, 24%. A config with no skill beats about half its twins. None beats 95% in both spans; H5's 96% is all from before the last year, as its ledger entry says, and with five configs one at 96% is what luck gives one time in five. H4 is the only one above 80% in both. This is in sample for the challengers only loosely (the agent wrote them having seen recent history) and it took minutes, where a slot takes 60 to 120 days: the case for reading every idea this way before it takes a slot.
 
@@ -184,6 +184,22 @@ hypotheses.
   just closed fails). Lesson: test what a new path does when its inputs fail,
   not only when they arrive, and have someone who did not write it try to
   break it. Fifth bug in the measuring code in three weeks.
+
+- What the promotion rule asks, set against what five years of history could give (raised 2026-10-07 by the
+  bench's first readings; for ruleset 8). The bench cuts each config's replay into every 120 day window from a
+  year in, about 1,300 of them, of which 11 or 12 fit end to end, and counts how often a test begun there would
+  have had what a promotion asks for. A daily skill t of 1.0 or more at day 120: H0 in 2% of windows, H1 in 1%,
+  H2 in 15%, H4 in 10%, H5 in 27%. All three counts (a trade of its own by day 60, 30 fills, that t): the same
+  figures but for H5, 25%, which has fewer than 30 fills by day 120 in 37% of windows. So the config that reads
+  best on history, H4, would have been promoted from one window in ten, and the middle window's t is +0.2. Two
+  readings are open and they point opposite ways. One: the rule is doing its job. These are in sample figures
+  for ideas whose edge, where they have one, is small (what is left after costs against their own twins has a
+  yearly Sharpe ratio of 0.3 to 0.8), and by CLAUDE.md's own sum a t of 1.0 at day 120 wants a skill with a
+  Sharpe ratio of about 1.75: an edge of this size is not one 120 days can show. Two: a rule that passes the
+  best idea on file one time in ten will mostly return `unproven`, and a slot spends four months to learn
+  little. What would settle it is not a looser bar but more independent bets per window, which is what the wider
+  universe is for, or a longer record for slow ideas, which is what the nursery in the plan is for. Not acted
+  on.
 
 ## How the machinery shapes results
 
@@ -679,6 +695,162 @@ the machinery, not edge.
   answers were read by hand on 2026-10-06; a red first run would cost nothing but the day (it commits nothing).
   Lesson, the same as on 2026-10-04: have someone who did not write a thing try to break it, and count what
   gets past the tests rather than what they cover.
+
+- The bench, and how far a reading of it can be trusted (2026-10-07). bot/bench.py replays a config through the
+  engine over all the history on file and sets its book against its twins: the same book slid 30 days or more
+  later in time, so the same positions on the same coins for as long, with nothing left of when they were taken.
+  A book with no timing lands anywhere among its twins. A reading gives the share of its twins the book beats
+  before costs, how often a book with no timing does as well (its chance), what the timing was worth a year,
+  what the costs took and what is left. The module's own text says how each is made. This entry is what was
+  measured before it went in, so that nobody takes its figures for more than they are.
+
+  How often it cries wolf. Markets were made from the ten pairs' own hours with every hour's direction tossed,
+  so that the past says nothing about what comes next, and twelve kinds of book that decide on that past all the
+  same were made on them: 300 markets of five years, 200 twins a book. Two of the twelve could not be read in
+  any market: a book sized by how quiet each coin has been is never out of a pair, whether it trades every hour
+  or, as the account does, only when a target is five points from what is held (below, under what it cannot
+  read). Of the other ten kinds, the chance came out at one in ten or less for 170 of the 2,504 books that could
+  be read (6.8%), and at one in twenty or less for 54 (2.2%). By kind, at one in ten or less: blind books 35 of
+  300; dip buyers that look a month back 34 of 300; trend followers that look three days back 28 of 300; dip
+  buyers that look 2,000 hours back 24 of 300; breakouts 22 of 300; month scale trend followers 18 of 300; 2,000
+  hour trend followers 5 of 300; books that take an 8% profit and have no stop 4 of 53; books that buy a fall
+  and wait for the old high 0 of 51; and trend followers with a 40% trailing stop 0 of 300. The highest of them
+  is 11.7%, give or take 1.9, so no kind is clearly above ten in a hundred. On shorter runs it is more cautious,
+  because slow books' twins are worth only a handful there: 5.0% of the books read at three years, 4.2% at two,
+  2.6% at one and 1.9% at 300 days. So "one time in ten or less" in a reading means about that, for a book
+  nobody has tuned.
+
+  The share of twins beaten is not that honest by itself, and is not to be quoted without the chance. With
+  nothing in them, slow dip buyers beat nine in ten of their twins in 53 of 300 markets (17.7%) and blind books
+  in 39 of 300. And of the 396 books whose twins were worth fewer than nine separate ones, 42 beat nine in ten
+  of them, 13 of those beating every one, where none of them could have a chance of one in ten. The gap is the
+  number of separate twins. A thousand twins slid a few days apart are nearly one book: of the 200 made for each
+  book here, the twins were worth at the median 135 separate ones for the three day trend follower, 35 for the
+  month scale one, 12.5 and 14.4 for the two kinds at 2,000 hours and 5.2 for the trailing stop, and a book
+  cannot stand out among five. The reading says how many, and takes the chance from that number. Two counts are
+  made and the smaller is used: one from how likeness falls away with the distance between two slides, and one
+  from likeness wherever it is, without which a book that holds at weekends (the same book again a week further
+  on) read 888 separate twins where it has three or four. Its allowance for what twins with nothing in common
+  show by chance is reckoned day by day, because a market's days are not of a size and every twin has been
+  through the wild ones: reckoned as if each day weighed the same, it cut the live books' twins by up to half.
+  On the five configs in use the second count now comes out above the first for four of them and one under it
+  for the fifth (390 against 391 for H0). Mirror image books are not treated alike either: on the same markets a
+  slow dip buyer gets a chance of one in ten or less 8.0% of the time and a slow trend follower 1.7%. No
+  statistic was found that mends that; the measured rates are the mend.
+
+  What it cannot read.
+
+  - A book that is never out of some pair for most of the run. A strategy is told what it holds, so for as long
+    as it is in a pair it can be acting on what it saw when it went in, and a twin that holds what such a book
+    took later has seen the hours it is scored on: twins that held what a dip buyer was still sitting on half a
+    year later scored a quarter of a point of t under the rest. So no twin holds what the book took within its
+    longest stay in any one pair, and a book whose stay is most of the run has no twins. On five years that was
+    249 of the 300 books that buy a fall and wait for the old high, 247 of the 300 that take an 8% profit, and
+    all 600 of the quiet sized books. That is the bench failing to read a timing, not the book having none, and
+    the reading says which. Two ways round it were built in review rounds three and four and taken out again in
+    round five. One left a position that never changes out of the stay, so that a core holding bought once and
+    kept would cost a book nothing. But the strategy is told that position's weight, which moves with its price
+    and so carries the whole path since it was bought. In two kinds of book that traded their other pairs on
+    that weight (40 tossed markets each, through a copy of the account's rules; the figures are from the 23 and
+    the 19 in which the core stood all through) the twins that held later positions in half their hours or more
+    scored 0.12 of a point of t under the rest in one kind and 0.23 over in the other (give or take 0.06 and
+    0.11), where without the core they scored the same (0.01 under, give or take 0.03). The share itself did not
+    visibly move (0.50, give or take 0.06): twins that see ahead a little, not a false reading that was
+    measured. The other read a strategy's code for whether it ever names what it holds, and counted its stays
+    from one trade to the next when it does not. But ten ordinary ways of keeping something from one hour to the
+    next (a counter, a small class, a list kept sorted) still read as keeping nothing, and a strategy wrongly
+    taken for one that remembers nothing has twins that see ahead (for a book that sits on its dips, read with
+    the short lead, such twins scored 0.26 under the rest). Neither could be made safe for every strategy. All
+    four strategies in bot/strategy.py do name what they hold and all of them go flat, so no reading on file
+    changed. What is lost: a book that never leaves any position cannot be read, and rule 1 kills such a test at
+    its look in any case. Two kinds that rule 1 does not kill cannot be read either: a book that keeps one
+    position for good and trades the rest, and one that sells its positions down to a crumb and never to nothing
+    (rule 1 counts a position as left at a twentieth of its size, the bench only at nothing; a strategy is told
+    that it holds a crumb). Reading those properly means the bench deciding what the strategy is told it holds,
+    which is for the bench on the wide data.
+
+  - A short run. On 300 days it could read 78 of 300 slow trend followers and 24 of 300 slow dip buyers, and
+    those were the ones whose trends had failed and whose dips had come back: with nothing in them they beat 31%
+    and 69% of their twins on average. Twins there are worth 3.3 to 3.5 separate ones at the median, so no claim
+    follows, but "a book with no timing beats about half" is not true of what gets read on a short run. At two
+    years 243 of 300 trailing stop books, 299 and 299 of 300 of the two kinds at 2,000 hours and every one of
+    the two month scale kinds are read, and the average is back near a half (0.47 to 0.53); at five years it is
+    0.46 to 0.54, which is the mirror image lean above and not this. `--days` is for trying things out; a
+    reading that counts is of all the history.
+
+  - An idea tuned on this history. Every config was written by someone who had seen these five years. How often
+    a tuned idea with nothing in it gets a chance under one in ten was not measured, and it is more often than
+    the 7 in a hundred above.
+
+  - A strategy with a memory of its own between hours, in its module, on its function or in its params. The
+    hourly loop starts afresh every hour, so such a strategy does not do live what it does in a replay, which is
+    a fault in the strategy and now a line in its contract (bot/strategy.py, CLAUDE.md). The bench says so when
+    a strategy's params are not, at the end of a replay, what it was handed, and it cannot see a memory kept
+    anywhere else. And a strategy that enters on one thing and leaves on another carries something through its
+    flat stretches too: the rule on how far a twin may be slid is a rule of thumb, held to the rates above, not
+    a proof.
+
+  What review found. Two reviewers who had not written it, one on the statistics and one on the engineering,
+  went over it five times before it shipped, with mutation runs between. Round one, 20 faults. The worst: twins
+  were ranked on a figure with the book's own costs in it, so that a book on the costs treadmill read 83% where
+  its timing alone read 73%; a twin could hold positions the book took just after the hour in hand, which piled
+  trend followers up at the bottom; and a replay that had failed was counted as a setting that agreed. Round
+  two, 16. The worst: a line that split a book's timing into what was made inside the years and between them,
+  and gave a trend follower with nothing in it ten points a year either way (the line was dropped); and a
+  protected test that needed some config to be named H0, which would have turned the gate red for every proposal
+  after the first promotion. Round three, 11. The worst: the rule on stays had begun to refuse every book that
+  is never out of a pair, however much it trades; and the weekend count above. Round four, 10. The worst: the
+  second count's allowance for chance, above; a core position bought once and kept cost a book all its twins; a
+  strategy that kept where it had bought in its params was taken for one that cannot see what it holds; and a
+  replay whose process died was waited for as long as anything it had started lived. Round five, 8. The worst
+  were two of round four's own mends, the two ways round a book that is never out of a pair, above: one let
+  twins see ahead a little and the other could not tell which strategies remember, and both came out. That is 65
+  faults in all, and a sixth, short look at the taking out found nine more, all small (the worst: a book that
+  holds only pairs too new for any book to be read was told its stay was too long). All were closed but two that
+  are stated instead: the mirror image, and the books that are never out of a pair. Lesson, for the third time
+  in a month: the figures that looked most finished were the ones a second pair of eyes took apart, and a mend
+  is a change like any other, so nothing that scores ideas goes in on its author's word.
+
+- What the five configs in use read on five years (2026-10-07; in sample, every figure of it). The bench's first
+  readings, from replays of the candles on file up to the midnight before. Each config is read from the first
+  hour it could decide, about 1,800 days; over H0's 1,820 the equal weight basket of the ten pairs lost 41.8%.
+  For each: what it made after costs; what its timing was worth a year before costs, which is the book as it
+  last traded each pair less its average twin; what its costs took a year; what is left a year, with its t; the
+  share of its twins it beats; how often a book with no timing does as well; and the share of its twins it beats
+  over the last 365 days alone. Taken again by the real command with a few more hours of candles, the yearly
+  figures came out within a tenth of a point and the shares within one point; but the two takes draw the same
+  twins, so that says only that a few hours of candles change nothing. How exact a reading is shows when the
+  thousand twins are drawn afresh. Over twelve other draws a share moved by 0.4 to 1.3 points either way, book
+  by book (H0's ran from 72% to 76%), a share over the last 365 days by 1.2 to 1.9 points, and the yearly
+  figures by a quarter to half a point (H0's timing from +8.3% to +10.1%, where the draw the bench keeps gives
+  +8.2%); the t of what is left moved by 0.03. H2's chance was one in ten or less in 8 of the 12, so it sits on
+  the line the words turn on; H5's and H4's were under it in all 12, and H0's and H1's in none.
+  - H0, ts_momentum over 72 hours, the champion: made -92.0%; timing +8.2%, costs 58.2%, left -49.6% (t -3.3);
+    beats 72% of its twins, luck does as well 29% of the time; 25% over the last 365 days. Cannot be told from
+    luck, and it pays seven times in costs what its timing could be worth.
+  - H1, mean reversion over 240 hours: made -87.3% over 1,817 days; timing -21.6%, costs 16.6%, left -38.4% (t
+    -2.7); beats 5% of its twins, luck does as well 95% of the time; 67% over the last 365 days. No sign of
+    timing: nineteen in twenty of its own twins did better, at every setting nearby (1% to 6%) and on every half
+    of the coins (3% to 14%).
+  - H2, volatility breakout: made +41.2% over 1,760 days; timing +17.0%, costs 10.5%, left +7.5% (t +0.6); beats
+    91% of its twins, luck does as well 9% of the time; 64% over the last 365 days. Ahead of its average twin
+    after costs in 5 of 5 years, at 84% to 96% at the settings nearby and 89% to over 99% on the halves. Its
+    weak spot: at double costs nothing is left (-3.1%).
+  - H5, swing reversal: made +79.2% over 1,807 days; timing +16.2%, costs 3.9%, left +13.2% (t +1.7); beats 99%
+    of its twins, luck does as well 2% of the time; 41% over the last 365 days. Its weak spots: ahead after
+    costs in only 3 of 6 years, and under half its twins over the last year. It holds 9% of its equity on
+    average and makes about 20 fills in 60 days, where a promotion asks for 30.
+  - H4, ts_momentum over 720 hours: made +77.7% over 1,797 days; timing +23.3%, costs 9.0%, left +15.3% (t
+    +1.0); beats 96% of its twins, luck does as well 6% of the time; 81% over the last 365 days. Ahead in 4 of 6
+    years; 84% to 96% at the settings nearby and 94% to over 99% on the halves; no weak spot named. It is a slow
+    book, so its twins are worth only 62 separate ones.
+  What to take from it, and what not to. H0 and H1 show nothing on history; whether that agrees with what they
+  do live is for their verdicts to say. That H2, H5 and H4 beat most of their twins says they are worth the
+  slots they have and no more: all three were written with these years in view, "left a year" is measured
+  against the same positions at other times and not against cash, a t under about 2 either way cannot be told
+  from noise, and none of the three reaches it. The readings are here so that each test's verdict, when it
+  comes, can be set beside what its history said: that comparison, over many tests, is what will say whether the
+  bench is worth reading at all.
 
 ## Overturned
 

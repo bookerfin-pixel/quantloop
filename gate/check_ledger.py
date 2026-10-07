@@ -22,7 +22,8 @@ import yaml
 CHALLENGER_GLOB = "configs/challenger*.yaml"
 STRATEGY_PATH = "bot/strategy.py"
 REQUIRED_FIELDS = ["Date", "Hypothesis", "Change", "Why it should work",
-                   "Expected gross bps per round trip", "Kill criteria", "Backtest", "Status"]
+                   "Expected gross bps per round trip", "Kill criteria", "Backtest", "Bench", "Status"]
+FIELDS = REQUIRED_FIELDS + ["Differs from running tests"]       # every field the format names (LEDGER_FORMAT.md)
 ENTRY_RE = re.compile(r"^## (H\d+)\b", re.M)
 
 
@@ -38,6 +39,33 @@ def entries(text: str) -> dict[str, str]:
         end = matches[i + 1].start() if i + 1 < len(matches) else len(text)
         out[m.group(1)] = text[m.start():end]
     return out
+
+
+def said(body: str, field: str) -> str | None:
+    """What an entry says under a field: the rest of the field's own line and
+    the lines straight under it, up to the next field the format names, a
+    heading or a blank line. None when the entry has no such field. A field
+    left blank is not filled by the field under it (with `\\s*` after the
+    colon it was, so an entry could leave any field empty; found 2026-10-07,
+    when Bench was added), and figures written under a field's name still
+    count as that field's, whether they are indented or set out as a list
+    of `- ` lines (each mend for the first let one of those through as
+    empty; found in review the same day)."""
+    stop = "|".join(re.escape(f) for f in FIELDS)
+    m = re.search(rf"^- {re.escape(field)}:[ \t]*(.*(?:\n(?!- (?:{stop}):|#|[ \t]*$).*)*)", body, re.M)
+    return None if not m else m.group(1).strip()
+
+
+def bench_line(text: str) -> bool:
+    """Is this what a Bench field should hold: the bench's own last line, or
+    `not taken:` and a reason no reading could be taken? `n/a` is neither.
+    The line may be wrapped by hand, and a few words of reason are enough:
+    asking for twenty characters turned away `not taken: timed out`, and the
+    agent cannot read why the gate said no (found in review, 2026-10-07)."""
+    text = " ".join(text.split())
+    own = "twins" in text and "in sample" in text.lower()
+    why_not = re.match(r"`?not taken\b:?`?\W*(.*)", text, re.I | re.S)
+    return own or bool(why_not and len(why_not.group(1).strip()) >= 3)
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -73,13 +101,18 @@ def main(argv: list[str] | None = None) -> int:
     if new_ids:
         body = entries(head_text)[new_ids[0]]
         for field in REQUIRED_FIELDS:
-            m = re.search(rf"^- {re.escape(field)}:\s*(.+)$", body, re.M)
-            if not m or len(m.group(1).strip()) < 3:
+            text = said(body, field)
+            if text is None or len(text) < 3:
                 problems.append(f"ledger entry {new_ids[0]} is missing a filled '- {field}:' line")
-        st = re.search(r"^- Status:\s*(\w+)", body, re.M)
+        bench = said(body, "Bench")
+        if bench is not None and len(bench) >= 3 and not bench_line(bench):
+            problems.append(f"ledger entry {new_ids[0]}: the '- Bench:' line must carry the line the bench printed "
+                            f"(the one that begins `Bench:` and ends `In sample.`), or begin `not taken:` and say in a "
+                            f"few words why the reading could not be taken")
+        st = re.search(r"^- Status:[ \t]*(\w+)", body, re.M)
         if st and st.group(1) != "testing":
             problems.append(f"new ledger entry must have 'Status: testing', found {st.group(1)!r}")
-        bps = re.search(r"^- Expected gross bps per round trip:\s*([0-9.]+)", body, re.M)
+        bps = re.search(r"^- Expected gross bps per round trip:[ \t]*([0-9.]+)", body, re.M)
         if not bps:
             problems.append("'Expected gross bps per round trip' must start with a number")
         elif float(bps.group(1)) < 60:

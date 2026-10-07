@@ -140,6 +140,38 @@ can read it with `gh pr list --state closed`.
   `python -m bot.wide` prints what the collector last did and only reads.
   Never run it with `--collect`: that writes state/, and the gate refuses a
   pull request that changes state/.
+- A third job (`bot/bench.py`, protected) takes a reading of every config in
+  use on all the history on file and keeps it under `state/bench/`;
+  `state/bench/README.md` is the league table, with each config's whole
+  reading under it and, under `Not read`, a line for any config it could not
+  read. A reading sets the config's book against its twins. A twin is the same
+  book slid 30 days or more later in time: the same positions on the same
+  coins, held for as long, with nothing left of when they were taken. A book
+  with no timing lands anywhere among its twins and beats about half of them.
+  The reading gives the share of its twins the book beats, before costs; how
+  often a book with no timing does as well; what its timing was worth, which
+  is the book as it last traded each pair less its average twin, before costs,
+  a year; what letting positions run between trades added to that, which a
+  twin does not do; what its costs took; and what is left, which is the timing
+  and that less the costs. A strategy is told what it holds, so a book that is
+  never out of some pair for most of the run cannot be set against twins: none
+  of them would be clear of the hours it is scored on. Nor can one that never
+  takes a position. The reading says which, and for the first it is the bench
+  that cannot read the timing, not the book that has none. (A book that never
+  leaves any position it takes finishes no trade of its own, so it would be
+  killed at its look in any case. One that keeps one position for good and
+  trades the rest would not be, nor would one that sells down to a crumb and
+  never to nothing, and the bench still cannot read either: to the bench a
+  position is left only when nothing of it is held.) The whole reading adds
+  the config at settings near its own, on each half of the coins, and with
+  the clock moved if its code can read the clock. All of it is in sample: it
+  can show that an idea has nothing, never that it has something. No rule
+  leans on it. It is there to choose between ideas before a slot is spent,
+  and to say later whether what an idea showed on history told us anything
+  about what it did live. A strategy must not read `state/bench` itself, by
+  any road, any more than `state/wide`: it would be trading on a reading of
+  the years it is about to be tested on, and the same test in the gate fails
+  one that opens anything there.
 - state/history/ holds about five years of hourly candles per pair where the
   venue has them (Coinbase backfill, written once; a pair starts where the
   venue's candles start, and XRP starts only in July 2023 because Coinbase
@@ -184,9 +216,9 @@ can read it with `gh pr list --state closed`.
 ## The daily procedure
 
 Read, in this order: `state/summary.md`, `LEDGER.md` (all of it, results
-included), `FINDINGS.md`, `hypotheses/backlog.md`, and the newest file in
-`notes/`. Then run `gh pr list --state closed --limit 5` and read why any
-recent PR was closed.
+included), `FINDINGS.md`, `hypotheses/backlog.md`, the newest file in
+`notes/`, and `state/bench/README.md` if it is there. Then run
+`gh pr list --state closed --limit 5` and read why any recent PR was closed.
 
 Then run `python -m bot.wide`, on every run, whatever the slots hold. If
 any line of what it prints begins with FAILED, STALE or SETTING NOT USED,
@@ -290,11 +322,68 @@ If a slot is free:
 - A strategy that cannot decide for lack of candles must return a target of
   zero with a reason of exactly this shape: `flat: only N candles, need M`.
   The engine and the gate look for it. Never need more than 2160 candles.
-- Check the idea on the long history as well as the last year:
-  `python -m bot.backtest --config configs/challenger<k>.yaml --days 1800 --gate`
-  prints a line by calendar year. Put that line in the ledger entry. An idea
-  that only works in one of those years is a bet on that kind of year, and
-  the entry should say so.
+- A strategy keeps nothing from one hour to the next. The hourly loop starts
+  afresh every hour, so a value kept in a module variable, on the function
+  or in params is there all through a backtest and gone the next hour live:
+  the backtest of such a strategy is not what it would do. What a strategy
+  has to remember (that it is in a position, where a stop stands) it reads
+  each hour from the candles or from the weights it is told it holds. The
+  bench says so when a strategy's params are not, at the end of a replay,
+  what it was handed. The other two it cannot see.
+- Check the idea on the long history as well as the last year: `python -m
+  bot.backtest --config configs/challenger<k>.yaml --days 1800 --gate` prints
+  a line by calendar year. It replays five years, which takes longer than a
+  command is given unless you say so: run it with the Bash tool's `timeout`
+  set to 1800000 (milliseconds, which is 30 minutes). Put that line in the
+  ledger entry. An idea that only works in one of those years is a bet on
+  that kind of year, and the entry should say so.
+- Read the idea on the bench before the slot is spent: `python -m bot.bench
+  --config configs/challenger<k>.yaml --quick`. It replays the same five years
+  through the engine, which takes from four to fifteen minutes: give it the
+  same `timeout` of 1800000. Take no more than two such readings in one run,
+  and if one runs out of time do not take it again: begin the entry's Bench
+  line with `not taken:`, say why in a few words, and say so in the note. Its
+  last line begins `Bench:`. Paste that line into the entry's Bench line and
+  say what you make of it. The line before it begins `Reading:` and says how
+  the figures are to be read. The `Bench:` line gives the share of its twins
+  the book beats and how often a book with no timing at all does as well. Go
+  by this. Beats fewer than half its twins: no sign of timing. No timing does
+  as well more than one time in ten: cannot be told from luck. One time in ten
+  or less, with nothing left after costs: look at what the book made before
+  them. If its timing is above nothing and, with what letting positions run
+  added, still comes to more than nothing, the costs take more than the book
+  made before them, and the fix is fewer or larger trades, not a new signal;
+  if not, there was nothing there for the costs to take. One time in ten or
+  less, with something left after costs, in most years and at double costs:
+  worth a slot. One in ten is not proof either: an idea with nothing in it
+  gets there about that often (FINDINGS, 2026-10-07, has what was measured),
+  and ideas that were picked for how they read on this history more often than
+  that. A line that says the book was not set against twins is neither a pass
+  nor a fail: the bench could not read its timing, and the words in brackets
+  say why (it never held a position; the run is too short; the pairs it
+  holds have too short a history; it was never out of some pair for too
+  long, set against the run or against the history of the pairs it holds).
+  Such an idea would go into a slot unread on history, so say that in the
+  entry. Where the reason is a stay, ask whether it could let go of its
+  positions now and then, all the way to nothing: one that does can be read.
+  A reading that fails because the strategy raised an error on some hour of
+  the five years has found a bug: mend it before the proposal, do not leave
+  the reading out. An idea that reads as nothing may still run under the idle
+  slot rule below, as a low conviction test, and its entry then says so with
+  the reading next to it. Never run the bench with `--save`: that writes
+  state/, and the gate refuses a pull request that changes state/.
+- When a proposal merges, the bench job takes its whole reading within a few
+  hours. On any run on which `state/bench/README.md` holds the whole reading
+  of a test in a slot and FINDINGS has no line yet on that test's whole
+  reading, add one, once for each test: what the quick reading could not say,
+  which is whether the settings either side of the idea's own and each half
+  of the coins show the same thing. (The reading is taken again every week
+  and says the same unless the config or the code has changed; that is not a
+  new line.) A result that lives in one setting, one half or one year is a
+  bet on that setting, half or year. If the table has a line under `Not
+  read`, for the champion or for a config in a slot, copy the line to the top
+  of the day's note, and write the note for that alone if the day has nothing
+  else to say: nothing else tells Fin, and you cannot fix it.
 - Write the ledger entry first. If you cannot fill "Why it should work"
   with a mechanism and cost arithmetic, pick a different idea.
 - An idle slot teaches nothing. The first choice is always an idea whose
@@ -309,11 +398,13 @@ If a slot is free:
 - Make the change in the free slot's config (configs/challenger<k>.yaml)
   and, if new logic is needed, bot/strategy.py. New strategy functions get
   tests in tests/ (not tests/gate/, which is protected). One slot per PR.
-- Run `python -m pytest tests -q`, then
-  `python -m bot.backtest --config configs/challenger<k>.yaml --gate`,
-  which prints the metrics, the skill line and exactly what the gate will
-  say. Paste the metrics and the skill line into the Backtest line of the
-  ledger entry. If the gate line says FAIL, fix the idea, not the number.
+- Run `python -m pytest tests -q` with the Bash tool's `timeout` set to
+  1200000 (20 minutes: the tests take six or seven, and a command gets ten
+  unless told otherwise), then `python -m bot.backtest --config
+  configs/challenger<k>.yaml --gate`, which prints the metrics, the skill line
+  and exactly what the gate will say. Paste the metrics and the skill line
+  into the Backtest line of the ledger entry. If the gate line says FAIL, fix
+  the idea, not the number.
 - Delete any scratch files you created (prototype configs, sweep scripts)
   before you finish. Whatever is left in the tree gets committed by the
   workflow and judged as part of the PR.
@@ -341,7 +432,11 @@ If a slot is free:
   weekly momentum rule here looked like skill only because it rebalanced on
   Fridays; on the other six days it had none (FINDINGS, Overturned). The
   same goes for a result that holds at one setting and not at the settings
-  either side of it.
+  either side of it. The bench's whole reading tries both for a strategy in
+  a slot: it reads the strategy's code for the clock, asks it whether its
+  targets move with the clock and, if either says they can, replays it
+  with the clock moved six ways. A study of your own on the wide data has
+  to do the same by hand.
 - A backtest verdict is only as current as the gate that gave it. The gate
   changed on 2026-09-20 from an in sample profit test (cost coverage of at
   least 1.0, absolute 30% drawdown) to the sanity filter described above.
@@ -357,6 +452,7 @@ If a slot is free:
 
     python -m pytest tests -q
     python -m bot.backtest --config configs/challenger<k>.yaml
+    python -m bot.bench --config configs/challenger<k>.yaml --quick
     python -m bot.slot
     gh pr list --state closed --limit 5
     gh pr view <n> --comments

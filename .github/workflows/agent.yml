@@ -67,7 +67,11 @@ jobs:
     needs: guard
     if: needs.guard.outputs.go == 'true'
     runs-on: ubuntu-latest
-    timeout-minutes: 60
+    # A proposal replays five years of history more than once (the long backtest, the bench's
+    # reading), a few minutes each and up to a quarter of an hour for a strategy that is heavy.
+    # A run that reaches this is cancelled with no pull request and no note, and the guard counts
+    # it as the day's run, so CLAUDE.md keeps the agent to two readings and to one try at each.
+    timeout-minutes: 120
     outputs:
       pr: ${{ steps.pr.outputs.number }}
       branch: ${{ steps.pr.outputs.branch }}
@@ -108,6 +112,14 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           AGENT_MODEL: ${{ vars.AGENT_MODEL }}
           AGENT_MAX_BUDGET_USD: ${{ vars.AGENT_MAX_BUDGET_USD }}
+          # How long one command of the agent's may run, in milliseconds. Claude Code stops a command
+          # after two minutes unless told otherwise and lets the agent ask for ten at most. The tests
+          # and a backtest take longer than two, so every command gets ten; a replay of five years
+          # for the bench takes longer than ten for some strategies, so the agent may ask for up to
+          # forty (CLAUDE.md tells it to ask for thirty). The most stays well under the job's limit:
+          # a command that hangs must not be able to cost the whole run.
+          BASH_DEFAULT_TIMEOUT_MS: "600000"
+          BASH_MAX_TIMEOUT_MS: "2400000"
         run: |
           git config user.name "quantloop-agent"
           git config user.email "quantloop-agent@users.noreply.github.com"
@@ -186,6 +198,7 @@ jobs:
     permissions:
       contents: write
       pull-requests: write
+      actions: write          # to ask for the bench by name, below, and for nothing else
     steps:
       - name: Merge
         env:
@@ -194,6 +207,20 @@ jobs:
         run: |
           gh pr merge "$PR" --repo "$GITHUB_REPOSITORY" --squash --delete-branch
           echo "merged PR #$PR" | tee -a "$GITHUB_STEP_SUMMARY"
+
+      # The bench reads what has just been merged. It used to go by the clock alone, at an hour
+      # this run could overrun, and then found nothing new until the night after. A merge made by
+      # a workflow starts no other workflow, so it is asked for by name. If the asking fails the
+      # merge still stands and the bench's own clock picks the reading up a few hours later.
+      - name: Ask for the bench
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if gh workflow run bench.yml --repo "$GITHUB_REPOSITORY" --ref main; then
+            echo "asked for the bench" | tee -a "$GITHUB_STEP_SUMMARY"
+          else
+            echo "::warning::could not start the bench; its own schedule will take the reading"
+          fi
 
   reject:
     needs: [propose, gate]

@@ -27,6 +27,16 @@ stops instead, as it does for an account.json that cannot be read.
     wide/           research data, written once a day by its own job (bot/wide.py,
                     .github/workflows/wide.yml) and read by no account and by nothing
                     in the hourly loop. See below
+    bench/          what each config in use shows on all the history on file, set
+                    against its own twins: <hypothesis>.json, one reading each, and
+                    README.md, the league table with every reading in words, the day
+                    each was read on, and a line for any config that could not be
+                    read. Written by its own job (bot/bench.py,
+                    .github/workflows/bench.yml) when a proposal merges and once a
+                    day besides, for readings that are missing, a week old, or taken
+                    before the config or the code it runs last changed. Nothing in
+                    the hourly loop reads it, no strategy may, and no rule leans on
+                    it. All of it is in sample
 
 ## wide/
 

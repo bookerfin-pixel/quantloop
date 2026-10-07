@@ -36,4 +36,6 @@ exclude:                # never collected: money, dollar and euro tokens, gold t
                         # marked like one the venue no longer lists
   [USDT, USDC, DAI, PYUSD, TUSD, USDD, USDE, USDS, FDUSD, RLUSD, USDG, USD1, USDQ, USDR, GUSD, BUSD,
    EURT, EURC, EURR, EURQ, EUR, GBP, AUD, CAD, CHF, JPY, AED,
-   PAXG, XAUT, WBTC, TBTC, CBETH, STETH, WSTETH, MSOL, JITOSOL]
+   PAXG, XAUT, WBTC, TBTC, CBETH, STETH, WSTETH, MSOL, JITOSOL,
+   BRL1]                # BRL1: a token pegged to the Brazilian real. It joined at rank 100 on the collector's
+                        # first day (2026-10-07), the dollar test not being one it could fail

@@ -34,6 +34,7 @@ bot/shadow.py
 bot/config.py
 bot/wide.py
 configs/wide.yaml
+bot/bench.py
 configs/shadow.yaml
 state/**
 requirements.txt

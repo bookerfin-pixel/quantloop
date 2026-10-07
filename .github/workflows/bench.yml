@@ -1,0 +1,105 @@
+name: bench
+
+# What each config in use shows on five years of history, set against its own
+# twins (bot/bench.py), kept under state/bench/. A reading is taken only when
+# it is missing, when its config or the code it runs has changed, or when it
+# is a week old, so most runs find every reading current and stop in under a
+# minute. The hourly loop never reads any of it, and this job writes nowhere
+# else. A config that cannot be read turns the run red and gets a line in
+# state/bench/README.md; the readings that could be taken are still committed.
+on:
+  # The agent's own workflow starts this the moment it has merged a proposal
+  # (a merge made by a workflow starts no other workflow by itself, but it may
+  # ask for one by name). The clock is the fallback, for the days the agent
+  # merges nothing and for a request that got lost: 01:37 UTC, after the
+  # latest hour an agent run that began at 22:00 UTC can still be merging.
+  schedule:
+    - cron: "37 1 * * *"
+  workflow_dispatch:
+    inputs:
+      again:
+        description: "Take every reading again, current or not"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+# Its own group on purpose: it must never queue ahead of, or cancel, an hourly
+# run. Two of these never run at once; the second waits and then finds the
+# readings current.
+concurrency:
+  group: bench
+  cancel-in-progress: false
+
+jobs:
+  bench:
+    runs-on: ubuntu-latest
+    # One config's whole reading is about a dozen replays of five years: from a quarter of an hour to
+    # three quarters on a runner's four processors, by how heavy the strategy is, and a change to the
+    # engine's code takes all of them again. The bench stops itself after --minutes, keeps what it has
+    # read and says what it has not; the step's own limit and the job's are there in case it cannot.
+    timeout-minutes: 300
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 1
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install
+        run: pip install -q -r requirements.txt
+
+      - name: Read
+        id: read
+        timeout-minutes: 270
+        run: python -m bot.bench --all --save --minutes 240 ${{ inputs.again && '--again' || '' }}
+
+      - name: Summary
+        if: always()
+        run: |
+          echo '## quantloop bench' >> "$GITHUB_STEP_SUMMARY"
+          echo "this run's read step: ${{ steps.read.outcome }}" >> "$GITHUB_STEP_SUMMARY"
+          if [ -f state/bench/README.md ]; then
+            head -c 20000 state/bench/README.md >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo 'no reading on file' >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: Commit
+        if: always()
+        run: |
+          if [ ! -d state/bench ]; then
+            echo "no readings to commit"
+            exit 0
+          fi
+          git config user.name "quantloop-bot"
+          git config user.email "quantloop-bot@users.noreply.github.com"
+          # The readings and their table, and nothing else: not another file the run may have left in that
+          # folder, and not anything that was staged before this step began.
+          for f in state/bench/README.md state/bench/*.json; do
+            if [ -e "$f" ]; then git add -- "$f"; fi
+          done
+          if git diff --cached --quiet -- state/bench; then
+            echo "nothing to commit"
+            exit 0
+          fi
+          git commit -q -m "bench: $(date -u +%Y-%m-%d)" -- state/bench
+          # Nothing else this run left behind goes anywhere, and none of it may stand in the way of
+          # landing on top of the hours the bot has recorded meanwhile.
+          git reset -q --hard HEAD
+          git clean -fdq
+          for attempt in 1 2 3 4 5; do
+            if git pull --rebase -q && git push -q; then
+              echo "pushed on attempt $attempt"
+              exit 0
+            fi
+            git rebase --abort 2>/dev/null || true
+            sleep $((attempt * 20))
+          done
+          echo "push failed after 5 attempts"
+          exit 1

@@ -56,6 +56,51 @@ def test_strategy_error_goes_flat_not_crash():
         assert not promote._forced(own)
 
 
+def test_a_strategy_that_asks_the_interpreter_to_stop_is_a_strategy_error_and_not_the_end_of_the_run():
+    """sys.exit() and exit() are not Exceptions. From a strategy they used to end the hourly run there and
+    then, with exit code 0 and a green tick, and every account after that one went undecided (found in
+    review, 2026-10-07). They are handled like any other failure: flat, with the reason on the record."""
+    from bot import promote, run
+    acct = paper.PaperAccount("t", 10_000, 10, 5)
+    acct.trade("BTC", 1000.0, 100.0, 1, "seed")
+
+    def quits(c, p, w):
+        raise SystemExit(0)
+
+    def closes(c, p, w):
+        raise GeneratorExit("gone")
+    decisions, fills, equity = step(acct, {"params": {}}, quits, candles(), {"BTC": 100.0, "ETH": 50.0}, 1_700_000_000, RCFG)
+    assert fills and fills[0].side == "sell" and "BTC" not in acct.positions and equity > 0
+    assert all(d["reason"].endswith("strategy error SystemExit: 0") for d in decisions) and len(decisions) == 2
+    assert run.ERRED == "strategy error " and promote._forced(fills[0].reason)
+    acct.trade("BTC", 1000.0, 100.0, 2, "seed")
+    decisions, fills, _ = step(acct, {"params": {}}, closes, candles(), {"BTC": 100.0, "ETH": 50.0}, 1_700_003_600, RCFG)
+    assert fills and "strategy error GeneratorExit: gone" in decisions[0]["reason"]
+
+    def interrupted(c, p, w):
+        raise KeyboardInterrupt
+    with pytest.raises(KeyboardInterrupt):                      # somebody stopping the run by hand still stops it
+        step(acct, {"params": {}}, interrupted, candles(), {"BTC": 100.0, "ETH": 50.0}, 1_700_007_200, RCFG)
+    # and the backtest goes on through such an hour, as the hourly loop does, and counts it on the record
+    calls = {"n": 0}
+
+    def quits_now_and_then(c, p, w):
+        calls["n"] += 1
+        if calls["n"] % 50 == 0:
+            raise SystemExit(3)
+        return {pair: 0.2 for pair in c}
+    strategy.STRATEGIES["quits_now_and_then"] = quits_now_and_then
+    try:
+        m = backtest.run_backtest(candles(300), {"strategy": "quits_now_and_then", "params": {}}, RCFG, record=True)
+    finally:
+        del strategy.STRATEGIES["quits_now_and_then"]
+    path = m["path"]
+    assert path["errors"] == calls["n"] // 50 >= 4 and path["first_error"] == "SystemExit: 3" and len(path["ts"]) == calls["n"]
+    assert path["memory_hours"] == RCFG["history_hours"] == 720
+    clean = backtest.run_backtest(candles(300), {"strategy": "ts_momentum", "params": {"lookback_hours": 24, "ema_hours": 6}}, RCFG, record=True)["path"]
+    assert clean["errors"] == 0 and clean["first_error"] is None
+
+
 def test_daily_halt_flattens_and_blocks_new_entries():
     acct = paper.PaperAccount("t", 10_000, 10, 5)
     acct.trade("BTC", 2000.0, 100.0, 1, "seed")

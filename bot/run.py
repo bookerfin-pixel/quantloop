@@ -42,6 +42,7 @@ REPLAYED = "replayed after a missed run | "
 STARVED = re.compile(r"only \d+ candles")
 SITS_OUT = ("sits this hour out: no candle or no price for it this hour, so it is held as it is "
             "and valued at its last known price")
+ERRED = "strategy error "   # how the reason begins on an hour the strategy itself failed in
 
 
 def utc_day(ts: int) -> str:
@@ -111,9 +112,14 @@ def step(acct: paper.PaperAccount, cfg: dict, fn, candles: dict, prices: dict[st
         own_w = {p: w for p, w in current_w.items() if p not in inherited}
         try:
             targets = strategy.normalise(fn(tradable, cfg["params"], own_w))
-        except Exception as e:  # noqa: BLE001
+        except KeyboardInterrupt:
+            raise
+        except BaseException as e:  # noqa: BLE001
             # A broken strategy must not crash the loop or leave stale positions: go flat and say why.
-            targets = {p: strategy.Target(0.0, f"strategy error {type(e).__name__}: {e}") for p in tradable}
+            # That goes for one that asks the interpreter to stop as well (sys.exit, exit()), which is not
+            # an Exception: until 2026-10-07 it ended the hourly run there and then, with nothing said and
+            # a green tick, and every account after this one went undecided (found in review).
+            targets = {p: strategy.Target(0.0, f"{ERRED}{type(e).__name__}: {e}") for p in tradable}
         if fresh:
             targets = {p: strategy.Target(t.weight, "first hour under a new strategy, decided as if flat | " + t.reason)
                        for p, t in targets.items()}

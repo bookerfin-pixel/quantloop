@@ -22,7 +22,7 @@ import numpy as np
 import pandas as pd
 
 from . import config, data, paper, strategy
-from .run import STARVED, step
+from .run import ERRED, STARVED, step
 
 HOURS_PER_YEAR = 24 * 365
 
@@ -44,10 +44,18 @@ def warmup_hours(params: dict, floor: int = 48) -> int:
 
 
 def run_backtest(candles: dict[str, pd.DataFrame], cfg: dict, rcfg: dict,
-                 max_days: int | None = None, name: str = "backtest") -> dict:
+                 max_days: int | None = None, name: str = "backtest", record: bool = False) -> dict:
     """Pairs need not share the same coverage: the clock is the union of all
     candle times, and a pair simply sits out any hour it has no candle for
-    (a newer listing, a gap in one venue's history)."""
+    (a newer listing, a gap in one venue's history).
+
+    record: also return the run hour by hour under `path`, for bot/bench.py:
+    what the book was worth just after each hour's fills, at that hour's
+    opens, the share of it in each pair, the costs paid so far, and every
+    pair's open; when the run left each position by its own choice; how many
+    hours of candles the strategy was handed; and on how many hours it
+    failed (the engine goes flat on such an hour, as it does live), with
+    what it said the first time. Keeping it changes nothing the run does."""
     fn = strategy.get(cfg["strategy"])
     frames = {p: df.sort_values("time").drop_duplicates("time").reset_index(drop=True)
               for p, df in candles.items() if len(df)}
@@ -86,6 +94,9 @@ def run_backtest(candles: dict[str, pd.DataFrame], cfg: dict, rcfg: dict,
     equity_curve, fills_all = [], []
     trades_per_pair_day: dict[tuple[str, str], int] = defaultdict(int)
     exposure = []
+    names = sorted(aligned)
+    path = {"ts": [], "equity": [], "costs": [], "fills": [], "starved": [], "weights": [], "opens": [],
+            "errors": 0, "first_error": None} if record else None
     for i in range(warm, len(times) - 1):
         live = [p for p in aligned if present[p][i] and present[p][i + 1]]
         if not live:
@@ -105,9 +116,27 @@ def run_backtest(candles: dict[str, pd.DataFrame], cfg: dict, rcfg: dict,
                     j -= 1
                 if j >= 0:
                     marks[p] = (float(closes[p][j]), int(times[j]) + 3600)
-        decisions, fills, _ = step(acct, cfg, fn, window, next_open, ts_fill, rcfg, marks=marks)
+        decisions, fills, at_open = step(acct, cfg, fn, window, next_open, ts_fill, rcfg, marks=marks)
         n_decisions += len(decisions)
-        n_starved += sum(1 for d in decisions if STARVED.search(d["reason"]))
+        starved_now = sum(1 for d in decisions if STARVED.search(d["reason"]))
+        n_starved += starved_now
+        if path is not None:
+            held = acct.weights(next_open)
+            # the price each pair stands at this hour: its open; for a held pair that sits the hour out, the
+            # mark the account values it at, so that equity moves from hour to hour by exactly these prices
+            at = {**{p: float(opens[p][i + 1]) for p in names if present[p][i + 1] and opens[p][i + 1] > 0},
+                  **{p: float(v) for p, v in acct.valued(next_open).items()}}
+            path["ts"].append(ts_fill)
+            path["equity"].append(float(at_open))
+            path["costs"].append(float(acct.total_costs()))
+            path["fills"].append(len(fills))
+            path["starved"].append(starved_now == len(decisions))
+            path["weights"].append([float(held.get(p, 0.0)) for p in names])
+            path["opens"].append([at.get(p, float("nan")) for p in names])
+            failed = next((d["reason"] for d in decisions if ERRED in d["reason"]), None)
+            if failed is not None:
+                path["errors"] += 1
+                path["first_error"] = path["first_error"] or failed[failed.index(ERRED) + len(ERRED):][:200]
         day_fill = datetime.fromtimestamp(ts_fill, timezone.utc).strftime("%Y-%m-%d")
         capped_pair_days.update((d["pair"], day_fill) for d in decisions if "capped:" in d["reason"])
         for f in fills:
@@ -139,9 +168,20 @@ def run_backtest(candles: dict[str, pd.DataFrame], cfg: dict, rcfg: dict,
     from .promote import rule_settings                  # the one place the rules file is read into usable values
     window_days = rule_settings(rcfg.get("challenger"))[0]["window_days"]
     finished, forced, none_share = finished_trades(fills_all, int(times[warm]), int(times[-1]), window_days)
+    if path is not None:
+        path["exits"], path["span"] = own_exits(fills_all, int(times[warm]))[0], (int(times[warm]), int(times[-1]))
     # pair days on which the daily fill cap actually stopped a buy: the mark of a loop
     at_cap = len(capped_pair_days)
+    kept = {} if path is None else {"path": {
+        "pairs": names, "ts": np.array(path["ts"], dtype="int64"), "equity": np.array(path["equity"], dtype=float),
+        "costs": np.array(path["costs"], dtype=float), "fills": np.array(path["fills"], dtype="int64"),
+        "starved": np.array(path["starved"], dtype=bool),
+        "weights": np.array(path["weights"], dtype=float).reshape(len(path["ts"]), len(names)),
+        "opens": np.array(path["opens"], dtype=float).reshape(len(path["ts"]), len(names)),
+        "exits": path["exits"], "span": path["span"], "memory_hours": hist,
+        "errors": int(path["errors"]), "first_error": path["first_error"]}}
     return {
+        **kept,
         "strategy": cfg["strategy"],
         "hypothesis": cfg.get("hypothesis"),
         "start": datetime.fromtimestamp(times[warm], timezone.utc).strftime("%Y-%m-%d"),
@@ -182,18 +222,34 @@ def finished_trades(fills: list, start_ts: int, end_ts: int, window_days: float 
     first window is killed (PROMOTION.md), so that share is how often this
     strategy would have been, whatever it made. None when
     the run is shorter than one window."""
+    exits, forced = own_exits(fills, start_ts)
+    none = windows_with_no_exit(exits, start_ts, end_ts, window_days)
+    return int(len(exits)), forced, None if none is None else round(none, 3)
+
+
+def own_exits(fills: list, start_ts: int) -> tuple[np.ndarray, int]:
+    """When the run left each position by the strategy's own choice, oldest
+    first, and how many positions the daily loss halt or a strategy error
+    closed for it. Counted by bot.promote.finished_trades, as a live test's are."""
     from .promote import finished_trades as positions_left      # promote does not load this module until it needs a backtest
     done = positions_left(pd.DataFrame([{"ts": f.ts, "pair": f.pair, "side": f.side, "qty": f.qty, "price": f.price,
                                           "notional": f.notional, "fee": f.fee, "reason": f.reason} for f in fills]),
                           start_ts) if fills else []
-    exits = np.array(sorted(t["ts"] for t in done if t["chosen"]), dtype="int64")
-    forced = sum(1 for t in done if not t["chosen"])
+    return (np.array(sorted(t["ts"] for t in done if t["chosen"]), dtype="int64"),
+            sum(1 for t in done if not t["chosen"]))
+
+
+def windows_with_no_exit(exits: np.ndarray, start_ts: int, end_ts: int, window_days: float) -> float | None:
+    """The share of test windows of `window_days`, one starting each day from
+    start_ts and ending by end_ts, in which none of `exits` falls. None when
+    the run is shorter than one window."""
     span = int(window_days * 86400)
     starts = np.arange(int(start_ts), int(end_ts) - span + 1, 86400, dtype="int64")
     if not len(starts):
-        return int(len(exits)), forced, None
+        return None
+    exits = np.asarray(exits, dtype="int64")
     inside = np.searchsorted(exits, starts + span, side="right") - np.searchsorted(exits, starts, side="right")
-    return int(len(exits)), forced, round(float((inside == 0).mean()), 3)
+    return float((inside == 0).mean())
 
 
 def plausibility(m: dict, rules: dict, market: dict | None, initial_cash: float,

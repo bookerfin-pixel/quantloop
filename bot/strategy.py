@@ -17,6 +17,11 @@ returns         : {pair: Target(weight, reason)} or {pair: weight}. Weights are
                   fractions of equity in [0, 1]. Spot only, so no negatives.
                   bot/risk.py clips per pair and gross exposure afterwards.
 
+A strategy keeps nothing from one hour to the next. Live, each hour is a fresh
+process: a value left in a module variable, on the function or in `params` is
+gone by the next decision, though a backtest would still find it there. What a
+strategy has to remember it reads from the candles or from current_weights.
+
 The reason string is logged with every decision. Write it for a human reading
 the log a month later: what the signal saw and why that means this weight.
 
