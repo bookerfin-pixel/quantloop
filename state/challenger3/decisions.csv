@@ -589,3 +589,13 @@ ts,account,pair,price,signal_weight,target_weight,current_weight,action,reason,h
 1791387399,challenger3,DOGE,0.0886,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: low 0.08855 not a higher low vs prior low 0.08136 (need +10.0%),0.006
 1791387399,challenger3,DOT,1.1022,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: low 1.104 not a higher low vs prior low 1.034 (need +10.0%),0.907
 1791387399,challenger3,LTC,66.185,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: higher low confirmed but 66.12 not a fresh close above reaction high 74.29,0.755
+1791390517,challenger3,BTC,83501.35,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: low 8.263e+04 not a higher low vs prior low 7.635e+04 (need +10.0%),0.006
+1791390517,challenger3,ETH,2569.015,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: low 2563 not a higher low vs prior low 2444 (need +10.0%),0.019
+1791390517,challenger3,SOL,116.895,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: higher low confirmed but 116.7 not a fresh close above reaction high 124.4,0.428
+1791390517,challenger3,ADA,0.257309,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: higher low confirmed but 0.2562 not a fresh close above reaction high 0.2616,1.613
+1791390517,challenger3,AVAX,11.3295,0.25,0.25,0.2462,hold,hold: weight change +0.004 below threshold 0.05 | stay long: price 11.23 still above the 48h low 10.85; realised vol 71% -> weight 0.25,1.324
+1791390517,challenger3,LINK,13.400845,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: higher low confirmed but 13.42 not a fresh close above reaction high 15.46,1.071
+1791390517,challenger3,XRP,1.43407,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: higher low confirmed but 1.434 not a fresh close above reaction high 1.638,0.139
+1791390517,challenger3,DOGE,0.088901,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: low 0.08815 not a higher low vs prior low 0.08136 (need +10.0%),0.011
+1791390517,challenger3,DOT,1.10345,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: low 1.1 not a higher low vs prior low 1.055 (need +10.0%),0.453
+1791390517,challenger3,LTC,66.155,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: higher low confirmed but 66.12 not a fresh close above reaction high 74.29,0.756
