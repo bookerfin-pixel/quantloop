@@ -1,29 +1,24 @@
 {
-  "cash": 7505.365480576862,
+  "cash": 9883.620249392688,
   "created_at": 1791178112,
   "day": "2026-10-07",
   "day_open_equity": 10006.088378751349,
-  "equity_rows": 65,
-  "fees_paid": 37.001949983535475,
+  "equity_rows": 66,
+  "fees_paid": 39.38258538775552,
   "fills_day": {
-    "counts": {},
+    "counts": {
+      "AVAX": 1
+    },
     "day": "2026-10-07"
   },
   "halted_day": null,
   "initial_cash": 10000.0,
-  "last_bar": 1791403200,
-  "last_run_ts": 1791408337,
-  "marks": {
-    "AVAX": [
-      11.2035,
-      1791408337
-    ]
-  },
-  "n_trades": 25,
+  "last_bar": 1791406800,
+  "last_run_ts": 1791411751,
+  "marks": {},
+  "n_trades": 26,
   "name": "challenger3",
-  "positions": {
-    "AVAX": 216.37230354094623
-  },
-  "slippage_paid": 18.557837417840545,
+  "positions": {},
+  "slippage_paid": 19.74875057652995,
   "strategy_sig": "params:\n  exit_hours: 48\n  fresh_cross: true\n  max_weight: 0.25\n  min_higher_low: 0.1\n  recent_hours: 240\n  target_vol_annual: 0.3\n  vol_lookback_hours: 168\nstrategy: swing_reversal\n"
 }

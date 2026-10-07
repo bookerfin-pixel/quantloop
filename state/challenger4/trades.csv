@@ -24,3 +24,4 @@ ts,account,pair,side,qty,price,ref_price,notional,fee,slippage_cost,reason,equit
 1790374905,challenger4,DOGE,buy,10457.26297811,0.09857821,0.09852895,1030.85831268,1.03085831,0.51517157,"first hour under a new strategy, decided as if flat | enter long: 720h return +13.25% vs entry band +5.0% and price above 168h EMA; realised vol 86% -> weight 0.25",10253.51423973,0.14716487,5.0
 1791343550,challenger4,DOT,sell,866.56604818,1.12288828,1.12345,973.05685502,0.97305686,0.48677181,exit: price more than 5.0% below 168h EMA,9926.28168027,0.44505763,5.0
 1791376368,challenger4,DOGE,sell,10457.26297811,0.08886295,0.0889074,929.26319847,0.9292632,0.46486403,exit: price more than 5.0% below 168h EMA,9844.2041551,0.12372423,5.0
+1791411751,challenger4,XRP,sell,665.34188732,1.41358785,1.414295,940.51920967,0.94051921,0.47049485,exit: price more than 5.0% below 168h EMA,9778.37639967,0.0353533,5.0
