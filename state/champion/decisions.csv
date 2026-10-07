@@ -4667,3 +4667,13 @@ ts,account,pair,price,signal_weight,target_weight,current_weight,action,reason,h
 1791339887,champion,DOGE,0.09014,0.0,0.0,0.0992,sell,exit: 72h return -1.12% fell below exit band -1.0% and price more than 2.0% below 24h EMA,0.006
 1791339887,champion,DOT,1.1292,0.0,0.0,0.119,sell,exit: 72h return -1.66% fell below exit band -1.0% and price more than 2.0% below 24h EMA,2.657
 1791339887,champion,LTC,67.625,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -2.33% not above entry band +1.0% and price below 24h EMA,0.739
+1791343550,champion,BTC,84049.15,0.0,0.0,0.2508,sell,exit: 72h return -1.13% fell below exit band -1.0%,0.006
+1791343550,champion,ETH,2609.805,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -3.00% not above entry band +1.0% and price below 24h EMA,0.019
+1791343550,champion,SOL,118.335,0.0,0.0,0.2515,sell,exit: 72h return -1.79% fell below exit band -1.0%,0.423
+1791343550,champion,ADA,0.253264,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: price below 24h EMA,1.816
+1791343550,champion,AVAX,10.9905,0.0,0.0,0.2476,sell,exit: price more than 2.0% below 24h EMA,0.455
+1791343550,champion,LINK,13.625995,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -3.45% not above entry band +1.0% and price below 24h EMA,0.532
+1791343550,champion,XRP,1.463545,0.0,0.0,0.2501,sell,exit: 72h return -1.86% fell below exit band -1.0% and price more than 2.0% below 24h EMA,0.034
+1791343550,champion,DOGE,0.090198,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -2.89% not above entry band +1.0% and price below 24h EMA,0.382
+1791343550,champion,DOT,1.12345,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -4.69% not above entry band +1.0% and price below 24h EMA,0.445
+1791343550,champion,LTC,67.795,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -4.16% not above entry band +1.0% and price below 24h EMA,0.738
