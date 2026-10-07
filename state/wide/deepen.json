@@ -1,0 +1,497 @@
+{
+ "AAVE": {
+  "at": 1791378076,
+  "result": "added 1105 days; closes differ by 0.04% at the median and 0.26% at the ninth decile over 31 days",
+  "want_from": 1633651200
+ },
+ "ADA": {
+  "at": 1791378076,
+  "result": "added 1105 days; closes differ by 0.04% at the median and 0.13% at the ninth decile over 31 days",
+  "want_from": 1633651200
+ },
+ "AERO": {
+  "at": 1791378076,
+  "result": "added 393 days; closes differ by 0.30% at the median and 0.90% at the ninth decile over 31 days",
+  "want_from": 1633651200
+ },
+ "AKE": {
+  "at": 1791378076,
+  "result": "not listed, to be asked once more",
+  "want_from": 1633651200
+ },
+ "AKT": {
+  "at": 1791378076,
+  "result": "added 212 days; closes differ by 0.15% at the median and 0.50% at the ninth decile over 31 days",
+  "want_from": 1633651200
+ },
+ "ALGO": {
+  "at": 1791378076,
+  "result": "added 1105 days; closes differ by 0.09% at the median and 0.19% at the ninth decile over 31 days",
+  "want_from": 1633651200
+ },
+ "APT": {
+  "at": 1791378076,
+  "result": "added 729 days; closes differ by 0.11% at the median and 0.19% at the ninth decile over 31 days",
+  "want_from": 1633651200
+ },
+ "ARB": {
+  "at": 1791378076,
+  "result": "added 574 days; closes differ by 0.08% at the median and 0.26% at the ninth decile over 31 days",
+  "want_from": 1633651200
+ },
+ "ASTER": {
+  "at": 1791378076,
+  "result": "no candles, to be asked once more",
+  "want_from": 1633651200
+ },
+ "ATOM": {
+  "at": 1791378076,
+  "result": "added 1105 days; closes differ by 0.08% at the median and 0.20% at the ninth decile over 31 days",
+  "want_from": 1633651200
+ },
+ "AVAX": {
+  "at": 1791378076,
+  "result": "added 1105 days; closes differ by 0.07% at the median and 0.16% at the ninth decile over 31 days",
+  "want_from": 1633651200
+ },
+ "BCH": {
+  "at": 1791378076,
+  "result": "added 1105 days; closes differ by 0.09% at the median and 0.34% at the ninth decile over 31 days",
+  "want_from": 1633651200
+ },
+ "BNB": {
+  "at": 1791378076,
+  "result": "no candles, to be asked once more",
+  "want_from": 1633651200
+ },
+ "BONK": {
+  "at": 1791378076,
+  "result": "added 308 days; closes differ by 0.12% at the median and 0.26% at the ninth decile over 31 days",
+  "want_from": 1633651200
+ },
+ "BRL1": {
+  "at": 1791378076,
+  "result": "not listed, to be asked once more",
+  "want_from": 1633651200
+ },
+ "BTC": {
+  "at": 1791378076,
+  "result": "added 1105 days; closes differ by 0.02% at the median and 0.07% at the ninth decile over 31 days",
+  "want_from": 1633651200
+ },
+ "CAP": {
+  "at": 1791378076,
+  "result": "added 0 days; closes differ by 0.22% at the median and 0.63% at the ninth decile over 31 days",
+  "want_from": 1633651200
+ },
+ "CC": {
+  "at": 1791378076,
+  "result": "not listed, to be asked once more",
+  "want_from": 1633651200
+ },
+ "CHIP": {
+  "at": 1791378076,
+  "result": "added 1 days; closes differ by 0.25% at the median and 0.73% at the ninth decile over 31 days",
+  "want_from": 1633651200
+ },
+ "CRV": {
+  "at": 1791378076,
+  "result": "added 1105 days; closes differ by 0.20% at the median and 0.38% at the ninth decile over 31 days",
+  "want_from": 1633651200
+ },
+ "DASH": {
+  "at": 1791378076,
+  "result": "added 1105 days; closes differ by 0.16% at the median and 0.39% at the ninth decile over 31 days",
+  "want_from": 1633651200
+ },
+ "DOGE": {
+  "at": 1791378076,
+  "result": "added 1105 days; closes differ by 0.05% at the median and 0.10% at the ninth decile over 31 days",
+  "want_from": 1633651200
+ },
+ "DOT": {
+  "at": 1791378076,
+  "result": "added 1105 days; closes differ by 0.05% at the median and 0.09% at the ninth decile over 31 days",
+  "want_from": 1633651200
+ },
+ "DRV": {
+  "at": 1791378076,
+  "result": "no candles, to be asked once more",
+  "want_from": 1633651200
+ },
+ "EIGEN": {
+  "at": 1791378076,
+  "result": "added 16 days; closes differ by 0.20% at the median and 0.60% at the ninth decile over 31 days",
+  "want_from": 1633651200
+ },
+ "ELIZAOS": {
+  "at": 1791378076,
+  "result": "not listed, to be asked once more",
+  "want_from": 1633651200
+ },
+ "ENA": {
+  "at": 1791378076,
+  "result": "no candles, to be asked once more",
+  "want_from": 1633651200
+ },
+ "ETH": {
+  "at": 1791378076,
+  "result": "added 1105 days; closes differ by 0.03% at the median and 0.07% at the ninth decile over 31 days",
+  "want_from": 1633651200
+ },
+ "FARTCOIN": {
+  "at": 1791378076,
+  "result": "no candles, to be asked once more",
+  "want_from": 1633651200
+ },
+ "FET": {
+  "at": 1791378076,
+  "result": "added 1105 days; closes differ by 0.06% at the median and 0.22% at the ninth decile over 31 days",
+  "want_from": 1633651200
+ },
+ "FIL": {
+  "at": 1791378076,
+  "result": "added 1105 days; closes differ by 0.11% at the median and 0.47% at the ninth decile over 31 days",
+  "want_from": 1633651200
+ },
+ "GRASS": {
+  "at": 1791378076,
+  "result": "no candles, to be asked once more",
+  "want_from": 1633651200
+ },
+ "HBAR": {
+  "at": 1791378076,
+  "result": "added 1001 days; closes differ by 0.05% at the median and 0.18% at the ninth decile over 31 days",
+  "want_from": 1633651200
+ },
+ "HYPE": {
+  "at": 1791378076,
+  "result": "added 0 days; closes differ by 0.09% at the median and 0.29% at the ninth decile over 23 days",
+  "want_from": 1633651200
+ },
+ "ICP": {
+  "at": 1791378076,
+  "result": "added 1105 days; closes differ by 0.06% at the median and 0.18% at the ninth decile over 31 days",
+  "want_from": 1633651200
+ },
+ "INJ": {
+  "at": 1791378076,
+  "result": "added 758 days; closes differ by 0.06% at the median and 0.16% at the ninth decile over 31 days",
+  "want_from": 1633651200
+ },
+ "JUP": {
+  "at": 1791378076,
+  "result": "not used: only 0 days in common",
+  "want_from": 1633651200
+ },
+ "KAS": {
+  "at": 1791378076,
+  "result": "not listed, to be asked once more",
+  "want_from": 1633651200
+ },
+ "KSM": {
+  "at": 1791378076,
+  "result": "added 868 days; closes differ by 0.11% at the median and 0.20% at the ninth decile over 31 days",
+  "want_from": 1633651200
+ },
+ "LCX": {
+  "at": 1791378076,
+  "result": "added 1080 days; closes differ by 0.36% at the median and 0.85% at the ninth decile over 31 days",
+  "want_from": 1633651200
+ },
+ "LDO": {
+  "at": 1791378076,
+  "result": "added 700 days; closes differ by 0.09% at the median and 0.50% at the ninth decile over 31 days",
+  "want_from": 1633651200
+ },
+ "LIGHTER": {
+  "at": 1791378076,
+  "result": "added 214 days; closes differ by 0.15% at the median and 0.61% at the ninth decile over 31 days",
+  "want_from": 1633651200
+ },
+ "LINK": {
+  "at": 1791378076,
+  "result": "added 1105 days; closes differ by 0.05% at the median and 0.12% at the ninth decile over 31 days",
+  "want_from": 1633651200
+ },
+ "LTC": {
+  "at": 1791378076,
+  "result": "added 1105 days; closes differ by 0.03% at the median and 0.05% at the ninth decile over 31 days",
+  "want_from": 1633651200
+ },
+ "MANA": {
+  "at": 1791378076,
+  "result": "added 1105 days; closes differ by 0.12% at the median and 0.31% at the ninth decile over 31 days",
+  "want_from": 1633651200
+ },
+ "MINA": {
+  "at": 1791378076,
+  "result": "added 925 days; closes differ by 0.17% at the median and 0.38% at the ninth decile over 31 days",
+  "want_from": 1633651200
+ },
+ "MNT": {
+  "at": 1791378076,
+  "result": "not listed, to be asked once more",
+  "want_from": 1633651200
+ },
+ "MON": {
+  "at": 1791378076,
+  "result": "added 0 days; closes differ by 0.11% at the median and 0.25% at the ninth decile over 31 days",
+  "want_from": 1633651200
+ },
+ "MORPHO": {
+  "at": 1791378076,
+  "result": "no candles, to be asked once more",
+  "want_from": 1633651200
+ },
+ "NEAR": {
+  "at": 1791378076,
+  "result": "added 777 days; closes differ by 0.07% at the median and 0.17% at the ninth decile over 31 days",
+  "want_from": 1633651200
+ },
+ "NIGHT": {
+  "at": 1791378076,
+  "result": "not listed, to be asked once more",
+  "want_from": 1633651200
+ },
+ "NIL": {
+  "at": 1791378076,
+  "result": "not listed, to be asked once more",
+  "want_from": 1633651200
+ },
+ "NPC": {
+  "at": 1791378076,
+  "result": "not listed, to be asked once more",
+  "want_from": 1633651200
+ },
+ "ONDO": {
+  "at": 1791378076,
+  "result": "added 269 days; closes differ by 0.11% at the median and 0.35% at the ninth decile over 31 days",
+  "want_from": 1633651200
+ },
+ "OP": {
+  "at": 1791378076,
+  "result": "added 869 days; closes differ by 0.07% at the median and 0.27% at the ninth decile over 31 days",
+  "want_from": 1633651200
+ },
+ "ORCA": {
+  "at": 1791378076,
+  "result": "added 989 days; closes differ by 0.31% at the median and 1.06% at the ninth decile over 31 days",
+  "want_from": 1633651200
+ },
+ "PENDLE": {
+  "at": 1791378076,
+  "result": "no candles, to be asked once more",
+  "want_from": 1633651200
+ },
+ "PENGU": {
+  "at": 1791378076,
+  "result": "added 0 days; closes differ by 0.12% at the median and 0.83% at the ninth decile over 15 days",
+  "want_from": 1633651200
+ },
+ "PEPE": {
+  "at": 1791378076,
+  "result": "not used: only 4 days in common",
+  "want_from": 1633651200
+ },
+ "POL": {
+  "at": 1791378076,
+  "result": "added 43 days; closes differ by 0.07% at the median and 0.17% at the ninth decile over 31 days",
+  "want_from": 1633651200
+ },
+ "PROS": {
+  "at": 1791378076,
+  "result": "added 0 days; closes differ by 0.33% at the median and 0.98% at the ninth decile over 31 days",
+  "want_from": 1633651200
+ },
+ "PUMP": {
+  "at": 1791378076,
+  "result": "added 0 days; closes differ by 0.11% at the median and 0.36% at the ninth decile over 30 days",
+  "want_from": 1633651200
+ },
+ "PYTH": {
+  "at": 1791378076,
+  "result": "no candles, to be asked once more",
+  "want_from": 1633651200
+ },
+ "QNT": {
+  "at": 1791378076,
+  "result": "added 1105 days; closes differ by 0.13% at the median and 0.41% at the ninth decile over 31 days",
+  "want_from": 1633651200
+ },
+ "RAY": {
+  "at": 1791378076,
+  "result": "no candles, to be asked once more",
+  "want_from": 1633651200
+ },
+ "RENDER": {
+  "at": 1791378076,
+  "result": "added 245 days; closes differ by 0.07% at the median and 0.23% at the ninth decile over 31 days",
+  "want_from": 1633651200
+ },
+ "RLC": {
+  "at": 1791378076,
+  "result": "added 1105 days; closes differ by 0.25% at the median and 1.16% at the ninth decile over 31 days",
+  "want_from": 1633651200
+ },
+ "SAND": {
+  "at": 1791378076,
+  "result": "added 875 days; closes differ by 0.07% at the median and 0.17% at the ninth decile over 31 days",
+  "want_from": 1633651200
+ },
+ "SEI": {
+  "at": 1791378076,
+  "result": "added 429 days; closes differ by 0.07% at the median and 0.17% at the ninth decile over 31 days",
+  "want_from": 1633651200
+ },
+ "SHIB": {
+  "at": 1791378076,
+  "result": "added 1105 days; closes differ by 0.06% at the median and 0.12% at the ninth decile over 31 days",
+  "want_from": 1633651200
+ },
+ "SHX": {
+  "at": 1791378076,
+  "result": "not listed, to be asked once more",
+  "want_from": 1633651200
+ },
+ "SKY": {
+  "at": 1791378076,
+  "result": "no candles, to be asked once more",
+  "want_from": 1633651200
+ },
+ "SOL": {
+  "at": 1791378076,
+  "result": "added 1105 days; closes differ by 0.03% at the median and 0.07% at the ninth decile over 31 days",
+  "want_from": 1633651200
+ },
+ "SPX": {
+  "at": 1791378076,
+  "result": "no candles, to be asked once more",
+  "want_from": 1633651200
+ },
+ "STRK": {
+  "at": 1791378076,
+  "result": "added 239 days; closes differ by 0.30% at the median and 0.79% at the ninth decile over 31 days",
+  "want_from": 1633651200
+ },
+ "STX": {
+  "at": 1791378076,
+  "result": "added 1001 days; closes differ by 0.04% at the median and 0.18% at the ninth decile over 31 days",
+  "want_from": 1633651200
+ },
+ "SUI": {
+  "at": 1791378076,
+  "result": "added 518 days; closes differ by 0.06% at the median and 0.15% at the ninth decile over 31 days",
+  "want_from": 1633651200
+ },
+ "SYRUP": {
+  "at": 1791378076,
+  "result": "no candles, to be asked once more",
+  "want_from": 1633651200
+ },
+ "TAO": {
+  "at": 1791378076,
+  "result": "no candles, to be asked once more",
+  "want_from": 1633651200
+ },
+ "TIA": {
+  "at": 1791378076,
+  "result": "added 351 days; closes differ by 0.08% at the median and 0.19% at the ninth decile over 31 days",
+  "want_from": 1633651200
+ },
+ "TON": {
+  "at": 1791378076,
+  "result": "no candles, to be asked once more",
+  "want_from": 1633651200
+ },
+ "TRUMP": {
+  "at": 1791378076,
+  "result": "added 0 days; closes differ by 0.05% at the median and 0.14% at the ninth decile over 28 days",
+  "want_from": 1633651200
+ },
+ "TRX": {
+  "at": 1791378076,
+  "result": "not listed, to be asked once more",
+  "want_from": 1633651200
+ },
+ "UNI": {
+  "at": 1791378076,
+  "result": "added 1105 days; closes differ by 0.06% at the median and 0.14% at the ninth decile over 31 days",
+  "want_from": 1633651200
+ },
+ "US": {
+  "at": 1791378076,
+  "result": "not listed, to be asked once more",
+  "want_from": 1633651200
+ },
+ "USELESS": {
+  "at": 1791378076,
+  "result": "added 0 days; closes differ by 0.24% at the median and 0.69% at the ninth decile over 24 days",
+  "want_from": 1633651200
+ },
+ "VIRTUAL": {
+  "at": 1791378076,
+  "result": "no candles, to be asked once more",
+  "want_from": 1633651200
+ },
+ "VVV": {
+  "at": 1791378076,
+  "result": "added 30 days; closes differ by 0.66% at the median and 1.81% at the ninth decile over 31 days",
+  "want_from": 1633651200
+ },
+ "WLD": {
+  "at": 1791378076,
+  "result": "no candles, to be asked once more",
+  "want_from": 1633651200
+ },
+ "XCN": {
+  "at": 1791378076,
+  "result": "added 842 days; closes differ by 0.76% at the median and 1.60% at the ninth decile over 31 days",
+  "want_from": 1633651200
+ },
+ "XDC": {
+  "at": 1791378076,
+  "result": "not listed, to be asked once more",
+  "want_from": 1633651200
+ },
+ "XLM": {
+  "at": 1791378076,
+  "result": "added 1105 days; closes differ by 0.05% at the median and 0.14% at the ninth decile over 31 days",
+  "want_from": 1633651200
+ },
+ "XMR": {
+  "at": 1791378076,
+  "result": "not listed, to be asked once more",
+  "want_from": 1633651200
+ },
+ "XPL": {
+  "at": 1791378076,
+  "result": "no candles, to be asked once more",
+  "want_from": 1633651200
+ },
+ "XRP": {
+  "at": 1791378076,
+  "result": "added 462 days; closes differ by 0.02% at the median and 0.07% at the ninth decile over 31 days",
+  "want_from": 1633651200
+ },
+ "ZAMA": {
+  "at": 1791378076,
+  "result": "added 0 days; closes differ by 0.24% at the median and 0.54% at the ninth decile over 31 days",
+  "want_from": 1633651200
+ },
+ "ZEC": {
+  "at": 1791378076,
+  "result": "added 1105 days; closes differ by 0.14% at the median and 0.60% at the ninth decile over 31 days",
+  "want_from": 1633651200
+ },
+ "ZEUS": {
+  "at": 1791378076,
+  "result": "not listed, to be asked once more",
+  "want_from": 1633651200
+ },
+ "ZRO": {
+  "at": 1791378076,
+  "result": "added 119 days; closes differ by 0.21% at the median and 0.57% at the ninth decile over 31 days",
+  "want_from": 1633651200
+ }
+}
