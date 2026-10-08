@@ -2969,3 +2969,13 @@ ts,account,pair,price,signal_weight,target_weight,current_weight,action,reason,h
 1791473282,challenger4,DOGE,0.083981,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 720h return -2.92% not above entry band +5.0% and price below 168h EMA,0.006
 1791473282,challenger4,DOT,1.0464,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 720h return -1.52% not above entry band +5.0% and price below 168h EMA,3.823
 1791473282,challenger4,LTC,62.605,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: price below 168h EMA,2.396
+1791476975,challenger4,BTC,81264.95,0.0,0.0,0.2549,sell,daily halt: equity 9255.39 is down 5.5% from the day's open 9798.61,0.006
+1791476975,challenger4,ETH,2428.565,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | daily halt: equity 9255.39 is down 5.5% from the day's open 9798.61,0.021
+1791476975,challenger4,SOL,108.735,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | daily halt: equity 9255.39 is down 5.5% from the day's open 9798.61,0.46
+1791476975,challenger4,ADA,0.231803,0.0,0.0,0.2418,sell,daily halt: equity 9255.39 is down 5.5% from the day's open 9798.61,1.1
+1791476975,challenger4,AVAX,10.094,0.0,0.0,0.2454,sell,daily halt: equity 9255.39 is down 5.5% from the day's open 9798.61,0.991
+1791476975,challenger4,LINK,12.476565,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | daily halt: equity 9255.39 is down 5.5% from the day's open 9798.61,0.004
+1791476975,challenger4,XRP,1.354735,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | daily halt: equity 9255.39 is down 5.5% from the day's open 9798.61,0.48
+1791476975,challenger4,DOGE,0.083107,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | daily halt: equity 9255.39 is down 5.5% from the day's open 9798.61,0.006
+1791476975,challenger4,DOT,1.04445,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | daily halt: equity 9255.39 is down 5.5% from the day's open 9798.61,0.479
+1791476975,challenger4,LTC,62.465,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | daily halt: equity 9255.39 is down 5.5% from the day's open 9798.61,0.8

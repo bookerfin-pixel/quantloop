@@ -5037,3 +5037,13 @@ ts,account,pair,price,signal_weight,target_weight,current_weight,action,reason,h
 1791473282,challenger1,DOGE,0.083981,0.0,0.0,0.1669,sell,daily halt: equity 9659.20 is down 5.4% from the day's open 10208.08,0.006
 1791473282,challenger1,DOT,1.0464,0.0,0.0,0.167,sell,daily halt: equity 9659.20 is down 5.4% from the day's open 10208.08,3.823
 1791473282,challenger1,LTC,62.605,0.0,0.0,0.1133,sell,daily halt: equity 9659.20 is down 5.4% from the day's open 10208.08,2.396
+1791476975,challenger1,BTC,81264.95,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | daily halt in force: flat for the rest of the UTC day,0.006
+1791476975,challenger1,ETH,2428.565,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | daily halt in force: flat for the rest of the UTC day,0.021
+1791476975,challenger1,SOL,108.735,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | daily halt in force: flat for the rest of the UTC day,0.46
+1791476975,challenger1,ADA,0.231803,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | daily halt in force: flat for the rest of the UTC day,1.1
+1791476975,challenger1,AVAX,10.094,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | daily halt in force: flat for the rest of the UTC day,0.991
+1791476975,challenger1,LINK,12.476565,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | daily halt in force: flat for the rest of the UTC day,0.004
+1791476975,challenger1,XRP,1.354735,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | daily halt in force: flat for the rest of the UTC day,0.48
+1791476975,challenger1,DOGE,0.083107,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | daily halt in force: flat for the rest of the UTC day,0.006
+1791476975,challenger1,DOT,1.04445,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | daily halt in force: flat for the rest of the UTC day,0.479
+1791476975,challenger1,LTC,62.465,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | daily halt in force: flat for the rest of the UTC day,0.8
