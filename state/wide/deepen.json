@@ -34,6 +34,11 @@
   "result": "added 729 days; closes differ by 0.11% at the median and 0.19% at the ninth decile over 31 days",
   "want_from": 1633651200
  },
+ "AR": {
+  "at": 1791421266,
+  "result": "not listed, to be asked once more",
+  "want_from": 1633737600
+ },
  "ARB": {
   "at": 1791378076,
   "result": "added 574 days; closes differ by 0.08% at the median and 0.26% at the ninth decile over 31 days",
@@ -154,15 +159,30 @@
   "result": "added 1105 days; closes differ by 0.11% at the median and 0.47% at the ninth decile over 31 days",
   "want_from": 1633651200
  },
+ "GALA": {
+  "at": 1791421266,
+  "result": "not used: only 0 days in common",
+  "want_from": 1633737600
+ },
  "GRASS": {
   "at": 1791378076,
   "result": "no candles, to be asked once more",
   "want_from": 1633651200
  },
+ "GTC": {
+  "at": 1791421266,
+  "result": "added 1105 days; closes differ by 0.78% at the median and 1.81% at the ninth decile over 31 days",
+  "want_from": 1633737600
+ },
  "HBAR": {
   "at": 1791378076,
   "result": "added 1001 days; closes differ by 0.05% at the median and 0.18% at the ninth decile over 31 days",
   "want_from": 1633651200
+ },
+ "HNT": {
+  "at": 1791421266,
+  "result": "added 464 days; closes differ by 0.22% at the median and 0.65% at the ninth decile over 31 days",
+  "want_from": 1633737600
  },
  "HYPE": {
   "at": 1791378076,
@@ -178,6 +198,11 @@
   "at": 1791378076,
   "result": "added 758 days; closes differ by 0.06% at the median and 0.16% at the ninth decile over 31 days",
   "want_from": 1633651200
+ },
+ "JTO": {
+  "at": 1791421266,
+  "result": "added 316 days; closes differ by 0.18% at the median and 0.48% at the ninth decile over 31 days",
+  "want_from": 1633737600
  },
  "JUP": {
   "at": 1791378076,
@@ -223,6 +248,11 @@
   "at": 1791378076,
   "result": "added 1105 days; closes differ by 0.12% at the median and 0.31% at the ninth decile over 31 days",
   "want_from": 1633651200
+ },
+ "MET": {
+  "at": 1791421266,
+  "result": "added 11 days; closes differ by 0.40% at the median and 1.46% at the ninth decile over 31 days",
+  "want_from": 1633737600
  },
  "MINA": {
   "at": 1791378076,
@@ -384,6 +414,11 @@
   "result": "added 518 days; closes differ by 0.06% at the median and 0.15% at the ninth decile over 31 days",
   "want_from": 1633651200
  },
+ "SYN": {
+  "at": 1791421266,
+  "result": "added 954 days; closes differ by 0.25% at the median and 0.80% at the ninth decile over 31 days",
+  "want_from": 1633737600
+ },
  "SYRUP": {
   "at": 1791378076,
   "result": "no candles, to be asked once more",
@@ -439,6 +474,11 @@
   "result": "added 30 days; closes differ by 0.66% at the median and 1.81% at the ninth decile over 31 days",
   "want_from": 1633651200
  },
+ "W": {
+  "at": 1791421266,
+  "result": "no candles, to be asked once more",
+  "want_from": 1633737600
+ },
  "WLD": {
   "at": 1791378076,
   "result": "no candles, to be asked once more",
@@ -478,6 +518,11 @@
   "at": 1791378076,
   "result": "added 0 days; closes differ by 0.24% at the median and 0.54% at the ninth decile over 31 days",
   "want_from": 1633651200
+ },
+ "ZBCN": {
+  "at": 1791421266,
+  "result": "not listed, to be asked once more",
+  "want_from": 1633737600
  },
  "ZEC": {
   "at": 1791378076,
