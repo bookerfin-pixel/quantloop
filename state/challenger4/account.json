@@ -1,57 +1,52 @@
 {
-  "cash": 1603.7429824944575,
+  "cash": -1.1368683772161603e-13,
   "created_at": 1790310197,
   "day": "2026-10-08",
   "day_open_equity": 9798.607529812134,
-  "equity_rows": 294,
-  "fees_paid": 36.895970700324156,
+  "equity_rows": 295,
+  "fees_paid": 41.651351039851235,
   "fills_day": {
     "counts": {
-      "ADA": 1,
-      "AVAX": 1,
-      "BTC": 1,
-      "ETH": 1,
+      "ADA": 2,
+      "AVAX": 2,
+      "BTC": 2,
+      "ETH": 2,
       "LINK": 1,
       "LTC": 2,
-      "SOL": 1
+      "SOL": 2
     },
     "day": "2026-10-08"
   },
   "halted_day": null,
   "initial_cash": 10000.0,
-  "last_bar": 1791457200,
-  "last_run_ts": 1791462784,
+  "last_bar": 1791460800,
+  "last_run_ts": 1791466164,
   "marks": {
     "ADA": [
-      0.2488885,
-      1791462784
+      0.24767499999999998,
+      1791466164
     ],
     "AVAX": [
-      10.6115,
-      1791462784
+      10.5995,
+      1791466164
     ],
     "BTC": [
-      82341.95,
-      1791462784
+      82346.35,
+      1791466164
     ],
     "ETH": [
-      2531.585,
-      1791462784
-    ],
-    "SOL": [
-      112.64,
-      1791462784
+      2533.3450000000003,
+      1791466164
     ]
   },
-  "n_trades": 34,
+  "n_trades": 39,
   "name": "challenger4",
   "positions": {
-    "ADA": 6386.815238541774,
-    "AVAX": 149.71072968549765,
-    "BTC": 0.019600423848670584,
-    "ETH": 0.6313313905631168,
-    "SOL": 14.061052242903802
+    "ADA": 9653.000773827393,
+    "AVAX": 225.035838048544,
+    "BTC": 0.029033746402464547,
+    "ETH": 0.9437387032390612
   },
-  "slippage_paid": 18.61933975256897,
+  "slippage_paid": 20.99663076975435,
   "strategy_sig": "params:\n  ema_exit_buffer: 0.05\n  ema_hours: 168\n  entry_return: 0.05\n  exit_return: -0.05\n  lookback_hours: 720\n  max_weight: 0.25\n  target_vol_annual: 0.3\n  vol_lookback_hours: 168\nstrategy: ts_momentum\n"
 }
