@@ -1,20 +1,18 @@
 {
   "cash": 9883.620249392688,
   "created_at": 1791178112,
-  "day": "2026-10-07",
-  "day_open_equity": 10006.088378751349,
-  "equity_rows": 67,
+  "day": "2026-10-08",
+  "day_open_equity": 9883.620249392688,
+  "equity_rows": 68,
   "fees_paid": 39.38258538775552,
   "fills_day": {
-    "counts": {
-      "AVAX": 1
-    },
-    "day": "2026-10-07"
+    "counts": {},
+    "day": "2026-10-08"
   },
   "halted_day": null,
   "initial_cash": 10000.0,
-  "last_bar": 1791410400,
-  "last_run_ts": 1791415285,
+  "last_bar": 1791414000,
+  "last_run_ts": 1791419652,
   "marks": {},
   "n_trades": 26,
   "name": "challenger3",
