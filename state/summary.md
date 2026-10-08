@@ -1,4 +1,4 @@
-# quantloop summary — generated 2026-10-08 14:29Z
+# quantloop summary — generated 2026-10-08 15:28Z
 
 Cost model: fee 10 bps + slippage 5 bps per side (~30 bps per round trip). Pairs: BTC, ETH, SOL, ADA, AVAX, LINK, XRP, DOGE, DOT, LTC. Paper only.
 
@@ -11,34 +11,34 @@ Cost model: fee 10 bps + slippage 5 bps per side (~30 bps per round trip). Pairs
 ## Challenger slots
 
 - challenger1: testing H1 since 2026-09-16 05:21Z, day 22.4 of 60, 37.6 days until the verdict (one look at day 60: promoted, killed, or kept 60 more days if its trades are of value and it does not pass)
-  so far: champion +5.76% (max drawdown -15.43%, 208 fills) vs challenger1 +0.32% (max drawdown -4.47%, 23 fills)
-  skill (net return minus the basket held at the strategy's usual exposure): champion -3.75% (usual 0.54, this window 0.69) vs challenger1 -6.24% (usual 0.37, this window 0.16); the rule compares on skill, daily edge t -0.26 over 22 days
-  trades: its 5 finished trades made +3.98% of its starting equity after costs (5 won, 0 lost). Of value on today's numbers, which keeps a test that does not pass the rule (kept is not promoted)
-  confidence: 6% that this is a real edge (every idea starts at 10%; the daily skill t is -1.23 over 22 days)
-  two look rule (measured, not applied to this test): on today's numbers it would be kept at day 60 on the value of its trades without passing the rule, the same as under its own rule. From there the two rules are one: 60 more days, and a promotion asks for a daily skill t of 1.0 over all 120 (its daily skill t is -1.23 so far)
-  market over the window: BTC +8.28%, equal weight basket of 10 pairs +17.68%, basket max drawdown -9%, basket realised vol 56% annualised
+  so far: champion +5.76% (max drawdown -15.43%, 208 fills) vs challenger1 -3.45% (max drawdown -7.59%, 30 fills)
+  skill (net return minus the basket held at the strategy's usual exposure): champion -3.85% (usual 0.54, this window 0.69) vs challenger1 -10.07% (usual 0.37, this window 0.16); the rule compares on skill, daily edge t -0.49 over 22 days
+  trades: its 12 finished trades made -3.56% of its starting equity after costs (5 won, 7 lost, 7 of them closed by the daily loss halt or a strategy error), and a test that does not pass the rule is kept only when they have made money
+  confidence: 6% that this is a real edge (every idea starts at 10%; the daily skill t is -1.36 over 22 days)
+  two look rule (measured, not applied to this test): on today's numbers it would be killed at day 60, the same as under its own rule
+  market over the window: BTC +8.97%, equal weight basket of 10 pairs +17.86%, basket max drawdown -9%, basket realised vol 56% annualised
 - challenger2: testing H2 since 2026-09-21 08:24Z, day 17.3 of 60, 42.7 days until the verdict (one look at day 60: promoted, killed, or kept 60 more days if its trades are of value and it does not pass)
   so far: champion -7.95% (max drawdown -15.43%, 170 fills) vs challenger2 -1.73% (max drawdown -2.21%, 4 fills)
-  skill (net return minus the basket held at the strategy's usual exposure): champion -7.55% (usual 0.54, this window 0.69) vs challenger2 -1.52% (usual 0.29, this window 0.20); the rule compares on skill, daily edge t +0.79 over 17 days
+  skill (net return minus the basket held at the strategy's usual exposure): champion -7.65% (usual 0.54, this window 0.69) vs challenger2 -1.57% (usual 0.29, this window 0.20); the rule compares on skill, daily edge t +0.79 over 17 days
   trades: its 2 finished trades made -1.73% of its starting equity after costs (0 won, 2 lost), and a test that does not pass the rule is kept only when they have made money
-  confidence: 8% that this is a real edge (every idea starts at 10%; the daily skill t is -0.54 over 17 days)
+  confidence: 8% that this is a real edge (every idea starts at 10%; the daily skill t is -0.56 over 17 days)
   fills: 4 in 17.3 days; at this pace about 27 by day 120, under the 30 a promotion needs. Trading little does not end a test by itself: day 60 keeps a test whose trades are of value and kills one whose are not, and a test that is kept and still short of 30 fills at its verdict ends unproven, not promoted
   two look rule (measured, not applied to this test): on today's numbers it would be killed at day 60, the same as under its own rule
-  market over the window: BTC -0.50%, equal weight basket of 10 pairs -0.74%, basket max drawdown -9%, basket realised vol 55% annualised
+  market over the window: BTC +0.14%, equal weight basket of 10 pairs -0.57%, basket max drawdown -9%, basket realised vol 55% annualised
 - challenger3: testing H5 since 2026-10-05 22:23Z, day 2.7 of 60, 57.3 days until the verdict (one look at day 60: promoted, killed, or kept 60 more days if its trades are of value and it does not pass)
   so far: champion -4.82% (max drawdown -5.22%, 19 fills) vs challenger3 -1.27% (max drawdown -1.52%, 10 fills)
-  skill (net return minus the basket held at the strategy's usual exposure): champion -0.78% (usual 0.55, this window 0.46) vs challenger3 -1.06% (usual 0.03, this window 0.12); the rule compares on skill, daily edge t -0.23 over 3 days
+  skill (net return minus the basket held at the strategy's usual exposure): champion -0.87% (usual 0.55, this window 0.45) vs challenger3 -1.07% (usual 0.03, this window 0.12); the rule compares on skill, daily edge t -0.17 over 3 days
   trades: its 1 finished trade made -1.27% of its starting equity after costs (0 won, 1 lost), and a test that does not pass the rule is kept only when they have made money
   confidence: 10%, the starting figure for any idea (no reading of the daily skill t yet: fewer than 10 days, no market data for the window, or a daily skill that does not vary)
   two look rule (measured, not applied to this test): on today's numbers it would be killed at day 60, the same as under its own rule
-  market over the window: BTC -4.43%, equal weight basket of 10 pairs -7.35%, basket max drawdown -8%, basket realised vol 45% annualised
+  market over the window: BTC -3.82%, equal weight basket of 10 pairs -7.19%, basket max drawdown -8%, basket realised vol 45% annualised
 - challenger4: testing H4 since 2026-09-25 22:21Z, day 12.7 of 60, 47.3 days until the verdict (one look at day 60: promoted, killed, or kept 60 more days if its trades are of value and it does not pass)
-  so far: champion -13.49% (max drawdown -15.43%, 142 fills) vs challenger4 -6.51% (max drawdown -8.38%, 27 fills)
-  skill (net return minus the basket held at the strategy's usual exposure): champion -9.99% (usual 0.55, this window 0.65) vs challenger4 -3.47% (usual 0.48, this window 0.98); the rule compares on skill, daily edge t +1.29 over 13 days
+  so far: champion -13.49% (max drawdown -15.43%, 142 fills) vs challenger4 -9.15% (max drawdown -10.71%, 27 fills)
+  skill (net return minus the basket held at the strategy's usual exposure): champion -10.08% (usual 0.55, this window 0.65) vs challenger4 -6.19% (usual 0.48, this window 0.98); the rule compares on skill, daily edge t +0.59 over 13 days
   trades: its 7 finished trades made -5.84% of its starting equity after costs (0 won, 7 lost), and a test that does not pass the rule is kept only when they have made money
-  confidence: 7% that this is a real edge (every idea starts at 10%; the daily skill t is -1.07 over 13 days)
+  confidence: 7% that this is a real edge (every idea starts at 10%; the daily skill t is -1.31 over 13 days)
   two look rule (measured, not applied to this test): on today's numbers it would be killed at day 60, the same as under its own rule
-  market over the window: BTC -2.11%, equal weight basket of 10 pairs -6.38%, basket max drawdown -9%, basket realised vol 52% annualised
+  market over the window: BTC -1.48%, equal weight basket of 10 pairs -6.22%, basket max drawdown -9%, basket realised vol 52% annualised
 - free slots: none
 - shadow: none (no promotion within the last window)
 - interim readings are not verdicts. A test is ruled on at its looks, day 60 and day 120, and before them only by an early kill
@@ -50,24 +50,14 @@ Cost model: fee 10 bps + slippage 5 bps per side (~30 bps per round trip). Pairs
 params: {"ema_exit_buffer": 0.02, "ema_hours": 24, "entry_return": 0.01, "exit_return": -0.01, "lookback_hours": 72, "max_weight": 0.25, "target_vol_annual": 0.3, "vol_lookback_hours": 168}
 
 - equity 10,576.23 (started 10,000 at 2026-09-16 03:55Z), net +5.76% since start
-- 24h +0.00%, 7d -4.34%, 30d +5.76%, max drawdown -15.43%
+- 24h +0.00%, 7d -4.27%, 30d +5.76%, max drawdown -15.43%
 - fills 208 total, 81 in the last 7d
 - costs 480.55 (fees 318.31 + slippage 162.24); gross pnl 1,056.78; cost coverage 2.20
 - cash 10,576.23; positions: none
-- last run 2026-10-08 14:29Z; halted today: False
+- last run 2026-10-08 15:28Z; halted today: False
 
 last decisions (newest last):
 
-- 2026-10-08 13:29Z SOL hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: 72h return -6.57% not above entry band +1.0% and price below 24h EMA
-- 2026-10-08 13:29Z ADA hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: 72h return -9.07% not above entry band +1.0% and price below 24h EMA
-- 2026-10-08 13:29Z AVAX hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: 72h return -3.38% not above entry band +1.0% and price below 24h EMA
-- 2026-10-08 13:29Z LINK hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: 72h return -8.16% not above entry band +1.0% and price below 24h EMA
-- 2026-10-08 13:29Z XRP hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: 72h return -7.57% not above entry band +1.0% and price below 24h EMA
-- 2026-10-08 13:29Z DOGE hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: 72h return -9.13% not above entry band +1.0% and price below 24h EMA
-- 2026-10-08 13:29Z DOT hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: 72h return -8.39% not above entry band +1.0% and price below 24h EMA
-- 2026-10-08 13:29Z LTC hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: 72h return -9.45% not above entry band +1.0% and price below 24h EMA
-- 2026-10-08 14:29Z BTC hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: 72h return -4.95% not above entry band +1.0% and price below 24h EMA
-- 2026-10-08 14:29Z ETH hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: 72h return -7.43% not above entry band +1.0% and price below 24h EMA
 - 2026-10-08 14:29Z SOL hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: 72h return -7.10% not above entry band +1.0% and price below 24h EMA
 - 2026-10-08 14:29Z ADA hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: 72h return -9.78% not above entry band +1.0% and price below 24h EMA
 - 2026-10-08 14:29Z AVAX hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: 72h return -3.78% not above entry band +1.0% and price below 24h EMA
@@ -76,6 +66,16 @@ last decisions (newest last):
 - 2026-10-08 14:29Z DOGE hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: 72h return -9.53% not above entry band +1.0% and price below 24h EMA
 - 2026-10-08 14:29Z DOT hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: 72h return -8.10% not above entry band +1.0% and price below 24h EMA
 - 2026-10-08 14:29Z LTC hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: 72h return -9.82% not above entry band +1.0% and price below 24h EMA
+- 2026-10-08 15:28Z BTC hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: 72h return -3.47% not above entry band +1.0% and price below 24h EMA
+- 2026-10-08 15:28Z ETH hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: 72h return -6.43% not above entry band +1.0% and price below 24h EMA
+- 2026-10-08 15:28Z SOL hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: 72h return -5.89% not above entry band +1.0% and price below 24h EMA
+- 2026-10-08 15:28Z ADA hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: 72h return -7.80% not above entry band +1.0% and price below 24h EMA
+- 2026-10-08 15:28Z AVAX hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: 72h return -2.65% not above entry band +1.0% and price below 24h EMA
+- 2026-10-08 15:28Z LINK hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: 72h return -6.09% not above entry band +1.0% and price below 24h EMA
+- 2026-10-08 15:28Z XRP hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: 72h return -6.35% not above entry band +1.0% and price below 24h EMA
+- 2026-10-08 15:28Z DOGE hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: 72h return -7.96% not above entry band +1.0% and price below 24h EMA
+- 2026-10-08 15:28Z DOT hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: 72h return -7.28% not above entry band +1.0% and price below 24h EMA
+- 2026-10-08 15:28Z LTC hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: 72h return -9.60% not above entry band +1.0% and price below 24h EMA
 
 by pair (gross pnl at last mark, bps per round trip = gross / half of traded notional):
 
@@ -105,25 +105,15 @@ last fills:
 
 params: {"entry_z": 2.0, "exit_z": 0.5, "max_weight": 0.25, "target_vol_annual": 0.3, "vol_lookback_hours": 168, "window_hours": 240}
 
-- equity 10,020.85 (started 10,000 at 2026-09-16 03:55Z), net +0.21% since start
-- 24h -1.62%, 7d -2.61%, 30d +0.21%, max drawdown -4.47%
-- fills 23 total, 15 in the last 7d
-- costs 65.52 (fees 43.68 + slippage 21.84); gross pnl 86.37; cost coverage 1.32
-- cash 0.00; positions: DOGE 19195.1, DOT 1541.15, ETH 0.567281, LINK 76.9551, LTC 17.4878, SOL 14.5071, XRP 1016.78
-- last run 2026-10-08 14:29Z; halted today: False
+- equity 9,644.58 (started 10,000 at 2026-09-16 03:55Z), net -3.55% since start
+- 24h -5.31%, 7d -6.27%, 30d -3.55%, max drawdown -7.59%
+- fills 30 total, 22 in the last 7d
+- costs 80.14 (fees 53.34 + slippage 26.80); gross pnl -275.28; cost coverage -3.44
+- cash 9,644.58; positions: none
+- last run 2026-10-08 15:28Z; halted today: True
 
 last decisions (newest last):
 
-- 2026-10-08 13:29Z SOL hold target 0.12 (held 0.16) — hold: weight change -0.038 below threshold 0.05 | stay long: z -3.75 vs 240h mean (entry -2.0, exit -0.5); vol 40% -> weight 0.25
-- 2026-10-08 13:29Z ADA hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: z -0.58 not below -2.0
-- 2026-10-08 13:29Z AVAX hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: z -1.85 not below -2.0
-- 2026-10-08 13:29Z LINK hold target 0.12 (held 0.10) — hold: weight change +0.025 below threshold 0.05 | stay long: z -2.42 vs 240h mean (entry -2.0, exit -0.5); vol 53% -> weight 0.25
-- 2026-10-08 13:29Z XRP hold target 0.12 (held 0.14) — hold: weight change -0.017 below threshold 0.05 | stay long: z -3.20 vs 240h mean (entry -2.0, exit -0.5); vol 42% -> weight 0.25
-- 2026-10-08 13:29Z DOGE hold target 0.12 (held 0.17) — hold: weight change -0.042 below threshold 0.05 | stay long: z -2.86 vs 240h mean (entry -2.0, exit -0.5); vol 55% -> weight 0.25
-- 2026-10-08 13:29Z DOT hold target 0.12 (held 0.17) — hold: weight change -0.046 below threshold 0.05 | stay long: z -2.19 vs 240h mean (entry -2.0, exit -0.5); vol 84% -> weight 0.25
-- 2026-10-08 13:29Z LTC hold target 0.12 (held 0.11) — hold: weight change +0.013 below threshold 0.05 | stay long: z -2.65 vs 240h mean (entry -2.0, exit -0.5); vol 58% -> weight 0.25
-- 2026-10-08 14:29Z BTC none target 0.12 (held 0.00) — waits for cash: the book is fully invested and no position is far enough above its target to trim, so this buy fills when an exit or a bi...
-- 2026-10-08 14:29Z ETH hold target 0.12 (held 0.14) — hold: weight change -0.018 below threshold 0.05 | stay long: z -3.25 vs 240h mean (entry -2.0, exit -0.5); vol 33% -> weight 0.25
 - 2026-10-08 14:29Z SOL hold target 0.12 (held 0.16) — hold: weight change -0.038 below threshold 0.05 | stay long: z -3.75 vs 240h mean (entry -2.0, exit -0.5); vol 40% -> weight 0.25
 - 2026-10-08 14:29Z ADA hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: z -0.56 not below -2.0
 - 2026-10-08 14:29Z AVAX hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: z -1.73 not below -2.0
@@ -132,53 +122,53 @@ last decisions (newest last):
 - 2026-10-08 14:29Z DOGE hold target 0.12 (held 0.17) — hold: weight change -0.042 below threshold 0.05 | stay long: z -2.76 vs 240h mean (entry -2.0, exit -0.5); vol 55% -> weight 0.25
 - 2026-10-08 14:29Z DOT hold target 0.12 (held 0.17) — hold: weight change -0.046 below threshold 0.05 | stay long: z -1.94 vs 240h mean (entry -2.0, exit -0.5); vol 85% -> weight 0.25
 - 2026-10-08 14:29Z LTC hold target 0.12 (held 0.11) — hold: weight change +0.012 below threshold 0.05 | stay long: z -2.60 vs 240h mean (entry -2.0, exit -0.5); vol 58% -> weight 0.25
+- 2026-10-08 15:28Z BTC hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | daily halt: equity 9659.20 is down 5.4% from the day's open 10208.08
+- 2026-10-08 15:28Z ETH sell target 0.00 (held 0.15) — daily halt: equity 9659.20 is down 5.4% from the day's open 10208.08
+- 2026-10-08 15:28Z SOL sell target 0.00 (held 0.16) — daily halt: equity 9659.20 is down 5.4% from the day's open 10208.08
+- 2026-10-08 15:28Z ADA hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | daily halt: equity 9659.20 is down 5.4% from the day's open 10208.08
+- 2026-10-08 15:28Z AVAX hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | daily halt: equity 9659.20 is down 5.4% from the day's open 10208.08
+- 2026-10-08 15:28Z LINK sell target 0.00 (held 0.10) — daily halt: equity 9659.20 is down 5.4% from the day's open 10208.08
+- 2026-10-08 15:28Z XRP sell target 0.00 (held 0.14) — daily halt: equity 9659.20 is down 5.4% from the day's open 10208.08
+- 2026-10-08 15:28Z DOGE sell target 0.00 (held 0.17) — daily halt: equity 9659.20 is down 5.4% from the day's open 10208.08
+- 2026-10-08 15:28Z DOT sell target 0.00 (held 0.17) — daily halt: equity 9659.20 is down 5.4% from the day's open 10208.08
+- 2026-10-08 15:28Z LTC sell target 0.00 (held 0.11) — daily halt: equity 9659.20 is down 5.4% from the day's open 10208.08
 
 by pair (gross pnl at last mark, bps per round trip = gross / half of traded notional):
 
 - ADA: 2 fills (1 buy / 1 sell), traded 5,128, gross pnl +130.41, +509 bps per round trip, avg half spread 2.2 bps
 - BTC: 2 fills (1 buy / 1 sell), traded 5,027, gross pnl +50.93, +203 bps per round trip, avg half spread 0.0 bps
-- DOGE: 4 fills (2 buy / 2 sell), traded 8,707, gross pnl +44.83, +103 bps per round trip, avg half spread 0.3 bps, open 19195.1
-- DOT: 2 fills (1 buy / 1 sell), traded 3,428, gross pnl -32.11, -187 bps per round trip, avg half spread 0.4 bps, open 1541.15
-- ETH: 5 fills (2 buy / 3 sell), traded 8,747, gross pnl -9.98, -23 bps per round trip, avg half spread 0.1 bps, open 0.567281
-- LINK: 1 fill (1 buy / 0 sell), traded 1,027, gross pnl -26.32, -512 bps per round trip, avg half spread 1.5 bps, open 76.9551
-- LTC: 1 fill (1 buy / 0 sell), traded 1,158, gross pnl -29.47, -509 bps per round trip, avg half spread 0.8 bps, open 17.4878
-- SOL: 3 fills (2 buy / 1 sell), traded 6,771, gross pnl +35.99, +106 bps per round trip, avg half spread 0.5 bps, open 14.5071
-- XRP: 3 fills (1 buy / 2 sell), traded 3,689, gross pnl -77.92, -422 bps per round trip, avg half spread 0.3 bps, open 1016.78
+- DOGE: 5 fills (2 buy / 3 sell), traded 10,318, gross pnl -20.47, -40 bps per round trip, avg half spread 0.3 bps
+- DOT: 3 fills (1 buy / 2 sell), traded 5,040, gross pnl -135.21, -537 bps per round trip, avg half spread 1.6 bps
+- ETH: 6 fills (2 buy / 4 sell), traded 10,148, gross pnl -45.57, -90 bps per round trip, avg half spread 0.3 bps
+- LINK: 2 fills (1 buy / 1 sell), traded 1,993, gross pnl -60.80, -610 bps per round trip, avg half spread 2.2 bps
+- LTC: 2 fills (1 buy / 1 sell), traded 2,252, gross pnl -62.61, -556 bps per round trip, avg half spread 1.6 bps
+- SOL: 4 fills (2 buy / 2 sell), traded 8,360, gross pnl -6.81, -16 bps per round trip, avg half spread 0.5 bps
+- XRP: 4 fills (1 buy / 3 sell), traded 5,071, gross pnl -125.16, -494 bps per round trip, avg half spread 0.6 bps
 
 last fills:
 
-- 2026-10-07 12:32Z sell XRP 516 @ 1.44455 fee 0.52 slip 0.26 (half spread 0.8 bps)
-- 2026-10-07 12:32Z buy LINK 1,027 @ 13.3486 fee 1.03 slip 0.51 (half spread 1.5 bps)
-- 2026-10-07 13:28Z sell DOGE 850 @ 0.0884213 fee 0.85 slip 0.43 (half spread 0.3 bps)
-- 2026-10-07 13:28Z sell DOT 839 @ 1.1013 fee 0.84 slip 0.42 (half spread 0.5 bps)
-- 2026-10-07 13:28Z buy SOL 1,686 @ 116.193 fee 1.69 slip 0.84 (half spread 0.4 bps)
-- 2026-10-07 15:36Z sell ETH 587 @ 2564.15 fee 0.59 slip 0.29 (half spread 0.0 bps)
-- 2026-10-07 15:36Z sell XRP 574 @ 1.43059 fee 0.57 slip 0.29 (half spread 0.1 bps)
 - 2026-10-07 15:36Z buy LTC 1,158 @ 66.2181 fee 1.16 slip 0.58 (half spread 0.8 bps)
+- 2026-10-08 15:28Z sell ETH 1,401 @ 2468.98 fee 1.40 slip 0.70 (half spread 1.2 bps)
+- 2026-10-08 15:28Z sell SOL 1,589 @ 109.55 fee 1.59 slip 0.80 (half spread 0.5 bps)
+- 2026-10-08 15:28Z sell LINK 965 @ 12.5456 fee 0.97 slip 0.48 (half spread 2.8 bps)
+- 2026-10-08 15:28Z sell XRP 1,382 @ 1.35891 fee 1.38 slip 0.69 (half spread 1.5 bps)
+- 2026-10-08 15:28Z sell DOGE 1,611 @ 0.0839389 fee 1.61 slip 0.81 (half spread 0.0 bps)
+- 2026-10-08 15:28Z sell DOT 1,612 @ 1.04579 fee 1.61 slip 0.94 (half spread 3.8 bps)
+- 2026-10-08 15:28Z sell LTC 1,094 @ 62.5737 fee 1.09 slip 0.55 (half spread 2.4 bps)
 
 ## challenger2: vol_breakout (H2)
 
 params: {"breakout_hours": 120, "compression_hours": 168, "exit_hours": 72, "lookback_hours": 1440, "max_weight": 0.25, "squeeze_memory_hours": 72, "target_vol_annual": 0.3, "vol_lookback_hours": 168, "vol_percentile": 0.25}
 
 - equity 10,776.16 (started 10,000 at 2026-09-16 23:20Z), net +7.76% since start
-- 24h +0.00%, 7d -0.86%, 30d +7.76%, max drawdown -3.54%
+- 24h +0.00%, 7d -0.89%, 30d +7.76%, max drawdown -3.54%
 - fills 36 total, 2 in the last 7d
 - costs 95.13 (fees 62.99 + slippage 32.15); gross pnl 871.29; cost coverage 9.16
 - cash 10,776.16; positions: none
-- last run 2026-10-08 14:29Z; halted today: False
+- last run 2026-10-08 15:28Z; halted today: False
 
 last decisions (newest last):
 
-- 2026-10-08 13:29Z SOL hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: squeezed but 112.4 not above 120h high 121.8
-- 2026-10-08 13:29Z ADA hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: 168h vol not at or below its own 25% percentile over 1440h in the last 72h
-- 2026-10-08 13:29Z AVAX hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: 168h vol not at or below its own 25% percentile over 1440h in the last 72h
-- 2026-10-08 13:29Z LINK hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: squeezed but 12.92 not above 120h high 14.28
-- 2026-10-08 13:29Z XRP hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: squeezed but 1.395 not above 120h high 1.523
-- 2026-10-08 13:29Z DOGE hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: 168h vol not at or below its own 25% percentile over 1440h in the last 72h
-- 2026-10-08 13:29Z DOT hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: 168h vol not at or below its own 25% percentile over 1440h in the last 72h
-- 2026-10-08 13:29Z LTC hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: 168h vol not at or below its own 25% percentile over 1440h in the last 72h
-- 2026-10-08 14:29Z BTC hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: squeezed but 8.212e+04 not above 120h high 8.663e+04
-- 2026-10-08 14:29Z ETH hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: squeezed but 2520 not above 120h high 2731
 - 2026-10-08 14:29Z SOL hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: squeezed but 112.2 not above 120h high 121.8
 - 2026-10-08 14:29Z ADA hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: 168h vol not at or below its own 25% percentile over 1440h in the last 72h
 - 2026-10-08 14:29Z AVAX hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: 168h vol not at or below its own 25% percentile over 1440h in the last 72h
@@ -187,6 +177,16 @@ last decisions (newest last):
 - 2026-10-08 14:29Z DOGE hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: 168h vol not at or below its own 25% percentile over 1440h in the last 72h
 - 2026-10-08 14:29Z DOT hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: 168h vol not at or below its own 25% percentile over 1440h in the last 72h
 - 2026-10-08 14:29Z LTC hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: 168h vol not at or below its own 25% percentile over 1440h in the last 72h
+- 2026-10-08 15:28Z BTC hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: squeezed but 8.264e+04 not above 120h high 8.663e+04
+- 2026-10-08 15:28Z ETH hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: squeezed but 2530 not above 120h high 2731
+- 2026-10-08 15:28Z SOL hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: squeezed but 112.4 not above 120h high 121.8
+- 2026-10-08 15:28Z ADA hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: 168h vol not at or below its own 25% percentile over 1440h in the last 72h
+- 2026-10-08 15:28Z AVAX hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: 168h vol not at or below its own 25% percentile over 1440h in the last 72h
+- 2026-10-08 15:28Z LINK hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: squeezed but 12.97 not above 120h high 14.28
+- 2026-10-08 15:28Z XRP hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: squeezed but 1.404 not above 120h high 1.523
+- 2026-10-08 15:28Z DOGE hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: 168h vol not at or below its own 25% percentile over 1440h in the last 72h
+- 2026-10-08 15:28Z DOT hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: 168h vol not at or below its own 25% percentile over 1440h in the last 72h
+- 2026-10-08 15:28Z LTC hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: 168h vol not at or below its own 25% percentile over 1440h in the last 72h
 
 by pair (gross pnl at last mark, bps per round trip = gross / half of traded notional):
 
@@ -221,20 +221,10 @@ params: {"exit_hours": 48, "fresh_cross": true, "max_weight": 0.25, "min_higher_
 - fills 26 total, 26 in the last 7d
 - costs 59.13 (fees 39.38 + slippage 19.75); gross pnl -57.25; cost coverage -0.97
 - cash 9,883.62; positions: none
-- last run 2026-10-08 14:29Z; halted today: False
+- last run 2026-10-08 15:28Z; halted today: False
 
 last decisions (newest last):
 
-- 2026-10-08 13:29Z SOL hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: low 113.1 not a higher low vs prior low 105.7 (need +10.0%)
-- 2026-10-08 13:29Z ADA hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: higher low confirmed but 0.2473 not a fresh close above reaction high 0.2616
-- 2026-10-08 13:29Z AVAX hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: higher low confirmed but 10.56 not a fresh close above reaction high 11.55
-- 2026-10-08 13:29Z LINK hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: low 13 not a higher low vs prior low 11.82 (need +10.0%)
-- 2026-10-08 13:29Z XRP hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: low 1.397 not a higher low vs prior low 1.323 (need +10.0%)
-- 2026-10-08 13:29Z DOGE hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: low 0.08704 not a higher low vs prior low 0.08471 (need +10.0%)
-- 2026-10-08 13:29Z DOT hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: low 1.095 not a higher low vs prior low 1.075 (need +10.0%)
-- 2026-10-08 13:29Z LTC hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: higher low confirmed but 64.07 not a fresh close above reaction high 74.29
-- 2026-10-08 14:29Z BTC hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: low 8.225e+04 not a higher low vs prior low 8e+04 (need +10.0%)
-- 2026-10-08 14:29Z ETH hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: low 2528 not a higher low vs prior low 2553 (need +10.0%)
 - 2026-10-08 14:29Z SOL hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: low 112.4 not a higher low vs prior low 107.7 (need +10.0%)
 - 2026-10-08 14:29Z ADA hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: higher low confirmed but 0.2474 not a fresh close above reaction high 0.2616
 - 2026-10-08 14:29Z AVAX hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: higher low confirmed but 10.59 not a fresh close above reaction high 11.55
@@ -243,6 +233,16 @@ last decisions (newest last):
 - 2026-10-08 14:29Z DOGE hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: low 0.08686 not a higher low vs prior low 0.08471 (need +10.0%)
 - 2026-10-08 14:29Z DOT hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: low 1.095 not a higher low vs prior low 1.075 (need +10.0%)
 - 2026-10-08 14:29Z LTC hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: higher low confirmed but 64.08 not a fresh close above reaction high 74.29
+- 2026-10-08 15:28Z BTC hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: low 8.212e+04 not a higher low vs prior low 8.023e+04 (need +10.0%)
+- 2026-10-08 15:28Z ETH hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: low 2520 not a higher low vs prior low 2571 (need +10.0%)
+- 2026-10-08 15:28Z SOL hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: low 112.2 not a higher low vs prior low 107.7 (need +10.0%)
+- 2026-10-08 15:28Z ADA hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: low 0.2392 not a higher low vs prior low 0.2184 (need +10.0%)
+- 2026-10-08 15:28Z AVAX hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: higher low confirmed but 10.59 not a fresh close above reaction high 11.55
+- 2026-10-08 15:28Z LINK hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: low 12.92 not a higher low vs prior low 11.95 (need +10.0%)
+- 2026-10-08 15:28Z XRP hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: low 1.395 not a higher low vs prior low 1.37 (need +10.0%)
+- 2026-10-08 15:28Z DOGE hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: low 0.08686 not a higher low vs prior low 0.08471 (need +10.0%)
+- 2026-10-08 15:28Z DOT hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: low 1.095 not a higher low vs prior low 1.075 (need +10.0%)
+- 2026-10-08 15:28Z LTC hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: higher low confirmed but 64.19 not a fresh close above reaction high 74.29
 
 by pair (gross pnl at last mark, bps per round trip = gross / half of traded notional):
 
@@ -270,25 +270,15 @@ last fills:
 
 params: {"ema_exit_buffer": 0.05, "ema_hours": 168, "entry_return": 0.05, "exit_return": -0.05, "lookback_hours": 720, "max_weight": 0.25, "target_vol_annual": 0.3, "vol_lookback_hours": 168}
 
-- equity 9,585.79 (started 10,000 at 2026-09-25 04:23Z), net -4.14% since start
-- 24h -2.44%, 7d -4.82%, 30d -4.07%, max drawdown -8.38%
+- equity 9,315.06 (started 10,000 at 2026-09-25 04:23Z), net -6.85% since start
+- 24h -5.20%, 7d -7.39%, 30d -6.78%, max drawdown -10.71%
 - fills 40 total, 17 in the last 7d
-- costs 66.23 (fees 44.04 + slippage 22.19); gross pnl -347.98; cost coverage -5.25
+- costs 66.23 (fees 44.04 + slippage 22.19); gross pnl -618.71; cost coverage -9.34
 - cash 2,386.85; positions: ADA 9653, AVAX 225.036, BTC 0.0290337
-- last run 2026-10-08 14:29Z; halted today: False
+- last run 2026-10-08 15:28Z; halted today: False
 
 last decisions (newest last):
 
-- 2026-10-08 13:29Z SOL sell target 0.00 (held 0.17) — exit: price more than 5.0% below 168h EMA
-- 2026-10-08 13:29Z ADA buy target 0.25 (held 0.17) — stay long: 720h return +13.08% vs exit band -5.0% and price within 5.0% of 168h EMA; realised vol 82% -> weight 0.25
-- 2026-10-08 13:29Z AVAX buy target 0.25 (held 0.17) — stay long: 720h return +31.38% vs exit band -5.0% and price within 5.0% of 168h EMA; realised vol 75% -> weight 0.25
-- 2026-10-08 13:29Z LINK hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: 720h return +3.16% not above entry band +5.0% and price below 168h EMA
-- 2026-10-08 13:29Z XRP hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: 720h return -0.26% not above entry band +5.0% and price below 168h EMA
-- 2026-10-08 13:29Z DOGE hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: 720h return -2.69% not above entry band +5.0% and price below 168h EMA
-- 2026-10-08 13:29Z DOT hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: 720h return +0.86% not above entry band +5.0% and price below 168h EMA
-- 2026-10-08 13:29Z LTC hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: price below 168h EMA
-- 2026-10-08 14:29Z BTC hold target 0.25 (held 0.25) — hold: weight change -0.000 below threshold 0.05 | stay long: 720h return +5.37% vs exit band -5.0% and price within 5.0% of 168h EMA; rea...
-- 2026-10-08 14:29Z ETH sell target 0.00 (held 0.25) — exit: price more than 5.0% below 168h EMA
 - 2026-10-08 14:29Z SOL hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: price below 168h EMA
 - 2026-10-08 14:29Z ADA hold target 0.25 (held 0.25) — hold: weight change -0.000 below threshold 0.05 | stay long: 720h return +13.25% vs exit band -5.0% and price within 5.0% of 168h EMA; re...
 - 2026-10-08 14:29Z AVAX hold target 0.25 (held 0.25) — hold: weight change +0.000 below threshold 0.05 | stay long: 720h return +33.87% vs exit band -5.0% and price within 5.0% of 168h EMA; re...
@@ -297,12 +287,22 @@ last decisions (newest last):
 - 2026-10-08 14:29Z DOGE hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: 720h return -2.29% not above entry band +5.0% and price below 168h EMA
 - 2026-10-08 14:29Z DOT hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: 720h return +3.40% not above entry band +5.0% and price below 168h EMA
 - 2026-10-08 14:29Z LTC hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: price below 168h EMA
+- 2026-10-08 15:28Z BTC hold target 0.25 (held 0.25) — hold: weight change -0.004 below threshold 0.05 | stay long: 720h return +5.23% vs exit band -5.0% and price within 5.0% of 168h EMA; rea...
+- 2026-10-08 15:28Z ETH hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: 720h return +1.80% not above entry band +5.0% and price below 168h EMA
+- 2026-10-08 15:28Z SOL hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: price below 168h EMA
+- 2026-10-08 15:28Z ADA hold target 0.25 (held 0.24) — hold: weight change +0.005 below threshold 0.05 | stay long: 720h return +11.76% vs exit band -5.0% and price within 5.0% of 168h EMA; re...
+- 2026-10-08 15:28Z AVAX hold target 0.25 (held 0.24) — hold: weight change +0.005 below threshold 0.05 | stay long: 720h return +32.56% vs exit band -5.0% and price within 5.0% of 168h EMA; re...
+- 2026-10-08 15:28Z LINK hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: 720h return +3.00% not above entry band +5.0% and price below 168h EMA
+- 2026-10-08 15:28Z XRP hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: 720h return -0.96% not above entry band +5.0% and price below 168h EMA
+- 2026-10-08 15:28Z DOGE hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: 720h return -2.92% not above entry band +5.0% and price below 168h EMA
+- 2026-10-08 15:28Z DOT hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: 720h return -1.52% not above entry band +5.0% and price below 168h EMA
+- 2026-10-08 15:28Z LTC hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | flat: price below 168h EMA
 
 by pair (gross pnl at last mark, bps per round trip = gross / half of traded notional):
 
-- ADA: 5 fills (3 buy / 2 sell), traded 5,411, gross pnl +38.55, +142 bps per round trip, avg half spread 2.1 bps, open 9653
-- AVAX: 3 fills (3 buy / 0 sell), traded 2,396, gross pnl +1.87, +16 bps per round trip, avg half spread 0.8 bps, open 225.036
-- BTC: 3 fills (3 buy / 0 sell), traded 2,414, gross pnl -12.45, -103 bps per round trip, avg half spread 0.0 bps, open 0.0290337
+- ADA: 5 fills (3 buy / 2 sell), traded 5,411, gross pnl -81.31, -301 bps per round trip, avg half spread 2.1 bps, open 9653
+- AVAX: 3 fills (3 buy / 0 sell), traded 2,396, gross pnl -115.04, -960 bps per round trip, avg half spread 0.8 bps, open 225.036
+- BTC: 3 fills (3 buy / 0 sell), traded 2,414, gross pnl -46.41, -384 bps per round trip, avg half spread 0.0 bps, open 0.0290337
 - DOGE: 2 fills (1 buy / 1 sell), traded 1,960, gross pnl -100.62, -1027 bps per round trip, avg half spread 0.1 bps
 - DOT: 4 fills (2 buy / 2 sell), traded 4,028, gross pnl -51.07, -254 bps per round trip, avg half spread 2.0 bps
 - ETH: 4 fills (3 buy / 1 sell), traded 4,849, gross pnl -68.19, -281 bps per round trip, avg half spread 0.0 bps
@@ -326,13 +326,13 @@ last fills:
 
 live candles (Kraken, grows hourly) and history (Coinbase backfill, for backtests):
 
-- BTC: live 1259 candles, 2026-08-17 03:00Z to 2026-10-08 13:00Z, missing hours in last 7d: 0; history 42610 candles from 2021-10-06; avg half spread last 7d 0.0 bps
-- ETH: live 1259 candles, 2026-08-17 03:00Z to 2026-10-08 13:00Z, missing hours in last 7d: 0; history 42610 candles from 2021-10-06; avg half spread last 7d 0.1 bps
-- SOL: live 1259 candles, 2026-08-17 03:00Z to 2026-10-08 13:00Z, missing hours in last 7d: 0; history 42608 candles from 2021-10-06; avg half spread last 7d 0.5 bps
-- ADA: live 1259 candles, 2026-08-17 03:00Z to 2026-10-08 13:00Z, missing hours in last 7d: 0; history 42608 candles from 2021-10-06; avg half spread last 7d 1.8 bps
-- AVAX: live 1259 candles, 2026-08-17 03:00Z to 2026-10-08 13:00Z, missing hours in last 7d: 0; history 42609 candles from 2021-10-06; avg half spread last 7d 0.9 bps
-- LINK: live 1259 candles, 2026-08-17 03:00Z to 2026-10-08 13:00Z, missing hours in last 7d: 0; history 42608 candles from 2021-10-06; avg half spread last 7d 1.4 bps
-- XRP: live 1231 candles, 2026-08-18 07:00Z to 2026-10-08 13:00Z, missing hours in last 7d: 0; history 27145 candles from 2023-07-13; avg half spread last 7d 0.4 bps
-- DOGE: live 1231 candles, 2026-08-18 07:00Z to 2026-10-08 13:00Z, missing hours in last 7d: 0; history 42636 candles from 2021-10-06; avg half spread last 7d 0.4 bps
-- DOT: live 1231 candles, 2026-08-18 07:00Z to 2026-10-08 13:00Z, missing hours in last 7d: 0; history 42636 candles from 2021-10-06; avg half spread last 7d 1.7 bps
-- LTC: live 1231 candles, 2026-08-18 07:00Z to 2026-10-08 13:00Z, missing hours in last 7d: 0; history 42636 candles from 2021-10-06; avg half spread last 7d 1.3 bps
+- BTC: live 1260 candles, 2026-08-17 03:00Z to 2026-10-08 14:00Z, missing hours in last 7d: 0; history 42610 candles from 2021-10-06; avg half spread last 7d 0.0 bps
+- ETH: live 1260 candles, 2026-08-17 03:00Z to 2026-10-08 14:00Z, missing hours in last 7d: 0; history 42610 candles from 2021-10-06; avg half spread last 7d 0.1 bps
+- SOL: live 1260 candles, 2026-08-17 03:00Z to 2026-10-08 14:00Z, missing hours in last 7d: 0; history 42608 candles from 2021-10-06; avg half spread last 7d 0.5 bps
+- ADA: live 1260 candles, 2026-08-17 03:00Z to 2026-10-08 14:00Z, missing hours in last 7d: 0; history 42608 candles from 2021-10-06; avg half spread last 7d 1.8 bps
+- AVAX: live 1260 candles, 2026-08-17 03:00Z to 2026-10-08 14:00Z, missing hours in last 7d: 0; history 42609 candles from 2021-10-06; avg half spread last 7d 0.9 bps
+- LINK: live 1260 candles, 2026-08-17 03:00Z to 2026-10-08 14:00Z, missing hours in last 7d: 0; history 42608 candles from 2021-10-06; avg half spread last 7d 1.4 bps
+- XRP: live 1232 candles, 2026-08-18 07:00Z to 2026-10-08 14:00Z, missing hours in last 7d: 0; history 27145 candles from 2023-07-13; avg half spread last 7d 0.4 bps
+- DOGE: live 1232 candles, 2026-08-18 07:00Z to 2026-10-08 14:00Z, missing hours in last 7d: 0; history 42636 candles from 2021-10-06; avg half spread last 7d 0.4 bps
+- DOT: live 1232 candles, 2026-08-18 07:00Z to 2026-10-08 14:00Z, missing hours in last 7d: 0; history 42636 candles from 2021-10-06; avg half spread last 7d 1.7 bps
+- LTC: live 1232 candles, 2026-08-18 07:00Z to 2026-10-08 14:00Z, missing hours in last 7d: 0; history 42636 candles from 2021-10-06; avg half spread last 7d 1.3 bps
