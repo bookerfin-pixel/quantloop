@@ -8,7 +8,11 @@ from datetime import datetime, timezone
 import pandas as pd
 
 from . import config, data, shadow, slot
-from .run import REPLAYED
+from .run import CAPPED, REPLAYED
+
+CAP_DAYS = 7                # the Fill cap section looks this many days back
+CAP_LINES = 12              # and lists this many pair days at most, those with a buy stopped first
+CAP_SHOWN = 8               # the fills, or the stopped buys, shown on one of those lines
 
 
 def _ts(t: int | float | None) -> str:
@@ -20,6 +24,35 @@ def _ts(t: int | float | None) -> str:
 def _pct(x) -> str:
     """A return as a signed percentage; one too small to show is not printed as "-0.00%"."""
     return "n/a" if x is None else f"{0.0 if abs(x) < 5e-5 else x:+.2%}"
+
+
+def _n_of(n: int, what: str) -> str:
+    """A count and what is counted: "1 buy", "3 buys", "2 of them"."""
+    return f"{n} {what}" if n == 1 or what.endswith("them") else f"{n} {what}s"
+
+
+WHAT_WAS_HELD = {   # each kind of stopped buy: alone, counted as one, counted as more than one
+    "flat": ("an entry from flat", "entry from flat", "entries from flat"),
+    "held": ("a top up of a position it held", "top up of a position it held", "top ups of a position it held"),
+    "first": ("a new strategy's first buy, stopped by the old config's fills that day",
+              "first buy of a new strategy, stopped by the old config's fills that day",
+              "first buys of a new strategy, stopped by the old config's fills that day"),
+    "blank": ("with no weight on record", "with no weight on record", "with no weight on record"),
+}
+
+
+def _what_was_held(kinds: list[str]) -> str:
+    """What the stopped buys of one line were. An entry from flat (nothing of the pair held) is a whipsaw or a
+    loop. A top up of a position it held is the strategy resizing what it keeps, which neither is. A new
+    strategy's first buy (a test's first hour, or the champion's after a promotion or a revert, which decide
+    as if flat) is stopped by what the config before it filled that day, and is none of them."""
+    counted = [(kind, kinds.count(kind)) for kind in WHAT_WAS_HELD if kinds.count(kind)]
+    if len(counted) == 1:
+        kind, n = counted[0]
+        if n == 1:
+            return WHAT_WAS_HELD[kind][0]
+        return "none with a weight on record" if kind == "blank" else "each " + WHAT_WAS_HELD[kind][0]
+    return ", ".join(f"{n} {WHAT_WAS_HELD[kind][1] if n == 1 else WHAT_WAS_HELD[kind][2]}" for kind, n in counted)
 
 
 def _dd(x) -> str:
@@ -171,6 +204,141 @@ def runs_section(now: int) -> str:
         lines.append("- no hour in the last 7 days is without a decision")
     lines.append("- this is the loop's own record. Missing candles are a different thing and are listed under Data; "
                  "a clean Data section says nothing about whether the bot ran")
+    return "\n".join(lines) + "\n"
+
+
+def fill_cap_section(now: int) -> str:
+    """Every buy the daily fill cap stopped, and every pair that filled as often in one UTC day as
+    the cap allows, from the start of the UTC day CAP_DAYS days ago: the champion, every slot that
+    holds a test, and the shadow.
+
+    A buy the cap stops is one row among the few hundred an account's decisions.csv gains in a
+    day, with the action "none". On 2026-10-07 the champion filled AVAX four times and the cap then
+    stopped its buy in three more hours; the daily review, written hours after the first of them,
+    said "No capped rows" (caught by Fin's daily check, which runs outside this repo and searches
+    for the word). The summary is what is read first and by everyone, so it is said here, and said
+    as plainly when there is nothing.
+
+    Whole UTC days only: a window that began part way through a day would count part of that day's
+    fills against all of its stopped buys. A slot's account is read from the hour its test began:
+    what it filled before that was another config's doing. A slot with no test runs the champion's
+    config, so its lines would be the champion's over again, and it is left out. An account whose
+    files cannot be read gets a line saying so and is left out of the counts; it does not cost the
+    other accounts theirs."""
+    from .promote import AS_IF_FLAT        # the engine's words on a new strategy's first decisions (pinned in its tests)
+    cap = int(config.risk_cfg().get("max_fills_per_pair_per_day", 0) or 0)
+    since = (now // 86400 - CAP_DAYS) * 86400
+
+    def day(ts) -> str:
+        return datetime.fromtimestamp(int(ts), timezone.utc).strftime("%Y-%m-%d")
+
+    def at(ts) -> str:
+        return datetime.fromtimestamp(int(ts), timezone.utc).strftime("%H:%M")
+
+    def some(items: list[str]) -> str:
+        return ", ".join(items[:CAP_SHOWN]) + (f", and {len(items) - CAP_SHOWN} more" if len(items) > CAP_SHOWN else "")
+
+    found, unread = [], []
+    for name in config.accounts():
+        adir = config.account_dir(name)
+        try:
+            begun, first_day = since, None
+            if config.is_challenger(name):
+                meta = slot.load(name)
+                if meta["status"] != "testing":
+                    continue
+                started = int(float(meta["started_at"]))
+                begun, first_day = max(begun, started), day(started)
+            fills: dict[tuple[str, str], list[str]] = {}
+            if (adir / "trades.csv").exists():
+                tr = pd.read_csv(adir / "trades.csv", usecols=["ts", "pair", "side"])
+                tr = tr[(tr["ts"] >= begun) & (tr["ts"] <= now)].sort_values("ts", kind="stable")
+                for ts, pair, side in tr[["ts", "pair", "side"]].itertuples(index=False):
+                    fills.setdefault((day(ts), str(pair)), []).append(f"{side} {at(ts)}")
+            stopped: dict[tuple[str, str], list[str]] = {}
+            held_then: dict[tuple[str, str], list[str]] = {}
+            if (adir / "decisions.csv").exists():
+                dec = pd.read_csv(adir / "decisions.csv", usecols=["ts", "pair", "action", "reason", "current_weight"])
+                dec = dec[(dec["ts"] >= begun) & (dec["ts"] <= now)].sort_values("ts", kind="stable")
+                why = dec["reason"].astype(str)
+                why = why.where(~why.str.startswith(REPLAYED), why.str[len(REPLAYED):])
+                # the engine's own words at the head of the reason, on a decision it did not fill: a strategy
+                # that writes "capped:" in a reason of its own has had no buy stopped
+                hit = (dec["action"].astype(str) == "none") & why.str.startswith(CAPPED)
+                weight = pd.to_numeric(dec.loc[hit, "current_weight"], errors="coerce")
+                for ts, pair, w, said in zip(dec.loc[hit, "ts"], dec.loc[hit, "pair"], weight, why[hit]):
+                    stopped.setdefault((day(ts), str(pair)), []).append(at(ts))
+                    held_then.setdefault((day(ts), str(pair)), []).append(
+                        "first" if any(f" | {lead}" in said for lead in AS_IF_FLAT) else
+                        "held" if w > 0 else "blank" if w != w else "flat")     # w != w: no number on record
+        except Exception as e:  # noqa: BLE001 - one account's damaged file must not hide the others
+            unread.append(f"- {name}: its record could not be read this hour ({type(e).__name__}: {e}), so it is "
+                          f"not in the counts above")
+            continue
+        for key in sorted({k for k, v in fills.items() if cap > 0 and len(v) >= cap} | set(stopped)):
+            got, held = fills.get(key, []), stopped.get(key, [])
+            # the cap counts every fill of the account's UTC day, and a slot is read here from the hour its
+            # test began: on that one day the two can differ, and the line says why
+            earlier = (bool(held) and key[0] == first_day and len(got) < cap
+                       and any(kind != "first" for kind in held_then[key]))       # a first buy's own words say it
+            found.append({"day": key[0], "stopped": len(held), "full": len(got) >= cap, "text":
+                          f"- {name}, {key[1]}, {key[0]}: "
+                          + (f"{_n_of(len(got), 'fill')} ({some(got)})" if got else "no fill")
+                          + (f"; a buy stopped by the cap in {_n_of(len(held), 'hour')} ({some(held)}), "
+                             f"{_what_was_held(held_then[key])}" if held else "; no buy stopped")
+                          + ("; the cap counts the account's fills from earlier that day, before this test began, "
+                             "as well" if earlier else "")})
+    # The pair days on which a buy was stopped come first, and the newest first among them, so the lines a long
+    # list leaves off are those with no buy stopped, and the oldest. Both sorts keep the order things were found
+    # in (the accounts in their order, a pair after the pairs before it in the alphabet), so the same records
+    # always give the same text.
+    found.sort(key=lambda f: f["day"], reverse=True)
+    found.sort(key=lambda f: not f["stopped"])
+    hours, stop_days = sum(f["stopped"] for f in found), sum(1 for f in found if f["stopped"])
+    full_days = sum(1 for f in found if f["full"])
+    if cap > 0:
+        the_cap = f"the cap is {_n_of(cap, 'fill')} in one pair in one UTC day"
+    elif cap < 0:
+        the_cap = (f"`max_fills_per_pair_per_day` in configs/risk.yaml is {cap}, under zero, which the engine cannot use: "
+                   f"the hourly run stops with an error at the first buy of a UTC day in a pair that has not filled "
+                   f"that day")
+    else:
+        the_cap = ("no cap is set: `max_fills_per_pair_per_day` in configs/risk.yaml is missing, 0 or under 1, so "
+                   "a pair can fill any number of times in a day")
+    lines = ["## Fill cap", ""]
+    head = (f"- since {day(since)} (today and the {CAP_DAYS} UTC days before it): "
+            + (f"the cap stopped a buy in {_n_of(hours, 'hour')}, on {_n_of(stop_days, 'pair day')}" if hours
+               else "no buy stopped by the cap"))
+    if not found:
+        lines.append(head + (f" and no pair that filled {_n_of(cap, 'time')} or more in one UTC day" if cap > 0 else "")
+                     + f", in any account read ({the_cap})")
+        return "\n".join(lines + unread) + "\n"
+    lines.append(head + ("" if cap <= 0 else f"; no pair filled {_n_of(cap, 'time')} or more in one UTC day"
+                         if not full_days else
+                         f"; a pair filled {_n_of(cap, 'time')} or more in one UTC day on {_n_of(full_days, 'pair day')}")
+                 + f" ({the_cap})")
+    lines += unread
+    lines += [f["text"] for f in found[:CAP_LINES]]
+    rest = found[CAP_LINES:]
+    if rest:
+        lines.append(f"- and {_n_of(len(rest), 'more pair day')} not listed, "
+                     + (f"{_n_of(sum(1 for f in rest if f['stopped']), 'of them')} with a buy stopped"
+                        if any(f["stopped"] for f in rest) else "none of them with a buy stopped"))
+    lines.append("- times are UTC, and a pair day is one pair on one UTC day in one account. At the cap no more buys "
+                 "go through in that pair until the next UTC day; sells always do. A buy the strategy still wants an "
+                 "hour later is stopped, and counted, again. A slot is read from the hour its test began, and a slot "
+                 "with no test is left out: it runs the champion's config. The champion's lines from before a "
+                 "promotion or a revert are the config it had then")
+    lines.append("- how to read a line: that many fills in one coin in one day is in and out more than once, or one "
+                 "position built or cut in steps. A stopped buy is one of three things. A top up of a position it held "
+                 "is the strategy resizing what it keeps, often in several pairs at once when one pair enters or "
+                 "leaves the book. An entry from flat is a whipsaw when, after each exit, the strategy's own decisions "
+                 "said flat because its entry condition failed, until a later entry fired on a new reading. It is a "
+                 "loop when the strategy buys back within an hour or two of selling, the entry naming the same signal "
+                 "as the one before, often lower than it just sold. The first two are costs the idea carries, not "
+                 "bugs. A new strategy's first buy, stopped by the old config's fills that day, is none of the three "
+                 "and needs nothing doing. The account's decisions.csv and trades.csv show which. Every one of those "
+                 "fills paid costs")
     return "\n".join(lines) + "\n"
 
 
@@ -390,6 +558,7 @@ def build(now: int | None = None) -> str:
              f"(~{2 * (rcfg['fee_bps'] + rcfg['slippage_bps'])} bps per round trip). "
              f"Pairs: {', '.join(rcfg['pairs'])}. Paper only.", ""]
     parts.append(_section("Runs", runs_section, now))
+    parts.append(_section("Fill cap", fill_cap_section, now))
     parts.append(_section("Challenger slots", test_section, now))
     for name in config.accounts():
         parts.append(_section(name, account_section, name, now))

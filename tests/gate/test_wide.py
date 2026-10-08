@@ -2095,7 +2095,7 @@ def test_the_workflow_commits_only_its_own_folder_and_never_queues_with_the_bot(
     pythons = [str((s.get("with") or {}).get("python-version", "")) for s in steps if str(s.get("uses", "")).startswith("actions/setup-python@")]
     for version in pythons:                                                           # a Python the code runs on, where one is named
         named = re.fullmatch(r"(\d+)\.(\d+)(\.\d+)?", version)
-        assert not named or (int(named.group(1)), int(named.group(2))) >= (3, 11), version
+        assert not named or (int(named.group(1)), int(named.group(2))) >= (3, 12), version   # requirements.txt pins numpy 2.5.3, which needs 3.12
     run_step = step(wf, "Collect")
     assert run_step["id"] == "collect"
     assert run_step["run"] == "python -m bot.wide --collect ${{ github.event_name == 'workflow_dispatch' && '--again' || '' }}"

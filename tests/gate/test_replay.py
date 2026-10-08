@@ -553,6 +553,10 @@ def test_the_fill_cap_stops_a_loop_but_never_blocks_a_sell():
     assert actions[4:] == ["none"] * 4                         # the fifth fill would be a buy: capped
     d, _, _ = step(acct, {"params": {}}, flip, frames, prices, day + 8 * 3600, RCFG)
     assert "capped" in next(x for x in d if x["pair"] == "BTC")["reason"]
+    # the words themselves, and that they come first: bot/report.py and bot/backtest.py find a stopped buy by them
+    assert next(x for x in d if x["pair"] == "BTC")["reason"] == (
+        "capped: 4 fills in BTC today, the limit is 4 a day, so no new buys until the next UTC day (sells are never "
+        "capped) | enter") and run.CAPPED == "capped: "
     # next UTC day the count starts again
     d, _, _ = step(acct, {"params": {}}, flip, frames, prices, day + 86400, RCFG)
     assert next(x for x in d if x["pair"] == "BTC")["action"] == "buy"

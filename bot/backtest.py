@@ -22,7 +22,7 @@ import numpy as np
 import pandas as pd
 
 from . import config, data, paper, strategy
-from .run import ERRED, STARVED, step
+from .run import CAPPED, ERRED, STARVED, step
 
 HOURS_PER_YEAR = 24 * 365
 
@@ -138,7 +138,10 @@ def run_backtest(candles: dict[str, pd.DataFrame], cfg: dict, rcfg: dict,
                 path["errors"] += 1
                 path["first_error"] = path["first_error"] or failed[failed.index(ERRED) + len(ERRED):][:200]
         day_fill = datetime.fromtimestamp(ts_fill, timezone.utc).strftime("%Y-%m-%d")
-        capped_pair_days.update((d["pair"], day_fill) for d in decisions if "capped:" in d["reason"])
+        # the engine's own words at the head of the reason, on a decision it did not fill: a strategy that
+        # writes "capped:" in a reason of its own has had no buy stopped
+        capped_pair_days.update((d["pair"], day_fill) for d in decisions
+                                if d["action"] == "none" and d["reason"].startswith(CAPPED))
         for f in fills:
             fills_all.append(f)
             trades_per_pair_day[(f.pair, datetime.fromtimestamp(ts_fill, timezone.utc).strftime("%Y-%m-%d"))] += 1

@@ -43,6 +43,7 @@ STARVED = re.compile(r"only \d+ candles")
 SITS_OUT = ("sits this hour out: no candle or no price for it this hour, so it is held as it is "
             "and valued at its last known price")
 ERRED = "strategy error "   # how the reason begins on an hour the strategy itself failed in
+CAPPED = "capped: "         # how the reason begins on a buy the daily fill cap stopped (bot/report.py lists them)
 
 
 def utc_day(ts: int) -> str:
@@ -150,7 +151,7 @@ def step(acct: paper.PaperAccount, cfg: dict, fn, candles: dict, prices: dict[st
         delta = (tgt_w - cur_w) * equity
         if ok and delta > 0 and cap and counts.get(pair, 0) >= cap:
             action = "none"
-            why = (f"capped: {counts[pair]} fills in {pair} today, the limit is {cap} a day, so no new buys "
+            why = (f"{CAPPED}{counts[pair]} fills in {pair} today, the limit is {cap} a day, so no new buys "
                    f"until the next UTC day (sells are never capped)")
         elif ok:
             fill = acct.trade(pair, delta, prices[pair], ts, reason, rcfg["min_trade_notional"],

@@ -248,6 +248,42 @@ def test_a_strategy_held_back_only_by_the_fill_cap_fails_the_gate(monkeypatch):
     assert any("loop" in p for p in problems)
 
 
+def test_a_strategy_that_says_capped_in_a_reason_of_its_own_has_had_no_buy_stopped(monkeypatch):
+    """The count looked for the word anywhere in a reason, and a reason is a strategy's own free text: one that
+    wrote "capped:" for a limit of its own would have failed the gate as a loop on every day it traded."""
+    def steady(c, params, w):
+        return {p: strategy.Target(0.2, "capped: at my own limit of 0.2") for p in c}
+    monkeypatch.setitem(strategy.STRATEGIES, "steady", steady)
+    cfg = {"hypothesis": "HX", "strategy": "steady", "params": {"x_hours": 24}}
+    m = backtest.run_backtest(candles(n=900), cfg, {**RCFG, "max_fills_per_pair_per_day": 4}, max_days=20)
+    assert m["n_trades"] >= 2 and m["pair_days_at_fill_cap"] == 0
+
+
+def test_a_day_at_the_cap_is_the_engine_s_own_words_first_on_a_buy_it_did_not_fill(monkeypatch):
+    """What the count reads, decision by decision. The engine's words at the head of a reason on a decision with
+    nothing filled count, once for a pair and a UTC day however many hours they come in. The same words anywhere
+    else in a reason, or on a decision that filled or held, do not."""
+    real = backtest.step
+    days = []
+
+    def spy(acct, cfg, fn, window, prices, ts, *args, **kwargs):
+        decisions, fills, equity = real(acct, cfg, fn, window, prices, ts, *args, **kwargs)
+        engine_s = "capped: 4 fills in ETH today, the limit is 4 a day, so no new buys until the next UTC day | x"
+        extra = [{"pair": "BTC", "action": "none", "reason": "waits for cash: the book is fully invested | " + engine_s},
+                 {"pair": "BTC", "action": "buy", "reason": engine_s},
+                 {"pair": "BTC", "action": "hold", "reason": engine_s}]
+        day = ts // 86400
+        days.append(day)
+        if day in (min(days) + 2, min(days) + 5) and ts % 86400 // 3600 in (5, 6, 7):
+            extra.append({"pair": "ETH", "action": "none", "reason": engine_s})       # three hours on each of two days
+        return decisions + extra, fills, equity
+    monkeypatch.setattr(backtest, "step", spy)
+    monkeypatch.setitem(strategy.STRATEGIES, "steady", lambda c, params, w: {p: strategy.Target(0.2, "in") for p in c})
+    cfg = {"hypothesis": "HX", "strategy": "steady", "params": {"x_hours": 24}}
+    m = backtest.run_backtest(candles(n=900), cfg, {**RCFG, "max_fills_per_pair_per_day": 4}, max_days=20)
+    assert len(set(days)) > 6 and m["pair_days_at_fill_cap"] == 2
+
+
 def test_a_long_run_is_read_out_by_calendar_year_against_that_year_s_basket():
     start = 1_640_995_200                                    # 2022-01-01 00:00 UTC
     hours = 24 * 365 * 2

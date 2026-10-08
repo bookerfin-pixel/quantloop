@@ -254,6 +254,18 @@ the machinery, not edge.
   whose buys the cap had to stop on more than 12 pair days a year (H3: 16);
   and a challenger whose live costs after 14 days run past three times the
   gate's limit is killed.
+- The cap binds on whipsaws too (2026-10-08). The line above, that it
+  "changes nothing that is not a loop", is too strong. On 2026-10-07 the
+  champion (H0) filled AVAX four times (a top up at 02:24 of a position it
+  held, then out at 03:25, in at 08:28 and out at 10:27, each on its own
+  rules), and the cap then stopped its buy in three more hours. That was a
+  whipsaw, not a loop: after each exit its decisions said flat on its entry
+  condition until a new reading fired. H0's backtest over the
+  365 days to 2026-10-07 has the cap stopping a buy on 5 pair days, on two
+  of them top ups of positions it held: when a pair enters or leaves a full
+  book, every other position is resized. That day's note said "No capped
+  rows"; the hourly summary now has a Fill cap section, and CLAUDE.md says
+  how to tell a resize, a whipsaw and a loop apart.
 - The treadmill, live (week to 2026-10-04). In a flat week (basket -1.5%,
   BTC +0.4%) H0 made 81 fills, paid 205 in costs (1.9% of equity) and lost
   10.9%. H4, the same signal at ten times the horizon, made no fills and lost
@@ -685,9 +697,9 @@ the machinery, not edge.
   Known and left as they are. The watch sees files opened and folders listed, not a file's size or date being
   looked up. Kraken's numbers are read with pandas' fast parser, which can be a unit out in the last place for
   a number of 16 digits or more; Kraken sends fewer, and the same text always reads the same, so nothing
-  drifts. And requirements.txt names no upper versions, for this job as for the hourly loop: a new pandas
-  could turn the suite red, or change what the loop does, on the day it comes out. Naming them is Fin's call,
-  because somebody then has to raise them.
+  drifts. requirements.txt named only lowest versions until 2026-10-08, when Fin had them pinned to the ones the whole
+  suite last passed on (with Python 3.12): until then a new pandas could have turned the suite red, or changed
+  what the loop does, on the day it came out. A version now moves only with a green run of the suite on it.
   The same parser quirk sits in bot/data.py: the vwap column of state/history (a mean of three prices from
   Coinbase) would shift by a unit in its last place whenever a history file is rewritten. Nothing reads it to
   that precision and a history file is rewritten only when a backfill adds to it, so it is left as it is.

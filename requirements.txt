@@ -1,5 +1,10 @@
-pandas>=2.2
-numpy>=1.26
-pyyaml>=6.0
-requests>=2.31
-pytest>=8.0
+# PROTECTED. The exact versions the whole test suite last passed on, with Python 3.12 (the Python every
+# workflow sets up). Pinned on 2026-10-08. Until then each run installed whatever was newest that hour, so
+# a new release of pandas or numpy could have changed a figure, or stopped the hourly run, with nothing
+# having been tested on it first. A version here is raised only together with a green run of the whole
+# suite on the new one. These five are the ones the code imports; what they bring with them is not pinned.
+pandas==3.0.6
+numpy==2.5.3
+pyyaml==6.0.3
+requests==2.34.2
+pytest==9.1.1

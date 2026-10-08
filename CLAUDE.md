@@ -33,8 +33,35 @@ can read it with `gh pr list --state closed`.
   in the note.
 - After `max_fills_per_pair_per_day` (4) fills in one pair in one UTC day,
   buys in that pair stop until the next day. Sells never stop. A decision
-  whose reason says "capped:" means a strategy tried to trade past that,
-  which is a loop.
+  with the action "none" whose reason begins "capped:" (after "replayed
+  after a missed run | " on a replayed hour) is a buy the cap stopped; one
+  the strategy still wants an hour later is stopped, and written, again.
+  The Fill cap section of the summary, under Runs, lists every buy the cap
+  stopped from the start of the UTC day a week ago, and every pair day (one
+  pair on one UTC day in one account) with 4 fills or more, for the
+  champion, every slot with a test and the shadow. Each line says whether
+  its stopped buys were entries from flat, top ups of a position held, or
+  a new strategy's first buy. The gate fails a backtest whose buys the cap
+  stopped on more than 12 pair days a year. A new strategy's first buy (a
+  test's first hour, or the champion's after a promotion or a revert) can
+  be stopped by what the config before it filled that day; that needs
+  nothing doing. Any other stopped buy is one of three things:
+  - A resize: a top up of a position the strategy keeps. When a book's
+    targets add up to more than the whole book, every position is scaled
+    down to fit, and when a pair enters or leaves the others are scaled
+    again, so several pairs can reach the cap on one day this way. A cost
+    of how the strategy sizes, not a bug.
+  - A whipsaw: an entry from flat, where after each exit the strategy's
+    own decisions said flat, because its entry condition failed, until a
+    later entry fired on a new reading. A cost the idea carries, not a
+    bug. The champion did it in AVAX on 2026-10-07: it sold at 10:27 on
+    "price more than 2.0% below 24h EMA", said flat for three hours, and
+    asked to buy again at 14:27 on a new reading.
+  - A loop: an entry from flat within an hour or two of selling, the entry
+    naming the same signal as the one before, often lower than it just
+    sold. H3 looped for nine days before there was a cap. Replayed with the
+    cap over its test (2026-09-25 to 2026-10-04), its buys would have been
+    stopped in five pairs on 2026-09-28 and on 8 pair days in all.
 - Every hour `bot/promote.py` looks at every running test, by the rules in
   configs/risk.yaml, set out in PROMOTION.md (read it once). A test ends
   `promoted`, `killed` or `unproven`, with the realised gross bps per round
@@ -122,6 +149,25 @@ can read it with `gh pr list --state closed`.
   skill figure yet" in the hour a window opens are normal. A damaged record
   is what `VOID REQUEST` is for when it cannot be mended. If the hourly run
   itself is red, say so first: nothing is committed until it is green.
+- A buy the cap stopped (a line of the Fill cap section with "a buy
+  stopped by the cap") goes in the note once: a line that a note of the
+  last 8 days in notes/ already reports is not reported again, though the
+  section shows it for a week, and hours added to it since are reported as
+  new hours. This holds on every run, whatever the slots hold; write the
+  note for it alone if you would not otherwise. Say the account, the pair,
+  the day, the hours, and which of the three it is (or that it was a new
+  strategy's first buy), read from that account's decisions.csv and
+  trades.csv for that pair and day. A resize or a whipsaw goes in the body
+  of the note with what those fills cost (fee plus slippage_cost in
+  trades.csv); when the same strategy does the same again on a later day,
+  add it to FINDINGS for its family. A loop goes at the top of the note:
+  in a slot's test it is a `VOID REQUEST`; in the champion or the shadow
+  it is for Fin, with the fills that show it, because you cannot end
+  either and a change to its strategy code would change every test that
+  runs the same strategy. The section is the count: do not write "no
+  capped rows" from a look through the decisions files (on 2026-10-07 the
+  cap stopped the champion's buy in AVAX in three hours, and that day's
+  note said there were none).
 - Every hour `bot/report.py` rewrites `state/summary.md`.
 - Once a day a separate job (`bot/wide.py`, protected) gathers research
   data under `state/wide/`: daily candles for the hundred or so most traded
@@ -247,6 +293,9 @@ If every slot is busy (a test running in each):
   backfills candles, so a clean Data section says nothing about whether the
   bot ran (on 2026-10-04 the bot had missed 26 of 40 hours and the Data
   section showed none missing).
+- Then the Fill cap section, under Runs: a buy the cap stopped is handled
+  as set out above, on this run as on any other. A line that says "no buy
+  stopped" needs no more than a look.
 - Compare each challenger's live fills per pair per day with the figure in
   its ledger entry's Backtest line. Several times the backtest rate is a bug
   report even when every reason matches its action (H3 ran at 1.39 against

@@ -59,7 +59,7 @@ jobs:
           echo '## quantloop hourly run' >> "$GITHUB_STEP_SUMMARY"
           echo '```' >> "$GITHUB_STEP_SUMMARY"
           python -m bot.slot >> "$GITHUB_STEP_SUMMARY"
-          tail -n +3 state/summary.md | head -60 >> "$GITHUB_STEP_SUMMARY"
+          tail -n +3 state/summary.md | head -100 >> "$GITHUB_STEP_SUMMARY"
           echo '```' >> "$GITHUB_STEP_SUMMARY"
 
       - name: Commit state

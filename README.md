@@ -89,6 +89,8 @@ as plausibility checks; only the prospective window counts.
 
 ## Running it yourself
 
+With Python 3.12 or newer (the version every workflow runs; requirements.txt pins versions that need it):
+
     pip install -r requirements.txt
     python -m pytest tests -q
     QUANTLOOP_FAKE_DATA=1 python -m bot.run          # synthetic data, no network
