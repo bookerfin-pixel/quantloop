@@ -3,7 +3,7 @@
   "created_at": 1790310197,
   "day": "2026-10-08",
   "day_open_equity": 9798.607529812134,
-  "equity_rows": 298,
+  "equity_rows": 299,
   "fees_paid": 50.9056968457272,
   "fills_day": {
     "counts": {
@@ -19,8 +19,8 @@
   },
   "halted_day": "2026-10-08",
   "initial_cash": 10000.0,
-  "last_bar": 1791471600,
-  "last_run_ts": 1791476975,
+  "last_bar": 1791475200,
+  "last_run_ts": 1791480344,
   "marks": {},
   "n_trades": 43,
   "name": "challenger4",
