@@ -1,0 +1,464 @@
+{
+ "basket": -0.49772555199462665,
+ "clock": {
+  "shifts": [],
+  "why": null
+ },
+ "costs_per_year": 0.1668751600729228,
+ "days": 1818,
+ "double_costs": {
+  "left_per_year": -0.5471693505154134,
+  "sharpe": -1.7067815617528184,
+  "t": -3.8091532869110476
+ },
+ "drift_per_year": -0.0010758255814386673,
+ "end": "2026-10-08",
+ "engine": {
+  "avg_gross_exposure": 0.318,
+  "days": 1817.8,
+  "max_drawdown": -0.9078,
+  "n_trades": 3844,
+  "pair_days_at_fill_cap": 0,
+  "starved_share": 0.0006,
+  "total_return": -0.8753,
+  "trades_per_pair_per_day_avg": 0.211
+ },
+ "exposure": 0.3179990463509245,
+ "halves": [
+  {
+   "beaten": 0.165,
+   "costs_per_year": 0.10750800705838198,
+   "days": 1818,
+   "drift_per_year": -0.0007470674026338394,
+   "exposure": 0.2486003085815861,
+   "left_per_year": -0.23874953879692842,
+   "net": -0.7635755398936606,
+   "no_twins": null,
+   "ok": true,
+   "pairs": [
+    "ADA",
+    "BTC",
+    "DOT",
+    "LINK",
+    "SOL"
+   ],
+   "t": -1.7800301879766856,
+   "timing_per_year": -0.13049446433591258
+  },
+  {
+   "beaten": 0.035,
+   "costs_per_year": 0.09352181060664229,
+   "days": 1818,
+   "drift_per_year": -0.005098949446133349,
+   "exposure": 0.23278338873797183,
+   "left_per_year": -0.31538799195519573,
+   "net": -0.7973775632012253,
+   "no_twins": null,
+   "ok": true,
+   "pairs": [
+    "AVAX",
+    "DOGE",
+    "ETH",
+    "LTC",
+    "XRP"
+   ],
+   "t": -2.5207507824098774,
+   "timing_per_year": -0.2167672319024201
+  },
+  {
+   "beaten": 0.04,
+   "costs_per_year": 0.10594875856617851,
+   "days": 1818,
+   "drift_per_year": 0.0002311960614540468,
+   "exposure": 0.24865776973693965,
+   "left_per_year": -0.3395141891567441,
+   "net": -0.8666432013256731,
+   "no_twins": null,
+   "ok": true,
+   "pairs": [
+    "ADA",
+    "AVAX",
+    "BTC",
+    "DOGE",
+    "DOT"
+   ],
+   "t": -2.558013349242797,
+   "timing_per_year": -0.23379662665201964
+  },
+  {
+   "beaten": 0.06,
+   "costs_per_year": 0.09395643497474562,
+   "days": 1818,
+   "drift_per_year": -0.003977795787090991,
+   "exposure": 0.22519651423454634,
+   "left_per_year": -0.2784942959111064,
+   "net": -0.7377270392665752,
+   "no_twins": null,
+   "ok": true,
+   "pairs": [
+    "ETH",
+    "LINK",
+    "LTC",
+    "SOL",
+    "XRP"
+   ],
+   "t": -2.214517280308983,
+   "timing_per_year": -0.1805600651492698
+  }
+ ],
+ "hypothesis": "H1",
+ "left_per_year": -0.3804828665514288,
+ "made_at": 1791425216,
+ "nearby": [
+  {
+   "beaten": 0.005,
+   "costs_per_year": 0.20762491219757873,
+   "days": 1818,
+   "drift_per_year": -0.002413368889605406,
+   "exposure": 0.33132850146027326,
+   "left_per_year": -0.5451526654859572,
+   "net": -0.9457554716802339,
+   "no_twins": null,
+   "ok": true,
+   "pairs": [
+    "ADA",
+    "AVAX",
+    "BTC",
+    "DOGE",
+    "DOT",
+    "ETH",
+    "LINK",
+    "LTC",
+    "SOL",
+    "XRP"
+   ],
+   "params": {
+    "entry_z": 1.74854,
+    "exit_z": 0.61788,
+    "max_weight": 0.250338,
+    "target_vol_annual": 0.360068,
+    "vol_lookback_hours": 156,
+    "window_hours": 233
+   },
+   "t": -3.684460249899501,
+   "timing_per_year": -0.33511438439877306
+  },
+  {
+   "beaten": 0.045,
+   "costs_per_year": 0.20296038142077152,
+   "days": 1820,
+   "drift_per_year": -0.0011272328944687637,
+   "exposure": 0.3130213602906508,
+   "left_per_year": -0.4680849980789772,
+   "net": -0.9169430435280851,
+   "no_twins": null,
+   "ok": true,
+   "pairs": [
+    "ADA",
+    "AVAX",
+    "BTC",
+    "DOGE",
+    "DOT",
+    "ETH",
+    "LINK",
+    "LTC",
+    "SOL",
+    "XRP"
+   ],
+   "params": {
+    "entry_z": 1.80463,
+    "exit_z": 0.594383,
+    "max_weight": 0.222709,
+    "target_vol_annual": 0.250534,
+    "vol_lookback_hours": 145,
+    "window_hours": 198
+   },
+   "t": -3.2849955328679856,
+   "timing_per_year": -0.26399738376373694
+  },
+  {
+   "beaten": 0.025,
+   "costs_per_year": 0.11735642491737928,
+   "days": 1816,
+   "drift_per_year": -0.0003254052361525122,
+   "exposure": 0.26811645871450646,
+   "left_per_year": -0.36090223304543434,
+   "net": -0.8591189285276608,
+   "no_twins": null,
+   "ok": true,
+   "pairs": [
+    "ADA",
+    "AVAX",
+    "BTC",
+    "DOGE",
+    "DOT",
+    "ETH",
+    "LINK",
+    "LTC",
+    "SOL",
+    "XRP"
+   ],
+   "params": {
+    "entry_z": 2.11073,
+    "exit_z": 0.623091,
+    "max_weight": 0.215325,
+    "target_vol_annual": 0.348117,
+    "vol_lookback_hours": 168,
+    "window_hours": 297
+   },
+   "t": -2.6107705014114897,
+   "timing_per_year": -0.24322040289190264
+  },
+  {
+   "beaten": 0.065,
+   "costs_per_year": 0.14389458232660046,
+   "days": 1817,
+   "drift_per_year": -0.0011550674094295166,
+   "exposure": 0.30681777174428676,
+   "left_per_year": -0.35920308514326066,
+   "net": -0.8565559007252489,
+   "no_twins": null,
+   "ok": true,
+   "pairs": [
+    "ADA",
+    "AVAX",
+    "BTC",
+    "DOGE",
+    "DOT",
+    "ETH",
+    "LINK",
+    "LTC",
+    "SOL",
+    "XRP"
+   ],
+   "params": {
+    "entry_z": 1.90168,
+    "exit_z": 0.534007,
+    "max_weight": 0.201905,
+    "target_vol_annual": 0.306986,
+    "vol_lookback_hours": 158,
+    "window_hours": 261
+   },
+   "t": -2.525651702090764,
+   "timing_per_year": -0.21415343540723064
+  },
+  {
+   "beaten": 0.045,
+   "costs_per_year": 0.2344013172620176,
+   "days": 1819,
+   "drift_per_year": -0.002294181239198239,
+   "exposure": 0.3542676025658292,
+   "left_per_year": -0.4799028074849166,
+   "net": -0.9245909952259408,
+   "no_twins": null,
+   "ok": true,
+   "pairs": [
+    "ADA",
+    "AVAX",
+    "BTC",
+    "DOGE",
+    "DOT",
+    "ETH",
+    "LINK",
+    "LTC",
+    "SOL",
+    "XRP"
+   ],
+   "params": {
+    "entry_z": 1.60823,
+    "exit_z": 0.606688,
+    "max_weight": 0.300172,
+    "target_vol_annual": 0.267216,
+    "vol_lookback_hours": 151,
+    "window_hours": 222
+   },
+   "t": -3.321901492023723,
+   "timing_per_year": -0.24320730898370074
+  },
+  {
+   "beaten": 0.065,
+   "costs_per_year": 0.11173298913579437,
+   "days": 1817,
+   "drift_per_year": -0.0011336804397567278,
+   "exposure": 0.2660496427681605,
+   "left_per_year": -0.31758622927676233,
+   "net": -0.8092009277388743,
+   "no_twins": null,
+   "ok": true,
+   "pairs": [
+    "ADA",
+    "AVAX",
+    "BTC",
+    "DOGE",
+    "DOT",
+    "ETH",
+    "LINK",
+    "LTC",
+    "SOL",
+    "XRP"
+   ],
+   "params": {
+    "entry_z": 2.3589,
+    "exit_z": 0.470206,
+    "max_weight": 0.298295,
+    "target_vol_annual": 0.360771,
+    "vol_lookback_hours": 205,
+    "window_hours": 280
+   },
+   "t": -2.3219162042775032,
+   "timing_per_year": -0.20471955970121122
+  }
+ ],
+ "net": -0.8754338930505634,
+ "no_twins": null,
+ "pairs": [
+  "ADA",
+  "AVAX",
+  "BTC",
+  "DOGE",
+  "DOT",
+  "ETH",
+  "LINK",
+  "LTC",
+  "SOL",
+  "XRP"
+ ],
+ "params": {
+  "entry_z": 2.0,
+  "exit_z": 0.5,
+  "max_weight": 0.25,
+  "target_vol_annual": 0.3,
+  "vol_lookback_hours": 168,
+  "window_hours": 240
+ },
+ "quick": false,
+ "rebuilt_within_bps": 1.3019099687205937e-11,
+ "rule_one": {
+  "closed_by_halt_or_error": 602,
+  "fast_t": 2.0,
+  "fills_by_first": 126.87864451534821,
+  "finished_trades": 793,
+  "first_days": 60,
+  "min_fills": 30,
+  "min_t": 1.0,
+  "no_trade_by_first": 0.0,
+  "no_trade_by_total": 0.0,
+  "total_days": 120,
+  "windows": {
+   "all_counts": 0.008245877061469266,
+   "apart": 12,
+   "fast_pass": 0.018740629685157422,
+   "few_fills": 0.0,
+   "no_trade": 0.0,
+   "t_middle": -0.6207979877012124,
+   "t_reached": 0.008245877061469266,
+   "windows": 1334
+  }
+ },
+ "sharpe": -1.2007367873081627,
+ "signature": "275dac52e3eb4c23",
+ "slide": {
+  "candles_days": 90.0,
+  "history_days": 1817.1666666666667,
+  "lead_days": 180.0,
+  "least_days": 300.0,
+  "longest_hold_days": 16.333333333333332,
+  "longest_hold_pair": "SOL",
+  "wrote_params": false
+ },
+ "start": "2021-10-16",
+ "strategy": "mean_reversion",
+ "t": -2.679774953388142,
+ "tails": {
+  "best": 0.1287388209574521,
+  "days": 9,
+  "worst": -0.16582732477246703
+ },
+ "timing_per_year": -0.2125318808970673,
+ "took_s": 1559.6,
+ "twin_gross_per_year": 0.042603973025796896,
+ "twins": {
+  "beaten": 0.069,
+  "beaten_last_365": 0.662,
+  "chance": 0.9313117892672257,
+  "in_place": [],
+  "n": 1000,
+  "net_middle": -0.621787290469451,
+  "worth": 220.3033200725162
+ },
+ "version": 1,
+ "years": [
+  {
+   "basket": -0.12658287605171603,
+   "costs": 0.04060478413192718,
+   "days": 77,
+   "drift": -0.002784576418362124,
+   "exposure": 0.2676958036995045,
+   "left": -0.0831208608425896,
+   "net": -0.11321298271377278,
+   "timing": -0.039731500292300326,
+   "twins_beaten": 0.408,
+   "year": 2021
+  },
+  {
+   "basket": -0.7561426088167377,
+   "costs": 0.17280160622468005,
+   "days": 365,
+   "drift": -0.0024863799703786996,
+   "exposure": 0.32414802092677486,
+   "left": -0.6085358666587204,
+   "net": -0.6399716519023626,
+   "timing": -0.4332478804636615,
+   "twins_beaten": 0.093,
+   "year": 2022
+  },
+  {
+   "basket": 1.4045087510265621,
+   "costs": 0.13578343482763444,
+   "days": 365,
+   "drift": 0.0031355510867929724,
+   "exposure": 0.29354578932915115,
+   "left": -0.46853285482463936,
+   "net": -0.1788215272351099,
+   "timing": -0.33588497108379806,
+   "twins_beaten": 0.11,
+   "year": 2023
+  },
+  {
+   "basket": 0.8473183011577086,
+   "costs": 0.17883170047345198,
+   "days": 366,
+   "drift": -0.0021091108856906987,
+   "exposure": 0.32016901927403385,
+   "left": -0.4707626306615952,
+   "net": -0.23907403377691583,
+   "timing": -0.2898218193024525,
+   "twins_beaten": 0.194,
+   "year": 2024
+  },
+  {
+   "basket": -0.3942149068061267,
+   "costs": 0.1738675882236687,
+   "days": 365,
+   "drift": 0.0016178589726997903,
+   "exposure": 0.32588448381394425,
+   "left": -0.16517676408782742,
+   "net": -0.28061832234209927,
+   "timing": 0.0070729651631415355,
+   "twins_beaten": 0.508,
+   "year": 2025
+  },
+  {
+   "basket": -0.12361127346143175,
+   "costs": 0.12928634094760652,
+   "days": 280,
+   "drift": -0.0027318384208297273,
+   "exposure": 0.34207768495009805,
+   "left": -0.09898842399448407,
+   "net": -0.13203035926174567,
+   "timing": 0.033029755373952197,
+   "twins_beaten": 0.567,
+   "year": 2026
+  }
+ ]
+}
