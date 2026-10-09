@@ -1,37 +1,36 @@
 {
  "coinbase": {
-  "coins": 5,
-  "days_added": 2850,
+  "coins": 3,
+  "days_added": 3052,
   "failed": [],
   "mismatch": [
-   "GALA: only 0 days in common"
+   "PONS: only 2 days in common",
+   "WIF: only 6 days in common"
   ],
-  "not_listed": 2
+  "not_listed": 19
  },
  "funding": {
-  "days_added": 1264,
+  "days_added": 1506,
   "failed": [],
-  "symbols": 34
+  "symbols": 38
  },
  "kraken": {
-  "days_added": 5644,
+  "days_added": 3642,
   "failed": [],
   "joined_today": [
-   "JTO",
-   "W",
-   "HNT",
-   "GALA",
-   "MET",
-   "AR",
-   "ZBCN",
-   "GTC",
-   "SYN"
+   "VET",
+   "OGN",
+   "UAI",
+   "GNOT",
+   "ETHFI",
+   "BAT",
+   "PONS",
+   "WIF"
   ],
-  "listed": 108,
-  "on_the_list": 109,
-  "pairs_read": 108,
+  "listed": 116,
+  "on_the_list": 117,
+  "pairs_read": 116,
   "pegged_skipped": [
-   "APXUSD",
    "AUSD",
    "CASH",
    "FIDD",
@@ -45,10 +44,10 @@
    "USDSUI",
    "USTABLES"
   ],
-  "qualified_today": 230,
-  "quoted": 629,
+  "qualified_today": 253,
+  "quoted": 630,
   "quotes_failed": "",
-  "quotes_written": 108,
+  "quotes_written": 116,
   "unquoted": [],
   "usd_pairs": 652
  },
@@ -65,7 +64,7 @@
    "ok": true
   }
  },
- "ran": 1791421266,
- "ran_utc": "2026-10-08 01:01Z",
+ "ran": 1791507774,
+ "ran_utc": "2026-10-09 01:02Z",
  "settings_not_used": []
 }

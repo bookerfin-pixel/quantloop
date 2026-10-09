@@ -15,9 +15,9 @@
   "want_from": 1633651200
  },
  "AKE": {
-  "at": 1791378076,
-  "result": "not listed, to be asked once more",
-  "want_from": 1633651200
+  "at": 1791507774,
+  "result": "not listed",
+  "want_from": 1633824000
  },
  "AKT": {
   "at": 1791378076,
@@ -35,9 +35,9 @@
   "want_from": 1633651200
  },
  "AR": {
-  "at": 1791421266,
-  "result": "not listed, to be asked once more",
-  "want_from": 1633737600
+  "at": 1791507774,
+  "result": "not listed",
+  "want_from": 1633824000
  },
  "ARB": {
   "at": 1791378076,
@@ -45,9 +45,9 @@
   "want_from": 1633651200
  },
  "ASTER": {
-  "at": 1791378076,
-  "result": "no candles, to be asked once more",
-  "want_from": 1633651200
+  "at": 1791507774,
+  "result": "no candles",
+  "want_from": 1633824000
  },
  "ATOM": {
   "at": 1791378076,
@@ -59,15 +59,20 @@
   "result": "added 1105 days; closes differ by 0.07% at the median and 0.16% at the ninth decile over 31 days",
   "want_from": 1633651200
  },
+ "BAT": {
+  "at": 1791507774,
+  "result": "added 1105 days; closes differ by 0.08% at the median and 0.40% at the ninth decile over 31 days",
+  "want_from": 1633824000
+ },
  "BCH": {
   "at": 1791378076,
   "result": "added 1105 days; closes differ by 0.09% at the median and 0.34% at the ninth decile over 31 days",
   "want_from": 1633651200
  },
  "BNB": {
-  "at": 1791378076,
-  "result": "no candles, to be asked once more",
-  "want_from": 1633651200
+  "at": 1791507774,
+  "result": "no candles",
+  "want_from": 1633824000
  },
  "BONK": {
   "at": 1791378076,
@@ -75,9 +80,9 @@
   "want_from": 1633651200
  },
  "BRL1": {
-  "at": 1791378076,
-  "result": "not listed, to be asked once more",
-  "want_from": 1633651200
+  "at": 1791507774,
+  "result": "not listed",
+  "want_from": 1633824000
  },
  "BTC": {
   "at": 1791378076,
@@ -90,9 +95,9 @@
   "want_from": 1633651200
  },
  "CC": {
-  "at": 1791378076,
-  "result": "not listed, to be asked once more",
-  "want_from": 1633651200
+  "at": 1791507774,
+  "result": "not listed",
+  "want_from": 1633824000
  },
  "CHIP": {
   "at": 1791378076,
@@ -120,9 +125,9 @@
   "want_from": 1633651200
  },
  "DRV": {
-  "at": 1791378076,
-  "result": "no candles, to be asked once more",
-  "want_from": 1633651200
+  "at": 1791507774,
+  "result": "no candles",
+  "want_from": 1633824000
  },
  "EIGEN": {
   "at": 1791378076,
@@ -130,24 +135,29 @@
   "want_from": 1633651200
  },
  "ELIZAOS": {
-  "at": 1791378076,
-  "result": "not listed, to be asked once more",
-  "want_from": 1633651200
+  "at": 1791507774,
+  "result": "not listed",
+  "want_from": 1633824000
  },
  "ENA": {
-  "at": 1791378076,
-  "result": "no candles, to be asked once more",
-  "want_from": 1633651200
+  "at": 1791507774,
+  "result": "no candles",
+  "want_from": 1633824000
  },
  "ETH": {
   "at": 1791378076,
   "result": "added 1105 days; closes differ by 0.03% at the median and 0.07% at the ninth decile over 31 days",
   "want_from": 1633651200
  },
- "FARTCOIN": {
-  "at": 1791378076,
+ "ETHFI": {
+  "at": 1791507774,
   "result": "no candles, to be asked once more",
-  "want_from": 1633651200
+  "want_from": 1633824000
+ },
+ "FARTCOIN": {
+  "at": 1791507774,
+  "result": "no candles",
+  "want_from": 1633824000
  },
  "FET": {
   "at": 1791378076,
@@ -164,10 +174,15 @@
   "result": "not used: only 0 days in common",
   "want_from": 1633737600
  },
+ "GNOT": {
+  "at": 1791507774,
+  "result": "not listed, to be asked once more",
+  "want_from": 1633824000
+ },
  "GRASS": {
-  "at": 1791378076,
-  "result": "no candles, to be asked once more",
-  "want_from": 1633651200
+  "at": 1791507774,
+  "result": "no candles",
+  "want_from": 1633824000
  },
  "GTC": {
   "at": 1791421266,
@@ -210,9 +225,9 @@
   "want_from": 1633651200
  },
  "KAS": {
-  "at": 1791378076,
-  "result": "not listed, to be asked once more",
-  "want_from": 1633651200
+  "at": 1791507774,
+  "result": "not listed",
+  "want_from": 1633824000
  },
  "KSM": {
   "at": 1791378076,
@@ -260,9 +275,9 @@
   "want_from": 1633651200
  },
  "MNT": {
-  "at": 1791378076,
-  "result": "not listed, to be asked once more",
-  "want_from": 1633651200
+  "at": 1791507774,
+  "result": "not listed",
+  "want_from": 1633824000
  },
  "MON": {
   "at": 1791378076,
@@ -270,9 +285,9 @@
   "want_from": 1633651200
  },
  "MORPHO": {
-  "at": 1791378076,
-  "result": "no candles, to be asked once more",
-  "want_from": 1633651200
+  "at": 1791507774,
+  "result": "no candles",
+  "want_from": 1633824000
  },
  "NEAR": {
   "at": 1791378076,
@@ -280,19 +295,24 @@
   "want_from": 1633651200
  },
  "NIGHT": {
-  "at": 1791378076,
-  "result": "not listed, to be asked once more",
-  "want_from": 1633651200
+  "at": 1791507774,
+  "result": "not listed",
+  "want_from": 1633824000
  },
  "NIL": {
-  "at": 1791378076,
-  "result": "not listed, to be asked once more",
-  "want_from": 1633651200
+  "at": 1791507774,
+  "result": "not listed",
+  "want_from": 1633824000
  },
  "NPC": {
-  "at": 1791378076,
-  "result": "not listed, to be asked once more",
-  "want_from": 1633651200
+  "at": 1791507774,
+  "result": "not listed",
+  "want_from": 1633824000
+ },
+ "OGN": {
+  "at": 1791507774,
+  "result": "added 1105 days; closes differ by 0.42% at the median and 1.19% at the ninth decile over 31 days",
+  "want_from": 1633824000
  },
  "ONDO": {
   "at": 1791378076,
@@ -310,9 +330,9 @@
   "want_from": 1633651200
  },
  "PENDLE": {
-  "at": 1791378076,
-  "result": "no candles, to be asked once more",
-  "want_from": 1633651200
+  "at": 1791507774,
+  "result": "no candles",
+  "want_from": 1633824000
  },
  "PENGU": {
   "at": 1791378076,
@@ -329,6 +349,11 @@
   "result": "added 43 days; closes differ by 0.07% at the median and 0.17% at the ninth decile over 31 days",
   "want_from": 1633651200
  },
+ "PONS": {
+  "at": 1791507774,
+  "result": "not used: only 2 days in common",
+  "want_from": 1633824000
+ },
  "PROS": {
   "at": 1791378076,
   "result": "added 0 days; closes differ by 0.33% at the median and 0.98% at the ninth decile over 31 days",
@@ -340,9 +365,9 @@
   "want_from": 1633651200
  },
  "PYTH": {
-  "at": 1791378076,
-  "result": "no candles, to be asked once more",
-  "want_from": 1633651200
+  "at": 1791507774,
+  "result": "no candles",
+  "want_from": 1633824000
  },
  "QNT": {
   "at": 1791378076,
@@ -350,9 +375,9 @@
   "want_from": 1633651200
  },
  "RAY": {
-  "at": 1791378076,
-  "result": "no candles, to be asked once more",
-  "want_from": 1633651200
+  "at": 1791507774,
+  "result": "no candles",
+  "want_from": 1633824000
  },
  "RENDER": {
   "at": 1791378076,
@@ -380,14 +405,14 @@
   "want_from": 1633651200
  },
  "SHX": {
-  "at": 1791378076,
-  "result": "not listed, to be asked once more",
-  "want_from": 1633651200
+  "at": 1791507774,
+  "result": "not listed",
+  "want_from": 1633824000
  },
  "SKY": {
-  "at": 1791378076,
-  "result": "no candles, to be asked once more",
-  "want_from": 1633651200
+  "at": 1791507774,
+  "result": "no candles",
+  "want_from": 1633824000
  },
  "SOL": {
   "at": 1791378076,
@@ -395,9 +420,9 @@
   "want_from": 1633651200
  },
  "SPX": {
-  "at": 1791378076,
-  "result": "no candles, to be asked once more",
-  "want_from": 1633651200
+  "at": 1791507774,
+  "result": "no candles",
+  "want_from": 1633824000
  },
  "STRK": {
   "at": 1791378076,
@@ -420,14 +445,14 @@
   "want_from": 1633737600
  },
  "SYRUP": {
-  "at": 1791378076,
-  "result": "no candles, to be asked once more",
-  "want_from": 1633651200
+  "at": 1791507774,
+  "result": "no candles",
+  "want_from": 1633824000
  },
  "TAO": {
-  "at": 1791378076,
-  "result": "no candles, to be asked once more",
-  "want_from": 1633651200
+  "at": 1791507774,
+  "result": "no candles",
+  "want_from": 1633824000
  },
  "TIA": {
   "at": 1791378076,
@@ -435,9 +460,9 @@
   "want_from": 1633651200
  },
  "TON": {
-  "at": 1791378076,
-  "result": "no candles, to be asked once more",
-  "want_from": 1633651200
+  "at": 1791507774,
+  "result": "no candles",
+  "want_from": 1633824000
  },
  "TRUMP": {
   "at": 1791378076,
@@ -445,9 +470,14 @@
   "want_from": 1633651200
  },
  "TRX": {
-  "at": 1791378076,
+  "at": 1791507774,
+  "result": "not listed",
+  "want_from": 1633824000
+ },
+ "UAI": {
+  "at": 1791507774,
   "result": "not listed, to be asked once more",
-  "want_from": 1633651200
+  "want_from": 1633824000
  },
  "UNI": {
   "at": 1791378076,
@@ -455,19 +485,24 @@
   "want_from": 1633651200
  },
  "US": {
-  "at": 1791378076,
-  "result": "not listed, to be asked once more",
-  "want_from": 1633651200
+  "at": 1791507774,
+  "result": "not listed",
+  "want_from": 1633824000
  },
  "USELESS": {
   "at": 1791378076,
   "result": "added 0 days; closes differ by 0.24% at the median and 0.69% at the ninth decile over 24 days",
   "want_from": 1633651200
  },
+ "VET": {
+  "at": 1791507774,
+  "result": "added 842 days; closes differ by 0.20% at the median and 0.73% at the ninth decile over 31 days",
+  "want_from": 1633824000
+ },
  "VIRTUAL": {
-  "at": 1791378076,
-  "result": "no candles, to be asked once more",
-  "want_from": 1633651200
+  "at": 1791507774,
+  "result": "no candles",
+  "want_from": 1633824000
  },
  "VVV": {
   "at": 1791378076,
@@ -475,14 +510,19 @@
   "want_from": 1633651200
  },
  "W": {
-  "at": 1791421266,
-  "result": "no candles, to be asked once more",
-  "want_from": 1633737600
+  "at": 1791507774,
+  "result": "no candles",
+  "want_from": 1633824000
+ },
+ "WIF": {
+  "at": 1791507774,
+  "result": "not used: only 6 days in common",
+  "want_from": 1633824000
  },
  "WLD": {
-  "at": 1791378076,
-  "result": "no candles, to be asked once more",
-  "want_from": 1633651200
+  "at": 1791507774,
+  "result": "no candles",
+  "want_from": 1633824000
  },
  "XCN": {
   "at": 1791378076,
@@ -490,9 +530,9 @@
   "want_from": 1633651200
  },
  "XDC": {
-  "at": 1791378076,
-  "result": "not listed, to be asked once more",
-  "want_from": 1633651200
+  "at": 1791507774,
+  "result": "not listed",
+  "want_from": 1633824000
  },
  "XLM": {
   "at": 1791378076,
@@ -500,14 +540,14 @@
   "want_from": 1633651200
  },
  "XMR": {
-  "at": 1791378076,
-  "result": "not listed, to be asked once more",
-  "want_from": 1633651200
+  "at": 1791507774,
+  "result": "not listed",
+  "want_from": 1633824000
  },
  "XPL": {
-  "at": 1791378076,
-  "result": "no candles, to be asked once more",
-  "want_from": 1633651200
+  "at": 1791507774,
+  "result": "no candles",
+  "want_from": 1633824000
  },
  "XRP": {
   "at": 1791378076,
@@ -520,9 +560,9 @@
   "want_from": 1633651200
  },
  "ZBCN": {
-  "at": 1791421266,
-  "result": "not listed, to be asked once more",
-  "want_from": 1633737600
+  "at": 1791507774,
+  "result": "not listed",
+  "want_from": 1633824000
  },
  "ZEC": {
   "at": 1791378076,
@@ -530,9 +570,9 @@
   "want_from": 1633651200
  },
  "ZEUS": {
-  "at": 1791378076,
-  "result": "not listed, to be asked once more",
-  "want_from": 1633651200
+  "at": 1791507774,
+  "result": "not listed",
+  "want_from": 1633824000
  },
  "ZRO": {
   "at": 1791378076,
