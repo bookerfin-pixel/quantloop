@@ -3089,3 +3089,13 @@ ts,account,pair,price,signal_weight,target_weight,current_weight,action,reason,h
 1791516373,challenger4,DOGE,0.084899,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 720h return -5.82% not above entry band +5.0% and price below 168h EMA,0.012
 1791516373,challenger4,DOT,1.1538,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 720h return -4.99% not above entry band +5.0% and price below 168h EMA,1.733
 1791516373,challenger4,LTC,63.51,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: price below 168h EMA,1.575
+1791520018,challenger4,BTC,82366.65,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 720h return +4.74% not above entry band +5.0% and price below 168h EMA,0.006
+1791520018,challenger4,ETH,2490.615,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 720h return +0.12% not above entry band +5.0% and price below 168h EMA,0.02
+1791520018,challenger4,SOL,110.405,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: price below 168h EMA,0.453
+1791520018,challenger4,ADA,0.235386,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: price below 168h EMA,1.083
+1791520018,challenger4,AVAX,10.242,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: price below 168h EMA,0.976
+1791520018,challenger4,LINK,12.821115,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 720h return +3.53% not above entry band +5.0% and price below 168h EMA,0.004
+1791520018,challenger4,XRP,1.39444,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 720h return -1.57% not above entry band +5.0% and price below 168h EMA,0.072
+1791520018,challenger4,DOGE,0.084973,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 720h return -5.22% not above entry band +5.0% and price below 168h EMA,0.006
+1791520018,challenger4,DOT,1.15475,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 720h return -4.42% not above entry band +5.0% and price below 168h EMA,1.299
+1791520018,challenger4,LTC,63.905,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: price below 168h EMA,0.782
