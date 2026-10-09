@@ -3199,3 +3199,13 @@ ts,account,pair,price,signal_weight,target_weight,current_weight,action,reason,h
 1791556218,challenger4,DOGE,0.084904,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 720h return -6.57% not above entry band +5.0% and price below 168h EMA,0.012
 1791556218,challenger4,DOT,1.17265,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 720h return +0.90% not above entry band +5.0%,0.426
 1791556218,challenger4,LTC,63.765,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: price below 168h EMA,0.784
+1791559561,challenger4,BTC,82833.55,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: price below 168h EMA,0.006
+1791559561,challenger4,ETH,2485.145,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 720h return -0.40% not above entry band +5.0% and price below 168h EMA,0.02
+1791559561,challenger4,SOL,109.445,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: price below 168h EMA,0.457
+1791559561,challenger4,ADA,0.235864,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: price below 168h EMA,1.039
+1791559561,challenger4,AVAX,10.135,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: price below 168h EMA,0.987
+1791559561,challenger4,LINK,12.774905,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: price below 168h EMA,0.004
+1791559561,challenger4,XRP,1.378315,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 720h return -3.00% not above entry band +5.0% and price below 168h EMA,0.109
+1791559561,challenger4,DOGE,0.084293,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 720h return -5.72% not above entry band +5.0% and price below 168h EMA,0.006
+1791559561,challenger4,DOT,1.16175,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 720h return +2.90% not above entry band +5.0%,1.291
+1791559561,challenger4,LTC,63.2,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: price below 168h EMA,1.582
