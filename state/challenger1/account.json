@@ -1,30 +1,73 @@
 {
-  "cash": 9644.581527719938,
+  "cash": -2.2737367544323206e-13,
   "created_at": 1789530957,
-  "day": "2026-10-08",
-  "day_open_equity": 10208.075444885875,
-  "equity_rows": 523,
-  "fees_paid": 53.33718474183478,
+  "day": "2026-10-09",
+  "day_open_equity": 9644.581527719938,
+  "equity_rows": 524,
+  "fees_paid": 62.97213132297358,
   "fills_day": {
     "counts": {
+      "AVAX": 1,
+      "BTC": 1,
       "DOGE": 1,
-      "DOT": 1,
       "ETH": 1,
       "LINK": 1,
       "LTC": 1,
       "SOL": 1,
       "XRP": 1
     },
-    "day": "2026-10-08"
+    "day": "2026-10-09"
   },
   "halted_day": "2026-10-08",
   "initial_cash": 10000.0,
-  "last_bar": 1791496800,
-  "last_run_ts": 1791501852,
-  "marks": {},
-  "n_trades": 30,
+  "last_bar": 1791500400,
+  "last_run_ts": 1791506266,
+  "marks": {
+    "AVAX": [
+      10.072,
+      1791506266
+    ],
+    "BTC": [
+      81735.75,
+      1791506266
+    ],
+    "DOGE": [
+      0.0841533,
+      1791506266
+    ],
+    "ETH": [
+      2478.5150000000003,
+      1791506266
+    ],
+    "LINK": [
+      12.728465,
+      1791506266
+    ],
+    "LTC": [
+      63.144999999999996,
+      1791506266
+    ],
+    "SOL": [
+      109.155,
+      1791506266
+    ],
+    "XRP": [
+      1.385375,
+      1791506266
+    ]
+  },
+  "n_trades": 38,
   "name": "challenger1",
-  "positions": {},
-  "slippage_paid": 26.801251821709464,
+  "positions": {
+    "AVAX": 119.63564394976783,
+    "BTC": 0.014742266460662089,
+    "DOGE": 14318.7516813014,
+    "ETH": 0.48616619462140076,
+    "LINK": 94.66736215734272,
+    "LTC": 18.93008273571434,
+    "SOL": 11.039074763978391,
+    "XRP": 869.7790893166552
+  },
+  "slippage_paid": 31.61631757939951,
   "strategy_sig": "params:\n  entry_z: 2.0\n  exit_z: 0.5\n  max_weight: 0.25\n  target_vol_annual: 0.3\n  vol_lookback_hours: 168\n  window_hours: 240\nstrategy: mean_reversion\n"
 }

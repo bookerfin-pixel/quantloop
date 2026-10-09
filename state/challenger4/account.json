@@ -1,26 +1,18 @@
 {
   "cash": 9245.091460070089,
   "created_at": 1790310197,
-  "day": "2026-10-08",
-  "day_open_equity": 9798.607529812134,
-  "equity_rows": 305,
+  "day": "2026-10-09",
+  "day_open_equity": 9245.091460070089,
+  "equity_rows": 306,
   "fees_paid": 50.9056968457272,
   "fills_day": {
-    "counts": {
-      "ADA": 3,
-      "AVAX": 3,
-      "BTC": 3,
-      "ETH": 3,
-      "LINK": 1,
-      "LTC": 2,
-      "SOL": 2
-    },
-    "day": "2026-10-08"
+    "counts": {},
+    "day": "2026-10-09"
   },
   "halted_day": "2026-10-08",
   "initial_cash": 10000.0,
-  "last_bar": 1791496800,
-  "last_run_ts": 1791501852,
+  "last_bar": 1791500400,
+  "last_run_ts": 1791506266,
   "marks": {},
   "n_trades": 43,
   "name": "challenger4",
