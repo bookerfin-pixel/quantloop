@@ -1,4 +1,9 @@
 {
+ "0G": {
+  "at": 1791594078,
+  "result": "not listed, to be asked once more",
+  "want_from": 1633910400
+ },
  "AAVE": {
   "at": 1791378076,
   "result": "added 1105 days; closes differ by 0.04% at the median and 0.26% at the ninth decile over 31 days",
@@ -150,9 +155,9 @@
   "want_from": 1633651200
  },
  "ETHFI": {
-  "at": 1791507774,
-  "result": "no candles, to be asked once more",
-  "want_from": 1633824000
+  "at": 1791594078,
+  "result": "no candles",
+  "want_from": 1633910400
  },
  "FARTCOIN": {
   "at": 1791507774,
@@ -169,15 +174,25 @@
   "result": "added 1105 days; closes differ by 0.11% at the median and 0.47% at the ninth decile over 31 days",
   "want_from": 1633651200
  },
+ "FLR": {
+  "at": 1791594078,
+  "result": "added 555 days; closes differ by 0.14% at the median and 0.35% at the ninth decile over 31 days",
+  "want_from": 1633910400
+ },
  "GALA": {
   "at": 1791421266,
   "result": "not used: only 0 days in common",
   "want_from": 1633737600
  },
+ "GMT": {
+  "at": 1791594078,
+  "result": "added 906 days; closes differ by 0.40% at the median and 0.57% at the ninth decile over 31 days",
+  "want_from": 1633910400
+ },
  "GNOT": {
-  "at": 1791507774,
-  "result": "not listed, to be asked once more",
-  "want_from": 1633824000
+  "at": 1791594078,
+  "result": "not listed",
+  "want_from": 1633910400
  },
  "GRASS": {
   "at": 1791507774,
@@ -198,6 +213,11 @@
   "at": 1791421266,
   "result": "added 464 days; closes differ by 0.22% at the median and 0.65% at the ninth decile over 31 days",
   "want_from": 1633737600
+ },
+ "HONEY": {
+  "at": 1791594078,
+  "result": "added 277 days; closes differ by 0.35% at the median and 1.03% at the ninth decile over 31 days",
+  "want_from": 1633910400
  },
  "HYPE": {
   "at": 1791378076,
@@ -258,6 +278,11 @@
   "at": 1791378076,
   "result": "added 1105 days; closes differ by 0.03% at the median and 0.05% at the ninth decile over 31 days",
   "want_from": 1633651200
+ },
+ "LUNA": {
+  "at": 1791594078,
+  "result": "not listed, to be asked once more",
+  "want_from": 1633910400
  },
  "MANA": {
   "at": 1791378076,
@@ -389,6 +414,11 @@
   "result": "added 1105 days; closes differ by 0.25% at the median and 1.16% at the ninth decile over 31 days",
   "want_from": 1633651200
  },
+ "S": {
+  "at": 1791594078,
+  "result": "no candles, to be asked once more",
+  "want_from": 1633910400
+ },
  "SAND": {
   "at": 1791378076,
   "result": "added 875 days; closes differ by 0.07% at the median and 0.17% at the ninth decile over 31 days",
@@ -398,6 +428,11 @@
   "at": 1791378076,
   "result": "added 429 days; closes differ by 0.07% at the median and 0.17% at the ninth decile over 31 days",
   "want_from": 1633651200
+ },
+ "SENT": {
+  "at": 1791594078,
+  "result": "added 0 days; closes differ by 0.12% at the median and 0.57% at the ninth decile over 31 days",
+  "want_from": 1633910400
  },
  "SHIB": {
   "at": 1791378076,
@@ -475,9 +510,9 @@
   "want_from": 1633824000
  },
  "UAI": {
-  "at": 1791507774,
-  "result": "not listed, to be asked once more",
-  "want_from": 1633824000
+  "at": 1791594078,
+  "result": "not listed",
+  "want_from": 1633910400
  },
  "UNI": {
   "at": 1791378076,
@@ -533,6 +568,11 @@
   "at": 1791507774,
   "result": "not listed",
   "want_from": 1633824000
+ },
+ "XDP": {
+  "at": 1791594078,
+  "result": "not listed, to be asked once more",
+  "want_from": 1633910400
  },
  "XLM": {
   "at": 1791378076,
