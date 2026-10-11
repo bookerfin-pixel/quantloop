@@ -3,7 +3,7 @@
   "created_at": 1789530957,
   "day": "2026-10-11",
   "day_open_equity": 10664.927927299788,
-  "equity_rows": 574,
+  "equity_rows": 575,
   "fees_paid": 320.9531901650143,
   "fills_day": {
     "counts": {},
@@ -11,12 +11,12 @@
   },
   "halted_day": "2026-09-28",
   "initial_cash": 10000.0,
-  "last_bar": 1791680400,
-  "last_run_ts": 1791684637,
+  "last_bar": 1791684000,
+  "last_run_ts": 1791688239,
   "marks": {
     "DOT": [
-      1.25595,
-      1791684637
+      1.2459500000000001,
+      1791688239
     ]
   },
   "n_trades": 209,
