@@ -22,7 +22,7 @@ import numpy as np
 import pandas as pd
 
 from . import config, data, paper, strategy
-from .run import CAPPED, ERRED, STARVED, step
+from .run import CAPPED, ERRED, STARVED, step, strategy_fn
 
 HOURS_PER_YEAR = 24 * 365
 
@@ -56,7 +56,7 @@ def run_backtest(candles: dict[str, pd.DataFrame], cfg: dict, rcfg: dict,
     hours of candles the strategy was handed; and on how many hours it
     failed (the engine goes flat on such an hour, as it does live), with
     what it said the first time. Keeping it changes nothing the run does."""
-    fn = strategy.get(cfg["strategy"])
+    fn = strategy_fn(cfg["strategy"])
     frames = {p: df.sort_values("time").drop_duplicates("time").reset_index(drop=True)
               for p, df in candles.items() if len(df)}
     if not frames:

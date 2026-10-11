@@ -1,7 +1,8 @@
 """Challenger slots: which prospective tests are running, and since when. PROTECTED.
 
 state/challenger<k>/meta.json
-  status      "idle" (slot config equals champion) or "testing"
+  status      "idle" (the slot's config is cash, or the champion's as it was
+              before ruleset 8) or "testing"
   hypothesis  ledger id under test
   started_at  unix ts of the first hourly run with the new config
   start_equity {"champion": x, "<slot>": y}
@@ -13,9 +14,15 @@ state/challenger<k>/meta.json
               its trades are of value; PROMOTION.md)}
   usual_exposure  each side's average exposure over the year before the test,
               worked out once by bot/promote.py
+  against     what the test is judged against (from ruleset 8): "cash" when it
+              began while the champion's config was retired (Fin, 2026-10-08:
+              H0) or was cash, "champion" otherwise (the champion account, as
+              every test was before). Absent on tests from before ruleset 8,
+              which are judged against the champion account
 
 A test starts by itself the first time the bot runs after a PR changed that
-slot's config. It ends when bot/promote.py rules on it.
+slot's config. It ends when bot/promote.py rules on it, and the slot goes back
+to cash.
 """
 from __future__ import annotations
 
@@ -51,8 +58,29 @@ def reset(name: str) -> None:
 
 
 def configs_differ(name: str) -> bool:
+    """Whether the slot's config is one of its own, which is what a test is. A slot holding cash is idle, and
+    so is one holding the champion's config, which was how a slot was idle before ruleset 8 (the hourly ruling
+    moves such a slot to cash: bot/promote.py, sync_idle_slots)."""
+    mine = config.account_cfg(name)
+    if config.is_cash(mine):
+        return False
+    return config.strategy_signature(config.account_cfg(config.CHAMPION)) != config.strategy_signature(mine)
+
+
+def _idle_words(name: str) -> str:
+    try:
+        return "cash" if config.is_cash(config.account_cfg(name)) else "the champion's"
+    except Exception:  # noqa: BLE001
+        return "not one of its own"
+
+
+def judged_against() -> str:
+    """What a test that begins now is judged against: "cash" while the champion's config is retired (Fin,
+    2026-10-08: H0) or is cash itself, otherwise "champion", the champion account as before ruleset 8."""
+    from . import promote            # promote imports this module; by the time this runs both are loaded
     champ = config.account_cfg(config.CHAMPION)
-    return config.strategy_signature(champ) != config.strategy_signature(config.account_cfg(name))
+    retired = promote.rule_settings(config.risk_cfg().get("challenger"))[0]["retired"]
+    return "cash" if config.is_cash(champ) or str(champ.get("hypothesis")) in retired else "champion"
 
 
 def maybe_start(now: int, equities: dict[str, float]) -> dict[str, dict]:
@@ -66,7 +94,8 @@ def maybe_start(now: int, equities: dict[str, float]) -> dict[str, dict]:
                 raise ValueError("it is not a slot record")
         except Exception as e:  # noqa: BLE001
             # Its account has traded this hour like the others, and the hour is not lost for all of them over
-            # one file. A slot whose config is the champion's holds no test, so its record is written afresh.
+            # one file. A slot whose config is cash (or the champion's) holds no test, so its record is written
+            # afresh.
             # One with a config of its own holds a test whose start cannot be read: nothing is started or
             # ended in it, and bot/promote.py and the summary say so every hour until the file is mended or
             # the test is voided (configs/void.yaml).
@@ -78,7 +107,7 @@ def maybe_start(now: int, equities: dict[str, float]) -> dict[str, dict]:
                 save(name, dict(IDLE))
                 out[name] = dict(IDLE)
                 print(f"[slot] {name}: its slot record (meta.json) could not be read ({type(e).__name__}: {e}); its "
-                      f"config is the champion's, so it holds no test and the record was written afresh")
+                      f"config is {_idle_words(name)}, so it holds no test and the record was written afresh")
             else:
                 print(f"[slot] WARNING: {name}: its slot record (meta.json) could not be read ({type(e).__name__}: "
                       f"{e}); no test is started or ended in it until it can be")
@@ -92,14 +121,16 @@ def maybe_start(now: int, equities: dict[str, float]) -> dict[str, dict]:
                 "started_at": int(now),
                 "start_equity": {k: float(v) for k, v in equities.items() if k in (config.CHAMPION, name)},
                 "ruleset": config.ruleset_stamp(),
+                "against": judged_against(),
             }
             save(name, meta)
             print(f"[slot] {name}: test started for {meta['hypothesis']} at "
-                  f"{datetime.fromtimestamp(now, timezone.utc):%Y-%m-%d %H:%M}Z")
+                  f"{datetime.fromtimestamp(now, timezone.utc):%Y-%m-%d %H:%M}Z, judged against "
+                  f"{'cash' if meta['against'] == 'cash' else 'the champion account'}")
         elif not differ and meta["status"] == "testing":
             meta = dict(IDLE)
             save(name, meta)
-            print(f"[slot] {name}: config equals champion again; slot idle")
+            print(f"[slot] {name}: its config is {_idle_words(name)} again; slot idle")
         out[name] = meta
     return out
 
@@ -109,7 +140,16 @@ def describe_one(name: str, now: int | None = None) -> str:
     now = now or int(time.time())
     meta = load(name)
     if meta["status"] != "testing":
-        return f"{name}: idle (free for a hypothesis)"
+        try:
+            mine = config.account_cfg(name)
+            own = configs_differ(name)
+        except Exception as e:  # noqa: BLE001
+            return f"{name}: idle; its config cannot be read ({type(e).__name__}: {e})"
+        if config.is_cash(mine):
+            return f"{name}: idle, holds cash (free for a hypothesis)"
+        if own:
+            return f"{name}: idle until the next hourly run, which starts a test of {mine.get('hypothesis')} in it"
+        return f"{name}: idle, holds the champion's config until the next ruling moves it to cash (free for a hypothesis)"
     rules = config.risk_cfg()["challenger"]
     st = promote.rule_settings(rules)[0]
     first = st["window_days"]
@@ -136,7 +176,8 @@ def describe_one(name: str, now: int | None = None) -> str:
     else:
         stage = (f" (one look at day {first:.0f}{due}: promoted, killed, or kept {st['confirm_days']:.0f} more days "
                  f"if its trades are of value and it does not pass)")
-    return (f"{name}: testing {meta['hypothesis']} since "
+    against = ", judged against cash" if meta.get("against") == "cash" else ""
+    return (f"{name}: testing {meta['hypothesis']}{against} since "
             f"{datetime.fromtimestamp(started, timezone.utc):%Y-%m-%d %H:%M}Z, "
             f"day {elapsed_days:.1f} of {total:.0f}, {left:.1f} days until the verdict{stage}")
 

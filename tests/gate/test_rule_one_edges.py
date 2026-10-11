@@ -507,17 +507,18 @@ def test_settings_that_are_set_are_used_and_blanks_fall_back_to_the_defaults():
 
 # --- when the champion changes -------------------------------------------------------------------------
 
-def test_a_promotion_brings_every_idle_slot_into_line_with_the_new_champion(sandbox):
-    """An idle slot mirrors the champion. Left on the old champion's config it
-    differs from the new one, and the next hourly run would open a test of the
-    old champion in it."""
+def test_a_promotion_moves_every_idle_slot_to_cash(sandbox):
+    """An idle slot holds cash (ruleset 8). One still on the old champion's
+    config would differ from the new champion's, and the next hourly run would
+    open a test of the old champion in it; it is moved to cash instead, and so
+    is the slot whose test was promoted."""
     start_test(sandbox, STRONG)
     assert slot.load("challenger2")["status"] == "idle"
-    assert config.account_cfg("challenger2")["hypothesis"] == "H0"
+    assert config.account_cfg("challenger2")["hypothesis"] == "H0"              # idle as it was before ruleset 8
     promote.main(["--now", str(at(60))])                                         # H5 is promoted by the fast pass
     assert config.account_cfg("champion")["hypothesis"] == "H5"
     for name in ("challenger1", "challenger2"):
-        assert config.account_cfg(name)["hypothesis"] == "H5" and not slot.configs_differ(name)
+        assert config.account_cfg(name) == config.CASH_CFG and not slot.configs_differ(name)
     started = slot.maybe_start(at(60) + 3600, {"champion": 1.0, "challenger1": 1.0, "challenger2": 1.0})
     assert all(m["status"] == "idle" for m in started.values())                  # nothing starts by itself
     changes = promote.champion_changes()
@@ -535,18 +536,19 @@ def test_an_idle_slot_holding_a_new_hypothesis_is_left_alone(sandbox):
     config.dump_yaml(sandbox / "configs" / "challenger1.yaml",
                      {"hypothesis": "H0", "strategy": "ts_momentum", "params": {"lookback_hours": 72}})
     assert promote.sync_idle_slots(old) == ["challenger1"]
-    assert config.account_cfg("challenger1")["hypothesis"] == "H5"
+    assert config.account_cfg("challenger1") == config.CASH_CFG
     assert config.account_cfg("challenger2")["hypothesis"] == "H8"               # waiting for its first hour
+    assert promote.sync_idle_slots(old) == []                                    # cash already: not written again
 
 
-def test_a_revert_also_brings_idle_slots_back_and_is_on_the_record(sandbox):
+def test_a_revert_also_moves_idle_slots_to_cash_and_is_on_the_record(sandbox):
     now = 100
     slot.reset("challenger1")
     shadow.start(config.account_cfg("champion"), "H5", now, 10000.0, 10000.0)    # H0 deposed by H5
     config.dump_yaml(sandbox / "configs" / "champion.yaml",
                      {"hypothesis": "H5", "strategy": "ts_momentum", "params": {"lookback_hours": 168}})
     for name in ("challenger1", "challenger2"):
-        config.write_challenger_from_champion(name)
+        config.write_challenger_from_champion(name)                              # idle on H5, as before ruleset 8
     (sandbox / "LEDGER.md").write_text(ledger(sandbox).replace("- Status: testing", "- Status: promoted"))
     later = now + 60 * DAY + 100
     equity(sandbox, "champion", [-0.002, 0.0] * 31)
@@ -556,7 +558,7 @@ def test_a_revert_also_brings_idle_slots_back_and_is_on_the_record(sandbox):
     assert config.account_cfg("champion")["hypothesis"] == "H0"
     assert "### Result H5: reverted" in ledger(sandbox)
     for name in ("challenger1", "challenger2"):
-        assert config.account_cfg(name)["hypothesis"] == "H0" and not slot.configs_differ(name)
+        assert config.account_cfg(name) == config.CASH_CFG and not slot.configs_differ(name)
     changes = promote.champion_changes()
     assert changes[-1]["why"] == "revert" and changes[-1]["from"] == "H5" and changes[-1]["to"] == "H0"
 
@@ -748,14 +750,16 @@ def test_expected_bps_and_the_status_flip_tell_h1_from_h10(sandbox):
 DOCUMENTED = {"two_from": 7, "window_days": 60.0, "confirm_days": 60.0, "min_skill_t": 1.0, "min_trades": 30,
               "max_dd_ratio": 1.5, "max_dd_floor": 0.10, "min_return_edge": 0.0, "min_skill": 0.0, "early_kill": 0.15,
               "treadmill_multiple": 3.0, "treadmill_min_days": 14.0, "min_trade_profit": 0.0, "fast_pass": 2.0,
-              "compare_on": "skill", "prior": 0.10, "edge_sharpe": 1.5}
+              "compare_on": "skill", "prior": 0.10, "edge_sharpe": 1.5, "retired": ("H0",), "cash_guard_t": 1.0}
 LINES = ("window_days", "confirm_days", "min_skill_t", "fast_pass_skill_t", "two_looks_from_ruleset", "confidence",
          "min_trades", "min_trade_profit", "max_dd_ratio", "max_dd_floor", "compare_on", "min_return_edge", "min_skill",
-         "early_kill_drawdown", "treadmill_kill_multiple", "treadmill_min_days")
+         "early_kill_drawdown", "treadmill_kill_multiple", "treadmill_min_days", "retired_champions",
+         "cash_guard_skill_t")
+DOC_RULES = {**RULES, "retired_champions": ["H0"]}     # every line at its documented value, as configs/risk.yaml has it
 
 
 def test_rule_settings_reads_what_it_can_and_names_what_it_cannot():
-    good, wrong = promote.rule_settings(RULES)
+    good, wrong = promote.rule_settings(DOC_RULES)
     assert wrong == [] and good == DOCUMENTED
     # Nothing set at all: every line is at its documented value and each is named as missing. A missing line
     # used to mean "off" for seven of them, so a slip in a line's name switched the thing off without a word.
@@ -765,11 +769,11 @@ def test_rule_settings_reads_what_it_can_and_names_what_it_cannot():
     assert {w.split(" ")[0] for w in wrong} == {f"challenger.{k}" for k in LINES}
     assert promote.rule_settings("not a dict") == (bare, wrong)
     for key in LINES:                                                 # one line lost: that one, and only that one
-        st, wrong = promote.rule_settings({k: v for k, v in RULES.items() if k != key})
+        st, wrong = promote.rule_settings({k: v for k, v in DOC_RULES.items() if k != key})
         assert len(wrong) == 1 and wrong[0].startswith(f"challenger.{key} is not in the file; "), key
         assert st == ({**DOCUMENTED, "fast_pass": None} if key == "fast_pass_skill_t" else DOCUMENTED), key
     # a slip in a line's name is a line this code does not read, and the setting it was meant for is missing
-    st, wrong = promote.rule_settings({**{k: v for k, v in RULES.items() if k != "two_looks_from_ruleset"},
+    st, wrong = promote.rule_settings({**{k: v for k, v in DOC_RULES.items() if k != "two_looks_from_ruleset"},
                                        "two_looks_from_rulset": 7})
     assert st["two_from"] == 7 and wrong == [
         "challenger.two_looks_from_rulset is not a setting this code reads; nothing uses it",
@@ -777,17 +781,18 @@ def test_rule_settings_reads_what_it_can_and_names_what_it_cannot():
     for slip, meant, name in (("early_kill", "early_kill_drawdown", "early_kill"), ("min_skil", "min_skill", "min_skill"),
                               ("max_dd", "max_dd_floor", "max_dd_floor"), ("compare", "compare_on", "compare_on"),
                               ("treadmill", "treadmill_kill_multiple", "treadmill_multiple")):
-        st, wrong = promote.rule_settings({**{k: v for k, v in RULES.items() if k != meant}, slip: RULES[meant]})
+        st, wrong = promote.rule_settings({**{k: v for k, v in DOC_RULES.items() if k != meant}, slip: DOC_RULES[meant]})
         assert st[name] == DOCUMENTED[name] and len(wrong) == 2, slip
     # to switch a thing off on purpose the file says `off`, which YAML reads as False; nothing is said then
     for key, name, value in (("two_looks_from_ruleset", "two_from", None), ("fast_pass_skill_t", "fast_pass", None),
                              ("min_skill_t", "min_skill_t", 0.0), ("min_skill", "min_skill", None),
                              ("max_dd_floor", "max_dd_floor", 0.0), ("early_kill_drawdown", "early_kill", 0.0),
-                             ("treadmill_kill_multiple", "treadmill_multiple", 0.0)):
-        assert promote.rule_settings({**RULES, key: False}) == ({**good, name: value}, []), key
+                             ("treadmill_kill_multiple", "treadmill_multiple", 0.0), ("retired_champions", "retired", ()),
+                             ("cash_guard_skill_t", "cash_guard_t", 0.0)):
+        assert promote.rule_settings({**DOC_RULES, key: False}) == ({**good, name: value}, []), key
     for key in ("window_days", "confirm_days", "min_trades", "max_dd_ratio", "min_return_edge", "min_trade_profit",
                 "treadmill_min_days", "compare_on", "confidence"):       # these cannot be switched off
-        st, wrong = promote.rule_settings({**RULES, key: False})
+        st, wrong = promote.rule_settings({**DOC_RULES, key: False})
         assert st == good and len(wrong) == 1 and "cannot be used" in wrong[0], key
     assert yaml.safe_load("a: off\nb: Off\nc: OFF") == {"a": False, "b": False, "c": False}
     # every setting written in a way that cannot be used: the documented value stands in, and each is named
@@ -795,10 +800,10 @@ def test_rule_settings_reads_what_it_can_and_names_what_it_cannot():
              "confidence": {"prior": 10, "edge_sharpe": 0}, "min_trade_profit": "0.5%", "window_days": "sixty",
              "min_trades": "", "max_dd_ratio": None, "max_dd_floor": "10%", "min_return_edge": -0.01, "min_skill": "",
              "early_kill_drawdown": "15%", "treadmill_kill_multiple": "3x", "treadmill_min_days": [],
-             "compare_on": "skil"}
+             "compare_on": "skil", "retired_champions": "H0", "cash_guard_skill_t": -1}
     st, wrong = promote.rule_settings(slips)
     assert st == {**DOCUMENTED, "fast_pass": None}
-    assert len(wrong) == 17 and all("cannot be used" in w for w in wrong)
+    assert len(wrong) == 19 and all("cannot be used" in w for w in wrong)
     said = " | ".join(wrong)
     for piece in ("challenger.confirm_days is '60 days', which cannot be used; 60 days stand in",
                   "challenger.confidence.prior is 10", "challenger.min_trades is ''", "30 stands in",
@@ -806,36 +811,49 @@ def test_rule_settings_reads_what_it_can_and_names_what_it_cannot():
                   "15% stands in", "challenger.compare_on is 'skil', which cannot be used; `skill` stands in",
                   "challenger.min_skill is '', which cannot be used; a floor of 0.0% stands in",
                   "challenger.fast_pass_skill_t is -2, which cannot be used; there is no fast pass until it is mended",
-                  "challenger.min_return_edge is -0.01"):
+                  "challenger.min_return_edge is -0.01",
+                  "challenger.retired_champions is 'H0', which cannot be used; H0 stands in (a list of hypotheses, or "
+                  "`off` for none)",
+                  "challenger.cash_guard_skill_t is -1, which cannot be used; 1.0 stands in (to switch it off, write "
+                  "`off`)"):
         assert piece in said, piece
+    # retired champions: a list of hypothesis names; an empty list retires none, like `off`; anything else is a slip
+    assert promote.rule_settings({**DOC_RULES, "retired_champions": []}) == ({**good, "retired": ()}, [])
+    assert promote.rule_settings({**DOC_RULES, "retired_champions": [" H0 ", "H7"]}) == ({**good, "retired": ("H0", "H7")}, [])
+    for slip in (["H0", ""], ["H0", 7], [None], {"H0": True}, 0, True):
+        st, wrong = promote.rule_settings({**DOC_RULES, "retired_champions": slip})
+        assert st == good and len(wrong) == 1 and wrong[0].startswith("challenger.retired_champions is "), slip
     # switches that are documented: these are choices, not slips
-    assert promote.rule_settings({**RULES, "fast_pass_skill_t": 0}) == ({**good, "fast_pass": None}, [])
-    assert promote.rule_settings({**RULES, "min_skill_t": 0}) == ({**good, "min_skill_t": 0.0}, [])
-    assert promote.rule_settings({**RULES, "early_kill_drawdown": 0}) == ({**good, "early_kill": 0.0}, [])
-    assert promote.rule_settings({**RULES, "treadmill_kill_multiple": 0})[1] == []
-    assert promote.rule_settings({**RULES, "min_trade_profit": 0.01}) == ({**good, "min_trade_profit": 0.01}, [])
-    assert promote.rule_settings({**RULES, "compare_on": " Skill "}) == (good, [])            # a capital is not a typo
-    assert promote.rule_settings({**RULES, "compare_on": "return"})[0]["compare_on"] == "return"
-    assert promote.rule_settings({**RULES, "confirm_days": 0})[1] != []                       # 0 days is not a choice
-    assert promote.rule_settings({**RULES, "window_days": 0})[1] != []
+    assert promote.rule_settings({**DOC_RULES, "fast_pass_skill_t": 0}) == ({**good, "fast_pass": None}, [])
+    assert promote.rule_settings({**DOC_RULES, "min_skill_t": 0}) == ({**good, "min_skill_t": 0.0}, [])
+    assert promote.rule_settings({**DOC_RULES, "cash_guard_skill_t": 0}) == ({**good, "cash_guard_t": 0.0}, [])
+    assert promote.rule_settings({**DOC_RULES, "cash_guard_skill_t": 0.5}) == ({**good, "cash_guard_t": 0.5}, [])
+    assert promote.rule_settings({**DOC_RULES, "early_kill_drawdown": 0}) == ({**good, "early_kill": 0.0}, [])
+    assert promote.rule_settings({**DOC_RULES, "treadmill_kill_multiple": 0})[1] == []
+    assert promote.rule_settings({**DOC_RULES, "min_trade_profit": 0.01}) == ({**good, "min_trade_profit": 0.01}, [])
+    assert promote.rule_settings({**DOC_RULES, "compare_on": " Skill "}) == (good, [])            # a capital is not a typo
+    assert promote.rule_settings({**DOC_RULES, "compare_on": "return"})[0]["compare_on"] == "return"
+    assert promote.rule_settings({**DOC_RULES, "confirm_days": 0})[1] != []                       # 0 days is not a choice
+    assert promote.rule_settings({**DOC_RULES, "window_days": 0})[1] != []
     # a line that is there and blank is a slip everywhere, and each says so
     for key in ("window_days", "confirm_days", "min_skill_t", "min_trades", "max_dd_ratio", "max_dd_floor",
                 "min_return_edge", "min_skill", "early_kill_drawdown", "min_trade_profit", "compare_on",
-                "two_looks_from_ruleset", "fast_pass_skill_t", "confidence"):
-        st, wrong = promote.rule_settings({**RULES, key: None})
+                "two_looks_from_ruleset", "fast_pass_skill_t", "confidence", "retired_champions",
+                "cash_guard_skill_t"):
+        st, wrong = promote.rule_settings({**DOC_RULES, key: None})
         assert len(wrong) == 1 and f"challenger.{key} is None" in wrong[0], key
         assert st == ({**DOCUMENTED, "fast_pass": None} if key == "fast_pass_skill_t" else DOCUMENTED), key
     # settings that would switch a rule off or widen it by a slip of the hand keep it on, and say so
     for slip in ({"two_looks_from_ruleset": 0}, {"two_looks_from_ruleset": 6}, {"two_looks_from_ruleset": 7.5},
                  {"two_looks_from_ruleset": True}):
-        st, wrong = promote.rule_settings({**RULES, **slip})
+        st, wrong = promote.rule_settings({**DOC_RULES, **slip})
         assert st["two_from"] == 7 and len(wrong) == 1 and "ruleset 7 stands in" in wrong[0], slip
     for slip in ({"min_trade_profit": -0.05}, {"min_trade_profit": True}, {"min_trade_profit": 2}):
-        st, wrong = promote.rule_settings({**RULES, **slip})
+        st, wrong = promote.rule_settings({**DOC_RULES, **slip})
         assert st["min_trade_profit"] == 0.0 and len(wrong) == 1, slip
-    assert promote.rule_settings({**RULES, "two_looks_from_ruleset": 9})[0]["two_from"] == 9     # a later ruleset is fine
+    assert promote.rule_settings({**DOC_RULES, "two_looks_from_ruleset": 9})[0]["two_from"] == 9     # a later ruleset is fine
     # a number too large to be one does not raise, and a long value is not printed in full
-    st, wrong = promote.rule_settings({**RULES, "confirm_days": 10 ** 400})
+    st, wrong = promote.rule_settings({**DOC_RULES, "confirm_days": 10 ** 400})
     assert st["confirm_days"] == 60.0 and len(wrong) == 1 and len(wrong[0]) < 140
 
 
@@ -1031,7 +1049,7 @@ def test_one_slot_whose_config_cannot_be_read_does_not_stop_the_others_following
     config.dump_yaml(sandbox / "configs" / "champion.yaml",
                      {"hypothesis": "H5", "strategy": "ts_momentum", "params": {"lookback_hours": 168}})
     assert promote.sync_idle_slots(old) == ["challenger2", "challenger3"]
-    assert config.account_cfg("challenger3")["hypothesis"] == "H5"
+    assert config.account_cfg("challenger3") == config.CASH_CFG
 
 
 # --- buying and holding is not a skill ---------------------------------------------------------------------

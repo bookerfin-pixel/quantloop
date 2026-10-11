@@ -96,6 +96,16 @@ def describe(now: int) -> str:
     # window or a record are not whole, and then the log says which.
     due = (" (its ruling is due: made at the next hourly run for which the market data and both records are whole)"
            if elapsed >= window_days else "")
-    return (f"shadow: {meta['hypothesis']} (deposed by {meta['replaced_by']}) running since "
-            f"{datetime.fromtimestamp(meta['started_at'], timezone.utc):%Y-%m-%d %H:%M}Z, "
-            f"day {elapsed:.1f} of {window_days:.0f}{due}; the promotion is reverted if it wins")
+    since = (f"{datetime.fromtimestamp(meta['started_at'], timezone.utc):%Y-%m-%d %H:%M}Z, "
+             f"day {elapsed:.1f} of {window_days:.0f}{due}")
+    if meta.get("hypothesis") == config.CASH_CFG["hypothesis"]:
+        # a promotion judged against cash (ruleset 8): the deposed side is cash, and the shadow holds it
+        st = promote.rule_settings(config.risk_cfg().get("challenger"))[0]
+        bar = st["cash_guard_t"]
+        how = (f" with a daily skill t of {promote._bar(-bar)} or lower, on {st['min_trades']} fills or more unless "
+               f"the t is {promote._bar(-2 * bar)} or lower" if bar else "")
+        return (f"shadow: cash, which {meta['replaced_by']} was judged against, held since {since}; the promotion "
+                f"is reverted if {meta['replaced_by']}'s skill over the window falls below cash's, which is "
+                f"nothing{how}")
+    return (f"shadow: {meta['hypothesis']} (deposed by {meta['replaced_by']}) running since {since}; the promotion "
+            f"is reverted if it wins")

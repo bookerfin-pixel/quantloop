@@ -11,7 +11,7 @@ RULES = {"slots": 3, "window_days": 60, "confirm_days": 60, "min_trades": 30, "m
          "max_dd_floor": 0.10, "min_return_edge": 0.0, "early_kill_drawdown": 0.15, "compare_on": "return",
          "min_skill": False, "two_looks_from_ruleset": False, "fast_pass_skill_t": False, "min_skill_t": False,
          "min_trade_profit": 0.0, "treadmill_kill_multiple": False, "treadmill_min_days": 14,
-         "confidence": {"prior": 0.10, "edge_sharpe": 1.5}}
+         "retired_champions": False, "cash_guard_skill_t": 1.0, "confidence": {"prior": 0.10, "edge_sharpe": 1.5}}
 
 
 def m(ret, exp, basket, dd=-0.05, trades=40):

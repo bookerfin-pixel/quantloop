@@ -65,6 +65,10 @@ def account_section(name: str, now: int) -> str:
     adir = config.account_dir(name)
     cfg = config.account_cfg(name)
     lines = [f"## {name}: {cfg['strategy']} ({cfg['hypothesis']})", ""]
+    if name == config.CHAMPION:
+        status = champion_status(cfg)
+        if status:
+            lines += [status, ""]
     lines.append("params: " + json.dumps(cfg["params"], sort_keys=True))
     acct_path = adir / "account.json"
     if not acct_path.exists():
@@ -123,6 +127,27 @@ def account_section(name: str, now: int) -> str:
                          f"fee {r['fee']:.2f} slip {r['slippage_cost']:.2f}"
                          + (f" (half spread {float(spread):.1f} bps)" if spread not in ("", None) and spread == spread else ""))
     return "\n".join(lines) + "\n"
+
+
+def champion_status(cfg: dict) -> str | None:
+    """A line under the champion's heading when its config is retired or is cash (ruleset 8), so that the
+    account's figures are not read as a champion's record. Never raises."""
+    try:
+        from .promote import rule_settings, switch_holders
+        if config.is_cash(cfg):
+            return ("the champion's config is cash: no config holds the title now, so a new test is judged against "
+                    "cash and this account holds nothing (what it held when its config became cash is sold at the "
+                    "hourly run after that)")
+        hyp = str(cfg.get("hypothesis"))
+        if hyp not in rule_settings(config.risk_cfg().get("challenger"))[0]["retired"]:
+            return None
+        holders = switch_holders()
+        those = (f"the tests judged against this account ({', '.join(holders)})" if holders else
+                 "no test any more, so its config becomes cash at the next ruling")
+        return (f"retired by Fin (configs/risk.yaml, retired_champions): the champion's title is cash now, not {hyp}. "
+                f"This account runs {hyp} only as the yardstick for {those}, and holds cash once they end")
+    except Exception as e:  # noqa: BLE001
+        return f"whether the champion's config is retired could not be read this hour ({type(e).__name__}: {e})"
 
 
 def per_pair_lines(tr: pd.DataFrame, st: dict) -> list[str]:
@@ -327,8 +352,8 @@ def fill_cap_section(now: int) -> str:
     lines.append("- times are UTC, and a pair day is one pair on one UTC day in one account. At the cap no more buys "
                  "go through in that pair until the next UTC day; sells always do. A buy the strategy still wants an "
                  "hour later is stopped, and counted, again. A slot is read from the hour its test began, and a slot "
-                 "with no test is left out: it runs the champion's config. The champion's lines from before a "
-                 "promotion or a revert are the config it had then")
+                 "with no test is left out: it holds cash (before ruleset 8 it ran the champion's config). The "
+                 "champion's lines from before a promotion, a revert or a retirement are the config it had then")
     lines.append("- how to read a line: that many fills in one coin in one day is in and out more than once, or one "
                  "position built or cut in steps. A stopped buy is one of three things. A top up of a position it held "
                  "is the strategy resizing what it keeps, often in several pairs at once when one pair enters or "
@@ -427,9 +452,10 @@ def fills_pace(chal: dict, rules: dict, elapsed_days: float, total_days: float, 
 
 
 def test_section(now: int) -> str:
-    from .promote import (JUST_OPENED, _n, champion_note, compare_on, confidence_line, format_market, guard_waits,
-                          market_context, missing_market_data, no_record, no_trade_of_its_own, of_value,
-                          other_notes, other_rule_reading, paired_slot, rule_settings, trade_tally, two_looks)
+    from .promote import (JUST_OPENED, _n, against_cash_reading, champion_note, compare_on, confidence_line,
+                          format_market, guard_waits, market_context, measured_against_cash, missing_market_data,
+                          no_record, no_trade_of_its_own, of_value, other_notes, other_rule_reading, paired_slot,
+                          rule_settings, title_note, title_words, trade_tally, two_looks)
     pairs = list(config.risk_cfg()["pairs"])
     rules = config.risk_cfg()["challenger"]
     st, unusable = rule_settings(rules)
@@ -450,17 +476,29 @@ def test_section(now: int) -> str:
                 lines.append(f"  its record could not be read this hour ({type(e).__name__}: {e}); nothing is ruled "
                              f"for it until it can be")
                 continue
-            lines.append(f"  so far: champion {_pct(champ['return'])} (max drawdown "
-                         f"{_dd(champ['max_drawdown'])}, {_n(champ['trades'], 'fill')}) vs {name} "
+            cash = meta.get("against") == "cash"
+            title = bool(champ.get("title_from"))           # judged against cash, and a config took the title since
+            since = "" if not title else f" ({title_words(champ)})"
+            if cash and not title:
+                other = "cash +0.00% (holds nothing)"
+            else:
+                other = (f"{'the title' if title else 'champion'} {_pct(champ['return'])}{since} (max drawdown "
+                         f"{_dd(champ['max_drawdown'])}, {_n(champ['trades'], 'fill')})")
+            lines.append(f"  so far: {other} vs {name} "
                          f"{_pct(chal['return'])} (max drawdown {_dd(chal['max_drawdown'])}, "
                          f"{_n(chal['trades'], 'fill')})")
             if champ.get("skill") is not None and chal.get("skill") is not None:
                 t_txt = f", daily edge t {chal['edge_t']:+.2f} over {chal['edge_days']} days" \
                     if chal.get("edge_t") is not None else ""
-                lines.append(f"  skill (net return minus the basket held at the strategy's usual exposure): champion "
-                             f"{champ['skill']:+.2%} ({_exposure_words(champ)}) vs {name} {chal['skill']:+.2%} "
-                             f"({_exposure_words(chal)}); the rule compares "
+                other = "cash +0.00% (holds nothing)" if cash and not title else \
+                    f"{'the title' if title else 'champion'} {champ['skill']:+.2%} ({_exposure_words(champ)})"
+                lines.append(f"  skill (net return minus the basket held at the strategy's usual exposure): {other} "
+                             f"vs {name} {chal['skill']:+.2%} ({_exposure_words(chal)}); the rule compares "
                              f"on {compare_on(rules, champ, chal)}{t_txt}")
+            if champ.get("guard_drawdown") is not None:
+                lines.append(f"  {'judged against cash' if cash else 'begun under ruleset 8'}: its drawdown guard is "
+                             f"set against the equal weight basket's worst fall in the window, "
+                             f"{_dd(-champ['guard_drawdown'])} so far")
             # the readings added with ruleset 7 are for the reader; none of them may stop the summary
             try:
                 elapsed = (now - meta["started_at"]) / 86400
@@ -503,8 +541,12 @@ def test_section(now: int) -> str:
                 if st["two_from"] is not None and one_look and not blank and gap != JUST_OPENED:
                     lines.append("  two look rule (measured, not applied to this test): "
                                  + other_rule_reading(champ, chal, rules, elapsed, gap=gap))
-                changed = champion_note(meta["started_at"], now, bool(champ.get("exposure_schedule")),
-                                        measured=champ.get("skill") is not None)
+                if measured_against_cash(meta, rules) and not blank and gap != JUST_OPENED:
+                    lines.append("  against cash (measured, not applied to this test): "
+                                 + against_cash_reading(champ, chal, mc, rules, meta, elapsed))
+                changed = title_note(champ) if title else None if cash else champion_note(
+                    meta["started_at"], now, bool(champ.get("exposure_schedule")),
+                    measured=champ.get("skill") is not None)
                 if changed:
                     lines.append(f"  champion change: {changed}")
             except Exception as e:  # noqa: BLE001

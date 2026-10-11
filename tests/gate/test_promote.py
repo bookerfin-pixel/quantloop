@@ -13,7 +13,7 @@ RULES = {"slots": 3, "window_days": 21, "confirm_days": 60, "min_trades": 20, "m
          "max_dd_floor": 0.10, "min_return_edge": 0.0, "early_kill_drawdown": 0.15, "compare_on": "return",
          "min_skill": False, "two_looks_from_ruleset": False, "fast_pass_skill_t": False, "min_skill_t": False,
          "min_trade_profit": 0.0, "treadmill_kill_multiple": False, "treadmill_min_days": 14,
-         "confidence": {"prior": 0.10, "edge_sharpe": 1.5}}
+         "retired_champions": False, "cash_guard_skill_t": 1.0, "confidence": {"prior": 0.10, "edge_sharpe": 1.5}}
 
 
 def m(ret, dd, trades, gross=None, notional=0.0):
@@ -138,7 +138,8 @@ def test_promotion_copies_slot_into_champion_and_resets_that_slot_only(sandbox):
     promote.apply("promoted", "H1", "challenger1")
     champ = config.account_cfg("champion")
     assert champ["hypothesis"] == "H1" and champ["params"]["lookback_hours"] == 168
-    assert config.strategy_signature(champ) == config.strategy_signature(config.account_cfg("challenger1"))
+    assert config.is_cash(config.account_cfg("challenger1"))                    # an idle slot holds cash (ruleset 8)
+    assert config.is_cash(config.account_cfg("challenger3"))                    # and so does the one idle on H0
     assert slot.load("challenger1")["status"] == "idle"
     assert slot.load("challenger2")["status"] == "testing"                       # untouched
     assert config.account_cfg("challenger2")["hypothesis"] == "H2"
@@ -155,7 +156,7 @@ def test_kill_keeps_champion(sandbox):
     promote.update_ledger("H2", "killed", "nope", m(0.02, -0.05, 30), m(0.01, -0.06, 30), 0, 21 * 86400, "challenger2")
     promote.apply("killed", "H2", "challenger2")
     assert config.account_cfg("champion")["hypothesis"] == "H0"
-    assert config.account_cfg("challenger2")["hypothesis"] == "H0"
+    assert config.account_cfg("challenger2") == config.CASH_CFG                 # the freed slot holds cash
     assert slot.load("challenger2")["status"] == "idle"
     assert "- Status: killed" in (sandbox / "LEDGER.md").read_text()
 
@@ -441,7 +442,7 @@ def test_a_voided_test_is_recorded_and_its_slot_freed(sandbox):
     assert "ruleset 5 at the start, 6 at the verdict" in text
     assert "- Status: voided" in text and "### Result H2" not in text
     assert slot.load("challenger1")["status"] == "idle" and slot.load("challenger2")["status"] == "testing"
-    assert config.account_cfg("challenger1")["hypothesis"] == config.account_cfg("champion")["hypothesis"]
+    assert config.account_cfg("challenger1") == config.CASH_CFG                 # the freed slot holds cash
     assert config.load_yaml(sandbox / "configs" / "void.yaml")["requests"] == []
     assert promote.process_voids(now, RULES) == []                      # nothing left to do
 

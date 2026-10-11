@@ -28,7 +28,12 @@ construction.
    judged prospectively. Pass: merged automatically. Fail: closed
    automatically with the reason, which the agent reads next time.
 4. **The test**: the next hourly run sees the new slot config and starts a
-   prospective test, champion and challenger on the same live data.
+   prospective test, champion and challenger on the same live data. From
+   ruleset 8 (Fin, 2026-10-08) the old champion H0 is retired and the
+   champion's title is cash: a test that begins while no config holds it is
+   judged against cash, which makes nothing, and an idle slot holds cash.
+   The tests that began against H0 are judged by the rules they began
+   under, with what cash would make of them measured beside.
    `bot/promote.py` rules by fixed rules in `configs/risk.yaml`, set out in
    `PROMOTION.md`. A test ends one of three ways. Killed: it finished no
    trade of its own (buying and holding shows nothing), or it did not pass
@@ -42,10 +47,11 @@ construction.
    than the market has, is killed early.
    Verdict appended to `LEDGER.md` with the realised gross bps per round
    trip next to the number the hypothesis predicted, what the market did
-   over the window and a confidence figure, slot reset and free. After a
-   promotion the deposed config keeps running as a shadow for 60 days; if it
-   beats the new champion the promotion is reverted. Four tests run at
-   once, about 18 verdicts a year.
+   over the window and a confidence figure, slot reset to cash and free.
+   After a promotion the deposed config (or cash, for a test judged against
+   cash) keeps running as a shadow for 60 days; if it beats the new
+   champion the promotion is reverted. Four tests run at once, about 18
+   verdicts a year.
 5. **The synthesis**: `FINDINGS.md` is the distilled version of the ledger,
    kept by the agent: what is confirmed, what one verdict suggests, what was
    killed and why, how well the cost arithmetic predicted reality, and what

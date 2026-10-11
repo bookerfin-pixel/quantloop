@@ -30,7 +30,20 @@
 #                  has just closed; every setting in the `challenger:` block is
 #                  checked, and one that is missing or cannot be used never
 #                  loosens the rule (to switch a thing off, write `off`)
-ruleset: 7
+#   8  2026-10-11  H0 retired (Fin, 2026-10-08): a test that begins while the
+#                  champion's config is retired is judged against cash, with
+#                  the drawdown guard set against the equal weight basket's
+#                  fall; an idle slot holds cash; once no running test began
+#                  against H0, the champion account's config becomes cash.
+#                  Every test begun from now has its drawdown guard set
+#                  against the basket's fall; cash guards a promotion judged
+#                  against it and reverts it only on a clear fall (daily skill
+#                  t of minus cash_guard_skill_t or below). Tests begun before
+#                  keep the champion account as their yardstick (Fin's rule
+#                  for rule changes: H0, unless a promotion comes first), with
+#                  the reading against cash beside it (PROMOTION.md, "Cash as
+#                  the champion")
+ruleset: 8
 
 # --- cost model (paper fills) ---------------------------------------------
 # Prices come from Kraken public data (Binance blocks US IPs, which is where
@@ -128,6 +141,17 @@ challenger:
   treadmill_kill_multiple: 3.0  # ...and one whose live costs run past this many times the gate's cost drag
   treadmill_min_days: 14        # limit (3 x 15% = 45% of equity a year) after this many days is killed too.
                                 # A multiple of 0, or `off`, means no cost kill
+  retired_champions: [H0]   # champion configs Fin has retired (H0, 2026-10-08). While the champion's config is
+                            # one of these, a test that begins is judged against cash, which makes nothing: it
+                            # must show skill above nothing, with its drawdown guard set against the equal
+                            # weight basket's fall over the window. On the rule's twins that promotes exactly
+                            # as often as judging against H0 did (FINDINGS, 2026-10-10). `off`: none retired
+  cash_guard_skill_t: 1.0   # the guard on a promotion judged against cash reverts it to cash only when, over the
+                            # guard's window, the promoted config's skill is below cash's and its daily skill t is
+                            # minus this or lower, on min_trades fills or more unless the t is twice that low.
+                            # Skill below nothing alone would revert about 6 in 10 configs with no skill and 2 in
+                            # 10 Sharpe 2 edges; with this, about 2 in 10 and 1 in 40, as H0's guard did. `off`:
+                            # the skill comparison alone
 
 # --- backtest gate (sanity filter, regime independent) ---------------------
 # The gate asks "is this obviously broken or on a costs treadmill", never "did

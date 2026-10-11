@@ -1687,7 +1687,8 @@ def configs_in_use() -> tuple[list[tuple[str, dict]], list[str]]:
     and two different ones under one hypothesis name (their readings would be
     kept in one file, each night's over the other's). A slot with the
     champion's own strategy and params is idle and is not a second config; a
-    slot whose file the hourly loop has not made yet is idle too."""
+    slot whose file the hourly loop has not made yet is idle too, and so is
+    one that holds cash, which has nothing to read."""
     out, problems, seen, named = [], [], set(), {}
     try:
         names = [config.CHAMPION] + config.challengers()
@@ -1702,7 +1703,7 @@ def configs_in_use() -> tuple[list[tuple[str, dict]], list[str]]:
         except Exception as e:  # noqa: BLE001
             problems.append(_line(f"configs/{name}.yaml cannot be read ({e})"))
             continue
-        if sig in seen:
+        if sig in seen or config.is_cash(cfg):        # cash holds nothing: there is nothing to read
             continue
         seen.add(sig)
         hyp = str(cfg["hypothesis"])

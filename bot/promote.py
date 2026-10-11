@@ -383,6 +383,14 @@ def _price_at(pair: str, ts: int) -> float | None:
         return None
 
 
+def _fill_mask(tr: pd.DataFrame) -> pd.Series:
+    """A fill has a time, a side, a pair and a quantity above zero. The engine writes no other kind of row,
+    and one that is none of these is not counted towards the fills a promotion needs."""
+    amount = _column(tr, "qty")
+    return (np.isfinite(_column(tr, "ts")) & tr["side"].isin(["buy", "sell"]) & np.isfinite(amount)
+            & (amount > 0) & tr["pair"].notna() & tr["pair"].astype(str).str.strip().ne(""))
+
+
 def window_metrics(name: str, start_ts: int, end_ts: int, start_equity: float | None) -> dict:
     adir = config.account_dir(name)
     eq_path, tr_path = adir / "equity.csv", adir / "trades.csv"
@@ -429,12 +437,7 @@ def window_metrics(name: str, start_ts: int, end_ts: int, start_equity: float | 
     so_far = _read_csv(tr_path)
     _need_columns(so_far, tr_path, ("ts", "side", "pair", "qty"))
     if len(so_far):
-        # A fill has a time, a side, a pair and a quantity above zero. The engine writes no other kind of row,
-        # and one that is none of these is not counted towards the fills a promotion needs.
-        amount = _column(so_far, "qty")
-        a_fill = (np.isfinite(_column(so_far, "ts")) & so_far["side"].isin(["buy", "sell"]) & np.isfinite(amount)
-                  & (amount > 0) & so_far["pair"].notna() & so_far["pair"].astype(str).str.strip().ne(""))
-        so_far = so_far[a_fill & (_column(so_far, "ts") <= end_ts)]
+        so_far = so_far[_fill_mask(so_far) & (_column(so_far, "ts") <= end_ts)]
         tr = so_far[_column(so_far, "ts") >= start_ts]
         out["trades"] = int(len(tr))
         out["trades_first_hour"] = int((_column(tr, "ts") == start_ts).sum())     # made in the run that began the test
@@ -531,7 +534,10 @@ def _exposure_at(m: dict, times) -> np.ndarray | float | None:
 
 def design_exposure(cfg: dict, before_ts: int, days: int = 365) -> float | None:
     """Average exposure of a config over the `days` before `before_ts`, from the
-    backtest engine on data that ends before the test starts."""
+    backtest engine on data that ends before the test starts. Cash holds
+    nothing, so its usual exposure is nothing, with no backtest to run."""
+    if config.is_cash(cfg):
+        return 0.0
     from . import backtest
     try:
         rcfg = config.risk_cfg()
@@ -643,16 +649,20 @@ def champion_note(start_ts: int, end_ts: int, by_config: bool | None = None, mea
 
 
 def sync_idle_slots(old_signature: str) -> list[str]:
-    """An idle slot mirrors the champion. When the champion's config changes,
-    every idle slot must follow it, or the next hourly run sees a slot whose
-    config differs from the champion's and opens a "test" of the old champion
-    in it (found in review, 2026-10-05, before any promotion had happened).
-    Only a slot still holding the old champion's config is touched."""
+    """When the champion's config changes, a slot that still holds the old
+    champion's config is idle (bot/slot.py, configs_differ) and is moved to
+    cash. Left as it was, the next hourly run would see a slot whose config
+    differs from the champion's and open a "test" of the old champion in it
+    (found in review, 2026-10-05, before any promotion had happened). Before
+    ruleset 8 an idle slot mirrored the champion and was moved to the new
+    champion's config instead. Only a slot holding the old champion's config
+    is touched."""
     done = []
     for n in config.challengers():
         try:
-            if config.strategy_signature(config.account_cfg(n)) != old_signature:
-                continue                              # a config of its own: a test, or a slot already in line
+            mine = config.account_cfg(n)
+            if config.is_cash(mine) or config.strategy_signature(mine) != old_signature:
+                continue                              # cash already, or a config of its own: a test
             try:
                 testing = slot.load(n).get("status") == "testing"
             except Exception:  # noqa: BLE001
@@ -661,21 +671,56 @@ def sync_idle_slots(old_signature: str) -> list[str]:
                 # was mended (found in review, 2026-10-06).
                 testing = False
             if not testing:
-                config.write_challenger_from_champion(n)
+                config.write_challenger_idle(n)
                 done.append(n)
         except Exception as e:  # noqa: BLE001
-            print(f"[promote] could not bring idle slot {n} into line with the new champion ({e})")
+            print(f"[promote] could not move idle slot {n} to cash ({e})")
     if done:
-        print(f"[promote] idle slots now mirror the new champion: {', '.join(done)}")
+        print(f"[promote] idle slots moved to cash: {', '.join(done)}")
     return done
+
+
+def idle_slots_to_cash() -> list[str]:
+    """Every hour: a slot with no test that still holds the champion's config,
+    as an idle slot did before ruleset 8, is moved to cash (Fin, 2026-10-08:
+    an idle slot holds cash). It sells what it holds at the next hourly run.
+    Never raises: it runs every hour after the rulings."""
+    try:
+        return sync_idle_slots(config.strategy_signature(config.account_cfg(config.CHAMPION)))
+    except Exception as e:  # noqa: BLE001
+        print(f"[promote] could not check the idle slots ({type(e).__name__}: {e})")
+        return []
 
 
 def paired_slot(name: str, meta: dict, now: int, rules: dict) -> tuple[dict, dict, dict]:
     """paired() for a challenger slot, with its usual exposures (cached in its
     meta). If the champion's config changed inside the window, the champion
     side is benchmarked stretch by stretch (add_skill_by_config), or on its
-    window average when a config's usual exposure is not on record."""
+    window average when a config's usual exposure is not on record.
+
+    A test that began under ruleset 8 carries an `against` stamp. Judged
+    against cash, its other side is cash (`cash_side`) until a config takes
+    the champion's title inside its window, and from then the champion
+    account (`title_side`). Whatever it is judged against, its drawdown guard
+    is set against the equal weight basket's fall over its window."""
     start = int(meta["started_at"])
+    against = meta.get("against", "champion")
+    if against not in ("cash", "champion"):
+        # Hand edited or damaged. Which side the test is judged against is not guessed: a wrong guess would rule
+        # on the wrong yardstick. It is said every hour until the record is mended or the test is voided.
+        raise Unreadable(f"{name}/meta.json says the test is judged against {against!r}, which is neither "
+                         f"'cash' nor 'champion'")
+    if against == "cash":
+        # only the challenger's own usual exposure is wanted: cash's is nothing, and a config that takes the title
+        # brings its own (state/champion/changes.json)
+        ue = meta.get("usual_exposure") or {}
+        if ue.get("start") != start or name not in ue:
+            ue = {"start": start, name: design_exposure(config.account_cfg(name), start)}
+            meta["usual_exposure"] = ue
+            slot.save(name, meta)
+        began = meta.get("start_equity") if isinstance(meta.get("start_equity"), dict) else {}
+        champ, chal, mc = paired(None, name, start, now, began, rules, ue)
+        return title_side(champ, chal, mc, name, start, now, began, rules), chal, mc
     ue, changed = usual_exposures(meta, config.CHAMPION, name, start)
     if changed:
         slot.save(name, meta)
@@ -683,7 +728,143 @@ def paired_slot(name: str, meta: dict, now: int, rules: dict) -> tuple[dict, dic
     if champion_changed_in(start, now):
         schedule = champion_schedule(ue.get(config.CHAMPION), start, now)
         ue = {k: v for k, v in ue.items() if k != config.CHAMPION}
-    return paired(config.CHAMPION, name, start, now, meta["start_equity"], rules, ue, champ_schedule=schedule)
+    champ, chal, mc = paired(config.CHAMPION, name, start, now, meta["start_equity"], rules, ue,
+                             champ_schedule=schedule)
+    if "against" in meta:                       # began under ruleset 8: the guard is the basket's fall
+        champ["guard_drawdown"] = _basket_fall(mc)
+    return champ, chal, mc
+
+
+def _basket_fall(mc: dict) -> float:
+    """The equal weight basket's worst fall over a window, as a positive share (nothing when unknown)."""
+    dd = _reading(mc.get("basket_max_dd")) if isinstance(mc, dict) else None
+    return abs(dd) if dd is not None else 0.0
+
+
+def _holds_title(hyp, retired) -> bool:
+    """Whether a champion config holds the title: it is neither cash nor a retired config."""
+    return hyp is not None and str(hyp) != config.CASH_CFG["hypothesis"] and str(hyp) not in retired
+
+
+def title_taken(start_ts: int, end_ts: int, retired) -> dict | None:
+    """The first change inside a window that gave the champion's title to a config (state/champion/changes.json),
+    or None."""
+    for r in champion_changed_in(start_ts, end_ts):
+        if _holds_title(r.get("to"), retired):
+            return r
+    return None
+
+
+TITLE_LABEL = "title"
+
+
+def title_side(cash: dict, chal: dict, mc: dict, name: str, start: int, now: int, start_equity: dict,
+               rules: dict) -> dict:
+    """The other side of a test judged against cash: cash, until a config takes the champion's title inside
+    the window. From then it is the title's record: the champion account's own while a config holds the title,
+    and cash's (nothing made, nothing held) while the title is cash or a retired config stands in for it, as
+    H0 did until the tests begun against it ended. The test keeps its window: a config that beat cash does not
+    reset it, as a change of champion never reset one before ruleset 8.
+
+    Each of the account's readings counts with the config that was champion when it was taken, the one named
+    by the newest change before it; a reading taken while a config held the title counts with its growth since
+    the reading before it, and any other reading counts as nothing. So the first reading after a change, which
+    still carries the old book's last hour and pays for the switch, is the new config's, and the hour of a
+    change, before the account has a reading of the new config, reads as nothing made. Skill is measured stretch by stretch against the usual exposure of the config
+    that held the title (`add_skill_by_config`), nothing for cash's stretches, and the account's own average
+    exposure over a stretch when a config's usual exposure is not on record. The drawdown guard stays the
+    basket's fall over the whole window."""
+    retired = rule_settings(rules)[0]["retired"]
+    changes = champion_changed_in(start, now)
+    if not any(_holds_title(r.get("to"), retired) for r in changes):
+        return cash
+    fault = record_fault(config.CHAMPION)
+    if fault:
+        raise Unreadable(fault)
+    bounds = [int(r["ts"]) for r in changes]
+    held = [_holds_title(r.get("to"), retired) for r in changes]
+    eq = _equity_rows(config.account_dir(config.CHAMPION) / "equity.csv", -10 ** 15, now)
+    ts_all = eq["ts"].to_numpy("int64")
+    which = np.searchsorted(np.array(bounds, dtype="int64"), ts_all, side="left") - 1   # the newest change before
+    live = np.array([k >= 0 and held[k] for k in which], dtype=bool)
+    value = eq["equity"].astype(float).to_numpy()
+    before = np.concatenate([[np.nan], value[:-1]])
+    grow = np.where(live & np.isfinite(before) & (before > 0), value / np.where(before > 0, before, 1.0), 1.0)
+    paid = (_column(eq, "fees_paid", 0.0).fillna(0.0) + _column(eq, "slippage_paid", 0.0).fillna(0.0)).to_numpy()
+    paid_before = np.concatenate([[np.nan], paid[:-1]])
+    inside = ts_all >= start
+    times, path = ts_all[inside], np.cumprod(grow[inside])
+    gross = _column(eq, "gross_exposure", 0.0).fillna(0.0).to_numpy()[inside]
+    share = np.where(live[inside] & (value[inside] > 0), gross / np.where(value[inside] > 0, value[inside], 1.0), 0.0)
+    side = {"return": float(path[-1] - 1.0) if len(path) else 0.0, "trades": 0, "round_trips": None,
+            "fees": float(np.nansum(np.where(live & np.isfinite(paid_before), paid - paid_before, 0.0)[inside])),
+            "gross_pnl": None, "realised_bps": None, "avg_exposure": 0.0, "skill": None, "edge_t": None,
+            "edge_days": 0, "skill_t": None, "skill_days": 0, "label": TITLE_LABEL,
+            "guard_drawdown": cash.get("guard_drawdown", _basket_fall(mc))}
+    whole = np.concatenate([[1.0], path])
+    side["max_drawdown"] = float((whole / np.maximum.accumulate(whole) - 1.0).min())
+    if len(times):
+        spans = np.diff(np.append(times, max(int(now), int(times[-1])))).clip(min=0)
+        side["avg_exposure"] = float(np.average(share, weights=spans)) if spans.sum() > 0 else float(share.mean())
+    trades = _read_csv(config.account_dir(config.CHAMPION) / "trades.csv")
+    if len(trades):
+        _need_columns(trades, config.account_dir(config.CHAMPION) / "trades.csv", ("ts", "side", "pair", "qty"))
+        t_fill = _column(trades, "ts")
+        ok = _fill_mask(trades) & (t_fill >= start) & (t_fill <= now)
+        k_fill = np.searchsorted(np.array(bounds, dtype="int64"), t_fill[ok].to_numpy("int64"), side="left") - 1
+        side["trades"] = int(sum(1 for k in k_fill if k >= 0 and held[k]))
+    # the usual exposure of each stretch: nothing while the title is cash, the recorded one while a config holds
+    # it, or that stretch's own average exposure when none is on record
+    steps, stood_in = [(int(start), 0.0)], []
+    for i, (r, h) in enumerate(zip(changes, held)):
+        e = r.get("exposure") if h else 0.0
+        if not (isinstance(e, (int, float)) and not isinstance(e, bool) and math.isfinite(e)):
+            end = bounds[i + 1] if i + 1 < len(bounds) else int(now)
+            mine = (times > bounds[i]) & (times <= end)
+            e = float(share[mine].mean()) if mine.any() else 0.0
+            stood_in.append(str(r.get("to")))
+        steps.append((int(r["ts"]), float(e)))
+    path_b = None if mc.get("gap") else mc.get("basket_path")
+    if path_b is not None and len(path_b) > 1:
+        add_skill_by_config(side, path_b, steps, now)
+    side["exposure_schedule"] = steps
+    side["title_steps"] = [(int(r["ts"]), str(r.get("to")), bool(h), str(r.get("why"))) for r, h in zip(changes, held)]
+    side["title_stood_in"] = stood_in
+    first = next(r for r, h in zip(changes, held) if h)
+    side["title_from"], side["title_to"] = int(first["ts"]), str(first.get("to"))
+    daily = _daily_from(pd.DataFrame({"ts": times, "equity": path}), start, now, 1.0) if len(times) else None
+    on = compare_on(rules, side, chal)
+    chal["edge_t"], chal["edge_days"] = edge_t(config.CHAMPION, name, start, now, start_equity, side, chal, path_b,
+                                               on, champ_daily=daily if daily is not None else pd.DataFrame())
+    return side
+
+
+def title_words(side: dict) -> str:
+    """The title's stretches in a few words: "cash, then H6 from 2026-11-20"."""
+    out, last = ["cash"], "cash"
+    for ts, hyp, held, _ in side.get("title_steps") or []:
+        who = hyp if held else "cash"
+        if who != last:
+            out.append(f"{who} from {datetime.fromtimestamp(int(ts), timezone.utc):%Y-%m-%d}")
+        last = who
+    return ", then ".join(out)
+
+
+def title_note(side: dict) -> str:
+    """The sentence for a test judged against cash whose window holds a change of the title."""
+    def step(ts, hyp, held, why) -> str:
+        to = f"to {hyp}" if held else "back to cash" + ("" if hyp == config.CASH_CFG["hypothesis"] else
+                                                         f", {hyp} standing in for it")
+        return f"{datetime.fromtimestamp(int(ts), timezone.utc):%Y-%m-%d} {to} ({why})"
+    steps = "; ".join(step(*x) for x in side.get("title_steps") or [])
+    stood = side.get("title_stood_in") or []
+    how = ("its skill measured against the usual exposure of each config that held the title" +
+           (f", and the account's own average exposure for {', '.join(stood)}, whose usual exposure is not on record"
+            if stood else ""))
+    return (f"the champion's title was cash when this test began, and it changed during it ({steps}). The side "
+            f"this test is judged against is the title's record: cash while the title was cash, and the champion "
+            f"account's own record while a config held it, {how}; its drawdown guard is the basket's fall over "
+            f"the whole window")
 
 
 def _num(d, key: str, default):
@@ -705,7 +886,7 @@ TWO_LOOKS_SINCE = 7              # the ruleset that brought in the two look rule
 KNOWN_SETTINGS = ("slots", "window_days", "confirm_days", "min_skill_t", "fast_pass_skill_t", "two_looks_from_ruleset",
                   "confidence", "min_trades", "min_trade_profit", "max_dd_ratio", "max_dd_floor", "compare_on",
                   "min_return_edge", "min_skill", "early_kill_drawdown", "treadmill_kill_multiple",
-                  "treadmill_min_days")
+                  "treadmill_min_days", "retired_champions", "cash_guard_skill_t")
 GATE_COST_DRAG = 0.15            # backtest_gate.max_cost_drag as configs/risk.yaml documents it
 # What stands in when a line is missing or is written in a way that cannot be used. Each is the value
 # configs/risk.yaml documents, so neither a slip of the hand nor a lost line ever loosens the rule. (For the
@@ -713,7 +894,8 @@ GATE_COST_DRAG = 0.15            # backtest_gate.max_cost_drag as configs/risk.y
 DEFAULTS = {"window_days": 60.0, "confirm_days": 60.0, "min_skill_t": 1.0, "prior": 0.10, "edge_sharpe": 1.5,
             "min_trades": 30, "max_dd_ratio": 1.5, "max_dd_floor": 0.10, "min_return_edge": 0.0, "min_skill": 0.0,
             "early_kill": 0.15, "treadmill_multiple": 3.0, "treadmill_min_days": 14.0, "min_trade_profit": 0.0,
-            "two_from": TWO_LOOKS_SINCE, "fast_pass": None, "compare_on": "skill"}
+            "two_from": TWO_LOOKS_SINCE, "fast_pass": None, "compare_on": "skill", "retired": ("H0",),
+            "cash_guard_t": 1.0}
 
 
 def rule_settings(rules) -> tuple[dict, list[str]]:
@@ -739,6 +921,8 @@ def rule_settings(rules) -> tuple[dict, list[str]]:
       max_dd_floor             off or 0: the drawdown guard has no floor
       early_kill_drawdown      off or 0: no early kill on losses
       treadmill_kill_multiple  off or 0: no cost kill
+      cash_guard_skill_t       off or 0: the guard on a promotion judged
+                               against cash reverts on skill alone
 
     The rest take a number (or, for compare_on, `skill` or `return`):
 
@@ -821,6 +1005,8 @@ def rule_settings(rules) -> tuple[dict, list[str]]:
            f"{DEFAULTS['treadmill_min_days']:.0f} days stand in")
     number("min_trade_profit", "min_trade_profit", lambda v: 0 <= v < 1,
            f"{DEFAULTS['min_trade_profit']:.1%} stands in (finished trades must have made money after costs)")
+    number("cash_guard_skill_t", "cash_guard_t", lambda v: v >= 0, f"{DEFAULTS['cash_guard_t']:.1f} stands in",
+           off=(0.0,))
 
     there, raw = find("fast_pass_skill_t")
     f = _num(rules, "fast_pass_skill_t", None)
@@ -831,6 +1017,19 @@ def rule_settings(rules) -> tuple[dict, list[str]]:
         bad("fast_pass_skill_t", "there is no fast pass until it is mended (to leave it out on purpose, write `off`)")
     else:
         out["fast_pass"] = f
+
+    # Champion configs Fin has retired (ruleset 8: H0, 2026-10-08). While the champion's config is one of them,
+    # or is cash, a test that begins is judged against cash. `off` (or an empty list): none is retired. A line
+    # that cannot be read retires the documented ones.
+    there, raw = find("retired_champions")
+    if there and (raw is False or raw == []):
+        out["retired"] = ()
+    elif there and isinstance(raw, list) and all(isinstance(h, str) and h.strip() for h in raw):
+        out["retired"] = tuple(h.strip() for h in raw)
+    else:
+        out["retired"] = DEFAULTS["retired"]
+        bad("retired_champions", f"{', '.join(DEFAULTS['retired'])} stands in (a list of hypotheses, or `off` for "
+                                 f"none)")
 
     there, raw = find("compare_on")
     word = raw.strip().lower() if isinstance(raw, str) else None
@@ -911,7 +1110,11 @@ def _daily(name: str, start_ts: int, end_ts: int, base: float | None) -> pd.Data
     p = config.account_dir(name) / "equity.csv"
     if not p.exists():
         return pd.DataFrame()
-    eq = _equity_rows(p, start_ts, end_ts)
+    return _daily_from(_equity_rows(p, start_ts, end_ts), start_ts, end_ts, base)
+
+
+def _daily_from(eq: pd.DataFrame, start_ts: int, end_ts: int, base: float | None) -> pd.DataFrame:
+    """`_daily` for readings already in hand (ts and equity, in time order, inside the window)."""
     if not len(eq):
         return pd.DataFrame()
     eq = eq.assign(day=(eq["ts"] - start_ts) // 86400)
@@ -958,12 +1161,21 @@ def _t_stat(d: pd.Series, min_days: int) -> tuple[float | None, int]:
 
 
 def edge_t(champ_name: str, chal_name: str, start_ts: int, end_ts: int, start_equity: dict,
-           champ: dict, chal: dict, basket_path, on: str) -> tuple[float | None, int]:
+           champ: dict, chal: dict, basket_path, on: str, champ_daily: pd.DataFrame | None = None
+           ) -> tuple[float | None, int]:
     """t statistic of the daily edge the verdict is decided on, and the number
     of days behind it. Informational: it says how far the edge sits from zero
-    in units of its own day to day noise. |t| under about 2 is noise."""
-    a = _daily(champ_name, start_ts, end_ts, start_equity.get(champ_name))
+    in units of its own day to day noise. |t| under about 2 is noise.
+    champ_name None: the other side is cash, which makes nothing on any day.
+    champ_daily: the other side's daily returns when they are not one
+    account's (`title_side`)."""
     b = _daily(chal_name, start_ts, end_ts, start_equity.get(chal_name))
+    if champ_daily is not None:
+        a = champ_daily
+    elif champ_name is None:
+        a = pd.DataFrame({"ret": 0.0, "ts": b["ts"]}, index=b.index) if len(b) else pd.DataFrame()
+    else:
+        a = _daily(champ_name, start_ts, end_ts, start_equity.get(champ_name))
     if not len(a) or not len(b):
         return None, 0
     d = b["ret"].sub(a["ret"], fill_value=0.0)
@@ -1197,10 +1409,10 @@ def paired(champ_name: str, chal_name: str, start_ts: int, end_ts: int, start_eq
     usual = usual or {}
     start_equity = start_equity if isinstance(start_equity, dict) else {}
     for who in (champ_name, chal_name):
-        fault = record_fault(who)
+        fault = record_fault(who) if who is not None else None
         if fault:
             raise Unreadable(fault)
-    champ = window_metrics(champ_name, start_ts, end_ts, start_equity.get(champ_name))
+    champ = window_metrics(champ_name, start_ts, end_ts, start_equity.get(champ_name)) if champ_name is not None else None
     chal = window_metrics(chal_name, start_ts, end_ts, start_equity.get(chal_name))
     try:
         mc = market_context(start_ts, end_ts, list(config.risk_cfg()["pairs"]))
@@ -1208,17 +1420,46 @@ def paired(champ_name: str, chal_name: str, start_ts: int, end_ts: int, start_eq
         mc = {"basket_return": None, "basket_path": None, "pairs": 0, "unread": f"{type(e).__name__}: {e}"[:120]}
     mc["gap"] = market_gap(mc, end_ts, start_ts)
     basket, path = (None, None) if mc["gap"] else (mc.get("basket_return"), mc.get("basket_path"))
-    if champ_schedule:
+    if champ_name is None:
+        champ = cash_side(mc, basket)
+    elif champ_schedule:
         add_skill_by_config(champ, path, champ_schedule, end_ts)
-    if champ.get("skill") is None:
+    if champ_name is not None and champ.get("skill") is None:
         add_skill(champ, basket, usual.get(champ_name))
     add_skill(chal, basket, usual.get(chal_name))
     on = compare_on(rules, champ, chal)
     chal["edge_t"], chal["edge_days"] = edge_t(champ_name, chal_name, start_ts, end_ts, start_equity,
                                                champ, chal, path, on)
     for name_, m in ((champ_name, champ), (chal_name, chal)):
-        m["skill_t"], m["skill_days"] = skill_t(name_, start_ts, end_ts, start_equity.get(name_), m, path)
+        if name_ is not None:
+            m["skill_t"], m["skill_days"] = skill_t(name_, start_ts, end_ts, start_equity.get(name_), m, path)
     return champ, chal, mc
+
+
+CASH_LABEL = "cash"
+
+
+def cash_side(mc: dict, basket_return: float | None) -> dict:
+    """The side a test that began under ruleset 8 is judged against while the champion's config is retired
+    (Fin, 2026-10-08): cash, which makes nothing, pays nothing and holds nothing. Its skill is nothing when
+    there is market data to measure skill by, and so the rule asks of such a test what it asked against H0:
+    skill above nothing (min_skill was already 0, and H0's skill was below nothing in about 97% of 60 day
+    windows).
+
+    Its drawdown guard is set against the equal weight basket's worst fall over the window (`guard_drawdown`),
+    not against cash's, which never falls: the guard would then be its 10% floor, and on the rule's twins
+    that kills four tests in five, edges and all, where against H0's deep falls it almost never bit. Against
+    the basket every figure of the twin study comes out as it did against H0 (FINDINGS, 2026-10-10)."""
+    out = {"return": 0.0, "max_drawdown": 0.0, "trades": 0, "avg_exposure": 0.0, "skill": None, "edge_t": None,
+           "edge_days": 0, "skill_t": None, "skill_days": 0, "label": CASH_LABEL, "guard_drawdown": _basket_fall(mc)}
+    if basket_return is not None and math.isfinite(float(basket_return)):
+        out.update(skill=0.0, skill_exposure=0.0, skill_basis="usual", basket_return=float(basket_return))
+    return out
+
+
+def side_name(champ: dict) -> str:
+    """How the verdict's words name the side a test is judged against."""
+    return CASH_LABEL if isinstance(champ, dict) and champ.get("label") == CASH_LABEL else "champion"
 
 
 def compare_on(rules: dict, champ: dict, chal: dict) -> str:
@@ -1252,16 +1493,20 @@ def no_record(champ: dict, chal: dict, chal_name: str) -> str | None:
 
 
 def drawdown_guard(champ: dict, chal: dict, rules: dict) -> str | None:
-    """The sentence for a challenger whose drawdown is past the guard, or None."""
+    """The sentence for a challenger whose drawdown is past the guard, or None. For a test that began under
+    ruleset 8 the yardstick is the equal weight basket's fall over the window (`guard_drawdown`), whatever the
+    test is judged against; for an older test it is the champion's own fall."""
     st = rule_settings(rules)[0]
-    champ_dd = abs(_reading(champ.get("max_drawdown")) or 0.0)
+    basket = "guard_drawdown" in champ
+    champ_dd = abs(_reading(champ.get("guard_drawdown" if basket else "max_drawdown")) or 0.0)
     chal_dd = abs(_reading(chal.get("max_drawdown")) or 0.0)
     limit = max(st["max_dd_ratio"] * champ_dd, st["max_dd_floor"])
     if chal_dd <= limit:
         return None
     shown, asked = _against(chal_dd, limit)
+    whose = "the equal weight basket's" if basket else "the champion's"
     return (f"challenger max drawdown {shown.lstrip('+')} exceeded the limit {asked} "
-            f"(the larger of {st['max_dd_ratio']:g}x the champion's {champ_dd:.2%} and the "
+            f"(the larger of {st['max_dd_ratio']:g}x {whose} {champ_dd:.2%} and the "
             f"{_bar(st['max_dd_floor'], percent=True)} floor)")
 
 
@@ -1276,7 +1521,13 @@ def decide(champ: dict, chal: dict, rules: dict, absolute: bool = True) -> tuple
     """The ordinary rule. absolute: also apply challenger.min_skill, the bar
     against simply holding the market at the same exposure. The shadow check
     passes False: reverting asks only whether the deposed config did better
-    than its replacement."""
+    than its replacement.
+
+    Either side can be cash (`cash_side`): the champion side of a test judged
+    against cash, or the challenger side of the guard on a promotion judged
+    against cash, where the shadow holds cash. Cash asks no fills of itself:
+    the fills a promotion needs are there to tell a strategy's bets from luck,
+    and cash makes none."""
     st = rule_settings(rules)[0]
     if chal.get("return") is None or champ.get("return") is None:
         return "killed", "no equity data for the window"
@@ -1286,7 +1537,8 @@ def decide(champ: dict, chal: dict, rules: dict, absolute: bool = True) -> tuple
             if v is not None and _reading(v) is None:
                 return "killed", (f"a figure in the record is not a number ({key}), so there is no usable data "
                                   f"for the window; nothing is promoted on it")
-    if chal["trades"] < st["min_trades"]:
+    cash_champ, cash_chal = side_name(champ) == CASH_LABEL, side_name(chal) == CASH_LABEL
+    if chal["trades"] < st["min_trades"] and not cash_chal:
         return "killed", (f"challenger made {_n(chal['trades'], 'fill')}, fewer than the {st['min_trades']} the rule "
                           f"asks for before it rules in a strategy's favour: too few separate bets to tell from luck")
     on = compare_on(rules, champ, chal)
@@ -1295,33 +1547,62 @@ def decide(champ: dict, chal: dict, rules: dict, absolute: bool = True) -> tuple
     # the two figures the rule sets against each other, with decimals enough to tell them apart
     mine, theirs = _apart(chal[on], champ[on])
     edge = chal[on] - champ[on]
-    if on == "skill":
-        if edge <= st["min_return_edge"]:
-            return "killed", (f"challenger skill {mine} (net {chal['return']:+.2%}, benchmark exposure "
-                              f"{chal['skill_exposure']:.2f}) did not beat champion skill {theirs} (net "
-                              f"{champ['return']:+.2%}, benchmark exposure {champ['skill_exposure']:.2f}) by more than "
-                              f"{st['min_return_edge']:.2%}{t_note}")
-        floor = st["min_skill"]
-        if absolute and floor is not None and chal["skill"] <= floor:
-            mine, theirs, asked = _apart(chal["skill"], champ["skill"], floor)
-            return "killed", (f"challenger skill {mine} beat the champion's {theirs} but "
-                              f"not the {asked} floor: it did no better than holding the basket at "
-                              f"{_held_words(chal)}, so beating the champion shows the champion is weak, not that "
-                              f"this has an edge{t_note}")
-    elif edge <= st["min_return_edge"]:
-        return "killed", (f"challenger net return {mine} did not beat champion "
-                          f"{theirs} by more than {st['min_return_edge']:.2%}{t_note}")
+
+    def said(m: dict, figure: str, role: str) -> str:
+        if side_name(m) == CASH_LABEL:
+            return f"cash, which makes nothing ({'skill' if on == 'skill' else 'net return'} {figure})"
+        if on == "skill":
+            return f"{role} skill {figure} (net {m['return']:+.2%}, benchmark exposure {m['skill_exposure']:.2f})"
+        return f"challenger net return {figure}" if role == "challenger" else f"champion {figure}"
+    mine_said, theirs_said = said(chal, mine, "challenger"), said(champ, theirs, "champion")
+    if edge <= st["min_return_edge"]:
+        return "killed", f"{mine_said} did not beat {theirs_said} by more than {st['min_return_edge']:.2%}{t_note}"
+    floor = st["min_skill"]
+    if on == "skill" and absolute and floor is not None and chal["skill"] <= floor:
+        mine, theirs, asked = _apart(chal["skill"], champ["skill"], floor)
+        if cash_champ:
+            return "killed", (f"challenger skill {mine} beat cash's {theirs} but not the {asked} floor: it did "
+                              f"no better than holding the basket at {_held_words(chal)}{t_note}")
+        return "killed", (f"challenger skill {mine} beat the champion's {theirs} but "
+                          f"not the {asked} floor: it did no better than holding the basket at "
+                          f"{_held_words(chal)}, so beating the champion shows the champion is weak, not that "
+                          f"this has an edge{t_note}")
     guard = drawdown_guard(champ, chal, rules)
     if guard:
+        ahead_of = "cash" if cash_champ else "the champion's"
         return "killed", (f"{guard}, although its {'skill' if on == 'skill' else 'net return'} was "
-                          f"{_apart(edge, 0.0)[0]} ahead of the champion's")
-    champ_dd = abs(champ["max_drawdown"] or 0.0)
+                          f"{_apart(edge, 0.0)[0]} ahead of {ahead_of}")
+    if cash_chal:
+        # The guard on a promotion judged against cash. Skill below nothing over 60 days happens to more than
+        # half of the configs with no edge and to one real edge with a yearly Sharpe of 2 in five in the twin
+        # study, where H0's guard reverted about one in thirty. A daily skill t at or below minus
+        # challenger.cash_guard_skill_t reverts edges about as rarely as H0's guard did, and twins about as often
+        # (FINDINGS, 2026-10-10). A t says how steady a fall was, not how big, and it counts days, not bets: one
+        # losing day in otherwise flat ones reads exactly -1. So a fall that only just reaches the bar is read
+        # only on min_trades fills or more; one at twice the bar or lower is read whatever the fills, so that a
+        # promoted config which buys and holds into a fall is still reverted (Fin, 2026-10-05: a bot that just
+        # buys and holds is killed).
+        bar, t = st["cash_guard_t"], _reading(champ.get("skill_t"))
+        t_said = (f"the promoted config's daily skill t is {t:+.2f} over {champ.get('skill_days')} days"
+                  if t is not None else "the promoted config's daily skill t cannot be read")
+        ahead = f"{mine_said} came out ahead of {theirs_said}"
+        if bar and (t is None or t > -bar):
+            return "killed", (f"{ahead}, but {t_said}, not at or below the {_bar(-bar)} a revert to cash asks for: "
+                              f"a fall that size over the guard's window can be noise")
+        fills = int(_reading(champ.get("trades")) or 0)
+        if fills < st["min_trades"] and t is not None and t > -2 * bar:
+            return "killed", (f"{ahead}, and {t_said}, but the promoted config made {_n(fills, 'fill')} in the guard's "
+                              f"window, fewer than the {st['min_trades']} a revert to cash asks for unless the t is "
+                              f"{_bar(-2 * bar)} or lower: too few separate bets to read a fall that size")
+        return "promoted", f"{mine_said} beat {theirs_said}, and {t_said} on {_n(fills, 'fill')}{t_note}"
     chal_dd = abs(chal["max_drawdown"] or 0.0)
+    if "guard_drawdown" in champ:               # began under ruleset 8: the guard is the basket's fall
+        basket_dd = abs(_reading(champ.get("guard_drawdown")) or 0.0)
+        return "promoted", (f"{mine_said} beat {theirs_said} with max drawdown {chal_dd:.2%} against the equal "
+                            f"weight basket's {basket_dd:.2%}{t_note}")
+    champ_dd = abs(champ["max_drawdown"] or 0.0)
     if on == "skill":
-        return "promoted", (f"challenger skill {mine} (net {chal['return']:+.2%}, benchmark exposure "
-                            f"{chal['skill_exposure']:.2f}) beat champion skill {theirs} (net "
-                            f"{champ['return']:+.2%}, benchmark exposure {champ['skill_exposure']:.2f}) with max drawdown "
-                            f"{chal_dd:.2%} vs {champ_dd:.2%}{t_note}")
+        return "promoted", f"{mine_said} beat {theirs_said} with max drawdown {chal_dd:.2%} vs {champ_dd:.2%}{t_note}"
     return "promoted", (f"challenger net return {mine} beat champion {theirs} "
                         f"with max drawdown {chal_dd:.2%} vs {champ_dd:.2%}{t_note}")
 
@@ -1594,6 +1875,54 @@ def other_rule_reading(champ: dict, chal: dict, rules: dict, elapsed_days: float
             f"({t_now})")
 
 
+def _outcome(champ: dict, chal: dict, rules: dict, meta: dict) -> tuple[str, str]:
+    """What the test's next look makes of two sides: (the outcome in a few words, its sentence)."""
+    if first_look_of(meta):
+        verdict, reason = decide_final(champ, chal, rules)
+        return ("left unproven" if verdict == "unproven" else verdict), reason
+    outcome, reason, why = look(champ, chal, rules)
+    if outcome == "kill":
+        return "killed", why
+    if outcome == "value":
+        return "kept on value", why
+    if not two_looks(meta, rules):
+        return "promoted", reason
+    fast = fast_pass(chal, rules)
+    return ("promoted", f"{reason}; {fast}") if fast else ("kept after passing its first look", reason)
+
+
+def measured_against_cash(meta: dict, rules: dict) -> bool:
+    """A test that began before ruleset 8 carries no `against` stamp. It is judged against the champion account,
+    which ran H0 when it began, and is judged so to its end (Fin, 2026-10-08); while a champion config is
+    retired, what cash would make of it is measured beside."""
+    return isinstance(meta, dict) and "against" not in meta and bool(rule_settings(rules)[0]["retired"])
+
+
+def against_cash_reading(champ: dict, chal: dict, mc: dict, rules: dict, meta: dict, elapsed_days: float,
+                         early: bool = False) -> str:
+    """For a test that began before ruleset 8: what its next look makes of the same numbers with cash as the
+    other side, beside what it makes of them against the champion account. Informational; it decides nothing
+    for that test. The edge against cash is the test's own daily skill, so its t is the skill t."""
+    if early:
+        return ("an early kill reads only the test's own record and the market, so it is the same against cash: "
+                "it would also have ended here")
+    gap = missing_market_data(mc, rules)
+    if gap:
+        return f"nothing to read this hour ({gap})"
+    cash = cash_side(mc, None if mc.get("gap") else mc.get("basket_return"))
+    mine = {**chal, "edge_t": chal.get("skill_t"), "edge_days": int(chal.get("skill_days") or 0)}
+    said_cash, why = _outcome(cash, mine, rules, meta)
+    said_champ, _ = _outcome(champ, chal, rules, meta)
+    first, total = rule_settings(rules)[0]["window_days"], total_days(meta, rules)
+    due = total if first_look_of(meta) else first
+    when = f" at day {due:.0f}" if elapsed_days < due else ""
+    rule = "its one look rule" if not two_looks(meta, rules) else "the rule it began under"
+    if said_cash == said_champ:
+        return f"by {rule}, on today's numbers it would be {said_cash}{when}, the same as against the champion"
+    return (f"by {rule}, on today's numbers it would be {said_cash}{when}, where against the champion it would "
+            f"be {said_champ}: {why}")
+
+
 def early_kill(chal: dict, rules: dict, elapsed_days: float | None = None,
                start_equity: float | None = None, gate_cost_drag: float | None = None,
                basket_return: float | None = None) -> str | None:
@@ -1761,9 +2090,13 @@ def expected_bps(hyp: str) -> float | None:
     return float(m.group(1)) if m else None
 
 
-def _fmt(d: dict, expected: float | None = None) -> str:
+def _fmt(d: dict, expected: float | None = None, over: str = "the champion") -> str:
     if d["return"] is None:
         return "no data"
+    if side_name(d) == CASH_LABEL and d.get("guard_drawdown") is not None:
+        fall = abs(d["guard_drawdown"])
+        return (f"makes nothing and holds nothing; its drawdown guard is set against the equal weight basket's "
+                f"worst fall over the window, {(-fall if fall >= 5e-5 else 0.0):.2%}")
     gross = "n/a" if d.get("gross_pnl") is None else f"{d['gross_pnl']:.2f}"
     trips = ""
     if d.get("round_trips") is not None:
@@ -1797,7 +2130,7 @@ def _fmt(d: dict, expected: float | None = None) -> str:
     if d.get("skill_t") is not None:
         s += f", daily skill t {d['skill_t']:+.2f} over {d['skill_days']} days"
     if d.get("edge_t") is not None:
-        s += f", daily edge t over the champion {d['edge_t']:+.2f} over {d['edge_days']} days"
+        s += f", daily edge t over {over} {d['edge_t']:+.2f} over {d['edge_days']} days"
     return s
 
 
@@ -1838,6 +2171,7 @@ def update_ledger(hyp: str, verdict: str, reason: str, champ: dict, chal: dict,
     path = config.LEDGER
     text = path.read_text() if path.exists() else "# Ledger\n"
     status_to = verdict if status_to is None else status_to
+    cash = isinstance(champ, dict) and side_name(champ) == CASH_LABEL     # a test judged against cash
     if verdict != "restarted" and status_to:
         # Stay inside this hypothesis's own entry: without the look ahead a missing
         # Status line let the match run on into the next entry and flip that one.
@@ -1856,15 +2190,15 @@ def update_ledger(hyp: str, verdict: str, reason: str, champ: dict, chal: dict,
         f"{datetime.fromtimestamp(end_ts, timezone.utc):%Y-%m-%d} ({(end_ts - start_ts) / 86400:.1f} days, prospective)\n"
         f"- Market: {market}\n"
         f"- Rules: {_ruleset_note(slot_name, 'at this look' if heading == 'First look' else 'at the verdict')}\n"
-        f"- {labels[0]}: {_fmt(champ)}\n"
-        f"- {labels[1]}: {_fmt(chal, expected_bps(hyp))}\n"
+        f"- {'Judged against: cash' if cash else labels[0]}: {_fmt(champ)}\n"
+        f"- {labels[1]}: {_fmt(chal, expected_bps(hyp), 'cash' if cash else 'the champion')}\n"
         f"- Rule: {reason}\n"
         + "".join(f"- {line}\n" for line in (extra or []))
     )
-    if slot_name != config.SHADOW:
+    if slot_name != config.SHADOW and not cash:            # no change of the champion's config touches cash
         try:
-            changed = champion_note(start_ts, end_ts, bool(champ.get("exposure_schedule")),
-                                    measured=champ.get("skill") is not None)
+            changed = title_note(champ) if champ.get("title_from") else champion_note(
+                start_ts, end_ts, bool(champ.get("exposure_schedule")), measured=champ.get("skill") is not None)
         except Exception:  # noqa: BLE001
             changed = None
         if changed:
@@ -1914,16 +2248,29 @@ def note_superseded(new_hyp: str, now: int) -> None:
             reason += f". The guard's numbers so far could not be read ({type(e).__name__}: {e})"
         print(f"[promote] {meta['replaced_by']}: guard superseded — {reason}")
         update_ledger(meta["replaced_by"], "superseded", reason, champ, shad, start, now, "shadow",
-                      labels=("Promoted champion", "Deposed config (shadow)"), status_to="")
+                      labels=("Promoted champion", "Cash, the deposed side (shadow)" if meta.get("hypothesis") ==
+                              config.CASH_CFG["hypothesis"] else "Deposed config (shadow)"), status_to="")
     except Exception as e:  # noqa: BLE001
         print(f"[promote] could not record the superseded guard ({type(e).__name__}: {e})")
 
 
 def apply(verdict: str, hyp: str, name: str, now: int | None = None, equities: dict[str, float] | None = None) -> None:
+    """Carry out a verdict: on a promotion the slot's config becomes the
+    champion's and the deposed side runs in the shadow account; whatever the
+    verdict, the slot's account is archived and the slot left idle, holding
+    cash. The deposed side is the champion account's config, or cash for a
+    test judged against cash while the title is cash (ruleset 8), whose guard
+    then asks whether the promoted config fell clearly below cash (`decide`)."""
     if verdict == "promoted":
         now = now or int(time.time())
         note_superseded(hyp, now)
-        deposed = config.account_cfg(config.CHAMPION)
+        ran = config.account_cfg(config.CHAMPION)            # what the champion account ran until now
+        judged = slot.load(name).get("against")
+        # A test judged against cash beat cash while the title was cash (H0, retired, standing in for it), and
+        # then cash guards its promotion; once a config holds the title it beat that config's record as well.
+        title_is_cash = config.is_cash(ran) or str(ran.get("hypothesis")) in rule_settings(
+            config.risk_cfg().get("challenger"))[0]["retired"]
+        deposed = dict(config.CASH_CFG, params={}) if judged == "cash" and title_is_cash else ran
         chal = config.account_cfg(name)
         config.dump_yaml(config.CONFIGS / "champion.yaml",
                          {"hypothesis": chal["hypothesis"], "strategy": chal["strategy"], "params": chal["params"]},
@@ -1933,9 +2280,9 @@ def apply(verdict: str, hyp: str, name: str, now: int | None = None, equities: d
         shadow.start(deposed, hyp, now,
                      equities.get(config.CHAMPION, rcfg["initial_cash"]), rcfg["initial_cash"])
         usual = (slot.load(name).get("usual_exposure") or {}).get(name)
-        record_champion_change(now, deposed.get("hypothesis"), chal.get("hypothesis"), "promotion", usual)
-        sync_idle_slots(config.strategy_signature(deposed))
-    config.write_challenger_from_champion(name)
+        record_champion_change(now, ran.get("hypothesis"), chal.get("hypothesis"), "promotion", usual)
+        sync_idle_slots(config.strategy_signature(ran))
+    config.write_challenger_idle(name)
     archive_slot(name, hyp)
     slot.reset(name)
 
@@ -1970,14 +2317,14 @@ def _void_one(req, now: int, rules: dict) -> str | None:
     except Exception as e:  # noqa: BLE001
         # The slot's own record cannot be read, which is a state a void is for (the request used to be dropped
         # and the test kept its slot; found in review, 2026-10-06). What runs there is read from its config
-        # instead: a slot whose config is the champion's holds no test.
+        # instead: a slot whose config is cash or the champion's holds no test.
         try:
             running = config.account_cfg(name).get("hypothesis") if slot.configs_differ(name) else None
         except Exception:  # noqa: BLE001
             running = None
         if running != hyp:
             print(f"[promote] void request {hyp} in {name}: its slot record could not be read ({type(e).__name__}) and "
-                  f"its config {'tests ' + str(running) if running else 'is the champion config'}; dropped")
+                  f"its config {'tests ' + str(running) if running else 'is cash or the champion config'}; dropped")
             return None
         meta = {"status": "testing", "hypothesis": hyp, "unread": f"{type(e).__name__}: {e}"}
     if meta.get("status") != "testing" or meta.get("hypothesis") != hyp:
@@ -2048,6 +2395,9 @@ def _guard_reading(meta: dict, now: int, rules: dict) -> tuple[dict, dict, dict,
     if changed:
         shadow.save(meta)
     champ, shad, mc = paired(config.CHAMPION, config.SHADOW, start, now, meta.get("start_equity"), rules, ue)
+    if config.is_cash(config.account_cfg(config.SHADOW)):
+        # the guard on a promotion judged against cash: the shadow holds cash, and `decide` reads it as cash
+        shad["label"] = CASH_LABEL
     return champ, shad, mc, ue
 
 
@@ -2109,11 +2459,13 @@ def rule_on_shadow(now: int, rules: dict) -> None:
               f"{blank or gap}; nothing is ruled until {'that record' if blank else 'the market data'} is whole")
         return
     verdict, reason = decide(champ, shad, rules, absolute=False)   # "promoted" here means the shadow beat the champion
+    deposed = "cash, which the promoted config was judged against," if side_name(shad) == CASH_LABEL \
+        else "the deposed config"
     if verdict == "promoted":
-        reason = f"the deposed config beat the promoted one over the guard window: {reason}; promotion reverted"
+        reason = f"{deposed} beat the promoted one over the guard window: {reason}; promotion reverted"
         print(f"[promote] {promoted_hyp}: reverted — {reason}")
         update_ledger(promoted_hyp, "reverted", reason, champ, shad, start, now, "shadow",
-                      labels=("Promoted champion", "Deposed config (shadow)"), status_from="promoted")
+                      labels=("Promoted champion", _shadow_label(shad)), status_from="promoted")
         undone = config.account_cfg(config.CHAMPION)
         old = config.account_cfg(config.SHADOW)
         config.dump_yaml(config.CONFIGS / "champion.yaml",
@@ -2123,11 +2475,16 @@ def rule_on_shadow(now: int, rules: dict) -> None:
         record_champion_change(now, undone.get("hypothesis"), old.get("hypothesis"), "revert", ue.get(config.SHADOW))
         sync_idle_slots(config.strategy_signature(undone))
     else:
-        reason = f"the promoted config held against the deposed one over the guard window: {reason}"
+        reason = (f"the promoted config held against {'cash' if side_name(shad) == CASH_LABEL else 'the deposed one'} "
+                  f"over the guard window: {reason}")
         print(f"[promote] {promoted_hyp}: held — {reason}")
         update_ledger(promoted_hyp, "held", reason, champ, shad, start, now, "shadow",
-                      labels=("Promoted champion", "Deposed config (shadow)"), status_to="")
+                      labels=("Promoted champion", _shadow_label(shad)), status_to="")
         shadow.stop("held")
+
+
+def _shadow_label(shad: dict) -> str:
+    return "Cash, the deposed side (shadow)" if side_name(shad) == CASH_LABEL else "Deposed config (shadow)"
 
 
 def restart(name: str, now: int, equities: dict[str, float], new_champion: str) -> None:
@@ -2136,6 +2493,7 @@ def restart(name: str, now: int, equities: dict[str, float], new_champion: str) 
     meta["start_equity"] = {k: float(v) for k, v in equities.items() if k in (config.CHAMPION, name)}
     meta["restarted_against"] = new_champion
     meta["ruleset"] = config.ruleset_stamp()
+    meta["against"] = slot.judged_against()  # the champion account, unless the new champion's config is retired
     meta.pop("first_look", None)             # a fresh window starts with a fresh first look
     slot.save(name, meta)
 
@@ -2175,13 +2533,23 @@ def main(argv: list[str] | None = None) -> int:
     now = args.now or int(time.time())
     rules = config.risk_cfg()["challenger"]
     st, unusable = rule_settings(rules)
-    # one dict per verdict: slot, hyp, verdict, reason; early = an early kill;
-    # base = the reason without the fast pass sentence (for a restart)
-    verdicts: list[dict] = []
     for line in unusable + other_notes():
         print(f"[promote] WARNING: {line}")
     rule_on_shadow(now, rules)
     process_voids(now, rules)
+    rule_on_tests(now, rules, st)
+    # after the rulings, which can free a slot or change the champion
+    retire_champion(now, st)
+    idle_slots_to_cash()
+    return 0
+
+
+def rule_on_tests(now: int, rules: dict, st: dict) -> None:
+    """Every running test's hour: the early kills, the looks, the verdicts, and the restart of a second winner
+    in the hour of a promotion."""
+    # one dict per verdict: slot, hyp, verdict, reason; early = an early kill;
+    # base = the reason without the fast pass sentence (for a restart)
+    verdicts: list[dict] = []
     testing = []
     for n in config.challengers():
         try:
@@ -2195,7 +2563,7 @@ def main(argv: list[str] | None = None) -> int:
                   f"({type(e).__name__}: {e}); nothing is ruled for it until it can be")
     if not testing:
         print("[promote] no test running; nothing to rule on")
-        return 0
+        return
     for name, meta in testing:
         try:
             if not isinstance(meta["hypothesis"], str) or not meta["hypothesis"]:
@@ -2223,7 +2591,8 @@ def main(argv: list[str] | None = None) -> int:
         meta, (champ, chal, mc) = v["meta"], v["sides"]     # as read for the look: nothing a ruling does this hour
         start = int(meta["started_at"])                     # changes another slot's window
         if verdict == "promoted" and promoted_hyp is not None:
-            reason = (f"beat the old champion ({v.get('base', reason)}) but {promoted_hyp} won by more this hour "
+            beaten = "cash" if side_name(champ) == CASH_LABEL else "the old champion"
+            reason = (f"beat {beaten} ({v.get('base', reason)}) but {promoted_hyp} won by more this hour "
                       f"and was promoted; restarted against the new champion with a fresh window")
             print(f"[promote] {name}: {hyp}: restarted — {reason}")
             update_ledger(hyp, "restarted", reason, champ, chal, start, now, name)
@@ -2235,11 +2604,75 @@ def main(argv: list[str] | None = None) -> int:
             extra.append("Two look rule (measured, not applied to this test): "
                          + other_rule_reading(champ, chal, rules, (now - start) / 86400, early=bool(v.get("early")),
                                               gap=missing_market_data(mc, rules)))
+        if measured_against_cash(meta, rules):
+            extra.append("Against cash (measured, not applied to this test): "
+                         + against_cash_reading(champ, chal, mc, rules, meta, (now - start) / 86400,
+                                                early=bool(v.get("early"))))
         update_ledger(hyp, verdict, reason, champ, chal, start, now, name, extra=extra)
         apply(verdict, hyp, name, now, current_equities(now))
         if verdict == "promoted":
             promoted_hyp = hyp
-    return 0
+
+
+def switch_holders() -> list[str]:
+    """What keeps a retired config in the champion account: each slot whose test is judged against the champion
+    account (one from before ruleset 8, or one stamped `against: champion`), and each whose record cannot be
+    read as a slot record while its config is one of its own, among the slots in use and any beyond
+    `challenger.slots` that still holds a record. Named as the summary says them. Never raises."""
+    names = []
+    try:
+        names = list(config.challengers())
+        n = config.n_slots()
+        for d in sorted(config.STATE.glob("challenger*")):
+            k = d.name[len("challenger"):]
+            if k.isdigit() and int(k) > n and (d / "meta.json").exists():
+                names.append(d.name)
+    except Exception as e:  # noqa: BLE001
+        return [f"the slots, which cannot be listed ({type(e).__name__}: {e})"]
+    out = []
+    for name in names:
+        try:
+            meta = slot.load(name)
+            if not isinstance(meta, dict) or meta.get("status") not in ("idle", "testing"):
+                raise ValueError("it is not a slot record")
+        except Exception:  # noqa: BLE001
+            try:
+                idle = not slot.configs_differ(name)
+            except Exception:  # noqa: BLE001
+                idle = False
+            if not idle:
+                out.append(f"{name}, whose record cannot be read")
+            continue
+        if meta.get("status") == "testing" and meta.get("against") != "cash":
+            out.append(f"{meta.get('hypothesis')} in {name}")
+    return out
+
+
+def retire_champion(now: int, st: dict) -> bool:
+    """When the champion's config is one Fin has retired (challenger.retired_champions: H0, 2026-10-08) and no
+    test is judged against the champion account any more (`switch_holders`), nor is a promotion being guarded,
+    the champion's config becomes cash. The account sells what it holds at the next hourly run. Until then it
+    runs the retired config as the yardstick for the tests judged against it. Only the reading is guarded:
+    a champion.yaml that cannot be written stops the hour, so that nothing half made is committed (as for a
+    promotion). Returns whether the switch was made."""
+    try:
+        champ = config.account_cfg(config.CHAMPION)
+        hyp = str(champ.get("hypothesis"))
+        if config.is_cash(champ) or hyp not in st["retired"]:
+            return False
+        if shadow.load().get("status") == "active" or switch_holders():
+            return False
+    except Exception as e:  # noqa: BLE001
+        print(f"[promote] WARNING: could not check whether the retired champion's config can go "
+              f"({type(e).__name__}: {e}); it stays this hour")
+        return False
+    config.dump_yaml(config.CONFIGS / "champion.yaml", dict(config.CASH_CFG, params={}), CHAMPION_HEADER)
+    record_champion_change(now, hyp, config.CASH_CFG["hypothesis"],
+                           f"{hyp} retired (configs/risk.yaml, retired_champions)", 0.0)
+    sync_idle_slots(config.strategy_signature(champ))
+    print(f"[promote] {hyp} is retired and no test is judged against it any more: the champion's config is cash "
+          f"from now, and the champion account sells what it holds at the next hourly run")
+    return True
 
 
 def _look_at(name: str, meta: dict, now: int, rules: dict, st: dict, verdicts: list[dict],
@@ -2318,8 +2751,12 @@ def _look_at(name: str, meta: dict, now: int, rules: dict, st: dict, verdicts: l
         held_back = fast_pass_withheld(chal, rules)
         note = f"first look passed: {reason}. " + (f"{held_back}. " if held_back else "") + f"Not a promotion: {ahead}"
     print(f"[promote] {name}: {hyp}: {note}")
+    extra = [f"Confidence: {confidence_line(chal, rules)}"]
+    if measured_against_cash(meta, rules):
+        extra.append("Against cash (measured, not applied to this test): "
+                     + against_cash_reading(champ, chal, mc, rules, meta, elapsed))
     update_ledger(hyp, "kept on value" if on_value else "passed", note, champ, chal, start, now, name,
-                  status_to="", heading="First look", extra=[f"Confidence: {confidence_line(chal, rules)}"])
+                  status_to="", heading="First look", extra=extra)
     # the block first, then the record of it: if writing the block fails, the look is simply taken again
     meta["first_look"] = {"at": int(now), "start": start, "reason": reason, "on": "value" if on_value else "rule"}
     slot.save(name, meta)

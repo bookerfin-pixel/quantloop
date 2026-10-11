@@ -358,7 +358,7 @@ def test_main_skips_a_duplicate_trigger_and_says_so(sandbox, live):
         return {p: p.read_bytes() for p in (sandbox / "state").rglob("*")
                 if p.is_file() and p.parent.name != "candles"}
     before = records()
-    assert len(before) >= 8                                               # two accounts: account, decisions, trades, equity
+    assert len(before) >= 7     # the champion's account, decisions, trades, equity; the idle slot holds cash, with no fills
     assert hour(200, minute=12) == (0, "1")                               # the outside scheduler arrives second
     assert records() == before
     assert hour(201) == (0, "0")                                          # and the next hour runs as usual

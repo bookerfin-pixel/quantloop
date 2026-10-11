@@ -17,6 +17,9 @@ RULES = {"slots": 2, "window_days": 60, "confirm_days": 60, "min_skill_t": 1.0, 
          "min_trades": 30, "max_dd_ratio": 1.5, "max_dd_floor": 0.10, "min_return_edge": 0.0,
          "compare_on": "skill", "min_skill": 0.0, "min_trade_profit": 0.0, "early_kill_drawdown": 0.15,
          "treadmill_kill_multiple": 3.0, "treadmill_min_days": 14,
+         # These tests are judged against the champion account, as every test was before ruleset 8, so no
+         # champion config is retired here (tests/gate/test_cash_champion.py has the retired one).
+         "retired_champions": False, "cash_guard_skill_t": 1.0,
          "confidence": {"prior": 0.10, "edge_sharpe": 1.5}}
 GATE = {"max_cost_drag": 0.15}           # the one line of the gate's block the verdict code reads
 

@@ -129,10 +129,30 @@ can read it with `gh pr list --state closed`.
   entries with no exit of its own). Never quote the number without that
   sentence. A slot is busy for all 120 days of a test that is kept at its
   first look. From day 7 the summary has a `fills:` line for a test that is
-  not on pace for 30 fills by its first look or by its verdict. If the
-  champion changes while a test runs, the test carries on and its blocks
-  have a `Champion change:` line saying how the champion side was measured;
-  when the champion changes, idle slots follow it by themselves.
+  not on pace for 30 fills by its first look or by its verdict.
+- From ruleset 8 (2026-10-11) H0 is retired and the champion's title is
+  cash (PROMOTION.md, "Cash as the champion"). A test that begins while no
+  config holds the title is judged against cash: its slot line says
+  "judged against cash", and its bar is skill above nothing, with its
+  drawdown guard set against the equal weight basket's fall (every test
+  that begins under ruleset 8 has that guard). The four tests that began
+  against H0 are judged against the champion account by their own rules;
+  their results carry an "Against cash (measured, not applied to this
+  test)" line, which you quote beside the verdict when it differs. The
+  champion account runs H0 only for them, and its config becomes cash by
+  itself when the last of them ends: the summary's champion heading says
+  so, and it needs nothing doing. An idle slot holds cash; a slot whose
+  config is cash or the champion's holds no test, so to start one a pull
+  request gives the slot a config of its own.
+- If the champion changes while a test runs, the test carries on in its
+  window and its blocks have a `Champion change:` line saying how the other
+  side was measured: for a test judged against the champion account, that
+  account's record across the change; for one judged against cash, the
+  title's record (cash while the title is cash, the champion account while
+  a config holds it). A promotion judged against cash is guarded by cash,
+  and reverted only on a clear fall: skill below nothing with a daily skill
+  t of -1.0 or below over the guard's 60 days, on 30 fills or more unless
+  the t is -2.0 or below. Idle slots move to cash by themselves.
 - Lines in the summary to pass on to Fin at the top of the note, because he
   has to act and you cannot: one that starts `SETTING NOT USED` (a line in
   configs/risk.yaml is missing, cannot be used as written, or is not a

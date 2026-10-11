@@ -864,6 +864,32 @@ the machinery, not edge.
   comes, can be set beside what its history said: that comparison, over many tests, is what will say whether the
   bench is worth reading at all.
 
+- Judging a test against cash instead of H0 changes no error rate, if the
+  drawdown guard is set by the basket (2026-10-10, for ruleset 8). Rule 1's
+  twin study, run again with cash as the other side (seeds 11 and 12, each
+  72,900 tests of twins with no skill and 29,160 per edge level): with the
+  guard set against the equal weight basket's fall over the window, the
+  share promoted is what it was against H0 (twins with no skill 9.0% and
+  8.5%, Sharpe 1 31%, Sharpe 2 56%, Sharpe 3 77%). Against cash's own fall,
+  which is none, the guard is its 10% floor and kills four tests in five,
+  edges included (twins 2.4%, Sharpe 2 13%). Why: min_skill was already 0
+  and H0's skill was below zero in about 97% of 60 day windows, so beating H0
+  added nothing to beating cash; H0 only set the guard, and its falls were so
+  deep that 99.4% of twins stayed inside it. A guard set by a live config as
+  champion is tighter and cuts edges and twins alike (H1's own fall: Sharpe 2
+  50%, twins 7.7%; H4's: 48% and 8.1%; H1 with the basket's fall: 56% and
+  8.8%), so every test from ruleset 8 on has the basket's. The 9 in 100
+  false promotions are rule 1's own, and need a different fix. Measured in a
+  market that fell a third, which leaves the guard slack.
+- A shadow guard of "skill below cash's" would undo good promotions often
+  (2026-10-10). On fresh 60 day windows of the same twins (seeds 21 and 22),
+  skill below nothing over the 60 days after a promotion happens to 59% of
+  configs with no skill, 33% of Sharpe 1 edges, 20% of Sharpe 2 and 11% of
+  Sharpe 3; H0's guard reverted 16%, 6%, 3% and 1%. Asking also for a daily
+  skill t of -1.0 or below reverts 19%, 5.4%, 2.4% and 1.3%, about what H0's
+  guard did, so that is the guard on a promotion judged against cash
+  (PROMOTION.md, "Cash as the champion").
+
 ## Overturned
 
 - Weekly cross sectional momentum on the ten pairs (a first look of 2026-10-05 by Fin's maintainer session, written into the backlog as a candidate; not a ledger verdict, so there is no ledger id). Claimed: all 18 variants beat the equal weight basket over five years, skill Sharpe 0.48 on average, 7 of 18 beating 95% of their twins. Overturned 2026-10-06 by the same session's own recheck while planning the wider universe: the study had rebalanced at Friday's close and nowhere else, and over the seven possible days the family averages +0.05. The twins could not catch it, because a twin is slid in time and so samples every weekday, while the rule under test sat on the one day that happened to work. What changed: the backlog entry moved to the ideas not to bother with, and CLAUDE.md now asks for every phase of a rhythm to be tried. No slot was spent on it.

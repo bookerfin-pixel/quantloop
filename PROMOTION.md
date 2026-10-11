@@ -16,7 +16,8 @@ A test can end three ways, and they are three different things.
 ## Words used here
 
 - **Test.** A challenger strategy running in a slot with its own paper
-  account, set against the champion over the same days.
+  account, set against the champion over the same days, or against cash
+  (ruleset 8: see "Cash as the champion").
 - **Basket.** The ten pairs in equal parts, bought when the test begins and
   held. It stands for "the market".
 - **Usual exposure.** The share of its equity a strategy had invested on
@@ -35,7 +36,8 @@ A test can end three ways, and they are three different things.
   year. 1 is good, 2 is excellent.
 - **Drawdown, and the guard.** The deepest fall of an account from an
   earlier high inside the test. The guard: a challenger's may not be deeper
-  than the larger of 10% and one and a half times the champion's.
+  than the larger of 10% and one and a half times the champion's (against
+  cash, the equal weight basket's).
 - **Fill.** One buy or one sell.
 - **Finished trade.** A position the account has left: sold down to a
   twentieth of its largest size or less. "Of its own" means the strategy
@@ -103,10 +105,12 @@ whatever its numbers.** A trim is not an exit, and a position sold in pieces
 counts once. A finished trade is the strategy's own when the strategy chose
 it:
 
-- A position the slot already held when the test began (an idle slot runs
-  the champion's config) is measured from its size at that moment, and
-  leaving it counts from the second day on. In the first day that is the
-  last config's book being unwound, unless the strategy bought more of it.
+- A position the slot already held when the test began (before ruleset 8
+  an idle slot ran the champion's config; from ruleset 8 it holds cash, so
+  a new test begins from a flat book) is measured from its size at that
+  moment, and leaving it counts from the second day on. In the first day
+  that is the last config's book being unwound, unless the strategy bought
+  more of it.
 - A position the daily loss halt sold, or one sold because the strategy
   raised an error, was not an exit the strategy chose. It is counted apart.
 
@@ -188,6 +192,8 @@ For every test that begins under ruleset 7 or later.
 4. The shadow guard is unchanged: after a promotion the old champion runs on
    for 60 days and takes its place back if it beats the new one by the
    ordinary rule (better on skill, drawdown inside the guard, 30 fills).
+   After a promotion judged against cash, cash is what guards it, and a
+   revert asks for a clear fall below it (next section).
 
 Of 100 twins, about 21 are ended early before day 60, 32 are killed at day
 60, 1 is promoted there by the fast pass and 47 run on (each rounded, so
@@ -231,6 +237,135 @@ What this does not catch: a bot that trades a little and otherwise holds
 more of a rising market than it usually does. Its skill figure is real money
 and one bet. The two looks, the t bar and the shadow guard are the defence,
 and the table says how often a strategy with no skill gets through them.
+
+## Cash as the champion (ruleset 8)
+
+Fin, 2026-10-08: H0 is retired, and the champion's title is cash. A strategy
+earns it by beating holding nothing, not by beating a config that loses.
+
+- **What a test is judged against.** A test that begins while the
+  champion's config is retired (`retired_champions` in configs/risk.yaml:
+  H0) or is cash is judged against cash, and its slot record says so
+  (`against: cash`). Cash makes nothing, pays nothing and holds nothing: its
+  return is nothing, and so is its skill. Everything else in rule 1 is as
+  above: the two looks, the fast pass, the 30 fills, the t bar, the early
+  kills, the value of its trades. A test that begins while a config holds
+  the title is judged against the champion account, as before ruleset 8
+  (`against: champion`).
+- **When a config takes the title inside a test's window**, a test judged
+  against cash carries on in the same window, as a test always has across a
+  change of champion. Its other side is then the title's record: cash while
+  the title is cash (or a retired config stands in for it), and the champion
+  account's own record while a config holds it, each stretch's skill
+  measured against the usual exposure of the config that held the title
+  (the account's own average over the stretch when none is on record). A
+  reading counts with the config that was champion when it was taken: the
+  first one after a change, which still carries the old book's last hour
+  and pays for the switch, is the new config's, and the hour of a change
+  reads as nothing made. Its results say so in a "Champion change" line.
+- **The drawdown guard of every test that begins under ruleset 8** is set
+  against the equal weight basket's worst fall over the same window: no
+  deeper than the larger of 10% and one and a half times it, whatever the
+  test is judged against. Cash never falls, and against its fall the guard
+  would be the 10% floor alone. A champion config's own fall depends on how
+  much of the market it holds. Tests that began earlier keep the champion's
+  fall, as they began.
+- **Why the numbers do not move.** min_skill is 0, and H0's skill was below
+  nothing in about 97 of 100 60 day windows, so "above the champion's skill"
+  added nothing to "above nothing". The one thing H0 set was the drawdown
+  guard, and its falls were so deep that the guard almost never bit; against
+  the basket it is a backstop for a strategy that falls far more than the
+  market, not a check on ordinary ones. The twin study of rule 1, run again
+  (seeds 11 and 12, 2026-10-08 to 10; the market fell by a third over the 687
+  days, which leaves both the H0 bar and the guard slack), share of tests
+  promoted:
+
+  | Other side, and the guard's yardstick | Twin with no skill | Sharpe 1 | Sharpe 2 | Sharpe 3 | Twins inside the guard at day 60 |
+  | --- | --- | --- | --- | --- | --- |
+  | H0, H0's fall (rule 1 as it ran) | 9.0% / 8.5% | 31.2% / 31.4% | 56.1% / 55.4% | 76.9% / 76.4% | 99.4% |
+  | Cash, cash's fall (the 10% floor) | 2.4% | 6.4% | 13.1% | 21.0% | 21.5% |
+  | **Cash, the basket's fall (as built)** | **9.0% / 8.5%** | **31.2% / 31.4%** | **56.1% / 55.4%** | **76.9% / 76.4%** | 100% |
+  | Cash, the basket at the strategy's usual exposure | 7.5% | 25.2% | 45.0% | 63.4% | 52.0% |
+  | Cash, a fixed 25% / 30% | 8.6% / 8.9% | 28.1% / 30.1% | 49.3% / 53.6% | 68.6% / 74.1% | 77% / 88% |
+  | H1 as champion, H1's own fall | 7.7% | 27.0% | 50.4% | 71.5% | 78.9% |
+  | H4 as champion, H4's own fall | 8.1% | 26.8% | 48.1% | 66.4% | 75.1% |
+  | H1 as champion, the basket's fall | 8.8% | 30.8% | 55.6% | 76.5% | 100% |
+
+  Against the basket's fall the promoted rows are what they were against H0
+  (the other rows move by under a point). A guard set by a champion's own
+  fall, or by anything tighter than the basket's, cuts the edges' promotions
+  and the twins' alike, so the odds of an edge over a twin do not move and it
+  buys nothing. Against a promoted champion the basket's fall is looser than
+  that champion's own, and the difference lands in the kills: with H1 as
+  champion, twins killed at day 60 go from 40% to 33% and unproven from 17%
+  to 22%, Sharpe 2 edges killed at day 60 from 20% to 13%, and a twin's test
+  runs about 4 days longer. Fewer wrong kills of edges is the trade; a kill
+  is what tells the agent an idea had nothing, so the cost is a little less
+  of that evidence. The 9 in 100 false promotions are rule 1's, with or
+  without H0. The study holds the champion still; it did not measure a
+  change of the title inside a window.
+- **The tests that began against H0** (H1, H2, H4 and H5) are judged against
+  the champion account by the rules they began under. The account runs H0
+  for them, paying its paper costs, unless a promotion comes first: then
+  their champion side is that account's record across the change, as before
+  ruleset 8. While `retired_champions` names a config, each of their
+  results, first looks included, and each hour's summary say beside it what
+  the same look makes of their numbers against cash, by their own one look
+  rule ("Against cash (measured, not applied to this test)"). When the
+  champion's config is still a retired one and no test is judged against
+  the champion account any more, nor is a promotion being guarded, the
+  champion's config becomes cash (state/champion/changes.json: "H0
+  retired"), the account sells what it holds at the next hourly run, and it
+  holds cash until a config is promoted. A slot record that cannot be read
+  while the slot's config is one of its own may hold such a test, so it
+  holds the switch too.
+- **A promotion judged against cash**, while the title is cash: the champion
+  account takes the promoted config, and for the next 60 days the shadow
+  holds cash. The promotion is reverted, to cash, only if over those days
+  the promoted config's skill is below cash's and its daily skill t is at
+  or below minus `cash_guard_skill_t` (1.0), on 30 fills or more
+  (`min_trades`) unless the t is twice that low (-2.0). Skill below nothing
+  over 60 days happens to more than half of the configs with no edge, and
+  would revert a real edge too often. Share of promotions reverted, on fresh
+  60 day windows of the study's twins (seeds 21 and 22), configs that make
+  80 to 140 fills in 60 days:
+
+  | Guard | Twin with no skill | Sharpe 1 | Sharpe 2 | Sharpe 3 |
+  | --- | --- | --- | --- | --- |
+  | H0's (30 fills, skill above the promoted config's, drawdown) | 16% | 6% | 3% | 1% |
+  | Cash: skill below nothing | 59% | 33% | 20% | 11% |
+  | **Cash: and a daily skill t of -1.0 or below (as built)** | **19% / 20%** | **5.4% / 5.9%** | **2.4% / 2.5%** | **1.3% / 1.0%** |
+
+  A t says how steady a fall was, not how big, and it counts days, not
+  bets: one losing day in otherwise flat ones reads exactly -1, whatever its
+  size. Hence the fills for a fall that only just reaches the bar. A steady
+  fall on few fills, a config that buys and holds into a falling market,
+  reads far lower, and is reverted (Fin, 2026-10-05: a bot that just buys
+  and holds is killed). Cash asks no fills of itself: the 30 fills are there
+  to tell a strategy's bets from luck, and cash makes none. A test judged
+  against cash and promoted
+  after a config took the title deposes that config, which then guards the
+  promotion by the ordinary rule; after a promotion judged against the
+  champion account, the account's config at the time guards it (cash, with
+  the rule above, if the title had gone back to cash).
+- **Known limits, to be settled with the rest of ruleset 8.** A deposed
+  config that makes fewer than 30 fills in 60 days can never win the title
+  back through the guard, whatever its skill (H0 made 30 in every window). A
+  second winner in the hour of a promotion is restarted with a fresh window,
+  while one that passes an hour later keeps its window and is judged against
+  the title's record, mostly cash's.
+- `retired_champions: off` (or an empty list) retires nothing: a test that
+  begins while a config is champion is then judged against the champion
+  account (with the basket's fall as its guard, like every test from
+  ruleset 8), and no older test is measured against cash. While the
+  champion's config is cash itself, a test is judged against cash all the
+  same. A line that is missing or cannot be read retires H0, the documented
+  value, and is said as SETTING NOT USED. `cash_guard_skill_t: off` reverts
+  to cash on the skill comparison alone.
+- A slot record whose `against` is anything but `cash` or `champion` (a
+  hand edit gone wrong) is not guessed at: nothing is ruled on that test
+  until the record is mended or the test is voided, and the summary says so
+  every hour.
 
 ## The early kills
 
@@ -362,9 +497,12 @@ Nearly every line of it is a case with a test under tests/gate/.
   it. (If a config's usual exposure is not on record, the window's average
   stands in.) The result says so in a "Champion change" line. The shadow
   guard is what then compares the new champion with the one before.
-- When the champion changes, every idle slot follows it, so nothing starts a
-  test by accident. Idle is read from the slot's config: one whose config
-  is the champion's holds no test, whatever its record says.
+- An idle slot holds cash (ruleset 8). When the champion changes, an idle
+  slot still on the old champion's config, as idle slots were before ruleset
+  8, is moved to cash, so nothing starts a test by accident; the hourly
+  ruling does the same for any idle slot it finds on the champion's config.
+  Idle is read from the slot's config: one whose config is cash or the
+  champion's holds no test, whatever its record says.
 - A second promotion while the guard on an earlier one is still running ends
   that guard. The ledger gets a `superseded` block for the earlier
   promotion, with the guard's numbers so far, or without them when its

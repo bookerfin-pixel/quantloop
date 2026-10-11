@@ -136,7 +136,23 @@ def strategy_signature(cfg: dict) -> str:
     return yaml.safe_dump({"strategy": cfg["strategy"], "params": cfg["params"]}, sort_keys=True)
 
 
+# What an idle slot holds from ruleset 8 on (Fin, 2026-10-08): nothing. Until then it held the champion's config,
+# so a new test began on the champion's book and spent its first hour unwinding it. The strategy is bot/run.py's.
+CASH_CFG = {"hypothesis": "cash", "strategy": "cash", "params": {}}
+
+
+def is_cash(cfg: dict) -> bool:
+    return isinstance(cfg, dict) and cfg.get("strategy") == CASH_CFG["strategy"]
+
+
+def write_challenger_idle(name: str) -> None:
+    """A slot with no test: its config is cash."""
+    dump_yaml(CONFIGS / f"{name}.yaml", dict(CASH_CFG, params={}), CHALLENGER_HEADER)
+
+
 def write_challenger_from_champion(name: str) -> None:
+    """A slot given the champion's config. Before ruleset 8 that was what made a slot idle; it is still read as
+    idle (bot/slot.py, configs_differ), and the hourly ruling moves such a slot to cash."""
     champ = account_cfg(CHAMPION)
     dump_yaml(CONFIGS / f"{name}.yaml",
               {"hypothesis": champ["hypothesis"], "strategy": champ["strategy"], "params": champ["params"]},
@@ -168,12 +184,11 @@ def migrate_legacy() -> list[str]:
 
 
 def ensure_slot_configs() -> list[str]:
-    """Every slot needs a config file. A missing one is created idle (equal to
-    the champion)."""
+    """Every slot needs a config file. A missing one is created idle (cash)."""
     created = []
     for name in challengers():
         if not (CONFIGS / f"{name}.yaml").exists():
-            write_challenger_from_champion(name)
+            write_challenger_idle(name)
             created.append(name)
     return created
 

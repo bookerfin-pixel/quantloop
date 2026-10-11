@@ -44,6 +44,24 @@ SITS_OUT = ("sits this hour out: no candle or no price for it this hour, so it i
             "and valued at its last known price")
 ERRED = "strategy error "   # how the reason begins on an hour the strategy itself failed in
 CAPPED = "capped: "         # how the reason begins on a buy the daily fill cap stopped (bot/report.py lists them)
+CASH = "cash"               # the strategy of an idle slot, and of the champion once its config is retired
+
+
+def _cash(candles: dict, params: dict, current_weights: dict) -> dict:
+    """Holds nothing. Cash is what a test that begins under ruleset 8 is judged against while the champion's
+    config is retired, what an idle slot holds, and what the champion account holds once no test needs the
+    retired config any more (Fin, 2026-10-08). It lives here, in a protected file, and not in bot/strategy.py,
+    which is the agent's: what cash does is not the agent's to change."""
+    return {p: strategy.Target(0.0, "cash: holds nothing") for p in candles}
+
+
+strategy.STRATEGIES[CASH] = _cash       # after bot/strategy.py has registered its own, so this one is the one found
+
+
+def strategy_fn(name: str):
+    """The function a config's `strategy` names. Cash is always this module's own, whatever bot/strategy.py
+    registers under that name."""
+    return _cash if name == CASH else strategy.get(name)
 
 
 def utc_day(ts: int) -> str:
@@ -242,7 +260,7 @@ def run_account(name: str, full: dict, prices: dict[str, float], ts: int, rcfg: 
     of it); the strategy is shown the trailing history_hours ending at the
     candle being decided. Returns the account's equity at the live prices."""
     cfg = config.account_cfg(name)
-    fn = strategy.get(cfg["strategy"])
+    fn = strategy_fn(cfg["strategy"])
     adir = config.account_dir(name)
     acct = paper.PaperAccount.load(adir / "account.json", name, rcfg["initial_cash"],
                                    rcfg["fee_bps"], rcfg["slippage_bps"])

@@ -16,10 +16,13 @@ stops instead, as it does for an account.json that cannot be read.
 
     champion/       account.json, decisions.csv, trades.csv, equity.csv, and
                     changes.json: every change of the champion's config (when,
-                    from, to, promotion or revert, the new config's usual exposure)
+                    from, to, promotion, revert or retirement, the new config's
+                    usual exposure)
     challenger<k>/  the same four files, plus meta.json (slot status, test start,
-                    ruleset, first look, usual exposures)
+                    ruleset, what the test is judged against, first look, usual
+                    exposures). An idle slot holds cash and makes no fills
     shadow/         the deposed champion's account while a promotion is guarded
+                    (cash, after a promotion judged against cash)
     candles/        one CSV per pair, hourly, grows every run
     history/        about five years of hourly candles per pair, fetched once
     archive/        challenger accounts from finished tests, one folder per hypothesis

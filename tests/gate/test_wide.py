@@ -2222,8 +2222,12 @@ def test_the_hourly_loop_is_the_same_with_and_without_the_wide_data(tmp_path, ho
     # (which the repo's own risk.yaml has switched on), the rulings, the report written to file
     for hour in (0, 1, 2):
         printed = plain_said[3 * hour]
-        assert "[champion] ts_momentum (H0)" in printed and "[challenger1] ts_momentum (H9)" in printed
+        # The repo's own risk.yaml retires H0 (ruleset 8). H9 began against cash, so no test needs H0 after the
+        # first hour's rulings, and from the second hour the champion account holds cash.
+        assert ("[champion] ts_momentum (H0)" if hour == 0 else "[champion] cash (cash)") in printed
+        assert "[challenger1] ts_momentum (H9)" in printed
         assert "[promote] challenger1: H9 on day" in printed and "[report] wrote <root>/state/summary.md" in printed
+    assert "[promote] H0 is retired and no test is judged against it any more" in plain_said[0]
     assert "[data] BTC: backfilled 1100 hourly candles" in plain_said[0] and "state/history/BTC.csv" in plain_files
     assert "state/summary.md" in plain_files and "state/challenger1/account.json" in plain_files and "state/champion/equity.csv" in plain_files
     # The bench's readings sit beside the second run only, one of them flattering the test in the slot, and

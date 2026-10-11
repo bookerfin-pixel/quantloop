@@ -543,7 +543,7 @@ def test_the_rules_file_as_it_ships_is_read_without_a_word():
     assert wrong == []
     assert st == {**promote.DEFAULTS, "fast_pass": 2.0}                  # the one default that is "none" is set in the file
     assert set(body["challenger"]) == set(promote.KNOWN_SETTINGS)
-    assert body["ruleset"] == 7 == st["two_from"] == promote.TWO_LOOKS_SINCE
+    assert body["ruleset"] == 8 and st["two_from"] == promote.TWO_LOOKS_SINCE == 7 and st["retired"] == ("H0",)
     slots = body["challenger"]["slots"]
     assert isinstance(slots, int) and not isinstance(slots, bool) and slots >= 1
     assert body["backtest_gate"]["max_cost_drag"] == promote.GATE_COST_DRAG
@@ -605,14 +605,15 @@ def test_a_test_whose_slot_record_cannot_be_read_can_still_be_voided(sandbox, ca
     meta1.write_text("{cut")
     config.dump_yaml(sandbox / "configs" / "void.yaml", {"requests": [{"slot": "challenger1", "hypothesis": "H5", "reason": "again"}]})
     promote.main(["--now", str(at(31))])
-    assert "its config is the champion config; dropped" in capsys.readouterr().out
+    assert "its config is cash or the champion config; dropped" in capsys.readouterr().out
     assert ledger(sandbox).count("### Result H5: voided") == 1
 
 
-def test_an_idle_slot_whose_record_cannot_be_read_still_follows_a_new_champion(sandbox, capsys):
+def test_an_idle_slot_whose_record_cannot_be_read_is_still_moved_to_cash(sandbox, capsys):
     """Left with the old champion's config, it would open a "test" of the old
     champion as soon as its record was mended. A slot whose config is the
-    champion's holds no test, whatever its record says or cannot say."""
+    champion's holds no test, whatever its record says or cannot say, and from
+    ruleset 8 an idle slot holds cash."""
     start_test(sandbox, STRONG, ruleset=6)                               # an old test: promoted at its one look
     (sandbox / "state" / "challenger2").mkdir(parents=True, exist_ok=True)
     (sandbox / "state" / "challenger2" / "meta.json").write_text("{cut")
@@ -620,8 +621,8 @@ def test_an_idle_slot_whose_record_cannot_be_read_still_follows_a_new_champion(s
     assert promote.main(["--now", str(at(60))]) == 0
     out = capsys.readouterr().out
     assert "### Result H5: promoted" in ledger(sandbox) and config.account_cfg("champion")["hypothesis"] == "H5"
-    assert "idle slots now mirror the new champion: challenger2" in out
-    assert config.account_cfg("challenger2")["hypothesis"] == "H5" and not slot.configs_differ("challenger2")
+    assert "idle slots moved to cash: challenger2" in out
+    assert config.account_cfg("challenger2") == config.CASH_CFG and not slot.configs_differ("challenger2")
     # a slot with a config of its own is a test, and is never touched
     two_tests(sandbox)
     (sandbox / "state" / "challenger2" / "meta.json").write_text("{cut")
