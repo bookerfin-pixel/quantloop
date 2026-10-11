@@ -1,8 +1,8 @@
 {
  "0G": {
-  "at": 1791594078,
-  "result": "not listed, to be asked once more",
-  "want_from": 1633910400
+  "at": 1791680427,
+  "result": "not listed",
+  "want_from": 1633996800
  },
  "AAVE": {
   "at": 1791378076,
@@ -18,6 +18,16 @@
   "at": 1791378076,
   "result": "added 393 days; closes differ by 0.30% at the median and 0.90% at the ninth decile over 31 days",
   "want_from": 1633651200
+ },
+ "AI": {
+  "at": 1791680427,
+  "result": "added 0 days; closes differ by 0.26% at the median and 0.74% at the ninth decile over 31 days",
+  "want_from": 1633996800
+ },
+ "AIOZ": {
+  "at": 1791680427,
+  "result": "added 1221 days; closes differ by 0.25% at the median and 1.11% at the ninth decile over 31 days",
+  "want_from": 1633996800
  },
  "AKE": {
   "at": 1791507774,
@@ -64,6 +74,16 @@
   "result": "added 1105 days; closes differ by 0.07% at the median and 0.16% at the ninth decile over 31 days",
   "want_from": 1633651200
  },
+ "AXS": {
+  "at": 1791680427,
+  "result": "added 1105 days; closes differ by 0.09% at the median and 0.17% at the ninth decile over 31 days",
+  "want_from": 1633996800
+ },
+ "BABY": {
+  "at": 1791680427,
+  "result": "not listed, to be asked once more",
+  "want_from": 1633996800
+ },
  "BAT": {
   "at": 1791507774,
   "result": "added 1105 days; closes differ by 0.08% at the median and 0.40% at the ninth decile over 31 days",
@@ -104,10 +124,20 @@
   "result": "not listed",
   "want_from": 1633824000
  },
+ "CFX": {
+  "at": 1791680427,
+  "result": "not listed, to be asked once more",
+  "want_from": 1633996800
+ },
  "CHIP": {
   "at": 1791378076,
   "result": "added 1 days; closes differ by 0.25% at the median and 0.73% at the ninth decile over 31 days",
   "want_from": 1633651200
+ },
+ "COMP": {
+  "at": 1791680427,
+  "result": "added 1105 days; closes differ by 0.13% at the median and 0.54% at the ninth decile over 31 days",
+  "want_from": 1633996800
  },
  "CRV": {
   "at": 1791378076,
@@ -254,6 +284,11 @@
   "result": "added 868 days; closes differ by 0.11% at the median and 0.20% at the ninth decile over 31 days",
   "want_from": 1633651200
  },
+ "KTA": {
+  "at": 1791680427,
+  "result": "no candles, to be asked once more",
+  "want_from": 1633996800
+ },
  "LCX": {
   "at": 1791378076,
   "result": "added 1080 days; closes differ by 0.36% at the median and 0.85% at the ninth decile over 31 days",
@@ -280,9 +315,9 @@
   "want_from": 1633651200
  },
  "LUNA": {
-  "at": 1791594078,
-  "result": "not listed, to be asked once more",
-  "want_from": 1633910400
+  "at": 1791680427,
+  "result": "not listed",
+  "want_from": 1633996800
  },
  "MANA": {
   "at": 1791378076,
@@ -394,6 +429,11 @@
   "result": "no candles",
   "want_from": 1633824000
  },
+ "Q": {
+  "at": 1791680427,
+  "result": "not listed, to be asked once more",
+  "want_from": 1633996800
+ },
  "QNT": {
   "at": 1791378076,
   "result": "added 1105 days; closes differ by 0.13% at the median and 0.41% at the ninth decile over 31 days",
@@ -415,9 +455,9 @@
   "want_from": 1633651200
  },
  "S": {
-  "at": 1791594078,
-  "result": "no candles, to be asked once more",
-  "want_from": 1633910400
+  "at": 1791680427,
+  "result": "no candles",
+  "want_from": 1633996800
  },
  "SAND": {
   "at": 1791378076,
@@ -499,6 +539,11 @@
   "result": "no candles",
   "want_from": 1633824000
  },
+ "TREAD": {
+  "at": 1791680427,
+  "result": "not listed, to be asked once more",
+  "want_from": 1633996800
+ },
  "TRUMP": {
   "at": 1791378076,
   "result": "added 0 days; closes differ by 0.05% at the median and 0.14% at the ninth decile over 28 days",
@@ -570,9 +615,9 @@
   "want_from": 1633824000
  },
  "XDP": {
-  "at": 1791594078,
-  "result": "not listed, to be asked once more",
-  "want_from": 1633910400
+  "at": 1791680427,
+  "result": "not listed",
+  "want_from": 1633996800
  },
  "XLM": {
   "at": 1791378076,
@@ -613,6 +658,11 @@
   "at": 1791507774,
   "result": "not listed",
   "want_from": 1633824000
+ },
+ "ZK": {
+  "at": 1791680427,
+  "result": "added 26 days; closes differ by 0.21% at the median and 0.69% at the ninth decile over 31 days",
+  "want_from": 1633996800
  },
  "ZRO": {
   "at": 1791378076,
