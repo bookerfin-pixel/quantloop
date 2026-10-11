@@ -1,22 +1,22 @@
 {
   "cash": 7929.530396607917,
   "created_at": 1789530957,
-  "day": "2026-10-10",
-  "day_open_equity": 10616.038766752034,
-  "equity_rows": 571,
+  "day": "2026-10-11",
+  "day_open_equity": 10664.927927299788,
+  "equity_rows": 572,
   "fees_paid": 320.9531901650143,
   "fills_day": {
     "counts": {},
-    "day": "2026-10-10"
+    "day": "2026-10-11"
   },
   "halted_day": "2026-09-28",
   "initial_cash": 10000.0,
-  "last_bar": 1791669600,
-  "last_run_ts": 1791673848,
+  "last_bar": 1791673200,
+  "last_run_ts": 1791677442,
   "marks": {
     "DOT": [
-      1.2551,
-      1791673848
+      1.2561,
+      1791677442
     ]
   },
   "n_trades": 209,
