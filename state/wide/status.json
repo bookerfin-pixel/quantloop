@@ -1,38 +1,35 @@
 {
  "coinbase": {
-  "coins": 5,
-  "days_added": 3457,
+  "coins": 4,
+  "days_added": 2210,
   "failed": [],
   "mismatch": [],
-  "not_listed": 7
+  "not_listed": 4
  },
  "funding": {
-  "days_added": 1890,
+  "days_added": 416,
   "failed": [],
-  "symbols": 45
+  "symbols": 46
  },
  "kraken": {
-  "days_added": 4556,
+  "days_added": 2634,
   "failed": [],
   "joined_today": [
-   "COMP",
-   "TREAD",
-   "KTA",
-   "AIOZ",
-   "CFX",
-   "ZK",
-   "BABY",
-   "AXS",
-   "AI",
-   "Q"
+   "PLUME",
+   "ZCHF",
+   "MEGA",
+   "APR",
+   "GRT",
+   "XTZ"
   ],
-  "listed": 134,
-  "on_the_list": 135,
-  "pairs_read": 134,
+  "listed": 140,
+  "on_the_list": 141,
+  "pairs_read": 140,
   "pegged_skipped": [
    "AUSD",
    "CASH",
    "FIDD",
+   "FRNT",
    "OUSD",
    "SOFID",
    "USAT",
@@ -42,10 +39,10 @@
    "USDSUI",
    "USTABLES"
   ],
-  "qualified_today": 198,
+  "qualified_today": 197,
   "quoted": 630,
   "quotes_failed": "",
-  "quotes_written": 134,
+  "quotes_written": 140,
   "unquoted": [],
   "usd_pairs": 652
  },
@@ -62,7 +59,7 @@
    "ok": true
   }
  },
- "ran": 1791680427,
- "ran_utc": "2026-10-11 01:00Z",
+ "ran": 1791767043,
+ "ran_utc": "2026-10-12 01:04Z",
  "settings_not_used": []
 }
