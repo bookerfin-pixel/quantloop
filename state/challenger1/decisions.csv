@@ -5917,3 +5917,13 @@ ts,account,pair,price,signal_weight,target_weight,current_weight,action,reason,h
 1791789041,challenger1,DOGE,0.087606,0.25,0.25,0.2498,hold,"hold: weight change +0.000 below threshold 0.05 | stay long: z -0.62 vs 240h mean (entry -2.0, exit -0.5); vol 62% -> weight 0.25",0.2
 1791789041,challenger1,DOT,1.2731,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z +1.39 not below -2.0,2.356
 1791789041,challenger1,LTC,65.635,0.25,0.25,0.2011,hold,"hold: weight change +0.049 below threshold 0.05 | stay long: z -0.52 vs 240h mean (entry -2.0, exit -0.5); vol 50% -> weight 0.25",0.762
+1791792643,challenger1,BTC,83727.55,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -0.14 not below -2.0,0.006
+1791792643,challenger1,ETH,2557.855,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -0.47 not below -2.0,0.02
+1791792643,challenger1,SOL,112.26,0.25,0.25,0.1999,buy,"stay long: z -0.70 vs 240h mean (entry -2.0, exit -0.5); vol 51% -> weight 0.25",0.891
+1791792643,challenger1,ADA,0.252578,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z +0.10 not below -2.0,1.603
+1791792643,challenger1,AVAX,11.019,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z +0.47 not below -2.0,0.908
+1791792643,challenger1,LINK,13.389835,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -0.09 not below -2.0,0.004
+1791792643,challenger1,XRP,1.409635,0.25,0.25,0.2495,hold,"hold: weight change +0.000 below threshold 0.05 | stay long: z -0.76 vs 240h mean (entry -2.0, exit -0.5); vol 54% -> weight 0.25",0.035
+1791792643,challenger1,DOGE,0.087565,0.25,0.25,0.2503,hold,"hold: weight change -0.000 below threshold 0.05 | stay long: z -0.57 vs 240h mean (entry -2.0, exit -0.5); vol 61% -> weight 0.25",0.537
+1791792643,challenger1,DOT,1.26375,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z +1.39 not below -2.0,0.396
+1791792643,challenger1,LTC,65.515,0.0,0.0,0.2011,sell,flat: z -0.44 not below -0.5,0.763
