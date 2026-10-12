@@ -5887,3 +5887,13 @@ ts,account,pair,price,signal_weight,target_weight,current_weight,action,reason,h
 1791778243,challenger1,DOGE,0.08672,0.25,0.2,0.1995,hold,"hold: weight change +0.000 below threshold 0.05 | stay long: z -0.82 vs 240h mean (entry -2.0, exit -0.5); vol 61% -> weight 0.25",0.081
 1791778243,challenger1,DOT,1.2509,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z +1.05 not below -2.0,2.398
 1791778243,challenger1,LTC,64.915,0.25,0.2,0.2007,hold,"hold: weight change -0.001 below threshold 0.05 | stay long: z -0.73 vs 240h mean (entry -2.0, exit -0.5); vol 49% -> weight 0.25",0.77
+1791781844,challenger1,BTC,84138.65,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -0.06 not below -2.0,0.006
+1791781844,challenger1,ETH,2566.815,0.0,0.0,0.201,sell,flat: z -0.46 not below -0.5,0.019
+1791781844,challenger1,SOL,113.125,0.25,0.25,0.2006,hold,"hold: weight change +0.049 below threshold 0.05 | stay long: z -0.62 vs 240h mean (entry -2.0, exit -0.5); vol 52% -> weight 0.25",0.442
+1791781844,challenger1,ADA,0.255782,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z +0.21 not below -2.0,2.072
+1791781844,challenger1,AVAX,11.0475,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z +0.45 not below -2.0,1.358
+1791781844,challenger1,LINK,13.446755,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -0.12 not below -2.0,2.629
+1791781844,challenger1,XRP,1.418405,0.25,0.25,0.1982,buy,"stay long: z -0.66 vs 240h mean (entry -2.0, exit -0.5); vol 55% -> weight 0.25",0.035
+1791781844,challenger1,DOGE,0.087855,0.25,0.25,0.1999,buy,"stay long: z -0.57 vs 240h mean (entry -2.0, exit -0.5); vol 62% -> weight 0.25",0.068
+1791781844,challenger1,DOT,1.26385,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z +1.43 not below -2.0,1.978
+1791781844,challenger1,LTC,65.535,0.25,0.25,0.2003,hold,"hold: weight change +0.050 below threshold 0.05 | stay long: z -0.55 vs 240h mean (entry -2.0, exit -0.5); vol 50% -> weight 0.25",0.763
