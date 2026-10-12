@@ -3899,3 +3899,13 @@ ts,account,pair,price,signal_weight,target_weight,current_weight,action,reason,h
 1791807047,challenger4,DOGE,0.087128,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 720h return +2.35% not above entry band +5.0% and price below 168h EMA,0.006
 1791807047,challenger4,DOT,1.26,0.25,0.2,0.2007,hold,hold: weight change -0.001 below threshold 0.05 | stay long: 720h return +20.54% vs exit band -5.0% and price above 168h EMA; realised vol 103% -> weight 0.25,2.381
 1791807047,challenger4,LTC,64.615,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: price below 168h EMA,0.774
+1791810648,challenger4,BTC,82573.25,0.25,0.2,0.1995,hold,hold: weight change +0.001 below threshold 0.05 | stay long: 720h return +6.92% vs exit band -5.0% and price within 5.0% of 168h EMA; realised vol 31% -> weight 0.25,0.006
+1791810648,challenger4,ETH,2526.795,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 720h return -0.21% not above entry band +5.0% and price below 168h EMA,0.02
+1791810648,challenger4,SOL,110.145,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: price below 168h EMA,0.454
+1791810648,challenger4,ADA,0.247672,0.25,0.2,0.1966,hold,hold: weight change +0.003 below threshold 0.05 | stay long: 720h return +18.94% vs exit band -5.0% and price within 5.0% of 168h EMA; realised vol 91% -> weight 0.25,1.171
+1791810648,challenger4,AVAX,10.8495,0.25,0.2,0.2017,hold,hold: weight change -0.002 below threshold 0.05 | stay long: 720h return +46.60% vs exit band -5.0% and price above 168h EMA; realised vol 84% -> weight 0.25,1.383
+1791810648,challenger4,LINK,13.150575,0.25,0.2,0.1989,hold,hold: weight change +0.001 below threshold 0.05 | stay long: 720h return +14.16% vs exit band -5.0% and price within 5.0% of 168h EMA; realised vol 62% -> weight 0.25,0.43
+1791810648,challenger4,XRP,1.387765,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 720h return +1.37% not above entry band +5.0% and price below 168h EMA,0.036
+1791810648,challenger4,DOGE,0.086047,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 720h return +1.07% not above entry band +5.0% and price below 168h EMA,0.384
+1791810648,challenger4,DOT,1.26555,0.25,0.2,0.2033,hold,hold: weight change -0.003 below threshold 0.05 | stay long: 720h return +21.00% vs exit band -5.0% and price above 168h EMA; realised vol 102% -> weight 0.25,0.395
+1791810648,challenger4,LTC,64.22,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: price below 168h EMA,1.557

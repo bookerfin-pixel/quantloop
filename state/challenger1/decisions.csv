@@ -5967,3 +5967,13 @@ ts,account,pair,price,signal_weight,target_weight,current_weight,action,reason,h
 1791807047,challenger1,DOGE,0.087128,0.25,0.25,0.2506,hold,"hold: weight change -0.001 below threshold 0.05 | stay long: z -0.71 vs 240h mean (entry -2.0, exit -0.5); vol 61% -> weight 0.25",0.006
 1791807047,challenger1,DOT,1.26,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z +1.26 not below -2.0,2.381
 1791807047,challenger1,LTC,64.615,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -0.82 not below -2.0,0.774
+1791810648,challenger1,BTC,82573.25,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -0.99 not below -2.0,0.006
+1791810648,challenger1,ETH,2526.795,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -0.78 not below -2.0,0.02
+1791810648,challenger1,SOL,110.145,0.25,0.25,0.2486,hold,"hold: weight change +0.001 below threshold 0.05 | stay long: z -1.15 vs 240h mean (entry -2.0, exit -0.5); vol 52% -> weight 0.25",0.454
+1791810648,challenger1,ADA,0.247672,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -0.37 not below -2.0,1.171
+1791810648,challenger1,AVAX,10.8495,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z +0.16 not below -2.0,1.383
+1791810648,challenger1,LINK,13.150575,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -0.60 not below -2.0,0.43
+1791810648,challenger1,XRP,1.387765,0.25,0.25,0.249,hold,"hold: weight change +0.001 below threshold 0.05 | stay long: z -1.17 vs 240h mean (entry -2.0, exit -0.5); vol 54% -> weight 0.25",0.036
+1791810648,challenger1,DOGE,0.086047,0.25,0.25,0.2492,hold,"hold: weight change +0.001 below threshold 0.05 | stay long: z -0.96 vs 240h mean (entry -2.0, exit -0.5); vol 62% -> weight 0.25",0.384
+1791810648,challenger1,DOT,1.26555,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z +1.28 not below -2.0,0.395
+1791810648,challenger1,LTC,64.22,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -0.95 not below -2.0,1.557
