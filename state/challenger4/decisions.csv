@@ -3999,3 +3999,13 @@ ts,account,pair,price,signal_weight,target_weight,current_weight,action,reason,h
 1791843041,challenger4,DOGE,0.083951,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 720h return -1.19% not above entry band +5.0% and price below 168h EMA,0.476
 1791843041,challenger4,DOT,1.19805,0.25,0.2,0.1985,hold,hold: weight change +0.001 below threshold 0.05 | stay long: 720h return +16.81% vs exit band -5.0% and price within 5.0% of 168h EMA; realised vol 102% -> weight 0.25,2.087
 1791843041,challenger4,LTC,61.955,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: price below 168h EMA,0.807
+1791846647,challenger4,BTC,81873.15,0.0,0.0,0.2068,sell,daily halt: equity 8839.07 is down 5.2% from the day's open 9328.81,0.006
+1791846647,challenger4,ETH,2459.025,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | daily halt: equity 8839.07 is down 5.2% from the day's open 9328.81,0.02
+1791846647,challenger4,SOL,106.145,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | daily halt: equity 8839.07 is down 5.2% from the day's open 9328.81,0.471
+1791846647,challenger4,ADA,0.234845,0.0,0.0,0.1948,sell,daily halt: equity 8839.07 is down 5.2% from the day's open 9328.81,4.067
+1791846647,challenger4,AVAX,10.214,0.0,0.0,0.1985,sell,daily halt: equity 8839.07 is down 5.2% from the day's open 9328.81,0.979
+1791846647,challenger4,LINK,12.713495,0.0,0.0,0.2011,sell,daily halt: equity 8839.07 is down 5.2% from the day's open 9328.81,0.004
+1791846647,challenger4,XRP,1.34517,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | daily halt: equity 8839.07 is down 5.2% from the day's open 9328.81,1.041
+1791846647,challenger4,DOGE,0.082956,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | daily halt: equity 8839.07 is down 5.2% from the day's open 9328.81,0.006
+1791846647,challenger4,DOT,1.1841,0.0,0.0,0.1988,sell,daily halt: equity 8839.07 is down 5.2% from the day's open 9328.81,2.534
+1791846647,challenger4,LTC,61.465,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | daily halt: equity 8839.07 is down 5.2% from the day's open 9328.81,0.813

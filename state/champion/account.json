@@ -1,10 +1,10 @@
 {
-  "cash": 5181.511498228248,
+  "cash": 7716.050749816959,
   "created_at": 1789530957,
   "day": "2026-10-12",
   "day_open_equity": 10693.362025789933,
-  "equity_rows": 618,
-  "fees_paid": 355.5562033244349,
+  "equity_rows": 619,
+  "fees_paid": 358.0932796523515,
   "fills_day": {
     "counts": {
       "ADA": 1,
@@ -12,7 +12,7 @@
       "BTC": 2,
       "DOGE": 2,
       "DOT": 2,
-      "ETH": 2,
+      "ETH": 3,
       "LINK": 1,
       "LTC": 2,
       "SOL": 1,
@@ -22,24 +22,19 @@
   },
   "halted_day": "2026-09-28",
   "initial_cash": 10000.0,
-  "last_bar": 1791838800,
-  "last_run_ts": 1791843041,
+  "last_bar": 1791842400,
+  "last_run_ts": 1791846647,
   "marks": {
     "BTC": [
-      82622.45,
-      1791843041
-    ],
-    "ETH": [
-      2492.8450000000003,
-      1791843041
+      81873.15,
+      1791846647
     ]
   },
-  "n_trades": 237,
+  "n_trades": 238,
   "name": "champion",
   "positions": {
-    "BTC": 0.03145876968323334,
-    "ETH": 1.032256890705447
+    "BTC": 0.03145876968323334
   },
-  "slippage_paid": 180.86100893466283,
+  "slippage_paid": 182.13018168499636,
   "strategy_sig": "params:\n  ema_exit_buffer: 0.02\n  ema_hours: 24\n  entry_return: 0.01\n  exit_return: -0.01\n  lookback_hours: 72\n  max_weight: 0.25\n  target_vol_annual: 0.3\n  vol_lookback_hours: 168\nstrategy: ts_momentum\n"
 }
