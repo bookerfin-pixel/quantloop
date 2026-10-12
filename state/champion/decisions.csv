@@ -6007,3 +6007,13 @@ ts,account,pair,price,signal_weight,target_weight,current_weight,action,reason,h
 1791821449,champion,DOGE,0.085122,0.25,0.2,0.1666,hold,hold: weight change +0.033 below threshold 0.05 | stay long: 72h return +0.42% vs exit band -1.0% and price within 2.0% of 24h EMA; realised vol 61% -> weight 0.25,0.217
 1791821449,champion,DOT,1.2431,0.25,0.2,0.1673,hold,hold: weight change +0.033 below threshold 0.05 | stay long: 72h return +4.02% vs exit band -1.0% and price within 2.0% of 24h EMA; realised vol 103% -> weight 0.25,2.413
 1791821449,champion,LTC,63.18,0.0,0.0,0.1655,sell,exit: price more than 2.0% below 24h EMA,1.583
+1791825046,champion,BTC,82490.85,0.25,0.25,0.1679,buy,stay long: 72h return -0.33% vs exit band -1.0% and price within 2.0% of 24h EMA; realised vol 30% -> weight 0.25,0.006
+1791825046,champion,ETH,2513.965,0.25,0.25,0.1673,buy,stay long: 72h return +0.84% vs exit band -1.0% and price within 2.0% of 24h EMA; realised vol 43% -> weight 0.25,0.02
+1791825046,champion,SOL,107.875,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -1.82% not above entry band +1.0% and price below 24h EMA,0.463
+1791825046,champion,ADA,0.242257,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: price below 24h EMA,1.651
+1791825046,champion,AVAX,10.485,0.0,0.0,0.1649,sell,exit: price more than 2.0% below 24h EMA,0.954
+1791825046,champion,LINK,12.916595,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return +0.32% not above entry band +1.0% and price below 24h EMA,1.243
+1791825046,champion,XRP,1.363145,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -1.92% not above entry band +1.0% and price below 24h EMA,0.037
+1791825046,champion,DOGE,0.084687,0.0,0.0,0.1674,sell,exit: price more than 2.0% below 24h EMA,0.077
+1791825046,champion,DOT,1.21865,0.0,0.0,0.1656,sell,exit: price more than 2.0% below 24h EMA,1.231
+1791825046,champion,LTC,62.705,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -1.53% not above entry band +1.0% and price below 24h EMA,2.392
