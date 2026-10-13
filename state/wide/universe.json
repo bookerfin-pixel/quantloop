@@ -4,221 +4,221 @@
    "altname": "0GUSD",
    "joined_at": 1791594078,
    "kraken": "0GUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
-   "rank": 216,
+   "rank": 250,
    "since": "2026-10-10",
-   "usd_volume_24h": 35040.26
+   "usd_volume_24h": 39179.73
   },
   "AAVE": {
    "altname": "AAVEUSD",
    "joined_at": 1791378076,
    "kraken": "AAVEUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
-   "rank": 49,
+   "rank": 25,
    "since": "2026-10-07",
-   "usd_volume_24h": 1209511.89
+   "usd_volume_24h": 3131179.87
   },
   "ADA": {
    "altname": "ADAUSD",
    "joined_at": 1791378076,
    "kraken": "ADAUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
-   "rank": 12,
+   "rank": 10,
    "since": "2026-10-07",
-   "usd_volume_24h": 6645007.87
+   "usd_volume_24h": 11785996.56
   },
   "AERO": {
    "altname": "AEROUSD",
    "joined_at": 1791378076,
    "kraken": "AEROUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
-   "rank": 44,
+   "rank": 55,
    "since": "2026-10-07",
-   "usd_volume_24h": 1435168.87
+   "usd_volume_24h": 1401974.05
   },
   "AI": {
    "altname": "AIUSD",
    "joined_at": 1791680427,
    "kraken": "AIUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
-   "rank": 227,
+   "rank": 261,
    "since": "2026-10-11",
-   "usd_volume_24h": 30961.11
+   "usd_volume_24h": 36588.97
   },
   "AIOZ": {
    "altname": "AIOZUSD",
    "joined_at": 1791680427,
    "kraken": "AIOZUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
-   "rank": 118,
+   "rank": 154,
    "since": "2026-10-11",
-   "usd_volume_24h": 182297.32
+   "usd_volume_24h": 126437.49
   },
   "AKE": {
    "altname": "AKEUSD",
    "joined_at": 1791378076,
    "kraken": "AKEUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
-   "rank": 103,
+   "rank": 94,
    "since": "2026-10-07",
-   "usd_volume_24h": 269541.02
+   "usd_volume_24h": 503466.47
   },
   "AKT": {
    "altname": "AKTUSD",
    "joined_at": 1791378076,
    "kraken": "AKTUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
-   "rank": 76,
+   "rank": 87,
    "since": "2026-10-07",
-   "usd_volume_24h": 483902.31
+   "usd_volume_24h": 670902.17
   },
   "ALGO": {
    "altname": "ALGOUSD",
    "joined_at": 1791378076,
    "kraken": "ALGOUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
-   "rank": 32,
+   "rank": 28,
    "since": "2026-10-07",
-   "usd_volume_24h": 2110422.62
+   "usd_volume_24h": 3067840.74
   },
   "APR": {
    "altname": "APRUSD",
    "joined_at": 1791767043,
    "kraken": "APRUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
-   "rank": 79,
+   "rank": 167,
    "since": "2026-10-12",
-   "usd_volume_24h": 465625.62
+   "usd_volume_24h": 114032.25
   },
   "APT": {
    "altname": "APTUSD",
    "joined_at": 1791378076,
    "kraken": "APTUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
-   "rank": 38,
+   "rank": 71,
    "since": "2026-10-07",
-   "usd_volume_24h": 1682970.52
+   "usd_volume_24h": 900991.17
   },
   "AR": {
    "altname": "ARUSD",
    "joined_at": 1791421266,
    "kraken": "ARUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
-   "rank": 170,
+   "rank": 153,
    "since": "2026-10-08",
-   "usd_volume_24h": 72414.72
+   "usd_volume_24h": 128581.79
   },
   "ARB": {
    "altname": "ARBUSD",
    "joined_at": 1791378076,
    "kraken": "ARBUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
-   "rank": 30,
+   "rank": 36,
    "since": "2026-10-07",
-   "usd_volume_24h": 2232682.84
+   "usd_volume_24h": 2471897.25
   },
   "ASTER": {
    "altname": "ASTERUSD",
    "joined_at": 1791378076,
    "kraken": "ASTERUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
-   "rank": 114,
+   "rank": 76,
    "since": "2026-10-07",
-   "usd_volume_24h": 193518.7
+   "usd_volume_24h": 837560.85
   },
   "ATOM": {
    "altname": "ATOMUSD",
    "joined_at": 1791378076,
    "kraken": "ATOMUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
-   "rank": 48,
+   "rank": 63,
    "since": "2026-10-07",
-   "usd_volume_24h": 1238358.31
+   "usd_volume_24h": 1029381.76
   },
   "AVAX": {
    "altname": "AVAXUSD",
    "joined_at": 1791378076,
    "kraken": "AVAXUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
-   "rank": 10,
+   "rank": 13,
    "since": "2026-10-07",
-   "usd_volume_24h": 6790884.19
+   "usd_volume_24h": 8790456.16
   },
   "AXS": {
    "altname": "AXSUSD",
    "joined_at": 1791680427,
    "kraken": "AXSUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
-   "rank": 172,
+   "rank": 140,
    "since": "2026-10-11",
-   "usd_volume_24h": 70977.36
+   "usd_volume_24h": 161202.8
   },
   "BABY": {
    "altname": "BABYUSD",
    "joined_at": 1791680427,
    "kraken": "BABYUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
-   "rank": 162,
+   "rank": 182,
    "since": "2026-10-11",
-   "usd_volume_24h": 79673.65
+   "usd_volume_24h": 90194.95
   },
   "BAT": {
    "altname": "BATUSD",
    "joined_at": 1791507774,
    "kraken": "BATUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
-   "rank": 27,
+   "rank": 42,
    "since": "2026-10-09",
-   "usd_volume_24h": 2559599.64
+   "usd_volume_24h": 2014250.52
   },
   "BCH": {
    "altname": "BCHUSD",
    "joined_at": 1791378076,
    "kraken": "BCHUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
-   "rank": 71,
+   "rank": 64,
    "since": "2026-10-07",
-   "usd_volume_24h": 611117.89
+   "usd_volume_24h": 1014670.32
   },
   "BNB": {
    "altname": "BNBUSD",
    "joined_at": 1791378076,
    "kraken": "BNBUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
-   "rank": 62,
+   "rank": 59,
    "since": "2026-10-07",
-   "usd_volume_24h": 720328.56
+   "usd_volume_24h": 1238037.62
   },
   "BONK": {
    "altname": "BONKUSD",
    "joined_at": 1791378076,
    "kraken": "BONKUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
-   "rank": 80,
+   "rank": 96,
    "since": "2026-10-07",
-   "usd_volume_24h": 458042.62
+   "usd_volume_24h": 484422.41
   },
   "BRL1": {
    "altname": "BRL1USD",
@@ -235,1182 +235,1232 @@
    "altname": "XBTUSD",
    "joined_at": 1791378076,
    "kraken": "XXBTZUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
    "rank": 1,
    "since": "2026-10-07",
-   "usd_volume_24h": 73418427.28
+   "usd_volume_24h": 213770577.69
   },
   "CAP": {
    "altname": "CAPUSD",
    "joined_at": 1791378076,
    "kraken": "CAPUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
-   "rank": 86,
+   "rank": 31,
    "since": "2026-10-07",
-   "usd_volume_24h": 396683.55
+   "usd_volume_24h": 2989349.23
   },
   "CC": {
    "altname": "CCUSD",
    "joined_at": 1791378076,
    "kraken": "CCUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
-   "rank": 47,
+   "rank": 57,
    "since": "2026-10-07",
-   "usd_volume_24h": 1325550.73
+   "usd_volume_24h": 1320777.65
   },
   "CFX": {
    "altname": "CFXUSD",
    "joined_at": 1791680427,
    "kraken": "CFXUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
-   "rank": 95,
+   "rank": 145,
    "since": "2026-10-11",
-   "usd_volume_24h": 313350.07
+   "usd_volume_24h": 147466.86
   },
   "CHIP": {
    "altname": "CHIPUSD",
    "joined_at": 1791378076,
    "kraken": "CHIPUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
-   "rank": 58,
+   "rank": 83,
    "since": "2026-10-07",
-   "usd_volume_24h": 858738.71
+   "usd_volume_24h": 733225.86
   },
   "COMP": {
    "altname": "COMPUSD",
    "joined_at": 1791680427,
    "kraken": "COMPUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
-   "rank": 90,
+   "rank": 124,
    "since": "2026-10-11",
-   "usd_volume_24h": 368243.83
+   "usd_volume_24h": 218232.17
   },
   "CRV": {
    "altname": "CRVUSD",
    "joined_at": 1791378076,
    "kraken": "CRVUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
-   "rank": 15,
+   "rank": 39,
    "since": "2026-10-07",
-   "usd_volume_24h": 3853390.54
+   "usd_volume_24h": 2280370.81
   },
   "DASH": {
    "altname": "DASHUSD",
    "joined_at": 1791378076,
    "kraken": "DASHUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
-   "rank": 85,
+   "rank": 70,
    "since": "2026-10-07",
-   "usd_volume_24h": 407537.08
+   "usd_volume_24h": 912849.19
   },
   "DOGE": {
    "altname": "XDGUSD",
    "joined_at": 1791378076,
    "kraken": "XDGUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
-   "rank": 29,
+   "rank": 18,
    "since": "2026-10-07",
-   "usd_volume_24h": 2308808.5
+   "usd_volume_24h": 6419425.73
+  },
+  "DOS": {
+   "altname": "DOSUSD",
+   "joined_at": 1791853490,
+   "kraken": "DOSUSD",
+   "last_seen": "2026-10-13",
+   "listed": true,
+   "rank": 51,
+   "since": "2026-10-13",
+   "usd_volume_24h": 1573353.15
   },
   "DOT": {
    "altname": "DOTUSD",
    "joined_at": 1791378076,
    "kraken": "DOTUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
-   "rank": 51,
+   "rank": 37,
    "since": "2026-10-07",
-   "usd_volume_24h": 1039491.31
+   "usd_volume_24h": 2414354.76
   },
   "DRV": {
    "altname": "DRVUSD",
    "joined_at": 1791378076,
    "kraken": "DRVUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
-   "rank": 54,
+   "rank": 53,
    "since": "2026-10-07",
-   "usd_volume_24h": 968647.48
+   "usd_volume_24h": 1555594.81
   },
   "EIGEN": {
    "altname": "EIGENUSD",
    "joined_at": 1791378076,
    "kraken": "EIGENUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
-   "rank": 67,
+   "rank": 62,
    "since": "2026-10-07",
-   "usd_volume_24h": 659032.1
+   "usd_volume_24h": 1034737.29
   },
   "ELIZAOS": {
    "altname": "ELIZAOSUSD",
    "joined_at": 1791378076,
    "kraken": "ELIZAOSUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
-   "rank": 105,
+   "rank": 188,
    "since": "2026-10-07",
-   "usd_volume_24h": 253164.98
+   "usd_volume_24h": 84396.98
   },
   "ENA": {
    "altname": "ENAUSD",
    "joined_at": 1791378076,
    "kraken": "ENAUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
-   "rank": 14,
+   "rank": 19,
    "since": "2026-10-07",
-   "usd_volume_24h": 4554024.19
+   "usd_volume_24h": 5930122.68
   },
   "ETH": {
    "altname": "ETHUSD",
    "joined_at": 1791378076,
    "kraken": "XETHZUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
    "rank": 2,
    "since": "2026-10-07",
-   "usd_volume_24h": 43072260.79
+   "usd_volume_24h": 74415403.77
   },
   "ETHFI": {
    "altname": "ETHFIUSD",
    "joined_at": 1791507774,
    "kraken": "ETHFIUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
    "rank": 112,
    "since": "2026-10-09",
-   "usd_volume_24h": 215373.46
+   "usd_volume_24h": 303402.31
   },
   "FARTCOIN": {
    "altname": "FARTCOINUSD",
    "joined_at": 1791378076,
    "kraken": "FARTCOINUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
-   "rank": 55,
+   "rank": 84,
    "since": "2026-10-07",
-   "usd_volume_24h": 949011.97
+   "usd_volume_24h": 727512.76
   },
   "FET": {
    "altname": "FETUSD",
    "joined_at": 1791378076,
    "kraken": "FETUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
-   "rank": 24,
+   "rank": 41,
    "since": "2026-10-07",
-   "usd_volume_24h": 2850971.85
+   "usd_volume_24h": 2079470.27
   },
   "FIL": {
    "altname": "FILUSD",
    "joined_at": 1791378076,
    "kraken": "FILUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
-   "rank": 31,
+   "rank": 27,
    "since": "2026-10-07",
-   "usd_volume_24h": 2213795.35
+   "usd_volume_24h": 3068412.94
   },
   "FLR": {
    "altname": "FLRUSD",
    "joined_at": 1791594078,
    "kraken": "FLRUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
    "rank": 127,
    "since": "2026-10-10",
-   "usd_volume_24h": 133422.63
+   "usd_volume_24h": 211704.15
   },
   "GALA": {
    "altname": "GALAUSD",
    "joined_at": 1791421266,
    "kraken": "GALAUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
-   "rank": 135,
+   "rank": 131,
    "since": "2026-10-08",
-   "usd_volume_24h": 110876.44
+   "usd_volume_24h": 198930.74
   },
   "GMT": {
    "altname": "GMTUSD",
    "joined_at": 1791594078,
    "kraken": "GMTUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
-   "rank": 239,
+   "rank": 445,
    "since": "2026-10-10",
-   "usd_volume_24h": 26012.08
+   "usd_volume_24h": 6057.8
   },
   "GNOT": {
    "altname": "GNOTUSD",
    "joined_at": 1791507774,
    "kraken": "GNOTUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
-   "rank": 42,
+   "rank": 38,
    "since": "2026-10-09",
-   "usd_volume_24h": 1501684.55
+   "usd_volume_24h": 2374093.01
   },
   "GRASS": {
    "altname": "GRASSUSD",
    "joined_at": 1791378076,
    "kraken": "GRASSUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
-   "rank": 43,
+   "rank": 46,
    "since": "2026-10-07",
-   "usd_volume_24h": 1463745.49
+   "usd_volume_24h": 1845025.33
   },
   "GRT": {
    "altname": "GRTUSD",
    "joined_at": 1791767043,
    "kraken": "GRTUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
-   "rank": 92,
+   "rank": 103,
    "since": "2026-10-12",
-   "usd_volume_24h": 346245.21
+   "usd_volume_24h": 361906.6
   },
   "GTC": {
    "altname": "GTCUSD",
    "joined_at": 1791421266,
    "kraken": "GTCUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
-   "rank": 236,
+   "rank": 67,
    "since": "2026-10-08",
-   "usd_volume_24h": 27953.65
+   "usd_volume_24h": 961887.65
   },
   "HBAR": {
    "altname": "HBARUSD",
    "joined_at": 1791378076,
    "kraken": "HBARUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
-   "rank": 39,
+   "rank": 32,
    "since": "2026-10-07",
-   "usd_volume_24h": 1675173.6
+   "usd_volume_24h": 2942334.0
   },
   "HNT": {
    "altname": "HNTUSD",
    "joined_at": 1791421266,
    "kraken": "HNTUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
-   "rank": 148,
+   "rank": 143,
    "since": "2026-10-08",
-   "usd_volume_24h": 92275.97
+   "usd_volume_24h": 150172.3
   },
   "HONEY": {
    "altname": "HONEYUSD",
    "joined_at": 1791594078,
    "kraken": "HONEYUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
-   "rank": 187,
+   "rank": 241,
    "since": "2026-10-10",
-   "usd_volume_24h": 56827.85
+   "usd_volume_24h": 43044.13
   },
   "HYPE": {
    "altname": "HYPEUSD",
    "joined_at": 1791378076,
    "kraken": "HYPEUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
-   "rank": 13,
+   "rank": 12,
    "since": "2026-10-07",
-   "usd_volume_24h": 5199567.43
+   "usd_volume_24h": 9001318.85
   },
   "ICP": {
    "altname": "ICPUSD",
    "joined_at": 1791378076,
    "kraken": "ICPUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
-   "rank": 23,
+   "rank": 29,
    "since": "2026-10-07",
-   "usd_volume_24h": 3099992.58
+   "usd_volume_24h": 3063062.77
   },
   "INJ": {
    "altname": "INJUSD",
    "joined_at": 1791378076,
    "kraken": "INJUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
-   "rank": 28,
+   "rank": 30,
    "since": "2026-10-07",
-   "usd_volume_24h": 2348493.24
+   "usd_volume_24h": 3042511.31
+  },
+  "IP": {
+   "altname": "IPUSD",
+   "joined_at": 1791853490,
+   "kraken": "IPUSD",
+   "last_seen": "2026-10-13",
+   "listed": true,
+   "rank": 78,
+   "since": "2026-10-13",
+   "usd_volume_24h": 796455.19
   },
   "JTO": {
    "altname": "JTOUSD",
    "joined_at": 1791421266,
    "kraken": "JTOUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
-   "rank": 98,
+   "rank": 95,
    "since": "2026-10-08",
-   "usd_volume_24h": 299911.62
+   "usd_volume_24h": 494364.25
   },
   "JUP": {
    "altname": "JUPUSD",
    "joined_at": 1791378076,
    "kraken": "JUPUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
-   "rank": 41,
+   "rank": 50,
    "since": "2026-10-07",
-   "usd_volume_24h": 1527401.17
+   "usd_volume_24h": 1641829.85
   },
   "KAS": {
    "altname": "KASUSD",
    "joined_at": 1791378076,
    "kraken": "KASUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
-   "rank": 57,
+   "rank": 52,
    "since": "2026-10-07",
-   "usd_volume_24h": 874199.12
+   "usd_volume_24h": 1564747.92
   },
   "KSM": {
    "altname": "KSMUSD",
    "joined_at": 1791378076,
    "kraken": "KSMUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
-   "rank": 174,
+   "rank": 117,
    "since": "2026-10-07",
-   "usd_volume_24h": 69130.64
+   "usd_volume_24h": 258846.15
   },
   "KTA": {
    "altname": "KTAUSD",
    "joined_at": 1791680427,
    "kraken": "KTAUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
-   "rank": 182,
+   "rank": 206,
    "since": "2026-10-11",
-   "usd_volume_24h": 60136.58
+   "usd_volume_24h": 69836.89
   },
   "LCX": {
    "altname": "LCXUSD",
    "joined_at": 1791378076,
    "kraken": "LCXUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
-   "rank": 185,
+   "rank": 191,
    "since": "2026-10-07",
-   "usd_volume_24h": 58447.46
+   "usd_volume_24h": 81546.52
   },
   "LDO": {
    "altname": "LDOUSD",
    "joined_at": 1791378076,
    "kraken": "LDOUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
-   "rank": 89,
+   "rank": 91,
    "since": "2026-10-07",
-   "usd_volume_24h": 369919.81
+   "usd_volume_24h": 547538.91
   },
   "LIGHTER": {
    "altname": "LIGHTERUSD",
    "joined_at": 1791378076,
    "kraken": "LIGHTERUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
-   "rank": 72,
+   "rank": 73,
    "since": "2026-10-07",
-   "usd_volume_24h": 597454.93
+   "usd_volume_24h": 891636.03
   },
   "LINK": {
    "altname": "LINKUSD",
    "joined_at": 1791378076,
    "kraken": "LINKUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
-   "rank": 21,
+   "rank": 20,
    "since": "2026-10-07",
-   "usd_volume_24h": 3201287.87
+   "usd_volume_24h": 5878223.05
   },
   "LTC": {
    "altname": "LTCUSD",
    "joined_at": 1791378076,
    "kraken": "XLTCZUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
-   "rank": 18,
+   "rank": 22,
    "since": "2026-10-07",
-   "usd_volume_24h": 3638114.08
+   "usd_volume_24h": 4017040.72
   },
   "LUNA": {
    "altname": "LUNAUSD",
    "joined_at": 1791594078,
    "kraken": "LUNAUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
-   "rank": 109,
+   "rank": 137,
    "since": "2026-10-10",
-   "usd_volume_24h": 238249.64
+   "usd_volume_24h": 173207.37
   },
   "MANA": {
    "altname": "MANAUSD",
    "joined_at": 1791378076,
    "kraken": "MANAUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
-   "rank": 119,
+   "rank": 109,
    "since": "2026-10-07",
-   "usd_volume_24h": 173535.45
+   "usd_volume_24h": 324098.01
   },
   "MEGA": {
    "altname": "MEGAUSD",
    "joined_at": 1791767043,
    "kraken": "MEGAUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
-   "rank": 70,
+   "rank": 99,
    "since": "2026-10-12",
-   "usd_volume_24h": 633867.49
+   "usd_volume_24h": 413059.59
   },
   "MET": {
    "altname": "METUSD",
    "joined_at": 1791421266,
    "kraken": "METUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
-   "rank": 166,
+   "rank": 156,
    "since": "2026-10-08",
-   "usd_volume_24h": 75521.29
+   "usd_volume_24h": 124988.52
   },
   "MINA": {
    "altname": "MINAUSD",
    "joined_at": 1791378076,
    "kraken": "MINAUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
-   "rank": 68,
+   "rank": 101,
    "since": "2026-10-07",
-   "usd_volume_24h": 648242.46
+   "usd_volume_24h": 410254.38
   },
   "MNT": {
    "altname": "MNTUSD",
    "joined_at": 1791378076,
    "kraken": "MNTUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
-   "rank": 177,
+   "rank": 185,
    "since": "2026-10-07",
-   "usd_volume_24h": 66089.55
+   "usd_volume_24h": 87298.87
   },
   "MON": {
    "altname": "MONUSD",
    "joined_at": 1791378076,
    "kraken": "MONUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
-   "rank": 75,
+   "rank": 85,
    "since": "2026-10-07",
-   "usd_volume_24h": 507275.51
+   "usd_volume_24h": 718077.85
   },
   "MORPHO": {
    "altname": "MORPHOUSD",
    "joined_at": 1791378076,
    "kraken": "MORPHOUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
-   "rank": 91,
+   "rank": 82,
    "since": "2026-10-07",
-   "usd_volume_24h": 349723.59
+   "usd_volume_24h": 735568.74
   },
   "NEAR": {
    "altname": "NEARUSD",
    "joined_at": 1791378076,
    "kraken": "NEARUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
-   "rank": 3,
+   "rank": 5,
    "since": "2026-10-07",
-   "usd_volume_24h": 32340780.03
+   "usd_volume_24h": 37841854.58
   },
   "NIGHT": {
    "altname": "NIGHTUSD",
    "joined_at": 1791378076,
    "kraken": "NIGHTUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
-   "rank": 46,
+   "rank": 47,
    "since": "2026-10-07",
-   "usd_volume_24h": 1380486.86
+   "usd_volume_24h": 1748756.03
   },
   "NIL": {
    "altname": "NILUSD",
    "joined_at": 1791378076,
    "kraken": "NILUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
-   "rank": 96,
+   "rank": 69,
    "since": "2026-10-07",
-   "usd_volume_24h": 308132.8
+   "usd_volume_24h": 939492.39
   },
   "NPC": {
    "altname": "NPCUSD",
    "joined_at": 1791378076,
    "kraken": "NPCUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
-   "rank": 130,
+   "rank": 162,
    "since": "2026-10-07",
-   "usd_volume_24h": 129022.37
+   "usd_volume_24h": 118155.0
   },
   "OGN": {
    "altname": "OGNUSD",
    "joined_at": 1791507774,
    "kraken": "OGNUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
-   "rank": 168,
+   "rank": 121,
    "since": "2026-10-09",
-   "usd_volume_24h": 73870.92
+   "usd_volume_24h": 227898.14
   },
   "ONDO": {
    "altname": "ONDOUSD",
    "joined_at": 1791378076,
    "kraken": "ONDOUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
-   "rank": 20,
+   "rank": 17,
    "since": "2026-10-07",
-   "usd_volume_24h": 3432343.49
+   "usd_volume_24h": 6548008.83
   },
   "OP": {
    "altname": "OPUSD",
    "joined_at": 1791378076,
    "kraken": "OPUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
-   "rank": 63,
+   "rank": 80,
    "since": "2026-10-07",
-   "usd_volume_24h": 705084.06
+   "usd_volume_24h": 773355.31
   },
   "ORCA": {
    "altname": "ORCAUSD",
    "joined_at": 1791378076,
    "kraken": "ORCAUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
-   "rank": 117,
+   "rank": 135,
    "since": "2026-10-07",
-   "usd_volume_24h": 183635.71
+   "usd_volume_24h": 175278.03
+  },
+  "OSMO": {
+   "altname": "OSMOUSD",
+   "joined_at": 1791853490,
+   "kraken": "OSMOUSD",
+   "last_seen": "2026-10-13",
+   "listed": true,
+   "rank": 90,
+   "since": "2026-10-13",
+   "usd_volume_24h": 570499.07
   },
   "PENDLE": {
    "altname": "PENDLEUSD",
    "joined_at": 1791378076,
    "kraken": "PENDLEUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
-   "rank": 101,
+   "rank": 111,
    "since": "2026-10-07",
-   "usd_volume_24h": 274938.6
+   "usd_volume_24h": 308951.78
   },
   "PENGU": {
    "altname": "PENGUUSD",
    "joined_at": 1791378076,
    "kraken": "PENGUUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
-   "rank": 52,
+   "rank": 54,
    "since": "2026-10-07",
-   "usd_volume_24h": 1005271.08
+   "usd_volume_24h": 1525355.43
   },
   "PEPE": {
    "altname": "PEPEUSD",
    "joined_at": 1791378076,
    "kraken": "PEPEUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
-   "rank": 53,
+   "rank": 43,
    "since": "2026-10-07",
-   "usd_volume_24h": 1003028.74
+   "usd_volume_24h": 1948320.12
   },
   "PLUME": {
    "altname": "PLUMEUSD",
    "joined_at": 1791767043,
    "kraken": "PLUMEUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
-   "rank": 56,
+   "rank": 75,
    "since": "2026-10-12",
-   "usd_volume_24h": 885176.71
+   "usd_volume_24h": 870581.98
   },
   "PNT": {
    "altname": "PNTUSD",
    "joined_at": 1791378076,
    "kraken": "PNTUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
-   "rank": 123,
+   "rank": 235,
    "since": "2026-10-07",
-   "usd_volume_24h": 158496.56
+   "usd_volume_24h": 47547.92
   },
   "POL": {
    "altname": "POLUSD",
    "joined_at": 1791378076,
    "kraken": "POLUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
-   "rank": 102,
+   "rank": 58,
    "since": "2026-10-07",
-   "usd_volume_24h": 270784.41
+   "usd_volume_24h": 1287396.43
   },
   "PONS": {
    "altname": "PONSUSD",
    "joined_at": 1791507774,
    "kraken": "PONSUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
-   "rank": 186,
+   "rank": 104,
    "since": "2026-10-09",
-   "usd_volume_24h": 58442.6
+   "usd_volume_24h": 360540.61
   },
   "PROS": {
    "altname": "PROSUSD",
    "joined_at": 1791378076,
    "kraken": "PROSUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
-   "rank": 206,
+   "rank": 229,
    "since": "2026-10-07",
-   "usd_volume_24h": 44715.7
+   "usd_volume_24h": 49607.98
   },
   "PUMP": {
    "altname": "PUMPUSD",
    "joined_at": 1791378076,
    "kraken": "PUMPUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
-   "rank": 17,
+   "rank": 16,
    "since": "2026-10-07",
-   "usd_volume_24h": 3639149.06
+   "usd_volume_24h": 6793924.04
   },
   "PYTH": {
    "altname": "PYTHUSD",
    "joined_at": 1791378076,
    "kraken": "PYTHUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
-   "rank": 60,
+   "rank": 40,
    "since": "2026-10-07",
-   "usd_volume_24h": 757601.14
+   "usd_volume_24h": 2133262.02
   },
   "Q": {
    "altname": "QUSD",
    "joined_at": 1791680427,
    "kraken": "QUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
-   "rank": 156,
+   "rank": 149,
    "since": "2026-10-11",
-   "usd_volume_24h": 86891.29
+   "usd_volume_24h": 143700.82
   },
   "QNT": {
    "altname": "QNTUSD",
    "joined_at": 1791378076,
    "kraken": "QNTUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
-   "rank": 9,
+   "rank": 11,
    "since": "2026-10-07",
-   "usd_volume_24h": 6999447.28
+   "usd_volume_24h": 10489118.47
   },
   "RAY": {
    "altname": "RAYUSD",
    "joined_at": 1791378076,
    "kraken": "RAYUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
-   "rank": 61,
+   "rank": 60,
    "since": "2026-10-07",
-   "usd_volume_24h": 729594.15
+   "usd_volume_24h": 1231268.19
+  },
+  "RED": {
+   "altname": "REDUSD",
+   "joined_at": 1791853490,
+   "kraken": "REDUSD",
+   "last_seen": "2026-10-13",
+   "listed": true,
+   "rank": 100,
+   "since": "2026-10-13",
+   "usd_volume_24h": 410729.47
   },
   "RENDER": {
    "altname": "RENDERUSD",
    "joined_at": 1791378076,
    "kraken": "RENDERUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
-   "rank": 69,
+   "rank": 26,
    "since": "2026-10-07",
-   "usd_volume_24h": 647507.52
+   "usd_volume_24h": 3123994.66
   },
   "RLC": {
    "altname": "RLCUSD",
    "joined_at": 1791378076,
    "kraken": "RLCUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
-   "rank": 84,
+   "rank": 119,
    "since": "2026-10-07",
-   "usd_volume_24h": 410442.1
+   "usd_volume_24h": 235229.48
+  },
+  "RSR": {
+   "altname": "RSRUSD",
+   "joined_at": 1791853490,
+   "kraken": "RSRUSD",
+   "last_seen": "2026-10-13",
+   "listed": true,
+   "rank": 56,
+   "since": "2026-10-13",
+   "usd_volume_24h": 1335493.81
   },
   "S": {
    "altname": "SUSD",
    "joined_at": 1791594078,
    "kraken": "SUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
-   "rank": 26,
+   "rank": 66,
    "since": "2026-10-10",
-   "usd_volume_24h": 2609834.1
+   "usd_volume_24h": 968613.73
   },
   "SAND": {
    "altname": "SANDUSD",
    "joined_at": 1791378076,
    "kraken": "SANDUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
-   "rank": 64,
+   "rank": 68,
    "since": "2026-10-07",
-   "usd_volume_24h": 696206.05
+   "usd_volume_24h": 952741.95
   },
   "SEI": {
    "altname": "SEIUSD",
    "joined_at": 1791378076,
    "kraken": "SEIUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
-   "rank": 77,
+   "rank": 93,
    "since": "2026-10-07",
-   "usd_volume_24h": 476709.98
+   "usd_volume_24h": 524383.38
   },
   "SENT": {
    "altname": "SENTUSD",
    "joined_at": 1791594078,
    "kraken": "SENTUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
-   "rank": 88,
+   "rank": 123,
    "since": "2026-10-10",
-   "usd_volume_24h": 370020.77
+   "usd_volume_24h": 218561.18
   },
   "SHIB": {
    "altname": "SHIBUSD",
    "joined_at": 1791378076,
    "kraken": "SHIBUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
-   "rank": 110,
+   "rank": 81,
    "since": "2026-10-07",
-   "usd_volume_24h": 234775.39
+   "usd_volume_24h": 761034.12
   },
   "SHX": {
    "altname": "SHXUSD",
    "joined_at": 1791378076,
    "kraken": "SHXUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
-   "rank": 94,
+   "rank": 144,
    "since": "2026-10-07",
-   "usd_volume_24h": 336976.15
+   "usd_volume_24h": 149470.1
   },
   "SKY": {
    "altname": "SKYUSD",
    "joined_at": 1791378076,
    "kraken": "SKYUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
-   "rank": 81,
+   "rank": 102,
    "since": "2026-10-07",
-   "usd_volume_24h": 442333.32
+   "usd_volume_24h": 380532.38
   },
   "SOL": {
    "altname": "SOLUSD",
    "joined_at": 1791378076,
    "kraken": "SOLUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
    "rank": 4,
    "since": "2026-10-07",
-   "usd_volume_24h": 18564338.59
+   "usd_volume_24h": 39032314.31
   },
   "SPX": {
    "altname": "SPXUSD",
    "joined_at": 1791378076,
    "kraken": "SPXUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
-   "rank": 82,
+   "rank": 89,
    "since": "2026-10-07",
-   "usd_volume_24h": 429556.3
+   "usd_volume_24h": 600476.1
   },
   "STRK": {
    "altname": "STRKUSD",
    "joined_at": 1791378076,
    "kraken": "STRKUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
-   "rank": 7,
+   "rank": 8,
    "since": "2026-10-07",
-   "usd_volume_24h": 14484977.8
+   "usd_volume_24h": 13655183.04
   },
   "STX": {
    "altname": "STXUSD",
    "joined_at": 1791378076,
    "kraken": "STXUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
-   "rank": 74,
+   "rank": 44,
    "since": "2026-10-07",
-   "usd_volume_24h": 510026.59
+   "usd_volume_24h": 1909882.94
   },
   "SUI": {
    "altname": "SUIUSD",
    "joined_at": 1791378076,
    "kraken": "SUIUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
-   "rank": 8,
+   "rank": 7,
    "since": "2026-10-07",
-   "usd_volume_24h": 10762602.96
+   "usd_volume_24h": 17042055.3
   },
   "SYN": {
    "altname": "SYNUSD",
    "joined_at": 1791421266,
    "kraken": "SYNUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
-   "rank": 122,
+   "rank": 158,
    "since": "2026-10-08",
-   "usd_volume_24h": 160997.68
+   "usd_volume_24h": 124724.39
   },
   "SYRUP": {
    "altname": "SYRUPUSD",
    "joined_at": 1791378076,
    "kraken": "SYRUPUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
-   "rank": 73,
+   "rank": 97,
    "since": "2026-10-07",
-   "usd_volume_24h": 514640.45
+   "usd_volume_24h": 449939.2
   },
   "TAO": {
    "altname": "TAOUSD",
    "joined_at": 1791378076,
    "kraken": "TAOUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
-   "rank": 11,
+   "rank": 9,
    "since": "2026-10-07",
-   "usd_volume_24h": 6757456.97
+   "usd_volume_24h": 12231743.9
   },
   "TIA": {
    "altname": "TIAUSD",
    "joined_at": 1791378076,
    "kraken": "TIAUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
-   "rank": 25,
+   "rank": 34,
    "since": "2026-10-07",
-   "usd_volume_24h": 2764399.13
+   "usd_volume_24h": 2613989.72
   },
   "TON": {
    "altname": "TONUSD",
    "joined_at": 1791378076,
    "kraken": "TONUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
-   "rank": 83,
+   "rank": 74,
    "since": "2026-10-07",
-   "usd_volume_24h": 426221.83
+   "usd_volume_24h": 887179.63
   },
   "TREAD": {
    "altname": "TREADUSD",
    "joined_at": 1791680427,
    "kraken": "TREADUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
-   "rank": 180,
+   "rank": 163,
    "since": "2026-10-11",
-   "usd_volume_24h": 61996.39
+   "usd_volume_24h": 117145.49
   },
   "TRUMP": {
    "altname": "TRUMPUSD",
    "joined_at": 1791378076,
    "kraken": "TRUMPUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
-   "rank": 100,
+   "rank": 65,
    "since": "2026-10-07",
-   "usd_volume_24h": 279645.02
+   "usd_volume_24h": 980169.99
   },
   "TRX": {
    "altname": "TRXUSD",
    "joined_at": 1791378076,
    "kraken": "TRXUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
-   "rank": 50,
+   "rank": 61,
    "since": "2026-10-07",
-   "usd_volume_24h": 1042696.85
+   "usd_volume_24h": 1118054.03
   },
   "UAI": {
    "altname": "UAIUSD",
    "joined_at": 1791507774,
    "kraken": "UAIUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
-   "rank": 176,
+   "rank": 72,
    "since": "2026-10-09",
-   "usd_volume_24h": 66680.42
+   "usd_volume_24h": 894795.54
   },
   "UNI": {
    "altname": "UNIUSD",
    "joined_at": 1791378076,
    "kraken": "UNIUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
-   "rank": 16,
+   "rank": 23,
    "since": "2026-10-07",
-   "usd_volume_24h": 3802256.86
+   "usd_volume_24h": 3872671.89
   },
   "US": {
    "altname": "USUSD",
    "joined_at": 1791378076,
    "kraken": "USUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
-   "rank": 40,
+   "rank": 49,
    "since": "2026-10-07",
-   "usd_volume_24h": 1556117.73
+   "usd_volume_24h": 1642666.76
   },
   "USELESS": {
    "altname": "USELESSUSD",
    "joined_at": 1791378076,
    "kraken": "USELESSUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
-   "rank": 35,
+   "rank": 48,
    "since": "2026-10-07",
-   "usd_volume_24h": 1827965.72
+   "usd_volume_24h": 1680229.25
   },
   "VET": {
    "altname": "VETUSD",
    "joined_at": 1791507774,
    "kraken": "VETUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
-   "rank": 137,
+   "rank": 157,
    "since": "2026-10-09",
-   "usd_volume_24h": 110441.41
+   "usd_volume_24h": 124802.0
   },
   "VIRTUAL": {
    "altname": "VIRTUALUSD",
    "joined_at": 1791378076,
    "kraken": "VIRTUALUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
-   "rank": 66,
+   "rank": 45,
    "since": "2026-10-07",
-   "usd_volume_24h": 663766.53
+   "usd_volume_24h": 1856058.07
   },
   "VVV": {
    "altname": "VVVUSD",
    "joined_at": 1791378076,
    "kraken": "VVVUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
-   "rank": 36,
+   "rank": 24,
    "since": "2026-10-07",
-   "usd_volume_24h": 1751972.81
+   "usd_volume_24h": 3813297.01
   },
   "W": {
    "altname": "WUSD",
    "joined_at": 1791421266,
    "kraken": "WUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
-   "rank": 45,
+   "rank": 14,
    "since": "2026-10-08",
-   "usd_volume_24h": 1419436.1
+   "usd_volume_24h": 8194548.12
   },
   "WIF": {
    "altname": "WIFUSD",
    "joined_at": 1791507774,
    "kraken": "WIFUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
-   "rank": 107,
+   "rank": 86,
    "since": "2026-10-09",
-   "usd_volume_24h": 246272.35
+   "usd_volume_24h": 691831.47
   },
   "WLD": {
    "altname": "WLDUSD",
    "joined_at": 1791378076,
    "kraken": "WLDUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
-   "rank": 22,
+   "rank": 35,
    "since": "2026-10-07",
-   "usd_volume_24h": 3186209.56
+   "usd_volume_24h": 2564228.69
   },
   "XCN": {
    "altname": "XCNUSD",
    "joined_at": 1791378076,
    "kraken": "XCNUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
-   "rank": 59,
+   "rank": 115,
    "since": "2026-10-07",
-   "usd_volume_24h": 829600.69
+   "usd_volume_24h": 286723.3
   },
   "XDC": {
    "altname": "XDCUSD",
    "joined_at": 1791378076,
    "kraken": "XDCUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
-   "rank": 93,
+   "rank": 88,
    "since": "2026-10-07",
-   "usd_volume_24h": 339162.05
+   "usd_volume_24h": 637966.74
   },
   "XDP": {
    "altname": "XDPUSD",
    "joined_at": 1791594078,
    "kraken": "XDPUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
-   "rank": 78,
+   "rank": 169,
    "since": "2026-10-10",
-   "usd_volume_24h": 475505.43
+   "usd_volume_24h": 107695.39
   },
   "XLM": {
    "altname": "XLMUSD",
    "joined_at": 1791378076,
    "kraken": "XXLMZUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
-   "rank": 19,
+   "rank": 21,
    "since": "2026-10-07",
-   "usd_volume_24h": 3591256.83
+   "usd_volume_24h": 4325352.16
   },
   "XMR": {
    "altname": "XMRUSD",
    "joined_at": 1791378076,
    "kraken": "XXMRZUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
-   "rank": 34,
+   "rank": 33,
    "since": "2026-10-07",
-   "usd_volume_24h": 2005793.9
+   "usd_volume_24h": 2739404.65
   },
   "XPL": {
    "altname": "XPLUSD",
    "joined_at": 1791378076,
    "kraken": "XPLUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
-   "rank": 87,
+   "rank": 79,
    "since": "2026-10-07",
-   "usd_volume_24h": 384400.9
+   "usd_volume_24h": 781220.47
   },
   "XRP": {
    "altname": "XRPUSD",
    "joined_at": 1791378076,
    "kraken": "XXRPZUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
    "rank": 6,
    "since": "2026-10-07",
-   "usd_volume_24h": 14987635.67
+   "usd_volume_24h": 34754592.18
   },
   "XTZ": {
    "altname": "XTZUSD",
    "joined_at": 1791767043,
    "kraken": "XTZUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
-   "rank": 97,
+   "rank": 98,
    "since": "2026-10-12",
-   "usd_volume_24h": 308003.36
+   "usd_volume_24h": 431403.01
   },
   "ZAMA": {
    "altname": "ZAMAUSD",
    "joined_at": 1791378076,
    "kraken": "ZAMAUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
-   "rank": 134,
+   "rank": 128,
    "since": "2026-10-07",
-   "usd_volume_24h": 113272.04
+   "usd_volume_24h": 209045.5
   },
   "ZBCN": {
    "altname": "ZBCNUSD",
    "joined_at": 1791421266,
    "kraken": "ZBCNUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
-   "rank": 111,
+   "rank": 113,
    "since": "2026-10-08",
-   "usd_volume_24h": 234107.16
+   "usd_volume_24h": 292750.36
   },
   "ZCHF": {
    "altname": "ZCHFUSD",
    "joined_at": 1791767043,
    "kraken": "ZCHFUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
-   "rank": 65,
+   "rank": 77,
    "since": "2026-10-12",
-   "usd_volume_24h": 664905.75
+   "usd_volume_24h": 818406.39
   },
   "ZEC": {
    "altname": "ZECUSD",
    "joined_at": 1791378076,
    "kraken": "XZECZUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
-   "rank": 5,
+   "rank": 3,
    "since": "2026-10-07",
-   "usd_volume_24h": 15320116.61
+   "usd_volume_24h": 40835244.69
   },
   "ZEUS": {
    "altname": "ZEUSUSD",
    "joined_at": 1791378076,
    "kraken": "ZEUSUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
-   "rank": 33,
+   "rank": 92,
    "since": "2026-10-07",
-   "usd_volume_24h": 2079019.83
+   "usd_volume_24h": 535227.24
   },
   "ZK": {
    "altname": "ZKUSD",
    "joined_at": 1791680427,
    "kraken": "ZKUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
-   "rank": 99,
+   "rank": 107,
    "since": "2026-10-11",
-   "usd_volume_24h": 299694.59
+   "usd_volume_24h": 339559.14
   },
   "ZRO": {
    "altname": "ZROUSD",
    "joined_at": 1791378076,
    "kraken": "ZROUSD",
-   "last_seen": "2026-10-12",
+   "last_seen": "2026-10-13",
    "listed": true,
-   "rank": 37,
+   "rank": 15,
    "since": "2026-10-07",
-   "usd_volume_24h": 1705400.95
+   "usd_volume_24h": 7194662.61
   }
  },
- "updated": 1791767043
+ "updated": 1791853490
 }

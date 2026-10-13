@@ -159,6 +159,11 @@
   "result": "added 1105 days; closes differ by 0.05% at the median and 0.10% at the ninth decile over 31 days",
   "want_from": 1633651200
  },
+ "DOS": {
+  "at": 1791853490,
+  "result": "not listed, to be asked once more",
+  "want_from": 1634169600
+ },
  "DOT": {
   "at": 1791378076,
   "result": "added 1105 days; closes differ by 0.05% at the median and 0.09% at the ninth decile over 31 days",
@@ -273,6 +278,11 @@
   "at": 1791378076,
   "result": "added 758 days; closes differ by 0.06% at the median and 0.16% at the ninth decile over 31 days",
   "want_from": 1633651200
+ },
+ "IP": {
+  "at": 1791853490,
+  "result": "added 25 days; closes differ by 0.30% at the median and 1.13% at the ninth decile over 31 days",
+  "want_from": 1634169600
  },
  "JTO": {
   "at": 1791421266,
@@ -404,6 +414,11 @@
   "result": "added 989 days; closes differ by 0.31% at the median and 1.06% at the ninth decile over 31 days",
   "want_from": 1633651200
  },
+ "OSMO": {
+  "at": 1791853490,
+  "result": "added 517 days; closes differ by 0.32% at the median and 0.90% at the ninth decile over 31 days",
+  "want_from": 1634169600
+ },
  "PENDLE": {
   "at": 1791507774,
   "result": "no candles",
@@ -420,9 +435,9 @@
   "want_from": 1633651200
  },
  "PLUME": {
-  "at": 1791767043,
-  "result": "no candles, to be asked once more",
-  "want_from": 1634083200
+  "at": 1791853490,
+  "result": "no candles",
+  "want_from": 1634169600
  },
  "POL": {
   "at": 1791378076,
@@ -464,6 +479,11 @@
   "result": "no candles",
   "want_from": 1633824000
  },
+ "RED": {
+  "at": 1791853490,
+  "result": "added 0 days; closes differ by 0.36% at the median and 0.82% at the ninth decile over 25 days",
+  "want_from": 1634169600
+ },
  "RENDER": {
   "at": 1791378076,
   "result": "added 245 days; closes differ by 0.07% at the median and 0.23% at the ninth decile over 31 days",
@@ -473,6 +493,11 @@
   "at": 1791378076,
   "result": "added 1105 days; closes differ by 0.25% at the median and 1.16% at the ninth decile over 31 days",
   "want_from": 1633651200
+ },
+ "RSR": {
+  "at": 1791853490,
+  "result": "no candles, to be asked once more",
+  "want_from": 1634169600
  },
  "S": {
   "at": 1791680427,
