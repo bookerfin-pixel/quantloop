@@ -21,7 +21,7 @@ verdict plus prior evidence, points the same way.
 
 ## Killed ideas and what the kill taught
 
-(none yet)
+- H4, the champion's signal slowed to a 30 day lookback (killed 2026-10-13, day 17.8, early kill on losses; LEDGER Result H4). It lost 15.04% against a basket that lost 7.85%, with 15 finished trades, 0 won and 15 lost (-13.74% of starting equity after costs), average exposure 0.84, daily skill t -2.36 over 18 days. Confidence 5%. Market line: basket -7.85%, BTC -0.70%, max drawdown -14%, a falling window, which is the kind the slow long-only trend follower is weakest in, so the kill says little about trend persistence over a full cycle. What it does say: the in-sample lead (+294 bps per round trip, positive skill in every quarter of the last year) did not carry into the first prospective window; the fast champion lost almost as much (-16.43%) over the same days, so a slower horizon did not buy protection against a fall. One early kill is one data point: do not close slow trend following on it, but the next entry in this family needs a reason this window does not cover (an exit that cuts a fall faster than a 5% band, or a flat-by-construction regime).
 
 ## Calibration
 
@@ -30,7 +30,7 @@ realised figure promote.py records in each verdict. If expectations run high
 across several verdicts, the arithmetic behind them needs fixing, not the
 hypotheses.
 
-(none yet)
+- H4: expected +294 bps per round trip, realised -516 (15 finished trades, all lost, 17.8 days). Expectation ran far high, and the sign was wrong, on a small sample in a falling window. H3 was voided and is not counted.
 
 ## Open questions
 
