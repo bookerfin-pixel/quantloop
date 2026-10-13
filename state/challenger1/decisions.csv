@@ -6087,3 +6087,13 @@ ts,account,pair,price,signal_weight,target_weight,current_weight,action,reason,h
 1791850242,challenger1,DOGE,0.081634,0.25,0.25,0.2454,hold,"hold: weight change +0.005 below threshold 0.05 | stay long: z -1.74 vs 240h mean (entry -2.0, exit -0.5); vol 64% -> weight 0.25",0.006
 1791850242,challenger1,DOT,1.14495,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -0.44 not below -2.0,2.184
 1791850242,challenger1,LTC,60.505,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -1.85 not below -2.0,2.479
+1791853844,challenger1,BTC,81656.25,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -1.83 not below -2.0,0.006
+1791853844,challenger1,ETH,2430.645,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -1.84 not below -2.0,0.021
+1791853844,challenger1,SOL,103.595,0.25,0.1429,0.243,sell,"stay long: z -2.41 vs 240h mean (entry -2.0, exit -0.5); vol 57% -> weight 0.25",0.483
+1791853844,challenger1,ADA,0.229054,0.25,0.1429,0.0,buy,"enter long: z -2.22 vs 240h mean (entry -2.0, exit -0.5); vol 93% -> weight 0.25",2.401
+1791853844,challenger1,AVAX,9.9915,0.25,0.1429,0.0,buy,"enter long: z -2.33 vs 240h mean (entry -2.0, exit -0.5); vol 90% -> weight 0.25",0.5
+1791853844,challenger1,LINK,12.48408,0.25,0.1429,0.0,buy,"enter long: z -2.04 vs 240h mean (entry -2.0, exit -0.5); vol 65% -> weight 0.25",2.203
+1791853844,challenger1,XRP,1.331525,0.25,0.1429,0.2483,sell,"stay long: z -2.31 vs 240h mean (entry -2.0, exit -0.5); vol 57% -> weight 0.25",0.038
+1791853844,challenger1,DOGE,0.081504,0.25,0.1429,0.2454,sell,"stay long: z -2.00 vs 240h mean (entry -2.0, exit -0.5); vol 64% -> weight 0.25",0.497
+1791853844,challenger1,DOT,1.1352,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -1.23 not below -2.0,2.643
+1791853844,challenger1,LTC,60.3,0.25,0.1429,0.0,buy,"enter long: z -2.28 vs 240h mean (entry -2.0, exit -0.5); vol 54% -> weight 0.25",1.658

@@ -237,3 +237,4 @@ ts,account,pair,side,qty,price,ref_price,notional,fee,slippage_cost,reason,equit
 1791825046,champion,BTC,buy,0.01032752,82532.095425,82490.85,852.35192981,0.85235193,0.42596298,stay long: 72h return -0.33% vs exit band -1.0% and price within 2.0% of 24h EMA; realised vol 30% -> weight 0.25,10372.91703211,0.00606128,5.0
 1791825046,champion,ETH,buy,0.34122978,2515.2219825,2513.965,858.26865036,0.85826865,0.42891987,stay long: 72h return +0.84% vs exit band -1.0% and price within 2.0% of 24h EMA; realised vol 43% -> weight 0.25,10371.62984359,0.0198889,5.0
 1791846647,champion,ETH,sell,1.03225689,2457.7954875,2459.025,2537.07632792,2.53707633,1.26917275,exit: price more than 2.0% below 24h EMA,10291.67931891,0.02033326,5.0
+1791853844,champion,BTC,sell,0.03145877,81615.421875,81656.25,2567.52075937,2.56752076,1.28440258,exit: 72h return -1.40% fell below exit band -1.0%,10281.00398842,0.00612323,5.0
