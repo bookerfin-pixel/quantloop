@@ -4049,3 +4049,13 @@ ts,account,pair,price,signal_weight,target_weight,current_weight,action,reason,h
 1791861043,challenger4,DOGE,0.08367,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 720h return -1.56% not above entry band +5.0% and price below 168h EMA,0.006
 1791861043,challenger4,DOT,1.158,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: price below 168h EMA,1.727
 1791861043,challenger4,LTC,61.555,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: price below 168h EMA,0.812
+1791864637,challenger4,BTC,83197.45,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: price below 168h EMA,0.006
+1791864637,challenger4,ETH,2505.915,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 720h return -0.57% not above entry band +5.0% and price below 168h EMA,0.02
+1791864637,challenger4,SOL,107.505,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: price below 168h EMA,0.465
+1791864637,challenger4,ADA,0.23673,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: price below 168h EMA,1.985
+1791864637,challenger4,AVAX,10.5075,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: price below 168h EMA,1.428
+1791864637,challenger4,LINK,12.93015,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: price below 168h EMA,0.139
+1791864637,challenger4,XRP,1.364565,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 720h return +0.24% not above entry band +5.0% and price below 168h EMA,0.037
+1791864637,challenger4,DOGE,0.084288,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 720h return -0.49% not above entry band +5.0% and price below 168h EMA,0.006
+1791864637,challenger4,DOT,1.17605,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: price below 168h EMA,2.126
+1791864637,challenger4,LTC,61.775,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: price below 168h EMA,0.809
