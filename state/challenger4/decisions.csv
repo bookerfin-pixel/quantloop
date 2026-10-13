@@ -4009,3 +4009,13 @@ ts,account,pair,price,signal_weight,target_weight,current_weight,action,reason,h
 1791846647,challenger4,DOGE,0.082956,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | daily halt: equity 8839.07 is down 5.2% from the day's open 9328.81,0.006
 1791846647,challenger4,DOT,1.1841,0.0,0.0,0.1988,sell,daily halt: equity 8839.07 is down 5.2% from the day's open 9328.81,2.534
 1791846647,challenger4,LTC,61.465,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | daily halt: equity 8839.07 is down 5.2% from the day's open 9328.81,0.813
+1791850242,challenger4,BTC,81357.25,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: price below 168h EMA,0.006
+1791850242,challenger4,ETH,2423.675,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 720h return -3.22% not above entry band +5.0% and price below 168h EMA,0.021
+1791850242,challenger4,SOL,104.135,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 720h return +3.80% not above entry band +5.0% and price below 168h EMA,0.48
+1791850242,challenger4,ADA,0.229681,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: price below 168h EMA,5.769
+1791850242,challenger4,AVAX,10.0525,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: price below 168h EMA,2.487
+1791850242,challenger4,LINK,12.43575,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: price below 168h EMA,3.739
+1791850242,challenger4,XRP,1.332405,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 720h return -1.93% not above entry band +5.0% and price below 168h EMA,0.038
+1791850242,challenger4,DOGE,0.081634,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 720h return -3.17% not above entry band +5.0% and price below 168h EMA,0.006
+1791850242,challenger4,DOT,1.14495,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: price below 168h EMA,2.184
+1791850242,challenger4,LTC,60.505,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: price below 168h EMA,2.479

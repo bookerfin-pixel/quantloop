@@ -1,33 +1,22 @@
 {
   "cash": 7716.050749816959,
   "created_at": 1789530957,
-  "day": "2026-10-12",
-  "day_open_equity": 10693.362025789933,
-  "equity_rows": 619,
+  "day": "2026-10-13",
+  "day_open_equity": 10275.449739628195,
+  "equity_rows": 620,
   "fees_paid": 358.0932796523515,
   "fills_day": {
-    "counts": {
-      "ADA": 1,
-      "AVAX": 2,
-      "BTC": 2,
-      "DOGE": 2,
-      "DOT": 2,
-      "ETH": 3,
-      "LINK": 1,
-      "LTC": 2,
-      "SOL": 1,
-      "XRP": 1
-    },
-    "day": "2026-10-12"
+    "counts": {},
+    "day": "2026-10-13"
   },
   "halted_day": "2026-09-28",
   "initial_cash": 10000.0,
-  "last_bar": 1791842400,
-  "last_run_ts": 1791846647,
+  "last_bar": 1791846000,
+  "last_run_ts": 1791850242,
   "marks": {
     "BTC": [
-      81873.15,
-      1791846647
+      81357.25,
+      1791850242
     ]
   },
   "n_trades": 238,
