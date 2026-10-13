@@ -1,4 +1,4 @@
-# quantloop summary — generated 2026-10-13 17:10Z
+# quantloop summary — generated 2026-10-13 17:26Z
 
 Cost model: fee 10 bps + slippage 5 bps per side (~30 bps per round trip). Pairs: BTC, ETH, SOL, ADA, AVAX, LINK, XRP, DOGE, DOT, LTC. Paper only.
 
@@ -19,9 +19,9 @@ Cost model: fee 10 bps + slippage 5 bps per side (~30 bps per round trip). Pairs
 
 - challenger1: testing H1 since 2026-09-16 05:21Z, day 27.5 of 60, 32.5 days until the verdict (one look at day 60: promoted, killed, or kept 60 more days if its trades are of value and it does not pass)
   so far: champion +2.16% (max drawdown -18.60%, 243 fills) vs challenger1 -2.27% (max drawdown -9.09%, 59 fills)
-  skill (net return minus the basket held at the strategy's usual exposure): champion -6.29% (usual 0.54, this window 0.63) vs challenger1 -8.10% (usual 0.37, this window 0.29); the rule compares on skill, daily edge t -0.21 over 27 days
+  skill (net return minus the basket held at the strategy's usual exposure): champion -6.29% (usual 0.54, this window 0.63) vs challenger1 -8.10% (usual 0.37, this window 0.29); the rule compares on skill, daily edge t -0.20 over 28 days
   trades: its 18 finished trades made -0.25% of its starting equity after costs (11 won, 7 lost, 7 of them closed by the daily loss halt or a strategy error), and a test that does not pass the rule is kept only when they have made money
-  confidence: 6% that this is a real edge (every idea starts at 10%; the daily skill t is -1.35 over 27 days)
+  confidence: 5% that this is a real edge (every idea starts at 10%; the daily skill t is -1.35 over 28 days)
   two look rule (measured, not applied to this test): on today's numbers it would be killed at day 60, the same as under its own rule
   against cash (measured, not applied to this test): by its one look rule, on today's numbers it would be killed at day 60, the same as against the champion
   market over the window: BTC +9.84%, equal weight basket of 10 pairs +15.71%, basket max drawdown -14%, basket realised vol 58% annualised
@@ -57,7 +57,7 @@ retired by Fin (configs/risk.yaml, retired_champions): the champion's title is c
 params: {"ema_exit_buffer": 0.02, "ema_hours": 24, "entry_return": 0.01, "exit_return": -0.01, "lookback_hours": 72, "max_weight": 0.25, "target_vol_annual": 0.3, "vol_lookback_hours": 168}
 
 - equity 10,215.92 (started 10,000 at 2026-09-16 03:55Z), net +2.16% since start
-- 24h -1.44%, 7d -7.63%, 30d +2.16%, max drawdown -18.60%
+- 24h -1.44%, 7d -7.79%, 30d +2.16%, max drawdown -18.60%
 - fills 243 total, 50 in the last 7d
 - costs 559.51 (fees 370.93 + slippage 188.58); gross pnl 775.43; cost coverage 1.39
 - cash 5,115.89; positions: BTC 0.030713, ETH 1.01751
@@ -169,7 +169,7 @@ last fills:
 params: {"breakout_hours": 120, "compression_hours": 168, "exit_hours": 72, "lookback_hours": 1440, "max_weight": 0.25, "squeeze_memory_hours": 72, "target_vol_annual": 0.3, "vol_lookback_hours": 168, "vol_percentile": 0.25}
 
 - equity 10,776.16 (started 10,000 at 2026-09-16 23:20Z), net +7.76% since start
-- 24h +0.00%, 7d -1.32%, 30d +7.76%, max drawdown -3.54%
+- 24h +0.00%, 7d -1.41%, 30d +7.76%, max drawdown -3.54%
 - fills 36 total, 2 in the last 7d
 - costs 95.13 (fees 62.99 + slippage 32.15); gross pnl 871.29; cost coverage 9.16
 - cash 10,776.16; positions: none
@@ -225,7 +225,7 @@ last fills:
 params: {"exit_hours": 48, "fresh_cross": true, "max_weight": 0.25, "min_higher_low": 0.1, "recent_hours": 240, "target_vol_annual": 0.3, "vol_lookback_hours": 168}
 
 - equity 9,883.62 (started 10,000 at 2026-10-05 05:28Z), net -1.16% since start
-- 24h +0.00%, 7d -1.05%, 30d -1.13%, max drawdown -1.89%
+- 24h +0.00%, 7d -0.99%, 30d -1.13%, max drawdown -1.89%
 - fills 26 total, 1 in the last 7d
 - costs 59.13 (fees 39.38 + slippage 19.75); gross pnl -57.25; cost coverage -0.97
 - cash 9,883.62; positions: none
@@ -277,7 +277,26 @@ last fills:
 ## challenger4: cash (cash)
 
 params: {}
-no runs yet
+
+- equity 10,000.00 (started 10,000 at 2026-10-13 17:26Z), net +0.00% since start
+- 24h n/a, 7d n/a, 30d n/a, max drawdown 0.00%
+- fills 0 total, 0 in the last 7d
+- costs 0.00 (fees 0.00 + slippage 0.00); gross pnl 0.00; cost coverage n/a
+- cash 10,000.00; positions: none
+- last run 2026-10-13 17:26Z; halted today: False
+
+last decisions (newest last):
+
+- 2026-10-13 17:26Z BTC hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | cash: holds nothing
+- 2026-10-13 17:26Z ETH hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | cash: holds nothing
+- 2026-10-13 17:26Z SOL hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | cash: holds nothing
+- 2026-10-13 17:26Z ADA hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | cash: holds nothing
+- 2026-10-13 17:26Z AVAX hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | cash: holds nothing
+- 2026-10-13 17:26Z LINK hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | cash: holds nothing
+- 2026-10-13 17:26Z XRP hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | cash: holds nothing
+- 2026-10-13 17:26Z DOGE hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | cash: holds nothing
+- 2026-10-13 17:26Z DOT hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | cash: holds nothing
+- 2026-10-13 17:26Z LTC hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | cash: holds nothing
 
 ## Data
 
