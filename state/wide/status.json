@@ -1,29 +1,28 @@
 {
  "coinbase": {
-  "coins": 3,
-  "days_added": 542,
+  "coins": 4,
+  "days_added": 1087,
   "failed": [],
   "mismatch": [],
   "not_listed": 1
  },
  "funding": {
-  "days_added": 667,
+  "days_added": 48,
   "failed": [],
   "symbols": 48
  },
  "kraken": {
-  "days_added": 2778,
+  "days_added": 1286,
   "failed": [],
   "joined_today": [
-   "DOS",
-   "RSR",
-   "IP",
-   "OSMO",
-   "RED"
+   "CT",
+   "TRAC",
+   "AZTEC",
+   "BILL"
   ],
-  "listed": 145,
-  "on_the_list": 146,
-  "pairs_read": 145,
+  "listed": 149,
+  "on_the_list": 150,
+  "pairs_read": 149,
   "pegged_skipped": [
    "APXUSD",
    "AUSD",
@@ -39,10 +38,10 @@
    "USDSUI",
    "USTABLES"
   ],
-  "qualified_today": 227,
+  "qualified_today": 209,
   "quoted": 630,
   "quotes_failed": "",
-  "quotes_written": 145,
+  "quotes_written": 149,
   "unquoted": [],
   "usd_pairs": 652
  },
@@ -59,7 +58,7 @@
    "ok": true
   }
  },
- "ran": 1791853490,
- "ran_utc": "2026-10-13 01:04Z",
+ "ran": 1791940519,
+ "ran_utc": "2026-10-14 01:15Z",
  "settings_not_used": []
 }

@@ -84,6 +84,11 @@
   "result": "added 1105 days; closes differ by 0.09% at the median and 0.17% at the ninth decile over 31 days",
   "want_from": 1633996800
  },
+ "AZTEC": {
+  "at": 1791940519,
+  "result": "added 0 days; closes differ by 0.21% at the median and 0.57% at the ninth decile over 31 days",
+  "want_from": 1634256000
+ },
  "BABY": {
   "at": 1791767043,
   "result": "not listed",
@@ -98,6 +103,11 @@
   "at": 1791378076,
   "result": "added 1105 days; closes differ by 0.09% at the median and 0.34% at the ninth decile over 31 days",
   "want_from": 1633651200
+ },
+ "BILL": {
+  "at": 1791940519,
+  "result": "added 0 days; closes differ by 0.12% at the median and 0.35% at the ninth decile over 31 days",
+  "want_from": 1634256000
  },
  "BNB": {
   "at": 1791507774,
@@ -149,6 +159,11 @@
   "result": "added 1105 days; closes differ by 0.20% at the median and 0.38% at the ninth decile over 31 days",
   "want_from": 1633651200
  },
+ "CT": {
+  "at": 1791940519,
+  "result": "added 0 days; closes differ by 0.11% at the median and 0.54% at the ninth decile over 14 days",
+  "want_from": 1634256000
+ },
  "DASH": {
   "at": 1791378076,
   "result": "added 1105 days; closes differ by 0.16% at the median and 0.39% at the ninth decile over 31 days",
@@ -160,9 +175,9 @@
   "want_from": 1633651200
  },
  "DOS": {
-  "at": 1791853490,
-  "result": "not listed, to be asked once more",
-  "want_from": 1634169600
+  "at": 1791940519,
+  "result": "not listed",
+  "want_from": 1634256000
  },
  "DOT": {
   "at": 1791378076,
@@ -495,9 +510,9 @@
   "want_from": 1633651200
  },
  "RSR": {
-  "at": 1791853490,
-  "result": "no candles, to be asked once more",
-  "want_from": 1634169600
+  "at": 1791940519,
+  "result": "no candles",
+  "want_from": 1634256000
  },
  "S": {
   "at": 1791680427,
@@ -583,6 +598,11 @@
   "at": 1791507774,
   "result": "no candles",
   "want_from": 1633824000
+ },
+ "TRAC": {
+  "at": 1791940519,
+  "result": "added 1087 days; closes differ by 0.14% at the median and 0.48% at the ninth decile over 31 days",
+  "want_from": 1634256000
  },
  "TREAD": {
   "at": 1791767043,
