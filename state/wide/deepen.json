@@ -74,6 +74,11 @@
   "result": "added 1105 days; closes differ by 0.08% at the median and 0.20% at the ninth decile over 31 days",
   "want_from": 1633651200
  },
+ "AVA": {
+  "at": 1792026833,
+  "result": "not listed, to be asked once more",
+  "want_from": 1634342400
+ },
  "AVAX": {
   "at": 1791378076,
   "result": "added 1105 days; closes differ by 0.07% at the median and 0.16% at the ninth decile over 31 days",
@@ -454,6 +459,11 @@
   "result": "no candles",
   "want_from": 1634169600
  },
+ "PNT": {
+  "at": 1792026833,
+  "result": "not listed, to be asked once more",
+  "want_from": 1634342400
+ },
  "POL": {
   "at": 1791378076,
   "result": "added 43 days; closes differ by 0.07% at the median and 0.17% at the ninth decile over 31 days",
@@ -659,6 +669,11 @@
   "result": "no candles",
   "want_from": 1633824000
  },
+ "WAL": {
+  "at": 1792026833,
+  "result": "no candles, to be asked once more",
+  "want_from": 1634342400
+ },
  "WIF": {
   "at": 1791507774,
   "result": "not used: only 6 days in common",
@@ -723,6 +738,11 @@
   "at": 1791378076,
   "result": "added 1105 days; closes differ by 0.14% at the median and 0.60% at the ninth decile over 31 days",
   "want_from": 1633651200
+ },
+ "ZEREBRO": {
+  "at": 1792026833,
+  "result": "not listed, to be asked once more",
+  "want_from": 1634342400
  },
  "ZEUS": {
   "at": 1791507774,
