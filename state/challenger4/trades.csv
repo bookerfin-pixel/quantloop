@@ -1,0 +1,2 @@
+ts,account,pair,side,qty,price,ref_price,notional,fee,slippage_cost,reason,equity_after,half_spread_bps,slip_bps
+1792105844,challenger4,DOGE,buy,30847.04037844,0.08104505,0.08100455,2500.0,2.5,1.24937531,"first hour under a new strategy, decided as if flat | enter long: ratio to BTC z -2.08 vs 720h mean (entry -2.0, exit -0.25); vol 58% -> weight 0.25",9996.25062469,0.00617249,5.0

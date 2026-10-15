@@ -539,3 +539,13 @@ ts,account,pair,price,signal_weight,target_weight,current_weight,action,reason,h
 1792102248,challenger4,DOGE,0.081519,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | cash: holds nothing,0.227
 1792102248,challenger4,DOT,1.14645,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | cash: holds nothing,0.436
 1792102248,challenger4,LTC,60.665,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | cash: holds nothing,0.824
+1792105844,challenger4,BTC,82184.15,0.0,0.0,0.0,hold,"hold: weight change +0.000 below threshold 0.05 | first hour under a new strategy, decided as if flat | flat: BTC is the yardstick and is not held",0.006
+1792105844,challenger4,ETH,2444.495,0.0,0.0,0.0,hold,"hold: weight change +0.000 below threshold 0.05 | first hour under a new strategy, decided as if flat | flat: ratio to BTC z -1.94 not below -2.0",0.02
+1792105844,challenger4,SOL,105.415,0.0,0.0,0.0,hold,"hold: weight change +0.000 below threshold 0.05 | first hour under a new strategy, decided as if flat | flat: ratio to BTC z -1.72 not below -2.0",0.474
+1792105844,challenger4,ADA,0.22952,0.0,0.0,0.0,hold,"hold: weight change +0.000 below threshold 0.05 | first hour under a new strategy, decided as if flat | flat: ratio to BTC z -0.75 not below -2.0",0.741
+1792105844,challenger4,AVAX,10.0275,0.0,0.0,0.0,hold,"hold: weight change +0.000 below threshold 0.05 | first hour under a new strategy, decided as if flat | flat: ratio to BTC z -0.17 not below -2.0",0.499
+1792105844,challenger4,LINK,12.462125,0.0,0.0,0.0,hold,"hold: weight change +0.000 below threshold 0.05 | first hour under a new strategy, decided as if flat | flat: ratio to BTC z -0.78 not below -2.0",0.213
+1792105844,challenger4,XRP,1.333635,0.0,0.0,0.0,hold,"hold: weight change +0.000 below threshold 0.05 | first hour under a new strategy, decided as if flat | flat: ratio to BTC z -1.93 not below -2.0",0.037
+1792105844,challenger4,DOGE,0.081005,0.25,0.25,0.0,buy,"first hour under a new strategy, decided as if flat | enter long: ratio to BTC z -2.08 vs 720h mean (entry -2.0, exit -0.25); vol 58% -> weight 0.25",0.006
+1792105844,challenger4,DOT,1.1452,0.0,0.0,0.0,hold,"hold: weight change +0.000 below threshold 0.05 | first hour under a new strategy, decided as if flat | flat: ratio to BTC z -0.07 not below -2.0",1.746
+1792105844,challenger4,LTC,60.675,0.0,0.0,0.0,hold,"hold: weight change +0.000 below threshold 0.05 | first hour under a new strategy, decided as if flat | flat: ratio to BTC z -0.68 not below -2.0",0.824

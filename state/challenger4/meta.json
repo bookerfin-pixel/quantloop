@@ -1,6 +1,15 @@
 {
-  "hypothesis": null,
-  "start_equity": {},
-  "started_at": null,
-  "status": "idle"
+  "against": "cash",
+  "hypothesis": "H6",
+  "ruleset": 8,
+  "start_equity": {
+    "challenger4": 9996.250624687656,
+    "champion": 10071.525259651045
+  },
+  "started_at": 1792105844,
+  "status": "testing",
+  "usual_exposure": {
+    "challenger4": 0.528,
+    "start": 1792105844
+  }
 }
