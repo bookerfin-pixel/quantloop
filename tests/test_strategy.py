@@ -145,3 +145,32 @@ def test_swing_reversal_fresh_cross_does_not_rebuy_after_cross_hour():
     # without the flag the level test still buys
     out = strategy.swing_reversal({"X": _ohlc(cross + [97])}, _swing_params(), {})
     assert out["X"].weight > 0
+
+
+def _rr_candles(drop):
+    import numpy as np
+    n = 800
+    t = pd.date_range("2026-01-01", periods=n, freq="h")
+    rng = np.random.default_rng(1)
+    btc = 100 * (1 + rng.normal(0, 0.002, n)).cumprod()
+    eth = btc * 0.05 * (1 + rng.normal(0, 0.002, n)).cumprod() ** 0.2
+    eth[-1] *= drop
+
+    def mk(p):
+        return pd.DataFrame({"time": t, "open": p, "high": p, "low": p, "close": p,
+                             "vwap": p, "volume": 1.0, "count": 1})
+    return {"BTC": mk(btc), "ETH": mk(eth)}
+
+
+def test_relative_reversion_buys_coin_specific_dump_never_btc():
+    out = strategy.relative_reversion(_rr_candles(0.8), {}, {})
+    assert out["BTC"].weight == 0.0
+    assert out["ETH"].weight > 0 and "enter long" in out["ETH"].reason
+    quiet = strategy.relative_reversion(_rr_candles(1.0), {}, {})
+    assert quiet["ETH"].weight == 0.0
+
+
+def test_relative_reversion_short_history_reason():
+    c = {p: df.tail(50) for p, df in _rr_candles(0.8).items()}
+    out = strategy.relative_reversion(c, {}, {})
+    assert out["ETH"].reason == "flat: only 50 candles, need 722"
