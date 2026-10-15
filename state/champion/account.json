@@ -1,22 +1,18 @@
 {
   "cash": 10071.525259651045,
   "created_at": 1789530957,
-  "day": "2026-10-14",
-  "day_open_equity": 10218.114758700493,
-  "equity_rows": 667,
+  "day": "2026-10-15",
+  "day_open_equity": 10071.525259651045,
+  "equity_rows": 668,
   "fees_paid": 381.01468484408014,
   "fills_day": {
-    "counts": {
-      "BTC": 1,
-      "ETH": 1,
-      "LINK": 2
-    },
-    "day": "2026-10-14"
+    "counts": {},
+    "day": "2026-10-15"
   },
   "halted_day": "2026-09-28",
   "initial_cash": 10000.0,
-  "last_bar": 1792015200,
-  "last_run_ts": 1792019439,
+  "last_bar": 1792018800,
+  "last_run_ts": 1792023040,
   "marks": {},
   "n_trades": 247,
   "name": "champion",
