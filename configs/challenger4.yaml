@@ -1,6 +1,12 @@
 # The agent edits this file. When it differs from champion.yaml the bot starts a
 # prospective test in this slot automatically. `hypothesis` must match the newest
 # entry in LEDGER.md.
-hypothesis: cash
-strategy: cash
-params: {}
+hypothesis: H6
+strategy: relative_reversion
+params:
+  ratio_hours: 720
+  entry_z: 2.0
+  exit_z: 0.25
+  vol_lookback_hours: 168
+  target_vol_annual: 0.3
+  max_weight: 0.25

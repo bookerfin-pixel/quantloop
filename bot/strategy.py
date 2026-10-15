@@ -317,3 +317,49 @@ def vol_breakout(candles: dict[str, pd.DataFrame], params: dict,
                 out[pair] = Target(0.0, f"flat: squeezed but {price:.4g} not above {breakout_hours}h high "
                                         f"{breakout_high:.4g}")
     return out
+
+
+@register("relative_reversion")
+def relative_reversion(candles: dict[str, pd.DataFrame], params: dict,
+                       current_weights: dict[str, float]) -> dict[str, Target]:
+    """Long only reversion of a coin's price against BTC. The z score of the log
+    ratio coin/BTC against its own trailing ratio_hours mean and standard
+    deviation: enter below -entry_z (the coin dumped on its own, not with the
+    market), stay long until it recovers above -exit_z. BTC is the yardstick and
+    is never held. Sized by vol as in the other strategies."""
+    ratio_hours = int(params.get("ratio_hours", 720))
+    entry_z = float(params.get("entry_z", 2.0))
+    exit_z = float(params.get("exit_z", 0.25))
+    btc_key = params.get("base", "BTC")
+    out: dict[str, Target] = {}
+    btc = candles.get(btc_key)
+    for pair, df in candles.items():
+        if pair == btc_key:
+            out[pair] = Target(0.0, "flat: BTC is the yardstick and is not held")
+            continue
+        close = df["close"].astype(float)
+        if btc is None or len(close) < ratio_hours + 2 or len(btc) < ratio_hours + 2:
+            n = len(close) if btc is None else min(len(close), len(btc))
+            out[pair] = Target(0.0, f"flat: only {n} candles, need {ratio_hours + 2}")
+            continue
+        b = btc.set_index("time")["close"].astype(float)
+        c = df.set_index("time")["close"].astype(float)
+        ratio = np.log(c / b).dropna().tail(ratio_hours + 1)
+        if len(ratio) < ratio_hours:
+            out[pair] = Target(0.0, f"flat: only {len(ratio)} candles, need {ratio_hours + 2}")
+            continue
+        std = float(ratio.std())
+        if not np.isfinite(std) or std <= 0:
+            out[pair] = Target(0.0, "flat: zero dispersion")
+            continue
+        z = (float(ratio.iloc[-1]) - float(ratio.mean())) / std
+        holding = current_weights.get(pair, 0.0) > 0
+        if z < -entry_z or (holding and z < -exit_z):
+            w, vol = vol_scaled_weight(close, params)
+            state = "stay long" if holding else "enter long"
+            out[pair] = Target(w, f"{state}: ratio to BTC z {z:+.2f} vs {ratio_hours}h mean "
+                                  f"(entry {-entry_z}, exit {-exit_z}); vol {vol:.0%} -> weight {w:.2f}")
+        else:
+            out[pair] = Target(0.0, f"flat: ratio to BTC z {z:+.2f} not below "
+                                    f"{-entry_z if not holding else -exit_z}")
+    return out
