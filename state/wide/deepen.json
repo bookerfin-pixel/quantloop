@@ -9,6 +9,11 @@
   "result": "added 1105 days; closes differ by 0.04% at the median and 0.26% at the ninth decile over 31 days",
   "want_from": 1633651200
  },
+ "ACU": {
+  "at": 1792113157,
+  "result": "not listed, to be asked once more",
+  "want_from": 1634428800
+ },
  "ADA": {
   "at": 1791378076,
   "result": "added 1105 days; closes differ by 0.04% at the median and 0.13% at the ninth decile over 31 days",
@@ -64,6 +69,11 @@
   "result": "added 574 days; closes differ by 0.08% at the median and 0.26% at the ninth decile over 31 days",
   "want_from": 1633651200
  },
+ "ARX": {
+  "at": 1792113157,
+  "result": "added 0 days; closes differ by 0.35% at the median and 0.95% at the ninth decile over 31 days",
+  "want_from": 1634428800
+ },
  "ASTER": {
   "at": 1791507774,
   "result": "no candles",
@@ -75,9 +85,9 @@
   "want_from": 1633651200
  },
  "AVA": {
-  "at": 1792026833,
-  "result": "not listed, to be asked once more",
-  "want_from": 1634342400
+  "at": 1792113157,
+  "result": "not listed",
+  "want_from": 1634428800
  },
  "AVAX": {
   "at": 1791378076,
@@ -289,6 +299,11 @@
   "result": "added 0 days; closes differ by 0.09% at the median and 0.29% at the ninth decile over 23 days",
   "want_from": 1633651200
  },
+ "ICNT": {
+  "at": 1792113157,
+  "result": "no candles, to be asked once more",
+  "want_from": 1634428800
+ },
  "ICP": {
   "at": 1791378076,
   "result": "added 1105 days; closes differ by 0.06% at the median and 0.18% at the ninth decile over 31 days",
@@ -460,14 +475,19 @@
   "want_from": 1634169600
  },
  "PNT": {
-  "at": 1792026833,
-  "result": "not listed, to be asked once more",
-  "want_from": 1634342400
+  "at": 1792113157,
+  "result": "not listed",
+  "want_from": 1634428800
  },
  "POL": {
   "at": 1791378076,
   "result": "added 43 days; closes differ by 0.07% at the median and 0.17% at the ninth decile over 31 days",
   "want_from": 1633651200
+ },
+ "POND": {
+  "at": 1792113157,
+  "result": "not used: closes differ by 1.61% at the median and 2.43% at the ninth decile over 31 days",
+  "want_from": 1634428800
  },
  "PONS": {
   "at": 1791507774,
@@ -568,6 +588,11 @@
   "at": 1791507774,
   "result": "no candles",
   "want_from": 1633824000
+ },
+ "STBL": {
+  "at": 1792113157,
+  "result": "not listed, to be asked once more",
+  "want_from": 1634428800
  },
  "STRK": {
   "at": 1791378076,
@@ -670,9 +695,9 @@
   "want_from": 1633824000
  },
  "WAL": {
-  "at": 1792026833,
-  "result": "no candles, to be asked once more",
-  "want_from": 1634342400
+  "at": 1792113157,
+  "result": "no candles",
+  "want_from": 1634428800
  },
  "WIF": {
   "at": 1791507774,
@@ -740,9 +765,9 @@
   "want_from": 1633651200
  },
  "ZEREBRO": {
-  "at": 1792026833,
-  "result": "not listed, to be asked once more",
-  "want_from": 1634342400
+  "at": 1792113157,
+  "result": "not listed",
+  "want_from": 1634428800
  },
  "ZEUS": {
   "at": 1791507774,
