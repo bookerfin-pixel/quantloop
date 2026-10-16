@@ -6847,3 +6847,13 @@ ts,account,pair,price,signal_weight,target_weight,current_weight,action,reason,h
 1792123844,champion,DOGE,0.081415,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -3.21% not above entry band +1.0%,0.246
 1792123844,champion,DOT,1.1429,0.0,0.0,0.2467,sell,exit: 72h return -1.97% fell below exit band -1.0%,3.5
 1792123844,champion,LTC,60.84,0.0,0.0,0.2501,sell,exit: 72h return -1.31% fell below exit band -1.0%,1.644
+1792127439,champion,BTC,82209.35,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -1.56% not above entry band +1.0%,0.006
+1792127439,champion,ETH,2447.935,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -2.93% not above entry band +1.0%,0.02
+1792127439,champion,SOL,106.115,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -2.20% not above entry band +1.0%,0.471
+1792127439,champion,ADA,0.230633,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -3.45% not above entry band +1.0%,1.561
+1792127439,champion,AVAX,10.0785,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -4.79% not above entry band +1.0%,0.496
+1792127439,champion,LINK,12.486035,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -4.18% not above entry band +1.0%,0.901
+1792127439,champion,XRP,1.338145,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -2.44% not above entry band +1.0%,0.187
+1792127439,champion,DOGE,0.082197,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -3.15% not above entry band +1.0%,0.116
+1792127439,champion,DOT,1.14995,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -2.71% not above entry band +1.0%,4.783
+1792127439,champion,LTC,61.055,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -1.60% not above entry band +1.0%,0.819
