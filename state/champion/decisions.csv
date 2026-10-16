@@ -6837,3 +6837,13 @@ ts,account,pair,price,signal_weight,target_weight,current_weight,action,reason,h
 1792120246,champion,DOGE,0.081667,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -2.75% not above entry band +1.0%,0.159
 1792120246,champion,DOT,1.17375,0.25,0.25,0.2513,hold,hold: weight change -0.001 below threshold 0.05 | stay long: 72h return +1.45% vs exit band -1.0% and price above 24h EMA; realised vol 95% -> weight 0.25,2.982
 1792120246,champion,LTC,61.04,0.25,0.25,0.2489,hold,hold: weight change +0.001 below threshold 0.05 | stay long: 72h return -0.81% vs exit band -1.0% and price above 24h EMA; realised vol 59% -> weight 0.25,1.638
+1792123844,champion,BTC,81887.25,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -1.45% not above entry band +1.0%,0.006
+1792123844,champion,ETH,2434.105,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -2.75% not above entry band +1.0%,0.021
+1792123844,champion,SOL,104.98,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -2.02% not above entry band +1.0%,0.953
+1792123844,champion,ADA,0.228407,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -3.24% not above entry band +1.0%,1.926
+1792123844,champion,AVAX,10.0025,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -3.85% not above entry band +1.0%,0.5
+1792123844,champion,LINK,12.38133,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -3.97% not above entry band +1.0%,2.278
+1792123844,champion,XRP,1.32949,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -2.53% not above entry band +1.0%,0.15
+1792123844,champion,DOGE,0.081415,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -3.21% not above entry band +1.0%,0.246
+1792123844,champion,DOT,1.1429,0.0,0.0,0.2467,sell,exit: 72h return -1.97% fell below exit band -1.0%,3.5
+1792123844,champion,LTC,60.84,0.0,0.0,0.2501,sell,exit: 72h return -1.31% fell below exit band -1.0%,1.644
