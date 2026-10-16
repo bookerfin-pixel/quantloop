@@ -3,7 +3,7 @@
   "created_at": 1791912405,
   "day": "2026-10-16",
   "day_open_equity": 9995.471736918102,
-  "equity_rows": 58,
+  "equity_rows": 59,
   "fees_paid": 4.9988679342295255,
   "fills_day": {
     "counts": {
@@ -13,16 +13,16 @@
   },
   "halted_day": null,
   "initial_cash": 10000.0,
-  "last_bar": 1792112400,
-  "last_run_ts": 1792116639,
+  "last_bar": 1792116000,
+  "last_run_ts": 1792120246,
   "marks": {
     "DOGE": [
-      0.08118685,
-      1792116639
+      0.0816668,
+      1792120246
     ],
     "ETH": [
-      2433.205,
-      1792116639
+      2440.885,
+      1792120246
     ]
   },
   "n_trades": 2,
