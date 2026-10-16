@@ -1,2 +1,3 @@
 ts,account,pair,side,qty,price,ref_price,notional,fee,slippage_cost,reason,equity_after,half_spread_bps,slip_bps
 1792105844,challenger4,DOGE,buy,30847.04037844,0.08104505,0.08100455,2500.0,2.5,1.24937531,"first hour under a new strategy, decided as if flat | enter long: ratio to BTC z -2.08 vs 720h mean (entry -2.0, exit -0.25); vol 58% -> weight 0.25",9996.25062469,0.00617249,5.0
+1792109448,challenger4,ETH,buy,1.02262739,2443.5761775,2442.355,2498.86793423,2.49886793,1.24880956,"enter long: ratio to BTC z -2.03 vs 720h mean (entry -2.0, exit -0.25); vol 46% -> weight 0.25",9991.72405942,0.02047204,5.0
