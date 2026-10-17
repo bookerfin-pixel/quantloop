@@ -1,31 +1,31 @@
 {
  "coinbase": {
-  "coins": 1,
-  "days_added": 0,
+  "coins": 5,
+  "days_added": 2558,
   "failed": [],
-  "mismatch": [
-   "POND: closes differ by 1.61% at the median and 2.43% at the ninth decile over 31 days"
-  ],
-  "not_listed": 5
+  "mismatch": [],
+  "not_listed": 4
  },
  "funding": {
-  "days_added": 669,
+  "days_added": 53,
   "failed": [],
   "symbols": 53
  },
  "kraken": {
-  "days_added": 2122,
+  "days_added": 2814,
   "failed": [],
   "joined_today": [
-   "STBL",
-   "ARX",
-   "ICNT",
-   "ACU",
-   "POND"
+   "ALEO",
+   "WINGS",
+   "JASMY",
+   "APE",
+   "A",
+   "SKR",
+   "ALIGN"
   ],
-  "listed": 157,
-  "on_the_list": 158,
-  "pairs_read": 157,
+  "listed": 164,
+  "on_the_list": 165,
+  "pairs_read": 164,
   "pegged_skipped": [
    "AUSD",
    "CASH",
@@ -40,10 +40,10 @@
    "USDSUI",
    "USTABLES"
   ],
-  "qualified_today": 245,
-  "quoted": 630,
+  "qualified_today": 196,
+  "quoted": 631,
   "quotes_failed": "",
-  "quotes_written": 157,
+  "quotes_written": 164,
   "unquoted": [],
   "usd_pairs": 653
  },
@@ -60,7 +60,7 @@
    "ok": true
   }
  },
- "ran": 1792113157,
- "ran_utc": "2026-10-16 01:12Z",
+ "ran": 1792213106,
+ "ran_utc": "2026-10-17 04:58Z",
  "settings_not_used": []
 }

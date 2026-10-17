@@ -4,15 +4,20 @@
   "result": "not listed",
   "want_from": 1633996800
  },
+ "A": {
+  "at": 1792213106,
+  "result": "not listed, to be asked once more",
+  "want_from": 1634515200
+ },
  "AAVE": {
   "at": 1791378076,
   "result": "added 1105 days; closes differ by 0.04% at the median and 0.26% at the ninth decile over 31 days",
   "want_from": 1633651200
  },
  "ACU": {
-  "at": 1792113157,
-  "result": "not listed, to be asked once more",
-  "want_from": 1634428800
+  "at": 1792213106,
+  "result": "not listed",
+  "want_from": 1634515200
  },
  "ADA": {
   "at": 1791378076,
@@ -44,10 +49,25 @@
   "result": "added 212 days; closes differ by 0.15% at the median and 0.50% at the ninth decile over 31 days",
   "want_from": 1633651200
  },
+ "ALEO": {
+  "at": 1792213106,
+  "result": "added 498 days; closes differ by 0.37% at the median and 1.93% at the ninth decile over 31 days",
+  "want_from": 1634515200
+ },
  "ALGO": {
   "at": 1791378076,
   "result": "added 1105 days; closes differ by 0.09% at the median and 0.19% at the ninth decile over 31 days",
   "want_from": 1633651200
+ },
+ "ALIGN": {
+  "at": 1792213106,
+  "result": "added 0 days; closes differ by 0.55% at the median and 1.03% at the ninth decile over 31 days",
+  "want_from": 1634515200
+ },
+ "APE": {
+  "at": 1792213106,
+  "result": "added 955 days; closes differ by 0.12% at the median and 0.30% at the ninth decile over 31 days",
+  "want_from": 1634515200
  },
  "APR": {
   "at": 1791767043,
@@ -300,9 +320,9 @@
   "want_from": 1633651200
  },
  "ICNT": {
-  "at": 1792113157,
-  "result": "no candles, to be asked once more",
-  "want_from": 1634428800
+  "at": 1792213106,
+  "result": "no candles",
+  "want_from": 1634515200
  },
  "ICP": {
   "at": 1791378076,
@@ -318,6 +338,11 @@
   "at": 1791853490,
   "result": "added 25 days; closes differ by 0.30% at the median and 1.13% at the ninth decile over 31 days",
   "want_from": 1634169600
+ },
+ "JASMY": {
+  "at": 1792213106,
+  "result": "added 1105 days; closes differ by 0.18% at the median and 0.44% at the ninth decile over 31 days",
+  "want_from": 1634515200
  },
  "JTO": {
   "at": 1791421266,
@@ -574,6 +599,11 @@
   "result": "not listed",
   "want_from": 1633824000
  },
+ "SKR": {
+  "at": 1792213106,
+  "result": "added 0 days; closes differ by 0.26% at the median and 0.93% at the ninth decile over 31 days",
+  "want_from": 1634515200
+ },
  "SKY": {
   "at": 1791507774,
   "result": "no candles",
@@ -590,9 +620,9 @@
   "want_from": 1633824000
  },
  "STBL": {
-  "at": 1792113157,
-  "result": "not listed, to be asked once more",
-  "want_from": 1634428800
+  "at": 1792213106,
+  "result": "not listed",
+  "want_from": 1634515200
  },
  "STRK": {
   "at": 1791378076,
@@ -703,6 +733,11 @@
   "at": 1791507774,
   "result": "not used: only 6 days in common",
   "want_from": 1633824000
+ },
+ "WINGS": {
+  "at": 1792213106,
+  "result": "not listed, to be asked once more",
+  "want_from": 1634515200
  },
  "WLD": {
   "at": 1791507774,
