@@ -5,9 +5,9 @@
   "want_from": 1633996800
  },
  "A": {
-  "at": 1792213106,
-  "result": "not listed, to be asked once more",
-  "want_from": 1634515200
+  "at": 1792300016,
+  "result": "not listed",
+  "want_from": 1634601600
  },
  "AAVE": {
   "at": 1791378076,
@@ -163,6 +163,11 @@
   "at": 1791378076,
   "result": "added 1105 days; closes differ by 0.02% at the median and 0.07% at the ninth decile over 31 days",
   "want_from": 1633651200
+ },
+ "CAKE": {
+  "at": 1792300016,
+  "result": "no candles, to be asked once more",
+  "want_from": 1634601600
  },
  "CAP": {
   "at": 1791378076,
@@ -388,6 +393,11 @@
   "at": 1791378076,
   "result": "added 1105 days; closes differ by 0.05% at the median and 0.12% at the ninth decile over 31 days",
   "want_from": 1633651200
+ },
+ "LSK": {
+  "at": 1792300016,
+  "result": "not listed, to be asked once more",
+  "want_from": 1634601600
  },
  "LTC": {
   "at": 1791378076,
@@ -735,9 +745,9 @@
   "want_from": 1633824000
  },
  "WINGS": {
-  "at": 1792213106,
-  "result": "not listed, to be asked once more",
-  "want_from": 1634515200
+  "at": 1792300016,
+  "result": "not listed",
+  "want_from": 1634601600
  },
  "WLD": {
   "at": 1791507774,
@@ -793,6 +803,11 @@
   "at": 1791507774,
   "result": "not listed",
   "want_from": 1633824000
+ },
+ "ZCHF": {
+  "at": 1792300016,
+  "result": "not listed, to be asked once more",
+  "want_from": 1634601600
  },
  "ZEC": {
   "at": 1791378076,
