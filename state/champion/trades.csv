@@ -268,3 +268,4 @@ ts,account,pair,side,qty,price,ref_price,notional,fee,slippage_cost,reason,equit
 1792177844,champion,DOT,sell,2113.13552943,1.1492251,1.1498,2428.46839012,2.42846839,1.21484162,exit: 72h return -2.61% fell below exit band -1.0%,9904.27332458,0.86971647,5.0
 1792195842,champion,DOT,buy,2100.96431571,1.17853897,1.17795,2476.06833115,2.47606833,1.23741546,enter long: 72h return +2.04% vs entry band +1.0% and price above 24h EMA; realised vol 98% -> weight 0.25,9900.55984079,0.42446623,5.0
 1792242636,champion,DOT,sell,2100.96431571,1.1302346,1.1308,2374.58256298,2.37458256,1.18788522,exit: 72h return -1.01% fell below exit band -1.0% and price more than 2.0% below 24h EMA,9797.93690552,0.88432968,5.0
+1792293041,champion,ETH,buy,1.01236588,2419.5641775,2418.355,2449.48422638,2.44948423,1.22413005,enter long: 72h return +1.56% vs entry band +1.0% and price above 24h EMA; realised vol 50% -> weight 0.25,9794.26329125,0.02067521,5.0
