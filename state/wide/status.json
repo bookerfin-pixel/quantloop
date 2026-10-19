@@ -4,23 +4,25 @@
   "days_added": 0,
   "failed": [],
   "mismatch": [],
-  "not_listed": 4
+  "not_listed": 5
  },
  "funding": {
-  "days_added": 546,
+  "days_added": 55,
   "failed": [],
   "symbols": 55
  },
  "kraken": {
-  "days_added": 1418,
+  "days_added": 1370,
   "failed": [],
   "joined_today": [
-   "LSK",
-   "CAKE"
+   "VSN",
+   "ALTHEA",
+   "GWEI",
+   "SN75"
   ],
-  "listed": 166,
-  "on_the_list": 167,
-  "pairs_read": 166,
+  "listed": 170,
+  "on_the_list": 171,
+  "pairs_read": 170,
   "pegged_skipped": [
    "AUSD",
    "CASH",
@@ -35,10 +37,10 @@
    "USDSUI",
    "USTABLES"
   ],
-  "qualified_today": 175,
+  "qualified_today": 186,
   "quoted": 631,
   "quotes_failed": "",
-  "quotes_written": 166,
+  "quotes_written": 170,
   "unquoted": [],
   "usd_pairs": 653
  },
@@ -55,7 +57,7 @@
    "ok": true
   }
  },
- "ran": 1792300016,
- "ran_utc": "2026-10-18 05:06Z",
+ "ran": 1792387109,
+ "ran_utc": "2026-10-19 05:18Z",
  "settings_not_used": []
 }

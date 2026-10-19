@@ -64,6 +64,11 @@
   "result": "added 0 days; closes differ by 0.55% at the median and 1.03% at the ninth decile over 31 days",
   "want_from": 1634515200
  },
+ "ALTHEA": {
+  "at": 1792387109,
+  "result": "not listed, to be asked once more",
+  "want_from": 1634688000
+ },
  "APE": {
   "at": 1792213106,
   "result": "added 955 days; closes differ by 0.12% at the median and 0.30% at the ninth decile over 31 days",
@@ -165,9 +170,9 @@
   "want_from": 1633651200
  },
  "CAKE": {
-  "at": 1792300016,
-  "result": "no candles, to be asked once more",
-  "want_from": 1634601600
+  "at": 1792387109,
+  "result": "no candles",
+  "want_from": 1634688000
  },
  "CAP": {
   "at": 1791378076,
@@ -304,6 +309,11 @@
   "result": "added 1105 days; closes differ by 0.78% at the median and 1.81% at the ninth decile over 31 days",
   "want_from": 1633737600
  },
+ "GWEI": {
+  "at": 1792387109,
+  "result": "no candles, to be asked once more",
+  "want_from": 1634688000
+ },
  "HBAR": {
   "at": 1791378076,
   "result": "added 1001 days; closes differ by 0.05% at the median and 0.18% at the ninth decile over 31 days",
@@ -395,9 +405,9 @@
   "want_from": 1633651200
  },
  "LSK": {
-  "at": 1792300016,
-  "result": "not listed, to be asked once more",
-  "want_from": 1634601600
+  "at": 1792387109,
+  "result": "not listed",
+  "want_from": 1634688000
  },
  "LTC": {
   "at": 1791378076,
@@ -619,6 +629,11 @@
   "result": "no candles",
   "want_from": 1633824000
  },
+ "SN75": {
+  "at": 1792387109,
+  "result": "not listed, to be asked once more",
+  "want_from": 1634688000
+ },
  "SOL": {
   "at": 1791378076,
   "result": "added 1105 days; closes differ by 0.03% at the median and 0.07% at the ninth decile over 31 days",
@@ -724,6 +739,11 @@
   "result": "no candles",
   "want_from": 1633824000
  },
+ "VSN": {
+  "at": 1792387109,
+  "result": "not listed, to be asked once more",
+  "want_from": 1634688000
+ },
  "VVV": {
   "at": 1791378076,
   "result": "added 30 days; closes differ by 0.66% at the median and 1.81% at the ninth decile over 31 days",
@@ -805,9 +825,9 @@
   "want_from": 1633824000
  },
  "ZCHF": {
-  "at": 1792300016,
-  "result": "not listed, to be asked once more",
-  "want_from": 1634601600
+  "at": 1792387109,
+  "result": "not listed",
+  "want_from": 1634688000
  },
  "ZEC": {
   "at": 1791378076,
