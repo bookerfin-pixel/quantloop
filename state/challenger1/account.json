@@ -3,7 +3,7 @@
   "created_at": 1789530957,
   "day": "2026-10-20",
   "day_open_equity": 9449.658477730703,
-  "equity_rows": 809,
+  "equity_rows": 810,
   "fees_paid": 104.58181974640351,
   "fills_day": {
     "counts": {
@@ -18,8 +18,8 @@
   },
   "halted_day": "2026-10-08",
   "initial_cash": 10000.0,
-  "last_bar": 1792526400,
-  "last_run_ts": 1792530645,
+  "last_bar": 1792530000,
+  "last_run_ts": 1792534249,
   "marks": {},
   "n_trades": 75,
   "name": "challenger1",
