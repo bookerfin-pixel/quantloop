@@ -1,28 +1,28 @@
 {
  "coinbase": {
-  "coins": 0,
+  "coins": 1,
   "days_added": 0,
   "failed": [],
   "mismatch": [],
-  "not_listed": 5
+  "not_listed": 6
  },
  "funding": {
-  "days_added": 55,
+  "days_added": 425,
   "failed": [],
-  "symbols": 55
+  "symbols": 56
  },
  "kraken": {
-  "days_added": 1370,
+  "days_added": 1792,
   "failed": [],
   "joined_today": [
-   "VSN",
-   "ALTHEA",
-   "GWEI",
-   "SN75"
+   "PHA",
+   "WLFI",
+   "KNTQ",
+   "OOB"
   ],
-  "listed": 170,
-  "on_the_list": 171,
-  "pairs_read": 170,
+  "listed": 174,
+  "on_the_list": 175,
+  "pairs_read": 174,
   "pegged_skipped": [
    "AUSD",
    "CASH",
@@ -37,10 +37,10 @@
    "USDSUI",
    "USTABLES"
   ],
-  "qualified_today": 186,
+  "qualified_today": 179,
   "quoted": 631,
   "quotes_failed": "",
-  "quotes_written": 170,
+  "quotes_written": 174,
   "unquoted": [],
   "usd_pairs": 653
  },
@@ -57,7 +57,7 @@
    "ok": true
   }
  },
- "ran": 1792387109,
- "ran_utc": "2026-10-19 05:18Z",
+ "ran": 1792473335,
+ "ran_utc": "2026-10-20 05:15Z",
  "settings_not_used": []
 }

@@ -65,9 +65,9 @@
   "want_from": 1634515200
  },
  "ALTHEA": {
-  "at": 1792387109,
-  "result": "not listed, to be asked once more",
-  "want_from": 1634688000
+  "at": 1792473335,
+  "result": "not listed",
+  "want_from": 1634774400
  },
  "APE": {
   "at": 1792213106,
@@ -310,9 +310,9 @@
   "want_from": 1633737600
  },
  "GWEI": {
-  "at": 1792387109,
-  "result": "no candles, to be asked once more",
-  "want_from": 1634688000
+  "at": 1792473335,
+  "result": "no candles",
+  "want_from": 1634774400
  },
  "HBAR": {
   "at": 1791378076,
@@ -373,6 +373,11 @@
   "at": 1791507774,
   "result": "not listed",
   "want_from": 1633824000
+ },
+ "KNTQ": {
+  "at": 1792473335,
+  "result": "not listed, to be asked once more",
+  "want_from": 1634774400
  },
  "KSM": {
   "at": 1791378076,
@@ -484,6 +489,11 @@
   "result": "added 269 days; closes differ by 0.11% at the median and 0.35% at the ninth decile over 31 days",
   "want_from": 1633651200
  },
+ "OOB": {
+  "at": 1792473335,
+  "result": "not listed, to be asked once more",
+  "want_from": 1634774400
+ },
  "OP": {
   "at": 1791378076,
   "result": "added 869 days; closes differ by 0.07% at the median and 0.27% at the ninth decile over 31 days",
@@ -513,6 +523,11 @@
   "at": 1791378076,
   "result": "not used: only 4 days in common",
   "want_from": 1633651200
+ },
+ "PHA": {
+  "at": 1792473335,
+  "result": "not listed, to be asked once more",
+  "want_from": 1634774400
  },
  "PLUME": {
   "at": 1791853490,
@@ -630,9 +645,9 @@
   "want_from": 1633824000
  },
  "SN75": {
-  "at": 1792387109,
-  "result": "not listed, to be asked once more",
-  "want_from": 1634688000
+  "at": 1792473335,
+  "result": "not listed",
+  "want_from": 1634774400
  },
  "SOL": {
   "at": 1791378076,
@@ -740,9 +755,9 @@
   "want_from": 1633824000
  },
  "VSN": {
-  "at": 1792387109,
-  "result": "not listed, to be asked once more",
-  "want_from": 1634688000
+  "at": 1792473335,
+  "result": "not listed",
+  "want_from": 1634774400
  },
  "VVV": {
   "at": 1791378076,
@@ -773,6 +788,11 @@
   "at": 1791507774,
   "result": "no candles",
   "want_from": 1633824000
+ },
+ "WLFI": {
+  "at": 1792473335,
+  "result": "added 0 days; closes differ by 0.14% at the median and 0.21% at the ninth decile over 31 days",
+  "want_from": 1634774400
  },
  "XCN": {
   "at": 1791378076,
