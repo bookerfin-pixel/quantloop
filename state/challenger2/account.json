@@ -3,7 +3,7 @@
   "created_at": 1789600850,
   "day": "2026-10-20",
   "day_open_equity": 10776.159613895677,
-  "equity_rows": 784,
+  "equity_rows": 785,
   "fees_paid": 65.68277049566899,
   "fills_day": {
     "counts": {
@@ -13,12 +13,12 @@
   },
   "halted_day": null,
   "initial_cash": 10000.0,
-  "last_bar": 1792508400,
-  "last_run_ts": 1792512645,
+  "last_bar": 1792512000,
+  "last_run_ts": 1792516247,
   "marks": {
     "BTC": [
-      82413.55,
-      1792512645
+      82720.75,
+      1792516247
     ]
   },
   "n_trades": 37,
