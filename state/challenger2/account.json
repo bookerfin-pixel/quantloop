@@ -1,36 +1,42 @@
 {
-  "cash": 5382.722858333937,
+  "cash": 2674.4204866479363,
   "created_at": 1789600850,
   "day": "2026-10-21",
   "day_open_equity": 10771.265243466318,
-  "equity_rows": 805,
-  "fees_paid": 68.37677929904996,
+  "equity_rows": 806,
+  "fees_paid": 71.08237607396104,
   "fills_day": {
     "counts": {
+      "DOGE": 1,
       "XRP": 1
     },
     "day": "2026-10-21"
   },
   "halted_day": null,
   "initial_cash": 10000.0,
-  "last_bar": 1792584000,
-  "last_run_ts": 1792588245,
+  "last_bar": 1792587600,
+  "last_run_ts": 1792591847,
   "marks": {
     "BTC": [
-      83687.55,
-      1792588245
+      83655.25,
+      1792591847
+    ],
+    "DOGE": [
+      0.08196225,
+      1792591847
     ],
     "XRP": [
-      1.36103,
-      1792588245
+      1.357945,
+      1792591847
     ]
   },
-  "n_trades": 38,
+  "n_trades": 39,
   "name": "challenger2",
   "positions": {
     "BTC": 0.032470864925431775,
+    "DOGE": 32993.78253506703,
     "XRP": 2005.461133004058
   },
-  "slippage_paid": 34.83880294880037,
+  "slippage_paid": 36.1909252750925,
   "strategy_sig": "params:\n  breakout_hours: 120\n  compression_hours: 168\n  exit_hours: 72\n  lookback_hours: 1440\n  max_weight: 0.25\n  squeeze_memory_hours: 72\n  target_vol_annual: 0.3\n  vol_lookback_hours: 168\n  vol_percentile: 0.25\nstrategy: vol_breakout\n"
 }
