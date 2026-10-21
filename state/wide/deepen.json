@@ -209,6 +209,11 @@
   "result": "added 0 days; closes differ by 0.11% at the median and 0.54% at the ninth decile over 14 days",
   "want_from": 1634256000
  },
+ "CVX": {
+  "at": 1792559885,
+  "result": "added 784 days; closes differ by 0.84% at the median and 1.45% at the ninth decile over 31 days",
+  "want_from": 1634860800
+ },
  "DASH": {
   "at": 1791378076,
   "result": "added 1105 days; closes differ by 0.16% at the median and 0.39% at the ninth decile over 31 days",
@@ -375,9 +380,9 @@
   "want_from": 1633824000
  },
  "KNTQ": {
-  "at": 1792473335,
-  "result": "not listed, to be asked once more",
-  "want_from": 1634774400
+  "at": 1792559885,
+  "result": "not listed",
+  "want_from": 1634860800
  },
  "KSM": {
   "at": 1791378076,
@@ -439,6 +444,11 @@
   "result": "added 11 days; closes differ by 0.40% at the median and 1.46% at the ninth decile over 31 days",
   "want_from": 1633737600
  },
+ "MEW": {
+  "at": 1792559885,
+  "result": "not listed, to be asked once more",
+  "want_from": 1634860800
+ },
  "MINA": {
   "at": 1791378076,
   "result": "added 925 days; closes differ by 0.17% at the median and 0.38% at the ninth decile over 31 days",
@@ -490,9 +500,9 @@
   "want_from": 1633651200
  },
  "OOB": {
-  "at": 1792473335,
-  "result": "not listed, to be asked once more",
-  "want_from": 1634774400
+  "at": 1792559885,
+  "result": "not listed",
+  "want_from": 1634860800
  },
  "OP": {
   "at": 1791378076,
@@ -525,9 +535,9 @@
   "want_from": 1633651200
  },
  "PHA": {
-  "at": 1792473335,
-  "result": "not listed, to be asked once more",
-  "want_from": 1634774400
+  "at": 1792559885,
+  "result": "not listed",
+  "want_from": 1634860800
  },
  "PLUME": {
   "at": 1791853490,
