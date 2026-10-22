@@ -1,59 +1,54 @@
 {
-  "cash": 1560.8937897243643,
+  "cash": -1.1368683772161603e-13,
   "created_at": 1789530957,
   "day": "2026-10-22",
   "day_open_equity": 9662.258602707936,
-  "equity_rows": 843,
-  "fees_paid": 463.3830158636483,
+  "equity_rows": 844,
+  "fees_paid": 468.0259231859773,
   "fills_day": {
     "counts": {
       "ADA": 1,
-      "BTC": 1,
+      "BTC": 2,
       "DOGE": 1,
       "DOT": 1,
-      "ETH": 1,
-      "LINK": 1,
-      "LTC": 1,
+      "ETH": 2,
+      "LINK": 2,
+      "LTC": 2,
       "SOL": 2,
-      "XRP": 1
+      "XRP": 2
     },
     "day": "2026-10-22"
   },
   "halted_day": "2026-09-28",
   "initial_cash": 10000.0,
-  "last_bar": 1792648800,
-  "last_run_ts": 1792653048,
+  "last_bar": 1792652400,
+  "last_run_ts": 1792656646,
   "marks": {
     "BTC": [
-      82249.55,
-      1792653048
+      82000.05,
+      1792656646
     ],
     "ETH": [
-      2427.105,
-      1792653048
+      2414.795,
+      1792656646
     ],
     "LINK": [
-      12.154285,
-      1792653048
-    ],
-    "LTC": [
-      60.095,
-      1792653048
+      12.10638,
+      1792656646
     ],
     "XRP": [
-      1.337765,
-      1792653048
+      1.3324500000000001,
+      1792656646
     ]
   },
-  "n_trades": 302,
+  "n_trades": 307,
   "name": "champion",
   "positions": {
-    "BTC": 0.019014361265754096,
-    "ETH": 0.6455326912067049,
-    "LINK": 129.0666430192519,
-    "LTC": 25.979646169740235,
-    "XRP": 1169.962162883708
+    "BTC": 0.028484417292762756,
+    "ETH": 0.9672553850678869,
+    "LINK": 192.9334216351725,
+    "XRP": 1748.892085793838
   },
-  "slippage_paid": 236.15778810429873,
+  "slippage_paid": 238.4788532830087,
   "strategy_sig": "params:\n  ema_exit_buffer: 0.02\n  ema_hours: 24\n  entry_return: 0.01\n  exit_return: -0.01\n  lookback_hours: 72\n  max_weight: 0.25\n  target_vol_annual: 0.3\n  vol_lookback_hours: 168\nstrategy: ts_momentum\n"
 }
