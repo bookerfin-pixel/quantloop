@@ -1,27 +1,27 @@
 {
  "coinbase": {
-  "coins": 1,
-  "days_added": 784,
+  "coins": 0,
+  "days_added": 0,
   "failed": [],
   "mismatch": [],
-  "not_listed": 4
+  "not_listed": 3
  },
  "funding": {
-  "days_added": 56,
+  "days_added": 428,
   "failed": [],
-  "symbols": 56
+  "symbols": 57
  },
  "kraken": {
-  "days_added": 1616,
+  "days_added": 1901,
   "failed": [],
   "joined_today": [
-   "CVX",
-   "DNA",
-   "MEW"
+   "PTB",
+   "BMT",
+   "ALT"
   ],
-  "listed": 177,
-  "on_the_list": 178,
-  "pairs_read": 177,
+  "listed": 180,
+  "on_the_list": 181,
+  "pairs_read": 180,
   "pegged_skipped": [
    "APXUSD",
    "AUSD",
@@ -37,12 +37,12 @@
    "USDSUI",
    "USTABLES"
   ],
-  "qualified_today": 182,
+  "qualified_today": 198,
   "quoted": 631,
   "quotes_failed": "",
-  "quotes_written": 177,
+  "quotes_written": 180,
   "unquoted": [],
-  "usd_pairs": 653
+  "usd_pairs": 654
  },
  "ok": true,
  "probes": {
@@ -57,7 +57,7 @@
    "ok": true
   }
  },
- "ran": 1792559885,
- "ran_utc": "2026-10-21 05:18Z",
+ "ran": 1792646441,
+ "ran_utc": "2026-10-22 05:20Z",
  "settings_not_used": []
 }

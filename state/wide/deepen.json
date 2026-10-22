@@ -64,6 +64,11 @@
   "result": "added 0 days; closes differ by 0.55% at the median and 1.03% at the ninth decile over 31 days",
   "want_from": 1634515200
  },
+ "ALT": {
+  "at": 1792646441,
+  "result": "no candles, to be asked once more",
+  "want_from": 1634947200
+ },
  "ALTHEA": {
   "at": 1792473335,
   "result": "not listed",
@@ -148,6 +153,11 @@
   "at": 1791940519,
   "result": "added 0 days; closes differ by 0.12% at the median and 0.35% at the ninth decile over 31 days",
   "want_from": 1634256000
+ },
+ "BMT": {
+  "at": 1792646441,
+  "result": "not listed, to be asked once more",
+  "want_from": 1634947200
  },
  "BNB": {
   "at": 1791507774,
@@ -445,9 +455,9 @@
   "want_from": 1633737600
  },
  "MEW": {
-  "at": 1792559885,
-  "result": "not listed, to be asked once more",
-  "want_from": 1634860800
+  "at": 1792646441,
+  "result": "not listed",
+  "want_from": 1634947200
  },
  "MINA": {
   "at": 1791378076,
@@ -568,6 +578,11 @@
   "at": 1791378076,
   "result": "added 0 days; closes differ by 0.33% at the median and 0.98% at the ninth decile over 31 days",
   "want_from": 1633651200
+ },
+ "PTB": {
+  "at": 1792646441,
+  "result": "not listed, to be asked once more",
+  "want_from": 1634947200
  },
  "PUMP": {
   "at": 1791378076,
