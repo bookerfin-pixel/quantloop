@@ -310,3 +310,4 @@ ts,account,pair,side,qty,price,ref_price,notional,fee,slippage_cost,reason,equit
 1792660249,champion,ETH,sell,0.96725539,2401.4336825,2402.635,2322.79966128,2.32279966,1.16198082,exit: 72h return -1.13% fell below exit band -1.0%,9284.10362446,0.02081049,5.0
 1792660249,champion,LINK,sell,192.93342164,12.00860769,12.014615,2316.86177119,2.31686177,1.15901039,exit: 72h return -1.12% fell below exit band -1.0% and price more than 2.0% below 24h EMA,9280.6277523,0.74492608,5.0
 1792692647,champion,XRP,sell,1748.89208579,1.30141897,1.30207,2276.04132819,2.27604133,1.13858996,exit: price more than 2.0% below 24h EMA,9232.80000649,0.15360157,5.0
+1792721437,champion,DOT,buy,1998.04207253,1.15523093,1.15465,2308.20000162,2.3082,1.16072258,enter long: 72h return +1.31% vs entry band +1.0% and price above 24h EMA; realised vol 94% -> weight 0.25,9229.33108391,3.03122158,5.03122158
