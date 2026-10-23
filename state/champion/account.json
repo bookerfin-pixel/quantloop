@@ -1,44 +1,27 @@
 {
-  "cash": 2269.247586971087,
+  "cash": 9101.608098933704,
   "created_at": 1789530957,
   "day": "2026-10-23",
   "day_open_equity": 9232.800006489002,
-  "equity_rows": 874,
-  "fees_paid": 488.76306077065095,
+  "equity_rows": 875,
+  "fees_paid": 495.6022604823253,
   "fills_day": {
     "counts": {
-      "DOGE": 1,
+      "DOGE": 2,
       "DOT": 2,
-      "LINK": 1,
-      "XRP": 1
+      "LINK": 2,
+      "XRP": 2
     },
     "day": "2026-10-23"
   },
   "halted_day": "2026-09-28",
   "initial_cash": 10000.0,
-  "last_bar": 1792760400,
-  "last_run_ts": 1792764652,
-  "marks": {
-    "DOGE": [
-      0.07996645,
-      1792764652
-    ],
-    "LINK": [
-      12.01084,
-      1792764652
-    ],
-    "XRP": [
-      1.316335,
-      1792764652
-    ]
-  },
-  "n_trades": 316,
+  "last_bar": 1792764000,
+  "last_run_ts": 1792767627,
+  "marks": {},
+  "n_trades": 319,
   "name": "champion",
-  "positions": {
-    "DOGE": 28472.22568112357,
-    "LINK": 189.42490679375572,
-    "XRP": 1747.1885925343536
-  },
-  "slippage_paid": 248.87271810537746,
+  "positions": {},
+  "slippage_paid": 252.2940286164702,
   "strategy_sig": "params:\n  ema_exit_buffer: 0.02\n  ema_hours: 24\n  entry_return: 0.01\n  exit_return: -0.01\n  lookback_hours: 72\n  max_weight: 0.25\n  target_vol_annual: 0.3\n  vol_lookback_hours: 168\nstrategy: ts_momentum\n"
 }
