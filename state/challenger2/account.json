@@ -3,7 +3,7 @@
   "created_at": 1789600850,
   "day": "2026-10-23",
   "day_open_equity": 10339.468662731895,
-  "equity_rows": 860,
+  "equity_rows": 861,
   "fees_paid": 81.48428710407585,
   "fills_day": {
     "counts": {},
@@ -11,12 +11,12 @@
   },
   "halted_day": null,
   "initial_cash": 10000.0,
-  "last_bar": 1792782000,
-  "last_run_ts": 1792786244,
+  "last_bar": 1792785600,
+  "last_run_ts": 1792789845,
   "marks": {
     "XRP": [
-      1.302895,
-      1792786244
+      1.307735,
+      1792789845
     ]
   },
   "n_trades": 43,
