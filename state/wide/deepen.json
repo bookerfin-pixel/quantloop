@@ -65,9 +65,9 @@
   "want_from": 1634515200
  },
  "ALT": {
-  "at": 1792646441,
-  "result": "no candles, to be asked once more",
-  "want_from": 1634947200
+  "at": 1792732825,
+  "result": "no candles",
+  "want_from": 1635033600
  },
  "ALTHEA": {
   "at": 1792473335,
@@ -98,6 +98,11 @@
   "at": 1791378076,
   "result": "added 574 days; closes differ by 0.08% at the median and 0.26% at the ninth decile over 31 days",
   "want_from": 1633651200
+ },
+ "ARKM": {
+  "at": 1792732825,
+  "result": "added 214 days; closes differ by 0.18% at the median and 0.46% at the ninth decile over 31 days",
+  "want_from": 1635033600
  },
  "ARX": {
   "at": 1792113157,
@@ -155,9 +160,9 @@
   "want_from": 1634256000
  },
  "BMT": {
-  "at": 1792646441,
-  "result": "not listed, to be asked once more",
-  "want_from": 1634947200
+  "at": 1792732825,
+  "result": "not listed",
+  "want_from": 1635033600
  },
  "BNB": {
   "at": 1791507774,
@@ -178,6 +183,11 @@
   "at": 1791378076,
   "result": "added 1105 days; closes differ by 0.02% at the median and 0.07% at the ninth decile over 31 days",
   "want_from": 1633651200
+ },
+ "BTR": {
+  "at": 1792732825,
+  "result": "not listed, to be asked once more",
+  "want_from": 1635033600
  },
  "CAKE": {
   "at": 1792387109,
@@ -444,6 +454,11 @@
   "result": "added 1105 days; closes differ by 0.12% at the median and 0.31% at the ninth decile over 31 days",
   "want_from": 1633651200
  },
+ "MASK": {
+  "at": 1792732825,
+  "result": "added 1105 days; closes differ by 0.34% at the median and 0.58% at the ninth decile over 31 days",
+  "want_from": 1635033600
+ },
  "MEGA": {
   "at": 1791767043,
   "result": "added 0 days; closes differ by 0.10% at the median and 0.29% at the ninth decile over 31 days",
@@ -580,9 +595,9 @@
   "want_from": 1633651200
  },
  "PTB": {
-  "at": 1792646441,
-  "result": "not listed, to be asked once more",
-  "want_from": 1634947200
+  "at": 1792732825,
+  "result": "not listed",
+  "want_from": 1635033600
  },
  "PUMP": {
   "at": 1791378076,
@@ -628,6 +643,11 @@
   "at": 1791940519,
   "result": "no candles",
   "want_from": 1634256000
+ },
+ "RUNE": {
+  "at": 1792732825,
+  "result": "not listed, to be asked once more",
+  "want_from": 1635033600
  },
  "S": {
   "at": 1791680427,
