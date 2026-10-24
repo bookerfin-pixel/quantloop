@@ -87,3 +87,4 @@ ts,account,pair,side,qty,price,ref_price,notional,fee,slippage_cost,reason,equit
 1792836643,challenger1,LTC,sell,9.62491787,56.1069325,56.135,540.0246171,0.54002462,0.27014738,"stay long: z -2.66 vs 240h mean (entry -2.0, exit -0.5); vol 58% -> weight 0.25",9459.25177628,0.8907099,5.0
 1792836643,challenger1,SOL,buy,13.33366092,101.3956725,101.345,1351.97551622,1.35197552,0.67564993,"enter long: z -2.18 vs 240h mean (entry -2.0, exit -0.5); vol 48% -> weight 0.25",9457.22415083,0.49336425,5.0
 1792836643,challenger1,DOGE,buy,17505.5849504,0.0772311,0.0771925,1351.97551622,1.35197552,0.67564993,"enter long: z -2.06 vs 240h mean (entry -2.0, exit -0.5); vol 53% -> weight 0.25",9455.19652539,0.51818506,5.0
+1792854645,challenger1,BTC,buy,0.00426951,79791.225675,79751.35,340.66974582,0.34066975,0.17024975,"enter long: z -2.04 vs 240h mean (entry -2.0, exit -0.5); vol 29% -> weight 0.25",9320.49702093,0.52036737,5.0
