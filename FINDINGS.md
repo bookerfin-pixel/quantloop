@@ -856,6 +856,12 @@ the machinery, not edge.
     +1.0); beats 96% of its twins, luck does as well 6% of the time; 81% over the last 365 days. Ahead in 4 of 6
     years; 84% to 96% at the settings nearby and 94% to over 99% on the halves; no weak spot named. It is a slow
     book, so its twins are worth only 62 separate ones.
+  - H6, relative reversion against BTC (whole reading, 2026-10-23; in sample): made -73.2% over 1,813 days
+    while the basket made -61.3%; timing -11.2% a year, costs 8.5%, left -19.5% (t -1.3); beats 28% of its
+    twins, luck does as well 72% of the time; 80% over the last 365 days. Nearby settings beat 23% to 50% and
+    the halves of the coins 24% and 34%, so the quick reading's "no sign of timing" holds at every setting and
+    half; ahead after costs in only 2 of 6 years (2021 and 2026). With the clock moved it beats 35% to 90%,
+    so the 90% is one phase of the clock, not an edge. The one good year is the live window's year.
   What to take from it, and what not to. H0 and H1 show nothing on history; whether that agrees with what they
   do live is for their verdicts to say. That H2, H5 and H4 beat most of their twins says they are worth the
   slots they have and no more: all three were written with these years in view, "left a year" is measured
