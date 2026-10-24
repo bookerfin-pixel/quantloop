@@ -1,44 +1,53 @@
 {
-  "cash": 51.909680860052504,
+  "cash": -1.1368683772161603e-13,
   "created_at": 1789530957,
   "day": "2026-10-24",
   "day_open_equity": 9661.36828915323,
-  "equity_rows": 892,
-  "fees_paid": 114.16506656153369,
+  "equity_rows": 893,
+  "fees_paid": 116.1321868680962,
   "fills_day": {
-    "counts": {},
+    "counts": {
+      "ADA": 1,
+      "LINK": 1,
+      "LTC": 1
+    },
     "day": "2026-10-24"
   },
   "halted_day": "2026-10-08",
   "initial_cash": 10000.0,
-  "last_bar": 1792825200,
-  "last_run_ts": 1792829445,
+  "last_bar": 1792828800,
+  "last_run_ts": 1792833041,
   "marks": {
     "ADA": [
-      0.207795,
-      1792829445
+      0.207291,
+      1792833041
     ],
     "AVAX": [
-      8.9195,
-      1792829445
+      8.885,
+      1792833041
     ],
     "DOT": [
-      1.0643500000000001,
-      1792829445
+      1.05925,
+      1792833041
+    ],
+    "LINK": [
+      11.586825,
+      1792833041
     ],
     "LTC": [
-      56.525000000000006,
-      1792829445
+      56.295,
+      1792833041
     ]
   },
-  "n_trades": 79,
+  "n_trades": 82,
   "name": "challenger1",
   "positions": {
-    "ADA": 11471.15183238728,
+    "ADA": 9153.276829515467,
     "AVAX": 261.6841246244075,
     "DOT": 2225.4750366671474,
-    "LTC": 42.20599747186288
+    "LINK": 86.99772542073241,
+    "LTC": 33.704464831525115
   },
-  "slippage_paid": 57.212817373456424,
+  "slippage_paid": 58.19636528698442,
   "strategy_sig": "params:\n  entry_z: 2.0\n  exit_z: 0.5\n  max_weight: 0.25\n  target_vol_annual: 0.3\n  vol_lookback_hours: 168\n  window_hours: 240\nstrategy: mean_reversion\n"
 }
