@@ -185,9 +185,9 @@
   "want_from": 1633651200
  },
  "BTR": {
-  "at": 1792732825,
-  "result": "not listed, to be asked once more",
-  "want_from": 1635033600
+  "at": 1792818075,
+  "result": "not listed",
+  "want_from": 1635120000
  },
  "CAKE": {
   "at": 1792387109,
@@ -304,6 +304,11 @@
   "result": "added 555 days; closes differ by 0.14% at the median and 0.35% at the ninth decile over 31 days",
   "want_from": 1633910400
  },
+ "FOLD": {
+  "at": 1792818075,
+  "result": "not listed, to be asked once more",
+  "want_from": 1635120000
+ },
  "GALA": {
   "at": 1791421266,
   "result": "not used: only 0 days in common",
@@ -368,6 +373,11 @@
   "at": 1791378076,
   "result": "added 1105 days; closes differ by 0.06% at the median and 0.18% at the ninth decile over 31 days",
   "want_from": 1633651200
+ },
+ "INIT": {
+  "at": 1792818075,
+  "result": "not listed, to be asked once more",
+  "want_from": 1635120000
  },
  "INJ": {
   "at": 1791378076,
@@ -645,9 +655,9 @@
   "want_from": 1634256000
  },
  "RUNE": {
-  "at": 1792732825,
-  "result": "not listed, to be asked once more",
-  "want_from": 1635033600
+  "at": 1792818075,
+  "result": "not listed",
+  "want_from": 1635120000
  },
  "S": {
   "at": 1791680427,
@@ -778,6 +788,11 @@
   "at": 1791378076,
   "result": "added 1105 days; closes differ by 0.06% at the median and 0.14% at the ninth decile over 31 days",
   "want_from": 1633651200
+ },
+ "UP": {
+  "at": 1792818075,
+  "result": "added 0 days; closes differ by 0.50% at the median and 2.43% at the ninth decile over 31 days",
+  "want_from": 1635120000
  },
  "US": {
   "at": 1791507774,

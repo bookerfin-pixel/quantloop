@@ -1,28 +1,27 @@
 {
  "coinbase": {
-  "coins": 2,
-  "days_added": 1319,
+  "coins": 1,
+  "days_added": 0,
   "failed": [],
   "mismatch": [],
   "not_listed": 4
  },
  "funding": {
-  "days_added": 430,
+  "days_added": 806,
   "failed": [],
-  "symbols": 58
+  "symbols": 60
  },
  "kraken": {
-  "days_added": 2762,
+  "days_added": 1048,
   "failed": [],
   "joined_today": [
-   "BTR",
-   "ARKM",
-   "RUNE",
-   "MASK"
+   "INIT",
+   "UP",
+   "FOLD"
   ],
-  "listed": 184,
-  "on_the_list": 185,
-  "pairs_read": 184,
+  "listed": 187,
+  "on_the_list": 188,
+  "pairs_read": 187,
   "pegged_skipped": [
    "APXUSD",
    "AUSD",
@@ -38,10 +37,10 @@
    "USDSUI",
    "USTABLES"
   ],
-  "qualified_today": 187,
-  "quoted": 632,
+  "qualified_today": 203,
+  "quoted": 633,
   "quotes_failed": "",
-  "quotes_written": 184,
+  "quotes_written": 187,
   "unquoted": [],
   "usd_pairs": 655
  },
@@ -58,7 +57,7 @@
    "ok": true
   }
  },
- "ran": 1792732825,
- "ran_utc": "2026-10-23 05:20Z",
+ "ran": 1792818075,
+ "ran_utc": "2026-10-24 05:01Z",
  "settings_not_used": []
 }
