@@ -305,9 +305,9 @@
   "want_from": 1633910400
  },
  "FOLD": {
-  "at": 1792818075,
-  "result": "not listed, to be asked once more",
-  "want_from": 1635120000
+  "at": 1792905418,
+  "result": "not listed",
+  "want_from": 1635206400
  },
  "GALA": {
   "at": 1791421266,
@@ -374,10 +374,15 @@
   "result": "added 1105 days; closes differ by 0.06% at the median and 0.18% at the ninth decile over 31 days",
   "want_from": 1633651200
  },
- "INIT": {
-  "at": 1792818075,
+ "IN": {
+  "at": 1792905418,
   "result": "not listed, to be asked once more",
-  "want_from": 1635120000
+  "want_from": 1635206400
+ },
+ "INIT": {
+  "at": 1792905418,
+  "result": "not listed",
+  "want_from": 1635206400
  },
  "INJ": {
   "at": 1791378076,
@@ -408,6 +413,11 @@
   "at": 1791507774,
   "result": "not listed",
   "want_from": 1633824000
+ },
+ "KAT": {
+  "at": 1792905418,
+  "result": "added 0 days; closes differ by 0.12% at the median and 0.53% at the ninth decile over 31 days",
+  "want_from": 1635206400
  },
  "KNTQ": {
   "at": 1792559885,
@@ -548,6 +558,11 @@
   "at": 1791378076,
   "result": "added 989 days; closes differ by 0.31% at the median and 1.06% at the ninth decile over 31 days",
   "want_from": 1633651200
+ },
+ "ORDER": {
+  "at": 1792905418,
+  "result": "not listed, to be asked once more",
+  "want_from": 1635206400
  },
  "OSMO": {
   "at": 1791853490,
@@ -769,6 +784,11 @@
   "result": "not listed",
   "want_from": 1634083200
  },
+ "TREE": {
+  "at": 1792905418,
+  "result": "added 0 days; closes differ by 0.49% at the median and 1.22% at the ninth decile over 31 days",
+  "want_from": 1635206400
+ },
  "TRUMP": {
   "at": 1791378076,
   "result": "added 0 days; closes differ by 0.05% at the median and 0.14% at the ninth decile over 28 days",
@@ -923,6 +943,11 @@
   "at": 1791507774,
   "result": "not listed",
   "want_from": 1633824000
+ },
+ "ZIG": {
+  "at": 1792905418,
+  "result": "not listed, to be asked once more",
+  "want_from": 1635206400
  },
  "ZK": {
   "at": 1791680427,
