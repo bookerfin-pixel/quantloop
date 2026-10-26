@@ -1,10 +1,12 @@
 {
  "coinbase": {
   "coins": 2,
-  "days_added": 0,
+  "days_added": 649,
   "failed": [],
-  "mismatch": [],
-  "not_listed": 5
+  "mismatch": [
+   "MEZO: closes differ by 1.45% at the median and 3.88% at the ninth decile over 31 days"
+  ],
+  "not_listed": 3
  },
  "funding": {
   "days_added": 60,
@@ -12,18 +14,16 @@
   "symbols": 60
  },
  "kraken": {
-  "days_added": 2103,
+  "days_added": 1449,
   "failed": [],
   "joined_today": [
-   "KAT",
-   "ORDER",
-   "IN",
-   "TREE",
-   "ZIG"
+   "RLS",
+   "MEZO",
+   "T"
   ],
-  "listed": 192,
-  "on_the_list": 193,
-  "pairs_read": 192,
+  "listed": 195,
+  "on_the_list": 196,
+  "pairs_read": 195,
   "pegged_skipped": [
    "AUSD",
    "CASH",
@@ -38,10 +38,10 @@
    "USDSUI",
    "USTABLES"
   ],
-  "qualified_today": 197,
+  "qualified_today": 161,
   "quoted": 633,
   "quotes_failed": "",
-  "quotes_written": 192,
+  "quotes_written": 195,
   "unquoted": [],
   "usd_pairs": 655
  },
@@ -58,7 +58,7 @@
    "ok": true
   }
  },
- "ran": 1792905418,
- "ran_utc": "2026-10-25 05:16Z",
+ "ran": 1792991790,
+ "ran_utc": "2026-10-26 05:16Z",
  "settings_not_used": []
 }

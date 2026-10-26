@@ -375,9 +375,9 @@
   "want_from": 1633651200
  },
  "IN": {
-  "at": 1792905418,
-  "result": "not listed, to be asked once more",
-  "want_from": 1635206400
+  "at": 1792991790,
+  "result": "not listed",
+  "want_from": 1635292800
  },
  "INIT": {
   "at": 1792905418,
@@ -494,6 +494,11 @@
   "result": "not listed",
   "want_from": 1634947200
  },
+ "MEZO": {
+  "at": 1792991790,
+  "result": "not used: closes differ by 1.45% at the median and 3.88% at the ninth decile over 31 days",
+  "want_from": 1635292800
+ },
  "MINA": {
   "at": 1791378076,
   "result": "added 925 days; closes differ by 0.17% at the median and 0.38% at the ninth decile over 31 days",
@@ -560,9 +565,9 @@
   "want_from": 1633651200
  },
  "ORDER": {
-  "at": 1792905418,
-  "result": "not listed, to be asked once more",
-  "want_from": 1635206400
+  "at": 1792991790,
+  "result": "not listed",
+  "want_from": 1635292800
  },
  "OSMO": {
   "at": 1791853490,
@@ -664,6 +669,11 @@
   "result": "added 1105 days; closes differ by 0.25% at the median and 1.16% at the ninth decile over 31 days",
   "want_from": 1633651200
  },
+ "RLS": {
+  "at": 1792991790,
+  "result": "added 0 days; closes differ by 0.31% at the median and 0.66% at the ninth decile over 31 days",
+  "want_from": 1635292800
+ },
  "RSR": {
   "at": 1791940519,
   "result": "no candles",
@@ -758,6 +768,11 @@
   "at": 1791507774,
   "result": "no candles",
   "want_from": 1633824000
+ },
+ "T": {
+  "at": 1792991790,
+  "result": "added 649 days; closes differ by 0.29% at the median and 0.76% at the ninth decile over 31 days",
+  "want_from": 1635292800
  },
  "TAO": {
   "at": 1791507774,
@@ -945,9 +960,9 @@
   "want_from": 1633824000
  },
  "ZIG": {
-  "at": 1792905418,
-  "result": "not listed, to be asked once more",
-  "want_from": 1635206400
+  "at": 1792991790,
+  "result": "not listed",
+  "want_from": 1635292800
  },
  "ZK": {
   "at": 1791680427,
