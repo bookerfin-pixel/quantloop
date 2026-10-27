@@ -9417,3 +9417,13 @@ ts,account,pair,price,signal_weight,target_weight,current_weight,action,reason,h
 1793092247,challenger2,DOGE,0.077013,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: squeezed but 0.07713 not above 120h high 0.08035,1.182
 1793092247,challenger2,DOT,0.9913,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: squeezed but 0.9928 not above 120h high 1.197,2.018
 1793092247,challenger2,LTC,56.23,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: squeezed but 56.47 not above 120h high 59.69,1.778
+1793095844,challenger2,BTC,79424.05,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: squeezed but 7.963e+04 not above 120h high 8.195e+04,0.006
+1793095844,challenger2,ETH,2297.275,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 168h vol not at or below its own 25% percentile over 1440h in the last 72h,0.022
+1793095844,challenger2,SOL,99.185,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: squeezed but 99.71 not above 120h high 105,0.504
+1793095844,challenger2,ADA,0.201233,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: squeezed but 0.2022 not above 120h high 0.2179,1.491
+1793095844,challenger2,AVAX,8.686,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: squeezed but 8.704 not above 120h high 9.314,3.454
+1793095844,challenger2,LINK,11.214165,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: squeezed but 11.27 not above 120h high 12.23,3.179
+1793095844,challenger2,XRP,1.290275,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: squeezed but 1.294 not above 120h high 1.328,0.891
+1793095844,challenger2,DOGE,0.076612,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: squeezed but 0.07688 not above 120h high 0.08035,2.748
+1793095844,challenger2,DOT,0.9788,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: squeezed but 0.9837 not above 120h high 1.197,2.043
+1793095844,challenger2,LTC,55.75,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: squeezed but 56.05 not above 120h high 59.69,1.794
