@@ -34,6 +34,11 @@
   "result": "added 0 days; closes differ by 0.26% at the median and 0.74% at the ninth decile over 31 days",
   "want_from": 1633996800
  },
+ "AIN": {
+  "at": 1793079300,
+  "result": "not listed, to be asked once more",
+  "want_from": 1635379200
+ },
  "AIOZ": {
   "at": 1791680427,
   "result": "added 1221 days; closes differ by 0.25% at the median and 1.11% at the ninth decile over 31 days",
@@ -838,6 +843,11 @@
   "at": 1791378076,
   "result": "added 0 days; closes differ by 0.24% at the median and 0.69% at the ninth decile over 24 days",
   "want_from": 1633651200
+ },
+ "VELO": {
+  "at": 1793079300,
+  "result": "not used: closes differ by 286.96% at the median and 361.07% at the ninth decile over 31 days",
+  "want_from": 1635379200
  },
  "VET": {
   "at": 1791507774,
