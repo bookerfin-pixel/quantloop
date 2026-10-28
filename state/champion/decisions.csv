@@ -9757,3 +9757,13 @@ ts,account,pair,price,signal_weight,target_weight,current_weight,action,reason,h
 1793171444,champion,DOGE,0.079791,0.25,0.1667,0.2028,hold,hold: weight change -0.036 below threshold 0.05 | stay long: 72h return +4.00% vs exit band -1.0% and price above 24h EMA; realised vol 42% -> weight 0.25,0.006
 1793171444,champion,DOT,0.99805,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -2.11% not above entry band +1.0%,0.501
 1793171444,champion,LTC,57.42,0.25,0.1667,0.2011,hold,hold: weight change -0.034 below threshold 0.05 | stay long: 72h return +2.28% vs exit band -1.0% and price above 24h EMA; realised vol 42% -> weight 0.25,1.742
+1793175047,champion,BTC,81066.55,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return +0.50% not above entry band +1.0%,0.006
+1793175047,champion,ETH,2361.985,0.25,0.1667,0.2002,hold,hold: weight change -0.034 below threshold 0.05 | stay long: 72h return +0.54% vs exit band -1.0% and price above 24h EMA; realised vol 38% -> weight 0.25,0.021
+1793175047,champion,SOL,102.235,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return +0.67% not above entry band +1.0%,0.489
+1793175047,champion,ADA,0.206586,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return +0.33% not above entry band +1.0%,0.653
+1793175047,champion,AVAX,9.0155,0.25,0.1667,0.0,none,"waits for cash: the book is fully invested and no position is far enough above its target to trim, so this buy fills when an exit or a bigger drift frees cash | enter long: 72h return +1.40% vs entry band +1.0% and price above 24h EMA; realised vol 53% -> weight 0.25",0.555
+1793175047,champion,LINK,11.75264,0.25,0.1667,0.1968,hold,hold: weight change -0.030 below threshold 0.05 | stay long: 72h return +3.31% vs exit band -1.0% and price above 24h EMA; realised vol 51% -> weight 0.25,2.025
+1793175047,champion,XRP,1.329065,0.25,0.1667,0.1991,hold,hold: weight change -0.032 below threshold 0.05 | stay long: 72h return +2.10% vs exit band -1.0% and price above 24h EMA; realised vol 41% -> weight 0.25,0.038
+1793175047,champion,DOGE,0.079936,0.25,0.1667,0.2026,hold,hold: weight change -0.036 below threshold 0.05 | stay long: 72h return +4.09% vs exit band -1.0% and price above 24h EMA; realised vol 42% -> weight 0.25,0.363
+1793175047,champion,DOT,1.0087,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -2.27% not above entry band +1.0%,0.991
+1793175047,champion,LTC,57.655,0.25,0.1667,0.2013,hold,hold: weight change -0.035 below threshold 0.05 | stay long: 72h return +2.22% vs exit band -1.0% and price above 24h EMA; realised vol 42% -> weight 0.25,0.867
