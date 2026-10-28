@@ -35,9 +35,9 @@
   "want_from": 1633996800
  },
  "AIN": {
-  "at": 1793079300,
-  "result": "not listed, to be asked once more",
-  "want_from": 1635379200
+  "at": 1793168195,
+  "result": "not listed",
+  "want_from": 1635465600
  },
  "AIOZ": {
   "at": 1791680427,
@@ -133,6 +133,11 @@
   "at": 1791378076,
   "result": "added 1105 days; closes differ by 0.07% at the median and 0.16% at the ninth decile over 31 days",
   "want_from": 1633651200
+ },
+ "AVL": {
+  "at": 1793168195,
+  "result": "not listed, to be asked once more",
+  "want_from": 1635465600
  },
  "AXS": {
   "at": 1791680427,
@@ -288,6 +293,11 @@
   "at": 1791594078,
   "result": "no candles",
   "want_from": 1633910400
+ },
+ "EVAA": {
+  "at": 1793168195,
+  "result": "not listed, to be asked once more",
+  "want_from": 1635465600
  },
  "FARTCOIN": {
   "at": 1791507774,
@@ -898,6 +908,11 @@
   "at": 1792473335,
   "result": "added 0 days; closes differ by 0.14% at the median and 0.21% at the ninth decile over 31 days",
   "want_from": 1634774400
+ },
+ "XAN": {
+  "at": 1793168195,
+  "result": "added 0 days; closes differ by 0.41% at the median and 1.24% at the ninth decile over 31 days",
+  "want_from": 1635465600
  },
  "XCN": {
   "at": 1791378076,

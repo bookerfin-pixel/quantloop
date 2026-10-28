@@ -1,29 +1,29 @@
 {
  "coinbase": {
-  "coins": 0,
+  "coins": 1,
   "days_added": 0,
   "failed": [],
-  "mismatch": [
-   "VELO: closes differ by 286.96% at the median and 361.07% at the ninth decile over 31 days"
-  ],
-  "not_listed": 1
+  "mismatch": [],
+  "not_listed": 3
  },
  "funding": {
-  "days_added": 60,
+  "days_added": 136,
   "failed": [],
-  "symbols": 60
+  "symbols": 61
  },
  "kraken": {
-  "days_added": 776,
+  "days_added": 968,
   "failed": [],
   "joined_today": [
-   "AIN",
-   "VELO"
+   "EVAA",
+   "XAN",
+   "AVL"
   ],
-  "listed": 197,
-  "on_the_list": 198,
-  "pairs_read": 197,
+  "listed": 200,
+  "on_the_list": 201,
+  "pairs_read": 200,
   "pegged_skipped": [
+   "APXUSD",
    "AUSD",
    "CASH",
    "FIDD",
@@ -37,10 +37,10 @@
    "USDSUI",
    "USTABLES"
   ],
-  "qualified_today": 182,
-  "quoted": 633,
+  "qualified_today": 179,
+  "quoted": 632,
   "quotes_failed": "",
-  "quotes_written": 197,
+  "quotes_written": 200,
   "unquoted": [],
   "usd_pairs": 655
  },
@@ -57,7 +57,7 @@
    "ok": true
   }
  },
- "ran": 1793079300,
- "ran_utc": "2026-10-27 05:35Z",
+ "ran": 1793168195,
+ "ran_utc": "2026-10-28 06:16Z",
  "settings_not_used": []
 }
