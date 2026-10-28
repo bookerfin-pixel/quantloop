@@ -9907,3 +9907,13 @@ ts,account,pair,price,signal_weight,target_weight,current_weight,action,reason,h
 1793225444,challenger1,DOGE,0.079988,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z +0.73 not below -2.0,5.838
 1793225444,challenger1,DOT,1.01635,0.25,0.25,0.2024,hold,"hold: weight change +0.048 below threshold 0.05 | stay long: z -0.94 vs 240h mean (entry -2.0, exit -0.5); vol 76% -> weight 0.25",1.476
 1793225444,challenger1,LTC,59.325,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z +0.60 not below -2.0,0.843
+1793229042,challenger1,BTC,81253.75,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -0.09 not below -2.0,0.006
+1793229042,challenger1,ETH,2359.375,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -0.44 not below -2.0,0.021
+1793229042,challenger1,SOL,102.405,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -0.34 not below -2.0,0.488
+1793229042,challenger1,ADA,0.205881,0.25,0.25,0.2492,hold,"hold: weight change +0.001 below threshold 0.05 | stay long: z -0.83 vs 240h mean (entry -2.0, exit -0.5); vol 55% -> weight 0.25",2.04
+1793229042,challenger1,AVAX,9.0045,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -0.55 not below -2.0,1.666
+1793229042,challenger1,LINK,11.82205,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -0.07 not below -2.0,3.603
+1793229042,challenger1,XRP,1.326045,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z +0.62 not below -2.0,1.244
+1793229042,challenger1,DOGE,0.079823,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z +0.48 not below -2.0,2.067
+1793229042,challenger1,DOT,1.01345,0.25,0.25,0.2019,hold,"hold: weight change +0.048 below threshold 0.05 | stay long: z -1.00 vs 240h mean (entry -2.0, exit -0.5); vol 76% -> weight 0.25",1.48
+1793229042,challenger1,LTC,59.205,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z +0.50 not below -2.0,0.845
