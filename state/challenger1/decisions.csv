@@ -9767,3 +9767,13 @@ ts,account,pair,price,signal_weight,target_weight,current_weight,action,reason,h
 1793175047,challenger1,DOGE,0.079936,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z +0.64 not below -2.0,0.363
 1793175047,challenger1,DOT,1.0087,0.25,0.25,0.2009,hold,"hold: weight change +0.049 below threshold 0.05 | stay long: z -1.30 vs 240h mean (entry -2.0, exit -0.5); vol 74% -> weight 0.25",0.991
 1793175047,challenger1,LTC,57.655,0.0,0.0,0.1996,sell,flat: z -0.41 not below -0.5,0.867
+1793178645,challenger1,BTC,81432.85,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -0.01 not below -2.0,0.006
+1793178645,challenger1,ETH,2368.365,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -0.26 not below -2.0,0.021
+1793178645,challenger1,SOL,102.535,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -0.32 not below -2.0,0.488
+1793178645,challenger1,ADA,0.206912,0.25,0.25,0.2504,hold,"hold: weight change -0.000 below threshold 0.05 | stay long: z -0.81 vs 240h mean (entry -2.0, exit -0.5); vol 52% -> weight 0.25",1.909
+1793178645,challenger1,AVAX,9.018,0.25,0.25,0.2501,hold,"hold: weight change -0.000 below threshold 0.05 | stay long: z -0.61 vs 240h mean (entry -2.0, exit -0.5); vol 53% -> weight 0.25",2.218
+1793178645,challenger1,LINK,11.79198,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -0.09 not below -2.0,2.146
+1793178645,challenger1,XRP,1.33077,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z +0.82 not below -2.0,0.15
+1793178645,challenger1,DOGE,0.080123,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z +0.69 not below -2.0,0.006
+1793178645,challenger1,DOT,1.00915,0.25,0.25,0.2011,hold,"hold: weight change +0.049 below threshold 0.05 | stay long: z -1.26 vs 240h mean (entry -2.0, exit -0.5); vol 73% -> weight 0.25",1.486
+1793178645,challenger1,LTC,57.645,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -0.41 not below -2.0,0.867
