@@ -9747,3 +9747,13 @@ ts,account,pair,price,signal_weight,target_weight,current_weight,action,reason,h
 1793211047,challenger2,DOGE,0.079052,0.25,0.25,0.2487,hold,hold: weight change +0.001 below threshold 0.05 | stay long: price 0.07904 still above 72h low 0.07616; realised vol 42% -> weight 0.25,0.006
 1793211047,challenger2,DOT,0.996,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: squeezed but 0.9903 not above 120h high 1.128,2.008
 1793211047,challenger2,LTC,58.25,0.25,0.25,0.2463,hold,hold: weight change +0.004 below threshold 0.05 | stay long: price 58.47 still above 72h low 56.05; realised vol 45% -> weight 0.25,3.433
+1793214646,challenger2,BTC,80980.15,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: squeezed but 8.094e+04 not above 120h high 8.143e+04,0.006
+1793214646,challenger2,ETH,2353.57,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: squeezed but 2353 not above 120h high 2399,0.34
+1793214646,challenger2,SOL,101.965,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: squeezed but 102.1 not above 120h high 104,0.49
+1793214646,challenger2,ADA,0.204266,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: squeezed but 0.2042 not above 120h high 0.2145,1.934
+1793214646,challenger2,AVAX,8.9265,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: squeezed but 8.923 not above 120h high 9.133,2.801
+1793214646,challenger2,LINK,11.70063,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: squeezed but 11.67 not above 120h high 11.99,0.949
+1793214646,challenger2,XRP,1.324865,0.25,0.25,0.2511,hold,hold: weight change -0.001 below threshold 0.05 | stay long: price 1.326 still above 72h low 1.276; realised vol 39% -> weight 0.25,0.038
+1793214646,challenger2,DOGE,0.079534,0.25,0.25,0.249,hold,hold: weight change +0.001 below threshold 0.05 | stay long: price 0.07951 still above 72h low 0.07616; realised vol 42% -> weight 0.25,0.006
+1793214646,challenger2,DOT,1.01695,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: squeezed but 1.014 not above 120h high 1.123,3.442
+1793214646,challenger2,LTC,58.755,0.25,0.25,0.2472,hold,hold: weight change +0.003 below threshold 0.05 | stay long: price 58.5 still above 72h low 56.05; realised vol 45% -> weight 0.25,0.851
