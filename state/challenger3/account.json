@@ -1,18 +1,18 @@
 {
   "cash": 9883.620249392688,
   "created_at": 1791178112,
-  "day": "2026-10-28",
+  "day": "2026-10-29",
   "day_open_equity": 9883.620249392688,
-  "equity_rows": 571,
+  "equity_rows": 572,
   "fees_paid": 39.38258538775552,
   "fills_day": {
     "counts": {},
-    "day": "2026-10-28"
+    "day": "2026-10-29"
   },
   "halted_day": null,
   "initial_cash": 10000.0,
-  "last_bar": 1793224800,
-  "last_run_ts": 1793229042,
+  "last_bar": 1793228400,
+  "last_run_ts": 1793232638,
   "marks": {},
   "n_trades": 26,
   "name": "challenger3",
