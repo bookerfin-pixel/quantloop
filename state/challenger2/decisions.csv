@@ -10007,3 +10007,13 @@ ts,account,pair,price,signal_weight,target_weight,current_weight,action,reason,h
 1793304640,challenger2,DOGE,0.077968,0.25,0.25,0.2495,hold,hold: weight change +0.001 below threshold 0.05 | stay long: price 0.07917 still above 72h low 0.07688; realised vol 45% -> weight 0.25,0.526
 1793304640,challenger2,DOT,0.9606,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: squeezed but 0.984 not above 120h high 1.052,6.246
 1793304640,challenger2,LTC,56.975,0.25,0.25,0.2472,hold,hold: weight change +0.003 below threshold 0.05 | stay long: price 57.92 still above 72h low 56.05; realised vol 51% -> weight 0.25,0.878
+1793308259,challenger2,BTC,79019.15,0.0,0.0,0.2046,sell,daily halt: equity 9700.65 is down 5.5% from the day's open 10264.27,0.006
+1793308259,challenger2,ETH,2260.97,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | daily halt: equity 9700.65 is down 5.5% from the day's open 10264.27,2.654
+1793308259,challenger2,SOL,96.705,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | daily halt: equity 9700.65 is down 5.5% from the day's open 10264.27,0.517
+1793308259,challenger2,ADA,0.192563,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | daily halt: equity 9700.65 is down 5.5% from the day's open 10264.27,4.778
+1793308259,challenger2,AVAX,8.447,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | daily halt: equity 9700.65 is down 5.5% from the day's open 10264.27,7.103
+1793308259,challenger2,LINK,11.12952,0.0,0.0,0.2477,sell,daily halt: equity 9700.65 is down 5.5% from the day's open 10264.27,4.573
+1793308259,challenger2,XRP,1.248265,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | daily halt: equity 9700.65 is down 5.5% from the day's open 10264.27,5.007
+1793308259,challenger2,DOGE,0.075972,0.0,0.0,0.2488,sell,daily halt: equity 9700.65 is down 5.5% from the day's open 10264.27,3.811
+1793308259,challenger2,DOT,0.92745,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | daily halt: equity 9700.65 is down 5.5% from the day's open 10264.27,9.165
+1793308259,challenger2,LTC,55.41,0.0,0.0,0.2461,sell,daily halt: equity 9700.65 is down 5.5% from the day's open 10264.27,3.609
