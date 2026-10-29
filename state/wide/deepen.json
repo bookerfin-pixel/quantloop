@@ -135,9 +135,9 @@
   "want_from": 1633651200
  },
  "AVL": {
-  "at": 1793168195,
-  "result": "not listed, to be asked once more",
-  "want_from": 1635465600
+  "at": 1793255211,
+  "result": "not listed",
+  "want_from": 1635552000
  },
  "AXS": {
   "at": 1791680427,
@@ -168,6 +168,11 @@
   "at": 1791940519,
   "result": "added 0 days; closes differ by 0.12% at the median and 0.35% at the ninth decile over 31 days",
   "want_from": 1634256000
+ },
+ "BLESS": {
+  "at": 1793255211,
+  "result": "not listed, to be asked once more",
+  "want_from": 1635552000
  },
  "BMT": {
   "at": 1792732825,
@@ -234,6 +239,11 @@
   "result": "added 1105 days; closes differ by 0.20% at the median and 0.38% at the ninth decile over 31 days",
   "want_from": 1633651200
  },
+ "CSPR": {
+  "at": 1793255211,
+  "result": "not listed, to be asked once more",
+  "want_from": 1635552000
+ },
  "CT": {
   "at": 1791940519,
   "result": "added 0 days; closes differ by 0.11% at the median and 0.54% at the ninth decile over 14 days",
@@ -248,6 +258,16 @@
   "at": 1791378076,
   "result": "added 1105 days; closes differ by 0.16% at the median and 0.39% at the ninth decile over 31 days",
   "want_from": 1633651200
+ },
+ "DNA": {
+  "at": 1793255211,
+  "result": "not listed, to be asked once more",
+  "want_from": 1635552000
+ },
+ "DOG": {
+  "at": 1793255211,
+  "result": "not listed, to be asked once more",
+  "want_from": 1635552000
  },
  "DOGE": {
   "at": 1791378076,
@@ -295,9 +315,9 @@
   "want_from": 1633910400
  },
  "EVAA": {
-  "at": 1793168195,
-  "result": "not listed, to be asked once more",
-  "want_from": 1635465600
+  "at": 1793255211,
+  "result": "not listed",
+  "want_from": 1635552000
  },
  "FARTCOIN": {
   "at": 1791507774,
@@ -933,6 +953,11 @@
   "at": 1791378076,
   "result": "added 1105 days; closes differ by 0.05% at the median and 0.14% at the ninth decile over 31 days",
   "want_from": 1633651200
+ },
+ "XMN": {
+  "at": 1793255211,
+  "result": "not listed, to be asked once more",
+  "want_from": 1635552000
  },
  "XMR": {
   "at": 1791507774,
