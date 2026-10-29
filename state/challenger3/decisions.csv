@@ -5899,3 +5899,13 @@ ts,account,pair,price,signal_weight,target_weight,current_weight,action,reason,h
 1793297441,challenger3,DOGE,0.079459,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: low 0.07566 not a higher low vs prior low 0.07626 (need +10.0%),1.315
 1793297441,challenger3,DOT,0.98835,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: low 0.9697 not a higher low vs prior low 1.048 (need +10.0%),1.518
 1793297441,challenger3,LTC,57.755,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: low 55.7 not a higher low vs prior low 56.77 (need +10.0%),0.866
+1793301042,challenger3,BTC,80711.25,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: low 7.948e+04 not a higher low vs prior low 8.011e+04 (need +10.0%),0.006
+1793301042,challenger3,ETH,2326.125,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: low 2299 not a higher low vs prior low 2335 (need +10.0%),0.021
+1793301042,challenger3,SOL,100.275,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: low 99.43 not a higher low vs prior low 100.7 (need +10.0%),0.499
+1793301042,challenger3,ADA,0.201516,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: low 0.1973 not a higher low vs prior low 0.2117 (need +10.0%),2.853
+1793301042,challenger3,AVAX,8.803,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: low 8.586 not a higher low vs prior low 9.315 (need +10.0%),1.136
+1793301042,challenger3,LINK,11.6367,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: low 11.27 not a higher low vs prior low 11.56 (need +10.0%),2.174
+1793301042,challenger3,XRP,1.280785,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: low 1.267 not a higher low vs prior low 1.259 (need +10.0%),0.039
+1793301042,challenger3,DOGE,0.079083,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: low 0.07566 not a higher low vs prior low 0.07626 (need +10.0%),0.006
+1793301042,challenger3,DOT,0.98035,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: low 0.9697 not a higher low vs prior low 1.048 (need +10.0%),1.53
+1793301042,challenger3,LTC,57.55,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: low 55.7 not a higher low vs prior low 56.77 (need +10.0%),1.738

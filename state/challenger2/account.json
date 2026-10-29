@@ -1,53 +1,49 @@
 {
-  "cash": -2.2737367544323206e-13,
+  "cash": 512.7126776358596,
   "created_at": 1789600850,
   "day": "2026-10-29",
   "day_open_equity": 10264.265346655586,
-  "equity_rows": 1002,
-  "fees_paid": 96.51635573408056,
+  "equity_rows": 1003,
+  "fees_paid": 100.96820983938883,
   "fills_day": {
     "counts": {
       "BTC": 1,
-      "DOGE": 1,
-      "LINK": 1
+      "DOGE": 2,
+      "LINK": 2,
+      "XRP": 1
     },
     "day": "2026-10-29"
   },
   "halted_day": null,
   "initial_cash": 10000.0,
-  "last_bar": 1793293200,
-  "last_run_ts": 1793297441,
+  "last_bar": 1793296800,
+  "last_run_ts": 1793301042,
   "marks": {
     "BTC": [
-      80712.65,
-      1793297441
+      80711.25,
+      1793301042
     ],
     "DOGE": [
-      0.07945885,
-      1793297441
+      0.07908315,
+      1793301042
     ],
     "LINK": [
-      11.71349,
-      1793297441
+      11.6367,
+      1793301042
     ],
     "LTC": [
-      57.754999999999995,
-      1793297441
-    ],
-    "XRP": [
-      1.29161,
-      1793297441
+      57.55,
+      1793301042
     ]
   },
-  "n_trades": 51,
+  "n_trades": 54,
   "name": "challenger2",
   "positions": {
     "BTC": 0.025119317231705678,
-    "DOGE": 25334.38963513931,
-    "LINK": 90.60161538064223,
-    "LTC": 43.08172092791755,
-    "XRP": 1940.8036435639317
+    "DOGE": 31768.22832630812,
+    "LINK": 215.85648795543182,
+    "LTC": 43.08172092791755
   },
-  "slippage_paid": 48.90725603760695,
+  "slippage_paid": 51.13331293790831,
   "strategy_sig": "params:\n  breakout_hours: 120\n  compression_hours: 168\n  exit_hours: 72\n  lookback_hours: 1440\n  max_weight: 0.25\n  squeeze_memory_hours: 72\n  target_vol_annual: 0.3\n  vol_lookback_hours: 168\n  vol_percentile: 0.25\nstrategy: vol_breakout\n"
 }
