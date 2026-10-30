@@ -170,9 +170,9 @@
   "want_from": 1634256000
  },
  "BLESS": {
-  "at": 1793255211,
-  "result": "not listed, to be asked once more",
-  "want_from": 1635552000
+  "at": 1793341532,
+  "result": "not listed",
+  "want_from": 1635638400
  },
  "BMT": {
   "at": 1792732825,
@@ -240,9 +240,9 @@
   "want_from": 1633651200
  },
  "CSPR": {
-  "at": 1793255211,
-  "result": "not listed, to be asked once more",
-  "want_from": 1635552000
+  "at": 1793341532,
+  "result": "not listed",
+  "want_from": 1635638400
  },
  "CT": {
   "at": 1791940519,
@@ -260,14 +260,14 @@
   "want_from": 1633651200
  },
  "DNA": {
-  "at": 1793255211,
-  "result": "not listed, to be asked once more",
-  "want_from": 1635552000
+  "at": 1793341532,
+  "result": "not listed",
+  "want_from": 1635638400
  },
  "DOG": {
-  "at": 1793255211,
-  "result": "not listed, to be asked once more",
-  "want_from": 1635552000
+  "at": 1793341532,
+  "result": "not listed",
+  "want_from": 1635638400
  },
  "DOGE": {
   "at": 1791378076,
@@ -609,6 +609,11 @@
   "result": "added 517 days; closes differ by 0.32% at the median and 0.90% at the ninth decile over 31 days",
   "want_from": 1634169600
  },
+ "PARTI": {
+  "at": 1793341532,
+  "result": "not listed, to be asked once more",
+  "want_from": 1635638400
+ },
  "PENDLE": {
   "at": 1791507774,
   "result": "no candles",
@@ -678,6 +683,11 @@
   "at": 1791767043,
   "result": "not listed",
   "want_from": 1634083200
+ },
+ "QCAD": {
+  "at": 1793341532,
+  "result": "not listed, to be asked once more",
+  "want_from": 1635638400
  },
  "QNT": {
   "at": 1791378076,
@@ -955,9 +965,9 @@
   "want_from": 1633651200
  },
  "XMN": {
-  "at": 1793255211,
-  "result": "not listed, to be asked once more",
-  "want_from": 1635552000
+  "at": 1793341532,
+  "result": "not listed",
+  "want_from": 1635638400
  },
  "XMR": {
   "at": 1791507774,

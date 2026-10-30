@@ -7,22 +7,20 @@
   "not_listed": 7
  },
  "funding": {
-  "days_added": 761,
+  "days_added": 64,
   "failed": [],
   "symbols": 64
  },
  "kraken": {
-  "days_added": 1575,
+  "days_added": 876,
   "failed": [],
   "joined_today": [
-   "XMN",
-   "DOG",
-   "BLESS",
-   "CSPR"
+   "PARTI",
+   "QCAD"
   ],
-  "listed": 204,
-  "on_the_list": 205,
-  "pairs_read": 204,
+  "listed": 206,
+  "on_the_list": 207,
+  "pairs_read": 206,
   "pegged_skipped": [
    "AUSD",
    "CASH",
@@ -32,14 +30,12 @@
    "USAT",
    "USDGO",
    "USDPT",
-   "USDSM",
-   "USDSUI",
-   "USTABLES"
+   "USDSM"
   ],
-  "qualified_today": 188,
-  "quoted": 632,
+  "qualified_today": 256,
+  "quoted": 628,
   "quotes_failed": "",
-  "quotes_written": 204,
+  "quotes_written": 206,
   "unquoted": [],
   "usd_pairs": 655
  },
@@ -56,7 +52,7 @@
    "ok": true
   }
  },
- "ran": 1793255211,
- "ran_utc": "2026-10-29 06:26Z",
+ "ran": 1793341532,
+ "ran_utc": "2026-10-30 06:25Z",
  "settings_not_used": []
 }
