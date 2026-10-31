@@ -164,6 +164,11 @@
   "result": "added 1105 days; closes differ by 0.09% at the median and 0.34% at the ninth decile over 31 days",
   "want_from": 1633651200
  },
+ "BEAM": {
+  "at": 1793427378,
+  "result": "no candles, to be asked once more",
+  "want_from": 1635724800
+ },
  "BILL": {
   "at": 1791940519,
   "result": "added 0 days; closes differ by 0.12% at the median and 0.35% at the ninth decile over 31 days",
@@ -333,6 +338,11 @@
   "at": 1791378076,
   "result": "added 1105 days; closes differ by 0.11% at the median and 0.47% at the ninth decile over 31 days",
   "want_from": 1633651200
+ },
+ "FLOKI": {
+  "at": 1793427378,
+  "result": "added 0 days; closes differ by 0.06% at the median and 0.18% at the ninth decile over 20 days",
+  "want_from": 1635724800
  },
  "FLR": {
   "at": 1791594078,
@@ -574,6 +584,11 @@
   "result": "not listed",
   "want_from": 1633824000
  },
+ "OCEAN": {
+  "at": 1793427378,
+  "result": "added 794 days; closes differ by 0.28% at the median and 0.51% at the ninth decile over 31 days",
+  "want_from": 1635724800
+ },
  "OGN": {
   "at": 1791507774,
   "result": "added 1105 days; closes differ by 0.42% at the median and 1.19% at the ninth decile over 31 days",
@@ -610,9 +625,9 @@
   "want_from": 1634169600
  },
  "PARTI": {
-  "at": 1793341532,
-  "result": "not listed, to be asked once more",
-  "want_from": 1635638400
+  "at": 1793427378,
+  "result": "not listed",
+  "want_from": 1635724800
  },
  "PENDLE": {
   "at": 1791507774,
@@ -685,9 +700,9 @@
   "want_from": 1634083200
  },
  "QCAD": {
-  "at": 1793341532,
-  "result": "not listed, to be asked once more",
-  "want_from": 1635638400
+  "at": 1793427378,
+  "result": "not listed",
+  "want_from": 1635724800
  },
  "QNT": {
   "at": 1791378076,
@@ -773,6 +788,11 @@
   "at": 1792473335,
   "result": "not listed",
   "want_from": 1634774400
+ },
+ "SOFID": {
+  "at": 1793427378,
+  "result": "not listed, to be asked once more",
+  "want_from": 1635724800
  },
  "SOL": {
   "at": 1791378076,

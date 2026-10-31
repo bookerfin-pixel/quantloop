@@ -1,10 +1,10 @@
 {
  "coinbase": {
-  "coins": 0,
-  "days_added": 0,
+  "coins": 2,
+  "days_added": 794,
   "failed": [],
   "mismatch": [],
-  "not_listed": 7
+  "not_listed": 3
  },
  "funding": {
   "days_added": 64,
@@ -12,15 +12,17 @@
   "symbols": 64
  },
  "kraken": {
-  "days_added": 876,
+  "days_added": 2423,
   "failed": [],
   "joined_today": [
-   "PARTI",
-   "QCAD"
+   "BEAM",
+   "OCEAN",
+   "FLOKI",
+   "SOFID"
   ],
-  "listed": 206,
-  "on_the_list": 207,
-  "pairs_read": 206,
+  "listed": 210,
+  "on_the_list": 211,
+  "pairs_read": 210,
   "pegged_skipped": [
    "AUSD",
    "CASH",
@@ -30,12 +32,14 @@
    "USAT",
    "USDGO",
    "USDPT",
-   "USDSM"
+   "USDSM",
+   "USDSUI",
+   "USTABLES"
   ],
-  "qualified_today": 256,
-  "quoted": 628,
+  "qualified_today": 203,
+  "quoted": 631,
   "quotes_failed": "",
-  "quotes_written": 206,
+  "quotes_written": 210,
   "unquoted": [],
   "usd_pairs": 655
  },
@@ -52,7 +56,7 @@
    "ok": true
   }
  },
- "ran": 1793341532,
- "ran_utc": "2026-10-30 06:25Z",
+ "ran": 1793427378,
+ "ran_utc": "2026-10-31 06:16Z",
  "settings_not_used": []
 }
