@@ -165,9 +165,9 @@
   "want_from": 1633651200
  },
  "BEAM": {
-  "at": 1793427378,
-  "result": "no candles, to be asked once more",
-  "want_from": 1635724800
+  "at": 1793515806,
+  "result": "no candles",
+  "want_from": 1635811200
  },
  "BILL": {
   "at": 1791940519,
@@ -309,6 +309,11 @@
   "result": "no candles",
   "want_from": 1633824000
  },
+ "ESPORTS": {
+  "at": 1793515806,
+  "result": "not listed, to be asked once more",
+  "want_from": 1635811200
+ },
  "ETH": {
   "at": 1791378076,
   "result": "added 1105 days; closes differ by 0.03% at the median and 0.07% at the ninth decile over 31 days",
@@ -353,6 +358,11 @@
   "at": 1792905418,
   "result": "not listed",
   "want_from": 1635206400
+ },
+ "G": {
+  "at": 1793515806,
+  "result": "added 162 days; closes differ by 0.53% at the median and 2.11% at the ninth decile over 31 days",
+  "want_from": 1635811200
  },
  "GALA": {
   "at": 1791421266,
@@ -674,6 +684,11 @@
   "result": "not used: only 2 days in common",
   "want_from": 1633824000
  },
+ "POWR": {
+  "at": 1793515806,
+  "result": "added 1088 days; closes differ by 0.47% at the median and 1.28% at the ninth decile over 31 days",
+  "want_from": 1635811200
+ },
  "PROS": {
   "at": 1791378076,
   "result": "added 0 days; closes differ by 0.33% at the median and 0.98% at the ninth decile over 31 days",
@@ -713,6 +728,11 @@
   "at": 1791507774,
   "result": "no candles",
   "want_from": 1633824000
+ },
+ "RE": {
+  "at": 1793515806,
+  "result": "added 0 days; closes differ by 0.12% at the median and 0.35% at the ninth decile over 31 days",
+  "want_from": 1635811200
  },
  "RED": {
   "at": 1791853490,
@@ -790,9 +810,9 @@
   "want_from": 1634774400
  },
  "SOFID": {
-  "at": 1793427378,
-  "result": "not listed, to be asked once more",
-  "want_from": 1635724800
+  "at": 1793515806,
+  "result": "not listed",
+  "want_from": 1635811200
  },
  "SOL": {
   "at": 1791378076,
