@@ -375,3 +375,4 @@ ts,account,pair,side,qty,price,ref_price,notional,fee,slippage_cost,reason,equit
 1793470242,champion,LINK,buy,185.1162077,11.69759087,11.691745,2165.41366152,2.16541366,1.08216575,enter long: 72h return +1.16% vs entry band +1.0% and price above 24h EMA; realised vol 79% -> weight 0.25,8658.40706669,1.5438243,5.0
 1793491836,champion,LINK,sell,185.1162077,11.65940738,11.66524,2158.3452782,2.15834528,1.0797125,exit: 72h return -1.48% fell below exit band -1.0%,8650.26250383,1.71449537,5.0
 1793499039,champion,LINK,buy,186.00626596,11.62630525,11.620495,2162.56562596,2.16256563,1.08074244,enter long: 72h return +1.38% vs entry band +1.0% and price above 24h EMA; realised vol 79% -> weight 0.25,8647.01919576,2.25893992,5.0
+1793509843,champion,AVAX,buy,243.82255954,8.8674315,8.863,2162.07984489,2.16207984,1.08049967,enter long: 72h return +1.20% vs entry band +1.0% and price above 24h EMA; realised vol 76% -> weight 0.25,8645.07680005,2.25657227,5.0
