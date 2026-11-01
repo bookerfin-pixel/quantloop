@@ -10787,3 +10787,13 @@ ts,account,pair,price,signal_weight,target_weight,current_weight,action,reason,h
 1793542243,champion,DOGE,0.075603,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -4.41% not above entry band +1.0%,1.726
 1793542243,champion,DOT,0.9493,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -4.68% not above entry band +1.0%,1.053
 1793542243,champion,LTC,55.905,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -3.78% not above entry band +1.0% and price below 24h EMA,2.683
+1793545293,champion,BTC,77932.35,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -3.86% not above entry band +1.0%,0.006
+1793545293,champion,ETH,2268.085,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -3.14% not above entry band +1.0%,0.022
+1793545293,champion,SOL,94.895,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -6.67% not above entry band +1.0% and price below 24h EMA,0.527
+1793545293,champion,ADA,0.193104,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -5.08% not above entry band +1.0%,2.149
+1793545293,champion,AVAX,8.7555,0.0,0.0,0.2479,sell,exit: 72h return -1.57% fell below exit band -1.0%,0.571
+1793545293,champion,LINK,11.579705,0.0,0.0,0.2502,sell,exit: 72h return -1.75% fell below exit band -1.0%,1.567
+1793545293,champion,XRP,1.25148,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -3.80% not above entry band +1.0%,0.24
+1793545293,champion,DOGE,0.075714,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -5.13% not above entry band +1.0%,0.911
+1793545293,champion,DOT,0.95125,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -5.14% not above entry band +1.0%,1.577
+1793545293,champion,LTC,55.835,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -3.27% not above entry band +1.0%,0.895
