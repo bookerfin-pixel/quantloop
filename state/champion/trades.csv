@@ -374,3 +374,4 @@ ts,account,pair,side,qty,price,ref_price,notional,fee,slippage_cost,reason,equit
 1793308259,champion,LTC,sell,31.03436974,55.378918,55.41,1718.64981701,1.71864982,0.96461028,daily halt: equity 8675.31 is down 5.8% from the day's open 9206.93,8661.6546461,3.60945678,5.60945678
 1793470242,champion,LINK,buy,185.1162077,11.69759087,11.691745,2165.41366152,2.16541366,1.08216575,enter long: 72h return +1.16% vs entry band +1.0% and price above 24h EMA; realised vol 79% -> weight 0.25,8658.40706669,1.5438243,5.0
 1793491836,champion,LINK,sell,185.1162077,11.65940738,11.66524,2158.3452782,2.15834528,1.0797125,exit: 72h return -1.48% fell below exit band -1.0%,8650.26250383,1.71449537,5.0
+1793499039,champion,LINK,buy,186.00626596,11.62630525,11.620495,2162.56562596,2.16256563,1.08074244,enter long: 72h return +1.38% vs entry band +1.0% and price above 24h EMA; realised vol 79% -> weight 0.25,8647.01919576,2.25893992,5.0
