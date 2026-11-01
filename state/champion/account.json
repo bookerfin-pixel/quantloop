@@ -3,7 +3,7 @@
   "created_at": 1789530957,
   "day": "2026-11-01",
   "day_open_equity": 8653.500561604993,
-  "equity_rows": 1076,
+  "equity_rows": 1077,
   "fees_paid": 553.8080220793366,
   "fills_day": {
     "counts": {
@@ -13,8 +13,8 @@
   },
   "halted_day": "2026-10-29",
   "initial_cash": 10000.0,
-  "last_bar": 1793487600,
-  "last_run_ts": 1793491836,
+  "last_bar": 1793491200,
+  "last_run_ts": 1793495096,
   "marks": {},
   "n_trades": 375,
   "name": "champion",
