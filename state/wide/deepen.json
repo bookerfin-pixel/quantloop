@@ -310,9 +310,9 @@
   "want_from": 1633824000
  },
  "ESPORTS": {
-  "at": 1793515806,
-  "result": "not listed, to be asked once more",
-  "want_from": 1635811200
+  "at": 1793602097,
+  "result": "not listed",
+  "want_from": 1635897600
  },
  "ETH": {
   "at": 1791378076,
@@ -323,6 +323,11 @@
   "at": 1791594078,
   "result": "no candles",
   "want_from": 1633910400
+ },
+ "EUROP": {
+  "at": 1793602097,
+  "result": "not listed, to be asked once more",
+  "want_from": 1635897600
  },
  "EVAA": {
   "at": 1793255211,
@@ -538,6 +543,11 @@
   "at": 1791767043,
   "result": "added 0 days; closes differ by 0.10% at the median and 0.29% at the ninth decile over 31 days",
   "want_from": 1634083200
+ },
+ "MELANIA": {
+  "at": 1793602097,
+  "result": "not listed, to be asked once more",
+  "want_from": 1635897600
  },
  "MET": {
   "at": 1791421266,
@@ -893,6 +903,11 @@
   "at": 1791378076,
   "result": "added 0 days; closes differ by 0.05% at the median and 0.14% at the ninth decile over 28 days",
   "want_from": 1633651200
+ },
+ "TRUST": {
+  "at": 1793602097,
+  "result": "added 0 days; closes differ by 0.36% at the median and 1.06% at the ninth decile over 31 days",
+  "want_from": 1635897600
  },
  "TRX": {
   "at": 1791507774,
