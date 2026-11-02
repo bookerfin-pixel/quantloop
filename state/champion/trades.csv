@@ -403,3 +403,4 @@ ts,account,pair,side,qty,price,ref_price,notional,fee,slippage_cost,reason,equit
 1793603441,champion,AVAX,buy,139.12185626,8.56778175,8.5635,1191.96570111,1.1919657,0.59568501,stay long: 72h return -0.70% vs exit band -1.0% and price within 2.0% of 24h EMA; realised vol 75% -> weight 0.25,8543.61123911,1.75162025,5.0
 1793603441,champion,DOT,buy,1226.84587583,0.95272612,0.95225,1168.84811725,1.16884812,0.58413199,stay long: 72h return -0.02% vs exit band -1.0% and price within 2.0% of 24h EMA; realised vol 88% -> weight 0.25,8541.858259,1.57521659,5.0
 1793625049,champion,DOT,sell,2234.35519279,0.93698128,0.93745,2093.54897734,2.09354898,1.04729814,exit: 72h return -1.32% fell below exit band -1.0%,8493.70431421,0.53336178,5.0
+1793643046,champion,AVAX,sell,249.67159522,8.3828065,8.387,2092.94867131,2.09294867,1.04699783,exit: price more than 2.0% below 24h EMA,8415.37157023,2.3846429,5.0
