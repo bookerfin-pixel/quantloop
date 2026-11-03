@@ -3,7 +3,7 @@
   "created_at": 1789530957,
   "day": "2026-11-03",
   "day_open_equity": 8386.21880811299,
-  "equity_rows": 1135,
+  "equity_rows": 1136,
   "fees_paid": 592.4975498212325,
   "fills_day": {
     "counts": {
@@ -13,12 +13,12 @@
   },
   "halted_day": "2026-10-29",
   "initial_cash": 10000.0,
-  "last_bar": 1793700000,
-  "last_run_ts": 1793704239,
+  "last_bar": 1793703600,
+  "last_run_ts": 1793707843,
   "marks": {
     "ETH": [
-      2270.035,
-      1793704239
+      2264.0550000000003,
+      1793707843
     ]
   },
   "n_trades": 406,
