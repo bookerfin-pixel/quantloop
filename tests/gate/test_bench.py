@@ -1866,13 +1866,197 @@ def test_a_strategy_the_clock_can_matter_to_is_replayed_with_the_clock_moved(str
     # one whose code only names the time column is replayed the same way: the six replays say whether it matters
     named = bench.read(cfg_of("monthly"), RCFG, c, jobs=2, n_twins=5)["clock"]
     assert named["why"] == bench.CODE_NAMES_IT and len(named["shifts"]) == 6
-    assert bench.plan(cfg_of("rising"), c, quick=False, clock=None)[-1]["kind"] == "half"
-    assert [t["kind"] for t in bench.plan(cfg_of("rising"), c, quick=False, clock="any reason")[-6:]] == ["clock"] * 6
+    assert [t["kind"] for t in bench.plan(cfg_of("rising"), c, quick=False, clock=None)[-5:]] == ["half"] + ["null"] * 4
+    assert [t["kind"] for t in bench.plan(cfg_of("rising"), c, quick=False, clock="any reason")[-10:]] == ["clock"] * 6 + ["null"] * 4
     assert bench.plan(cfg_of("rising", look_hours=12), c, quick=True, clock="any reason") == [{"config": 0, "kind": "own", "twins": 1000}]
     tasks = bench.plan(cfg_of("rising", look_hours=12, size=0.2), c, quick=False, index=3, clock="any reason", n_twins=500)
-    assert [(t["kind"], t["twins"]) for t in tasks] == [("own", 500)] + [("nearby", 200)] * 6 + [("half", 200)] * 4 + [("clock", 200)] * 6
-    assert {t["config"] for t in tasks} == {3}                              # a setting, a half and a phase get fewer twins each
+    assert [(t["kind"], t["twins"]) for t in tasks] == [("own", 500)] + [("nearby", 200)] * 6 + [("half", 200)] * 4 + [("clock", 200)] * 6 \
+        + [("null", 200)] * 4
+    assert {t["config"] for t in tasks} == {3}                              # a setting, a half, a phase and a null market get fewer twins each
+    assert [t["seed"] for t in tasks if t["kind"] == "null"] == [bench.NULL_SEED + k for k in range(bench.NULL_MARKETS)]
     assert [t["twins"] for t in bench.plan(cfg_of("rising", look_hours=12, size=0.2), c, quick=False)][:2] == [1000, 200]
+
+
+# --- the null check -----------------------------------------------------------------------
+
+def test_a_tossed_market_keeps_the_size_of_every_hours_move_and_tosses_its_direction():
+    """The markets of the null check. Every hour's move from one open to the next is as big as it was, turned
+    or not on a coin that all the pairs share, and taken down by the log of the cosh of its size, so that what
+    a pair makes in an hour, as a share, comes to nothing on average whichever way the coin falls. Within the
+    hour every candle keeps its shape from its own open (a high is still a high), and a pair listed late, an
+    hour with no price and an hour with no vwap are taken as they come."""
+    c = made_up(1200)
+    c["BBB"] = c["BBB"].iloc[100:].reset_index(drop=True)                 # a pair listed late
+    c["CCC"].loc[500, ["open", "high", "low", "close", "vwap"]] = np.nan  # an hour with no price
+    c["DDD"].loc[300, "vwap"] = 0.0                                       # and one with no trades, so no vwap
+    t = bench.tossed(c, 3)
+    assert list(t) == list(c) and bench.tossed(c, 3)["AAA"].equals(t["AAA"]) and not bench.tossed(c, 4)["AAA"].equals(t["AAA"])
+    assert t["DDD"]["vwap"].iloc[300] == 0.0 and np.isfinite(t["DDD"]["vwap"].to_numpy()).all()
+    assert np.isnan(t["CCC"].loc[500, ["open", "high", "low", "close", "vwap"]].to_numpy(dtype=float)).all()
+    turned = {}
+    for pair, df in t.items():
+        real = c[pair]
+        assert list(df.columns) == list(real.columns) and (df["time"].to_numpy() == real["time"].to_numpy()).all()
+        assert (df["volume"] == real["volume"]).all() and (df["count"] == real["count"]).all()
+        assert df["open"].iloc[0] == real["open"].iloc[0]
+        ok = np.isfinite(real["open"].to_numpy())
+        o, h, l, cl = (df[k].to_numpy()[ok] for k in ("open", "high", "low", "close"))
+        assert (h >= np.maximum(o, cl) * (1 - 1e-12)).all() and (l <= np.minimum(o, cl) * (1 + 1e-12)).all() and (l > 0).all()
+        # open to open, across the hour with no price too: the size kept, the direction tossed, less log cosh
+        m = np.log(real["open"].to_numpy()[ok][1:] / real["open"].to_numpy()[ok][:-1])
+        y = np.log(o[1:] / o[:-1])
+        flip = np.abs(y + np.log(np.cosh(m)) + m) < np.abs(y + np.log(np.cosh(m)) - m)
+        assert np.allclose(y, np.where(flip, -m, m) - np.log(np.cosh(m)), rtol=0, atol=1e-12)
+        # ... which is nothing on average as a share, whichever way the coin falls: e^(x - A) and e^(-x - A) come to two
+        assert np.allclose(np.exp(m - np.log(np.cosh(m))) + np.exp(-m - np.log(np.cosh(m))), 2.0, rtol=0, atol=1e-12)
+        # within the hour, from its own open
+        hours = df["time"].to_numpy()[ok]
+        within = {k: np.log(df[k].to_numpy()[ok] / o) for k in ("high", "low", "close")}
+        was = {k: np.log(real[k].to_numpy()[ok] / real["open"].to_numpy()[ok]) for k in within}
+        turn_of = dict(zip(hours[:-1].tolist(), flip.tolist()))
+        f = np.array([turn_of.get(hh, False) for hh in hours.tolist()])
+        known = np.r_[m != 0, False]          # an hour that went nowhere, and the last, show no toss in a move of the opens
+        assert known.sum() >= len(known) - 2
+        for k in ("close",):
+            assert np.allclose(within[k][known], np.where(f, -1.0, 1.0)[known] * was[k][known], atol=1e-12)
+        assert np.allclose(within["high"][known], np.where(f, -was["low"], was["high"])[known], atol=1e-12)
+        assert np.allclose(within["low"][known], np.where(f, -was["high"], was["low"])[known], atol=1e-12)
+        turned[pair] = {hh: v for hh, v, k in zip(hours[:-1].tolist(), flip.tolist(), known[:-1].tolist()) if k}
+        assert 0.42 < flip.mean() < 0.58, pair                          # half, give or take five standard errors
+    together = [h for h in turned["AAA"] if all(h in turned[p] for p in ("BBB", "CCC", "DDD"))]
+    assert len(together) > 1000 and all(turned["AAA"][h] == turned["BBB"][h] == turned["CCC"][h] == turned["DDD"][h] for h in together)
+
+
+def test_a_book_whose_timing_is_real_reads_as_luck_on_markets_where_the_past_says_nothing(strategies, root, small):
+    """A strategy that rides the made up market's spells of drift stands out among its twins. Replayed on
+    markets with every hour's direction tossed it lands among them, as a book with no timing should, and the
+    reading says the null check found nothing against it. On five other sets of made up markets none of the four
+    tossed markets read as timing either (the closest: a chance of 11%)."""
+    c = made_up(1900)
+    cfg = cfg_of("rising", look_hours=12, size=0.25, band=0.01)
+    r = bench._plain(bench.read(cfg, RCFG, c, jobs=2, n_twins=40))
+    assert r["twins"]["beaten"] > 0.9 and r["twins"]["chance"] <= bench.LUCK_ABOVE
+    assert [x["seed"] for x in r["null"]] == [bench.NULL_SEED + k for k in range(bench.NULL_MARKETS)]
+    assert all(x["ok"] and x["beaten"] is not None and x["pairs"] == ["AAA", "BBB", "CCC", "DDD"] for x in r["null"])
+    timing, read, total = bench.null_counts(r)
+    assert read == total == bench.NULL_MARKETS == 4 and timing < bench.NULL_FLAG_AT and bench.null_doubt(r) is None
+    on, _ = bench.replay(bench.tossed(c, bench.NULL_SEED + 2), RCFG, cfg)
+    tw = bench.judge(on, 40)
+    assert r["null"][2]["beaten"] == tw["beaten"]["all"] and r["null"][2]["chance"] == pytest.approx(bench.chance(tw["beaten"]["all"], tw["worth"]))
+    assert r["null"][2]["net"] == pytest.approx(bench.reading_of(on, None)["net"]) and r["null"][2]["net"] != pytest.approx(r["net"])
+    text = bench.format_reading(r)
+    mean = bench.null_mean(r)
+    assert mean == pytest.approx(np.mean([x["beaten"] for x in r["null"]])) and mean < bench.null_lean_at(4)
+    assert (f"  null check: on 4 markets made from this history with every hour's direction tossed, where the past says nothing of "
+            f"the hour to come, its books beat {bench._spread(r['null'])} of their twins (on average {bench._share(mean)}; its own "
+            f"book {bench._share(r['twins']['beaten'])}), and {timing} of 4 read a chance of 10% or less, as books with no timing do. "
+            f"That rules out a gross fault in the bench for a book like this one, and no more\n") in text
+    assert (f"on markets where the past says nothing {timing} of its 4 books read as timing and they beat {bench._share(mean)} of their "
+            f"twins on average. In sample.") in bench.ledger_line(r)
+    assert "Worth a slot" in bench.words(r) and "past says nothing" not in bench.words(r)
+    quick = bench.read(cfg, RCFG, c, jobs=1, n_twins=40, quick=True)
+    assert quick["null"] is None and bench.null_counts(quick) is None and bench.null_doubt(quick) is None
+    assert "null check" not in bench.format_reading(quick) and "past says nothing" not in bench.ledger_line(quick)
+
+
+def test_a_bench_that_finds_timing_where_there_is_none_is_caught_by_its_null_check(strategies, root, small, monkeypatch):
+    """Were the markets of the null check not tossed at all, the strategy's timing would show on them too,
+    and the check must then say so: the reading doubts itself and is not called worth a slot. A null market
+    that cannot be replayed is said, and costs the reading nothing else."""
+    c = made_up(1900)
+    cfg = cfg_of("rising", look_hours=12, size=0.25, band=0.01)
+    monkeypatch.setattr(bench, "tossed", lambda candles, seed: candles)
+    r = bench._plain(bench.read(cfg, RCFG, c, jobs=1, n_twins=40))
+    assert bench.null_counts(r) == (4, 4, 4) and all(x["beaten"] == r["twins"]["beaten"] for x in r["null"])
+    doubt = bench.null_doubt(r)
+    assert doubt == ("on markets made from this history where the past says nothing, 4 of its 4 books read as timing, more often than "
+                     "luck gives, so the bench may be finding timing in this kind of book where there is none; and there, its books "
+                     "beat 100% of their twins on average, where books with no timing average half, so the bench leans toward books "
+                     "like this one and its own 100% is to be read against 100%, not against half")
+    assert doubt in bench.words(r) and "Weak spots: " in bench.words(r) and "Worth a slot" not in bench.words(r)
+    assert ("(on average 100%; its own book 100%). 4 of 4 read a chance of 10% or less, where a book with no timing does that about "
+            "one time in ten: in a book like this one the bench finds timing where there is none; and on average they beat 100% of "
+            "their twins, where books with no timing average half and 74% or more comes by luck about one time in twenty: the bench "
+            "leans toward books like this one, so its own 100% is to be read against 100%, not against half. This reading says less "
+            "than it seems to\n") in bench.format_reading(r)
+    assert ("on markets where the past says nothing 4 of its 4 books read as timing (more than luck gives) and they beat 100% of their "
+            "twins on average (the bench leans toward books like it). In sample.") in bench.ledger_line(r)
+    # where nothing is left after costs the words still carry the doubt
+    spent = dict(r, left_per_year=-0.01)
+    assert bench.words(spent).endswith(" Mind that " + doubt + ".")
+
+    def some_fail(candles, seed):
+        if seed == bench.NULL_SEED + 1:
+            raise ValueError("no candle data")
+        return candles
+    monkeypatch.setattr(bench, "tossed", some_fail)
+    r = bench._plain(bench.read(cfg, RCFG, c, jobs=1, n_twins=40))
+    assert [x["ok"] for x in r["null"]] == [True, False, True, True] and r["null"][1]["error"] == "ValueError: no candle data"
+    assert r["null"][1]["seed"] == bench.NULL_SEED + 1 and bench.null_counts(r) == (3, 3, 4) and r["twins"]["beaten"] > 0.9
+    assert "of their twins (on average 100%; its own book 100%). 3 of 3 read a chance" in bench.format_reading(r)
+    assert "(1 could not be replayed)" in bench.format_reading(r) and "1 of its 4 null markets could not be replayed" in bench.words(r)
+    monkeypatch.setattr(bench, "tossed", lambda candles, seed: (_ for _ in ()).throw(ValueError("no candle data")))
+    r = bench._plain(bench.read(cfg, RCFG, c, jobs=1, n_twins=40))
+    assert bench.null_counts(r) == (0, 0, 4) and bench.null_doubt(r) is None
+    assert ("where the past says nothing of the hour to come, none of its books could be read (4 could not be replayed), so the "
+            "check says nothing of this reading\n") in bench.format_reading(r)
+    assert "past says nothing" not in bench.ledger_line(r) and "Worth a slot" not in bench.words(r)
+    assert "none of its 4 null markets could be read, so nothing checks the bench on a book like this one" in bench.words(r)
+    # two read, and nothing flagged: too few to pass it
+    two = dict(r, null=[dict(x, ok=True, beaten=0.4, chance=0.6) for x in r["null"][:2]] + r["null"][2:])
+    assert bench.null_counts(two) == (0, 2, 4) and ". Only 2 of 4 could be read, too few for the check to say anything either way\n" \
+        in bench.format_reading(two)
+
+
+def test_the_null_checks_lines_are_drawn_where_they_say(strategies, root, small):
+    """Where the null check's words turn: a chance of 10% or less counts as reading as timing; two such of
+    those read is a doubt and one is not; three read with no doubt is a pass, two is too few to say; a reading
+    with an empty check, or none, has no line at all."""
+    c = made_up(900)
+    r = bench._plain(bench.read(cfg_of("rising", look_hours=12, size=0.25), RCFG, c, jobs=1, n_twins=20))
+
+    def with_null(*chances, beaten=None):
+        return dict(r, null=[{"ok": True, "seed": bench.NULL_SEED + k, "chance": x, "pairs": r["pairs"],
+                              "beaten": beaten if beaten is not None else (0.95 if x <= 0.10 else 0.5)}
+                             if x != "failed" else {"ok": False, "seed": bench.NULL_SEED + k, "error": "ValueError: no"}
+                             for k, x in enumerate(chances)])
+    assert bench.null_counts(with_null(0.10, 0.5, 0.5, 0.5)) == (1, 4, 4)        # at the line counts as timing
+    assert bench.null_counts(with_null(0.1000001, 0.5, 0.5, 0.5)) == (0, 4, 4)
+    assert bench.null_doubt(with_null(0.05, 0.10, 0.5, 0.5)) is not None and bench.null_doubt(with_null(0.05, 0.5, 0.5, 0.5)) is None
+    three = bench.null_sentence(with_null(0.05, 0.5, 0.5, "failed"))
+    assert three.endswith(", and 1 of 3 read a chance of 10% or less, as books with no timing do. That rules out a gross fault in the bench "
+                          "for a book like this one, and no more")
+    two = bench.null_sentence(with_null(0.05, 0.5, "failed", "failed"))
+    assert two.endswith(". Only 2 of 4 could be read, too few for the check to say anything either way")
+    assert bench.null_weak(with_null(0.05, 0.5, "failed", "failed")) == "2 of its 4 null markets could not be replayed"
+    assert bench.null_weak(with_null(0.5, 0.5, 0.5, 0.5)) is None
+    # a lean: four books with no timing that each beat 74% of their twins average more than luck gives four (0.737); 73% do not
+    assert bench.null_lean_at(4) == pytest.approx(0.5 + 1.645 * math.sqrt(1 / 12) / 2) and bench.null_lean_at(3) == pytest.approx(0.7742, abs=1e-4)
+    lean, level = with_null(0.3, 0.3, 0.3, 0.3, beaten=0.74), with_null(0.3, 0.3, 0.3, 0.3, beaten=0.73)
+    assert bench.null_mean(lean) == pytest.approx(0.74) and bench.null_doubt(level) is None
+    assert bench.null_doubt(lean) == ("on markets made from this history where the past says nothing, its books beat 74% of their twins on "
+                                      f"average, where books with no timing average half, so the bench leans toward books like this one and "
+                                      f"its own {bench._share(r['twins']['beaten'])} is to be read against 74%, not against half")
+    assert bench.null_mean(with_null(0.3, 0.3, "failed", "failed", beaten=0.99)) is None              # two read say nothing
+    assert bench.null_doubt(with_null(0.3, 0.3, 0.3, "failed", beaten=0.78)) is not None and bench.null_doubt(with_null(0.3, 0.3, 0.3, "failed", beaten=0.77)) is None
+    for none in (dict(r, null=[]), dict(r, null=None), {k: v for k, v in r.items() if k != "null"}):
+        assert bench.null_counts(none) is None and bench.null_doubt(none) is None and bench.null_weak(none) is None
+        assert "null check" not in bench.format_reading(none) and "past says nothing" not in bench.ledger_line(none)
+
+
+def test_a_tossed_market_takes_a_pair_from_its_first_price_and_leaves_a_price_of_nothing_alone():
+    c = made_up(400)
+    c["AAA"].loc[0, ["open", "high", "low", "close", "vwap"]] = np.nan      # no price in its first hour
+    c["BBB"].loc[50, "open"] = 0.0                                           # and an open of nothing
+    t = bench.tossed(c, 9)
+    assert np.isnan(t["AAA"].loc[0, "open"]) and np.isfinite(t["AAA"]["open"].to_numpy()[1:]).all()
+    assert t["AAA"]["open"].iloc[1] == c["AAA"]["open"].iloc[1]              # it starts where its prices start
+    assert t["BBB"]["open"].iloc[50] == 0.0 and t["BBB"]["close"].iloc[50] == c["BBB"]["close"].iloc[50]
+    assert np.isfinite(t["BBB"]["open"].to_numpy()[51:]).all() and (t["BBB"]["open"].to_numpy()[51:] > 0).all()
+    # across the hour with no open, the move from the open before it to the open after it is one move, tossed whole
+    m = np.log(c["BBB"]["open"].iloc[51] / c["BBB"]["open"].iloc[49])
+    y = np.log(t["BBB"]["open"].iloc[51] / t["BBB"]["open"].iloc[49])
+    assert min(abs(y - (m - np.log(np.cosh(m)))), abs(y - (-m - np.log(np.cosh(m))))) < 1e-12
 
 
 def test_a_replay_that_fails_is_said_and_the_configs_own_failing_stops_its_reading_alone(strategies, root, small, monkeypatch):
@@ -1953,8 +2137,8 @@ def test_when_a_configs_own_replay_fails_nothing_else_of_it_is_replayed(strategi
     for jobs in ((1, 3) if FORKS else (1,)):
         log.write_text("")
         done = bench.run(bench.plan(bad, c, quick=False, n_twins=5), shared, jobs=jobs)
-        assert len(done) == 11 and done[0]["error"] == "ValueError: no candle data"
-        assert all(d == {"config": 0, "kind": d["kind"], **{k: d[k] for k in ("params", "pairs") if k in d}, "ok": False,
+        assert len(done) == 15 and done[0]["error"] == "ValueError: no candle data"
+        assert all(d == {"config": 0, "kind": d["kind"], **{k: d[k] for k in ("params", "pairs", "seed") if k in d}, "ok": False,
                          "error": bench.DROPPED, "took_s": 0.0} for d in done[1:])
         assert 1 <= len(log.read_text().split()) <= jobs, jobs           # its own, and at the most what had been started beside it
         assert multiprocessing.active_children() == []
@@ -1962,7 +2146,8 @@ def test_when_a_configs_own_replay_fails_nothing_else_of_it_is_replayed(strategi
     log.write_text("")
     many = bench.read_many([bad, good], RCFG, c, jobs=1, n_twins=5)
     assert many[0] == {"failed": "its replay failed: ValueError: no candle data"} and len(many[1]["nearby"]) == 6 and len(many[1]["halves"]) == 4
-    assert log.read_text().split() == ["H9"] + ["H10"] * 11              # the config after it is read in full
+    assert log.read_text().split() == ["H9"] + ["H10"] * 15              # the config after it is read in full
+    assert len(many[1]["null"]) == bench.NULL_MARKETS
 
 
 @pytest.mark.skipif(not FORKS, reason="only where processes can be forked")
@@ -2111,8 +2296,9 @@ def test_past_its_time_the_bench_starts_nothing_more_and_says_what_it_did_not_do
     shared = {"configs": [cfg], "rcfg": RCFG, "candles": c, "days": None, "rules": bench.live_rules(RCFG)}
     tasks = bench.plan(cfg, c, quick=False, n_twins=5)
     late = bench.run(tasks, shared, jobs=2, deadline=time.time() - 1.0)
-    assert len(late) == 11 and all(d["ok"] is False and d["stopped"] is True and d["error"] == bench.STOPPED for d in late)
+    assert len(late) == 15 and all(d["ok"] is False and d["stopped"] is True and d["error"] == bench.STOPPED for d in late)
     assert [d["kind"] for d in late] == [t["kind"] for t in tasks] and late[1]["params"] == tasks[1]["params"]
+    assert [d["seed"] for d in late if d["kind"] == "null"] == [t["seed"] for t in tasks if t["kind"] == "null"]
     assert bench.STOPPED == "not run: the bench's time ran out" and bench.run([], shared) == []
     assert {t["twins"] for t in bench.plan(cfg, c, quick=False, n_twins=0)} == {1} and {t["twins"] for t in tasks} == {5}      # never no twins at all
     for quick in (True, False):

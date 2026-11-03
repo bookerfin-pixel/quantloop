@@ -1275,7 +1275,7 @@ def confidence(t: float | None, days: int, rules: dict) -> float | None:
         likelihood ratio              exp(m * (2t - m) / 2)
 
     Why this measure and not the pass or fail of a rule: in the twin study of
-    2026-10-05 (FINDINGS) an edge with a Sharpe ratio of 2 was about 2 times
+    2026-10-05 (MACHINERY) an edge with a Sharpe ratio of 2 was about 2 times
     as likely as a twin with no skill to pass the one look rule, is about 6
     times as likely to be promoted under the two look rule, and was 0.7 times
     as likely to show a pass under the first that the second did not confirm:
@@ -1449,7 +1449,7 @@ def cash_side(mc: dict, basket_return: float | None) -> dict:
     Its drawdown guard is set against the equal weight basket's worst fall over the window (`guard_drawdown`),
     not against cash's, which never falls: the guard would then be its 10% floor, and on the rule's twins
     that kills four tests in five, edges and all, where against H0's deep falls it almost never bit. Against
-    the basket every figure of the twin study comes out as it did against H0 (FINDINGS, 2026-10-10)."""
+    the basket every figure of the twin study comes out as it did against H0 (MACHINERY, 2026-10-10)."""
     out = {"return": 0.0, "max_drawdown": 0.0, "trades": 0, "avg_exposure": 0.0, "skill": None, "edge_t": None,
            "edge_days": 0, "skill_t": None, "skill_days": 0, "label": CASH_LABEL, "guard_drawdown": _basket_fall(mc)}
     if basket_return is not None and math.isfinite(float(basket_return)):
@@ -1577,7 +1577,7 @@ def decide(champ: dict, chal: dict, rules: dict, absolute: bool = True) -> tuple
         # half of the configs with no edge and to one real edge with a yearly Sharpe of 2 in five in the twin
         # study, where H0's guard reverted about one in thirty. A daily skill t at or below minus
         # challenger.cash_guard_skill_t reverts edges about as rarely as H0's guard did, and twins about as often
-        # (FINDINGS, 2026-10-10). A t says how steady a fall was, not how big, and it counts days, not bets: one
+        # (MACHINERY, 2026-10-10). A t says how steady a fall was, not how big, and it counts days, not bets: one
         # losing day in otherwise flat ones reads exactly -1. So a fall that only just reaches the bar is read
         # only on min_trades fills or more; one at twice the bar or lower is read whatever the fills, so that a
         # promoted config which buys and holds into a fall is still reverted (Fin, 2026-10-05: a bot that just
@@ -1743,7 +1743,7 @@ def fast_pass(chal: dict, rules: dict) -> str | None:
     look, never in the days after it: every extra look is another chance for
     luck to pass.
 
-    In the twin study (FINDINGS, 2026-10-05) a twin with no skill was promoted
+    In the twin study (MACHINERY, 2026-10-05) a twin with no skill was promoted
     this way 9 times in 1,000, a real edge with a yearly Sharpe ratio of 2
     about 12 times in 100 and one of 3 did 23 times in 100: the Sharpe 2 edge
     is about 14 times as likely as a twin to get one, against about 6 times
@@ -1935,7 +1935,7 @@ def early_kill(chal: dict, rules: dict, elapsed_days: float | None = None,
     the market had done. Replayed on 687 days in which the basket fell by a
     third, that ended 55 of 100 strategies with no skill and 40 of 100 with a
     Sharpe 2 edge before day 60: anything that held coins hit it. Read this
-    way it ends 25 and 5 inside 120 days (FINDINGS, 2026-10-05). Without a
+    way it ends 25 and 5 inside 120 days (MACHINERY, 2026-10-05). Without a
     figure for the market there is no early kill on losses that hour.
 
     Costs: live costs past treadmill_kill_multiple times the gate's cost drag

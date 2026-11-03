@@ -35,9 +35,10 @@ concurrency:
 jobs:
   bench:
     runs-on: ubuntu-latest
-    # One config's whole reading is about a dozen replays of five years: from a quarter of an hour to
-    # three quarters on a runner's four processors, by how heavy the strategy is, and a change to the
-    # engine's code takes all of them again. The bench stops itself after --minutes, keeps what it has
+    # One config's whole reading is about a dozen replays of five years, and four more on markets with
+    # every hour's direction tossed (the null check): from a quarter of an hour to an hour on a runner's
+    # four processors, by how heavy the strategy is, and a change to the engine's code takes all of them
+    # again. The bench stops itself after --minutes, keeps what it has
     # read and says what it has not; the step's own limit and the job's are there in case it cannot.
     timeout-minutes: 300
     steps:

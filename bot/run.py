@@ -182,7 +182,7 @@ def step(acct: paper.PaperAccount, cfg: dict, fn, candles: dict, prices: dict[st
             else:
                 action = "none"
                 if delta > 0:
-                    # Not a bug: see FINDINGS, blocked entries. Funding the buy by
+                    # Not a bug: see MACHINERY, blocked entries. Funding the buy by
                     # trimming other positions was tested on H0 and H4 over one and
                     # two years (2026-09-25 and 2026-09-27) and did not pay.
                     why = ("waits for cash: the book is fully invested and no position is far enough above "

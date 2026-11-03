@@ -15,6 +15,7 @@ CLAUDE.md
 README.md
 LEDGER_FORMAT.md
 PROMOTION.md
+MACHINERY.md
 .github/**
 gate/**
 tests/gate/**

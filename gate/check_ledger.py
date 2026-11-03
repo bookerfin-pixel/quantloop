@@ -1,6 +1,8 @@
 """Gate 2: a change to a challenger config or the strategy code must come with
 exactly one new, complete ledger entry whose id matches the changed slot's
-config, and a PR may fill only one slot. Run from the PR checkout:
+config, and a PR may fill only one slot. And FINDINGS.md stays under
+FINDINGS_CAP characters: a PR that leaves it over that and longer than it was
+fails, whatever else it changes. Run from the PR checkout:
 
     python <base>/gate/check_ledger.py --base origin/main --head HEAD
 
@@ -25,6 +27,11 @@ REQUIRED_FIELDS = ["Date", "Hypothesis", "Change", "Why it should work",
                    "Expected gross bps per round trip", "Kill criteria", "Backtest", "Bench", "Status"]
 FIELDS = REQUIRED_FIELDS + ["Differs from running tests"]       # every field the format names (LEDGER_FORMAT.md)
 ENTRY_RE = re.compile(r"^## (H\d+)\b", re.M)
+FINDINGS = "FINDINGS.md"
+FINDINGS_CAP = 30_000       # characters. The agent reads the whole file every day; past this it condenses before it adds
+                            # (CLAUDE.md, the bookkeeping step). An idea from phil, another agent's repo, whose memory
+                            # file grew without end. FINDINGS.md was 77,865 characters on 2026-11-03, 55,401 of them
+                            # measurements of the machinery, which moved to MACHINERY.md and left about 16,300
 
 
 def git(*args: str) -> str:
@@ -68,6 +75,19 @@ def bench_line(text: str) -> bool:
     return own or bool(why_not and len(why_not.group(1).strip()) >= 3)
 
 
+def findings_problem(merge_base: str) -> str | None:
+    """FINDINGS.md over FINDINGS_CAP characters and longer than it was at the
+    merge base. A pull request that leaves it as it was, or makes it shorter,
+    passes whatever its size, so a file already over the cap is condensed
+    over as many runs as it takes and blocks nothing else meanwhile."""
+    head = Path(FINDINGS).read_text() if Path(FINDINGS).exists() else ""
+    base = git("show", f"{merge_base}:{FINDINGS}") if FINDINGS in git("ls-tree", "--name-only", merge_base) else ""
+    if len(head) <= FINDINGS_CAP or len(head) <= len(base):
+        return None
+    return (f"{FINDINGS} is {len(head):,} characters, over the cap of {FINDINGS_CAP:,}, and this pull request makes it "
+            f"longer (it was {len(base):,}). Condense it first, as CLAUDE.md's bookkeeping step says, then add")
+
+
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--base", required=True)
@@ -77,11 +97,15 @@ def main(argv: list[str] | None = None) -> int:
     changed = [p for p in git("diff", "--name-only", merge_base, args.head).splitlines() if p]
     challenger_files = [p for p in changed if fnmatch.fnmatch(p, CHALLENGER_GLOB)]
     strategy_touched = STRATEGY_PATH in changed
+    too_long = findings_problem(merge_base)
     if not challenger_files and not strategy_touched:
+        if too_long:
+            print(f"GATE FAILED: ledger\n  - {too_long}")
+            return 1
         print("no strategy or challenger change; ledger check not required")
         return 0
 
-    problems = []
+    problems = [too_long] if too_long else []
     if len(challenger_files) > 1:
         problems.append(f"one hypothesis per pull request: {len(challenger_files)} challenger configs changed "
                         f"({', '.join(challenger_files)})")

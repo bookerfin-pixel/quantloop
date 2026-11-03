@@ -54,8 +54,12 @@ construction.
    verdicts a year.
 5. **The synthesis**: `FINDINGS.md` is the distilled version of the ledger,
    kept by the agent: what is confirmed, what one verdict suggests, what was
-   killed and why, how well the cost arithmetic predicted reality, and what
-   is still open. That file is the product; the champion is a by product.
+   killed and why, how well the cost arithmetic predicted reality, what
+   history says of each idea, and what is still open. That file is the
+   product; the champion is a by product. It is kept short enough to read
+   whole every day (under 30,000 characters). How the rules, the engine and
+   the bench were measured is in `MACHINERY.md`, which only Fin's patches
+   change.
 
 The agent chooses what to try. The rules, costs, limits and the exam are
 in files the agent cannot touch (`PROTECTED.txt`). Fin edits those by hand.
@@ -87,7 +91,8 @@ as plausibility checks; only the prospective window counts.
                     once a day besides. In sample, all of it
     LEDGER.md       every hypothesis and its verdict, never edited backwards
     PROMOTION.md    how a strategy becomes champion, and what real money would take (protected)
-    FINDINGS.md     the distilled state of knowledge, kept current by the agent
+    FINDINGS.md     the distilled state of knowledge, kept current by the agent (under 30,000 characters)
+    MACHINERY.md    what was measured about the rules, the engine and the bench (protected)
     hypotheses/     the backlog the agent draws from
     notes/          daily observations when the slot is busy
     CLAUDE.md       the agent's operating manual

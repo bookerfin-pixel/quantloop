@@ -229,8 +229,11 @@ can read it with `gh pr list --state closed`.
   trades the rest would not be, nor would one that sells down to a crumb and
   never to nothing, and the bench still cannot read either: to the bench a
   position is left only when nothing of it is held.) The whole reading adds
-  the config at settings near its own, on each half of the coins, and with
-  the clock moved if its code can read the clock. All of it is in sample: it
+  the config at settings near its own, on each half of the coins, with the
+  clock moved if its code can read the clock, and on four markets made from
+  the history with every hour's direction tossed, where it can have no
+  timing (the null check: if the bench finds timing there, it is finding
+  timing where there is none). All of it is in sample: it
   can show that an idea has nothing, never that it has something. No rule
   leans on it. It is there to choose between ideas before a slot is spent,
   and to say later whether what an idea showed on history told us anything
@@ -285,6 +288,11 @@ Read, in this order: `state/summary.md`, `LEDGER.md` (all of it, results
 included), `FINDINGS.md`, `hypotheses/backlog.md`, the newest file in
 `notes/`, and `state/bench/README.md` if it is there. Then run
 `gh pr list --state closed --limit 5` and read why any recent PR was closed.
+`MACHINERY.md` (protected) is what was measured about the rules, the engine
+and the bench; this file, PROMOTION.md and the code cite it as MACHINERY
+with the date of an entry. Read the entry a question needs, not the whole
+of it, and never add to it: a finding about a market or an idea goes in
+FINDINGS.md.
 
 Then run `python -m bot.wide`, on every run, whatever the slots hold. If
 any line of what it prints begins with FAILED, STALE or SETTING NOT USED,
@@ -299,6 +307,38 @@ First, bookkeeping: if `## Results` in the ledger has a verdict that
 about that family, and the calibration line comparing the realised gross bps
 per round trip with the expected number). This is allowed in the same PR as
 anything else below.
+
+FINDINGS.md is read whole every day, so it is kept under 30,000 characters:
+the gate fails a pull request that leaves it longer than that and longer
+than it was (`wc -m FINDINGS.md` before you commit). When an addition would
+take it over, condense first, in the same pull request: fold a family's
+older entries into one short paragraph that keeps every ledger id, every
+verdict with its Market line, and every figure a later line leans on; turn
+an open question that has been answered into one line under the finding
+that answered it; and put what a later verdict overturned under
+`## Overturned` in a line each. Never shorten the Calibration section, and
+never drop a finding: condensing is saying the same in fewer words.
+
+Once a week, on a run when no note dated since the last Monday (UTC) has a
+`## Weekly review` section, review your own record before anything below. Take every ledger entry, backlog change and
+FINDINGS line that your pull requests made in the last 28 days (`git log
+--since='28 days ago' --format='%h %ad %s' -- LEDGER.md FINDINGS.md
+hypotheses/`; yours are the commits whose subjects begin `H<n>:`, `notes:`
+or `agent:`), and mark each one keep (it held up), sharpen (right but vague,
+or partly wrong: say what changes) or revert (wrong: say why). Make the
+sharpen and revert changes in the same pull request: a finding that was
+wrong moves to `## Overturned` with the reason, it is not deleted, and a
+ledger entry is never rewritten, so what changes about one goes in FINDINGS
+or the backlog, citing it. Then score your own forecasts: for each test that ran in those
+28 days, set what its ledger entry expected (gross bps per round trip,
+fills by day 60, skill t at day 120, the backtest's drawdown) beside what
+its result, or the summary so far, shows, and say which way you were off
+and by how much. Write it all as `## Weekly review` in that day's note,
+below any lines for Fin at its top, a line an item; a week with nothing of
+yours to review says so in one line. A forecast that is off the same way week after week is a
+habit to fix in how you write entries, and goes in FINDINGS under
+Calibration. (An idea from phil, another agent's repo, whose agent grades
+its own past calls.)
 
 If every slot is busy (a test running in each):
 - Review the last day of decisions in `state/champion/decisions.csv` and
@@ -329,7 +369,7 @@ If every slot is busy (a test running in each):
   - "waits for cash" rows. When the book is fully invested, a buy waits until
     an exit or a bigger drift frees cash. Funding it by trimming the other
     positions was tested on H0 and H4 over one and two years and did not
-    improve results (FINDINGS, blocked entries). Flag it only if a new entry,
+    improve results (MACHINERY, blocked entries). Flag it only if a new entry,
     a pair going from flat to a position, waits more than 24 hours.
   - A strategy sitting flat because its entry condition is not met. Only a
     reason like "only N candles, need M" is a data problem. H2 flat on "vol
@@ -407,63 +447,86 @@ If a slot is free:
   ledger entry. An idea that only works in one of those years is a bet on
   that kind of year, and the entry should say so.
 - Read the idea on the bench before the slot is spent: `python -m bot.bench
-  --config configs/challenger<k>.yaml --quick`. It replays the same five years
-  through the engine, which takes from four to fifteen minutes: give it the
-  same `timeout` of 1800000. Take no more than two such readings in one run,
-  and if one runs out of time do not take it again: begin the entry's Bench
-  line with `not taken:`, say why in a few words, and say so in the note. Its
-  last line begins `Bench:`. Paste that line into the entry's Bench line and
-  say what you make of it. The line before it begins `Reading:` and says how
-  the figures are to be read. The `Bench:` line gives the share of its twins
-  the book beats and how often a book with no timing at all does as well. Go
-  by this. Beats fewer than half its twins: no sign of timing. No timing does
-  as well more than one time in ten: cannot be told from luck. One time in ten
-  or less, with nothing left after costs: look at what the book made before
+  --config configs/challenger<k>.yaml --quick`, as soon as the slot's config
+  points at the idea and before the tests and the long backtest: an idea it
+  reads as no sign of timing goes no further, and two ideas each taken
+  through the tests, the five year backtest and the bench do not fit in the
+  run's two hours. It replays the same five years through the engine, which
+  takes from four to fifteen minutes: give it the same `timeout` of 1800000.
+  Take no more than two such readings in one run, and if one runs out of
+  time do not take it again: begin the entry's Bench line with `not taken:`,
+  say why in a few words, and say so in the note. Its last line begins
+  `Bench:`. Paste that line into the entry's Bench line and say what you
+  make of it. The line before it begins `Reading:` and says how the figures
+  are to be read. The `Bench:` line gives the share of its twins the book
+  beats and how often a book with no timing at all does as well. Go by this.
+  Beats fewer than half its twins: no sign of timing. No timing does as well
+  more than one time in ten: cannot be told from luck. One time in ten or
+  less, with nothing left after costs: look at what the book made before
   them. If its timing is above nothing and, with what letting positions run
   added, still comes to more than nothing, the costs take more than the book
   made before them, and the fix is fewer or larger trades, not a new signal;
   if not, there was nothing there for the costs to take. One time in ten or
   less, with something left after costs, in most years and at double costs:
   worth a slot. One in ten is not proof either: an idea with nothing in it
-  gets there about that often (FINDINGS, 2026-10-07, has what was measured),
-  and ideas that were picked for how they read on this history more often than
-  that. A line that says the book was not set against twins is neither a pass
-  nor a fail: the bench could not read its timing, and the words in brackets
-  say why (it never held a position; the run is too short; the pairs it
-  holds have too short a history; it was never out of some pair for too
-  long, set against the run or against the history of the pairs it holds).
-  Such an idea would go into a slot unread on history, so say that in the
-  entry. Where the reason is a stay, ask whether it could let go of its
-  positions now and then, all the way to nothing: one that does can be read.
-  A reading that fails because the strategy raised an error on some hour of
-  the five years has found a bug: mend it before the proposal, do not leave
-  the reading out. An idea that reads as nothing may still run under the idle
-  slot rule below, as a low conviction test, and its entry then says so with
-  the reading next to it. Never run the bench with `--save`: that writes
-  state/, and the gate refuses a pull request that changes state/.
+  gets there about that often (MACHINERY, 2026-10-07, has what was
+  measured), and ideas that were picked for how they read on this history
+  more often than that. A line that says the book was not set against twins
+  is neither a pass nor a fail: the bench could not read its timing, and the
+  words in brackets say why (it never held a position; the run is too short;
+  the pairs it holds have too short a history; it was never out of some pair
+  for too long, set against the run or against the history of the pairs it
+  holds). Such an idea would go into a slot unread on history, so say that
+  in the entry. Where the reason is a stay, ask whether it could let go of
+  its positions now and then, all the way to nothing: one that does can be
+  read. A reading that fails because the strategy raised an error on some
+  hour of the five years has found a bug: mend it before the proposal, do
+  not leave the reading out. An idea that reads as no sign of timing (it
+  beats fewer than half its twins) does not go in a slot, not even under the
+  idle slot rule below: Fin does not want slots spent on tests whose history
+  has already said no, and H6 went in that way (its whole reading beat 28%
+  of its twins). Put it in the backlog with its reading instead. Never run
+  the bench with `--save`: that writes state/, and the gate refuses a pull
+  request that changes state/.
 - When a proposal merges, the bench job takes its whole reading within a few
   hours. On any run on which `state/bench/README.md` holds the whole reading
   of a test in a slot and FINDINGS has no line yet on that test's whole
-  reading, add one, once for each test: what the quick reading could not say,
-  which is whether the settings either side of the idea's own and each half
-  of the coins show the same thing. (The reading is taken again every week
-  and says the same unless the config or the code has changed; that is not a
-  new line.) A result that lives in one setting, one half or one year is a
-  bet on that setting, half or year. If the table has a line under `Not
-  read`, for the champion or for a config in a slot, copy the line to the top
-  of the day's note, and write the note for that alone if the day has nothing
-  else to say: nothing else tells Fin, and you cannot fix it.
+  reading, add one, once for each test, under `## What history says of each
+  idea`: what the quick reading could not say, which is whether the settings
+  either side of the idea's own and each half of the coins show the same
+  thing, and what its null check says. The null check replays the strategy
+  on markets made from the history with every hour's direction tossed, where
+  the past says nothing, so its books there have no timing; when two or more
+  of its four read as timing, its line says the bench is finding timing
+  where there is none, and when they beat more of their twins on average
+  than luck gives, that the bench leans toward books like it (read its own
+  share against theirs, not against half). Either way the idea's own
+  reading counts for less than it seems to: say so, and weigh it so next
+  time an idea of that kind comes up.
+  (The reading is taken again every week and says the same unless the config
+  or the code has changed; that is not a new line.) A result that lives in
+  one setting, one half or one year is a bet on that setting, half or year.
+  If the table has a line under `Not read`, for the champion or for a config
+  in a slot, copy the line to the top of the day's note, and write the note
+  for that alone if the day has nothing else to say: nothing else tells Fin,
+  and you cannot fix it.
 - Write the ledger entry first. If you cannot fill "Why it should work"
   with a mechanism and cost arithmetic, pick a different idea.
-- An idle slot teaches nothing. The first choice is always an idea whose
-  mechanism and arithmetic you believe. But if a slot has been free on two
-  consecutive runs and nothing clears that bar, run the best candidate that
-  is a different mechanism from the tests already running and passes the
-  gate, and say in the ledger entry that it is a low conviction test and
-  what a kill would still tell us. A prospective kill of a distinct
-  mechanism is calibration data (realised bps against expected, behaviour
-  in a regime the backtest never saw); an empty slot produces none. This
-  does not license parameter nudges or a second copy of a running family.
+- A free slot holds cash, which costs nothing and teaches nothing. The
+  first choice is always an idea whose mechanism and arithmetic you believe.
+  But if a slot has been free on two consecutive runs and nothing clears
+  that bar, run the best candidate that is a different mechanism from the
+  tests already running, passes the gate, and does not read as no sign of
+  timing on the bench (it beats half its twins or more, or the bench could
+  not set it against twins at all; one whose reading could not be taken
+  does not qualify here), and say in the ledger entry that it is a
+  low conviction test and what a kill would still tell us. A prospective
+  kill of a distinct mechanism is calibration data (realised bps against
+  expected, behaviour in a regime the backtest never saw). If nothing in the
+  backlog clears even that, leave the slot in cash and say so in the note,
+  with the best candidate's Bench line: a better idea is worth more than a
+  test whose history has already said no. This does not license parameter
+  nudges or a second copy of a running family.
 - Make the change in the free slot's config (configs/challenger<k>.yaml)
   and, if new logic is needed, bot/strategy.py. New strategy functions get
   tests in tests/ (not tests/gate/, which is protected). One slot per PR.

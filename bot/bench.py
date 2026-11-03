@@ -32,6 +32,17 @@ What it does, in order.
    2026-10-06).
 6. The live rule. Had a test begun on each day of this history, how often
    would it have had the counts a promotion asks for (PROMOTION.md)?
+7. The null check, in a whole reading. The strategy is replayed on markets
+   made from this history with every hour's direction tossed (`tossed`),
+   where the past says nothing of the hour to come, and each of those books
+   is set against its own twins. None of them has timing, so they should
+   land among their twins and read as luck. When they read as timing more
+   often than luck gives, the bench is finding timing in this kind of book
+   where there is none; when they beat more of their twins on average than
+   luck gives, it leans toward books like this one. Either way the reading
+   says so, and its own figures then say less than they seem to. An idea
+   from phil, another agent's repo: check the yardstick on a case whose
+   answer is known.
 
 How a twin is made, and why that way. `series` has the particulars.
 
@@ -56,7 +67,7 @@ How a twin is made, and why that way. `series` has the particulars.
   that sells down to a crumb and never to nothing: the rule counts a
   position as left at a twentieth of its size, the bench only at nothing.
   Neither is read here. Reading such books by their trades alone was tried
-  and taken out again: FINDINGS, 2026-10-07.)
+  and taken out again: MACHINERY, 2026-10-07.)
 - A pair that was listed late is slid inside the stretch it has prices for,
   so a twin holds as much of it as the book does.
 - Twins are ranked before costs, on the t of each one's daily gap to the
@@ -68,7 +79,7 @@ How a twin is made, and why that way. `series` has the particulars.
   with no timing does as well (`chance`). A slow book on a short run has
   twins worth a handful, and then no share of them is saying much.
 
-How far to trust it, measured (FINDINGS, 2026-10-07). On markets made from
+How far to trust it, measured (MACHINERY, 2026-10-07). On markets made from
 the ten pairs' own hours with every hour's direction tossed, so that the past
 says nothing, books that decide on that past all the same (trend followers,
 dip buyers, breakouts, books that sit on a position until its price comes
@@ -113,7 +124,7 @@ import pandas as pd
 
 from . import backtest, config, strategy
 
-VERSION = 1                 # goes up when a reading would come out differently on the same data
+VERSION = 2                 # goes up when a reading would come out differently on the same data (2: the null check)
 TWINS = 1000                # twins made for a config's own replay
 SUB_TWINS = 200             # ... and for each nearby setting, each half of the coins and each phase of the clock
 MIN_SLIDE_DAYS = 30         # a twin is slid by at least this
@@ -134,7 +145,7 @@ MOST_COST = 0.999           # an hour's fills cannot cost more of the book than 
 # Where the words at the end of a reading change. A reading aid and no more. `chance` is how often a book
 # with no timing does as well among its twins as this one did; measured on markets with no memory it is
 # LUCK_ABOVE or under about one time in ten for the kinds of book that get there most often, and less
-# often than that for slow books and short runs (FINDINGS, 2026-10-07). How often an idea that somebody
+# often than that for slow books and short runs (MACHINERY, 2026-10-07). How often an idea that somebody
 # has tuned on this history gets under it has not been measured, and is more often than that.
 NO_TIMING_BELOW = 0.5       # share of twins beaten under which there is no sign of timing at all
 LUCK_ABOVE = 0.10           # a chance of doing as well with no timing above which it cannot be told from luck
@@ -142,6 +153,23 @@ HOLDS_UP = 0.75             # share of its own twins a nearby setting, a half of
                             # has to beat for the result to count as still there. A book with no timing beats
                             # half; one that beats nine in ten at its own setting and barely half a quarter
                             # away from it has most of its result in the setting
+
+NULL_MARKETS = 4            # markets with every hour's direction tossed that a whole reading replays the strategy on
+NULL_SEED = SEED + 1        # the first of their seeds, fixed like SEED
+NULL_FLAG_AT = 2            # of those, this many reading a chance of LUCK_ABOVE or less and the reading says the bench is
+                            # finding timing where there is none. A book with no timing reads so seven to twelve times in
+                            # a hundred (MACHINERY, 2026-10-07), so two or more of four come by luck about one time in
+                            # forty to one in fourteen. It is a tripwire for a gross fault and no measurement: a bench
+                            # that erred twice as often as it says would be caught about one time in five, three times
+                            # as often about one in three. Nor can it see an idea that was tuned on this history, which is
+                            # the commoner reason a reading flatters
+NULL_SAYS_FROM = 3          # of the NULL_MARKETS, this many must be read for the check to say anything but that it flags
+NULL_LEAN_Z = 1.645         # the share of twins beaten by a book with no timing is as likely to be any number from 0 to 1
+                            # as any other, so the average of k of them is half, give or take 0.29 / sqrt(k). An average
+                            # this many of those above half comes by luck one time in twenty (0.74 or more of four): the
+                            # bench leans toward books like this one, and its own share is to be read against theirs.
+                            # Found in the first run of the check on the configs in use (2026-11-03, on eight markets
+                            # each): H2's books with no timing averaged 73% of their twins, H6's 75% on four
 
 STOPPED = "not run: the bench's time ran out"
 DROPPED = "not run: its config's own replay had failed"
@@ -286,7 +314,7 @@ def lead(s: dict) -> int:
     book whose longest stay is most of the run leaves no room, and has no
     twins.
 
-    This is a rule of thumb, held to what was measured (FINDINGS, 2026-10-07).
+    This is a rule of thumb, held to what was measured (MACHINERY, 2026-10-07).
     A strategy that enters on one thing and leaves on another carries
     something through its flat stretches too. And every strategy is taken to
     use what it is told it holds: reading the ones that do not by their
@@ -455,7 +483,7 @@ def separate(by: np.ndarray, gaps: np.ndarray, around: float | None = None) -> f
     the first count gives, which is why it is the cap and not the count. On
     under a few hundred days it reads low, the allowance being a little
     short there; that errs to caution. Never more than the twins there are,
-    never fewer than one (FINDINGS, 2026-10-07)."""
+    never fewer than one (MACHINERY, 2026-10-07)."""
     n = len(by)
     if n < 2:
         return 1.0
@@ -876,6 +904,65 @@ def _targets(fn, window: dict, params: dict, held: dict) -> dict:
 
 # --- one replay, and all of them ---------------------------------------------
 
+def tossed(candles: dict[str, pd.DataFrame], seed: int) -> dict[str, pd.DataFrame]:
+    """The same market with the direction of every hour tossed: in each hour
+    every pair's move is kept or turned the other way, all the pairs alike, on
+    one toss of a coin. Kept: how far each pair moves in each hour, its quiet
+    and wild spells, how the pairs move together, the hours each pair has
+    candles for, and the volume. Gone: anything the past says about which way
+    the next hour goes, for one pair or for one pair against another. A
+    strategy replayed on it decides on a past that says nothing, so its book
+    has no timing whatever it reads: that is the null check.
+
+    A book earns each hour's move from one open to the next, so that is the
+    move tossed: the hour's own candle and the step to the next hour's open,
+    together. Turned about or not, every hour's move is then taken down by
+    the log of the cosh of its size, which makes what a pair is expected to
+    make in each hour, as a share, nothing. Without that, a move of x
+    turned either way makes cosh(x) - 1 on average, which is more in a wild
+    hour than a quiet one, and wild hours come in spells a strategy can see:
+    a book that held more in them beat its twins on markets where the past
+    said nothing (found in review, 2026-11-03: 62% of them where it should
+    have been half, and 47% with this). Within the hour a candle keeps its
+    shape from its own open: turned about, its close and vwap are as far the
+    other way, and its high is as far above the open as its low was below,
+    and the other way round, so a high is still a high. A price that is not
+    a number, or is nothing (the vwap of an hour with no trades), is left as
+    it was, and the move across it is taken from the opens either side."""
+    hours = np.unique(np.concatenate([np.asarray(df["time"], dtype="int64") for df in candles.values()]
+                                     or [np.zeros(0, dtype="int64")]))
+    turn = np.random.default_rng(int(seed)).random(len(hours)) < 0.5
+    out = {}
+    for pair, df in candles.items():
+        df = df.sort_values("time").reset_index(drop=True)
+        raw = df["open"].to_numpy(dtype=float)
+        has = np.isfinite(raw) & (raw > 0)
+        if not has.any():
+            out[pair] = df.copy()
+            continue
+        sign = np.where(turn[np.searchsorted(hours, np.asarray(df["time"], dtype="int64"))], -1.0, 1.0)
+        opens = pd.Series(np.where(has, raw, np.nan)).ffill().bfill().to_numpy()
+        move = np.log(opens[1:] / opens[:-1])                   # each hour's move, open to open
+        step = sign[:-1] * move - np.log(np.cosh(move))
+        level = opens[0] * np.exp(np.r_[0.0, np.cumsum(step)])
+        made = df.copy()
+        made["open"] = np.where(has, level, raw)
+        for k in ("high", "low", "close", "vwap"):
+            if k not in df:
+                continue
+            with np.errstate(divide="ignore", invalid="ignore"):
+                x = np.log(df[k].to_numpy(dtype=float) / raw)      # from the hour's own open
+                if k in ("high", "low"):
+                    other = np.log(df["low" if k == "high" else "high"].to_numpy(dtype=float) / raw)
+                    x = np.where(sign > 0, x, -other)
+                else:
+                    x = sign * x
+            ok = np.isfinite(x) & has
+            made[k] = np.where(ok, level * np.exp(np.where(ok, x, 0.0)), df[k].to_numpy(dtype=float))
+        out[pair] = made
+    return out
+
+
 def replay(candles: dict[str, pd.DataFrame], rcfg: dict, cfg: dict, days: int | None = None,
            pairs: list[str] | None = None, shift_hours: int = 0) -> tuple[dict, dict]:
     """One run through the engine. Returns (series, the engine's own metrics).
@@ -911,14 +998,15 @@ def _task(task: dict, shared: dict) -> dict:
     the clock. Never raises: what fails comes back as its error, and the
     reading says so."""
     began = time.time()
-    said = {k: task[k] for k in ("config", "kind", "params", "pairs", "shift_hours") if k in task}
+    said = {k: task[k] for k in ("config", "kind", "params", "pairs", "shift_hours", "seed") if k in task}
     try:
         cfg = shared["configs"][task["config"]]
         if task["kind"] == "probe":
             return {**said, "ok": True, "clock": reads_clock(cfg, shared["rcfg"], shared["candles"]),
                     "took_s": round(time.time() - began, 1)}
         use = {**cfg, "params": task["params"]} if "params" in task else cfg
-        s, m = replay(shared["candles"], shared["rcfg"], use, days=shared["days"], pairs=task.get("pairs"),
+        market = tossed(shared["candles"], int(task["seed"])) if task["kind"] == "null" else shared["candles"]
+        s, m = replay(market, shared["rcfg"], use, days=shared["days"], pairs=task.get("pairs"),
                       shift_hours=task.get("shift_hours", 0))
         tw = judge(s, int(task["twins"]))
         out = {**said, "ok": True, **reading_of(s, tw)}
@@ -987,7 +1075,7 @@ def run(tasks: list[dict], shared: dict, jobs: int | None = None, deadline: floa
 
     def not_done(i: int, why: str, **more) -> dict:
         t = tasks[i]
-        return {**{k: t[k] for k in ("config", "kind", "params", "pairs", "shift_hours") if k in t}, "ok": False,
+        return {**{k: t[k] for k in ("config", "kind", "params", "pairs", "shift_hours", "seed") if k in t}, "ok": False,
                 "error": why, "took_s": 0.0, **more}
 
     def settle(i: int, answer: dict) -> None:
@@ -1099,6 +1187,7 @@ def plan(cfg: dict, candles: dict[str, pd.DataFrame], quick: bool, index: int = 
     tasks += [{"config": index, "kind": "half", "pairs": h, "twins": sub} for h in halves(list(candles))]
     if clock:
         tasks += [{"config": index, "kind": "clock", "shift_hours": h, "twins": sub} for h in CLOCK_SHIFTS_H]
+    tasks += [{"config": index, "kind": "null", "seed": NULL_SEED + k, "twins": sub} for k in range(NULL_MARKETS)]
     return tasks
 
 
@@ -1121,15 +1210,18 @@ def assemble(cfg: dict, signed: str, done: list[dict], clock: str | None, quick:
             "nearby": [_light(d) for d in done if d["kind"] == "nearby"],
             "halves": [_light(d) for d in done if d["kind"] == "half"],
             "clock": None if quick else {"why": clock, "shifts": [_light(d) for d in done if d["kind"] == "clock"]},
+            "null": None if quick else [_light(d) for d in done if d["kind"] == "null"],
             "took_s": round(sum(float(d.get("took_s") or 0.0) for d in done), 1)}
 
 
 def _light(d: dict) -> dict:
-    keep = ("ok", "error", "params", "pairs", "shift_hours", "days", "net", "exposure", "timing_per_year",
+    keep = ("ok", "error", "params", "pairs", "shift_hours", "seed", "days", "net", "exposure", "timing_per_year",
             "drift_per_year", "costs_per_year", "left_per_year", "t", "no_twins")
     out = {k: d[k] for k in keep if k in d}
     if d.get("ok"):
         out["beaten"] = (d.get("twins") or {}).get("beaten")
+        if d.get("kind") == "null":
+            out["chance"] = (d.get("twins") or {}).get("chance")
     return out
 
 
@@ -1292,6 +1384,71 @@ def _spread(rows: list[dict]) -> str:
         + (f" ({short} could not be set against twins)" if short else "")
 
 
+def null_counts(r: dict) -> tuple[int, int, int] | None:
+    """The null check of a whole reading: of its books on markets with every
+    hour's direction tossed, how many read as timing (a chance of LUCK_ABOVE
+    or less), how many could be set against twins, and how many there are.
+    None for a reading without one (a quick one)."""
+    rows = r.get("null")
+    if not rows:
+        return None
+    read = [x for x in rows if x.get("ok") and x.get("beaten") is not None and x.get("chance") is not None]
+    return sum(1 for x in read if x["chance"] <= LUCK_ABOVE), len(read), len(rows)
+
+
+def null_mean(r: dict) -> float | None:
+    """The average share of their twins that the null check's books beat, of
+    those that could be read; None without NULL_SAYS_FROM of them."""
+    read = [x["beaten"] for x in r.get("null") or [] if x.get("ok") and x.get("beaten") is not None and x.get("chance") is not None]
+    return float(np.mean(read)) if len(read) >= NULL_SAYS_FROM else None
+
+
+def null_lean_at(read: int) -> float:
+    """The average share at or above which the null check's books lean: NULL_LEAN_Z times the spread of an
+    average of `read` shares drawn evenly from 0 to 1, above half."""
+    return 0.5 + NULL_LEAN_Z * math.sqrt(1.0 / 12.0) / math.sqrt(max(int(read), 1))
+
+
+def null_weak(r: dict) -> str | None:
+    """A null check that could not be done, as a weak spot of the reading: none
+    of its markets read, or some that could not even be replayed."""
+    counts = null_counts(r)
+    if counts is None:
+        return None
+    timing, read, total = counts
+    failed = sum(1 for x in r["null"] if not x.get("ok"))
+    if not read:
+        return f"none of its {total} null markets could be read, so nothing checks the bench on a book like this one"
+    if failed:
+        return f"{failed} of its {total} null markets could not be replayed"
+    return None
+
+
+def null_doubt(r: dict) -> str | None:
+    """What the null check says against a reading, in a clause, or None when
+    it says nothing against it. Two things count against it: NULL_FLAG_AT or
+    more of its books on markets where the past says nothing read as timing
+    (the bench finds timing where there is none), or those books beat so
+    many of their twins on average that luck would seldom give it (the
+    bench leans toward books like this one)."""
+    counts = null_counts(r)
+    if counts is None:
+        return None
+    timing, read, _ = counts
+    mean, own = null_mean(r), (r.get("twins") or {}).get("beaten")
+    said = []
+    if timing >= NULL_FLAG_AT:
+        said.append(f"on markets made from this history where the past says nothing, {timing} of its {read} books read "
+                    f"as timing, more often than luck gives, so the bench may be finding timing in this kind of book where "
+                    f"there is none")
+    if mean is not None and mean >= null_lean_at(read):
+        said.append(("there" if said else "on markets made from this history where the past says nothing")
+                    + f", its books beat {_share(mean)} of their twins on average, where books with no timing average "
+                    f"half, so the bench leans toward books like this one"
+                    + ("" if own is None else f" and its own {_share(own)} is to be read against {_share(mean)}, not against half"))
+    return "; and ".join(said) if said else None
+
+
 def _years_ahead(r: dict) -> tuple[int, int]:
     years = [y for y in r.get("years") or [] if y.get("left") is not None]
     return sum(1 for y in years if y["left"] > 0), len(years)
@@ -1332,6 +1489,9 @@ def weak_spots(r: dict) -> list[str]:
     if none is not None and none >= 0.5:
         out.append(f"it finishes no trade of its own in {_share(none)} of {ro.get('first_days', 60)} day windows, so a live "
                    f"test would likely be killed at its look")
+    for said in (null_doubt(r), null_weak(r)):
+        if said:
+            out.append(said)
     return out
 
 
@@ -1382,16 +1542,18 @@ def words(r: dict) -> str:
                    if few else "") + ".")
     timing, drift, left = r.get("timing_per_year"), r.get("drift_per_year"), r.get("left_per_year")
     if left is None or left <= 0:
+        doubt = null_doubt(r)
+        also = "" if not doubt else " Mind that " + doubt + "."
         if timing is None or timing <= 0:
             return ("Reading: day by day it stands above most of its twins, and over the whole run its timing made no "
                     "more than its average twin did. What it lost or kept came from letting positions run and from "
-                    "costs, not from when it traded.")
+                    "costs, not from when it traded." + also)
         if timing + (drift or 0.0) > 0:
             return ("Reading: its timing beats most of its twins, and its costs take more than the book made over its "
                     "average twin before them, so nothing is left. The costs are the thing to mend: fewer or larger "
-                    "trades, not a new signal.")
+                    "trades, not a new signal." + also)
         return ("Reading: as last traded it beats most of its twins, and before any costs the book itself made no "
-                "more than they did: what its timing adds is lost again in letting positions run between trades.")
+                "more than they did: what its timing adds is lost again in letting positions run between trades." + also)
     weak = weak_spots(r)
     rest = " The halves of the coins and the nearby settings are not in a quick reading." if r["quick"] else ""
     if weak:
@@ -1432,7 +1594,46 @@ def ledger_line(r: dict) -> str:
     if not r["quick"]:
         parts.append(f"nearby settings beat {_spread(r['nearby'])} of their twins")
         parts.append(f"halves of the coins {_spread(r['halves'])}")
+        nl, mean = null_counts(r), null_mean(r)
+        if nl is not None and nl[1]:
+            parts.append(f"on markets where the past says nothing {nl[0]} of its {nl[1]} books read as timing"
+                         + (" (more than luck gives)" if nl[0] >= NULL_FLAG_AT else "")
+                         + ("" if mean is None else f" and they beat {_share(mean)} of their twins on average"
+                            + (" (the bench leans toward books like it)" if mean >= null_lean_at(nl[1]) else "")))
     return "Bench: " + "; ".join(parts) + ". In sample."
+
+
+def null_sentence(r: dict) -> str:
+    """The null check of a whole reading, as one line of it."""
+    timing, read, total = null_counts(r)
+    where = (f"null check: on {total} markets made from this history with every hour's direction tossed, where the past "
+             f"says nothing of the hour to come")
+    if not read:
+        failed = sum(1 for x in r["null"] if not x.get("ok"))
+        why = [f"{failed} could not be replayed" if failed else "", f"{total - failed} could not be set against twins"
+               if total - failed else ""]
+        return (where + f", none of its books could be read ({' and '.join(w for w in why if w)}), so the check says "
+                f"nothing of this reading")
+    own, mean = (r.get("twins") or {}).get("beaten"), null_mean(r)
+    said = where + f", its books beat {_spread(r['null'])} of their twins" \
+        + ("" if mean is None and own is None else " (" + "; ".join(
+            ([] if mean is None else [f"on average {_share(mean)}"]) + ([] if own is None else [f"its own book {_share(own)}"])) + ")")
+    flags = []
+    if timing >= NULL_FLAG_AT:
+        flags.append(f"{timing} of {read} read a chance of {LUCK_ABOVE:.0%} or less, where a book with no timing does that "
+                     f"about one time in ten: in a book like this one the bench finds timing where there is none")
+    if mean is not None and mean >= null_lean_at(read):
+        flags.append(f"on average they beat {_share(mean)} of their twins, where books with no timing average half and "
+                     f"{_share(null_lean_at(read))} or more comes by luck about one time in twenty: the bench leans toward "
+                     f"books like this one" + ("" if own is None else f", so its own {_share(own)} is to be read against "
+                                               f"{_share(mean)}, not against half"))
+    if flags:
+        return said + ". " + "; and ".join(f[0].upper() + f[1:] if i == 0 else f for i, f in enumerate(flags)) \
+            + ". This reading says less than it seems to"
+    if read < NULL_SAYS_FROM:
+        return (said + f". Only {read} of {total} could be read, too few for the check to say anything either way")
+    return (said + f", and {timing} of {read} read a chance of {LUCK_ABOVE:.0%} or less, as books with no timing do. That "
+            f"rules out a gross fault in the bench for a book like this one, and no more")
 
 
 def _d(days: float) -> str:
@@ -1531,6 +1732,8 @@ def format_reading(r: dict) -> str:
         else:
             lines.append(f"  the clock: nothing in its code names it, and its targets do not move with it (asked at "
                          f"{PROBE_HOURS} hours of the history, with the clock moved three ways)")
+        if null_counts(r) is not None:
+            lines.append("  " + null_sentence(r))
     first, total = ro["first_days"], ro["total_days"]
     none, later = ro.get("no_trade_by_first"), ro.get("no_trade_by_total")
     lines.append(f"  under rule 1: about {ro['fills_by_first']:.0f} fills in {first} days (a promotion needs "

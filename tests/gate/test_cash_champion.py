@@ -7,7 +7,7 @@ measured beside; every test that begins under ruleset 8 has its drawdown guard
 set against the equal weight basket's fall; an idle slot holds cash; a
 promotion judged against cash is guarded by cash; when no test needs H0 any
 more the champion account holds cash too. PROMOTION.md has the rule in words,
-FINDINGS.md (2026-10-10) the measurements behind it."""
+MACHINERY.md (2026-10-10) the measurements behind it."""
 import csv
 import json
 

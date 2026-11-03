@@ -162,7 +162,7 @@ An earlier build asked instead whether a test's "own decisions" had added
 1% beyond holding its average exposure. On 60 days of a made up market with
 nothing in it to time, that figure read +3.9% for a dip buyer with no skill
 and -3.9% for a trend follower with no skill: it scored a style. It was
-dropped before it ran (FINDINGS, 2026-10-05).
+dropped before it ran (MACHINERY, 2026-10-05).
 
 ## Rule 1: becoming paper champion (two looks)
 

@@ -93,7 +93,7 @@ challenger:
                             # Under the two look rule this is the first look.
   confirm_days: 60          # a test kept at its first look gets this many more days in the same slot...
   min_skill_t: 1.0          # ...and a promotion on all 120 days also needs the t of the daily skill to reach
-                            # this. In the twin study (FINDINGS, 2026-10-05) the one look rule as it ran
+                            # this. In the twin study (MACHINERY, 2026-10-05) the one look rule as it ran
                             # promoted a twin with no skill 25 times in 100 and a real edge with a yearly
                             # Sharpe ratio of 2 only 49; this rule 9 and 56. Passing the rule's numbers
                             # under the bar is `unproven`. 0, or `off`, means no t bar.
@@ -145,7 +145,7 @@ challenger:
                             # one of these, a test that begins is judged against cash, which makes nothing: it
                             # must show skill above nothing, with its drawdown guard set against the equal
                             # weight basket's fall over the window. On the rule's twins that promotes exactly
-                            # as often as judging against H0 did (FINDINGS, 2026-10-10). `off`: none retired
+                            # as often as judging against H0 did (MACHINERY, 2026-10-10). `off`: none retired
   cash_guard_skill_t: 1.0   # the guard on a promotion judged against cash reverts it to cash only when, over the
                             # guard's window, the promoted config's skill is below cash's and its daily skill t is
                             # minus this or lower, on min_trades fills or more unless the t is twice that low.
