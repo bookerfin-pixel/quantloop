@@ -1,27 +1,26 @@
 {
  "coinbase": {
   "coins": 1,
-  "days_added": 0,
+  "days_added": 1105,
   "failed": [],
   "mismatch": [],
   "not_listed": 3
  },
  "funding": {
-  "days_added": 67,
+  "days_added": 337,
   "failed": [],
-  "symbols": 67
+  "symbols": 68
  },
  "kraken": {
-  "days_added": 1827,
+  "days_added": 1426,
   "failed": [],
   "joined_today": [
-   "TRUST",
-   "EUROP",
-   "MELANIA"
+   "STORJ",
+   "PEAQ"
   ],
-  "listed": 217,
-  "on_the_list": 218,
-  "pairs_read": 217,
+  "listed": 219,
+  "on_the_list": 220,
+  "pairs_read": 219,
   "pegged_skipped": [
    "APXUSD",
    "AUSD",
@@ -33,16 +32,15 @@
    "USAT",
    "USDGO",
    "USDPT",
-   "USDSM",
    "USDSUI",
    "USTABLES"
   ],
-  "qualified_today": 158,
+  "qualified_today": 183,
   "quoted": 631,
   "quotes_failed": "",
-  "quotes_written": 217,
+  "quotes_written": 219,
   "unquoted": [],
-  "usd_pairs": 655
+  "usd_pairs": 656
  },
  "ok": true,
  "probes": {
@@ -57,7 +55,7 @@
    "ok": true
   }
  },
- "ran": 1793602097,
- "ran_utc": "2026-11-02 06:48Z",
+ "ran": 1793690049,
+ "ran_utc": "2026-11-03 07:14Z",
  "settings_not_used": []
 }

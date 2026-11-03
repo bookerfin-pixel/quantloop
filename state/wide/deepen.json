@@ -325,9 +325,9 @@
   "want_from": 1633910400
  },
  "EUROP": {
-  "at": 1793602097,
-  "result": "not listed, to be asked once more",
-  "want_from": 1635897600
+  "at": 1793690049,
+  "result": "not listed",
+  "want_from": 1635984000
  },
  "EVAA": {
   "at": 1793255211,
@@ -545,9 +545,9 @@
   "want_from": 1634083200
  },
  "MELANIA": {
-  "at": 1793602097,
-  "result": "not listed, to be asked once more",
-  "want_from": 1635897600
+  "at": 1793690049,
+  "result": "not listed",
+  "want_from": 1635984000
  },
  "MET": {
   "at": 1791421266,
@@ -648,6 +648,11 @@
   "at": 1793427378,
   "result": "not listed",
   "want_from": 1635724800
+ },
+ "PEAQ": {
+  "at": 1793690049,
+  "result": "not listed, to be asked once more",
+  "want_from": 1635984000
  },
  "PENDLE": {
   "at": 1791507774,
@@ -838,6 +843,11 @@
   "at": 1792213106,
   "result": "not listed",
   "want_from": 1634515200
+ },
+ "STORJ": {
+  "at": 1793690049,
+  "result": "added 1105 days; closes differ by 0.15% at the median and 0.59% at the ninth decile over 31 days",
+  "want_from": 1635984000
  },
  "STRK": {
   "at": 1791378076,
