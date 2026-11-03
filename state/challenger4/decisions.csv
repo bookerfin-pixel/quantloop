@@ -5049,3 +5049,13 @@ ts,account,pair,price,signal_weight,target_weight,current_weight,action,reason,h
 1793725847,challenger4,DOGE,0.075234,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: ratio to BTC z -0.72 not below -2.0,0.007
 1793725847,challenger4,DOT,0.93825,0.25,0.25,0.2473,hold,"hold: weight change +0.003 below threshold 0.05 | stay long: ratio to BTC z -1.60 vs 720h mean (entry -2.0, exit -0.25); vol 87% -> weight 0.25",0.533
 1793725847,challenger4,LTC,54.25,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: ratio to BTC z -1.18 not below -2.0,1.843
+1793729465,challenger4,BTC,77677.85,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: BTC is the yardstick and is not held,0.006
+1793729465,challenger4,ETH,2298.605,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: ratio to BTC z -0.19 not below -2.0,0.022
+1793729465,challenger4,SOL,93.69,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: ratio to BTC z -1.63 not below -2.0,1.067
+1793729465,challenger4,ADA,0.190398,0.25,0.25,0.2413,hold,"hold: weight change +0.009 below threshold 0.05 | stay long: ratio to BTC z -1.38 vs 720h mean (entry -2.0, exit -0.25); vol 68% -> weight 0.25",0.945
+1793729465,challenger4,AVAX,8.537,0.25,0.25,0.2473,hold,"hold: weight change +0.003 below threshold 0.05 | stay long: ratio to BTC z -1.11 vs 720h mean (entry -2.0, exit -0.25); vol 74% -> weight 0.25",2.343
+1793729465,challenger4,LINK,11.153885,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: ratio to BTC z -1.08 not below -2.0,1.215
+1793729465,challenger4,XRP,1.284055,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: ratio to BTC z +0.29 not below -2.0,0.039
+1793729465,challenger4,DOGE,0.075372,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: ratio to BTC z -0.73 not below -2.0,0.007
+1793729465,challenger4,DOT,0.94035,0.25,0.25,0.2477,hold,"hold: weight change +0.002 below threshold 0.05 | stay long: ratio to BTC z -1.62 vs 720h mean (entry -2.0, exit -0.25); vol 87% -> weight 0.25",0.532
+1793729465,challenger4,LTC,54.365,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: ratio to BTC z -1.22 not below -2.0,0.92
