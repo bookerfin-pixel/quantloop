@@ -1,15 +1,15 @@
 {
- "basket": -0.6449367009762849,
+ "basket": -0.640938384297163,
  "clock": {
   "shifts": [
    {
-    "beaten": 0.285,
-    "costs_per_year": 0.08720450361840291,
-    "days": 1821,
-    "drift_per_year": 0.0031034971693923753,
-    "exposure": 0.5053953916086316,
-    "left_per_year": -0.1698170580968591,
-    "net": -0.7016660610633725,
+    "beaten": 0.305,
+    "costs_per_year": 0.08704754650136569,
+    "days": 1826,
+    "drift_per_year": 0.0029116836289695613,
+    "exposure": 0.5062493864021167,
+    "left_per_year": -0.1661534334194823,
+    "net": -0.6891870889182194,
     "no_twins": null,
     "ok": true,
     "pairs": [
@@ -25,16 +25,16 @@
      "XRP"
     ],
     "shift_hours": 27,
-    "t": -1.2131573261262316,
-    "timing_per_year": -0.08571605164784858
+    "t": -1.191323487296868,
+    "timing_per_year": -0.0820175705470862
    },
    {
-    "beaten": 0.36,
-    "costs_per_year": 0.08436615696248664,
-    "days": 1821,
-    "drift_per_year": 0.0005453656025421429,
-    "exposure": 0.5119698361640834,
-    "left_per_year": -0.14073358415354215,
+    "beaten": 0.305,
+    "costs_per_year": 0.08413514338920493,
+    "days": 1826,
+    "drift_per_year": 0.0005438722684716548,
+    "exposure": 0.5104965753191404,
+    "left_per_year": -0.1453124073854375,
     "net": -0.6570119875967029,
     "no_twins": null,
     "ok": true,
@@ -51,16 +51,16 @@
      "XRP"
     ],
     "shift_hours": 54,
-    "t": -1.0582692347777585,
-    "timing_per_year": -0.056912792793597636
+    "t": -1.0953132040514708,
+    "timing_per_year": -0.06172113626470428
    },
    {
-    "beaten": 0.435,
-    "costs_per_year": 0.08442997683022889,
-    "days": 1821,
-    "drift_per_year": 0.0008014173439624638,
-    "exposure": 0.5000354147542436,
-    "left_per_year": -0.11000595251535802,
+    "beaten": 0.44,
+    "costs_per_year": 0.08419878850374964,
+    "days": 1826,
+    "drift_per_year": 0.0007992228824510668,
+    "exposure": 0.49859649678368145,
+    "left_per_year": -0.11118754091851342,
     "net": -0.5963037323231574,
     "no_twins": null,
     "ok": true,
@@ -77,17 +77,17 @@
      "XRP"
     ],
     "shift_hours": 81,
-    "t": -0.8191248951518788,
-    "timing_per_year": -0.026377393029091572
+    "t": -0.8323195027704563,
+    "timing_per_year": -0.027787975297214853
    },
    {
-    "beaten": 0.91,
-    "costs_per_year": 0.08464233936690899,
-    "days": 1821,
-    "drift_per_year": -0.0021652021904876063,
-    "exposure": 0.4917531574064939,
-    "left_per_year": 0.09847519795029479,
-    "net": 0.1720084099137884,
+    "beaten": 0.92,
+    "costs_per_year": 0.0847625873034518,
+    "days": 1826,
+    "drift_per_year": -0.0022072097463360914,
+    "exposure": 0.4910144034425899,
+    "left_per_year": 0.09835991314405121,
+    "net": 0.15549405768238844,
     "no_twins": null,
     "ok": true,
     "pairs": [
@@ -103,17 +103,17 @@
      "XRP"
     ],
     "shift_hours": 108,
-    "t": 0.7244043623627856,
-    "timing_per_year": 0.18528273950769136
+    "t": 0.7238938907716652,
+    "timing_per_year": 0.1853297101938391
    },
    {
-    "beaten": 0.595,
-    "costs_per_year": 0.08550283828915012,
-    "days": 1821,
-    "drift_per_year": -0.0048405805235868845,
-    "exposure": 0.49175330445278054,
-    "left_per_year": -0.05603110716619681,
-    "net": -0.45240433292886717,
+    "beaten": 0.59,
+    "costs_per_year": 0.08562258951765542,
+    "days": 1826,
+    "drift_per_year": -0.004876768203650525,
+    "exposure": 0.4910343449421128,
+    "left_per_year": -0.05493701643436511,
+    "net": -0.45938714065942876,
     "no_twins": null,
     "ok": true,
     "pairs": [
@@ -129,17 +129,17 @@
      "XRP"
     ],
     "shift_hours": 135,
-    "t": -0.40578815096239024,
-    "timing_per_year": 0.03431231164654017
+    "t": -0.39767356380691554,
+    "timing_per_year": 0.03556234128694084
    },
    {
-    "beaten": 0.485,
-    "costs_per_year": 0.08439898238692668,
-    "days": 1820,
-    "drift_per_year": -0.0018599079979741567,
-    "exposure": 0.4861709905776555,
-    "left_per_year": -0.07942917850691901,
-    "net": -0.510318944407872,
+    "beaten": 0.48,
+    "costs_per_year": 0.08452096037515607,
+    "days": 1825,
+    "drift_per_year": -0.0019041300497415164,
+    "exposure": 0.48547823062866285,
+    "left_per_year": -0.08218862960816221,
+    "net": -0.5182175796381425,
     "no_twins": null,
     "ok": true,
     "pairs": [
@@ -155,41 +155,41 @@
      "XRP"
     ],
     "shift_hours": 162,
-    "t": -0.545610866303673,
-    "timing_per_year": 0.006829711877981872
+    "t": -0.5638096564971997,
+    "timing_per_year": 0.004236460816735388
    }
   ],
   "why": "its code names the candles' time column or asks the time"
  },
- "costs_per_year": 0.08493667683059727,
- "days": 1820,
+ "costs_per_year": 0.08481458914607325,
+ "days": 1826,
  "double_costs": {
-  "left_per_year": -0.2841416213202791,
-  "sharpe": -0.8625789681202104,
-  "t": -1.9261412249698542
+  "left_per_year": -0.2743756234616284,
+  "sharpe": -0.8327788026946314,
+  "t": -1.8626601212635787
  },
- "drift_per_year": 0.0020164086474930938,
- "end": "2026-10-30",
+ "drift_per_year": 0.001941015790997271,
+ "end": "2026-11-04",
  "engine": {
   "avg_gross_exposure": 0.488,
-  "days": 1819.8,
+  "days": 1825.0,
   "max_drawdown": -0.8166,
-  "n_trades": 1674,
+  "n_trades": 1676,
   "pair_days_at_fill_cap": 0,
   "starved_share": 0.0017,
-  "total_return": -0.7537,
+  "total_return": -0.7402,
   "trades_per_pair_per_day_avg": 0.092
  },
- "exposure": 0.4875232064191214,
+ "exposure": 0.4884862351969581,
  "halves": [
   {
-   "beaten": 0.205,
-   "costs_per_year": 0.03889118978815128,
-   "days": 1820,
-   "drift_per_year": -0.0007808017475150643,
-   "exposure": 0.29796502119432533,
-   "left_per_year": -0.14762682130863142,
-   "net": -0.6763912700722441,
+   "beaten": 0.215,
+   "costs_per_year": 0.038920391828353454,
+   "days": 1826,
+   "drift_per_year": -0.000789666995922917,
+   "exposure": 0.29877620541005423,
+   "left_per_year": -0.13852966750913429,
+   "net": -0.6642302868147398,
    "no_twins": null,
    "ok": true,
    "pairs": [
@@ -199,8 +199,8 @@
     "LINK",
     "SOL"
    ],
-   "t": -1.2409884287384374,
-   "timing_per_year": -0.10795482977296506
+   "t": -1.1684004103988648,
+   "timing_per_year": -0.09881960868485792
   },
   {
    "error": "ValueError: the strategy never had the candles it needs, or had them for under two days",
@@ -214,13 +214,13 @@
    ]
   },
   {
-   "beaten": 0.245,
-   "costs_per_year": 0.039908738589795316,
-   "days": 1820,
-   "drift_per_year": -0.005129382437599361,
-   "exposure": 0.3302627680192287,
-   "left_per_year": -0.13167190312623156,
-   "net": -0.6619283312009383,
+   "beaten": 0.275,
+   "costs_per_year": 0.03985530104113679,
+   "days": 1826,
+   "drift_per_year": -0.005238002425320038,
+   "exposure": 0.3314794164430683,
+   "left_per_year": -0.12637248595814568,
+   "net": -0.6544901872525726,
    "no_twins": null,
    "ok": true,
    "pairs": [
@@ -230,8 +230,8 @@
     "DOGE",
     "DOT"
    ],
-   "t": -1.0750267697615545,
-   "timing_per_year": -0.08663378209883686
+   "t": -1.0351309439635614,
+   "timing_per_year": -0.08127918249168883
   },
   {
    "error": "ValueError: the strategy never had the candles it needs, or had them for under two days",
@@ -246,17 +246,17 @@
   }
  ],
  "hypothesis": "H6",
- "left_per_year": -0.19927624520250736,
- "made_at": 1793326522,
+ "left_per_year": -0.18963210074345352,
+ "made_at": 1793787922,
  "nearby": [
   {
-   "beaten": 0.285,
-   "costs_per_year": 0.09719499554115332,
-   "days": 1814,
-   "drift_per_year": -0.002439453833159514,
-   "exposure": 0.5424243476887696,
-   "left_per_year": -0.21822794996598865,
-   "net": -0.7830463466169297,
+   "beaten": 0.275,
+   "costs_per_year": 0.09702838608526779,
+   "days": 1820,
+   "drift_per_year": -0.0024016104730118083,
+   "exposure": 0.5434500057397058,
+   "left_per_year": -0.21225433393505458,
+   "net": -0.7724369803351221,
    "no_twins": null,
    "ok": true,
    "pairs": [
@@ -279,17 +279,17 @@
     "target_vol_annual": 0.27807,
     "vol_lookback_hours": 163
    },
-   "t": -1.4826798104818943,
-   "timing_per_year": -0.11859350059167577
+   "t": -1.4435633243144321,
+   "timing_per_year": -0.11282433737677504
   },
   {
-   "beaten": 0.21,
-   "costs_per_year": 0.09724218653892007,
-   "days": 1825,
-   "drift_per_year": -0.0017947516047700281,
-   "exposure": 0.4983031983306768,
-   "left_per_year": -0.2290100214174479,
-   "net": -0.7587663683327255,
+   "beaten": 0.23,
+   "costs_per_year": 0.09712911100082867,
+   "days": 1831,
+   "drift_per_year": -0.0018434609709312214,
+   "exposure": 0.49922834755978734,
+   "left_per_year": -0.21908366227225004,
+   "net": -0.7502627430757252,
    "no_twins": null,
    "ok": true,
    "pairs": [
@@ -312,17 +312,17 @@
     "target_vol_annual": 0.258989,
     "vol_lookback_hours": 139
    },
-   "t": -1.6573153920727146,
-   "timing_per_year": -0.12997308327375778
+   "t": -1.5949515451856584,
+   "timing_per_year": -0.12011109030049014
   },
   {
-   "beaten": 0.37,
-   "costs_per_year": 0.055719276089208236,
-   "days": 1815,
-   "drift_per_year": -0.0026924318932548094,
-   "exposure": 0.4312114223797075,
-   "left_per_year": -0.10878827723987852,
-   "net": -0.5809441045172459,
+   "beaten": 0.365,
+   "costs_per_year": 0.05560246214920396,
+   "days": 1821,
+   "drift_per_year": -0.0028061468774986205,
+   "exposure": 0.43184499154478106,
+   "left_per_year": -0.11163746742853403,
+   "net": -0.5730026579502107,
    "no_twins": null,
    "ok": true,
    "pairs": [
@@ -345,17 +345,17 @@
     "target_vol_annual": 0.299981,
     "vol_lookback_hours": 208
    },
-   "t": -0.8034674478908715,
-   "timing_per_year": -0.050376569257415446
+   "t": -0.8276249855902771,
+   "timing_per_year": -0.05322885840183149
   },
   {
-   "beaten": 0.34,
-   "costs_per_year": 0.07413927396455228,
-   "days": 1819,
-   "drift_per_year": -0.0007874748032902966,
-   "exposure": 0.46989932274799767,
-   "left_per_year": -0.14561865153321044,
-   "net": -0.6430441453234615,
+   "beaten": 0.35,
+   "costs_per_year": 0.0740190087286503,
+   "days": 1825,
+   "drift_per_year": -0.0008183938933448261,
+   "exposure": 0.4706364139388953,
+   "left_per_year": -0.13649805218444983,
+   "net": -0.6300696474429172,
    "no_twins": null,
    "ok": true,
    "pairs": [
@@ -378,17 +378,17 @@
     "target_vol_annual": 0.282823,
     "vol_lookback_hours": 183
    },
-   "t": -1.0579232537568326,
-   "timing_per_year": -0.07069190276536783
+   "t": -0.9960790961403544,
+   "timing_per_year": -0.061660649562454733
   },
   {
-   "beaten": 0.305,
-   "costs_per_year": 0.12305585370821594,
-   "days": 1823,
-   "drift_per_year": -0.00370298212302119,
-   "exposure": 0.5822812294688123,
-   "left_per_year": -0.21373047732929978,
-   "net": -0.7736657385021515,
+   "beaten": 0.28,
+   "costs_per_year": 0.1230868308234939,
+   "days": 1829,
+   "drift_per_year": -0.003689300975560871,
+   "exposure": 0.5834651993298845,
+   "left_per_year": -0.2095044122878132,
+   "net": -0.7651018041248067,
    "no_twins": null,
    "ok": true,
    "pairs": [
@@ -411,17 +411,17 @@
     "target_vol_annual": 0.27022,
     "vol_lookback_hours": 155
    },
-   "t": -1.4583209444635399,
-   "timing_per_year": -0.08697164149806262
+   "t": -1.435667170989524,
+   "timing_per_year": -0.0827282804887584
   },
   {
-   "beaten": 0.485,
-   "costs_per_year": 0.05306266916664872,
-   "days": 1814,
-   "drift_per_year": -0.006149131964948598,
-   "exposure": 0.4161014930166874,
-   "left_per_year": -0.05259482478635241,
-   "net": -0.4348225121481084,
+   "beaten": 0.495,
+   "costs_per_year": 0.052887737290275155,
+   "days": 1820,
+   "drift_per_year": -0.006187929332610026,
+   "exposure": 0.41564431890147546,
+   "left_per_year": -0.05309100599837398,
+   "net": -0.42983975521985773,
    "no_twins": null,
    "ok": true,
    "pairs": [
@@ -444,12 +444,122 @@
     "target_vol_annual": 0.365538,
     "vol_lookback_hours": 196
    },
-   "t": -0.38204361502609685,
-   "timing_per_year": 0.006616976345244895
+   "t": -0.38706717365809923,
+   "timing_per_year": 0.005984660624511201
   }
  ],
- "net": -0.751851656932959,
+ "net": -0.7403019214065456,
  "no_twins": null,
+ "null": [
+  {
+   "beaten": 0.605,
+   "chance": 0.40324008182286997,
+   "costs_per_year": 0.08195577835993346,
+   "days": 1826,
+   "drift_per_year": -0.006676276074065846,
+   "exposure": 0.4721321570357974,
+   "left_per_year": -0.051114549834251,
+   "net": -0.6797416626253988,
+   "no_twins": null,
+   "ok": true,
+   "pairs": [
+    "ADA",
+    "AVAX",
+    "BTC",
+    "DOGE",
+    "DOT",
+    "ETH",
+    "LINK",
+    "LTC",
+    "SOL",
+    "XRP"
+   ],
+   "seed": 20261008,
+   "t": -0.3942955182339075,
+   "timing_per_year": 0.03751750459974828
+  },
+  {
+   "beaten": 0.715,
+   "chance": 0.2952816821542656,
+   "costs_per_year": 0.09897111681633962,
+   "days": 1826,
+   "drift_per_year": 0.0011174441789303718,
+   "exposure": 0.4670887524538255,
+   "left_per_year": -0.01675204019038902,
+   "net": -0.5605146167561634,
+   "no_twins": null,
+   "ok": true,
+   "pairs": [
+    "ADA",
+    "AVAX",
+    "BTC",
+    "DOGE",
+    "DOT",
+    "ETH",
+    "LINK",
+    "LTC",
+    "SOL",
+    "XRP"
+   ],
+   "seed": 20261009,
+   "t": -0.11230695436514496,
+   "timing_per_year": 0.0811016324470202
+  },
+  {
+   "beaten": 0.95,
+   "chance": 0.062264482503494034,
+   "costs_per_year": 0.08240880241597223,
+   "days": 1826,
+   "drift_per_year": -0.00016725543333701742,
+   "exposure": 0.42064999057270597,
+   "left_per_year": 0.1373968468429361,
+   "net": -0.11163537598536477,
+   "no_twins": null,
+   "ok": true,
+   "pairs": [
+    "ADA",
+    "AVAX",
+    "BTC",
+    "DOGE",
+    "DOT",
+    "ETH",
+    "LINK",
+    "LTC",
+    "SOL",
+    "XRP"
+   ],
+   "seed": 20261010,
+   "t": 1.0378079442514188,
+   "timing_per_year": 0.21997290469224537
+  },
+  {
+   "beaten": 0.73,
+   "chance": 0.2792418994362887,
+   "costs_per_year": 0.08472109895350007,
+   "days": 1826,
+   "drift_per_year": -0.0027173661458502296,
+   "exposure": 0.4316800678740654,
+   "left_per_year": 0.013874247289986699,
+   "net": -0.20721517388290334,
+   "no_twins": null,
+   "ok": true,
+   "pairs": [
+    "ADA",
+    "AVAX",
+    "BTC",
+    "DOGE",
+    "DOT",
+    "ETH",
+    "LINK",
+    "LTC",
+    "SOL",
+    "XRP"
+   ],
+   "seed": 20261011,
+   "t": 0.10262608632350784,
+   "timing_per_year": 0.10131271238933702
+  }
+ ],
  "pairs": [
   "ADA",
   "AVAX",
@@ -475,30 +585,30 @@
  "rule_one": {
   "closed_by_halt_or_error": 416,
   "fast_t": 2.0,
-  "fills_by_first": 55.19287833827893,
-  "finished_trades": 235,
+  "fills_by_first": 55.101369863013694,
+  "finished_trades": 236,
   "first_days": 60,
   "min_fills": 30,
   "min_t": 1.0,
-  "no_trade_by_first": 0.013068181818181817,
+  "no_trade_by_first": 0.013023782559456399,
   "no_trade_by_total": 0.0,
   "total_days": 120,
   "windows": {
-   "all_counts": 0.020958083832335328,
+   "all_counts": 0.020864381520119227,
    "apart": 12,
    "fast_pass": 0.0,
    "few_fills": 0.0,
-   "no_trade": 0.016467065868263474,
-   "t_middle": -0.48157006323636076,
-   "t_reached": 0.020958083832335328,
-   "windows": 1336
+   "no_trade": 0.01639344262295082,
+   "t_middle": -0.47904010115406404,
+   "t_reached": 0.020864381520119227,
+   "windows": 1342
   }
  },
- "sharpe": -0.6114404568074461,
- "signature": "5eccdca9904defa1",
+ "sharpe": -0.5817010883389634,
+ "signature": "5cd9ea6b92f05ca2",
  "slide": {
   "candles_days": 90.0,
-  "history_days": 1819.1666666666667,
+  "history_days": 1824.4166666666667,
   "lead_days": 180.0,
   "least_days": 300.0,
   "longest_hold_days": 62.708333333333336,
@@ -507,25 +617,25 @@
  },
  "start": "2021-11-05",
  "strategy": "relative_reversion",
- "t": -1.365348233609021,
+ "t": -1.3010794898221227,
  "tails": {
-  "best": 0.11719219773208056,
+  "best": 0.11682381443249724,
   "days": 9,
-  "worst": -0.17709026472965017
+  "worst": -0.17626168655062602
  },
- "timing_per_year": -0.11635597701940321,
- "took_s": 9808.8,
- "twin_gross_per_year": 0.028531556136907946,
+ "timing_per_year": -0.10675852738837757,
+ "took_s": 12925.1,
+ "twin_gross_per_year": 0.02888573942433523,
  "twins": {
-  "beaten": 0.256,
-  "beaten_last_365": 0.763,
-  "chance": 0.7467960534875404,
+  "beaten": 0.284,
+  "beaten_last_365": 0.857,
+  "chance": 0.7190831699182963,
   "in_place": [],
   "n": 1000,
-  "net_middle": -0.5626335975245277,
-  "worth": 90.5576190300974
+  "net_middle": -0.5664536259996469,
+  "worth": 91.11299004789592
  },
- "version": 1,
+ "version": 2,
  "years": [
   {
    "basket": -0.2531578145918225,
@@ -533,10 +643,10 @@
    "days": 57,
    "drift": -0.0012826366106508777,
    "exposure": 0.25793856520919417,
-   "left": 0.05532107596129883,
+   "left": 0.05583327847283457,
    "net": -0.0646656374991138,
-   "timing": 0.069904318390547,
-   "twins_beaten": 0.674,
+   "timing": 0.07041652090208277,
+   "twins_beaten": 0.648,
    "year": 2021
   },
   {
@@ -545,10 +655,10 @@
    "days": 365,
    "drift": 0.004123568700808223,
    "exposure": 0.39036264496334155,
-   "left": -0.1465281142682987,
+   "left": -0.14582578714285127,
    "net": -0.5171525626727644,
-   "timing": -0.05416311046905887,
-   "twins_beaten": 0.424,
+   "timing": -0.053460783343611644,
+   "twins_beaten": 0.436,
    "year": 2022
   },
   {
@@ -557,10 +667,10 @@
    "days": 365,
    "drift": -0.0026650131797823114,
    "exposure": 0.5381396039814021,
-   "left": -0.2508485275999571,
+   "left": -0.2491224042979343,
    "net": 0.18933606373866207,
-   "timing": -0.18831772118948914,
-   "twins_beaten": 0.254,
+   "timing": -0.18659159788746624,
+   "twins_beaten": 0.256,
    "year": 2023
   },
   {
@@ -569,10 +679,10 @@
    "days": 366,
    "drift": -0.008591319466793064,
    "exposure": 0.5374995809275002,
-   "left": -0.29955273082240186,
+   "left": -0.3009387606852174,
    "net": 0.014998057931074005,
-   "timing": -0.1975023914380274,
-   "twins_beaten": 0.301,
+   "timing": -0.19888842130084294,
+   "twins_beaten": 0.3,
    "year": 2024
   },
   {
@@ -581,22 +691,22 @@
    "days": 365,
    "drift": 0.013149999034489858,
    "exposure": 0.48850876206605576,
-   "left": -0.5425180071419846,
+   "left": -0.5338276852090504,
    "net": -0.5516899965436087,
-   "timing": -0.45649322465841236,
-   "twins_beaten": 0.094,
+   "timing": -0.4478029027254782,
+   "twins_beaten": 0.104,
    "year": 2025
   },
   {
-   "basket": -0.2754733869195318,
-   "costs": 0.061231095047044645,
-   "days": 302,
-   "drift": 0.005319822723126621,
-   "exposure": 0.5249692397155434,
-   "left": 0.1904748894369231,
-   "net": 0.01528116651592959,
-   "timing": 0.24638616176084113,
-   "twins_beaten": 0.846,
+   "basket": -0.26731459706568705,
+   "costs": 0.062016541482778215,
+   "days": 308,
+   "drift": 0.004975798328396719,
+   "exposure": 0.5305434067016442,
+   "left": 0.2252013151429144,
+   "net": 0.06253608191562487,
+   "timing": 0.2822420582972958,
+   "twins_beaten": 0.884,
    "year": 2026
   }
  ]
