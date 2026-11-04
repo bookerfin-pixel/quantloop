@@ -407,3 +407,4 @@ ts,account,pair,side,qty,price,ref_price,notional,fee,slippage_cost,reason,equit
 1793689845,champion,BTC,sell,0.02739348,76355.852975,76394.05,2091.65253351,2.09165253,1.04634944,exit: 72h return -1.03% fell below exit band -1.0%,8371.2930075,0.00654501,5.0
 1793711438,champion,AVAX,buy,244.4348762,8.59579575,8.5915,2101.11227003,2.10111227,1.05003112,enter long: 72h return +1.53% vs entry band +1.0% and price above 24h EMA; realised vol 75% -> weight 0.25,8401.29793671,1.74591166,5.0
 1793711438,champion,XRP,buy,1645.81035255,1.276643,1.276005,2101.11227003,2.10111227,1.05003112,enter long: 72h return +2.54% vs entry band +1.0% and price above 24h EMA; realised vol 51% -> weight 0.25,8398.14679333,0.0391848,5.0
+1793754642,champion,AVAX,sell,244.4348762,8.37331125,8.3775,2046.72929881,2.0467293,1.02387659,exit: 72h return -1.28% fell below exit band -1.0%,8295.71310843,2.98418383,5.0
