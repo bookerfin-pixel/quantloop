@@ -11387,3 +11387,13 @@ ts,account,pair,price,signal_weight,target_weight,current_weight,action,reason,h
 1793758244,champion,DOGE,0.073942,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -2.08% not above entry band +1.0% and price below 24h EMA,0.223
 1793758244,champion,DOT,0.92815,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -2.17% not above entry band +1.0% and price below 24h EMA,1.616
 1793758244,champion,LTC,53.19,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -4.29% not above entry band +1.0% and price below 24h EMA,1.88
+1793761844,champion,BTC,75845.45,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -2.02% not above entry band +1.0% and price below 24h EMA,0.007
+1793761844,champion,ETH,2231.935,0.25,0.25,0.2534,hold,hold: weight change -0.003 below threshold 0.05 | stay long: 72h return -0.93% vs exit band -1.0% and price within 2.0% of 24h EMA; realised vol 46% -> weight 0.25,0.022
+1793761844,champion,SOL,90.415,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -4.73% not above entry band +1.0% and price below 24h EMA,0.553
+1793761844,champion,ADA,0.184036,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -3.59% not above entry band +1.0% and price below 24h EMA,2.527
+1793761844,champion,AVAX,8.3375,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -1.83% not above entry band +1.0% and price below 24h EMA,2.999
+1793761844,champion,LINK,10.692825,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -7.09% not above entry band +1.0% and price below 24h EMA,4.054
+1793761844,champion,XRP,1.245445,0.25,0.25,0.2484,hold,hold: weight change +0.002 below threshold 0.05 | stay long: 72h return +0.13% vs exit band -1.0% and price within 2.0% of 24h EMA; realised vol 52% -> weight 0.25,0.04
+1793761844,champion,DOGE,0.072719,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -2.97% not above entry band +1.0% and price below 24h EMA,0.007
+1793761844,champion,DOT,0.91605,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -2.77% not above entry band +1.0% and price below 24h EMA,2.729
+1793761844,champion,LTC,52.505,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -5.62% not above entry band +1.0% and price below 24h EMA,0.952
