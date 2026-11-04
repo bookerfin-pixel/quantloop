@@ -1,23 +1,20 @@
 {
  "coinbase": {
-  "coins": 1,
-  "days_added": 1105,
+  "coins": 0,
+  "days_added": 0,
   "failed": [],
   "mismatch": [],
-  "not_listed": 3
+  "not_listed": 1
  },
  "funding": {
-  "days_added": 337,
+  "days_added": 68,
   "failed": [],
   "symbols": 68
  },
  "kraken": {
-  "days_added": 1426,
+  "days_added": 219,
   "failed": [],
-  "joined_today": [
-   "STORJ",
-   "PEAQ"
-  ],
+  "joined_today": [],
   "listed": 219,
   "on_the_list": 220,
   "pairs_read": 219,
@@ -35,12 +32,12 @@
    "USDSUI",
    "USTABLES"
   ],
-  "qualified_today": 183,
+  "qualified_today": 182,
   "quoted": 631,
   "quotes_failed": "",
   "quotes_written": 219,
   "unquoted": [],
-  "usd_pairs": 656
+  "usd_pairs": 657
  },
  "ok": true,
  "probes": {
@@ -55,7 +52,7 @@
    "ok": true
   }
  },
- "ran": 1793690049,
- "ran_utc": "2026-11-03 07:14Z",
+ "ran": 1793775465,
+ "ran_utc": "2026-11-04 06:57Z",
  "settings_not_used": []
 }
