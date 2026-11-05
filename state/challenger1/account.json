@@ -1,26 +1,18 @@
 {
   "cash": 9558.747294107965,
   "created_at": 1789530957,
-  "day": "2026-11-04",
-  "day_open_equity": 9150.094882171541,
-  "equity_rows": 1171,
+  "day": "2026-11-05",
+  "day_open_equity": 9558.747294107965,
+  "equity_rows": 1172,
   "fees_paid": 172.14683881648693,
   "fills_day": {
-    "counts": {
-      "ADA": 1,
-      "BTC": 1,
-      "DOGE": 1,
-      "DOT": 1,
-      "LINK": 3,
-      "LTC": 3,
-      "SOL": 2
-    },
-    "day": "2026-11-04"
+    "counts": {},
+    "day": "2026-11-05"
   },
   "halted_day": "2026-10-08",
   "initial_cash": 10000.0,
-  "last_bar": 1793829600,
-  "last_run_ts": 1793833841,
+  "last_bar": 1793833200,
+  "last_run_ts": 1793837441,
   "marks": {},
   "n_trades": 136,
   "name": "challenger1",
