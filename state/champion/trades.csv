@@ -435,3 +435,5 @@ ts,account,pair,side,qty,price,ref_price,notional,fee,slippage_cost,reason,equit
 1793891446,champion,LTC,sell,16.71304754,53.1883925,53.215,888.94013241,0.88894013,0.44469241,exit: 72h return -1.33% fell below exit band -1.0% and price more than 2.0% below 24h EMA,8024.70555577,2.81875411,5.0
 1793891446,champion,BTC,buy,0.01426567,77074.467975,77035.95,1099.51906843,1.09951907,0.54948479,stay long: 72h return +0.60% vs exit band -1.0% and price within 2.0% of 24h EMA; realised vol 41% -> weight 0.25,8023.05655191,0.00649048,5.0
 1793891446,champion,XRP,buy,871.68384876,1.2616205,1.26099,1099.73420876,1.09973421,0.54959231,stay long: 72h return +2.31% vs exit band -1.0% and price within 2.0% of 24h EMA; realised vol 57% -> weight 0.25,8021.40722539,2.29978033,5.0
+1793895040,champion,BTC,sell,0.0260672,75762.149975,75800.05,1974.90688756,1.97490689,0.98794742,daily halt: equity 7967.06 is down 5.7% from the day's open 8449.69,7964.10030451,0.0065963,5.0
+1793895040,champion,XRP,sell,1592.48778834,1.24647145,1.247095,1984.99056662,1.98499057,0.99299178,daily halt: equity 7967.06 is down 5.7% from the day's open 8449.69,7961.12232216,0.04009318,5.0

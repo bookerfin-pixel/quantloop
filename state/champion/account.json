@@ -1,45 +1,33 @@
 {
-  "cash": 4005.1847654411954,
+  "cash": 7961.12232216336,
   "created_at": 1789530957,
   "day": "2026-11-05",
   "day_open_equity": 8449.693678080266,
-  "equity_rows": 1187,
-  "fees_paid": 623.4237768089619,
+  "equity_rows": 1188,
+  "fees_paid": 627.3836742631382,
   "fills_day": {
     "counts": {
       "ADA": 1,
       "AVAX": 1,
-      "BTC": 1,
+      "BTC": 2,
       "DOGE": 1,
       "DOT": 1,
       "ETH": 1,
       "LINK": 2,
       "LTC": 1,
       "SOL": 1,
-      "XRP": 1
+      "XRP": 2
     },
     "day": "2026-11-05"
   },
-  "halted_day": "2026-10-29",
+  "halted_day": "2026-11-05",
   "initial_cash": 10000.0,
-  "last_bar": 1793887200,
-  "last_run_ts": 1793891446,
-  "marks": {
-    "BTC": [
-      77035.95,
-      1793891446
-    ],
-    "XRP": [
-      1.26099,
-      1793891446
-    ]
-  },
-  "n_trades": 436,
+  "last_bar": 1793890800,
+  "last_run_ts": 1793895040,
+  "marks": {},
+  "n_trades": 438,
   "name": "champion",
-  "positions": {
-    "BTC": 0.026067196987021292,
-    "XRP": 1592.4877883376678
-  },
-  "slippage_paid": 318.8682506434695,
+  "positions": {},
+  "slippage_paid": 320.8491898401556,
   "strategy_sig": "params:\n  ema_exit_buffer: 0.02\n  ema_hours: 24\n  entry_return: 0.01\n  exit_return: -0.01\n  lookback_hours: 72\n  max_weight: 0.25\n  target_vol_annual: 0.3\n  vol_lookback_hours: 168\nstrategy: ts_momentum\n"
 }

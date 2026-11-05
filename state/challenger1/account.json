@@ -1,22 +1,61 @@
 {
-  "cash": 9558.747294107965,
+  "cash": -2.2737367544323206e-13,
   "created_at": 1789530957,
   "day": "2026-11-05",
   "day_open_equity": 9558.747294107965,
-  "equity_rows": 1187,
-  "fees_paid": 172.14683881648693,
+  "equity_rows": 1188,
+  "fees_paid": 181.69603691249893,
   "fills_day": {
-    "counts": {},
+    "counts": {
+      "ADA": 1,
+      "AVAX": 1,
+      "DOGE": 1,
+      "DOT": 1,
+      "LINK": 1,
+      "LTC": 1
+    },
     "day": "2026-11-05"
   },
   "halted_day": "2026-10-08",
   "initial_cash": 10000.0,
-  "last_bar": 1793887200,
-  "last_run_ts": 1793891446,
-  "marks": {},
-  "n_trades": 136,
+  "last_bar": 1793890800,
+  "last_run_ts": 1793895040,
+  "marks": {
+    "ADA": [
+      0.1833245,
+      1793895040
+    ],
+    "AVAX": [
+      8.2405,
+      1793895040
+    ],
+    "DOGE": [
+      0.07192085000000001,
+      1793895040
+    ],
+    "DOT": [
+      0.90515,
+      1793895040
+    ],
+    "LINK": [
+      10.74056,
+      1793895040
+    ],
+    "LTC": [
+      52.120000000000005,
+      1793895040
+    ]
+  },
+  "n_trades": 142,
   "name": "challenger1",
-  "positions": {},
-  "slippage_paid": 89.09082072744678,
+  "positions": {
+    "ADA": 8685.538125217774,
+    "AVAX": 193.23201077914945,
+    "DOGE": 22140.010648172,
+    "DOT": 1758.4524358285892,
+    "LINK": 148.2444072040797,
+    "LTC": 30.36807288838282
+  },
+  "slippage_paid": 94.68508157914194,
   "strategy_sig": "params:\n  entry_z: 2.0\n  exit_z: 0.5\n  max_weight: 0.25\n  target_vol_annual: 0.3\n  vol_lookback_hours: 168\n  window_hours: 240\nstrategy: mean_reversion\n"
 }
