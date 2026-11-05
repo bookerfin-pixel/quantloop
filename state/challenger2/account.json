@@ -1,0 +1,22 @@
+{
+  "cash": 10000.0,
+  "created_at": 1793892317,
+  "day": "2026-11-05",
+  "day_open_equity": 10000.0,
+  "equity_rows": 1,
+  "fees_paid": 0.0,
+  "fills_day": {
+    "counts": {},
+    "day": "2026-11-05"
+  },
+  "halted_day": null,
+  "initial_cash": 10000.0,
+  "last_bar": 1793887200,
+  "last_run_ts": 1793892317,
+  "marks": {},
+  "n_trades": 0,
+  "name": "challenger2",
+  "positions": {},
+  "slippage_paid": 0.0,
+  "strategy_sig": "params: {}\nstrategy: cash\n"
+}

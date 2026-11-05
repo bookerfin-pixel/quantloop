@@ -1,4 +1,4 @@
-# quantloop summary — generated 2026-11-05 15:10Z
+# quantloop summary — generated 2026-11-05 15:25Z
 
 Cost model: fee 10 bps + slippage 5 bps per side (~30 bps per round trip). Pairs: BTC, ETH, SOL, ADA, AVAX, LINK, XRP, DOGE, DOT, LTC. Paper only.
 
@@ -62,7 +62,7 @@ retired by Fin (configs/risk.yaml, retired_champions): the champion's title is c
 params: {"ema_exit_buffer": 0.02, "ema_hours": 24, "entry_return": 0.01, "exit_return": -0.01, "lookback_hours": 72, "max_weight": 0.25, "target_vol_annual": 0.3, "vol_lookback_hours": 168}
 
 - equity 8,021.41 (started 10,000 at 2026-09-16 03:55Z), net -19.79% since start
-- 24h -6.92%, 7d -12.51%, 30d -28.05%, max drawdown -35.86%
+- 24h -6.17%, 7d -12.51%, 30d -28.05%, max drawdown -35.86%
 - fills 436 total, 73 in the last 7d
 - costs 942.29 (fees 623.42 + slippage 318.87); gross pnl -1,036.30; cost coverage -1.10
 - cash 4,005.18; positions: BTC 0.0260672, XRP 1592.49
@@ -118,7 +118,7 @@ last fills:
 params: {"entry_z": 2.0, "exit_z": 0.5, "max_weight": 0.25, "target_vol_annual": 0.3, "vol_lookback_hours": 168, "window_hours": 240}
 
 - equity 9,558.75 (started 10,000 at 2026-09-16 03:55Z), net -4.41% since start
-- 24h -0.16%, 7d +0.09%, 30d -8.07%, max drawdown -15.05%
+- 24h +0.00%, 7d +0.09%, 30d -8.07%, max drawdown -15.05%
 - fills 136 total, 31 in the last 7d
 - costs 261.24 (fees 172.15 + slippage 89.09); gross pnl -180.02; cost coverage -0.69
 - cash 9,558.75; positions: none
@@ -172,7 +172,26 @@ last fills:
 ## challenger2: cash (cash)
 
 params: {}
-no runs yet
+
+- equity 10,000.00 (started 10,000 at 2026-11-05 15:25Z), net +0.00% since start
+- 24h n/a, 7d n/a, 30d n/a, max drawdown 0.00%
+- fills 0 total, 0 in the last 7d
+- costs 0.00 (fees 0.00 + slippage 0.00); gross pnl 0.00; cost coverage n/a
+- cash 10,000.00; positions: none
+- last run 2026-11-05 15:25Z; halted today: False
+
+last decisions (newest last):
+
+- 2026-11-05 15:25Z BTC hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | cash: holds nothing
+- 2026-11-05 15:25Z ETH hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | cash: holds nothing
+- 2026-11-05 15:25Z SOL hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | cash: holds nothing
+- 2026-11-05 15:25Z ADA hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | cash: holds nothing
+- 2026-11-05 15:25Z AVAX hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | cash: holds nothing
+- 2026-11-05 15:25Z LINK hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | cash: holds nothing
+- 2026-11-05 15:25Z XRP hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | cash: holds nothing
+- 2026-11-05 15:25Z DOGE hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | cash: holds nothing
+- 2026-11-05 15:25Z DOT hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | cash: holds nothing
+- 2026-11-05 15:25Z LTC hold target 0.00 (held 0.00) — hold: weight change +0.000 below threshold 0.05 | cash: holds nothing
 
 ## challenger3: swing_reversal (H5)
 
@@ -233,7 +252,7 @@ last fills:
 params: {"entry_z": 2.0, "exit_z": 0.25, "max_weight": 0.25, "ratio_hours": 720, "target_vol_annual": 0.3, "vol_lookback_hours": 168}
 
 - equity 9,409.40 (started 10,000 at 2026-10-13 17:26Z), net -5.91% since start
-- 24h -5.30%, 7d -3.34%, 30d -5.91%, max drawdown -12.71%
+- 24h -4.47%, 7d -3.34%, 30d -5.91%, max drawdown -12.71%
 - fills 30 total, 12 in the last 7d
 - costs 62.94 (fees 40.22 + slippage 22.72); gross pnl -527.66; cost coverage -8.38
 - cash 2,517.83; positions: ADA 12106.8, AVAX 276.724, DOT 2516.14
