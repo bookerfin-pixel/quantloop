@@ -11747,3 +11747,13 @@ ts,account,pair,price,signal_weight,target_weight,current_weight,action,reason,h
 1793887845,champion,DOGE,0.075923,0.25,0.1111,0.1111,hold,hold: weight change +0.000 below threshold 0.05 | stay long: 72h return +0.71% vs exit band -1.0% and price within 2.0% of 24h EMA; realised vol 60% -> weight 0.25,0.007
 1793887845,champion,DOT,0.9406,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -0.28% not above entry band +1.0% and price below 24h EMA,1.063
 1793887845,champion,LTC,55.155,0.25,0.1111,0.1102,hold,hold: weight change +0.001 below threshold 0.05 | stay long: 72h return +0.29% vs exit band -1.0% and price within 2.0% of 24h EMA; realised vol 68% -> weight 0.25,0.907
+1793891446,champion,BTC,77035.95,0.25,0.25,0.1132,buy,stay long: 72h return +0.60% vs exit band -1.0% and price within 2.0% of 24h EMA; realised vol 41% -> weight 0.25,0.006
+1793891446,champion,ETH,2290.46,0.0,0.0,0.111,sell,exit: price more than 2.0% below 24h EMA,0.044
+1793891446,champion,SOL,91.08,0.0,0.0,0.111,sell,exit: 72h return -1.40% fell below exit band -1.0% and price more than 2.0% below 24h EMA,1.098
+1793891446,champion,ADA,0.185781,0.0,0.0,0.1103,sell,exit: price more than 2.0% below 24h EMA,4.064
+1793891446,champion,AVAX,8.3805,0.0,0.0,0.1107,sell,exit: price more than 2.0% below 24h EMA,5.37
+1793891446,champion,LINK,10.93679,0.0,0.0,0.109,sell,exit: 72h return -1.66% fell below exit band -1.0% and price more than 2.0% below 24h EMA,6.556
+1793891446,champion,XRP,1.26099,0.25,0.25,0.1131,buy,stay long: 72h return +2.31% vs exit band -1.0% and price within 2.0% of 24h EMA; realised vol 57% -> weight 0.25,2.3
+1793891446,champion,DOGE,0.072896,0.0,0.0,0.111,sell,exit: 72h return -1.17% fell below exit band -1.0% and price more than 2.0% below 24h EMA,2.785
+1793891446,champion,DOT,0.92335,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -0.67% not above entry band +1.0% and price below 24h EMA,11.372
+1793891446,champion,LTC,53.215,0.0,0.0,0.1107,sell,exit: 72h return -1.33% fell below exit band -1.0% and price more than 2.0% below 24h EMA,2.819
