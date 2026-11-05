@@ -11507,3 +11507,13 @@ ts,account,pair,price,signal_weight,target_weight,current_weight,action,reason,h
 1793844636,challenger2,DOGE,0.077182,0.25,0.25,0.2519,hold,hold: weight change -0.002 below threshold 0.05 | stay long: price 0.07702 still above 72h low 0.07307; realised vol 60% -> weight 0.25,0.006
 1793844636,challenger2,DOT,0.9566,0.25,0.25,0.2463,hold,hold: weight change +0.004 below threshold 0.05 | stay long: price 0.9548 still above 72h low 0.92; realised vol 86% -> weight 0.25,2.091
 1793844636,challenger2,LTC,56.315,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 168h vol not at or below its own 25% percentile over 1440h in the last 72h,0.888
+1793848250,challenger2,BTC,80461.75,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 168h vol not at or below its own 25% percentile over 1440h in the last 72h,0.006
+1793848250,challenger2,ETH,2425.195,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 168h vol not at or below its own 25% percentile over 1440h in the last 72h,0.021
+1793848250,challenger2,SOL,96.155,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 168h vol not at or below its own 25% percentile over 1440h in the last 72h,0.52
+1793848250,challenger2,ADA,0.198194,0.25,0.25,0.2466,hold,hold: weight change +0.003 below threshold 0.05 | stay long: price 0.1982 still above 72h low 0.1849; realised vol 70% -> weight 0.25,1.766
+1793848250,challenger2,AVAX,8.801,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 168h vol not at or below its own 25% percentile over 1440h in the last 72h,3.409
+1793848250,challenger2,LINK,11.460515,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 168h vol not at or below its own 25% percentile over 1440h in the last 72h,2.491
+1793848250,challenger2,XRP,1.305555,0.25,0.25,0.2557,hold,hold: weight change -0.006 below threshold 0.05 | stay long: price 1.305 still above 72h low 1.241; realised vol 55% -> weight 0.25,0.038
+1793848250,challenger2,DOGE,0.077057,0.25,0.25,0.2519,hold,hold: weight change -0.002 below threshold 0.05 | stay long: price 0.07712 still above 72h low 0.07307; realised vol 60% -> weight 0.25,0.123
+1793848250,challenger2,DOT,0.9535,0.25,0.25,0.2458,hold,hold: weight change +0.004 below threshold 0.05 | stay long: price 0.9517 still above 72h low 0.92; realised vol 86% -> weight 0.25,2.098
+1793848250,challenger2,LTC,56.195,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 168h vol not at or below its own 25% percentile over 1440h in the last 72h,0.89
