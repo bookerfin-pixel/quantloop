@@ -234,6 +234,11 @@
   "result": "added 1 days; closes differ by 0.25% at the median and 0.73% at the ninth decile over 31 days",
   "want_from": 1633651200
  },
+ "CLANKER": {
+  "at": 1793863374,
+  "result": "not used: closes differ by 2.41% at the median and 9.12% at the ninth decile over 31 days",
+  "want_from": 1636156800
+ },
  "COMP": {
   "at": 1791680427,
   "result": "added 1105 days; closes differ by 0.13% at the median and 0.54% at the ninth decile over 31 days",
@@ -363,6 +368,11 @@
   "at": 1792905418,
   "result": "not listed",
   "want_from": 1635206400
+ },
+ "FORTH": {
+  "at": 1793863374,
+  "result": "added 1105 days; closes differ by 0.18% at the median and 1.00% at the ninth decile over 31 days",
+  "want_from": 1636156800
  },
  "G": {
   "at": 1793515806,
