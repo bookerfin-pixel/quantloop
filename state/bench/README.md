@@ -1,12 +1,11 @@
 # The bench's league table
 
-Last changed on 2026-11-04 at 10:25 UTC. The bench workflow (`python -m bot.bench --all --save`) writes it again only when a reading or a line under `Not read` changes; each row says the day it was read on. bot/bench.py says how each figure is made.
+Last changed on 2026-11-06 at 01:59 UTC. The bench workflow (`python -m bot.bench --all --save`) writes it again only when a reading or a line under `Not read` changes; each row says the day it was read on. bot/bench.py says how each figure is made.
 
 ```
 config                         days      net  timing/yr  run/yr  costs/yr  left/yr      t  twins  luck  last 365     read on
 H0 ts_momentum (champion)     1,849   -93.9%      +7.1%   +0.5%     58.2%   -50.5%   -3.4    70%   30%       20%  2026-11-04
 H1 mean_reversion             1,846   -88.8%     -22.0%   -0.1%     16.8%   -38.9%   -2.8     5%   95%       70%  2026-11-04
-H2 vol_breakout               1,789   +24.4%     +15.5%   +1.0%     10.5%    +6.0%   +0.5    90%   11%       49%  2026-11-04
 H5 swing_reversal             1,836   +73.7%     +15.4%   +0.8%      3.9%   +12.4%   +1.6    99%    2%       14%  2026-11-04
 H6 relative_reversion         1,826   -74.0%     -10.7%   +0.2%      8.5%   -19.0%   -1.3    28%   72%       86%  2026-11-04
 Each config is read from the first hour it could decide to the end of the history on file when it was read; days is how long that is. Over the first row's 1,849 days the basket made -53.5%. net: what the config made after costs. timing/yr: the book as it last traded each pair, less its average twin, before costs, a year. run/yr: what letting positions run between trades added, which a twin does not do. costs/yr: what its fills took. left/yr: timing plus run less costs. t: of what is left, day by day; under about 2 either way cannot be told from noise. twins: the share of its twins it beats before costs (a book with no timing beats about half), over the whole run and over the last 365 days. luck: how often a book with no timing does as well among its twins as this one did; over 10%, it cannot be told from luck. n/a: the book could not be set against twins. In sample, all of it.
@@ -44,23 +43,6 @@ bench: H1 (mean_reversion), 1,846 days from 2021-10-16 to 2026-11-04, 10 pairs
   had a test begun on each day from a year into the run (1,362 windows of 120 days, which overlap: about 12 fit end to end): its daily skill t, as the live rule takes it, was 1.0 or more at day 120 in 1% of them (the middle one: -0.6), and it had all three counts a promotion asks for (a trade of its own by day 60, 30 fills, that t) in 1%; a fast pass at day 60 in 2%
   Reading: no sign of timing. Before costs, most of its own twins did better: the same positions, taken at other times.
   Bench: timing -22.0% a year before costs over 1,846 days, which beats 5% of its twins (70% of them over the last 365 days), and a book with no timing does as well 95% of the time; letting positions run took 0.1% and costs took 16.8% a year, so -38.9% is left (Sharpe -1.23, t -2.8); ahead after costs in 0 of 6 years; nearby settings beat 2%, 4%, 4%, 5%, 6%, 6% of their twins; halves of the coins 2%, 3%, 7%, 12%; on markets where the past says nothing 0 of its 4 books read as timing and they beat 63% of their twins on average. In sample.
-```
-
-```
-bench: H2 (vol_breakout), 1,789 days from 2021-12-12 to 2026-11-04, 10 pairs
-  what it made: +24.4% after costs, with 0.31 of its equity invested on average. The basket (the pairs in equal parts) made -51.4%, and the middle one of its twins -47.7% after the same costs
-  twins: before costs it beats 90% of 1,000 twins over the whole run and 49% over the last 365 days. A twin is the same book slid 30 days or more later: the same positions on the same coins for as long, with nothing left of when they were taken. A book with no timing beats about half. Twins slid a few days apart are nearly one book: these are worth about 154 separate ones, and among that many a book with no timing does as well as this about 11% of the time. No twin holds what the book took in the 180 days after the hour in hand: the 90 days of candles a strategy is handed, and then the longest it was in any one pair (29 days, XRP) or as long again as the candles, whichever is longer
-  what the timing is worth: +15.5% a year before costs, the book as it last traded each pair less its average twin. Letting positions run between trades, which a twin does not, added 1.0%. Costs take 10.5% a year, so +6.0% a year is left: a yearly Sharpe ratio of +0.21 and a t of +0.5, where a t under about 2 either way cannot be told from noise. At double costs -4.6% is left
-  by year (timing before costs, what is left after them, the basket, twins beaten): 2022 +21.3%, +10.8%, -76%, 72%; 2023 +10.2%, +0.2%, +140%, 68%; 2024 +21.6%, +15.6%, +85%, 78%; 2025 +16.1%, +5.6%, -39%, 72%; 2026 +7.6%, -1.8%, -27%, 60%
-  its best and worst days: of what is left, its 9 best days carry +12.4% a year and its 9 worst -9.3%
-  half the coins (twins beaten on each half, halved two ways): 88%, 95%, 97%, >99%
-  nearby settings (twins beaten with every number in params moved by up to 25%): 80%, 85%, 86%, 94%, 96%, 98%, against its own 90%
-  the clock: nothing in its code names it, and its targets do not move with it (asked at 24 hours of the history, with the clock moved three ways)
-  null check: on 4 markets made from this history with every hour's direction tossed, where the past says nothing of the hour to come, its books beat 70%, 71%, 83%, 84% of their twins (on average 77%; its own book 90%). On average they beat 77% of their twins, where books with no timing average half and 74% or more comes by luck about one time in twenty: the bench leans toward books like this one, so its own 90% is to be read against 77%, not against half. This reading says less than it seems to
-  under rule 1: about 77 fills in 60 days (a promotion needs 30); it finished a trade of its own in every 60 day window
-  had a test begun on each day from a year into the run (1,305 windows of 120 days, which overlap: about 11 fit end to end): its daily skill t, as the live rule takes it, was 1.0 or more at day 120 in 15% of them (the middle one: +0.1), and it had all three counts a promotion asks for (a trade of its own by day 60, 30 fills, that t) in 15%; a fast pass at day 60 in 1%
-  Reading: cannot be told from luck. A book with no timing at all does as well about 11% of the time.
-  Bench: timing +15.5% a year before costs over 1,789 days, which beats 90% of its twins (49% of them over the last 365 days), and a book with no timing does as well 11% of the time; letting positions run added 1.0% and costs took 10.5% a year, so +6.0% is left (Sharpe +0.21, t +0.5); ahead after costs in 4 of 5 years; nearby settings beat 80%, 85%, 86%, 94%, 96%, 98% of their twins; halves of the coins 88%, 95%, 97%, >99%; on markets where the past says nothing 0 of its 4 books read as timing and they beat 77% of their twins on average (the bench leans toward books like it). In sample.
 ```
 
 ```
