@@ -1,29 +1,25 @@
 {
  "coinbase": {
-  "coins": 1,
-  "days_added": 1105,
+  "coins": 0,
+  "days_added": 0,
   "failed": [],
-  "mismatch": [
-   "CLANKER: closes differ by 2.41% at the median and 9.12% at the ninth decile over 31 days"
-  ],
-  "not_listed": 0
+  "mismatch": [],
+  "not_listed": 1
  },
  "funding": {
-  "days_added": 68,
+  "days_added": 225,
   "failed": [],
-  "symbols": 68
+  "symbols": 70
  },
  "kraken": {
-  "days_added": 1475,
+  "days_added": 692,
   "failed": [],
   "joined_today": [
-   "KOR",
-   "CLANKER",
-   "FORTH"
+   "CCD"
   ],
-  "listed": 222,
-  "on_the_list": 223,
-  "pairs_read": 222,
+  "listed": 223,
+  "on_the_list": 224,
+  "pairs_read": 223,
   "pegged_skipped": [
    "APXUSD",
    "AUSD",
@@ -38,10 +34,10 @@
    "USDSM",
    "USTABLES"
   ],
-  "qualified_today": 197,
+  "qualified_today": 201,
   "quoted": 632,
   "quotes_failed": "",
-  "quotes_written": 222,
+  "quotes_written": 223,
   "unquoted": [],
   "usd_pairs": 657
  },
@@ -58,7 +54,7 @@
    "ok": true
   }
  },
- "ran": 1793863374,
- "ran_utc": "2026-11-05 07:22Z",
+ "ran": 1793949762,
+ "ran_utc": "2026-11-06 07:22Z",
  "settings_not_used": []
 }
