@@ -11917,3 +11917,13 @@ ts,account,pair,price,signal_weight,target_weight,current_weight,action,reason,h
 1793949042,challenger1,DOGE,0.071355,0.25,0.1429,0.1654,hold,"hold: weight change -0.023 below threshold 0.05 | stay long: z -2.18 vs 240h mean (entry -2.0, exit -0.5); vol 53% -> weight 0.25",2.214
 1793949042,challenger1,DOT,0.92205,0.25,0.1429,0.1697,hold,"hold: weight change -0.027 below threshold 0.05 | stay long: z -1.29 vs 240h mean (entry -2.0, exit -0.5); vol 72% -> weight 0.25",0.542
 1793949042,challenger1,LTC,52.15,0.25,0.1429,0.1658,hold,"hold: weight change -0.023 below threshold 0.05 | stay long: z -2.06 vs 240h mean (entry -2.0, exit -0.5); vol 60% -> weight 0.25",1.918
+1793952639,challenger1,BTC,75411.45,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -1.78 not below -2.0,0.007
+1793952639,challenger1,ETH,2222.475,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -1.18 not below -2.0,0.607
+1793952639,challenger1,SOL,89.465,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: z -1.77 not below -2.0,0.559
+1793952639,challenger1,ADA,0.183072,0.25,0.1429,0.1661,hold,"hold: weight change -0.023 below threshold 0.05 | stay long: z -1.72 vs 240h mean (entry -2.0, exit -0.5); vol 66% -> weight 0.25",1.529
+1793952639,challenger1,AVAX,8.2565,0.25,0.1429,0.1666,hold,"hold: weight change -0.024 below threshold 0.05 | stay long: z -1.66 vs 240h mean (entry -2.0, exit -0.5); vol 68% -> weight 0.25",1.817
+1793952639,challenger1,LINK,10.734275,0.25,0.1429,0.1662,hold,"hold: weight change -0.023 below threshold 0.05 | stay long: z -1.90 vs 240h mean (entry -2.0, exit -0.5); vol 70% -> weight 0.25",2.371
+1793952639,challenger1,XRP,1.186095,0.25,0.1429,0.0,none,"waits for cash: the book is fully invested and no position is far enough above its target to trim, so this buy fills when an exit or a bigger drift frees cash | enter long: z -2.57 vs 240h mean (entry -2.0, exit -0.5); vol 51% -> weight 0.25",0.042
+1793952639,challenger1,DOGE,0.071717,0.25,0.1429,0.1659,hold,"hold: weight change -0.023 below threshold 0.05 | stay long: z -2.06 vs 240h mean (entry -2.0, exit -0.5); vol 53% -> weight 0.25",1.827
+1793952639,challenger1,DOT,0.92225,0.25,0.1429,0.1694,hold,"hold: weight change -0.027 below threshold 0.05 | stay long: z -1.34 vs 240h mean (entry -2.0, exit -0.5); vol 71% -> weight 0.25",1.626
+1793952639,challenger1,LTC,52.27,0.25,0.1429,0.1658,hold,"hold: weight change -0.023 below threshold 0.05 | stay long: z -2.01 vs 240h mean (entry -2.0, exit -0.5); vol 60% -> weight 0.25",1.913
