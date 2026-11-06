@@ -5589,3 +5589,13 @@ ts,account,pair,price,signal_weight,target_weight,current_weight,action,reason,h
 1793920237,challenger4,DOGE,0.070311,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | daily halt: equity 9149.82 is down 5.8% from the day's open 9712.37,6.251
 1793920237,challenger4,DOT,0.8979,0.0,0.0,0.2469,sell,daily halt: equity 9149.82 is down 5.8% from the day's open 9712.37,6.682
 1793920237,challenger4,LTC,51.055,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | daily halt: equity 9149.82 is down 5.8% from the day's open 9712.37,2.938
+1793923837,challenger4,BTC,76079.15,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: BTC is the yardstick and is not held,0.007
+1793923837,challenger4,ETH,2237.645,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: ratio to BTC z -0.31 not below -2.0,0.425
+1793923837,challenger4,SOL,89.535,0.25,0.25,0.0,buy,"enter long: ratio to BTC z -2.10 vs 720h mean (entry -2.0, exit -0.25); vol 60% -> weight 0.25",0.558
+1793923837,challenger4,ADA,0.181378,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: ratio to BTC z -1.64 not below -2.0,3.06
+1793923837,challenger4,AVAX,8.192,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: ratio to BTC z -1.30 not below -2.0,1.221
+1793923837,challenger4,LINK,10.716305,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: ratio to BTC z -1.50 not below -2.0,2.347
+1793923837,challenger4,XRP,1.210505,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: ratio to BTC z -1.22 not below -2.0,0.041
+1793923837,challenger4,DOGE,0.071425,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: ratio to BTC z -1.77 not below -2.0,0.322
+1793923837,challenger4,DOT,0.90895,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: ratio to BTC z -1.47 not below -2.0,0.55
+1793923837,challenger4,LTC,51.67,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: ratio to BTC z -1.92 not below -2.0,1.935

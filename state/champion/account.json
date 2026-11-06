@@ -1,29 +1,18 @@
 {
   "cash": 7961.12232216336,
   "created_at": 1789530957,
-  "day": "2026-11-05",
-  "day_open_equity": 8449.693678080266,
-  "equity_rows": 1195,
+  "day": "2026-11-06",
+  "day_open_equity": 7961.12232216336,
+  "equity_rows": 1196,
   "fees_paid": 627.3836742631382,
   "fills_day": {
-    "counts": {
-      "ADA": 1,
-      "AVAX": 1,
-      "BTC": 2,
-      "DOGE": 1,
-      "DOT": 1,
-      "ETH": 1,
-      "LINK": 2,
-      "LTC": 1,
-      "SOL": 1,
-      "XRP": 2
-    },
-    "day": "2026-11-05"
+    "counts": {},
+    "day": "2026-11-06"
   },
   "halted_day": "2026-11-05",
   "initial_cash": 10000.0,
-  "last_bar": 1793916000,
-  "last_run_ts": 1793920237,
+  "last_bar": 1793919600,
+  "last_run_ts": 1793923837,
   "marks": {},
   "n_trades": 438,
   "name": "champion",
