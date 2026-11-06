@@ -5599,3 +5599,13 @@ ts,account,pair,price,signal_weight,target_weight,current_weight,action,reason,h
 1793923837,challenger4,DOGE,0.071425,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: ratio to BTC z -1.77 not below -2.0,0.322
 1793923837,challenger4,DOT,0.90895,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: ratio to BTC z -1.47 not below -2.0,0.55
 1793923837,challenger4,LTC,51.67,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: ratio to BTC z -1.92 not below -2.0,1.935
+1793927443,challenger4,BTC,76129.65,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: BTC is the yardstick and is not held,0.007
+1793927443,challenger4,ETH,2238.125,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: ratio to BTC z -0.26 not below -2.0,0.022
+1793927443,challenger4,SOL,90.125,0.25,0.25,0.2512,hold,"hold: weight change -0.001 below threshold 0.05 | stay long: ratio to BTC z -1.88 vs 720h mean (entry -2.0, exit -0.25); vol 61% -> weight 0.25",0.555
+1793927443,challenger4,ADA,0.184459,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: ratio to BTC z -1.38 not below -2.0,2.927
+1793927443,challenger4,AVAX,8.29,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: ratio to BTC z -1.08 not below -2.0,1.206
+1793927443,challenger4,LINK,10.846295,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: ratio to BTC z -1.11 not below -2.0,0.005
+1793927443,challenger4,XRP,1.217475,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: ratio to BTC z -0.92 not below -2.0,0.041
+1793927443,challenger4,DOGE,0.071984,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: ratio to BTC z -1.37 not below -2.0,0.91
+1793927443,challenger4,DOT,0.92325,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: ratio to BTC z -1.23 not below -2.0,0.542
+1793927443,challenger4,LTC,52.135,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: ratio to BTC z -1.60 not below -2.0,2.877
