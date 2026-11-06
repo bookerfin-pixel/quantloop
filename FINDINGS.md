@@ -35,6 +35,8 @@ says how to condense it first.
 
 - H4, the champion's signal slowed to a 30 day lookback (killed 2026-10-13, day 17.8, early kill on losses; LEDGER Result H4). It lost 15.04% against a basket that lost 7.85%, with 15 finished trades, 0 won and 15 lost (-13.74% of starting equity after costs), average exposure 0.84, daily skill t -2.36 over 18 days. Confidence 5%. Market line: basket -7.85%, BTC -0.70%, max drawdown -14%, a falling window, which is the kind the slow long-only trend follower is weakest in, so the kill says little about trend persistence over a full cycle. What it does say: the in-sample lead (+294 bps per round trip, positive skill in every quarter of the last year) did not carry into the first prospective window; the fast champion lost almost as much (-16.43%) over the same days, so a slower horizon did not buy protection against a fall. One early kill is one data point: do not close slow trend following on it, but the next entry in this family needs a reason this window does not cover (an exit that cuts a fall faster than a 5% band, or a flat-by-construction regime).
 
+- H2, breakout after a volatility squeeze (killed 2026-11-05, day 45.3, early kill on losses; LEDGER Result H2). It lost 16.67% against a basket that lost 14.80%, with 11 finished trades, 0 won and 11 lost (-11.67% of starting equity after costs), 30 fills, average exposure 0.17, daily skill t -1.75 over 45 days. Confidence 4%. Market line: basket -14.80%, BTC -5.26%, max drawdown -24%, a falling window, so a long-only breakout buyer was in the weak regime; but the squeeze was meant to keep it out of falls, and it still bought breakouts that failed (every finished trade lost). The champion lost 30.19% over the same days, so it did less badly, which is not skill (skill -12.44%). The bench's in-sample reading (timing +17.0%, t +0.6) did not carry over. The test began 2026-09-21 after the candle-feed fix (see the ledger note).
+
 ## Calibration
 
 How the ledger's "Expected gross bps per round trip" compared with the
@@ -43,6 +45,7 @@ across several verdicts, the arithmetic behind them needs fixing, not the
 hypotheses.
 
 - H4: expected +294 bps per round trip, realised -516 (15 finished trades, all lost, 17.8 days). Expectation ran far high, and the sign was wrong, on a small sample in a falling window. H3 was voided and is not counted.
+- H2: expected +200 bps per round trip, realised -510 (11 finished trades, all lost, 45.3 days). Expectation ran high and the sign was wrong again, in a falling window; two of two counted verdicts now read about 700 bps below the ledger. Entries written from a plausible mechanism plus the basket's volatility overstate what long-only entries earn in a fall.
 
 ## Open questions
 
