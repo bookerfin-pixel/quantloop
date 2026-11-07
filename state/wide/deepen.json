@@ -124,6 +124,11 @@
   "result": "added 1105 days; closes differ by 0.08% at the median and 0.20% at the ninth decile over 31 days",
   "want_from": 1633651200
  },
+ "AUDX": {
+  "at": 1794033298,
+  "result": "not listed, to be asked once more",
+  "want_from": 1636329600
+ },
  "AVA": {
   "at": 1792113157,
   "result": "not listed",
@@ -225,9 +230,9 @@
   "want_from": 1633824000
  },
  "CCD": {
-  "at": 1793949762,
-  "result": "not listed, to be asked once more",
-  "want_from": 1636243200
+  "at": 1794033298,
+  "result": "not listed",
+  "want_from": 1636329600
  },
  "CFX": {
   "at": 1791767043,
@@ -268,6 +273,11 @@
   "at": 1792559885,
   "result": "added 784 days; closes differ by 0.84% at the median and 1.45% at the ninth decile over 31 days",
   "want_from": 1634860800
+ },
+ "CYBER": {
+  "at": 1794033298,
+  "result": "not listed, to be asked once more",
+  "want_from": 1636329600
  },
  "DASH": {
   "at": 1791378076,
@@ -718,6 +728,11 @@
   "at": 1793515806,
   "result": "added 1088 days; closes differ by 0.47% at the median and 1.28% at the ninth decile over 31 days",
   "want_from": 1635811200
+ },
+ "PROMPT": {
+  "at": 1794033298,
+  "result": "added 0 days; closes differ by 0.12% at the median and 0.41% at the ninth decile over 31 days",
+  "want_from": 1636329600
  },
  "PROS": {
   "at": 1791378076,

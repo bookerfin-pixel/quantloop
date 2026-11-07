@@ -1,25 +1,27 @@
 {
  "coinbase": {
-  "coins": 0,
+  "coins": 1,
   "days_added": 0,
   "failed": [],
   "mismatch": [],
-  "not_listed": 1
+  "not_listed": 3
  },
  "funding": {
-  "days_added": 225,
+  "days_added": 332,
   "failed": [],
-  "symbols": 70
+  "symbols": 74
  },
  "kraken": {
-  "days_added": 692,
+  "days_added": 1749,
   "failed": [],
   "joined_today": [
-   "CCD"
+   "AUDX",
+   "PROMPT",
+   "CYBER"
   ],
-  "listed": 223,
-  "on_the_list": 224,
-  "pairs_read": 223,
+  "listed": 226,
+  "on_the_list": 227,
+  "pairs_read": 226,
   "pegged_skipped": [
    "APXUSD",
    "AUSD",
@@ -27,19 +29,19 @@
    "FIDD",
    "FRNT",
    "OUSD",
-   "SOFID",
    "USAT",
    "USDGO",
    "USDPT",
    "USDSM",
+   "USDSUI",
    "USTABLES"
   ],
-  "qualified_today": 201,
+  "qualified_today": 174,
   "quoted": 632,
   "quotes_failed": "",
-  "quotes_written": 223,
+  "quotes_written": 226,
   "unquoted": [],
-  "usd_pairs": 657
+  "usd_pairs": 656
  },
  "ok": true,
  "probes": {
@@ -54,7 +56,7 @@
    "ok": true
   }
  },
- "ran": 1793949762,
- "ran_utc": "2026-11-06 07:22Z",
+ "ran": 1794033298,
+ "ran_utc": "2026-11-07 06:34Z",
  "settings_not_used": []
 }
