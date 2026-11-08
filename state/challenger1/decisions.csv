@@ -12537,3 +12537,13 @@ ts,account,pair,price,signal_weight,target_weight,current_weight,action,reason,h
 1794172243,challenger1,DOGE,0.070998,0.25,0.1667,0.167,hold,"hold: weight change -0.000 below threshold 0.05 | stay long: z -1.70 vs 240h mean (entry -2.0, exit -0.5); vol 53% -> weight 0.25",0.007
 1794172243,challenger1,DOT,0.8885,0.25,0.1667,0.166,hold,"hold: weight change +0.001 below threshold 0.05 | stay long: z -1.95 vs 240h mean (entry -2.0, exit -0.5); vol 68% -> weight 0.25",3.376
 1794172243,challenger1,LTC,51.445,0.25,0.1667,0.166,hold,"hold: weight change +0.001 below threshold 0.05 | stay long: z -1.72 vs 240h mean (entry -2.0, exit -0.5); vol 57% -> weight 0.25",0.972
+1794175845,challenger1,BTC,74311.95,0.25,0.1,0.0,buy,"enter long: z -2.31 vs 240h mean (entry -2.0, exit -0.5); vol 41% -> weight 0.25",0.007
+1794175845,challenger1,ETH,2119.095,0.25,0.1,0.0,buy,"enter long: z -2.58 vs 240h mean (entry -2.0, exit -0.5); vol 61% -> weight 0.25",1.439
+1794175845,challenger1,SOL,86.355,0.25,0.1,0.0,buy,"enter long: z -2.64 vs 240h mean (entry -2.0, exit -0.5); vol 61% -> weight 0.25",1.737
+1794175845,challenger1,ADA,0.174663,0.25,0.1,0.1661,sell,"stay long: z -3.09 vs 240h mean (entry -2.0, exit -0.5); vol 72% -> weight 0.25",3.836
+1794175845,challenger1,AVAX,7.911,0.25,0.1,0.1674,sell,"stay long: z -3.04 vs 240h mean (entry -2.0, exit -0.5); vol 67% -> weight 0.25",3.792
+1794175845,challenger1,LINK,10.32251,0.25,0.1,0.1676,sell,"stay long: z -2.77 vs 240h mean (entry -2.0, exit -0.5); vol 70% -> weight 0.25",4.931
+1794175845,challenger1,XRP,1.113285,0.25,0.1,0.0,buy,"enter long: z -2.70 vs 240h mean (entry -2.0, exit -0.5); vol 59% -> weight 0.25",2.021
+1794175845,challenger1,DOGE,0.06887,0.25,0.1,0.167,sell,"stay long: z -3.09 vs 240h mean (entry -2.0, exit -0.5); vol 60% -> weight 0.25",3.318
+1794175845,challenger1,DOT,0.85855,0.25,0.1,0.1653,sell,"stay long: z -3.38 vs 240h mean (entry -2.0, exit -0.5); vol 74% -> weight 0.25",7.571
+1794175845,challenger1,LTC,50.12,0.25,0.1,0.1667,sell,"stay long: z -2.77 vs 240h mean (entry -2.0, exit -0.5); vol 62% -> weight 0.25",1.995
