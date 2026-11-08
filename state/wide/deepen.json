@@ -14,6 +14,11 @@
   "result": "added 1105 days; closes differ by 0.04% at the median and 0.26% at the ninth decile over 31 days",
   "want_from": 1633651200
  },
+ "ACT": {
+  "at": 1794120080,
+  "result": "not listed, to be asked once more",
+  "want_from": 1636416000
+ },
  "ACU": {
   "at": 1792213106,
   "result": "not listed",
@@ -125,9 +130,9 @@
   "want_from": 1633651200
  },
  "AUDX": {
-  "at": 1794033298,
-  "result": "not listed, to be asked once more",
-  "want_from": 1636329600
+  "at": 1794120080,
+  "result": "not listed",
+  "want_from": 1636416000
  },
  "AVA": {
   "at": 1792113157,
@@ -275,14 +280,19 @@
   "want_from": 1634860800
  },
  "CYBER": {
-  "at": 1794033298,
-  "result": "not listed, to be asked once more",
-  "want_from": 1636329600
+  "at": 1794120080,
+  "result": "not listed",
+  "want_from": 1636416000
  },
  "DASH": {
   "at": 1791378076,
   "result": "added 1105 days; closes differ by 0.16% at the median and 0.39% at the ninth decile over 31 days",
   "want_from": 1633651200
+ },
+ "DEGEN": {
+  "at": 1794120080,
+  "result": "added 218 days; closes differ by 0.37% at the median and 2.00% at the ninth decile over 31 days",
+  "want_from": 1636416000
  },
  "DNA": {
   "at": 1793341532,
@@ -503,6 +513,11 @@
   "at": 1792905418,
   "result": "added 0 days; closes differ by 0.12% at the median and 0.53% at the ninth decile over 31 days",
   "want_from": 1635206400
+ },
+ "KMNO": {
+  "at": 1794120080,
+  "result": "no candles, to be asked once more",
+  "want_from": 1636416000
  },
  "KNTQ": {
   "at": 1792559885,
