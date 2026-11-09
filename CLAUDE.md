@@ -206,7 +206,19 @@ can read it with `gh pr list --state closed`.
   `python -m bot.wide` prints what the collector last did and only reads.
   Never run it with `--collect`: that writes state/, and the gate refuses a
   pull request that changes state/.
-- A third job (`bot/bench.py`, protected) takes a reading of every config in
+- `state/wide/binance/` holds, beside that, the daily candles of every pair
+  Binance has quoted in USDT since January 2018, the delisted ones with the
+  rest, written once a month by a job of its own (`bot/binance.py`,
+  protected). Its coins are not survivors: `from bot import binance; df =
+  binance.load()` gives every candle, `binance.panel("close", df)` the coins
+  side by side, and `binance.listing(50, df)` which were the 50 most traded
+  on each day as it began. That makes it the place to try a lead found on
+  the Kraken list before it goes in the backlog, and it is still in sample:
+  the rules above hold for it word for word (a lead, never evidence in a
+  ledger entry; every phase of a rhythm; no strategy reads it, and the same
+  test in the gate sees to that). `python -m bot.wide` prints its last run
+  under its own, and its FAILED and STALE lines are passed on like the rest.
+- A further job (`bot/bench.py`, protected) takes a reading of every config in
   use on all the history on file and keeps it under `state/bench/`;
   `state/bench/README.md` is the league table, with each config's whole
   reading under it and, under `Not read`, a line for any config it could not
@@ -491,8 +503,10 @@ If a slot is free:
 - When a proposal merges, the bench job takes its whole reading within a few
   hours. On any run on which `state/bench/README.md` holds the whole reading
   of a test in a slot and FINDINGS has no line yet on that test's whole
-  reading, add one, once for each test, under `## What history says of each
-  idea`: what the quick reading could not say, which is whether the settings
+  reading, or has one that says nothing of its null check (none written
+  before 2026-11-04, when the null check began, does), add one, or add the
+  null check to the line that is there, once for each test, under `## What
+  history says of each idea`: what the quick reading could not say, which is whether the settings
   either side of the idea's own and each half of the coins show the same
   thing, and what its null check says. The null check replays the strategy
   on markets made from the history with every hour's direction tossed, where

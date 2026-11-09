@@ -130,7 +130,10 @@ hypotheses.
   - H2, volatility breakout: made +41.2% over 1,760 days; timing +17.0%, costs 10.5%, left +7.5% (t +0.6); beats
     91% of its twins, luck does as well 9% of the time; 64% over the last 365 days. Ahead of its average twin
     after costs in 5 of 5 years, at 84% to 96% at the settings nearby and 89% to over 99% on the halves. Its
-    weak spot: at double costs nothing is left (-3.1%).
+    weak spot: at double costs nothing is left (-3.1%). Its null check (the whole reading of 2026-11-04,
+    which put its own book at 90%): on the four tossed markets its books beat 70%, 71%, 83% and 84% of
+    their twins, 77% on average, so the bench leans toward books like it and its share reads against about
+    77%, not half. Live it was killed on 2026-11-05 with all 11 finished trades lost (Killed, H2).
   - H5, swing reversal: made +79.2% over 1,807 days; timing +16.2%, costs 3.9%, left +13.2% (t +1.7); beats 99%
     of its twins, luck does as well 2% of the time; 41% over the last 365 days. Its weak spots: ahead after
     costs in only 3 of 6 years, and under half its twins over the last year. It holds 9% of its equity on

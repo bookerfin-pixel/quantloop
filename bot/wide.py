@@ -950,10 +950,22 @@ def panel(column: str = "close", min_days: int = 0) -> pd.DataFrame:
     return frame
 
 
+def binance_lines() -> list[str]:
+    """The Binance history's report (bot/binance.py, its own job), printed under this one so that whoever
+    reads this report for lines that begin FAILED or STALE reads those too."""
+    try:
+        from . import binance
+        lines = binance.summary_lines()
+    except Exception as e:  # noqa: BLE001 - this report must come out whatever the other one does
+        lines = [f"FAILED: Binance history: its report could not be made ({type(e).__name__})"]
+    return [_flat(ln) for ln in lines]
+
+
 def main(argv: list[str] | None = None) -> int:
     argv = sys.argv[1:] if argv is None else argv
     if "--collect" not in argv:
         print(summary())
+        print("\n".join(binance_lines()))
         return 0
     done = ran_today()
     if done and "--again" not in argv:

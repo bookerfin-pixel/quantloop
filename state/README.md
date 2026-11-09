@@ -104,3 +104,61 @@ From the day after `since` a coin is on the list whatever becomes of it, and
 that is where a study with no hindsight starts. Second, a quote is one
 reading a day, taken about 00:40 UTC (12:40 when the first run of the day
 was dropped; `time` says when); spreads at other hours can be wider.
+
+## wide/binance/
+
+The daily candles of every pair Binance has quoted in USDT since January
+2018, the delisted ones with the rest, copied from Binance's public archive
+by a job of its own (bot/binance.py, .github/workflows/binance.yml). It is
+there for the first of the two things above: a study on it can take the
+coins as they were on each day, the ones that later died among them, so a
+rule that buys what went up is measured on what it would have bought and
+not on the coins that happened to survive. Read by no account and by nothing
+in the hourly loop. `python -m bot.binance` says what its last run did, and
+`python -m bot.wide` prints the same lines under its own.
+
+    months/<YYYY-MM>.csv.gz  every pair's daily candles for that month: symbol, day,
+                             open, high, low, close, volume (in coins), quote_volume
+                             (in USDT, dollars give or take the peg), trades,
+                             taker_buy_quote_volume. Prices as the archive has them,
+                             trailing zeros dropped; volumes rounded, in coins to eight
+                             significant figures and in USDT to the whole dollar. A pair
+                             has a row on each UTC day it
+                             has a candle; a pair that was suspended, or not yet listed,
+                             or delisted, has none. Written once a month and then never
+                             changed: a month is settled when a run on or after the 8th
+                             of the month after finds it whole
+    pairs.json               every USDT pair the archive or Binance's list of symbols
+                             knows of: its coin, its status on Binance today (TRADING,
+                             BREAK for one delisted, or not on the list at all), where it
+                             was found, its first and last month in the archive, and why
+                             it was left out if it was (dollar, money and gold tokens,
+                             wrapped copies, and Binance's leveraged tokens such as BTCUP)
+    status.json              the last run that fetched something: where the pairs came
+                             from, how many it kept and how many of them end before the
+                             newest month, the files that failed, the months settled, and
+                             every place a pair's candles were taken for another coin
+
+Reading it back: `from bot import binance; df = binance.load()` gives the
+candles with a `coin` column, `binance.panel("close", df)` every coin side by
+side, `binance.returns(df)` each coin's return from one close to the next,
+and `binance.listing(50, df)` which coins were the 50 most traded on each
+day, judged on the days before it only (the median of dollars traded over
+the 30 days before, among coins with a candle the day before and 60 days of
+candles behind them, a coin trading at a dollar left out). A pair's candles
+are one coin unless they stop for more than 30 days (delisted and listed
+again, which no holder sat through) or stop and come back above five times
+the price they left at (a token swapped at a ratio): what comes after is
+another coin, named with #2 after it (LUNAUSDT, which Binance gave to a new
+LUNA weeks after the old one collapsed in May 2022, should read as LUNA and
+LUNA#2). A shorter stop is a suspension, and a holder bears what the price
+did meanwhile: returns() books it on the day the coin trades again, and a
+coin that comes back at under a fifth stays one coin and is listed with the
+splits under `breaks` in status.json, to be looked at by hand. A coin whose
+candles end has died or been swapped for another; either way a holder's
+last price is its last close. Two things it cannot show: the days of the
+month under way, and spreads (it has none; the quotes under wide/ are
+Kraken's, and from October 2026 only). And one to mind: Binance quoted only
+a few dozen coins in USDT in 2018, so a top 50 then is every coin that
+qualifies (`binance.listing(50, df).sum(axis=1)` says how many each day). A
+study on it is still in sample.

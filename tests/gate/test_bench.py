@@ -3179,8 +3179,12 @@ def test_the_agent_is_told_to_read_the_bench_before_spending_a_slot():
     # the tests are given the time they take as well: a command gets ten minutes unless told otherwise, and they take over half of it
     assert "`python -m pytest tests -q` with the Bash tool's `timeout` set to 1200000" in manual
     assert "`python -m pytest tests -q` (with the Bash tool's `timeout` set to 1200000" in sheet
-    # the whole reading is asked for by what is on file, not by which night it is, and once for a test, not once a week
-    assert "holds the whole reading of a test in a slot and FINDINGS has no line yet on that test's whole reading, add one, once for each test" in manual
+    # the whole reading is asked for by what is on file, not by which night it is, and once for a test, not once a week;
+    # a line written before the null check began is not yet a line on the whole reading (H1's, H5's and H6's said nothing of it
+    # for a week after it began, 2026-11-04 to 2026-11-10)
+    assert ("holds the whole reading of a test in a slot and FINDINGS has no line yet on that test's whole reading, or has one that "
+            "says nothing of its null check (none written before 2026-11-04, when the null check began, does), add one, or add the "
+            "null check to the line that is there, once for each test") in manual
     # a config that could not be read is Fin's to hear of, the champion's as much as a slot's, on a day with no note too
     assert "If the table has a line under `Not read`, for the champion or for a config in a slot, copy the line to the top of the day's note" in manual
     assert "write the note for that alone" in manual and "for the champion or for a config in a slot" in sheet

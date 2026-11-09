@@ -1,0 +1,88 @@
+name: binance
+
+# The history of every pair Binance has quoted in USDT since January 2018, the delisted ones with the
+# rest (bot/binance.py), under state/wide/binance/: what a study needs to measure a rule on the coins as
+# they were, not on the ones that happened to survive. Research data: the hourly loop never reads it,
+# no account trades on it, and this job writes nowhere else. The archive puts a month's files up in the
+# first days of the month after, so a run fetches only from the 3rd to about the 8th of a month (and
+# once, for the backfill, on its first run); on every other day it asks nothing and commits nothing.
+on:
+  schedule:
+    # 03:17 UTC: clear of the hourly bot at :10, the wide data at 00:40 and the bench at 01:37.
+    - cron: "17 3 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+# Its own group on purpose: it must never queue ahead of, or cancel, an hourly run.
+concurrency:
+  group: binance-history
+  cancel-in-progress: false
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    # The run allows itself 40 minutes (bot/binance.py, BUDGET_S) and leaves what it had no time for to the
+    # next day's run; the first, which fetches the eight years, takes about a quarter of an hour.
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 1
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install
+        run: pip install -q -r requirements.txt
+
+      # A run that has to stop (it found the survivors alone, say) writes status.json saying why and fails;
+      # status.json is committed all the same, so that `python -m bot.wide` and the agent's note say so.
+      # The step's own limit is a backstop to the run's: should a request hang past both, the step is stopped,
+      # the months already written are committed below, and the next run carries on from them.
+      - name: Collect
+        id: collect
+        continue-on-error: true
+        timeout-minutes: 45
+        run: python -m bot.binance --collect
+
+      - name: Summary
+        if: always()
+        run: |
+          echo '## quantloop Binance history' >> "$GITHUB_STEP_SUMMARY"
+          echo "this run's collect step: ${{ steps.collect.outcome }}" >> "$GITHUB_STEP_SUMMARY"
+          echo '```' >> "$GITHUB_STEP_SUMMARY"
+          python -m bot.binance >> "$GITHUB_STEP_SUMMARY"
+          echo '```' >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Commit
+        run: |
+          git config user.name "quantloop-bot"
+          git config user.email "quantloop-bot@users.noreply.github.com"
+          # a file half written when a stopped step was cut off is never committed
+          find state/wide/binance -name '*.tmp' -delete 2>/dev/null || true
+          git add -A state/wide/binance
+          if git diff --cached --quiet; then
+            echo "nothing to commit"
+            exit 0
+          fi
+          git commit -q -m "wide: Binance history $(date -u +%Y-%m-%d)"
+          for attempt in 1 2 3 4 5; do
+            if git pull --rebase -q && git push -q; then
+              echo "pushed on attempt $attempt"
+              exit 0
+            fi
+            sleep $((attempt * 20))
+          done
+          echo "push failed after 5 attempts"
+          exit 1
+
+      - name: Red when the collect step failed
+        if: steps.collect.outcome == 'failure'
+        run: |
+          echo "the collect step failed; status.json says why (python -m bot.binance)"
+          exit 1

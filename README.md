@@ -78,14 +78,17 @@ as plausibility checks; only the prospective window counts.
 ## Layout
 
     bot/            data, strategy (agent editable), paper account, risk, run, backtest, promote, shadow, report,
-                    wide (the research data collector) and bench (what a config shows on history, set
-                    against its own twins), both apart from the hourly loop
+                    wide (the research data collector), binance (the history of every coin Binance has
+                    quoted in USDT, the dead with the living) and bench (what a config shows on history,
+                    set against its own twins), all three apart from the hourly loop
     configs/        risk.yaml (protected), champion.yaml (protected), challenger1..4.yaml (agent edits, one per PR)
     gate/           the three checks the PR must pass
     tests/          gate/ is protected; the rest the agent may extend
     state/          accounts, decisions, trades, equity curves, live candle cache, five year history, summary.md
                     state/wide/ is research data on the coins beyond the ten the bot trades: daily candles,
-                    bid and ask, funding. Collected once a day by its own job (bot/wide.py), read by no account
+                    bid and ask, funding. Collected once a day by its own job (bot/wide.py), read by no account.
+                    state/wide/binance/ is the daily candles of every pair Binance has quoted in USDT since
+                    2018, delisted ones included, a month at a time (bot/binance.py), read by no account
                     state/bench/ is the bench's reading of every config in use, and its league table
                     (README.md there). Taken by its own job (bot/bench.py) when a proposal merges and
                     once a day besides. In sample, all of it
@@ -109,6 +112,7 @@ With Python 3.12 or newer (the version every workflow runs; requirements.txt pin
     python -m bot.slot
     python -m bot.report && cat state/summary.md
     python -m bot.wide                               # what the wide data collector last did (it only reads)
+    python -m bot.binance                            # what the Binance history job last did (it only reads)
     python -m bot.bench --all --quick                # the champion and every slot on five years of history (a quarter of an hour or more)
     python -m bot.bench --config configs/challenger1.yaml   # one config's whole reading (a dozen replays: half an hour or more)
 
@@ -127,8 +131,9 @@ Edit the protected file on `main` directly (or in a PR you merge yourself;
 the gate runs read only on human PRs and will report the protected paths, that
 is expected). To pause the whole thing, disable the workflows in the
 Actions tab. To pause only the agent, disable `agent.yml`; the paper accounts
-keep running. `wide.yml` only gathers research data and `bench.yml` only
-takes readings on history; disabling either stops nothing else.
+keep running. `wide.yml` and `binance.yml` only gather research data and
+`bench.yml` only takes readings on history; disabling any of them stops
+nothing else.
 
 ## Going live
 
@@ -145,7 +150,12 @@ Public repo: Actions minutes are free. The hourly bot job takes about a
 minute; the agent job a few minutes plus the model's usage against Fin's
 subscription (or the API key). The wide data job takes a few minutes once
 a day and adds about 13 MB to the repo in its first days (five years of
-daily candles for about a hundred coins), then about 20 kB a day. The bench
+daily candles for about a hundred coins), then about 20 kB a day. The
+Binance history job asks nothing on most days; its first run fetches some
+30,000 small files from Binance's archive in a quarter of an hour or so and
+adds about 30 MB to the repo (eight years of daily candles of some 700
+pairs, the dead with the living), and after that each month adds about half
+a megabyte, fetched between the 3rd and the 8th of the month after. The bench
 job stops in under a minute when every reading is current. A new proposal
 costs it from a quarter of an hour to three quarters. Once a week, and
 after any change to the code a replay runs (the strategy a config uses,
