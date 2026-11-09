@@ -15,9 +15,9 @@
   "want_from": 1633651200
  },
  "ACT": {
-  "at": 1794120080,
-  "result": "not listed, to be asked once more",
-  "want_from": 1636416000
+  "at": 1794208226,
+  "result": "not listed",
+  "want_from": 1636502400
  },
  "ACU": {
   "at": 1792213106,
@@ -515,9 +515,9 @@
   "want_from": 1635206400
  },
  "KMNO": {
-  "at": 1794120080,
-  "result": "no candles, to be asked once more",
-  "want_from": 1636416000
+  "at": 1794208226,
+  "result": "no candles",
+  "want_from": 1636502400
  },
  "KNTQ": {
   "at": 1792559885,
