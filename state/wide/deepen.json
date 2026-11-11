@@ -4,6 +4,11 @@
   "result": "not listed",
   "want_from": 1633996800
  },
+ "2Z": {
+  "at": 1794380768,
+  "result": "added 0 days; closes differ by 0.09% at the median and 0.33% at the ninth decile over 17 days",
+  "want_from": 1636675200
+ },
  "A": {
   "at": 1792300016,
   "result": "not listed",
@@ -715,14 +720,14 @@
   "want_from": 1634860800
  },
  "PIEVERSE": {
-  "at": 1794296619,
-  "result": "not listed, to be asked once more",
-  "want_from": 1636588800
+  "at": 1794380768,
+  "result": "not listed",
+  "want_from": 1636675200
  },
  "PLAY": {
-  "at": 1794296619,
-  "result": "not listed, to be asked once more",
-  "want_from": 1636588800
+  "at": 1794380768,
+  "result": "not listed",
+  "want_from": 1636675200
  },
  "PLUME": {
   "at": 1791853490,
@@ -748,6 +753,11 @@
   "at": 1791507774,
   "result": "not used: only 2 days in common",
   "want_from": 1633824000
+ },
+ "POPCAT": {
+  "at": 1794380768,
+  "result": "no candles, to be asked once more",
+  "want_from": 1636675200
  },
  "POWR": {
   "at": 1793515806,
