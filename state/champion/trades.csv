@@ -439,3 +439,4 @@ ts,account,pair,side,qty,price,ref_price,notional,fee,slippage_cost,reason,equit
 1793895040,champion,XRP,sell,1592.48778834,1.24647145,1.247095,1984.99056662,1.98499057,0.99299178,daily halt: equity 7967.06 is down 5.7% from the day's open 8449.69,7961.12232216,0.04009318,5.0
 1794229845,champion,AVAX,buy,232.08336982,8.5757139,8.5695,1990.28058054,1.99028058,1.44214285,enter long: 72h return +1.08% vs entry band +1.0% and price above 24h EMA; realised vol 79% -> weight 0.25,7957.68989873,5.25118152,7.25118152
 1794309045,champion,AVAX,sell,232.08336982,8.311842,8.316,1929.04030079,1.9290403,0.96500265,exit: price more than 2.0% below 24h EMA,7895.96272153,1.2025012,5.0
+1794355845,champion,AVAX,buy,234.93738727,8.402199,8.398,1973.99068038,1.97399068,0.98650209,enter long: 72h return +1.78% vs entry band +1.0% and price above 24h EMA; realised vol 90% -> weight 0.25,7893.00222876,1.1907597,5.0
