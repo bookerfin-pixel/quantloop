@@ -244,6 +244,11 @@
   "result": "not listed",
   "want_from": 1636329600
  },
+ "CFG": {
+  "at": 1794469385,
+  "result": "no candles, to be asked once more",
+  "want_from": 1636761600
+ },
  "CFX": {
   "at": 1791767043,
   "result": "not listed",
@@ -755,9 +760,9 @@
   "want_from": 1633824000
  },
  "POPCAT": {
-  "at": 1794380768,
-  "result": "no candles, to be asked once more",
-  "want_from": 1636675200
+  "at": 1794469385,
+  "result": "no candles",
+  "want_from": 1636761600
  },
  "POWR": {
   "at": 1793515806,
