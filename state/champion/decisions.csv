@@ -13527,3 +13527,13 @@ ts,account,pair,price,signal_weight,target_weight,current_weight,action,reason,h
 1794528640,champion,DOGE,0.066424,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -5.08% not above entry band +1.0% and price below 24h EMA,0.008
 1794528640,champion,DOT,0.83555,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -2.67% not above entry band +1.0% and price below 24h EMA,0.598
 1794528640,champion,LTC,50.045,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -2.67% not above entry band +1.0%,0.999
+1794532243,champion,BTC,70787.75,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -5.26% not above entry band +1.0% and price below 24h EMA,0.007
+1794532243,champion,ETH,2005.545,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -5.39% not above entry band +1.0% and price below 24h EMA,0.025
+1794532243,champion,SOL,81.285,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -5.70% not above entry band +1.0% and price below 24h EMA,0.615
+1794532243,champion,ADA,0.174885,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -1.05% not above entry band +1.0%,1.315
+1794532243,champion,AVAX,8.321,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -4.00% not above entry band +1.0% and price below 24h EMA,2.404
+1794532243,champion,LINK,10.100855,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -4.52% not above entry band +1.0%,2.034
+1794532243,champion,XRP,1.03001,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -5.89% not above entry band +1.0% and price below 24h EMA,0.485
+1794532243,champion,DOGE,0.066252,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -4.91% not above entry band +1.0% and price below 24h EMA,0.234
+1794532243,champion,DOT,0.83745,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -1.87% not above entry band +1.0%,0.597
+1794532243,champion,LTC,50.205,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -2.20% not above entry band +1.0%,0.996
