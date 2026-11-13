@@ -7419,3 +7419,13 @@ ts,account,pair,price,signal_weight,target_weight,current_weight,action,reason,h
 1794579045,challenger4,DOGE,0.066005,0.25,0.25,0.2519,hold,"hold: weight change -0.002 below threshold 0.05 | stay long: ratio to BTC z -0.59 vs 720h mean (entry -2.0, exit -0.25); vol 59% -> weight 0.25",0.795
 1794579045,challenger4,DOT,0.84035,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: ratio to BTC z -0.58 not below -2.0,2.975
 1794579045,challenger4,LTC,49.78,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: ratio to BTC z +0.43 not below -2.0,2.009
+1794582646,challenger4,BTC,68637.85,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: BTC is the yardstick and is not held,1.333
+1794582646,challenger4,ETH,1933.52,0.25,0.25,0.2495,hold,"hold: weight change +0.000 below threshold 0.05 | stay long: ratio to BTC z -1.60 vs 720h mean (entry -2.0, exit -0.25); vol 57% -> weight 0.25",1.707
+1794582646,challenger4,SOL,79.88,0.25,0.25,0.2494,hold,"hold: weight change +0.001 below threshold 0.05 | stay long: ratio to BTC z -1.12 vs 720h mean (entry -2.0, exit -0.25); vol 57% -> weight 0.25",1.252
+1794582646,challenger4,ADA,0.171573,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: ratio to BTC z -0.15 not below -2.0,2.943
+1794582646,challenger4,AVAX,8.434,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: ratio to BTC z +2.22 not below -2.0,3.557
+1794582646,challenger4,LINK,9.94064,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: ratio to BTC z +0.31 not below -2.0,2.294
+1794582646,challenger4,XRP,1.026875,0.25,0.25,0.2491,hold,"hold: weight change +0.001 below threshold 0.05 | stay long: ratio to BTC z -1.31 vs 720h mean (entry -2.0, exit -0.25); vol 60% -> weight 0.25",0.049
+1794582646,challenger4,DOGE,0.065199,0.25,0.25,0.252,hold,"hold: weight change -0.002 below threshold 0.05 | stay long: ratio to BTC z -0.36 vs 720h mean (entry -2.0, exit -0.25); vol 59% -> weight 0.25",2.331
+1794582646,challenger4,DOT,0.83135,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: ratio to BTC z -0.57 not below -2.0,0.601
+1794582646,challenger4,LTC,49.36,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: ratio to BTC z +0.72 not below -2.0,2.026
