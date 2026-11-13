@@ -3,7 +3,7 @@
   "created_at": 1789530957,
   "day": "2026-11-13",
   "day_open_equity": 7866.819784226718,
-  "equity_rows": 1380,
+  "equity_rows": 1381,
   "fees_paid": 637.1924612751702,
   "fills_day": {
     "counts": {
@@ -13,12 +13,12 @@
   },
   "halted_day": "2026-11-05",
   "initial_cash": 10000.0,
-  "last_bar": 1794582000,
-  "last_run_ts": 1794586241,
+  "last_bar": 1794585600,
+  "last_run_ts": 1794589851,
   "marks": {
     "AVAX": [
-      8.3725,
-      1794586241
+      8.3205,
+      1794589851
     ]
   },
   "n_trades": 443,
