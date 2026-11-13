@@ -1,22 +1,31 @@
 {
-  "cash": 7866.819784226718,
+  "cash": 5898.148133223982,
   "created_at": 1789530957,
   "day": "2026-11-13",
   "day_open_equity": 7866.819784226718,
-  "equity_rows": 1374,
-  "fees_paid": 635.2257563291136,
+  "equity_rows": 1375,
+  "fees_paid": 637.1924612751702,
   "fills_day": {
-    "counts": {},
+    "counts": {
+      "AVAX": 1
+    },
     "day": "2026-11-13"
   },
   "halted_day": "2026-11-05",
   "initial_cash": 10000.0,
-  "last_bar": 1794560400,
-  "last_run_ts": 1794564646,
-  "marks": {},
-  "n_trades": 442,
+  "last_bar": 1794564000,
+  "last_run_ts": 1794568248,
+  "marks": {
+    "AVAX": [
+      8.405000000000001,
+      1794568248
+    ]
+  },
+  "n_trades": 443,
   "name": "champion",
-  "positions": {},
-  "slippage_paid": 325.2177101212348,
+  "positions": {
+    "AVAX": 233.87532242881286
+  },
+  "slippage_paid": 326.20057116374187,
   "strategy_sig": "params:\n  ema_exit_buffer: 0.02\n  ema_hours: 24\n  entry_return: 0.01\n  exit_return: -0.01\n  lookback_hours: 72\n  max_weight: 0.25\n  target_vol_annual: 0.3\n  vol_lookback_hours: 168\nstrategy: ts_momentum\n"
 }
