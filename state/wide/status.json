@@ -1,10 +1,10 @@
 {
  "coinbase": {
-  "coins": 0,
-  "days_added": 0,
+  "coins": 1,
+  "days_added": 1080,
   "failed": [],
   "mismatch": [],
-  "not_listed": 0
+  "not_listed": 2
  },
  "funding": {
   "days_added": 74,
@@ -12,14 +12,16 @@
   "symbols": 74
  },
  "kraken": {
-  "days_added": 953,
+  "days_added": 2013,
   "failed": [],
   "joined_today": [
-   "CFG"
+   "CLOUD",
+   "ADI",
+   "IMX"
   ],
-  "listed": 234,
-  "on_the_list": 235,
-  "pairs_read": 234,
+  "listed": 237,
+  "on_the_list": 238,
+  "pairs_read": 237,
   "pegged_skipped": [
    "APXUSD",
    "AUSD",
@@ -35,12 +37,12 @@
    "USDSUI",
    "USTABLES"
   ],
-  "qualified_today": 168,
+  "qualified_today": 189,
   "quoted": 632,
   "quotes_failed": "",
-  "quotes_written": 234,
+  "quotes_written": 237,
   "unquoted": [],
-  "usd_pairs": 635
+  "usd_pairs": 636
  },
  "ok": true,
  "probes": {
@@ -55,7 +57,7 @@
    "ok": true
   }
  },
- "ran": 1794469385,
- "ran_utc": "2026-11-12 07:43Z",
+ "ran": 1794554170,
+ "ran_utc": "2026-11-13 07:16Z",
  "settings_not_used": []
 }
