@@ -1,20 +1,18 @@
 {
   "cash": 7802.191174436393,
   "created_at": 1789530957,
-  "day": "2026-11-13",
-  "day_open_equity": 7866.819784226718,
-  "equity_rows": 1387,
+  "day": "2026-11-14",
+  "day_open_equity": 7802.191174436393,
+  "equity_rows": 1388,
   "fees_paid": 639.0984102653729,
   "fills_day": {
-    "counts": {
-      "AVAX": 2
-    },
-    "day": "2026-11-13"
+    "counts": {},
+    "day": "2026-11-14"
   },
   "halted_day": "2026-11-05",
   "initial_cash": 10000.0,
-  "last_bar": 1794607200,
-  "last_run_ts": 1794611446,
+  "last_bar": 1794610800,
+  "last_run_ts": 1794615046,
   "marks": {},
   "n_trades": 444,
   "name": "champion",
