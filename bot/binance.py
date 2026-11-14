@@ -50,9 +50,12 @@ leaves out pairs delisted long ago. The run stops, red, with nothing written
 but status.json, when neither can be read; when fewer than MIN_ENDED of the
 pairs it keeps end before the newest month (a history of survivors, which is
 what this exists to avoid); and when many pairs Binance trades today are not
-in the archive's list (a list that was cut off). A file that cannot be fetched
+in the archive's list (a list that was cut off). A file that cannot be fetched or read
 is named in status.json and asked for again by the next run, and its month is
-not settled until it comes; nor is any month whose pairs came from Binance's
+not settled until it comes (a row with a price that cannot be read is left
+out, a volume that cannot be read is kept as nothing, and two candles for one
+day are made one, all counted; a file most of whose rows cannot be read is
+not read at all); nor is any month whose pairs came from Binance's
 list alone. A run has BUDGET_S seconds, looked at before each file: what it
 had no time for waits for the next run. A run that fails in a way none of
 this foresaw writes status.json saying so.
@@ -65,9 +68,12 @@ after is taken for another coin, named with #2 after it. A shorter stop is a
 suspension, and a holder bears what the price did meanwhile, a fall as much
 as a rise: one that comes back at under a fifth is kept as one coin and
 listed in status.json to be looked at, since a crash in a halt and a swap at
-a ratio look the same from here. (LUNAUSDT, which Binance gave to a new LUNA
-weeks after the old one collapsed in May 2022, should read as LUNA and
-LUNA#2.) panel() puts every coin side by side; returns() gives each coin's
+a ratio can look the same from here. One that comes back at a power of ten
+of where it left (a tenth, a hundredth, a thousand times...) was swapped at
+that ratio, and its earlier candles are put in the new units (redenominated();
+on the first run, all six such places were token splits and merges). LUNAUSDT,
+which Binance gave to a new LUNA weeks after the old one collapsed in May
+2022, reads as LUNA and LUNA#2. panel() puts every coin side by side; returns() gives each coin's
 return from one close to the next, a suspension booked on the day it trades
 again; listing(n) says which coins were the n most traded on each day,
 judged only on the days before it.
@@ -84,6 +90,7 @@ from __future__ import annotations
 import gzip
 import io
 import json
+import math
 import re
 import sys
 import threading
@@ -135,6 +142,9 @@ LONG_GAP_DAYS = 30         # candles that stop for more days than this are anoth
                            # and listed again, which a holder could not have sat through
 JUMP = 5.0                 # ... and so are candles that stop and come back above this many times the price they left at
 FIRST_RUN_BY = "2026-11-24"   # no run on record after this day is reported: the job was put in on 2026-11-10
+TENFOLD_NEAR = 1.25        # a pair that stops and comes back at a power of ten (10, 100, 1000, or a tenth...) of the price
+                           # it left at, give or take this factor, was redenominated: its earlier prices are put in the new
+                           # units (all six such places on the first run were token splits and merges, not crashes)
 LIST_WINDOW = 30           # listing(): days of dollars traded the ranking takes the median of
 LIST_MIN_DAYS = 60         # listing(): days with a candle a coin needs behind it before it can rank
 PEG_BAND = 0.03            # listing(): a median close this near a dollar ...
@@ -394,15 +404,30 @@ def _dollars(text: str) -> str:
     return str(int(_dec(text).quantize(Decimal(1), rounding=ROUND_HALF_EVEN)))
 
 
-def read_zip(blob: bytes, symbol: str, month: str) -> tuple[list[list[str]], int]:
-    """One monthly file of daily candles as rows of COLUMNS. Returns (rows, rows left out because a
-    price in them was not above nothing). Raises ValueError on a file that is not what it should be."""
+def _volume(text: str, kind) -> tuple[str, bool]:
+    """A volume figure, or '' when the archive's figure cannot be one (on 2026-11-14 its BTTUSDT files of
+    January and February 2019 held -61596941261.0955161). Returns (the figure, whether it could be read)."""
+    try:
+        return kind(text), True
+    except ValueError:
+        return "", False
+
+
+def read_zip(blob: bytes, symbol: str, month: str) -> tuple[list[list[str]], dict]:
+    """One monthly file of daily candles as rows of COLUMNS. Returns (rows, counts): `left_out`, rows left
+    out because a price in them could not be read or was not above nothing; `volumes_unknown`, rows kept
+    with a volume that could not be read, written as nothing; `merged`, days the file holds two candles
+    for (AXSUSDT of February 2026 held two for 10 February), made one: the first open, the highest high,
+    the lowest low, the last close and the volumes added, or one dropped when the two are the same. Raises
+    ValueError on a file that is not what it should be, and on one most of whose rows cannot be read."""
     with zipfile.ZipFile(io.BytesIO(blob)) as z:
         names = [n for n in z.namelist() if n.lower().endswith(".csv")]
         if len(names) != 1:
             raise ValueError(f"{len(names)} csv files in the zip")
         text = z.read(names[0]).decode("utf-8-sig")       # a damaged file fails its CRC check here
-    rows, bad, days = [], 0, set()
+    rows, at = [], {}
+    counts = {"left_out": 0, "volumes_unknown": 0, "merged": 0}
+    lines = 0
     for line in text.splitlines():
         f = [x.strip() for x in line.split(",")]
         if not f[0]:
@@ -413,6 +438,7 @@ def read_zip(blob: bytes, symbol: str, month: str) -> tuple[list[list[str]], int
             continue                                       # a header line
         if len(f) < 11:
             raise ValueError(f"{len(f)} fields where a candle has 12")
+        lines += 1
         ts = int(f[0])
         if ts >= 10 ** 14:
             ts //= 1000                                    # microseconds: Binance's spot files from January 2025 on
@@ -421,28 +447,46 @@ def read_zip(blob: bytes, symbol: str, month: str) -> tuple[list[list[str]], int
         day = _utc(ts // 1000).strftime("%Y-%m-%d")
         if day[:7] != month:
             raise ValueError(f"a candle of {day} in the file for {month}")
-        if day in days:
-            raise ValueError(f"two candles for {day}")
-        days.add(day)
-        o, h, lo, c = (_num(x) for x in f[1:5])
-        if min(Decimal(o), Decimal(h), Decimal(lo), Decimal(c)) <= 0:
-            bad += 1
+        try:
+            o, h, lo, c = (_num(x) for x in f[1:5])
+        except ValueError:
+            counts["left_out"] += 1
             continue
-        rows.append([symbol, day, o, h, lo, c, _coins(f[5]), _dollars(f[7]), str(int(_dec(f[8]))), _dollars(f[10])])
-    return rows, bad
+        if min(Decimal(o), Decimal(h), Decimal(lo), Decimal(c)) <= 0:
+            counts["left_out"] += 1
+            continue
+        figures = [_volume(f[5], _coins), _volume(f[7], _dollars), _volume(f[8], lambda x: str(int(_dec(x)))),
+                   _volume(f[10], _dollars)]
+        if not all(ok for _, ok in figures):
+            counts["volumes_unknown"] += 1
+        row = [symbol, day, o, h, lo, c] + [v for v, _ in figures]
+        if day in at:
+            counts["merged"] += 1
+            first = rows[at[day]]
+            if first != row:
+                def added(a: str, b: str) -> str:
+                    return "" if "" in (a, b) else format((Decimal(a) + Decimal(b)).normalize(), "f")
+                rows[at[day]] = [symbol, day, first[2], max(first[3], row[3], key=Decimal), min(first[4], row[4], key=Decimal),
+                                 row[5]] + [added(a, b) for a, b in zip(first[6:], row[6:])]
+            continue
+        at[day] = len(rows)
+        rows.append(row)
+    if lines and counts["left_out"] * 2 > lines:
+        raise ValueError(f"{counts['left_out']} of its {lines} candles have a price that cannot be read")
+    return rows, counts
 
 
-def fetch_month(symbol: str, month: str) -> tuple[list[list[str]], int, str]:
-    """(rows, rows left out, note); a note that is not empty says the file could not be had."""
+def fetch_month(symbol: str, month: str) -> tuple[list[list[str]], dict, str]:
+    """(rows, the reader's counts, note); a note that is not empty says the file could not be had."""
     url = f"{ARCHIVE}/{MONTHLY}{symbol}/1d/{symbol}-1d-{month}.zip"
     status, body, note = get(url)
     if status != 200 or body is None:
-        return [], 0, note or f"http {status}"
+        return [], {}, note or f"http {status}"
     try:
-        rows, bad = read_zip(body, symbol, month)
+        rows, counts = read_zip(body, symbol, month)
     except Exception as e:  # noqa: BLE001 - a bad file is named and asked for again, it never stops the run
-        return [], 0, f"{type(e).__name__}: {e}"[:200]
-    return rows, bad, ""
+        return [], {}, f"{type(e).__name__}: {e}"[:200]
+    return rows, counts, ""
 
 
 def write_month(month: str, rows: list[list[str]]) -> bool:
@@ -566,10 +610,11 @@ def collect(now: int | None = None) -> dict:
 
     def fetch(sym: str, month: str):
         # the time is looked at before each file, so a slow archive costs the files after it and never the run
-        return ([], 0, NO_TIME) if _clock() > deadline else fetch_month(sym, month)
+        return ([], {}, NO_TIME) if _clock() > deadline else fetch_month(sym, month)
 
     # the months, oldest first, each written before the next is begun
-    asked = fetched = dropped = 0
+    asked = fetched = 0
+    read = {"left_out": 0, "volumes_unknown": 0, "merged": 0}
     failed, changed, newly, left, waiting = {}, [], [], [], []
     for i, month in enumerate(todo):
         if _clock() > deadline:
@@ -582,14 +627,15 @@ def collect(now: int | None = None) -> dict:
         held = {r[0] for r in have}
         ask = [s for s in kept if month in months_of[s] and s not in held]
         rows, fails, late = list(have), [], 0
-        for sym, (got, bad, note) in zip(ask, _map(lambda x, m=month: fetch(x, m), ask)):
+        for sym, (got, counts, note) in zip(ask, _map(lambda x, m=month: fetch(x, m), ask)):
             if note == NO_TIME:
                 late += 1
             elif note:
                 fails.append(f"{month} {sym}: {note}")
             else:
                 rows += got
-                dropped += bad
+                for k, v in counts.items():
+                    read[k] = read.get(k, 0) + v
         asked += len(ask) - late
         fetched += len(ask) - late - len(fails)
         if fails:
@@ -631,11 +677,13 @@ def collect(now: int | None = None) -> dict:
     status.update({
         "ok": True,
         "settled": sorted(settled | set(newly)),
-        "files": {"asked": asked, "fetched": fetched, "rows_left_out": dropped,
+        "files": {"asked": asked, "fetched": fetched, "rows_left_out": read["left_out"],
+                  "volumes_unknown": read["volumes_unknown"], "days_merged": read["merged"],
                   "failed": sum(len(v) for v in failed.values()), "failed_first": [x for v in failed.values() for x in v][:10]},
         "months": {**_months_on_disk(), "changed": changed, "settled_this_run": newly, "left_for_next_run": left,
                    "newest_waiting_for": waiting[:20], "newest_waiting_count": len(waiting)},
         "breaks": cut[:80], "breaks_count": len(cut),
+        "redenominated_count": sum(1 for b in cut if b.get("redenominated")),
     })
     _write_json("status.json", status)
     return status
@@ -698,7 +746,8 @@ def summary_lines(now: int | None = None) -> list[str]:
                          f"not read, and are not collected ({', '.join(unread[:3])})")
         if s.get("breaks_count"):
             lines.append(f"- Binance history: {s['breaks_count']} places where a pair stopped and came back far from where it "
-                         f"left, listed under `breaks` in status.json to be looked at by hand")
+                         f"left ({s.get('redenominated_count', 0)} of them taken for a redenomination, the earlier prices put "
+                         f"in the new units), listed under `breaks` in status.json to be looked at by hand")
         due = due_month(now)
         if due >= FIRST_MONTH and due not in settled:
             lines.append(f"STALE: Binance history: {due} is not settled and it is past the {LATE_DAY}th of the month "
@@ -728,11 +777,39 @@ def load(first: str | None = None, last: str | None = None) -> pd.DataFrame:
     pairs = list(df["symbol"].unique())
     everyone = {coin_of(s) for s in pairs}
     df = df[df["symbol"].isin([s for s in pairs if not leave_out(coin_of(s), everyone)])].reset_index(drop=True)
+    df, scaled = redenominated(df)
     df["coin"] = coins(df)
+    df.attrs["redenominated"] = scaled
     month = df["day"].dt.strftime("%Y-%m")
     if first or last:
         df = df[(month >= (first or "")) & (month <= (last or "9999-99"))].reset_index(drop=True)
     return df
+
+
+def redenominated(df: pd.DataFrame) -> tuple[pd.DataFrame, list[dict]]:
+    """Where a pair stopped for a day or more, at most LONG_GAP_DAYS, and came back at a power of ten of the
+    price it left at (within TENFOLD_NEAR), Binance swapped the token at that ratio: BNX came back at a
+    hundredth in February 2023, QUICK and SUN at a thousandth, COCOS at a thousand times. Its earlier candles
+    are put in the new units (prices times the ratio, volumes in coins over it; dollars traded stay as they
+    were), so a holder's value goes on through the swap as it did. Returns the frame and what was done."""
+    df = df.copy()
+    done = []
+    near = math.log10(TENFOLD_NEAR)
+    for sym, g in df.groupby("symbol", sort=False):
+        gap = g["day"].diff().dt.days.fillna(1).to_numpy() - 1
+        with np.errstate(divide="ignore", invalid="ignore"):
+            power = np.log10(g["open"].to_numpy() / g["close"].shift(1).to_numpy())
+        tens = np.round(power)
+        hit = (gap > 0) & (gap <= LONG_GAP_DAYS) & np.isfinite(power) & (tens != 0) & (np.abs(power - tens) <= near)
+        for j in np.flatnonzero(hit)[::-1]:                     # the latest first, so each earlier ratio stacks on it
+            factor = 10.0 ** tens[j]
+            before = g.index[:j]
+            df.loc[before, ["open", "high", "low", "close"]] *= factor
+            df.loc[before, "volume"] /= factor
+            done.append({"pair": sym, "left": g["day"].iloc[j - 1].strftime("%Y-%m-%d"),
+                         "back": g["day"].iloc[j].strftime("%Y-%m-%d"), "missing_days": int(gap[j]),
+                         "ratio": factor, "price_back_over_left": round(float(10.0 ** power[j]), 6)})
+    return df, sorted(done, key=lambda d: (d["pair"], d["back"]))
 
 
 def coins(df: pd.DataFrame) -> pd.Series:
@@ -750,10 +827,11 @@ def coins(df: pd.DataFrame) -> pd.Series:
 
 
 def breaks(df: pd.DataFrame) -> list[dict]:
-    """What to look at by hand: every place a pair's candles were taken for another coin, and every place
-    they stopped and came back at under 1/JUMP of where they left, which stays one coin (a crash in a halt
-    and a swap at a ratio look the same from here, and the first is the one a study must not miss)."""
-    out = []
+    """What to look at by hand: every place a pair's candles were taken for another coin; every place they
+    stopped and came back at under 1/JUMP of where they left, which stays one coin (a crash in a halt and a
+    swap at a ratio can look the same from here, and the first is the one a study must not miss); and,
+    from load(), every place taken for a redenomination, its earlier prices put in the new units."""
+    out = [dict(d, coin=coin_of(d["pair"]), split=False, redenominated=d["ratio"]) for d in df.attrs.get("redenominated", [])]
     for sym, g in df.groupby("symbol", sort=False):
         g = g.reset_index(drop=True)
         gap = g["day"].diff().dt.days.fillna(1).to_numpy() - 1

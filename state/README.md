@@ -152,9 +152,12 @@ the price they left at (a token swapped at a ratio): what comes after is
 another coin, named with #2 after it (LUNAUSDT, which Binance gave to a new
 LUNA weeks after the old one collapsed in May 2022, should read as LUNA and
 LUNA#2). A shorter stop is a suspension, and a holder bears what the price
-did meanwhile: returns() books it on the day the coin trades again, and a
-coin that comes back at under a fifth stays one coin and is listed with the
-splits under `breaks` in status.json, to be looked at by hand. A coin whose
+did meanwhile: returns() books it on the day the coin trades again. One that
+comes back at a power of ten of where it left (a hundredth, a thousand
+times) was a token swapped at that ratio, and the candles before it are put
+in the new units; one that comes back at under a fifth otherwise stays one
+coin. All of them are listed with the splits under `breaks` in status.json,
+to be looked at by hand. A coin whose
 candles end has died or been swapped for another; either way a holder's
 last price is its last close. Two things it cannot show: the days of the
 month under way, and spreads (it has none; the quotes under wide/ are

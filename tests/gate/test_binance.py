@@ -207,9 +207,10 @@ def test_the_rows_are_the_archives_figures_with_their_trailing_zeros_dropped(arc
 def test_microsecond_and_millisecond_stamps_both_give_the_right_day():
     for month, unit in (("2024-12", 1), ("2025-01", 1000)):
         t = days_of(month)[4] * 1000 * unit
-        rows, bad = binance.read_zip(zip_of("XUSDT", month, [[t, "1.50000000", "2", "1", "1.5", "10", t + 1, "15", 3, "5", "7.5", 0]]),
-                                     "XUSDT", month)
-        assert rows == [["XUSDT", f"{month}-05", "1.5", "2", "1", "1.5", "10", "15", "3", "8"]] and bad == 0
+        rows, counts = binance.read_zip(zip_of("XUSDT", month, [[t, "1.50000000", "2", "1", "1.5", "10", t + 1, "15", 3, "5", "7.5", 0]]),
+                                        "XUSDT", month)
+        assert rows == [["XUSDT", f"{month}-05", "1.5", "2", "1", "1.5", "10", "15", "3", "8"]]
+        assert counts == {"left_out": 0, "volumes_unknown": 0, "merged": 0}
 
 
 def test_a_file_that_is_not_what_it_should_be_is_refused():
@@ -218,20 +219,36 @@ def test_a_file_that_is_not_what_it_should_be_is_refused():
     cases = {
         "a candle of another month": [[days_of("2026-06")[0] * 1000] + good[1:]],
         "not at midnight": [[t + 3600_000] + good[1:]],
-        "two candles for one day": [good, good],
         "too few fields": [good[:6]],
-        "not a number": [[t, "x"] + good[2:]],
         "a header among the candles": [good, ["open_time"] + good[1:]],
+        "most prices unreadable": [[t, "x"] + good[2:], [t + 86400_000, "0"] + good[2:], [t + 2 * 86400_000] + good[1:]],
     }
     for name, rows in cases.items():
         with pytest.raises(ValueError):
             binance.read_zip(zip_of("XUSDT", "2026-05", rows), "XUSDT", "2026-05")
-    zero = [t, "0", "0", "0", "0", "0", t, "0", 0, "0", "0", 0]
-    assert binance.read_zip(zip_of("XUSDT", "2026-05", [zero]), "XUSDT", "2026-05") == ([], 1)   # a price of nothing is left out and counted
+    zero = [t + 86400_000, "0", "0", "0", "0", "0", t, "0", 0, "0", "0", 0]
+    rows, counts = binance.read_zip(zip_of("XUSDT", "2026-05", [good, zero, [t + 2 * 86400_000] + good[1:]]), "XUSDT", "2026-05")
+    assert [r[1] for r in rows] == ["2026-05-01", "2026-05-03"] and counts["left_out"] == 1   # a price of nothing: left out, counted
     blob = bytearray(zip_of("XUSDT", "2026-05", [good]))
     blob[60] ^= 0xFF
     with pytest.raises(Exception):
         binance.read_zip(bytes(blob), "XUSDT", "2026-05")
+
+
+def test_a_volume_that_cannot_be_one_is_kept_as_nothing_and_two_candles_for_a_day_are_made_one():
+    t = days_of("2019-01")[0] * 1000
+    # BTTUSDT's file of January 2019, as the archive held it on 2026-11-14: a volume below nothing
+    odd = [t, "0.00050000", "0.00060000", "0.00040000", "0.00055000", "-61596941261.0955161", t, "40000.5", 7, "1", "20000.2", 0]
+    rows, counts = binance.read_zip(zip_of("BTTUSDT", "2019-01", [odd]), "BTTUSDT", "2019-01")
+    assert rows == [["BTTUSDT", "2019-01-01", "0.0005", "0.0006", "0.0004", "0.00055", "", "40000", "7", "20000"]]   # half to even
+    assert counts == {"left_out": 0, "volumes_unknown": 1, "merged": 0}
+    # AXSUSDT's file of February 2026 held two candles for 10 February
+    a = [t, "10", "12", "9", "11", "100", t, "1000", 5, "50", "500", 0]
+    b = [t, "11", "13", "10.5", "12", "40", t, "460", 3, "20", "230", 0]
+    rows, counts = binance.read_zip(zip_of("AXSUSDT", "2019-01", [a, b]), "AXSUSDT", "2019-01")
+    assert rows == [["AXSUSDT", "2019-01-01", "10", "13", "9", "12", "140", "1460", "8", "730"]] and counts["merged"] == 1
+    rows, counts = binance.read_zip(zip_of("AXSUSDT", "2019-01", [a, a]), "AXSUSDT", "2019-01")
+    assert rows == [["AXSUSDT", "2019-01-01", "10", "12", "9", "11", "100", "1000", "5", "500"]] and counts["merged"] == 1
 
 
 def test_volumes_are_rounded_and_prices_are_not():
@@ -442,25 +459,42 @@ def run(symbol, start, prices, skip=()):
     return out
 
 
-def test_a_pair_that_came_back_as_another_coin_is_two_coins():
+def as_loaded(rows):
+    """The frame as load() makes it: redenominations put in the new units first, then the coins."""
+    df, done = binance.redenominated(frame(rows))
+    df["coin"] = binance.coins(df)
+    df.attrs["redenominated"] = done
+    return df
+
+
+def test_a_pair_that_came_back_as_another_coin_is_two_coins_and_one_swapped_at_a_power_of_ten_is_one():
     gap = [f"2022-05-{d:02d}" for d in range(13, 31)]
     away = [d.strftime("%Y-%m-%d") for d in pd.date_range("2021-01-06", periods=40)]
     rows = (run("LUNAUSDT", "2022-05-01", [80.0] * 10 + [0.0002] * 2 + [6.0] * 10, skip=gap)    # 18 days away, then LUNA 2.0
-            + run("COCOSUSDT", "2021-01-01", [0.001] * 5 + [1.2] * 5, skip=["2021-01-06", "2021-01-07", "2021-01-08"])
-            + run("DROPUSDT", "2021-01-01", [10.0] * 5 + [1.0] * 5, skip=["2021-01-06", "2021-01-07"])  # suspended, then far lower
+            + run("COCOSUSDT", "2021-01-01", [0.001] * 5 + [1.1] * 5, skip=["2021-01-06", "2021-01-07", "2021-01-08"])
+            + run("JUMPUSDT", "2021-01-01", [1.0] * 5 + [7.0] * 5, skip=["2021-01-06", "2021-01-07"])  # back at 7 times
+            + run("BNXUSDT", "2021-01-01", [10.0] * 5 + [0.1] * 5, skip=["2021-01-06", "2021-01-07"])  # a hundred to one
+            + run("DROPUSDT", "2021-01-01", [10.0] * 5 + [0.5] * 5, skip=["2021-01-06", "2021-01-07"])  # suspended, then far lower
             + run("CRASHUSDT", "2021-01-01", [10.0] * 5 + [0.05] * 5)                              # no gap at all
             + run("LONGUSDT", "2021-01-01", [3.0] * 10, skip=away)                                 # 40 days away, back where it was
             + run("HALTUSDT", "2021-01-01", [3.0] * 5 + [1.8] * 5, skip=away[:12]))                # 12 days, back 40% lower
-    df = frame(rows)
+    df = as_loaded(rows)
     got = {s: sorted(set(g["coin"])) for s, g in df.groupby("symbol")}
-    assert got == {"LUNAUSDT": ["LUNA", "LUNA#2"], "COCOSUSDT": ["COCOS", "COCOS#2"], "DROPUSDT": ["DROP"], "CRASHUSDT": ["CRASH"],
-                   "LONGUSDT": ["LONG", "LONG#2"], "HALTUSDT": ["HALT"]}
+    assert got == {"LUNAUSDT": ["LUNA", "LUNA#2"], "COCOSUSDT": ["COCOS"], "JUMPUSDT": ["JUMP", "JUMP#2"], "BNXUSDT": ["BNX"],
+                   "DROPUSDT": ["DROP"], "CRASHUSDT": ["CRASH"], "LONGUSDT": ["LONG", "LONG#2"], "HALTUSDT": ["HALT"]}
+    # the swaps' earlier candles are in the new units: COCOS was merged a thousand to one, BNX split a hundred to one
+    cocos, bnx = df[df["symbol"] == "COCOSUSDT"], df[df["symbol"] == "BNXUSDT"]
+    assert cocos["close"].iloc[0] == pytest.approx(1.0) and bnx["close"].iloc[0] == pytest.approx(0.1)
+    assert bnx["volume"].iloc[0] == pytest.approx(100.0) and bnx["quote_volume"].iloc[0] == 1000.0   # a coin became a hundred; dollars stay
     cut = binance.breaks(df)
-    assert [(b["coin"], b["split"], b["left"], b["back"], b["missing_days"]) for b in cut] == [
-        ("COCOS#2", True, "2021-01-05", "2021-01-09", 3), ("DROP", False, "2021-01-05", "2021-01-08", 2),
-        ("LONG#2", True, "2021-01-05", "2021-02-15", 40), ("LUNA#2", True, "2022-05-12", "2022-05-31", 18)]
+    assert sorted((b["coin"], b["split"], b.get("redenominated"), b["left"], b["back"], b["missing_days"]) for b in cut) == [
+        ("BNX", False, 0.01, "2021-01-05", "2021-01-08", 2), ("COCOS", False, 1000.0, "2021-01-05", "2021-01-09", 3),
+        ("DROP", False, None, "2021-01-05", "2021-01-08", 2), ("JUMP#2", True, None, "2021-01-05", "2021-01-08", 2),
+        ("LONG#2", True, None, "2021-01-05", "2021-02-15", 40), ("LUNA#2", True, None, "2022-05-12", "2022-05-31", 18)]
+    r = binance.returns(df)
+    assert r["BNX"].min() > -0.01 and r["COCOS"].max() == pytest.approx(0.1)           # no fake fall, no fake rise
     p = binance.panel("close", df)
-    assert list(p.columns) == ["COCOS", "COCOS#2", "CRASH", "DROP", "HALT", "LONG", "LONG#2", "LUNA", "LUNA#2"]
+    assert list(p.columns) == ["BNX", "COCOS", "CRASH", "DROP", "HALT", "JUMP", "JUMP#2", "LONG", "LONG#2", "LUNA", "LUNA#2"]
     assert (p.index[1:] - p.index[:-1]).max() == pd.Timedelta(days=1)
 
 
