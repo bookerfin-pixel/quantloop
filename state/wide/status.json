@@ -1,33 +1,32 @@
 {
  "coinbase": {
   "coins": 1,
-  "days_added": 1080,
+  "days_added": 0,
   "failed": [],
   "mismatch": [],
-  "not_listed": 2
+  "not_listed": 3
  },
  "funding": {
-  "days_added": 74,
+  "days_added": 73,
   "failed": [],
-  "symbols": 74
+  "symbols": 73
  },
  "kraken": {
-  "days_added": 2013,
+  "days_added": 884,
   "failed": [],
   "joined_today": [
-   "CLOUD",
-   "ADI",
-   "IMX"
+   "PEARL",
+   "BERA"
   ],
-  "listed": 237,
-  "on_the_list": 238,
-  "pairs_read": 237,
+  "listed": 239,
+  "on_the_list": 240,
+  "pairs_read": 239,
   "pegged_skipped": [
-   "APXUSD",
    "AUSD",
    "CASH",
    "FIDD",
    "FRNT",
+   "GAS",
    "OUSD",
    "SOFID",
    "USAT",
@@ -37,10 +36,10 @@
    "USDSUI",
    "USTABLES"
   ],
-  "qualified_today": 189,
+  "qualified_today": 181,
   "quoted": 632,
   "quotes_failed": "",
-  "quotes_written": 237,
+  "quotes_written": 239,
   "unquoted": [],
   "usd_pairs": 636
  },
@@ -57,7 +56,7 @@
    "ok": true
   }
  },
- "ran": 1794554170,
- "ran_utc": "2026-11-13 07:16Z",
+ "ran": 1794639592,
+ "ran_utc": "2026-11-14 06:59Z",
  "settings_not_used": []
 }

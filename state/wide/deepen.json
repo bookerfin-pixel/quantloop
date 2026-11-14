@@ -35,9 +35,9 @@
   "want_from": 1633651200
  },
  "ADI": {
-  "at": 1794554170,
-  "result": "not listed, to be asked once more",
-  "want_from": 1636848000
+  "at": 1794639592,
+  "result": "not listed",
+  "want_from": 1636934400
  },
  "AERO": {
   "at": 1791378076,
@@ -189,6 +189,11 @@
   "result": "no candles",
   "want_from": 1635811200
  },
+ "BERA": {
+  "at": 1794639592,
+  "result": "added 0 days; closes differ by 0.15% at the median and 0.44% at the ninth decile over 31 days",
+  "want_from": 1636934400
+ },
  "BILL": {
   "at": 1791940519,
   "result": "added 0 days; closes differ by 0.12% at the median and 0.35% at the ninth decile over 31 days",
@@ -270,9 +275,9 @@
   "want_from": 1636156800
  },
  "CLOUD": {
-  "at": 1794554170,
-  "result": "not listed, to be asked once more",
-  "want_from": 1636848000
+  "at": 1794639592,
+  "result": "not listed",
+  "want_from": 1636934400
  },
  "COMP": {
   "at": 1791680427,
@@ -548,6 +553,11 @@
   "at": 1792559885,
   "result": "not listed",
   "want_from": 1634860800
+ },
+ "KOR": {
+  "at": 1794639592,
+  "result": "not listed, to be asked once more",
+  "want_from": 1636934400
  },
  "KSM": {
   "at": 1791378076,
