@@ -1,0 +1,8515 @@
+{
+ "0GUSDT": {
+  "binance_status": "TRADING",
+  "coin": "0G",
+  "first_month": "2025-09",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "1000CATUSDT": {
+  "binance_status": "TRADING",
+  "coin": "1000CAT",
+  "first_month": "2024-12",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "1000CHEEMSUSDT": {
+  "binance_status": "TRADING",
+  "coin": "1000CHEEMS",
+  "first_month": "2025-02",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "1000SATSUSDT": {
+  "binance_status": "TRADING",
+  "coin": "1000SATS",
+  "first_month": "2023-12",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "1INCHDOWNUSDT": {
+  "binance_status": "BREAK",
+  "coin": "1INCHDOWN",
+  "first_month": "2021-04",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2021-12",
+  "left_out": "leveraged token"
+ },
+ "1INCHUPUSDT": {
+  "binance_status": "BREAK",
+  "coin": "1INCHUP",
+  "first_month": "2021-04",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2021-12",
+  "left_out": "leveraged token"
+ },
+ "1INCHUSDT": {
+  "binance_status": "TRADING",
+  "coin": "1INCH",
+  "first_month": "2020-12",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "1MBABYDOGEUSDT": {
+  "binance_status": "TRADING",
+  "coin": "1MBABYDOGE",
+  "first_month": "2024-09",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "2ZUSDT": {
+  "binance_status": "TRADING",
+  "coin": "2Z",
+  "first_month": "2025-10",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "A2ZUSDT": {
+  "binance_status": "BREAK",
+  "coin": "A2Z",
+  "first_month": "2025-07",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-04",
+  "left_out": ""
+ },
+ "AAOIBUSDT": {
+  "binance_status": "TRADING",
+  "coin": "AAOIB",
+  "first_month": "2026-07",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "AAPLBUSDT": {
+  "binance_status": "TRADING",
+  "coin": "AAPLB",
+  "first_month": "2026-07",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "AAVEDOWNUSDT": {
+  "binance_status": "BREAK",
+  "coin": "AAVEDOWN",
+  "first_month": "2020-11",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2021-11",
+  "left_out": "leveraged token"
+ },
+ "AAVEUPUSDT": {
+  "binance_status": "BREAK",
+  "coin": "AAVEUP",
+  "first_month": "2020-11",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2021-11",
+  "left_out": "leveraged token"
+ },
+ "AAVEUSDT": {
+  "binance_status": "TRADING",
+  "coin": "AAVE",
+  "first_month": "2020-10",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "ACAUSDT": {
+  "binance_status": "BREAK",
+  "coin": "ACA",
+  "first_month": "2022-01",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-02",
+  "left_out": ""
+ },
+ "ACEUSDT": {
+  "binance_status": "TRADING",
+  "coin": "ACE",
+  "first_month": "2023-12",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "ACHUSDT": {
+  "binance_status": "TRADING",
+  "coin": "ACH",
+  "first_month": "2022-01",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "ACMUSDT": {
+  "binance_status": "TRADING",
+  "coin": "ACM",
+  "first_month": "2021-02",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "ACTUSDT": {
+  "binance_status": "TRADING",
+  "coin": "ACT",
+  "first_month": "2024-11",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "ACXUSDT": {
+  "binance_status": "BREAK",
+  "coin": "ACX",
+  "first_month": "2024-12",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-08",
+  "left_out": ""
+ },
+ "ADADOWNUSDT": {
+  "binance_status": "BREAK",
+  "coin": "ADADOWN",
+  "first_month": "2020-07",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2023-08",
+  "left_out": "leveraged token"
+ },
+ "ADAUPUSDT": {
+  "binance_status": "BREAK",
+  "coin": "ADAUP",
+  "first_month": "2020-07",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2023-08",
+  "left_out": "leveraged token"
+ },
+ "ADAUSDT": {
+  "binance_status": "TRADING",
+  "coin": "ADA",
+  "first_month": "2018-04",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "ADBEBUSDT": {
+  "binance_status": "TRADING",
+  "coin": "ADBEB",
+  "first_month": "2026-09",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "ADXUSDT": {
+  "binance_status": "TRADING",
+  "coin": "ADX",
+  "first_month": "2021-10",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "AERGOUSDT": {
+  "binance_status": "BREAK",
+  "coin": "AERGO",
+  "first_month": "2023-05",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2025-03",
+  "left_out": ""
+ },
+ "AEROUSDT": {
+  "binance_status": "TRADING",
+  "coin": "AERO",
+  "first_month": "2026-07",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "AEURUSDT": {
+  "binance_status": "BREAK",
+  "coin": "AEUR",
+  "first_month": "2023-12",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-07",
+  "left_out": "pegged"
+ },
+ "AEVOUSDT": {
+  "binance_status": "TRADING",
+  "coin": "AEVO",
+  "first_month": "2024-03",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "AGIXUSDT": {
+  "binance_status": "BREAK",
+  "coin": "AGIX",
+  "first_month": "2023-02",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2024-07",
+  "left_out": ""
+ },
+ "AGLDUSDT": {
+  "binance_status": "TRADING",
+  "coin": "AGLD",
+  "first_month": "2021-10",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "AGPUBUSDT": {
+  "binance_status": "TRADING",
+  "coin": "AGPUB",
+  "first_month": "2026-09",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "AIGENSYNUSDT": {
+  "binance_status": "TRADING",
+  "coin": "AIGENSYN",
+  "first_month": "2026-05",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "AIONUSDT": {
+  "binance_status": "BREAK",
+  "coin": "AION",
+  "first_month": "2020-02",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2023-02",
+  "left_out": ""
+ },
+ "AIUSDT": {
+  "binance_status": "TRADING",
+  "coin": "AI",
+  "first_month": "2024-01",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "AIXBTUSDT": {
+  "binance_status": "TRADING",
+  "coin": "AIXBT",
+  "first_month": "2025-01",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "AKROUSDT": {
+  "binance_status": "BREAK",
+  "coin": "AKRO",
+  "first_month": "2020-11",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2024-12",
+  "left_out": ""
+ },
+ "ALABBUSDT": {
+  "binance_status": "TRADING",
+  "coin": "ALABB",
+  "first_month": "2026-08",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "ALCXUSDT": {
+  "binance_status": "BREAK",
+  "coin": "ALCX",
+  "first_month": "2021-11",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-07",
+  "left_out": ""
+ },
+ "ALGOUSDT": {
+  "binance_status": "TRADING",
+  "coin": "ALGO",
+  "first_month": "2019-06",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "ALICEUSDT": {
+  "binance_status": "TRADING",
+  "coin": "ALICE",
+  "first_month": "2021-03",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "ALLOUSDT": {
+  "binance_status": "TRADING",
+  "coin": "ALLO",
+  "first_month": "2025-11",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "ALPACAUSDT": {
+  "binance_status": "BREAK",
+  "coin": "ALPACA",
+  "first_month": "2021-08",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2025-05",
+  "left_out": ""
+ },
+ "ALPHAUSDT": {
+  "binance_status": "BREAK",
+  "coin": "ALPHA",
+  "first_month": "2020-10",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2025-07",
+  "left_out": ""
+ },
+ "ALPINEUSDT": {
+  "binance_status": "TRADING",
+  "coin": "ALPINE",
+  "first_month": "2022-02",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "ALTUSDT": {
+  "binance_status": "TRADING",
+  "coin": "ALT",
+  "first_month": "2024-01",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "AMATBUSDT": {
+  "binance_status": "TRADING",
+  "coin": "AMATB",
+  "first_month": "2026-07",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "AMBUSDT": {
+  "binance_status": "BREAK",
+  "coin": "AMB",
+  "first_month": "2023-03",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2025-02",
+  "left_out": ""
+ },
+ "AMCBUSDT": {
+  "binance_status": "TRADING",
+  "coin": "AMCB",
+  "first_month": "2026-09",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "AMDBUSDT": {
+  "binance_status": "TRADING",
+  "coin": "AMDB",
+  "first_month": "2026-06",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "AMPUSDT": {
+  "binance_status": "TRADING",
+  "coin": "AMP",
+  "first_month": "2021-11",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "AMZNBUSDT": {
+  "binance_status": "TRADING",
+  "coin": "AMZNB",
+  "first_month": "2026-07",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "ANCUSDT": {
+  "binance_status": "BREAK",
+  "coin": "ANC",
+  "first_month": "2022-01",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2022-12",
+  "left_out": ""
+ },
+ "ANIMEUSDT": {
+  "binance_status": "TRADING",
+  "coin": "ANIME",
+  "first_month": "2025-01",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "ANKRUSDT": {
+  "binance_status": "TRADING",
+  "coin": "ANKR",
+  "first_month": "2019-07",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "ANTUSDT": {
+  "binance_status": "BREAK",
+  "coin": "ANT",
+  "first_month": "2020-08",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2024-02",
+  "left_out": ""
+ },
+ "ANYUSDT": {
+  "binance_status": "BREAK",
+  "coin": "ANY",
+  "first_month": "2021-12",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2022-03",
+  "left_out": ""
+ },
+ "APEUSDT": {
+  "binance_status": "TRADING",
+  "coin": "APE",
+  "first_month": "2022-03",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "API3USDT": {
+  "binance_status": "TRADING",
+  "coin": "API3",
+  "first_month": "2022-01",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "APPBUSDT": {
+  "binance_status": "TRADING",
+  "coin": "APPB",
+  "first_month": "2026-10",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "APTUSDT": {
+  "binance_status": "TRADING",
+  "coin": "APT",
+  "first_month": "2022-10",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "ARBUSDT": {
+  "binance_status": "TRADING",
+  "coin": "ARB",
+  "first_month": "2023-03",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "ARDRUSDT": {
+  "binance_status": "BREAK",
+  "coin": "ARDR",
+  "first_month": "2020-05",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-07",
+  "left_out": ""
+ },
+ "ARKMUSDT": {
+  "binance_status": "TRADING",
+  "coin": "ARKM",
+  "first_month": "2023-07",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "ARKUSDT": {
+  "binance_status": "TRADING",
+  "coin": "ARK",
+  "first_month": "2023-09",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "ARMBUSDT": {
+  "binance_status": "TRADING",
+  "coin": "ARMB",
+  "first_month": "2026-07",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "ARPAUSDT": {
+  "binance_status": "TRADING",
+  "coin": "ARPA",
+  "first_month": "2019-11",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "ARUSDT": {
+  "binance_status": "TRADING",
+  "coin": "AR",
+  "first_month": "2021-05",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "ASMLBUSDT": {
+  "binance_status": "TRADING",
+  "coin": "ASMLB",
+  "first_month": "2026-08",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "ASRUSDT": {
+  "binance_status": "TRADING",
+  "coin": "ASR",
+  "first_month": "2020-12",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "ASTERUSDT": {
+  "binance_status": "TRADING",
+  "coin": "ASTER",
+  "first_month": "2025-10",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "ASTRUSDT": {
+  "binance_status": "TRADING",
+  "coin": "ASTR",
+  "first_month": "2022-02",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "ASTSBUSDT": {
+  "binance_status": "TRADING",
+  "coin": "ASTSB",
+  "first_month": "2026-08",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "ASTUSDT": {
+  "binance_status": "BREAK",
+  "coin": "AST",
+  "first_month": "2023-05",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2025-03",
+  "left_out": ""
+ },
+ "ATAUSDT": {
+  "binance_status": "BREAK",
+  "coin": "ATA",
+  "first_month": "2021-06",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-05",
+  "left_out": ""
+ },
+ "ATMUSDT": {
+  "binance_status": "TRADING",
+  "coin": "ATM",
+  "first_month": "2020-12",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "ATOMUSDT": {
+  "binance_status": "TRADING",
+  "coin": "ATOM",
+  "first_month": "2019-04",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "ATUSDT": {
+  "binance_status": "TRADING",
+  "coin": "AT",
+  "first_month": "2025-11",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "AUCTIONUSDT": {
+  "binance_status": "TRADING",
+  "coin": "AUCTION",
+  "first_month": "2021-10",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "AUDIOUSDT": {
+  "binance_status": "TRADING",
+  "coin": "AUDIO",
+  "first_month": "2020-10",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "AUDUSDT": {
+  "binance_status": "BREAK",
+  "coin": "AUD",
+  "first_month": "2020-08",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2023-06",
+  "left_out": "pegged"
+ },
+ "AUSDT": {
+  "binance_status": "TRADING",
+  "coin": "A",
+  "first_month": "2025-05",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "AUTOUSDT": {
+  "binance_status": "BREAK",
+  "coin": "AUTO",
+  "first_month": "2021-04",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2023-04",
+  "left_out": ""
+ },
+ "AVAUSDT": {
+  "binance_status": "TRADING",
+  "coin": "AVA",
+  "first_month": "2020-11",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "AVAXUSDT": {
+  "binance_status": "TRADING",
+  "coin": "AVAX",
+  "first_month": "2020-09",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "AVGOBUSDT": {
+  "binance_status": "TRADING",
+  "coin": "AVGOB",
+  "first_month": "2026-07",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "AVNTUSDT": {
+  "binance_status": "TRADING",
+  "coin": "AVNT",
+  "first_month": "2025-09",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "AWEUSDT": {
+  "binance_status": "TRADING",
+  "coin": "AWE",
+  "first_month": "2025-05",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "AXLUSDT": {
+  "binance_status": "TRADING",
+  "coin": "AXL",
+  "first_month": "2024-03",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "AXSUSDT": {
+  "binance_status": "TRADING",
+  "coin": "AXS",
+  "first_month": "2020-11",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "AXTIBUSDT": {
+  "binance_status": "TRADING",
+  "coin": "AXTIB",
+  "first_month": "2026-07",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "BABABUSDT": {
+  "binance_status": "TRADING",
+  "coin": "BABAB",
+  "first_month": "2026-07",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "BABYUSDT": {
+  "binance_status": "TRADING",
+  "coin": "BABY",
+  "first_month": "2025-04",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "BADGERUSDT": {
+  "binance_status": "BREAK",
+  "coin": "BADGER",
+  "first_month": "2021-03",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2025-04",
+  "left_out": ""
+ },
+ "BAKEUSDT": {
+  "binance_status": "BREAK",
+  "coin": "BAKE",
+  "first_month": "2021-04",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2025-09",
+  "left_out": ""
+ },
+ "BALUSDT": {
+  "binance_status": "BREAK",
+  "coin": "BAL",
+  "first_month": "2020-08",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2025-04",
+  "left_out": ""
+ },
+ "BANANAS31USDT": {
+  "binance_status": "TRADING",
+  "coin": "BANANAS31",
+  "first_month": "2025-03",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "BANANAUSDT": {
+  "binance_status": "TRADING",
+  "coin": "BANANA",
+  "first_month": "2024-07",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "BANDUSDT": {
+  "binance_status": "TRADING",
+  "coin": "BAND",
+  "first_month": "2019-09",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "BANKUSDT": {
+  "binance_status": "TRADING",
+  "coin": "BANK",
+  "first_month": "2025-11",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "BARDUSDT": {
+  "binance_status": "TRADING",
+  "coin": "BARD",
+  "first_month": "2025-09",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "BARUSDT": {
+  "binance_status": "TRADING",
+  "coin": "BAR",
+  "first_month": "2021-04",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "BATUSDT": {
+  "binance_status": "TRADING",
+  "coin": "BAT",
+  "first_month": "2019-03",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "BBBUSDT": {
+  "binance_status": "TRADING",
+  "coin": "BBB",
+  "first_month": "2026-10",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "BBUSDT": {
+  "binance_status": "TRADING",
+  "coin": "BB",
+  "first_month": "2024-05",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "BCCUSDT": {
+  "binance_status": "BREAK",
+  "coin": "BCC",
+  "first_month": "2018-01",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2018-11",
+  "left_out": ""
+ },
+ "BCHABCUSDT": {
+  "binance_status": "BREAK",
+  "coin": "BCHABC",
+  "first_month": "2018-11",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2019-11",
+  "left_out": ""
+ },
+ "BCHDOWNUSDT": {
+  "binance_status": "BREAK",
+  "coin": "BCHDOWN",
+  "first_month": "2020-10",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2022-01",
+  "left_out": "leveraged token"
+ },
+ "BCHSVUSDT": {
+  "binance_status": "BREAK",
+  "coin": "BCHSV",
+  "first_month": "2018-11",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2019-04",
+  "left_out": ""
+ },
+ "BCHUPUSDT": {
+  "binance_status": "BREAK",
+  "coin": "BCHUP",
+  "first_month": "2020-10",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2022-01",
+  "left_out": "leveraged token"
+ },
+ "BCHUSDT": {
+  "binance_status": "TRADING",
+  "coin": "BCH",
+  "first_month": "2019-11",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "BEAMUSDT": {
+  "binance_status": "BREAK",
+  "coin": "BEAM",
+  "first_month": "2019-09",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2023-01",
+  "left_out": ""
+ },
+ "BEAMXUSDT": {
+  "binance_status": "TRADING",
+  "coin": "BEAMX",
+  "first_month": "2023-11",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "BEARUSDT": {
+  "binance_status": "BREAK",
+  "coin": "BEAR",
+  "first_month": "2020-01",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2020-03",
+  "left_out": "leveraged token"
+ },
+ "BEBUSDT": {
+  "binance_status": "TRADING",
+  "coin": "BEB",
+  "first_month": "2026-07",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "BELUSDT": {
+  "binance_status": "TRADING",
+  "coin": "BEL",
+  "first_month": "2020-09",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "BERAUSDT": {
+  "binance_status": "TRADING",
+  "coin": "BERA",
+  "first_month": "2025-02",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "BETAUSDT": {
+  "binance_status": "BREAK",
+  "coin": "BETA",
+  "first_month": "2021-10",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2025-04",
+  "left_out": ""
+ },
+ "BETHUSDT": {
+  "binance_status": "BREAK",
+  "coin": "BETH",
+  "first_month": "2023-03",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2023-10",
+  "left_out": "pegged"
+ },
+ "BFUSDUSDT": {
+  "binance_status": "TRADING",
+  "coin": "BFUSD",
+  "first_month": "2025-08",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": "pegged"
+ },
+ "BICOUSDT": {
+  "binance_status": "TRADING",
+  "coin": "BICO",
+  "first_month": "2021-12",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "BIFIUSDT": {
+  "binance_status": "BREAK",
+  "coin": "BIFI",
+  "first_month": "2022-04",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-04",
+  "left_out": ""
+ },
+ "BIGTIMEUSDT": {
+  "binance_status": "TRADING",
+  "coin": "BIGTIME",
+  "first_month": "2025-04",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "BIOUSDT": {
+  "binance_status": "TRADING",
+  "coin": "BIO",
+  "first_month": "2025-01",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "BKRWUSDT": {
+  "binance_status": "BREAK",
+  "coin": "BKRW",
+  "first_month": "2020-07",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2020-08",
+  "left_out": "pegged"
+ },
+ "BLURUSDT": {
+  "binance_status": "TRADING",
+  "coin": "BLUR",
+  "first_month": "2023-11",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "BLZUSDT": {
+  "binance_status": "BREAK",
+  "coin": "BLZ",
+  "first_month": "2020-08",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2024-12",
+  "left_out": ""
+ },
+ "BMNRBUSDT": {
+  "binance_status": "TRADING",
+  "coin": "BMNRB",
+  "first_month": "2026-08",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "BMTUSDT": {
+  "binance_status": "TRADING",
+  "coin": "BMT",
+  "first_month": "2025-03",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "BNBBEARUSDT": {
+  "binance_status": "BREAK",
+  "coin": "BNBBEAR",
+  "first_month": "2020-03",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2020-03",
+  "left_out": "leveraged token"
+ },
+ "BNBBULLUSDT": {
+  "binance_status": "BREAK",
+  "coin": "BNBBULL",
+  "first_month": "2020-03",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2020-03",
+  "left_out": "leveraged token"
+ },
+ "BNBDOWNUSDT": {
+  "binance_status": "BREAK",
+  "coin": "BNBDOWN",
+  "first_month": "2020-08",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2024-02",
+  "left_out": "leveraged token"
+ },
+ "BNBUPUSDT": {
+  "binance_status": "BREAK",
+  "coin": "BNBUP",
+  "first_month": "2020-08",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2024-02",
+  "left_out": "leveraged token"
+ },
+ "BNBUSDT": {
+  "binance_status": "TRADING",
+  "coin": "BNB",
+  "first_month": "2018-01",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "BNCBUSDT": {
+  "binance_status": "TRADING",
+  "coin": "BNCB",
+  "first_month": "2026-09",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "BNSOLUSDT": {
+  "binance_status": "TRADING",
+  "coin": "BNSOL",
+  "first_month": "2024-10",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": "pegged"
+ },
+ "BNTUSDT": {
+  "binance_status": "TRADING",
+  "coin": "BNT",
+  "first_month": "2020-02",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "BNXUSDT": {
+  "binance_status": "BREAK",
+  "coin": "BNX",
+  "first_month": "2021-11",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2025-03",
+  "left_out": ""
+ },
+ "BOMEUSDT": {
+  "binance_status": "TRADING",
+  "coin": "BOME",
+  "first_month": "2024-03",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "BONDUSDT": {
+  "binance_status": "BREAK",
+  "coin": "BOND",
+  "first_month": "2021-07",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2024-07",
+  "left_out": ""
+ },
+ "BONKUSDT": {
+  "binance_status": "TRADING",
+  "coin": "BONK",
+  "first_month": "2023-12",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "BOTBUSDT": {
+  "binance_status": "TRADING",
+  "coin": "BOTB",
+  "first_month": "2026-10",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "BREVUSDT": {
+  "binance_status": "TRADING",
+  "coin": "BREV",
+  "first_month": "2026-01",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "BRKBBUSDT": {
+  "binance_status": "TRADING",
+  "coin": "BRKBB",
+  "first_month": "2026-10",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "BROCCOLI714USDT": {
+  "binance_status": "TRADING",
+  "coin": "BROCCOLI714",
+  "first_month": "2025-03",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "BSPBUSDT": {
+  "binance_status": "TRADING",
+  "coin": "BSPB",
+  "first_month": "2026-10",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "BSWUSDT": {
+  "binance_status": "BREAK",
+  "coin": "BSW",
+  "first_month": "2022-03",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2025-07",
+  "left_out": ""
+ },
+ "BTCDOWNUSDT": {
+  "binance_status": "BREAK",
+  "coin": "BTCDOWN",
+  "first_month": "2020-05",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2024-02",
+  "left_out": "leveraged token"
+ },
+ "BTCSTUSDT": {
+  "binance_status": "BREAK",
+  "coin": "BTCST",
+  "first_month": "2021-01",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2022-11",
+  "left_out": ""
+ },
+ "BTCUPUSDT": {
+  "binance_status": "BREAK",
+  "coin": "BTCUP",
+  "first_month": "2020-05",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2024-02",
+  "left_out": "leveraged token"
+ },
+ "BTCUSDT": {
+  "binance_status": "TRADING",
+  "coin": "BTC",
+  "first_month": "2018-01",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "BTGUSDT": {
+  "binance_status": "BREAK",
+  "coin": "BTG",
+  "first_month": "2021-04",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2022-10",
+  "left_out": ""
+ },
+ "BTSUSDT": {
+  "binance_status": "BREAK",
+  "coin": "BTS",
+  "first_month": "2020-02",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2023-12",
+  "left_out": ""
+ },
+ "BTTCUSDT": {
+  "binance_status": "TRADING",
+  "coin": "BTTC",
+  "first_month": "2022-01",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "BTTUSDT": {
+  "binance_status": "BREAK",
+  "coin": "BTT",
+  "first_month": "2019-01",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2022-01",
+  "left_out": ""
+ },
+ "BULLUSDT": {
+  "binance_status": "BREAK",
+  "coin": "BULL",
+  "first_month": "2020-01",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2020-03",
+  "left_out": "leveraged token"
+ },
+ "BURGERUSDT": {
+  "binance_status": "BREAK",
+  "coin": "BURGER",
+  "first_month": "2021-04",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2025-03",
+  "left_out": ""
+ },
+ "BUSDUSDT": {
+  "binance_status": "BREAK",
+  "coin": "BUSD",
+  "first_month": "2019-09",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2023-12",
+  "left_out": "pegged"
+ },
+ "BZRXUSDT": {
+  "binance_status": "BREAK",
+  "coin": "BZRX",
+  "first_month": "2020-08",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2021-12",
+  "left_out": ""
+ },
+ "C98USDT": {
+  "binance_status": "TRADING",
+  "coin": "C98",
+  "first_month": "2021-07",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "CAKEUSDT": {
+  "binance_status": "TRADING",
+  "coin": "CAKE",
+  "first_month": "2021-02",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "CATIUSDT": {
+  "binance_status": "TRADING",
+  "coin": "CATI",
+  "first_month": "2024-09",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "CBRSBUSDT": {
+  "binance_status": "TRADING",
+  "coin": "CBRSB",
+  "first_month": "2026-07",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "CELOUSDT": {
+  "binance_status": "TRADING",
+  "coin": "CELO",
+  "first_month": "2021-01",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "CELRUSDT": {
+  "binance_status": "TRADING",
+  "coin": "CELR",
+  "first_month": "2019-03",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "CETUSUSDT": {
+  "binance_status": "TRADING",
+  "coin": "CETUS",
+  "first_month": "2024-11",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "CFGUSDT": {
+  "binance_status": "TRADING",
+  "coin": "CFG",
+  "first_month": "2026-03",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "CFXUSDT": {
+  "binance_status": "TRADING",
+  "coin": "CFX",
+  "first_month": "2021-03",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "CGPTUSDT": {
+  "binance_status": "TRADING",
+  "coin": "CGPT",
+  "first_month": "2025-01",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "CHESSUSDT": {
+  "binance_status": "BREAK",
+  "coin": "CHESS",
+  "first_month": "2021-10",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-02",
+  "left_out": ""
+ },
+ "CHIPUSDT": {
+  "binance_status": "TRADING",
+  "coin": "CHIP",
+  "first_month": "2026-04",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "CHRUSDT": {
+  "binance_status": "TRADING",
+  "coin": "CHR",
+  "first_month": "2020-05",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "CHZUSDT": {
+  "binance_status": "TRADING",
+  "coin": "CHZ",
+  "first_month": "2019-09",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "CITYUSDT": {
+  "binance_status": "TRADING",
+  "coin": "CITY",
+  "first_month": "2021-11",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "CKBUSDT": {
+  "binance_status": "TRADING",
+  "coin": "CKB",
+  "first_month": "2021-01",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "CLVUSDT": {
+  "binance_status": "BREAK",
+  "coin": "CLV",
+  "first_month": "2021-07",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2025-02",
+  "left_out": ""
+ },
+ "COCOSUSDT": {
+  "binance_status": "BREAK",
+  "coin": "COCOS",
+  "first_month": "2019-08",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2023-05",
+  "left_out": ""
+ },
+ "COHRBUSDT": {
+  "binance_status": "TRADING",
+  "coin": "COHRB",
+  "first_month": "2026-08",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "COINBUSDT": {
+  "binance_status": "TRADING",
+  "coin": "COINB",
+  "first_month": "2026-07",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "COMBOUSDT": {
+  "binance_status": "BREAK",
+  "coin": "COMBO",
+  "first_month": "2023-06",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2025-03",
+  "left_out": ""
+ },
+ "COMPUSDT": {
+  "binance_status": "TRADING",
+  "coin": "COMP",
+  "first_month": "2020-06",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "COOKIEUSDT": {
+  "binance_status": "TRADING",
+  "coin": "COOKIE",
+  "first_month": "2025-01",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "COSUSDT": {
+  "binance_status": "BREAK",
+  "coin": "COS",
+  "first_month": "2019-08",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-06",
+  "left_out": ""
+ },
+ "COTIUSDT": {
+  "binance_status": "TRADING",
+  "coin": "COTI",
+  "first_month": "2020-02",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "COWUSDT": {
+  "binance_status": "TRADING",
+  "coin": "COW",
+  "first_month": "2024-11",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "CRCLBUSDT": {
+  "binance_status": "TRADING",
+  "coin": "CRCLB",
+  "first_month": "2026-06",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "CRDOBUSDT": {
+  "binance_status": "TRADING",
+  "coin": "CRDOB",
+  "first_month": "2026-08",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "CREAMUSDT": {
+  "binance_status": "BREAK",
+  "coin": "CREAM",
+  "first_month": "2023-09",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2025-04",
+  "left_out": ""
+ },
+ "CRMBUSDT": {
+  "binance_status": "TRADING",
+  "coin": "CRMB",
+  "first_month": "2026-09",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "CRVUSDT": {
+  "binance_status": "TRADING",
+  "coin": "CRV",
+  "first_month": "2020-08",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "CRWDBUSDT": {
+  "binance_status": "TRADING",
+  "coin": "CRWDB",
+  "first_month": "2026-09",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "CRWVBUSDT": {
+  "binance_status": "TRADING",
+  "coin": "CRWVB",
+  "first_month": "2026-07",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "CTKUSDT": {
+  "binance_status": "TRADING",
+  "coin": "CTK",
+  "first_month": "2020-10",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "CTSIUSDT": {
+  "binance_status": "TRADING",
+  "coin": "CTSI",
+  "first_month": "2020-04",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "CTXCUSDT": {
+  "binance_status": "BREAK",
+  "coin": "CTXC",
+  "first_month": "2019-11",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2025-04",
+  "left_out": ""
+ },
+ "CUSDT": {
+  "binance_status": "TRADING",
+  "coin": "C",
+  "first_month": "2025-07",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "CVCUSDT": {
+  "binance_status": "TRADING",
+  "coin": "CVC",
+  "first_month": "2019-08",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "CVPUSDT": {
+  "binance_status": "BREAK",
+  "coin": "CVP",
+  "first_month": "2021-10",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2024-08",
+  "left_out": ""
+ },
+ "CVXUSDT": {
+  "binance_status": "TRADING",
+  "coin": "CVX",
+  "first_month": "2021-12",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "CYBERUSDT": {
+  "binance_status": "TRADING",
+  "coin": "CYBER",
+  "first_month": "2023-08",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "CYPHBUSDT": {
+  "binance_status": "TRADING",
+  "coin": "CYPHB",
+  "first_month": "2026-09",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "DAIUSDT": {
+  "binance_status": "BREAK",
+  "coin": "DAI",
+  "first_month": "2020-07",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2020-08",
+  "left_out": "pegged"
+ },
+ "DARUSDT": {
+  "binance_status": "BREAK",
+  "coin": "DAR",
+  "first_month": "2021-11",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2025-01",
+  "left_out": ""
+ },
+ "DASHUSDT": {
+  "binance_status": "TRADING",
+  "coin": "DASH",
+  "first_month": "2019-03",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "DATAUSDT": {
+  "binance_status": "BREAK",
+  "coin": "DATA",
+  "first_month": "2020-04",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-02",
+  "left_out": ""
+ },
+ "DCRUSDT": {
+  "binance_status": "TRADING",
+  "coin": "DCR",
+  "first_month": "2020-07",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "DEGOUSDT": {
+  "binance_status": "BREAK",
+  "coin": "DEGO",
+  "first_month": "2021-03",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-04",
+  "left_out": ""
+ },
+ "DELLBUSDT": {
+  "binance_status": "TRADING",
+  "coin": "DELLB",
+  "first_month": "2026-07",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "DENTUSDT": {
+  "binance_status": "BREAK",
+  "coin": "DENT",
+  "first_month": "2019-08",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-04",
+  "left_out": ""
+ },
+ "DEXEUSDT": {
+  "binance_status": "TRADING",
+  "coin": "DEXE",
+  "first_month": "2021-07",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "DFUSDT": {
+  "binance_status": "BREAK",
+  "coin": "DF",
+  "first_month": "2021-09",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-02",
+  "left_out": ""
+ },
+ "DGBUSDT": {
+  "binance_status": "TRADING",
+  "coin": "DGB",
+  "first_month": "2020-07",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "DIAUSDT": {
+  "binance_status": "TRADING",
+  "coin": "DIA",
+  "first_month": "2020-09",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "DJTBUSDT": {
+  "binance_status": "TRADING",
+  "coin": "DJTB",
+  "first_month": "2026-08",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "DNTUSDT": {
+  "binance_status": "BREAK",
+  "coin": "DNT",
+  "first_month": "2020-11",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2022-10",
+  "left_out": ""
+ },
+ "DOCKUSDT": {
+  "binance_status": "BREAK",
+  "coin": "DOCK",
+  "first_month": "2019-08",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2024-07",
+  "left_out": ""
+ },
+ "DODOUSDT": {
+  "binance_status": "TRADING",
+  "coin": "DODO",
+  "first_month": "2021-02",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "DOGEUSDT": {
+  "binance_status": "TRADING",
+  "coin": "DOGE",
+  "first_month": "2019-07",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "DOGSUSDT": {
+  "binance_status": "TRADING",
+  "coin": "DOGS",
+  "first_month": "2024-08",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "DOLOUSDT": {
+  "binance_status": "TRADING",
+  "coin": "DOLO",
+  "first_month": "2025-08",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "DOTDOWNUSDT": {
+  "binance_status": "BREAK",
+  "coin": "DOTDOWN",
+  "first_month": "2020-09",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2022-11",
+  "left_out": "leveraged token"
+ },
+ "DOTUPUSDT": {
+  "binance_status": "BREAK",
+  "coin": "DOTUP",
+  "first_month": "2020-09",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2022-11",
+  "left_out": "leveraged token"
+ },
+ "DOTUSDT": {
+  "binance_status": "TRADING",
+  "coin": "DOT",
+  "first_month": "2020-08",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "DRAMBUSDT": {
+  "binance_status": "TRADING",
+  "coin": "DRAMB",
+  "first_month": "2026-07",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "DREPUSDT": {
+  "binance_status": "BREAK",
+  "coin": "DREP",
+  "first_month": "2020-01",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2024-04",
+  "left_out": ""
+ },
+ "DUSDT": {
+  "binance_status": "BREAK",
+  "coin": "D",
+  "first_month": "2025-01",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-06",
+  "left_out": ""
+ },
+ "DUSKUSDT": {
+  "binance_status": "TRADING",
+  "coin": "DUSK",
+  "first_month": "2019-07",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "DYDXUSDT": {
+  "binance_status": "TRADING",
+  "coin": "DYDX",
+  "first_month": "2021-09",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "DYMUSDT": {
+  "binance_status": "TRADING",
+  "coin": "DYM",
+  "first_month": "2024-02",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "EDENUSDT": {
+  "binance_status": "TRADING",
+  "coin": "EDEN",
+  "first_month": "2025-09",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "EDUUSDT": {
+  "binance_status": "TRADING",
+  "coin": "EDU",
+  "first_month": "2023-04",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "EGLDUSDT": {
+  "binance_status": "TRADING",
+  "coin": "EGLD",
+  "first_month": "2020-09",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "EIGENUSDT": {
+  "binance_status": "TRADING",
+  "coin": "EIGEN",
+  "first_month": "2024-10",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "ELFUSDT": {
+  "binance_status": "BREAK",
+  "coin": "ELF",
+  "first_month": "2021-09",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2025-04",
+  "left_out": ""
+ },
+ "ENAUSDT": {
+  "binance_status": "TRADING",
+  "coin": "ENA",
+  "first_month": "2024-04",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "ENJUSDT": {
+  "binance_status": "TRADING",
+  "coin": "ENJ",
+  "first_month": "2019-04",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "ENSOUSDT": {
+  "binance_status": "TRADING",
+  "coin": "ENSO",
+  "first_month": "2025-10",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "ENSUSDT": {
+  "binance_status": "TRADING",
+  "coin": "ENS",
+  "first_month": "2021-11",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "EOSBEARUSDT": {
+  "binance_status": "BREAK",
+  "coin": "EOSBEAR",
+  "first_month": "2020-02",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2020-03",
+  "left_out": "leveraged token"
+ },
+ "EOSBULLUSDT": {
+  "binance_status": "BREAK",
+  "coin": "EOSBULL",
+  "first_month": "2020-02",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2020-03",
+  "left_out": "leveraged token"
+ },
+ "EOSDOWNUSDT": {
+  "binance_status": "BREAK",
+  "coin": "EOSDOWN",
+  "first_month": "2020-09",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2021-12",
+  "left_out": "leveraged token"
+ },
+ "EOSUPUSDT": {
+  "binance_status": "BREAK",
+  "coin": "EOSUP",
+  "first_month": "2020-09",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2021-12",
+  "left_out": "leveraged token"
+ },
+ "EOSUSDT": {
+  "binance_status": "BREAK",
+  "coin": "EOS",
+  "first_month": "2018-05",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2025-05",
+  "left_out": ""
+ },
+ "EPICUSDT": {
+  "binance_status": "BREAK",
+  "coin": "EPIC",
+  "first_month": "2025-03",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "EPSUSDT": {
+  "binance_status": "BREAK",
+  "coin": "EPS",
+  "first_month": "2021-04",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2022-05",
+  "left_out": ""
+ },
+ "EPXUSDT": {
+  "binance_status": "BREAK",
+  "coin": "EPX",
+  "first_month": "2022-05",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2024-08",
+  "left_out": ""
+ },
+ "ERAUSDT": {
+  "binance_status": "TRADING",
+  "coin": "ERA",
+  "first_month": "2025-07",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "ERDUSDT": {
+  "binance_status": "BREAK",
+  "coin": "ERD",
+  "first_month": "2019-07",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2020-08",
+  "left_out": ""
+ },
+ "ERNUSDT": {
+  "binance_status": "BREAK",
+  "coin": "ERN",
+  "first_month": "2021-06",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2025-03",
+  "left_out": ""
+ },
+ "ESPUSDT": {
+  "binance_status": "TRADING",
+  "coin": "ESP",
+  "first_month": "2026-02",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "ETCUSDT": {
+  "binance_status": "TRADING",
+  "coin": "ETC",
+  "first_month": "2018-06",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "ETHBEARUSDT": {
+  "binance_status": "BREAK",
+  "coin": "ETHBEAR",
+  "first_month": "2020-01",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2020-03",
+  "left_out": "leveraged token"
+ },
+ "ETHBULLUSDT": {
+  "binance_status": "BREAK",
+  "coin": "ETHBULL",
+  "first_month": "2020-01",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2020-03",
+  "left_out": "leveraged token"
+ },
+ "ETHDOWNUSDT": {
+  "binance_status": "BREAK",
+  "coin": "ETHDOWN",
+  "first_month": "2020-07",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2024-02",
+  "left_out": "leveraged token"
+ },
+ "ETHFIUSDT": {
+  "binance_status": "TRADING",
+  "coin": "ETHFI",
+  "first_month": "2024-03",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "ETHUPUSDT": {
+  "binance_status": "BREAK",
+  "coin": "ETHUP",
+  "first_month": "2020-07",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2024-02",
+  "left_out": "leveraged token"
+ },
+ "ETHUSDT": {
+  "binance_status": "TRADING",
+  "coin": "ETH",
+  "first_month": "2018-01",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "EULUSDT": {
+  "binance_status": "TRADING",
+  "coin": "EUL",
+  "first_month": "2025-10",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "EURIUSDT": {
+  "binance_status": "TRADING",
+  "coin": "EURI",
+  "first_month": "2024-08",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": "pegged"
+ },
+ "EURUSDT": {
+  "binance_status": "TRADING",
+  "coin": "EUR",
+  "first_month": "2020-01",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": "pegged"
+ },
+ "EWYBUSDT": {
+  "binance_status": "TRADING",
+  "coin": "EWYB",
+  "first_month": "2026-06",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "FARMUSDT": {
+  "binance_status": "BREAK",
+  "coin": "FARM",
+  "first_month": "2021-08",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-05",
+  "left_out": ""
+ },
+ "FDUSDUSDT": {
+  "binance_status": "TRADING",
+  "coin": "FDUSD",
+  "first_month": "2023-07",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": "pegged"
+ },
+ "FETUSDT": {
+  "binance_status": "TRADING",
+  "coin": "FET",
+  "first_month": "2019-02",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "FFUSDT": {
+  "binance_status": "TRADING",
+  "coin": "FF",
+  "first_month": "2025-09",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "FIDAUSDT": {
+  "binance_status": "TRADING",
+  "coin": "FIDA",
+  "first_month": "2021-09",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "FILDOWNUSDT": {
+  "binance_status": "BREAK",
+  "coin": "FILDOWN",
+  "first_month": "2020-10",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2022-01",
+  "left_out": "leveraged token"
+ },
+ "FILUPUSDT": {
+  "binance_status": "BREAK",
+  "coin": "FILUP",
+  "first_month": "2020-10",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2022-01",
+  "left_out": "leveraged token"
+ },
+ "FILUSDT": {
+  "binance_status": "TRADING",
+  "coin": "FIL",
+  "first_month": "2020-10",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "FIOUSDT": {
+  "binance_status": "BREAK",
+  "coin": "FIO",
+  "first_month": "2020-09",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-04",
+  "left_out": ""
+ },
+ "FIROUSDT": {
+  "binance_status": "BREAK",
+  "coin": "FIRO",
+  "first_month": "2021-01",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2025-04",
+  "left_out": ""
+ },
+ "FISUSDT": {
+  "binance_status": "BREAK",
+  "coin": "FIS",
+  "first_month": "2021-03",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2025-12",
+  "left_out": ""
+ },
+ "FLMUSDT": {
+  "binance_status": "BREAK",
+  "coin": "FLM",
+  "first_month": "2020-09",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2025-11",
+  "left_out": ""
+ },
+ "FLNCBUSDT": {
+  "binance_status": "TRADING",
+  "coin": "FLNCB",
+  "first_month": "2026-07",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "FLOKIUSDT": {
+  "binance_status": "TRADING",
+  "coin": "FLOKI",
+  "first_month": "2023-05",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "FLOWUSDT": {
+  "binance_status": "TRADING",
+  "coin": "FLOW",
+  "first_month": "2021-07",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "FLUXUSDT": {
+  "binance_status": "TRADING",
+  "coin": "FLUX",
+  "first_month": "2021-12",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "FOGOUSDT": {
+  "binance_status": "TRADING",
+  "coin": "FOGO",
+  "first_month": "2026-01",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "FORMUSDT": {
+  "binance_status": "TRADING",
+  "coin": "FORM",
+  "first_month": "2025-03",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "FORTHUSDT": {
+  "binance_status": "BREAK",
+  "coin": "FORTH",
+  "first_month": "2021-04",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-04",
+  "left_out": ""
+ },
+ "FORUSDT": {
+  "binance_status": "BREAK",
+  "coin": "FOR",
+  "first_month": "2021-08",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2024-08",
+  "left_out": ""
+ },
+ "FRAXUSDT": {
+  "binance_status": "TRADING",
+  "coin": "FRAX",
+  "first_month": "2026-01",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "FRONTUSDT": {
+  "binance_status": "BREAK",
+  "coin": "FRONT",
+  "first_month": "2021-10",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2024-08",
+  "left_out": ""
+ },
+ "FTMUSDT": {
+  "binance_status": "BREAK",
+  "coin": "FTM",
+  "first_month": "2019-06",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2025-01",
+  "left_out": ""
+ },
+ "FTTUSDT": {
+  "binance_status": "TRADING",
+  "coin": "FTT",
+  "first_month": "2019-12",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "FUNUSDT": {
+  "binance_status": "BREAK",
+  "coin": "FUN",
+  "first_month": "2019-08",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-04",
+  "left_out": ""
+ },
+ "FUSDT": {
+  "binance_status": "TRADING",
+  "coin": "F",
+  "first_month": "2025-10",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "FWDIBUSDT": {
+  "binance_status": "TRADING",
+  "coin": "FWDIB",
+  "first_month": "2026-09",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "FXSUSDT": {
+  "binance_status": "BREAK",
+  "coin": "FXS",
+  "first_month": "2021-12",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-01",
+  "left_out": ""
+ },
+ "GALAUSDT": {
+  "binance_status": "TRADING",
+  "coin": "GALA",
+  "first_month": "2021-09",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "GALUSDT": {
+  "binance_status": "BREAK",
+  "coin": "GAL",
+  "first_month": "2022-05",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2024-07",
+  "left_out": ""
+ },
+ "GASUSDT": {
+  "binance_status": "TRADING",
+  "coin": "GAS",
+  "first_month": "2023-03",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "GBPUSDT": {
+  "binance_status": "BREAK",
+  "coin": "GBP",
+  "first_month": "2020-07",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2023-12",
+  "left_out": "pegged"
+ },
+ "GENIUSUSDT": {
+  "binance_status": "TRADING",
+  "coin": "GENIUS",
+  "first_month": "2026-05",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "GEVBUSDT": {
+  "binance_status": "TRADING",
+  "coin": "GEVB",
+  "first_month": "2026-10",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "GFTUSDT": {
+  "binance_status": "BREAK",
+  "coin": "GFT",
+  "first_month": "2023-09",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2024-12",
+  "left_out": ""
+ },
+ "GHSTUSDT": {
+  "binance_status": "BREAK",
+  "coin": "GHST",
+  "first_month": "2021-08",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-02",
+  "left_out": ""
+ },
+ "GIGGLEUSDT": {
+  "binance_status": "TRADING",
+  "coin": "GIGGLE",
+  "first_month": "2025-10",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "GLMRUSDT": {
+  "binance_status": "TRADING",
+  "coin": "GLMR",
+  "first_month": "2022-01",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "GLMUSDT": {
+  "binance_status": "TRADING",
+  "coin": "GLM",
+  "first_month": "2023-03",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "GLWBUSDT": {
+  "binance_status": "TRADING",
+  "coin": "GLWB",
+  "first_month": "2026-07",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "GMEBUSDT": {
+  "binance_status": "TRADING",
+  "coin": "GMEB",
+  "first_month": "2026-08",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "GMTUSDT": {
+  "binance_status": "TRADING",
+  "coin": "GMT",
+  "first_month": "2022-03",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "GMXUSDT": {
+  "binance_status": "TRADING",
+  "coin": "GMX",
+  "first_month": "2022-10",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "GNOUSDT": {
+  "binance_status": "TRADING",
+  "coin": "GNO",
+  "first_month": "2021-08",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "GNSUSDT": {
+  "binance_status": "TRADING",
+  "coin": "GNS",
+  "first_month": "2023-02",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "GOOGLBUSDT": {
+  "binance_status": "TRADING",
+  "coin": "GOOGLB",
+  "first_month": "2026-07",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "GPROBUSDT": {
+  "binance_status": "TRADING",
+  "coin": "GPROB",
+  "first_month": "2026-09",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "GPSUSDT": {
+  "binance_status": "TRADING",
+  "coin": "GPS",
+  "first_month": "2025-03",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "GRAMUSDT": {
+  "binance_status": "TRADING",
+  "coin": "GRAM",
+  "first_month": "2026-07",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "GRTUSDT": {
+  "binance_status": "TRADING",
+  "coin": "GRT",
+  "first_month": "2020-12",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "GSBUSDT": {
+  "binance_status": "TRADING",
+  "coin": "GSB",
+  "first_month": "2026-07",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "GTCUSDT": {
+  "binance_status": "TRADING",
+  "coin": "GTC",
+  "first_month": "2021-06",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "GTOUSDT": {
+  "binance_status": "BREAK",
+  "coin": "GTO",
+  "first_month": "2019-07",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2022-11",
+  "left_out": ""
+ },
+ "GUNUSDT": {
+  "binance_status": "TRADING",
+  "coin": "GUN",
+  "first_month": "2025-03",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "GUSDT": {
+  "binance_status": "TRADING",
+  "coin": "G",
+  "first_month": "2024-07",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "GXSUSDT": {
+  "binance_status": "BREAK",
+  "coin": "GXS",
+  "first_month": "2020-05",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2022-04",
+  "left_out": ""
+ },
+ "HAEDALUSDT": {
+  "binance_status": "TRADING",
+  "coin": "HAEDAL",
+  "first_month": "2025-05",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "HARDUSDT": {
+  "binance_status": "BREAK",
+  "coin": "HARD",
+  "first_month": "2020-11",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2025-04",
+  "left_out": ""
+ },
+ "HBARUSDT": {
+  "binance_status": "TRADING",
+  "coin": "HBAR",
+  "first_month": "2019-09",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "HCUSDT": {
+  "binance_status": "BREAK",
+  "coin": "HC",
+  "first_month": "2019-09",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2020-11",
+  "left_out": ""
+ },
+ "HEIUSDT": {
+  "binance_status": "TRADING",
+  "coin": "HEI",
+  "first_month": "2025-02",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "HEMIUSDT": {
+  "binance_status": "TRADING",
+  "coin": "HEMI",
+  "first_month": "2025-09",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "HFTUSDT": {
+  "binance_status": "BREAK",
+  "coin": "HFT",
+  "first_month": "2022-11",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-08",
+  "left_out": ""
+ },
+ "HIFIUSDT": {
+  "binance_status": "BREAK",
+  "coin": "HIFI",
+  "first_month": "2023-01",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2025-09",
+  "left_out": ""
+ },
+ "HIGHUSDT": {
+  "binance_status": "BREAK",
+  "coin": "HIGH",
+  "first_month": "2021-12",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-06",
+  "left_out": ""
+ },
+ "HIMSBUSDT": {
+  "binance_status": "TRADING",
+  "coin": "HIMSB",
+  "first_month": "2026-09",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "HIVEUSDT": {
+  "binance_status": "TRADING",
+  "coin": "HIVE",
+  "first_month": "2020-04",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "HMSTRUSDT": {
+  "binance_status": "TRADING",
+  "coin": "HMSTR",
+  "first_month": "2024-09",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "HNTUSDT": {
+  "binance_status": "BREAK",
+  "coin": "HNT",
+  "first_month": "2020-09",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2022-10",
+  "left_out": ""
+ },
+ "HOLOUSDT": {
+  "binance_status": "TRADING",
+  "coin": "HOLO",
+  "first_month": "2025-09",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "HOMEUSDT": {
+  "binance_status": "TRADING",
+  "coin": "HOME",
+  "first_month": "2025-06",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "HOODBUSDT": {
+  "binance_status": "TRADING",
+  "coin": "HOODB",
+  "first_month": "2026-07",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "HOOKUSDT": {
+  "binance_status": "BREAK",
+  "coin": "HOOK",
+  "first_month": "2022-12",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-04",
+  "left_out": ""
+ },
+ "HOTUSDT": {
+  "binance_status": "TRADING",
+  "coin": "HOT",
+  "first_month": "2019-02",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "HPEBUSDT": {
+  "binance_status": "TRADING",
+  "coin": "HPEB",
+  "first_month": "2026-09",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "HUMAUSDT": {
+  "binance_status": "TRADING",
+  "coin": "HUMA",
+  "first_month": "2025-05",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "HYPERUSDT": {
+  "binance_status": "TRADING",
+  "coin": "HYPER",
+  "first_month": "2025-04",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "HYPEUSDT": {
+  "binance_status": "TRADING",
+  "coin": "HYPE",
+  "first_month": "2026-09",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "IBMBUSDT": {
+  "binance_status": "TRADING",
+  "coin": "IBMB",
+  "first_month": "2026-07",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "ICPUSDT": {
+  "binance_status": "TRADING",
+  "coin": "ICP",
+  "first_month": "2021-05",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "ICXUSDT": {
+  "binance_status": "BREAK",
+  "coin": "ICX",
+  "first_month": "2018-06",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-09",
+  "left_out": ""
+ },
+ "IDEXUSDT": {
+  "binance_status": "BREAK",
+  "coin": "IDEX",
+  "first_month": "2021-09",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-04",
+  "left_out": ""
+ },
+ "IDUSDT": {
+  "binance_status": "TRADING",
+  "coin": "ID",
+  "first_month": "2023-03",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "ILVUSDT": {
+  "binance_status": "TRADING",
+  "coin": "ILV",
+  "first_month": "2021-09",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "IMXUSDT": {
+  "binance_status": "TRADING",
+  "coin": "IMX",
+  "first_month": "2022-01",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "INITUSDT": {
+  "binance_status": "TRADING",
+  "coin": "INIT",
+  "first_month": "2025-04",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "INJUSDT": {
+  "binance_status": "TRADING",
+  "coin": "INJ",
+  "first_month": "2020-10",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "INTCBUSDT": {
+  "binance_status": "TRADING",
+  "coin": "INTCB",
+  "first_month": "2026-06",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "INTWBUSDT": {
+  "binance_status": "TRADING",
+  "coin": "INTWB",
+  "first_month": "2026-07",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "IOSTUSDT": {
+  "binance_status": "TRADING",
+  "coin": "IOST",
+  "first_month": "2019-03",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "IOTAUSDT": {
+  "binance_status": "TRADING",
+  "coin": "IOTA",
+  "first_month": "2018-05",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "IOTXUSDT": {
+  "binance_status": "TRADING",
+  "coin": "IOTX",
+  "first_month": "2019-11",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "IOUSDT": {
+  "binance_status": "TRADING",
+  "coin": "IO",
+  "first_month": "2024-06",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "IQUSDT": {
+  "binance_status": "TRADING",
+  "coin": "IQ",
+  "first_month": "2023-09",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "IRENBUSDT": {
+  "binance_status": "TRADING",
+  "coin": "IRENB",
+  "first_month": "2026-08",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "IRISUSDT": {
+  "binance_status": "BREAK",
+  "coin": "IRIS",
+  "first_month": "2020-08",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2024-12",
+  "left_out": ""
+ },
+ "JASMYUSDT": {
+  "binance_status": "TRADING",
+  "coin": "JASMY",
+  "first_month": "2021-11",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "JOEUSDT": {
+  "binance_status": "TRADING",
+  "coin": "JOE",
+  "first_month": "2021-12",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "JPMBUSDT": {
+  "binance_status": "TRADING",
+  "coin": "JPMB",
+  "first_month": "2026-10",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "JSTUSDT": {
+  "binance_status": "TRADING",
+  "coin": "JST",
+  "first_month": "2020-08",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "JTOUSDT": {
+  "binance_status": "TRADING",
+  "coin": "JTO",
+  "first_month": "2023-12",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "JUPUSDT": {
+  "binance_status": "TRADING",
+  "coin": "JUP",
+  "first_month": "2024-01",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "JUVUSDT": {
+  "binance_status": "TRADING",
+  "coin": "JUV",
+  "first_month": "2020-12",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "KAIAUSDT": {
+  "binance_status": "TRADING",
+  "coin": "KAIA",
+  "first_month": "2024-10",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "KAITOUSDT": {
+  "binance_status": "TRADING",
+  "coin": "KAITO",
+  "first_month": "2025-02",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "KATUSDT": {
+  "binance_status": "TRADING",
+  "coin": "KAT",
+  "first_month": "2026-03",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "KAVAUSDT": {
+  "binance_status": "TRADING",
+  "coin": "KAVA",
+  "first_month": "2019-10",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "KDAUSDT": {
+  "binance_status": "BREAK",
+  "coin": "KDA",
+  "first_month": "2022-03",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2025-11",
+  "left_out": ""
+ },
+ "KEEPUSDT": {
+  "binance_status": "BREAK",
+  "coin": "KEEP",
+  "first_month": "2021-06",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2022-02",
+  "left_out": ""
+ },
+ "KERNELUSDT": {
+  "binance_status": "TRADING",
+  "coin": "KERNEL",
+  "first_month": "2025-04",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "KEYUSDT": {
+  "binance_status": "BREAK",
+  "coin": "KEY",
+  "first_month": "2019-08",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2024-12",
+  "left_out": ""
+ },
+ "KGSTUSDT": {
+  "binance_status": "TRADING",
+  "coin": "KGST",
+  "first_month": "2025-12",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "KITEUSDT": {
+  "binance_status": "TRADING",
+  "coin": "KITE",
+  "first_month": "2025-11",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "KLAYUSDT": {
+  "binance_status": "BREAK",
+  "coin": "KLAY",
+  "first_month": "2021-06",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2024-10",
+  "left_out": ""
+ },
+ "KMDUSDT": {
+  "binance_status": "BREAK",
+  "coin": "KMD",
+  "first_month": "2020-08",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2025-07",
+  "left_out": ""
+ },
+ "KMNOUSDT": {
+  "binance_status": "TRADING",
+  "coin": "KMNO",
+  "first_month": "2025-05",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "KNCUSDT": {
+  "binance_status": "TRADING",
+  "coin": "KNC",
+  "first_month": "2020-06",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "KORUBUSDT": {
+  "binance_status": "TRADING",
+  "coin": "KORUB",
+  "first_month": "2026-07",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "KP3RUSDT": {
+  "binance_status": "BREAK",
+  "coin": "KP3R",
+  "first_month": "2021-11",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2024-11",
+  "left_out": ""
+ },
+ "KSMUSDT": {
+  "binance_status": "TRADING",
+  "coin": "KSM",
+  "first_month": "2020-09",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "KSTRBUSDT": {
+  "binance_status": "TRADING",
+  "coin": "KSTRB",
+  "first_month": "2026-10",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "LAUSDT": {
+  "binance_status": "TRADING",
+  "coin": "LA",
+  "first_month": "2025-07",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "LAYERUSDT": {
+  "binance_status": "TRADING",
+  "coin": "LAYER",
+  "first_month": "2025-02",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "LAZIOUSDT": {
+  "binance_status": "TRADING",
+  "coin": "LAZIO",
+  "first_month": "2021-10",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "LDOUSDT": {
+  "binance_status": "TRADING",
+  "coin": "LDO",
+  "first_month": "2022-05",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "LENDUSDT": {
+  "binance_status": "BREAK",
+  "coin": "LEND",
+  "first_month": "2020-05",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2020-10",
+  "left_out": ""
+ },
+ "LEVERUSDT": {
+  "binance_status": "BREAK",
+  "coin": "LEVER",
+  "first_month": "2022-07",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2025-07",
+  "left_out": ""
+ },
+ "LINAUSDT": {
+  "binance_status": "BREAK",
+  "coin": "LINA",
+  "first_month": "2021-03",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2025-03",
+  "left_out": ""
+ },
+ "LINEAUSDT": {
+  "binance_status": "TRADING",
+  "coin": "LINEA",
+  "first_month": "2025-09",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "LINKDOWNUSDT": {
+  "binance_status": "BREAK",
+  "coin": "LINKDOWN",
+  "first_month": "2020-07",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2023-04",
+  "left_out": "leveraged token"
+ },
+ "LINKUPUSDT": {
+  "binance_status": "BREAK",
+  "coin": "LINKUP",
+  "first_month": "2020-07",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2023-04",
+  "left_out": "leveraged token"
+ },
+ "LINKUSDT": {
+  "binance_status": "TRADING",
+  "coin": "LINK",
+  "first_month": "2019-01",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "LISTAUSDT": {
+  "binance_status": "TRADING",
+  "coin": "LISTA",
+  "first_month": "2024-06",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "LITEBUSDT": {
+  "binance_status": "TRADING",
+  "coin": "LITEB",
+  "first_month": "2026-06",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "LITUSDT": {
+  "binance_status": "BREAK",
+  "coin": "LIT",
+  "first_month": "2021-02",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2025-02",
+  "left_out": ""
+ },
+ "LLYBUSDT": {
+  "binance_status": "TRADING",
+  "coin": "LLYB",
+  "first_month": "2026-10",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "LOKAUSDT": {
+  "binance_status": "BREAK",
+  "coin": "LOKA",
+  "first_month": "2022-01",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2025-07",
+  "left_out": ""
+ },
+ "LOOMUSDT": {
+  "binance_status": "BREAK",
+  "coin": "LOOM",
+  "first_month": "2023-03",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2024-08",
+  "left_out": ""
+ },
+ "LPTUSDT": {
+  "binance_status": "TRADING",
+  "coin": "LPT",
+  "first_month": "2021-05",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "LQTYUSDT": {
+  "binance_status": "TRADING",
+  "coin": "LQTY",
+  "first_month": "2023-02",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "LRCUSDT": {
+  "binance_status": "BREAK",
+  "coin": "LRC",
+  "first_month": "2020-06",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-04",
+  "left_out": ""
+ },
+ "LSKUSDT": {
+  "binance_status": "TRADING",
+  "coin": "LSK",
+  "first_month": "2020-02",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "LTCDOWNUSDT": {
+  "binance_status": "BREAK",
+  "coin": "LTCDOWN",
+  "first_month": "2020-09",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2022-01",
+  "left_out": "leveraged token"
+ },
+ "LTCUPUSDT": {
+  "binance_status": "BREAK",
+  "coin": "LTCUP",
+  "first_month": "2020-09",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2022-01",
+  "left_out": "leveraged token"
+ },
+ "LTCUSDT": {
+  "binance_status": "TRADING",
+  "coin": "LTC",
+  "first_month": "2018-01",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "LTOUSDT": {
+  "binance_status": "BREAK",
+  "coin": "LTO",
+  "first_month": "2020-02",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2025-07",
+  "left_out": ""
+ },
+ "LUMIAUSDT": {
+  "binance_status": "TRADING",
+  "coin": "LUMIA",
+  "first_month": "2024-10",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "LUNAUSDT": {
+  "binance_status": "TRADING",
+  "coin": "LUNA",
+  "first_month": "2020-08",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "LUNCUSDT": {
+  "binance_status": "TRADING",
+  "coin": "LUNC",
+  "first_month": "2022-09",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "MAGICUSDT": {
+  "binance_status": "TRADING",
+  "coin": "MAGIC",
+  "first_month": "2022-12",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "MANAUSDT": {
+  "binance_status": "TRADING",
+  "coin": "MANA",
+  "first_month": "2020-08",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "MANTAUSDT": {
+  "binance_status": "TRADING",
+  "coin": "MANTA",
+  "first_month": "2024-01",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "MANTRAUSDT": {
+  "binance_status": "TRADING",
+  "coin": "MANTRA",
+  "first_month": "2026-03",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "MARSCOINUSDT": {
+  "binance_status": "TRADING",
+  "coin": "MARSCOIN",
+  "first_month": "2026-09",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "MASKUSDT": {
+  "binance_status": "TRADING",
+  "coin": "MASK",
+  "first_month": "2021-05",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "MATICUSDT": {
+  "binance_status": "BREAK",
+  "coin": "MATIC",
+  "first_month": "2019-04",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2024-09",
+  "left_out": ""
+ },
+ "MAVUSDT": {
+  "binance_status": "TRADING",
+  "coin": "MAV",
+  "first_month": "2023-06",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "MBLUSDT": {
+  "binance_status": "TRADING",
+  "coin": "MBL",
+  "first_month": "2020-02",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "MBOXUSDT": {
+  "binance_status": "BREAK",
+  "coin": "MBOX",
+  "first_month": "2021-08",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-06",
+  "left_out": ""
+ },
+ "MCOUSDT": {
+  "binance_status": "BREAK",
+  "coin": "MCO",
+  "first_month": "2019-11",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2020-10",
+  "left_out": ""
+ },
+ "MCUSDT": {
+  "binance_status": "BREAK",
+  "coin": "MC",
+  "first_month": "2021-12",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2023-11",
+  "left_out": ""
+ },
+ "MDBBUSDT": {
+  "binance_status": "TRADING",
+  "coin": "MDBB",
+  "first_month": "2026-10",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "MDTUSDT": {
+  "binance_status": "BREAK",
+  "coin": "MDT",
+  "first_month": "2020-06",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-04",
+  "left_out": ""
+ },
+ "MDXUSDT": {
+  "binance_status": "BREAK",
+  "coin": "MDX",
+  "first_month": "2021-05",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2024-07",
+  "left_out": ""
+ },
+ "MEGAUSDT": {
+  "binance_status": "TRADING",
+  "coin": "MEGA",
+  "first_month": "2026-04",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "MEMEUSDT": {
+  "binance_status": "TRADING",
+  "coin": "MEME",
+  "first_month": "2023-11",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "METABUSDT": {
+  "binance_status": "TRADING",
+  "coin": "METAB",
+  "first_month": "2026-06",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "METISUSDT": {
+  "binance_status": "TRADING",
+  "coin": "METIS",
+  "first_month": "2024-03",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "METUSDT": {
+  "binance_status": "TRADING",
+  "coin": "MET",
+  "first_month": "2025-11",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "MEUSDT": {
+  "binance_status": "TRADING",
+  "coin": "ME",
+  "first_month": "2024-12",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "MFTUSDT": {
+  "binance_status": "BREAK",
+  "coin": "MFT",
+  "first_month": "2019-08",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2023-01",
+  "left_out": ""
+ },
+ "MINAUSDT": {
+  "binance_status": "TRADING",
+  "coin": "MINA",
+  "first_month": "2021-08",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "MIRAUSDT": {
+  "binance_status": "TRADING",
+  "coin": "MIRA",
+  "first_month": "2025-09",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "MIRUSDT": {
+  "binance_status": "BREAK",
+  "coin": "MIR",
+  "first_month": "2021-04",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2022-12",
+  "left_out": ""
+ },
+ "MITHUSDT": {
+  "binance_status": "BREAK",
+  "coin": "MITH",
+  "first_month": "2019-04",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2022-12",
+  "left_out": ""
+ },
+ "MITOUSDT": {
+  "binance_status": "TRADING",
+  "coin": "MITO",
+  "first_month": "2025-08",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "MKRUSDT": {
+  "binance_status": "BREAK",
+  "coin": "MKR",
+  "first_month": "2020-07",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2025-09",
+  "left_out": ""
+ },
+ "MLNUSDT": {
+  "binance_status": "BREAK",
+  "coin": "MLN",
+  "first_month": "2021-07",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-05",
+  "left_out": ""
+ },
+ "MMTUSDT": {
+  "binance_status": "TRADING",
+  "coin": "MMT",
+  "first_month": "2025-11",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "MOBUSDT": {
+  "binance_status": "BREAK",
+  "coin": "MOB",
+  "first_month": "2022-04",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2024-04",
+  "left_out": ""
+ },
+ "MORPHOUSDT": {
+  "binance_status": "TRADING",
+  "coin": "MORPHO",
+  "first_month": "2025-10",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "MOVEUSDT": {
+  "binance_status": "TRADING",
+  "coin": "MOVE",
+  "first_month": "2024-12",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "MOVRUSDT": {
+  "binance_status": "TRADING",
+  "coin": "MOVR",
+  "first_month": "2021-11",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "MRNABUSDT": {
+  "binance_status": "TRADING",
+  "coin": "MRNAB",
+  "first_month": "2026-09",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "MRVLBUSDT": {
+  "binance_status": "TRADING",
+  "coin": "MRVLB",
+  "first_month": "2026-07",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "MSFTBUSDT": {
+  "binance_status": "TRADING",
+  "coin": "MSFTB",
+  "first_month": "2026-06",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "MSTRBUSDT": {
+  "binance_status": "TRADING",
+  "coin": "MSTRB",
+  "first_month": "2026-06",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "MTLUSDT": {
+  "binance_status": "TRADING",
+  "coin": "MTL",
+  "first_month": "2019-08",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "MUBARAKUSDT": {
+  "binance_status": "TRADING",
+  "coin": "MUBARAK",
+  "first_month": "2025-03",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "MUBUSDT": {
+  "binance_status": "TRADING",
+  "coin": "MUB",
+  "first_month": "2026-06",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "MULTIUSDT": {
+  "binance_status": "BREAK",
+  "coin": "MULTI",
+  "first_month": "2022-04",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2024-02",
+  "left_out": ""
+ },
+ "MUUBUSDT": {
+  "binance_status": "TRADING",
+  "coin": "MUUB",
+  "first_month": "2026-07",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "MVLLBUSDT": {
+  "binance_status": "TRADING",
+  "coin": "MVLLB",
+  "first_month": "2026-07",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "NANOUSDT": {
+  "binance_status": "BREAK",
+  "coin": "NANO",
+  "first_month": "2019-04",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2022-01",
+  "left_out": ""
+ },
+ "NBISBUSDT": {
+  "binance_status": "TRADING",
+  "coin": "NBISB",
+  "first_month": "2026-07",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "NBSUSDT": {
+  "binance_status": "BREAK",
+  "coin": "NBS",
+  "first_month": "2020-09",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2022-10",
+  "left_out": ""
+ },
+ "NBTUSDT": {
+  "binance_status": "not in Binance's list",
+  "coin": "NBT",
+  "first_month": "2022-03",
+  "found_in": [
+   "archive"
+  ],
+  "last_month": "2023-02",
+  "left_out": ""
+ },
+ "NEARUSDT": {
+  "binance_status": "TRADING",
+  "coin": "NEAR",
+  "first_month": "2020-10",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "NEBLUSDT": {
+  "binance_status": "BREAK",
+  "coin": "NEBL",
+  "first_month": "2022-10",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2023-04",
+  "left_out": ""
+ },
+ "NEIROUSDT": {
+  "binance_status": "TRADING",
+  "coin": "NEIRO",
+  "first_month": "2024-09",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "NEOUSDT": {
+  "binance_status": "TRADING",
+  "coin": "NEO",
+  "first_month": "2018-01",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "NEWTUSDT": {
+  "binance_status": "TRADING",
+  "coin": "NEWT",
+  "first_month": "2025-06",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "NEXOUSDT": {
+  "binance_status": "TRADING",
+  "coin": "NEXO",
+  "first_month": "2022-04",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "NFLXBUSDT": {
+  "binance_status": "TRADING",
+  "coin": "NFLXB",
+  "first_month": "2026-08",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "NFPUSDT": {
+  "binance_status": "BREAK",
+  "coin": "NFP",
+  "first_month": "2023-12",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-07",
+  "left_out": ""
+ },
+ "NIGHTUSDT": {
+  "binance_status": "TRADING",
+  "coin": "NIGHT",
+  "first_month": "2026-03",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "NILUSDT": {
+  "binance_status": "TRADING",
+  "coin": "NIL",
+  "first_month": "2025-03",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "NKNUSDT": {
+  "binance_status": "BREAK",
+  "coin": "NKN",
+  "first_month": "2019-10",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-02",
+  "left_out": ""
+ },
+ "NMRUSDT": {
+  "binance_status": "TRADING",
+  "coin": "NMR",
+  "first_month": "2020-08",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "NOKBUSDT": {
+  "binance_status": "TRADING",
+  "coin": "NOKB",
+  "first_month": "2026-07",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "NOMUSDT": {
+  "binance_status": "TRADING",
+  "coin": "NOM",
+  "first_month": "2025-10",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "NOTUSDT": {
+  "binance_status": "TRADING",
+  "coin": "NOT",
+  "first_month": "2024-05",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "NPXSUSDT": {
+  "binance_status": "BREAK",
+  "coin": "NPXS",
+  "first_month": "2019-08",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2021-04",
+  "left_out": ""
+ },
+ "NTRNUSDT": {
+  "binance_status": "BREAK",
+  "coin": "NTRN",
+  "first_month": "2023-10",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-04",
+  "left_out": ""
+ },
+ "NULSUSDT": {
+  "binance_status": "BREAK",
+  "coin": "NULS",
+  "first_month": "2018-07",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2025-04",
+  "left_out": ""
+ },
+ "NUUSDT": {
+  "binance_status": "BREAK",
+  "coin": "NU",
+  "first_month": "2021-06",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2022-02",
+  "left_out": ""
+ },
+ "NVDABUSDT": {
+  "binance_status": "TRADING",
+  "coin": "NVDAB",
+  "first_month": "2026-06",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "NXPCUSDT": {
+  "binance_status": "TRADING",
+  "coin": "NXPC",
+  "first_month": "2025-05",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "OAXUSDT": {
+  "binance_status": "BREAK",
+  "coin": "OAX",
+  "first_month": "2023-03",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2024-12",
+  "left_out": ""
+ },
+ "OCEANUSDT": {
+  "binance_status": "BREAK",
+  "coin": "OCEAN",
+  "first_month": "2020-08",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2024-07",
+  "left_out": ""
+ },
+ "OGNUSDT": {
+  "binance_status": "TRADING",
+  "coin": "OGN",
+  "first_month": "2020-01",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "OGUSDT": {
+  "binance_status": "TRADING",
+  "coin": "OG",
+  "first_month": "2020-12",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "OMGUSDT": {
+  "binance_status": "BREAK",
+  "coin": "OMG",
+  "first_month": "2019-04",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2024-06",
+  "left_out": ""
+ },
+ "OMNIUSDT": {
+  "binance_status": "BREAK",
+  "coin": "OMNI",
+  "first_month": "2024-04",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2025-09",
+  "left_out": ""
+ },
+ "OMUSDT": {
+  "binance_status": "BREAK",
+  "coin": "OM",
+  "first_month": "2021-03",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-03",
+  "left_out": ""
+ },
+ "ONDOUSDT": {
+  "binance_status": "TRADING",
+  "coin": "ONDO",
+  "first_month": "2025-04",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "ONEUSDT": {
+  "binance_status": "TRADING",
+  "coin": "ONE",
+  "first_month": "2019-06",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "ONGUSDT": {
+  "binance_status": "TRADING",
+  "coin": "ONG",
+  "first_month": "2019-02",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "ONTUSDT": {
+  "binance_status": "TRADING",
+  "coin": "ONT",
+  "first_month": "2018-06",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "OOKIUSDT": {
+  "binance_status": "BREAK",
+  "coin": "OOKI",
+  "first_month": "2021-12",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2024-11",
+  "left_out": ""
+ },
+ "OPENUSDT": {
+  "binance_status": "TRADING",
+  "coin": "OPEN",
+  "first_month": "2025-09",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "OPGUSDT": {
+  "binance_status": "TRADING",
+  "coin": "OPG",
+  "first_month": "2026-05",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "OPNUSDT": {
+  "binance_status": "TRADING",
+  "coin": "OPN",
+  "first_month": "2026-03",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "OPUSDT": {
+  "binance_status": "TRADING",
+  "coin": "OP",
+  "first_month": "2022-06",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "ORCAUSDT": {
+  "binance_status": "TRADING",
+  "coin": "ORCA",
+  "first_month": "2024-12",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "ORCLBUSDT": {
+  "binance_status": "TRADING",
+  "coin": "ORCLB",
+  "first_month": "2026-07",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "ORDIUSDT": {
+  "binance_status": "TRADING",
+  "coin": "ORDI",
+  "first_month": "2023-11",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "ORNUSDT": {
+  "binance_status": "BREAK",
+  "coin": "ORN",
+  "first_month": "2020-09",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2024-10",
+  "left_out": ""
+ },
+ "OSMOUSDT": {
+  "binance_status": "TRADING",
+  "coin": "OSMO",
+  "first_month": "2022-10",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "OXTUSDT": {
+  "binance_status": "BREAK",
+  "coin": "OXT",
+  "first_month": "2020-09",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-04",
+  "left_out": ""
+ },
+ "PARTIUSDT": {
+  "binance_status": "TRADING",
+  "coin": "PARTI",
+  "first_month": "2025-03",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "PAXGUSDT": {
+  "binance_status": "TRADING",
+  "coin": "PAXG",
+  "first_month": "2020-08",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": "pegged"
+ },
+ "PAXUSDT": {
+  "binance_status": "BREAK",
+  "coin": "PAX",
+  "first_month": "2018-10",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2021-09",
+  "left_out": "pegged"
+ },
+ "PDAUSDT": {
+  "binance_status": "BREAK",
+  "coin": "PDA",
+  "first_month": "2024-03",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2025-05",
+  "left_out": ""
+ },
+ "PDDBUSDT": {
+  "binance_status": "TRADING",
+  "coin": "PDDB",
+  "first_month": "2026-09",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "PENDLEUSDT": {
+  "binance_status": "TRADING",
+  "coin": "PENDLE",
+  "first_month": "2023-07",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "PENGBUSDT": {
+  "binance_status": "TRADING",
+  "coin": "PENGB",
+  "first_month": "2026-10",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "PENGUUSDT": {
+  "binance_status": "TRADING",
+  "coin": "PENGU",
+  "first_month": "2024-12",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "PEOPLEUSDT": {
+  "binance_status": "TRADING",
+  "coin": "PEOPLE",
+  "first_month": "2021-12",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "PEPEUSDT": {
+  "binance_status": "TRADING",
+  "coin": "PEPE",
+  "first_month": "2023-05",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "PERLUSDT": {
+  "binance_status": "BREAK",
+  "coin": "PERL",
+  "first_month": "2019-08",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2023-12",
+  "left_out": ""
+ },
+ "PERPUSDT": {
+  "binance_status": "BREAK",
+  "coin": "PERP",
+  "first_month": "2021-03",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2025-11",
+  "left_out": ""
+ },
+ "PHAUSDT": {
+  "binance_status": "TRADING",
+  "coin": "PHA",
+  "first_month": "2021-06",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "PHBUSDT": {
+  "binance_status": "BREAK",
+  "coin": "PHB",
+  "first_month": "2022-11",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-05",
+  "left_out": ""
+ },
+ "PIVXUSDT": {
+  "binance_status": "BREAK",
+  "coin": "PIVX",
+  "first_month": "2023-11",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-08",
+  "left_out": ""
+ },
+ "PIXELUSDT": {
+  "binance_status": "TRADING",
+  "coin": "PIXEL",
+  "first_month": "2024-02",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "PLAUSDT": {
+  "binance_status": "BREAK",
+  "coin": "PLA",
+  "first_month": "2021-11",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2024-02",
+  "left_out": ""
+ },
+ "PLTRBUSDT": {
+  "binance_status": "TRADING",
+  "coin": "PLTRB",
+  "first_month": "2026-06",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "PLUMEUSDT": {
+  "binance_status": "TRADING",
+  "coin": "PLUME",
+  "first_month": "2025-08",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "PNTUSDT": {
+  "binance_status": "BREAK",
+  "coin": "PNT",
+  "first_month": "2020-06",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2024-04",
+  "left_out": ""
+ },
+ "PNUTUSDT": {
+  "binance_status": "TRADING",
+  "coin": "PNUT",
+  "first_month": "2024-11",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "POLSUSDT": {
+  "binance_status": "BREAK",
+  "coin": "POLS",
+  "first_month": "2021-05",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2024-07",
+  "left_out": ""
+ },
+ "POLUSDT": {
+  "binance_status": "TRADING",
+  "coin": "POL",
+  "first_month": "2024-09",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "POLYUSDT": {
+  "binance_status": "BREAK",
+  "coin": "POLY",
+  "first_month": "2021-09",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2022-10",
+  "left_out": ""
+ },
+ "POLYXUSDT": {
+  "binance_status": "TRADING",
+  "coin": "POLYX",
+  "first_month": "2022-10",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "PONDUSDT": {
+  "binance_status": "BREAK",
+  "coin": "POND",
+  "first_month": "2021-03",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-07",
+  "left_out": ""
+ },
+ "PORTALUSDT": {
+  "binance_status": "TRADING",
+  "coin": "PORTAL",
+  "first_month": "2024-02",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "PORTOUSDT": {
+  "binance_status": "TRADING",
+  "coin": "PORTO",
+  "first_month": "2021-11",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "POWRUSDT": {
+  "binance_status": "TRADING",
+  "coin": "POWR",
+  "first_month": "2021-11",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "PROMUSDT": {
+  "binance_status": "TRADING",
+  "coin": "PROM",
+  "first_month": "2023-03",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "PROSUSDT": {
+  "binance_status": "BREAK",
+  "coin": "PROS",
+  "first_month": "2023-01",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2025-04",
+  "left_out": ""
+ },
+ "PROVEUSDT": {
+  "binance_status": "TRADING",
+  "coin": "PROVE",
+  "first_month": "2025-08",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "PSGUSDT": {
+  "binance_status": "TRADING",
+  "coin": "PSG",
+  "first_month": "2020-12",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "PUMPUSDT": {
+  "binance_status": "TRADING",
+  "coin": "PUMP",
+  "first_month": "2025-09",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "PUNDIXUSDT": {
+  "binance_status": "TRADING",
+  "coin": "PUNDIX",
+  "first_month": "2021-04",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "PYPLBUSDT": {
+  "binance_status": "TRADING",
+  "coin": "PYPLB",
+  "first_month": "2026-07",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "PYRUSDT": {
+  "binance_status": "BREAK",
+  "coin": "PYR",
+  "first_month": "2021-11",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-08",
+  "left_out": ""
+ },
+ "PYTHUSDT": {
+  "binance_status": "TRADING",
+  "coin": "PYTH",
+  "first_month": "2024-02",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "QCOMBUSDT": {
+  "binance_status": "TRADING",
+  "coin": "QCOMB",
+  "first_month": "2026-07",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "QIUSDT": {
+  "binance_status": "TRADING",
+  "coin": "QI",
+  "first_month": "2021-11",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "QKCUSDT": {
+  "binance_status": "TRADING",
+  "coin": "QKC",
+  "first_month": "2023-03",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "QNTBUSDT": {
+  "binance_status": "TRADING",
+  "coin": "QNTB",
+  "first_month": "2026-07",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "QNTUSDT": {
+  "binance_status": "TRADING",
+  "coin": "QNT",
+  "first_month": "2021-07",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "QQQBUSDT": {
+  "binance_status": "TRADING",
+  "coin": "QQQB",
+  "first_month": "2026-06",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "QTUMUSDT": {
+  "binance_status": "TRADING",
+  "coin": "QTUM",
+  "first_month": "2018-03",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "QUICKUSDT": {
+  "binance_status": "BREAK",
+  "coin": "QUICK",
+  "first_month": "2021-08",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "RADUSDT": {
+  "binance_status": "TRADING",
+  "coin": "RAD",
+  "first_month": "2021-10",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "RAMPUSDT": {
+  "binance_status": "BREAK",
+  "coin": "RAMP",
+  "first_month": "2021-03",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2022-07",
+  "left_out": ""
+ },
+ "RAREUSDT": {
+  "binance_status": "TRADING",
+  "coin": "RARE",
+  "first_month": "2021-10",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "RAYUSDT": {
+  "binance_status": "TRADING",
+  "coin": "RAY",
+  "first_month": "2021-08",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "RDDTBUSDT": {
+  "binance_status": "TRADING",
+  "coin": "RDDTB",
+  "first_month": "2026-09",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "RDNTUSDT": {
+  "binance_status": "BREAK",
+  "coin": "RDNT",
+  "first_month": "2023-03",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-04",
+  "left_out": ""
+ },
+ "REDUSDT": {
+  "binance_status": "TRADING",
+  "coin": "RED",
+  "first_month": "2025-02",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "REEFUSDT": {
+  "binance_status": "BREAK",
+  "coin": "REEF",
+  "first_month": "2020-12",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2024-08",
+  "left_out": ""
+ },
+ "REIUSDT": {
+  "binance_status": "BREAK",
+  "coin": "REI",
+  "first_month": "2022-05",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2025-12",
+  "left_out": ""
+ },
+ "RENDERUSDT": {
+  "binance_status": "TRADING",
+  "coin": "RENDER",
+  "first_month": "2024-07",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "RENUSDT": {
+  "binance_status": "BREAK",
+  "coin": "REN",
+  "first_month": "2019-09",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2024-12",
+  "left_out": ""
+ },
+ "REPUSDT": {
+  "binance_status": "BREAK",
+  "coin": "REP",
+  "first_month": "2020-06",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2022-12",
+  "left_out": ""
+ },
+ "REQUSDT": {
+  "binance_status": "TRADING",
+  "coin": "REQ",
+  "first_month": "2021-08",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "RESOLVUSDT": {
+  "binance_status": "TRADING",
+  "coin": "RESOLV",
+  "first_month": "2025-06",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "REUSDT": {
+  "binance_status": "TRADING",
+  "coin": "RE",
+  "first_month": "2026-06",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "REZUSDT": {
+  "binance_status": "TRADING",
+  "coin": "REZ",
+  "first_month": "2024-04",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "RGTUSDT": {
+  "binance_status": "BREAK",
+  "coin": "RGT",
+  "first_month": "2021-11",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2022-03",
+  "left_out": ""
+ },
+ "RIFUSDT": {
+  "binance_status": "TRADING",
+  "coin": "RIF",
+  "first_month": "2021-01",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "RKLBBUSDT": {
+  "binance_status": "TRADING",
+  "coin": "RKLBB",
+  "first_month": "2026-07",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "RLCUSDT": {
+  "binance_status": "TRADING",
+  "coin": "RLC",
+  "first_month": "2019-11",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "RLUSDUSDT": {
+  "binance_status": "TRADING",
+  "coin": "RLUSD",
+  "first_month": "2026-01",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": "pegged"
+ },
+ "RNDRUSDT": {
+  "binance_status": "BREAK",
+  "coin": "RNDR",
+  "first_month": "2021-11",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2024-07",
+  "left_out": ""
+ },
+ "ROBOUSDT": {
+  "binance_status": "TRADING",
+  "coin": "ROBO",
+  "first_month": "2026-03",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "RONINUSDT": {
+  "binance_status": "TRADING",
+  "coin": "RONIN",
+  "first_month": "2024-02",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "ROSEUSDT": {
+  "binance_status": "TRADING",
+  "coin": "ROSE",
+  "first_month": "2020-11",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "RPLUSDT": {
+  "binance_status": "TRADING",
+  "coin": "RPL",
+  "first_month": "2023-01",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "RSRUSDT": {
+  "binance_status": "TRADING",
+  "coin": "RSR",
+  "first_month": "2020-08",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "RUNEUSDT": {
+  "binance_status": "TRADING",
+  "coin": "RUNE",
+  "first_month": "2020-09",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "RVNUSDT": {
+  "binance_status": "TRADING",
+  "coin": "RVN",
+  "first_month": "2019-09",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "RWUSDUSDT": {
+  "binance_status": "TRADING",
+  "coin": "RWUSD",
+  "first_month": "2026-10",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "SAGAUSDT": {
+  "binance_status": "TRADING",
+  "coin": "SAGA",
+  "first_month": "2024-04",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "SAHARAUSDT": {
+  "binance_status": "TRADING",
+  "coin": "SAHARA",
+  "first_month": "2025-06",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "SANDUSDT": {
+  "binance_status": "TRADING",
+  "coin": "SAND",
+  "first_month": "2020-08",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "SANTOSUSDT": {
+  "binance_status": "TRADING",
+  "coin": "SANTOS",
+  "first_month": "2021-12",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "SAPIENUSDT": {
+  "binance_status": "TRADING",
+  "coin": "SAPIEN",
+  "first_month": "2025-11",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "SCRTUSDT": {
+  "binance_status": "BREAK",
+  "coin": "SCRT",
+  "first_month": "2022-01",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-09",
+  "left_out": ""
+ },
+ "SCRUSDT": {
+  "binance_status": "TRADING",
+  "coin": "SCR",
+  "first_month": "2024-10",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "SCUSDT": {
+  "binance_status": "TRADING",
+  "coin": "SC",
+  "first_month": "2020-07",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "SECZBUSDT": {
+  "binance_status": "TRADING",
+  "coin": "SECZB",
+  "first_month": "2026-10",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "SEIUSDT": {
+  "binance_status": "TRADING",
+  "coin": "SEI",
+  "first_month": "2023-08",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "SENTUSDT": {
+  "binance_status": "TRADING",
+  "coin": "SENT",
+  "first_month": "2026-01",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "SFPUSDT": {
+  "binance_status": "TRADING",
+  "coin": "SFP",
+  "first_month": "2021-02",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "SHAZBUSDT": {
+  "binance_status": "TRADING",
+  "coin": "SHAZB",
+  "first_month": "2026-09",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "SHELLUSDT": {
+  "binance_status": "TRADING",
+  "coin": "SHELL",
+  "first_month": "2025-02",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "SHIBUSDT": {
+  "binance_status": "TRADING",
+  "coin": "SHIB",
+  "first_month": "2021-05",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "SIGNUSDT": {
+  "binance_status": "TRADING",
+  "coin": "SIGN",
+  "first_month": "2025-04",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "SKDDBUSDT": {
+  "binance_status": "TRADING",
+  "coin": "SKDDB",
+  "first_month": "2026-10",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "SKHYBUSDT": {
+  "binance_status": "TRADING",
+  "coin": "SKHYB",
+  "first_month": "2026-07",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "SKLUSDT": {
+  "binance_status": "TRADING",
+  "coin": "SKL",
+  "first_month": "2020-12",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "SKUUBUSDT": {
+  "binance_status": "TRADING",
+  "coin": "SKUUB",
+  "first_month": "2026-10",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "SKYUSDT": {
+  "binance_status": "TRADING",
+  "coin": "SKY",
+  "first_month": "2025-09",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "SLFUSDT": {
+  "binance_status": "BREAK",
+  "coin": "SLF",
+  "first_month": "2024-08",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2025-09",
+  "left_out": ""
+ },
+ "SLPUSDT": {
+  "binance_status": "TRADING",
+  "coin": "SLP",
+  "first_month": "2021-04",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "SMCIBUSDT": {
+  "binance_status": "TRADING",
+  "coin": "SMCIB",
+  "first_month": "2026-08",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "SMHBUSDT": {
+  "binance_status": "TRADING",
+  "coin": "SMHB",
+  "first_month": "2026-07",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "SNDKBUSDT": {
+  "binance_status": "TRADING",
+  "coin": "SNDKB",
+  "first_month": "2026-06",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "SNTUSDT": {
+  "binance_status": "BREAK",
+  "coin": "SNT",
+  "first_month": "2023-05",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2025-04",
+  "left_out": ""
+ },
+ "SNXUSDT": {
+  "binance_status": "TRADING",
+  "coin": "SNX",
+  "first_month": "2020-07",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "SNXXBUSDT": {
+  "binance_status": "TRADING",
+  "coin": "SNXXB",
+  "first_month": "2026-07",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "SOLUSDT": {
+  "binance_status": "TRADING",
+  "coin": "SOL",
+  "first_month": "2020-08",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "SOLVUSDT": {
+  "binance_status": "TRADING",
+  "coin": "SOLV",
+  "first_month": "2025-01",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "SOMIUSDT": {
+  "binance_status": "TRADING",
+  "coin": "SOMI",
+  "first_month": "2025-09",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "SOPHUSDT": {
+  "binance_status": "TRADING",
+  "coin": "SOPH",
+  "first_month": "2025-05",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "SOXLBUSDT": {
+  "binance_status": "TRADING",
+  "coin": "SOXLB",
+  "first_month": "2026-07",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "SOXSBUSDT": {
+  "binance_status": "TRADING",
+  "coin": "SOXSB",
+  "first_month": "2026-07",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "SPCXBUSDT": {
+  "binance_status": "TRADING",
+  "coin": "SPCXB",
+  "first_month": "2026-06",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "SPELLUSDT": {
+  "binance_status": "TRADING",
+  "coin": "SPELL",
+  "first_month": "2021-12",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "SPKUSDT": {
+  "binance_status": "TRADING",
+  "coin": "SPK",
+  "first_month": "2025-06",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "SPYBUSDT": {
+  "binance_status": "TRADING",
+  "coin": "SPYB",
+  "first_month": "2026-07",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "SQQQBUSDT": {
+  "binance_status": "TRADING",
+  "coin": "SQQQB",
+  "first_month": "2026-09",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "SRMUSDT": {
+  "binance_status": "BREAK",
+  "coin": "SRM",
+  "first_month": "2020-08",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2022-11",
+  "left_out": ""
+ },
+ "SSVUSDT": {
+  "binance_status": "TRADING",
+  "coin": "SSV",
+  "first_month": "2023-02",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "STEEMUSDT": {
+  "binance_status": "TRADING",
+  "coin": "STEEM",
+  "first_month": "2022-04",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "STGUSDT": {
+  "binance_status": "BREAK",
+  "coin": "STG",
+  "first_month": "2022-08",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "STMXUSDT": {
+  "binance_status": "BREAK",
+  "coin": "STMX",
+  "first_month": "2020-06",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2025-02",
+  "left_out": ""
+ },
+ "STORJUSDT": {
+  "binance_status": "BREAK",
+  "coin": "STORJ",
+  "first_month": "2020-07",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-09",
+  "left_out": ""
+ },
+ "STORMUSDT": {
+  "binance_status": "BREAK",
+  "coin": "STORM",
+  "first_month": "2019-08",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2020-06",
+  "left_out": ""
+ },
+ "STOUSDT": {
+  "binance_status": "TRADING",
+  "coin": "STO",
+  "first_month": "2025-05",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "STPTUSDT": {
+  "binance_status": "BREAK",
+  "coin": "STPT",
+  "first_month": "2020-03",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2025-05",
+  "left_out": ""
+ },
+ "STRATUSDT": {
+  "binance_status": "BREAK",
+  "coin": "STRAT",
+  "first_month": "2020-02",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2020-11",
+  "left_out": ""
+ },
+ "STRAXUSDT": {
+  "binance_status": "TRADING",
+  "coin": "STRAX",
+  "first_month": "2020-11",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "STRKUSDT": {
+  "binance_status": "TRADING",
+  "coin": "STRK",
+  "first_month": "2024-02",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "STXBUSDT": {
+  "binance_status": "TRADING",
+  "coin": "STXB",
+  "first_month": "2026-09",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "STXUSDT": {
+  "binance_status": "TRADING",
+  "coin": "STX",
+  "first_month": "2019-10",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "SUIUSDT": {
+  "binance_status": "TRADING",
+  "coin": "SUI",
+  "first_month": "2023-05",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "SUNUSDT": {
+  "binance_status": "TRADING",
+  "coin": "SUN",
+  "first_month": "2020-09",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "SUPERUSDT": {
+  "binance_status": "TRADING",
+  "coin": "SUPER",
+  "first_month": "2021-03",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "SUSDT": {
+  "binance_status": "TRADING",
+  "coin": "S",
+  "first_month": "2025-01",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "SUSDUSDT": {
+  "binance_status": "BREAK",
+  "coin": "SUSD",
+  "first_month": "2020-12",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2022-04",
+  "left_out": "pegged"
+ },
+ "SUSHIDOWNUSDT": {
+  "binance_status": "BREAK",
+  "coin": "SUSHIDOWN",
+  "first_month": "2020-12",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2021-12",
+  "left_out": "leveraged token"
+ },
+ "SUSHIUPUSDT": {
+  "binance_status": "BREAK",
+  "coin": "SUSHIUP",
+  "first_month": "2020-12",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2021-12",
+  "left_out": "leveraged token"
+ },
+ "SUSHIUSDT": {
+  "binance_status": "TRADING",
+  "coin": "SUSHI",
+  "first_month": "2020-09",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "SXPDOWNUSDT": {
+  "binance_status": "BREAK",
+  "coin": "SXPDOWN",
+  "first_month": "2020-10",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2021-11",
+  "left_out": "leveraged token"
+ },
+ "SXPUPUSDT": {
+  "binance_status": "BREAK",
+  "coin": "SXPUP",
+  "first_month": "2020-10",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2021-11",
+  "left_out": "leveraged token"
+ },
+ "SXPUSDT": {
+  "binance_status": "BREAK",
+  "coin": "SXP",
+  "first_month": "2020-07",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-04",
+  "left_out": ""
+ },
+ "SXTUSDT": {
+  "binance_status": "TRADING",
+  "coin": "SXT",
+  "first_month": "2025-05",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "SYNUSDT": {
+  "binance_status": "TRADING",
+  "coin": "SYN",
+  "first_month": "2023-02",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "SYRUPUSDT": {
+  "binance_status": "TRADING",
+  "coin": "SYRUP",
+  "first_month": "2025-05",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "SYSUSDT": {
+  "binance_status": "BREAK",
+  "coin": "SYS",
+  "first_month": "2021-09",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-05",
+  "left_out": ""
+ },
+ "TAOUSDT": {
+  "binance_status": "TRADING",
+  "coin": "TAO",
+  "first_month": "2024-04",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "TCTUSDT": {
+  "binance_status": "BREAK",
+  "coin": "TCT",
+  "first_month": "2020-01",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2022-10",
+  "left_out": ""
+ },
+ "TFUELUSDT": {
+  "binance_status": "TRADING",
+  "coin": "TFUEL",
+  "first_month": "2019-05",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "THETAUSDT": {
+  "binance_status": "TRADING",
+  "coin": "THETA",
+  "first_month": "2019-04",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "THEUSDT": {
+  "binance_status": "TRADING",
+  "coin": "THE",
+  "first_month": "2024-11",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "TIAUSDT": {
+  "binance_status": "TRADING",
+  "coin": "TIA",
+  "first_month": "2023-10",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "TKOUSDT": {
+  "binance_status": "TRADING",
+  "coin": "TKO",
+  "first_month": "2021-04",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "TLMUSDT": {
+  "binance_status": "TRADING",
+  "coin": "TLM",
+  "first_month": "2021-04",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "TMFBUSDT": {
+  "binance_status": "TRADING",
+  "coin": "TMFB",
+  "first_month": "2026-10",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "TNSRUSDT": {
+  "binance_status": "TRADING",
+  "coin": "TNSR",
+  "first_month": "2024-04",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "TOMOUSDT": {
+  "binance_status": "BREAK",
+  "coin": "TOMO",
+  "first_month": "2019-08",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2023-11",
+  "left_out": ""
+ },
+ "TONUSDT": {
+  "binance_status": "BREAK",
+  "coin": "TON",
+  "first_month": "2024-08",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-06",
+  "left_out": ""
+ },
+ "TORNUSDT": {
+  "binance_status": "BREAK",
+  "coin": "TORN",
+  "first_month": "2021-06",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2022-12",
+  "left_out": ""
+ },
+ "TOWNSUSDT": {
+  "binance_status": "TRADING",
+  "coin": "TOWNS",
+  "first_month": "2025-08",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "TQQQBUSDT": {
+  "binance_status": "TRADING",
+  "coin": "TQQQB",
+  "first_month": "2026-07",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "TRBUSDT": {
+  "binance_status": "TRADING",
+  "coin": "TRB",
+  "first_month": "2020-08",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "TREEUSDT": {
+  "binance_status": "TRADING",
+  "coin": "TREE",
+  "first_month": "2025-07",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "TRIBEUSDT": {
+  "binance_status": "BREAK",
+  "coin": "TRIBE",
+  "first_month": "2021-08",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2022-11",
+  "left_out": ""
+ },
+ "TROYUSDT": {
+  "binance_status": "BREAK",
+  "coin": "TROY",
+  "first_month": "2019-12",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2025-04",
+  "left_out": ""
+ },
+ "TRUMPUSDT": {
+  "binance_status": "TRADING",
+  "coin": "TRUMP",
+  "first_month": "2025-01",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "TRUUSDT": {
+  "binance_status": "BREAK",
+  "coin": "TRU",
+  "first_month": "2021-01",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-04",
+  "left_out": ""
+ },
+ "TRXDOWNUSDT": {
+  "binance_status": "BREAK",
+  "coin": "TRXDOWN",
+  "first_month": "2020-09",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2022-11",
+  "left_out": "leveraged token"
+ },
+ "TRXUPUSDT": {
+  "binance_status": "BREAK",
+  "coin": "TRXUP",
+  "first_month": "2020-09",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2022-11",
+  "left_out": "leveraged token"
+ },
+ "TRXUSDT": {
+  "binance_status": "TRADING",
+  "coin": "TRX",
+  "first_month": "2018-06",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "TSLABUSDT": {
+  "binance_status": "TRADING",
+  "coin": "TSLAB",
+  "first_month": "2026-06",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "TSMBUSDT": {
+  "binance_status": "TRADING",
+  "coin": "TSMB",
+  "first_month": "2026-07",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "TSTUSDT": {
+  "binance_status": "TRADING",
+  "coin": "TST",
+  "first_month": "2025-02",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "TURBOUSDT": {
+  "binance_status": "TRADING",
+  "coin": "TURBO",
+  "first_month": "2024-09",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "TURTLEUSDT": {
+  "binance_status": "TRADING",
+  "coin": "TURTLE",
+  "first_month": "2025-10",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "TUSDT": {
+  "binance_status": "TRADING",
+  "coin": "T",
+  "first_month": "2022-02",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "TUSDUSDT": {
+  "binance_status": "TRADING",
+  "coin": "TUSD",
+  "first_month": "2018-05",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": "pegged"
+ },
+ "TUTUSDT": {
+  "binance_status": "TRADING",
+  "coin": "TUT",
+  "first_month": "2025-03",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "TVKUSDT": {
+  "binance_status": "BREAK",
+  "coin": "TVK",
+  "first_month": "2021-08",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2023-11",
+  "left_out": ""
+ },
+ "TWTUSDT": {
+  "binance_status": "TRADING",
+  "coin": "TWT",
+  "first_month": "2021-01",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "UFTUSDT": {
+  "binance_status": "BREAK",
+  "coin": "UFT",
+  "first_month": "2023-03",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2025-04",
+  "left_out": ""
+ },
+ "UMAUSDT": {
+  "binance_status": "TRADING",
+  "coin": "UMA",
+  "first_month": "2020-09",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "UNFIUSDT": {
+  "binance_status": "BREAK",
+  "coin": "UNFI",
+  "first_month": "2020-11",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2024-11",
+  "left_out": ""
+ },
+ "UNIDOWNUSDT": {
+  "binance_status": "BREAK",
+  "coin": "UNIDOWN",
+  "first_month": "2020-09",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2021-12",
+  "left_out": "leveraged token"
+ },
+ "UNIUPUSDT": {
+  "binance_status": "BREAK",
+  "coin": "UNIUP",
+  "first_month": "2020-09",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2021-12",
+  "left_out": "leveraged token"
+ },
+ "UNIUSDT": {
+  "binance_status": "TRADING",
+  "coin": "UNI",
+  "first_month": "2020-09",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "USARBUSDT": {
+  "binance_status": "TRADING",
+  "coin": "USARB",
+  "first_month": "2026-08",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "USD1USDT": {
+  "binance_status": "TRADING",
+  "coin": "USD1",
+  "first_month": "2025-05",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": "pegged"
+ },
+ "USDCUSDT": {
+  "binance_status": "TRADING",
+  "coin": "USDC",
+  "first_month": "2018-12",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": "pegged"
+ },
+ "USDEBUSDT": {
+  "binance_status": "TRADING",
+  "coin": "USDEB",
+  "first_month": "2026-10",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "USDEUSDT": {
+  "binance_status": "TRADING",
+  "coin": "USDE",
+  "first_month": "2025-09",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": "pegged"
+ },
+ "USDPUSDT": {
+  "binance_status": "BREAK",
+  "coin": "USDP",
+  "first_month": "2021-09",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-09",
+  "left_out": "pegged"
+ },
+ "USDSBUSDT": {
+  "binance_status": "BREAK",
+  "coin": "USDSB",
+  "first_month": "2019-06",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2019-09",
+  "left_out": "pegged"
+ },
+ "USDSOLDUSDT": {
+  "binance_status": "BREAK",
+  "coin": "USDSOLD",
+  "first_month": null,
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": null,
+  "left_out": ""
+ },
+ "USDSUSDT": {
+  "binance_status": "TRADING",
+  "coin": "USDS",
+  "first_month": "2019-02",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": "pegged"
+ },
+ "USTCUSDT": {
+  "binance_status": "TRADING",
+  "coin": "USTC",
+  "first_month": "2023-03",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "USTUSDT": {
+  "binance_status": "BREAK",
+  "coin": "UST",
+  "first_month": "2021-12",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2022-05",
+  "left_out": "pegged"
+ },
+ "USUALUSDT": {
+  "binance_status": "TRADING",
+  "coin": "USUAL",
+  "first_month": "2024-11",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "UTKUSDT": {
+  "binance_status": "BREAK",
+  "coin": "UTK",
+  "first_month": "2020-10",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-04",
+  "left_out": ""
+ },
+ "UUSDT": {
+  "binance_status": "TRADING",
+  "coin": "U",
+  "first_month": "2026-01",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "UVXYBUSDT": {
+  "binance_status": "TRADING",
+  "coin": "UVXYB",
+  "first_month": "2026-10",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "VANAUSDT": {
+  "binance_status": "TRADING",
+  "coin": "VANA",
+  "first_month": "2024-12",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "VANRYUSDT": {
+  "binance_status": "BREAK",
+  "coin": "VANRY",
+  "first_month": "2023-12",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-08",
+  "left_out": ""
+ },
+ "VELODROMEUSDT": {
+  "binance_status": "BREAK",
+  "coin": "VELODROME",
+  "first_month": "2024-12",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "VENUSDT": {
+  "binance_status": "BREAK",
+  "coin": "VEN",
+  "first_month": "2018-06",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2018-10",
+  "left_out": ""
+ },
+ "VETUSDT": {
+  "binance_status": "TRADING",
+  "coin": "VET",
+  "first_month": "2018-07",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "VGXUSDT": {
+  "binance_status": "BREAK",
+  "coin": "VGX",
+  "first_month": "2021-11",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2024-08",
+  "left_out": ""
+ },
+ "VIBUSDT": {
+  "binance_status": "BREAK",
+  "coin": "VIB",
+  "first_month": "2023-02",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2025-05",
+  "left_out": ""
+ },
+ "VICUSDT": {
+  "binance_status": "BREAK",
+  "coin": "VIC",
+  "first_month": "2023-11",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-08",
+  "left_out": ""
+ },
+ "VIDTUSDT": {
+  "binance_status": "BREAK",
+  "coin": "VIDT",
+  "first_month": "2021-09",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2025-04",
+  "left_out": ""
+ },
+ "VIRTUALUSDT": {
+  "binance_status": "TRADING",
+  "coin": "VIRTUAL",
+  "first_month": "2025-04",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "VITEUSDT": {
+  "binance_status": "BREAK",
+  "coin": "VITE",
+  "first_month": "2019-12",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2025-02",
+  "left_out": ""
+ },
+ "VOXELUSDT": {
+  "binance_status": "BREAK",
+  "coin": "VOXEL",
+  "first_month": "2021-12",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2025-12",
+  "left_out": ""
+ },
+ "VSTBUSDT": {
+  "binance_status": "TRADING",
+  "coin": "VSTB",
+  "first_month": "2026-10",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "VTHOUSDT": {
+  "binance_status": "TRADING",
+  "coin": "VTHO",
+  "first_month": "2020-07",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "WALUSDT": {
+  "binance_status": "TRADING",
+  "coin": "WAL",
+  "first_month": "2025-10",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "WANUSDT": {
+  "binance_status": "BREAK",
+  "coin": "WAN",
+  "first_month": "2019-08",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-04",
+  "left_out": ""
+ },
+ "WAVESUSDT": {
+  "binance_status": "BREAK",
+  "coin": "WAVES",
+  "first_month": "2019-01",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2024-06",
+  "left_out": ""
+ },
+ "WAXPUSDT": {
+  "binance_status": "TRADING",
+  "coin": "WAXP",
+  "first_month": "2021-08",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "WBETHUSDT": {
+  "binance_status": "TRADING",
+  "coin": "WBETH",
+  "first_month": "2023-07",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": "pegged"
+ },
+ "WBTCUSDT": {
+  "binance_status": "TRADING",
+  "coin": "WBTC",
+  "first_month": "2023-04",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": "pegged"
+ },
+ "WCTUSDT": {
+  "binance_status": "TRADING",
+  "coin": "WCT",
+  "first_month": "2025-04",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "WDCBUSDT": {
+  "binance_status": "TRADING",
+  "coin": "WDCB",
+  "first_month": "2026-07",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "WENBUSDT": {
+  "binance_status": "TRADING",
+  "coin": "WENB",
+  "first_month": "2026-09",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "WIFUSDT": {
+  "binance_status": "TRADING",
+  "coin": "WIF",
+  "first_month": "2024-03",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "WINGUSDT": {
+  "binance_status": "BREAK",
+  "coin": "WING",
+  "first_month": "2020-09",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2025-05",
+  "left_out": ""
+ },
+ "WINUSDT": {
+  "binance_status": "TRADING",
+  "coin": "WIN",
+  "first_month": "2019-08",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "WLDUSDT": {
+  "binance_status": "TRADING",
+  "coin": "WLD",
+  "first_month": "2023-07",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "WLFIUSDT": {
+  "binance_status": "TRADING",
+  "coin": "WLFI",
+  "first_month": "2025-09",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "WNXMUSDT": {
+  "binance_status": "BREAK",
+  "coin": "WNXM",
+  "first_month": "2020-08",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2024-06",
+  "left_out": ""
+ },
+ "WOOUSDT": {
+  "binance_status": "TRADING",
+  "coin": "WOO",
+  "first_month": "2022-02",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "WRXUSDT": {
+  "binance_status": "BREAK",
+  "coin": "WRX",
+  "first_month": "2020-02",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2024-12",
+  "left_out": ""
+ },
+ "WTCUSDT": {
+  "binance_status": "BREAK",
+  "coin": "WTC",
+  "first_month": "2020-04",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2023-12",
+  "left_out": ""
+ },
+ "WUSDT": {
+  "binance_status": "TRADING",
+  "coin": "W",
+  "first_month": "2024-04",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "XAIUSDT": {
+  "binance_status": "TRADING",
+  "coin": "XAI",
+  "first_month": "2024-01",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "XAUTUSDT": {
+  "binance_status": "TRADING",
+  "coin": "XAUT",
+  "first_month": "2026-03",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": "pegged"
+ },
+ "XECUSDT": {
+  "binance_status": "TRADING",
+  "coin": "XEC",
+  "first_month": "2021-09",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "XEMUSDT": {
+  "binance_status": "BREAK",
+  "coin": "XEM",
+  "first_month": "2020-11",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2024-06",
+  "left_out": ""
+ },
+ "XLMDOWNUSDT": {
+  "binance_status": "BREAK",
+  "coin": "XLMDOWN",
+  "first_month": "2020-12",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2021-12",
+  "left_out": "leveraged token"
+ },
+ "XLMUPUSDT": {
+  "binance_status": "BREAK",
+  "coin": "XLMUP",
+  "first_month": "2020-12",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2021-12",
+  "left_out": "leveraged token"
+ },
+ "XLMUSDT": {
+  "binance_status": "TRADING",
+  "coin": "XLM",
+  "first_month": "2018-05",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "XMRUSDT": {
+  "binance_status": "BREAK",
+  "coin": "XMR",
+  "first_month": "2019-03",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2024-02",
+  "left_out": ""
+ },
+ "XNOUSDT": {
+  "binance_status": "TRADING",
+  "coin": "XNO",
+  "first_month": "2022-01",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "XPLUSDT": {
+  "binance_status": "TRADING",
+  "coin": "XPL",
+  "first_month": "2025-09",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "XRPBEARUSDT": {
+  "binance_status": "BREAK",
+  "coin": "XRPBEAR",
+  "first_month": "2020-02",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2020-03",
+  "left_out": "leveraged token"
+ },
+ "XRPBULLUSDT": {
+  "binance_status": "BREAK",
+  "coin": "XRPBULL",
+  "first_month": "2020-02",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2020-03",
+  "left_out": "leveraged token"
+ },
+ "XRPDOWNUSDT": {
+  "binance_status": "BREAK",
+  "coin": "XRPDOWN",
+  "first_month": "2020-09",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2023-05",
+  "left_out": "leveraged token"
+ },
+ "XRPUPUSDT": {
+  "binance_status": "BREAK",
+  "coin": "XRPUP",
+  "first_month": "2020-09",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2023-05",
+  "left_out": "leveraged token"
+ },
+ "XRPUSDT": {
+  "binance_status": "TRADING",
+  "coin": "XRP",
+  "first_month": "2018-05",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "XTZDOWNUSDT": {
+  "binance_status": "BREAK",
+  "coin": "XTZDOWN",
+  "first_month": "2020-08",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2022-01",
+  "left_out": "leveraged token"
+ },
+ "XTZUPUSDT": {
+  "binance_status": "BREAK",
+  "coin": "XTZUP",
+  "first_month": "2020-08",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2022-01",
+  "left_out": "leveraged token"
+ },
+ "XTZUSDT": {
+  "binance_status": "TRADING",
+  "coin": "XTZ",
+  "first_month": "2019-09",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "XUSDUSDT": {
+  "binance_status": "TRADING",
+  "coin": "XUSD",
+  "first_month": "2025-03",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": "pegged"
+ },
+ "XVGUSDT": {
+  "binance_status": "TRADING",
+  "coin": "XVG",
+  "first_month": "2021-06",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "XVSUSDT": {
+  "binance_status": "TRADING",
+  "coin": "XVS",
+  "first_month": "2020-10",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "XZCUSDT": {
+  "binance_status": "BREAK",
+  "coin": "XZC",
+  "first_month": "2020-04",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2021-01",
+  "left_out": ""
+ },
+ "YBUSDT": {
+  "binance_status": "TRADING",
+  "coin": "YB",
+  "first_month": "2025-10",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "YFIDOWNUSDT": {
+  "binance_status": "BREAK",
+  "coin": "YFIDOWN",
+  "first_month": "2020-10",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2021-12",
+  "left_out": "leveraged token"
+ },
+ "YFIIUSDT": {
+  "binance_status": "BREAK",
+  "coin": "YFII",
+  "first_month": "2020-09",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2023-08",
+  "left_out": ""
+ },
+ "YFIUPUSDT": {
+  "binance_status": "BREAK",
+  "coin": "YFIUP",
+  "first_month": "2020-10",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2021-12",
+  "left_out": "leveraged token"
+ },
+ "YFIUSDT": {
+  "binance_status": "TRADING",
+  "coin": "YFI",
+  "first_month": "2020-08",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "YGGUSDT": {
+  "binance_status": "TRADING",
+  "coin": "YGG",
+  "first_month": "2021-09",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "ZAMAUSDT": {
+  "binance_status": "TRADING",
+  "coin": "ZAMA",
+  "first_month": "2026-02",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "ZBTUSDT": {
+  "binance_status": "TRADING",
+  "coin": "ZBT",
+  "first_month": "2025-10",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "ZECUSDT": {
+  "binance_status": "TRADING",
+  "coin": "ZEC",
+  "first_month": "2019-03",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "ZENUSDT": {
+  "binance_status": "TRADING",
+  "coin": "ZEN",
+  "first_month": "2020-07",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "ZILUSDT": {
+  "binance_status": "TRADING",
+  "coin": "ZIL",
+  "first_month": "2019-02",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "ZKCUSDT": {
+  "binance_status": "TRADING",
+  "coin": "ZKC",
+  "first_month": "2025-09",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "ZKPUSDT": {
+  "binance_status": "TRADING",
+  "coin": "ZKP",
+  "first_month": "2026-01",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "ZKUSDT": {
+  "binance_status": "TRADING",
+  "coin": "ZK",
+  "first_month": "2024-06",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "ZMBUSDT": {
+  "binance_status": "TRADING",
+  "coin": "ZMB",
+  "first_month": "2026-09",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "ZROUSDT": {
+  "binance_status": "TRADING",
+  "coin": "ZRO",
+  "first_month": "2024-06",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ },
+ "ZRXUSDT": {
+  "binance_status": "TRADING",
+  "coin": "ZRX",
+  "first_month": "2019-02",
+  "found_in": [
+   "archive",
+   "exchangeInfo"
+  ],
+  "last_month": "2026-10",
+  "left_out": ""
+ }
+}
