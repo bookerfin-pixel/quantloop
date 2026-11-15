@@ -646,6 +646,24 @@ the machinery, not edge.
   check is a tripwire, not a measurement: four markets catch a bench that errs twice as often as it says about one
   time in five, and nothing in it can see an idea tuned on this history.
 
+- The bench on daily bars across many coins, and how fair its yardsticks are (2026-11-15). bot/widebench.py reads
+  a book that chooses among many coins on Binance's daily history with the delisted coins kept, against random
+  picks from the coins it could have chosen on the same days and against its twins (CLAUDE.md has what each is).
+  Review on 2026-11-11 found two leans, both mended before any reading of the real history was taken: twins slid
+  over a coin's whole life held the days before it could be on the list, where young coins fall, and books with no
+  skill beat 76% of them, so a coin's twins are slid only over the days it could have been chosen or was held, and
+  scored on what it made over the average of those coins; and picks drew coins the rule could not yet rank (80%),
+  so picks come only from what the rule could rank. The tests hold a book with no skill to between 0.35 and 0.65 of
+  its twins and of its picks on average over 24 synthetic markets, with coins that die and coins that fall while
+  young. On the real history, 100 markets with every day's direction tossed (seeds 20261108 to 20261207, clear of
+  the four a whole reading uses) and five books (strongest 5 of the top 30 by 14 days, daily and weekly, each with
+  and without the 30 day filter, and strongest 5 of the top 100 by 60 days, weekly): the share of picks beaten
+  averaged 0.46 to 0.52 and was 90% or more on 9% to 13% of the markets, where luck gives 10%; of twins, 0.48 to
+  0.54 and 8% to 15%. The chance was one in ten or less on 7% to 14%. Fair, as far as 100 markets can say (a
+  tenth is give or take 3 points on 100), though the weekly book with the filter is at the top of that range on
+  both yardsticks (13% and 15%), so a weekly filtered book's reading counts for a little less than it says. As on
+  the hourly bench, the four null markets of a whole reading are a tripwire, not a measurement.
+
 - Judging a test against cash instead of H0 changes no error rate, if the
   drawdown guard is set by the basket (2026-10-10, for ruleset 8). Rule 1's
   twin study, run again with cash as the other side (seeds 11 and 12, each

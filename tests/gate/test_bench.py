@@ -3088,11 +3088,17 @@ def test_nothing_else_in_bot_reads_the_bench():
     the hourly loop runs and the one file of the loop the agent may change, bot/strategy.py, which was
     not on the list at first (found in review, 2026-10-07): a strategy that read its own reading would
     be trading on the years it is about to be tested on. (The backtest is used by the bench, not the
-    other way round.)"""
+    other way round.) One exception, from 2026-11-15: bot/widebench.py, the bench on daily bars across
+    many coins, is a bench too and borrows the bench's arithmetic (twins' worth, the chance, the t), so it
+    may import it; it still may not spell out the folder the readings are saved in, and nothing the
+    hourly loop runs may import widebench (tests/gate/test_widebench.py)."""
     modules = sorted(p for p in (REPO / "bot").glob("*.py") if p.name != "bench.py")
     assert {"strategy.py", "run.py", "promote.py", "report.py", "slot.py", "backtest.py", "wide.py"} <= {p.name for p in modules}
     for path in modules:
-        assert names_the_bench(path.read_text(encoding="utf-8")) == [], path.name
+        found = names_the_bench(path.read_text(encoding="utf-8"))
+        if path.name == "widebench.py":
+            found = [f for f in found if not f.endswith("an import of bench")]
+        assert found == [], path.name
     for leaning in ("from . import bench", "from .bench import saved", "import bot.bench as b", "from bot import config, bench",
                     'p = config.STATE / "bench" / "H5.json"', 'open("state/bench/README.md")', '__import__("importlib").import_module("bot.bench")'):
         assert names_the_bench(leaning), leaning                                              # the reading itself bites

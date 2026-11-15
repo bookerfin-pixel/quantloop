@@ -218,6 +218,29 @@ can read it with `gh pr list --state closed`.
   ledger entry; every phase of a rhythm; no strategy reads it, and the same
   test in the gate sees to that). `python -m bot.wide` prints its last run
   under its own, and its FAILED and STALE lines are passed on like the rest.
+- `python -m bot.widebench --spec strongest,5,30,7,0,50` (strategy, how many
+  coins, lookback in days, every how many days it chooses, which day of that
+  rhythm, how long a list it chooses from, and, if wanted, a seventh figure:
+  hold the book only while the list's coins rose over that many days
+  before, and cash otherwise) reads a book that chooses among
+  many coins on that history, twice: on the market with the dead coins and
+  on the survivors' market, the hundred coins most traded as it ends with
+  their whole past, which is what the Kraken list is. Each reading sets the
+  book against random picks from the coins it could have chosen on the same
+  days and against its twins, by year, at double costs, at nearby settings,
+  on each half of the coins, on every phase of its rhythm and on four
+  markets with every day's direction tossed. It also sets what the book
+  made after costs beside BTC held and BTC held only while it rose over the
+  days before, each with its Sharpe ratio and worst fall, over the whole
+  history and over the last three years alone. Beating its picks says the
+  book chose well among its coins, not that choosing among them was worth
+  doing: on this history the coins it chooses from lost most of their
+  value, and a book that does not beat BTC timed has found nothing a book of
+  one coin would not have (FINDINGS, "Choosing among many coins"). Give it
+  the Bash tool's `timeout` of 600000. It is how a
+  lead on many coins is read before it goes in the backlog, with both
+  readings next to it; what it shows is in sample and proves nothing, and no
+  account can trade such a book yet.
 - A further job (`bot/bench.py`, protected) takes a reading of every config in
   use on all the history on file and keeps it under `state/bench/`;
   `state/bench/README.md` is the league table, with each config's whole
