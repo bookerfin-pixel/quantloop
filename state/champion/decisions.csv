@@ -14207,3 +14207,13 @@ ts,account,pair,price,signal_weight,target_weight,current_weight,action,reason,h
 1794773445,champion,DOGE,0.058624,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -10.55% not above entry band +1.0%,0.196
 1794773445,champion,DOT,0.73205,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -11.14% not above entry band +1.0%,0.683
 1794773445,champion,LTC,45.155,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -9.24% not above entry band +1.0%,1.107
+1794777045,champion,BTC,65029.25,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -8.78% not above entry band +1.0%,0.008
+1794777045,champion,ETH,1821.495,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -9.39% not above entry band +1.0%,0.027
+1794777045,champion,SOL,71.925,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -11.54% not above entry band +1.0%,0.695
+1794777045,champion,ADA,0.154663,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -10.28% not above entry band +1.0%,1.94
+1794777045,champion,AVAX,7.2915,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -12.80% not above entry band +1.0% and price below 24h EMA,2.057
+1794777045,champion,LINK,9.257715,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -8.08% not above entry band +1.0%,1.226
+1794777045,champion,XRP,0.962085,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -7.23% not above entry band +1.0%,0.26
+1794777045,champion,DOGE,0.059103,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -10.48% not above entry band +1.0% and price below 24h EMA,0.406
+1794777045,champion,DOT,0.737,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -10.84% not above entry band +1.0%,1.357
+1794777045,champion,LTC,45.475,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -9.08% not above entry band +1.0%,1.1
