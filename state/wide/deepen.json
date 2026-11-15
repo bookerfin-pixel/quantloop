@@ -544,6 +544,11 @@
   "result": "added 0 days; closes differ by 0.12% at the median and 0.53% at the ninth decile over 31 days",
   "want_from": 1635206400
  },
+ "KAVA": {
+  "at": 1794726597,
+  "result": "added 676 days; closes differ by 0.21% at the median and 0.67% at the ninth decile over 31 days",
+  "want_from": 1637020800
+ },
  "KMNO": {
   "at": 1794208226,
   "result": "no candles",
@@ -555,9 +560,9 @@
   "want_from": 1634860800
  },
  "KOR": {
-  "at": 1794639592,
-  "result": "not listed, to be asked once more",
-  "want_from": 1636934400
+  "at": 1794726597,
+  "result": "not listed",
+  "want_from": 1637020800
  },
  "KSM": {
   "at": 1791378076,
@@ -853,6 +858,11 @@
   "at": 1791378076,
   "result": "added 245 days; closes differ by 0.07% at the median and 0.23% at the ninth decile over 31 days",
   "want_from": 1633651200
+ },
+ "REQ": {
+  "at": 1794726597,
+  "result": "added 1105 days; closes differ by 0.61% at the median and 1.49% at the ninth decile over 31 days",
+  "want_from": 1637020800
  },
  "RLC": {
   "at": 1791378076,
