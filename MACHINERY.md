@@ -664,6 +664,17 @@ the machinery, not edge.
   both yardsticks (13% and 15%), so a weekly filtered book's reading counts for a little less than it says. As on
   the hourly bench, the four null markets of a whole reading are a tripwire, not a measurement.
 
+- The replay against the live tests (2026-11-15). The nursery (bot/nursery.py) replays each ledger idea through
+  the engine from the UTC midnight of its ledger date, on the candles on file, with nothing of the slot: fills at
+  the next candle's open, no live quotes, no daily loss halt, the book the replay held rather than the slot's.
+  Its first reading, set beside what each live test did: H1's early kill on day 59 (live, day 59.0); H4's on
+  day 19 (live, day 17.8); H2's on day 47, from 2026-09-20 (live, 45.3 days from 2026-09-21); H6 -21.3% on day 31
+  (live -21.25% on day 30.3); H5 -2.8% on day 41 with 5 fills (live -1.27% on day 40.3 with 10). The replay and
+  the paper loop tell the same story, within a day or two and a point or two, so what an idea does on paper in
+  the nursery is a fair stand in for what it would have done in a slot, before the slot is spent. The days are
+  offset by up to a day (a test begins in the hour its proposal merges), and the fills differ most where they
+  are few.
+
 - Judging a test against cash instead of H0 changes no error rate, if the
   drawdown guard is set by the basket (2026-10-10, for ruleset 8). Rule 1's
   twin study, run again with cash as the other side (seeds 11 and 12, each

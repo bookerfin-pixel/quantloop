@@ -1,0 +1,89 @@
+name: nursery
+
+# Every idea under configs/nursery/ on paper from the day it was first seen
+# (bot/nursery.py), kept under state/nursery/: each is replayed through the
+# engine over the year before that day and every day since, and the days
+# since are read as a test's are. The hourly loop never reads any of it, and
+# this job writes nowhere else. An idea that cannot be read gets a line under
+# "Not read" in state/nursery/README.md and turns the run red; the readings
+# that could be taken are still committed.
+on:
+  # 04:47 UTC: after the bench (01:37) and the Binance history (03:17) have had their turn, and well clear of
+  # the agent's run at 22:00.
+  schedule:
+    - cron: "47 4 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+# Its own group on purpose: it must never queue ahead of, or cancel, an hourly run.
+concurrency:
+  group: nursery
+  cancel-in-progress: false
+
+jobs:
+  read:
+    runs-on: ubuntu-latest
+    # About 45 seconds an idea on a runner, more as the days on paper grow (a year of them doubles it).
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 1
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install
+        run: pip install -q -r requirements.txt
+
+      - name: Read
+        id: read
+        continue-on-error: true
+        timeout-minutes: 100
+        run: python -m bot.nursery --save
+
+      - name: Summary
+        if: always()
+        run: |
+          echo '## quantloop nursery' >> "$GITHUB_STEP_SUMMARY"
+          echo "this run's read step: ${{ steps.read.outcome }}" >> "$GITHUB_STEP_SUMMARY"
+          if [ -f state/nursery/README.md ]; then
+            head -c 20000 state/nursery/README.md >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      # "bench:" and not "nursery:", so that the daily check, which takes any commit not starting "state:",
+      # "wide:" or "bench:" for the agent's, is not fooled into saying the agent ran.
+      - name: Commit
+        run: |
+          git config user.name "quantloop-bot"
+          git config user.email "quantloop-bot@users.noreply.github.com"
+          if [ ! -d state/nursery ]; then
+            echo "no readings to commit"
+            exit 0
+          fi
+          git add -A state/nursery
+          if git diff --cached --quiet; then
+            echo "nothing to commit"
+            exit 0
+          fi
+          git commit -q -m "bench: nursery $(date -u +%Y-%m-%d)"
+          for attempt in 1 2 3 4 5; do
+            if git pull --rebase -q && git push -q; then
+              echo "pushed on attempt $attempt"
+              exit 0
+            fi
+            sleep $((attempt * 20))
+          done
+          echo "push failed after 5 attempts"
+          exit 1
+
+      - name: Red when an idea could not be read
+        if: steps.read.outcome == 'failure'
+        run: |
+          echo "an idea could not be read; state/nursery/README.md says which, under Not read"
+          exit 1

@@ -1,0 +1,10 @@
+# H6 in the nursery: on paper from the day it was first seen (bot/nursery.py). Its ledger entry says what it is.
+hypothesis: H6
+strategy: relative_reversion
+params:
+  ratio_hours: 720
+  entry_z: 2.0
+  exit_z: 0.25
+  vol_lookback_hours: 168
+  target_vol_annual: 0.3
+  max_weight: 0.25

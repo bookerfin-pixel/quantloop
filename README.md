@@ -80,9 +80,11 @@ as plausibility checks; only the prospective window counts.
     bot/            data, strategy (agent editable), paper account, risk, run, backtest, promote, shadow, report,
                     wide (the research data collector), binance (the history of every coin Binance has
                     quoted in USDT, the dead with the living), bench (what a config shows on history,
-                    set against its own twins) and widebench (the same for a book that chooses among many
-                    coins, on the Binance history), all four apart from the hourly loop
-    configs/        risk.yaml (protected), champion.yaml (protected), challenger1..4.yaml (agent edits, one per PR)
+                    set against its own twins), widebench (the same for a book that chooses among many
+                    coins, on the Binance history) and nursery (every idea on paper from the day it was
+                    first seen), all five apart from the hourly loop
+    configs/        risk.yaml (protected), champion.yaml (protected), challenger1..4.yaml (agent edits, one per PR),
+                    nursery/ (ideas on paper without a slot; the agent adds them, one per PR)
     gate/           the three checks the PR must pass
     tests/          gate/ is protected; the rest the agent may extend
     state/          accounts, decisions, trades, equity curves, live candle cache, five year history, summary.md
@@ -115,6 +117,7 @@ With Python 3.12 or newer (the version every workflow runs; requirements.txt pin
     python -m bot.wide                               # what the wide data collector last did (it only reads)
     python -m bot.binance                            # what the Binance history job last did (it only reads)
     python -m bot.widebench --spec strongest,5,30,7,0,50    # a book choosing among many coins, with and without the dead
+    python -m bot.nursery                            # every idea on paper from the day it was first seen (five minutes or more)
     python -m bot.bench --all --quick                # the champion and every slot on five years of history (a quarter of an hour or more)
     python -m bot.bench --config configs/challenger1.yaml   # one config's whole reading (a dozen replays: half an hour or more)
 

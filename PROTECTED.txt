@@ -36,6 +36,7 @@ bot/config.py
 bot/wide.py
 bot/binance.py
 bot/widebench.py
+bot/nursery.py
 configs/wide.yaml
 bot/bench.py
 configs/shadow.yaml

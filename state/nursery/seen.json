@@ -1,0 +1,26 @@
+{
+ "H0": {
+  "seen": "2026-09-16",
+  "signature": "3100fa57bad10c70"
+ },
+ "H1": {
+  "seen": "2026-09-16",
+  "signature": "057393276c833fa8"
+ },
+ "H2": {
+  "seen": "2026-09-20",
+  "signature": "2ae43604653445d4"
+ },
+ "H4": {
+  "seen": "2026-09-25",
+  "signature": "bc1b7abb8025aacf"
+ },
+ "H5": {
+  "seen": "2026-10-05",
+  "signature": "ea4e5671b4f570bb"
+ },
+ "H6": {
+  "seen": "2026-10-15",
+  "signature": "53cea7e714eb7cc6"
+ }
+}

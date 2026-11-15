@@ -84,7 +84,7 @@ def plant(root: Path, feed: Feed) -> None:
 
 BENCH_FILES = {"H9.json": b'{"hypothesis": "H9", "sharpe": 9.9, "twins": {"beaten": 1.0}}\n',
                "README.md": b"# The bench's league table\n\nH9 beats every twin\n"}
-WATCHED = ("wide", "bench")                    # the folders under state/ that the hourly loop must leave alone
+WATCHED = ("wide", "bench", "nursery")         # the folders under state/ that the hourly loop must leave alone
 
 
 def plant_bench(root: Path, hypotheses=()) -> None:

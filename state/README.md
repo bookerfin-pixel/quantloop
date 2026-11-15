@@ -165,3 +165,21 @@ Kraken's, and from October 2026 only). And one to mind: Binance quoted only
 a few dozen coins in USDT in 2018, so a top 50 then is every coin that
 qualifies (`binance.listing(50, df).sum(axis=1)` says how many each day). A
 study on it is still in sample.
+
+## nursery/
+
+What every idea under configs/nursery/ has done on paper since the day this
+job first saw it (bot/nursery.py, .github/workflows/nursery.yml, once a day
+at 04:47 UTC). `seen.json` holds the day each idea was first seen, with the
+signature of its strategy, params and strategy code; an idea whose signature
+changes is seen again from the day of the change, and no date can be moved
+back. The ledger's ideas from before the nursery began were seeded with the
+dates of their ledger entries: H0, H1, H2, H4, H5 and H6 (H3, voided for
+broken code, is left out).
+`<idea>.json` is each idea's reading: the whole UTC days since it was seen,
+what it made after costs, the equal weight basket of the pairs held from that
+day, its skill at its usual exposure (its average over the year before), the
+daily skill t and confidence, fills, costs, worst fall, and the day the early
+kill on losses would have ended it. `README.md` is the table, highest
+confidence first, with the idea next in line for a free slot. A replay, not a
+slot: fills at the next candle's open, no live quotes, no daily loss halt.

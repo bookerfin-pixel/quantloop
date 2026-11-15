@@ -1,0 +1,11 @@
+# H5 in the nursery: on paper from the day it was first seen (bot/nursery.py). Its ledger entry says what it is.
+hypothesis: H5
+strategy: swing_reversal
+params:
+  recent_hours: 240
+  min_higher_low: 0.1
+  exit_hours: 48
+  fresh_cross: true
+  vol_lookback_hours: 168
+  target_vol_annual: 0.3
+  max_weight: 0.25

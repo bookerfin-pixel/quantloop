@@ -276,6 +276,26 @@ can read it with `gh pr list --state closed`.
   any road, any more than `state/wide`: it would be trading on a reading of
   the years it is about to be tested on, and the same test in the gate fails
   one that opens anything there.
+- Once a day the nursery (`bot/nursery.py`, protected) puts every idea under
+  `configs/nursery/` on paper from the day it first saw it: each is replayed
+  through the engine over the year before that day and every day since, and
+  the days since are read as a test's are (net, the basket held from that
+  day, skill at its usual exposure, the daily skill t, the confidence
+  figure, fills, worst fall, and the day the early kill on losses would have
+  ended it). Those days are out of sample, which no backtest of an idea is,
+  and no slot is spent on them; they are still a replay, not a slot. The
+  day first seen is kept in `state/nursery/seen.json` and cannot be moved
+  back, and an idea whose strategy, params or strategy code changes is seen
+  again from that day. `state/nursery/README.md` is its table, highest
+  confidence first, and its line "Next in line for a free slot" names the
+  idea with the highest confidence among those with 60 days on paper or
+  more, in no slot, that the early kill would not have ended. Nothing is
+  promoted from it: with many ideas at once some read well by luck. Read in
+  sample alongside it, the first readings agree with what the live tests
+  did (MACHINERY, 2026-11-15). A strategy must not read `state/nursery`
+  either, by any road, and the same watch in the gate sees to it.
+  `python -m bot.nursery` prints the table and only reads; the nursery's own
+  job is the one thing that writes state/nursery.
 - state/history/ holds about five years of hourly candles per pair where the
   venue has them (Coinbase backfill, written once; a pair starts where the
   venue's candles start, and XRP starts only in July 2023 because Coinbase
@@ -321,7 +341,8 @@ can read it with `gh pr list --state closed`.
 
 Read, in this order: `state/summary.md`, `LEDGER.md` (all of it, results
 included), `FINDINGS.md`, `hypotheses/backlog.md`, the newest file in
-`notes/`, and `state/bench/README.md` if it is there. Then run
+`notes/`, and `state/bench/README.md` and `state/nursery/README.md` if they
+are there. Then run
 `gh pr list --state closed --limit 5` and read why any recent PR was closed.
 `MACHINERY.md` (protected) is what was measured about the rules, the engine
 and the bench; this file, PROMOTION.md and the code cite it as MACHINERY
@@ -419,7 +440,23 @@ If every slot is busy (a test running in each):
   what you saw, anything to add to the backlog) and update the backlog if
   you have a real idea. Commit. Keep this run short.
 
+An idea can go on paper in the nursery without a slot, on any run: add
+`configs/nursery/H<n>.yaml` (the next H number; `hypothesis`, `strategy` and
+`params`, as a slot config has, and the file named after its hypothesis), a
+backlog line saying what it tests and why, and any new strategy function with
+its tests, one idea a pull request, in a commit whose first line is
+`H<n>: nursery: <title>`. No ledger entry is needed until it takes a slot, when
+the entry is written under the same H number. Put an idea there when its
+history reading is worth a look and no slot is free, or when it cannot be
+proven in a slot (one that makes few fills), so that its record starts now.
+Do not put a parameter nudge of an idea already there: it is the same idea,
+and two copies split nothing but luck.
+
 If a slot is free:
+- Look at the nursery's table first. Its line "Next in line for a free slot"
+  is the first candidate, as long as its bench reading does not say no sign
+  of timing; say in the ledger entry what its days on paper showed, next to
+  the Bench line. A table with no one in line says so and you go on below.
 - Pick the hypothesis with the best cost arithmetic from the backlog, or a
   new one if you have a stronger reason. Structural changes (horizon,
   filter, universe, sizing rule) over parameter nudges. A nudge cannot be
