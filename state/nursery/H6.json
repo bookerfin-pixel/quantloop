@@ -1,0 +1,19 @@
+{
+ "basket": -0.2713998723326261,
+ "confidence": 0.08009050811609253,
+ "costs": 0.009942196618376645,
+ "days": 32,
+ "early_kill_day": null,
+ "exposure": 0.9380248901560231,
+ "fills": 55,
+ "idea": "H6",
+ "max_drawdown": -0.25811076847395187,
+ "net": -0.17676928169626027,
+ "seen": "2026-10-15",
+ "skill": -0.033771321761833006,
+ "skill_t": -0.3270663530168413,
+ "slot": "challenger4",
+ "strategy": "relative_reversion",
+ "usual": 0.526890299193545,
+ "version": 1
+}
