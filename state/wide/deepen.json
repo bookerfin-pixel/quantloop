@@ -434,6 +434,11 @@
   "result": "not used: only 0 days in common",
   "want_from": 1633737600
  },
+ "GLMR": {
+  "at": 1794813311,
+  "result": "not listed, to be asked once more",
+  "want_from": 1637107200
+ },
  "GMT": {
   "at": 1791594078,
   "result": "added 906 days; closes differ by 0.40% at the median and 0.57% at the ninth decile over 31 days",
@@ -839,6 +844,11 @@
   "result": "added 1105 days; closes differ by 0.13% at the median and 0.41% at the ninth decile over 31 days",
   "want_from": 1633651200
  },
+ "RARE": {
+  "at": 1794813311,
+  "result": "added 847 days; closes differ by 0.15% at the median and 0.27% at the ninth decile over 31 days",
+  "want_from": 1637107200
+ },
  "RAY": {
   "at": 1791507774,
   "result": "no candles",
@@ -1064,6 +1074,11 @@
   "result": "added 842 days; closes differ by 0.20% at the median and 0.73% at the ninth decile over 31 days",
   "want_from": 1633824000
  },
+ "VINE": {
+  "at": 1794813311,
+  "result": "not listed, to be asked once more",
+  "want_from": 1637107200
+ },
  "VIRTUAL": {
   "at": 1791507774,
   "result": "no candles",
@@ -1108,6 +1123,11 @@
   "at": 1792473335,
   "result": "added 0 days; closes differ by 0.14% at the median and 0.21% at the ninth decile over 31 days",
   "want_from": 1634774400
+ },
+ "WMTX": {
+  "at": 1794813311,
+  "result": "no candles, to be asked once more",
+  "want_from": 1637107200
  },
  "XAN": {
   "at": 1793168195,

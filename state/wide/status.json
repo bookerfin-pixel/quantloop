@@ -1,27 +1,30 @@
 {
  "coinbase": {
-  "coins": 2,
-  "days_added": 1781,
+  "coins": 1,
+  "days_added": 847,
   "failed": [],
   "mismatch": [],
-  "not_listed": 1
+  "not_listed": 2
  },
  "funding": {
-  "days_added": 73,
+  "days_added": 782,
   "failed": [],
-  "symbols": 73
+  "symbols": 75
  },
  "kraken": {
-  "days_added": 1679,
+  "days_added": 2769,
   "failed": [],
   "joined_today": [
-   "KAVA",
-   "REQ"
+   "VINE",
+   "RARE",
+   "WMTX",
+   "GLMR"
   ],
-  "listed": 241,
-  "on_the_list": 242,
-  "pairs_read": 241,
+  "listed": 245,
+  "on_the_list": 246,
+  "pairs_read": 245,
   "pegged_skipped": [
+   "APXUSD",
    "AUSD",
    "CASH",
    "FIDD",
@@ -35,12 +38,12 @@
    "USDSUI",
    "USTABLES"
   ],
-  "qualified_today": 221,
+  "qualified_today": 180,
   "quoted": 633,
   "quotes_failed": "",
-  "quotes_written": 241,
+  "quotes_written": 245,
   "unquoted": [],
-  "usd_pairs": 636
+  "usd_pairs": 637
  },
  "ok": true,
  "probes": {
@@ -55,7 +58,7 @@
    "ok": true
   }
  },
- "ran": 1794726597,
- "ran_utc": "2026-11-15 07:09Z",
+ "ran": 1794813311,
+ "ran_utc": "2026-11-16 07:15Z",
  "settings_not_used": []
 }
