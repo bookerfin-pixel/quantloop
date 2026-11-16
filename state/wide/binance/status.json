@@ -7,6 +7,8 @@
    "missing_days": 5,
    "pair": "BNXUSDT",
    "price_back_over_left": 0.01,
+   "ratio": 0.01,
+   "redenominated": 0.01,
    "split": false
   },
   {
@@ -16,16 +18,75 @@
    "missing_days": 3,
    "pair": "BTCSTUSDT",
    "price_back_over_left": 0.099998,
+   "ratio": 0.1,
+   "redenominated": 0.1,
    "split": false
   },
   {
    "back": "2021-01-23",
-   "coin": "COCOS#2",
+   "coin": "COCOS",
    "left": "2021-01-19",
    "missing_days": 3,
    "pair": "COCOSUSDT",
    "price_back_over_left": 1000.0,
-   "split": true
+   "ratio": 1000.0,
+   "redenominated": 1000.0,
+   "split": false
+  },
+  {
+   "back": "2021-04-02",
+   "coin": "DREP",
+   "left": "2021-03-29",
+   "missing_days": 3,
+   "pair": "DREPUSDT",
+   "price_back_over_left": 100.007608,
+   "ratio": 100.0,
+   "redenominated": 100.0,
+   "split": false
+  },
+  {
+   "back": "2023-07-21",
+   "coin": "QUICK",
+   "left": "2023-07-17",
+   "missing_days": 3,
+   "pair": "QUICKUSDT",
+   "price_back_over_left": 0.001,
+   "ratio": 0.001,
+   "redenominated": 0.001,
+   "split": false
+  },
+  {
+   "back": "2024-03-28",
+   "coin": "STRAX",
+   "left": "2024-03-20",
+   "missing_days": 7,
+   "pair": "STRAXUSDT",
+   "price_back_over_left": 0.1,
+   "ratio": 0.1,
+   "redenominated": 0.1,
+   "split": false
+  },
+  {
+   "back": "2021-06-18",
+   "coin": "SUN",
+   "left": "2021-06-14",
+   "missing_days": 3,
+   "pair": "SUNUSDT",
+   "price_back_over_left": 0.001,
+   "ratio": 0.001,
+   "redenominated": 0.001,
+   "split": false
+  },
+  {
+   "back": "2022-11-09",
+   "coin": "VIDT",
+   "left": "2022-10-31",
+   "missing_days": 8,
+   "pair": "VIDTUSDT",
+   "price_back_over_left": 0.093004,
+   "ratio": 0.1,
+   "redenominated": 0.1,
+   "split": false
   },
   {
    "back": "2023-05-12",
@@ -34,15 +95,6 @@
    "missing_days": 153,
    "pair": "CVCUSDT",
    "price_back_over_left": 0.91002,
-   "split": true
-  },
-  {
-   "back": "2021-04-02",
-   "coin": "DREP#2",
-   "left": "2021-03-29",
-   "missing_days": 3,
-   "pair": "DREPUSDT",
-   "price_back_over_left": 100.007608,
    "split": true
   },
   {
@@ -64,42 +116,6 @@
    "split": true
   },
   {
-   "back": "2023-07-21",
-   "coin": "QUICK",
-   "left": "2023-07-17",
-   "missing_days": 3,
-   "pair": "QUICKUSDT",
-   "price_back_over_left": 0.001,
-   "split": false
-  },
-  {
-   "back": "2024-03-28",
-   "coin": "STRAX",
-   "left": "2024-03-20",
-   "missing_days": 7,
-   "pair": "STRAXUSDT",
-   "price_back_over_left": 0.1,
-   "split": false
-  },
-  {
-   "back": "2021-06-18",
-   "coin": "SUN",
-   "left": "2021-06-14",
-   "missing_days": 3,
-   "pair": "SUNUSDT",
-   "price_back_over_left": 0.001,
-   "split": false
-  },
-  {
-   "back": "2026-08-01",
-   "coin": "UMA#2",
-   "left": "2026-06-30",
-   "missing_days": 31,
-   "pair": "UMAUSDT",
-   "price_back_over_left": 0.906915,
-   "split": true
-  },
-  {
    "back": "2018-10-19",
    "coin": "VEN#2",
    "left": "2018-07-23",
@@ -107,39 +123,37 @@
    "pair": "VENUSDT",
    "price_back_over_left": 5.5e-05,
    "split": true
-  },
-  {
-   "back": "2022-11-09",
-   "coin": "VIDT",
-   "left": "2022-10-31",
-   "missing_days": 8,
-   "pair": "VIDTUSDT",
-   "price_back_over_left": 0.093004,
-   "split": false
   }
  ],
- "breaks_count": 13,
+ "breaks_count": 12,
  "files": {
   "asked": 4,
-  "failed": 4,
-  "failed_first": [
-   "2019-01 BTTUSDT: ValueError: not a figure a candle holds: '-61596941261.0955161'",
-   "2019-02 BTTUSDT: ValueError: not a figure a candle holds: '-40903096150.0955161'",
-   "2026-02 AXSUSDT: ValueError: two candles for 2026-02-10",
-   "2026-07 UMAUSDT: ValueError: two candles for 2026-07-15"
-  ],
-  "fetched": 0,
-  "rows_left_out": 0
+  "days_merged": 2,
+  "failed": 0,
+  "failed_first": [],
+  "fetched": 4,
+  "rows_left_out": 0,
+  "volumes_unknown": 5
  },
  "months": {
-  "changed": [],
+  "changed": [
+   "2019-01",
+   "2019-02",
+   "2026-02",
+   "2026-07"
+  ],
   "first": "2018-01",
   "last": "2026-10",
   "left_for_next_run": [],
   "newest_waiting_count": 0,
   "newest_waiting_for": [],
   "on_file": 106,
-  "settled_this_run": []
+  "settled_this_run": [
+   "2019-01",
+   "2019-02",
+   "2026-02",
+   "2026-07"
+  ]
  },
  "newest_month": "2026-10",
  "ok": true,
@@ -235,8 +249,9 @@
   "months_unreadable_first": [],
   "trading_not_in_archive": []
  },
- "ran": 1794739622,
- "ran_utc": "2026-11-15 10:47Z",
+ "ran": 1794827324,
+ "ran_utc": "2026-11-16 11:08Z",
+ "redenominated_count": 8,
  "settled": [
   "2018-01",
   "2018-02",
@@ -250,6 +265,8 @@
   "2018-10",
   "2018-11",
   "2018-12",
+  "2019-01",
+  "2019-02",
   "2019-03",
   "2019-04",
   "2019-05",
@@ -333,10 +350,12 @@
   "2025-11",
   "2025-12",
   "2026-01",
+  "2026-02",
   "2026-03",
   "2026-04",
   "2026-05",
   "2026-06",
+  "2026-07",
   "2026-08",
   "2026-09",
   "2026-10"
