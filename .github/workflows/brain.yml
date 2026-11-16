@@ -1,0 +1,86 @@
+name: brain
+
+# The brain's sensors (bot/brain.py): the regime markers as they stood each day, and the headlines of a few
+# news feeds with the time first seen, kept under state/brain/. Research only: the hourly loop never reads any
+# of it, no account does, and this job writes nowhere else. Every six hours, because news feeds keep only
+# their last few dozen items and GitHub starts this repo's scheduled jobs hours late or not at all; a run that
+# finds nothing new commits only its readings of Kraken's perpetuals. A source that fails is a FAILED line in
+# state/brain/README.md and the run goes on; the run turns red only when the day's markers could not be
+# written or no source answered at all.
+on:
+  schedule:
+    - cron: "23 */6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+# Its own group on purpose: it must never queue ahead of, or cancel, an hourly run.
+concurrency:
+  group: brain
+  cancel-in-progress: false
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 1
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install
+        run: pip install -q -r requirements.txt
+
+      - name: Collect
+        id: collect
+        continue-on-error: true
+        timeout-minutes: 10
+        run: python -m bot.brain --collect
+
+      - name: Summary
+        if: always()
+        run: |
+          echo '## quantloop brain' >> "$GITHUB_STEP_SUMMARY"
+          echo "this run's collect step: ${{ steps.collect.outcome }}" >> "$GITHUB_STEP_SUMMARY"
+          if [ -f state/brain/README.md ]; then
+            head -c 20000 state/brain/README.md >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      # "bench:" and not "brain:", so that the daily check, which takes any commit not starting "state:",
+      # "wide:" or "bench:" for the agent's, is not fooled into saying the agent ran.
+      - name: Commit
+        run: |
+          git config user.name "quantloop-bot"
+          git config user.email "quantloop-bot@users.noreply.github.com"
+          if [ ! -d state/brain ]; then
+            echo "nothing collected"
+            exit 0
+          fi
+          git add -A state/brain
+          if git diff --cached --quiet; then
+            echo "nothing to commit"
+            exit 0
+          fi
+          git commit -q -m "bench: brain $(date -u +%Y-%m-%dT%H:%MZ)"
+          for attempt in 1 2 3 4 5; do
+            if git pull --rebase -q && git push -q; then
+              echo "pushed on attempt $attempt"
+              exit 0
+            fi
+            sleep $((attempt * 20))
+          done
+          echo "push failed after 5 attempts"
+          exit 1
+
+      - name: Red when the markers could not be written
+        if: steps.collect.outcome == 'failure'
+        run: |
+          echo "the day's markers could not be written, or no source answered; state/brain/README.md says why"
+          exit 1

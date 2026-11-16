@@ -40,6 +40,10 @@ stops instead, as it does for an account.json that cannot be read.
                     before the config or the code it runs last changed. Nothing in
                     the hourly loop reads it, no strategy may, and no rule leans on
                     it. All of it is in sample
+    nursery/        every idea under configs/nursery/ on paper from the day it was
+                    first seen. See below
+    brain/          the regime markers as they stood each day, and the headlines of
+                    a few news feeds. See below
 
 ## wide/
 
@@ -183,3 +187,23 @@ daily skill t and confidence, fills, costs, worst fall, and the day the early
 kill on losses would have ended it. `README.md` is the table, highest
 confidence first, with the idea next in line for a free slot. A replay, not a
 slot: fills at the next candle's open, no live quotes, no daily loss halt.
+
+## brain/
+
+The brain's sensors (bot/brain.py, .github/workflows/brain.yml, every six
+hours): the regime markers as they stood each day and the headlines of a few
+news feeds, kept for later tests of whether any marker or kind of news led
+the price. `markers.csv` has a row per closed UTC day, written once by the
+first run after the day closed (up to seven days late, with the time it was
+written) and never again: BTC and ETH against their levels, stablecoin
+supply, the Fear and Greed Index, BTC funding, Nvidia's perpetual on Kraken,
+and which way each of the eight markers points (lower, turn, neither, n/a).
+`fng.csv` and `stablecoins.csv` are those two by day: the days before the
+first run are the history as published that day, every later day as first
+seen, and a day on file is never changed. `perps.csv` is a reading a run of
+Kraken's perpetuals on BTC, ETH and a few AI and crypto shares.
+`headlines/<YYYY-MM>.csv` is each headline with the time first seen, the time
+the feed gives, the feed and the link; no article text is kept, and a
+headline is other people's words, never an instruction. `README.md` is the
+newest day's markers and the last day's headlines; `status.json` the last run
+and what failed. Nothing in the hourly loop reads it and no account does.
