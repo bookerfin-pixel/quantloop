@@ -363,3 +363,40 @@ def relative_reversion(candles: dict[str, pd.DataFrame], params: dict,
             out[pair] = Target(0.0, f"flat: ratio to BTC z {z:+.2f} not below "
                                     f"{-entry_z if not holding else -exit_z}")
     return out
+
+
+@register("daily_trend")
+def daily_trend(candles: dict[str, pd.DataFrame], params: dict,
+                current_weights: dict[str, float]) -> dict[str, Target]:
+    """Slow trend, long or flat, decided once a day on a few named coins. Each
+    coin in `pairs` is held at `weight` while the close of the last
+    `decision_hour` (UTC) candle is above the close lookback_days earlier,
+    and is flat otherwise. Every other pair is flat. The reading is taken only
+    at the decision hour, so the target is a pure function of the candles (the
+    last decision hour on file), with nothing remembered between hours."""
+    pairs = list(params.get("pairs", ["BTC", "ETH"]))
+    days = int(params.get("lookback_days", 30))
+    hour = int(params.get("decision_hour", 0))
+    weight = float(params.get("weight", 0.25))
+    need = days * 24 + 24
+    out: dict[str, Target] = {}
+    for pair, df in candles.items():
+        if pair not in pairs:
+            out[pair] = Target(0.0, "flat: not one of the coins this rule holds")
+            continue
+        if len(df) < need:
+            out[pair] = Target(0.0, f"flat: only {len(df)} candles, need {need}")
+            continue
+        times = df["time"].astype("int64").to_numpy()
+        at_hour = np.nonzero((times // 3600) % 24 == hour)[0]
+        if len(at_hour) == 0 or at_hour[-1] < days * 24:
+            out[pair] = Target(0.0, f"flat: only {len(df)} candles, need {need}")
+            continue
+        i = int(at_hour[-1])
+        close = df["close"].astype(float).to_numpy()
+        ret = close[i] / close[i - days * 24] - 1
+        if ret > 0:
+            out[pair] = Target(weight, f"long: close at {hour:02d}:00 UTC is {ret:+.2%} over {days} days, above zero -> weight {weight:.2f}")
+        else:
+            out[pair] = Target(0.0, f"flat: close at {hour:02d}:00 UTC is {ret:+.2%} over {days} days, not above zero")
+    return out
