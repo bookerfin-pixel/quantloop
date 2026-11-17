@@ -14527,3 +14527,13 @@ ts,account,pair,price,signal_weight,target_weight,current_weight,action,reason,h
 1794888649,champion,DOGE,0.059176,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -5.14% not above entry band +1.0%,0.008
 1794888649,champion,DOT,0.73895,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -6.17% not above entry band +1.0%,0.677
 1794888649,champion,LTC,44.865,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -7.05% not above entry band +1.0%,1.114
+1794892243,champion,BTC,64760.25,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -3.03% not above entry band +1.0%,0.008
+1794892243,champion,ETH,1828.18,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -3.36% not above entry band +1.0%,0.438
+1794892243,champion,SOL,72.655,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -3.31% not above entry band +1.0%,0.688
+1794892243,champion,ADA,0.153759,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -5.68% not above entry band +1.0%,1.236
+1794892243,champion,AVAX,7.1585,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -11.09% not above entry band +1.0%,2.095
+1794892243,champion,LINK,9.172205,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -4.04% not above entry band +1.0%,2.23
+1794892243,champion,XRP,0.961165,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -2.91% not above entry band +1.0%,0.052
+1794892243,champion,DOGE,0.058914,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -5.85% not above entry band +1.0%,0.263
+1794892243,champion,DOT,0.7379,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -6.51% not above entry band +1.0%,4.066
+1794892243,champion,LTC,44.605,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -8.01% not above entry band +1.0%,1.121
