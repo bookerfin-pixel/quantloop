@@ -1,34 +1,31 @@
 {
  "coinbase": {
-  "coins": 1,
-  "days_added": 847,
+  "coins": 0,
+  "days_added": 0,
   "failed": [],
   "mismatch": [],
-  "not_listed": 2
+  "not_listed": 4
  },
  "funding": {
-  "days_added": 782,
+  "days_added": 1110,
   "failed": [],
-  "symbols": 75
+  "symbols": 78
  },
  "kraken": {
-  "days_added": 2769,
+  "days_added": 751,
   "failed": [],
   "joined_today": [
-   "VINE",
-   "RARE",
-   "WMTX",
-   "GLMR"
+   "SPACE",
+   "UMXM"
   ],
-  "listed": 245,
-  "on_the_list": 246,
-  "pairs_read": 245,
+  "listed": 247,
+  "on_the_list": 248,
+  "pairs_read": 247,
   "pegged_skipped": [
    "APXUSD",
    "AUSD",
    "CASH",
    "FIDD",
-   "FRNT",
    "OUSD",
    "SOFID",
    "USAT",
@@ -38,12 +35,12 @@
    "USDSUI",
    "USTABLES"
   ],
-  "qualified_today": 180,
+  "qualified_today": 187,
   "quoted": 633,
   "quotes_failed": "",
-  "quotes_written": 245,
+  "quotes_written": 247,
   "unquoted": [],
-  "usd_pairs": 637
+  "usd_pairs": 638
  },
  "ok": true,
  "probes": {
@@ -58,7 +55,7 @@
    "ok": true
   }
  },
- "ran": 1794813311,
- "ran_utc": "2026-11-16 07:15Z",
+ "ran": 1794904102,
+ "ran_utc": "2026-11-17 08:28Z",
  "settings_not_used": []
 }
