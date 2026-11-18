@@ -60,3 +60,4 @@ ts,account,pair,side,qty,price,ref_price,notional,fee,slippage_cost,reason,equit
 1794701442,challenger4,SOL,buy,27.66886021,70.285125,70.25,1944.70929877,1.9447093,0.97186872,"enter long: ratio to BTC z -2.46 vs 720h mean (entry -2.0, exit -0.25); vol 69% -> weight 0.25",7773.00403906,1.42348754,5.0
 1794701442,challenger4,XRP,buy,2114.81542376,0.91956455,0.919105,1944.70929877,1.9447093,0.97186872,"enter long: ratio to BTC z -2.28 vs 720h mean (entry -2.0, exit -0.25); vol 68% -> weight 0.25",7770.08746105,1.03361422,5.0
 1794701442,challenger4,DOGE,buy,33810.22753305,0.05728853,0.0572599,1936.93823264,1.93693823,0.96798512,"enter long: ratio to BTC z -3.20 vs 720h mean (entry -2.0, exit -0.25); vol 73% -> weight 0.25",7767.18253769,1.6940302,5.0
+1794989452,challenger4,XRP,sell,2114.81542376,0.99941005,0.99991,2113.56777783,2.11356778,1.05731255,flat: ratio to BTC z -0.22 not below -0.25,8185.26347823,0.400036,5.0

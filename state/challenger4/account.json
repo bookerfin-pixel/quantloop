@@ -1,44 +1,41 @@
 {
-  "cash": -2.2737367544323206e-13,
+  "cash": 2111.454210051733,
   "created_at": 1791912405,
   "day": "2026-11-18",
   "day_open_equity": 8180.647871161146,
-  "equity_rows": 855,
-  "fees_paid": 87.44953602083382,
+  "equity_rows": 856,
+  "fees_paid": 89.56310379866338,
   "fills_day": {
-    "counts": {},
+    "counts": {
+      "XRP": 1
+    },
     "day": "2026-11-18"
   },
   "halted_day": "2026-11-14",
   "initial_cash": 10000.0,
-  "last_bar": 1794981600,
-  "last_run_ts": 1794985853,
+  "last_bar": 1794985200,
+  "last_run_ts": 1794989452,
   "marks": {
     "DOGE": [
-      0.05951415,
-      1794985853
+      0.059606549999999994,
+      1794989452
     ],
     "ETH": [
-      1814.26,
-      1794985853
+      1807.645,
+      1794989452
     ],
     "SOL": [
-      75.0,
-      1794985853
-    ],
-    "XRP": [
-      0.98983,
-      1794985853
+      74.805,
+      1794989452
     ]
   },
-  "n_trades": 61,
+  "n_trades": 62,
   "name": "challenger4",
   "positions": {
     "DOGE": 33810.227533053636,
     "ETH": 1.1001768388609536,
-    "SOL": 27.66886021434292,
-    "XRP": 2114.8154237628887
+    "SOL": 27.66886021434292
   },
-  "slippage_paid": 47.90895870739882,
+  "slippage_paid": 48.96627125258618,
   "strategy_sig": "params:\n  entry_z: 2.0\n  exit_z: 0.25\n  max_weight: 0.25\n  ratio_hours: 720\n  target_vol_annual: 0.3\n  vol_lookback_hours: 168\nstrategy: relative_reversion\n"
 }
