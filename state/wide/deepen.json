@@ -219,6 +219,11 @@
   "result": "added 308 days; closes differ by 0.12% at the median and 0.26% at the ninth decile over 31 days",
   "want_from": 1633651200
  },
+ "BREV": {
+  "at": 1794988527,
+  "result": "added 0 days; closes differ by 0.26% at the median and 0.69% at the ninth decile over 31 days",
+  "want_from": 1637280000
+ },
  "BRL1": {
   "at": 1791507774,
   "result": "not listed",
@@ -939,6 +944,11 @@
   "result": "not listed",
   "want_from": 1634774400
  },
+ "SNX": {
+  "at": 1794988527,
+  "result": "added 1105 days; closes differ by 0.19% at the median and 0.47% at the ninth decile over 31 days",
+  "want_from": 1637280000
+ },
  "SOFID": {
   "at": 1793515806,
   "result": "not listed",
@@ -950,9 +960,9 @@
   "want_from": 1633651200
  },
  "SPACE": {
-  "at": 1794904102,
-  "result": "not listed, to be asked once more",
-  "want_from": 1637193600
+  "at": 1794988527,
+  "result": "not listed",
+  "want_from": 1637280000
  },
  "SPX": {
   "at": 1791507774,
@@ -1050,9 +1060,9 @@
   "want_from": 1633910400
  },
  "UMXM": {
-  "at": 1794904102,
-  "result": "not listed, to be asked once more",
-  "want_from": 1637193600
+  "at": 1794988527,
+  "result": "not listed",
+  "want_from": 1637280000
  },
  "UNI": {
   "at": 1791378076,
