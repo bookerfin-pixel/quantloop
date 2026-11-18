@@ -463,3 +463,6 @@ ts,account,pair,side,qty,price,ref_price,notional,fee,slippage_cost,reason,equit
 1795000250,champion,XRP,buy,423.42570367,0.99016984,0.989675,419.2633602,0.41926336,0.20952692,stay long: 72h return +3.44% vs exit band -1.0% and price above 24h EMA; realised vol 76% -> weight 0.25,7791.4088133,1.56617071,5.0
 1795000250,champion,DOGE,buy,7579.726425,0.05910789,0.05907835,448.02162951,0.44802163,0.22389887,stay long: 72h return +0.40% vs exit band -1.0% and price above 24h EMA; realised vol 79% -> weight 0.25,7790.73689281,2.41205112,5.0
 1795000250,champion,DOT,buy,629.47124844,0.72386175,0.7235,455.65015947,0.45565016,0.22771122,stay long: 72h return -0.89% vs exit band -1.0% and price within 2.0% of 24h EMA; realised vol 82% -> weight 0.25,7790.05353143,2.76434001,5.0
+1795003850,champion,ADA,sell,10223.14440036,0.15295249,0.153029,1563.65534566,1.56365535,0.78221878,exit: 72h return -1.19% fell below exit band -1.0%,7795.04891279,1.37228891,5.0
+1795003850,champion,DOT,sell,2149.14728139,0.72333815,0.7237,1554.5602186,1.55456022,0.77766894,exit: 72h return -1.14% fell below exit band -1.0%,7792.71668363,1.38178803,5.0
+1795003850,champion,XRP,buy,404.52768977,0.98511731,0.984625,398.50723058,0.39850723,0.19915404,stay long: 72h return +2.54% vs exit band -1.0% and price above 24h EMA; realised vol 77% -> weight 0.25,7792.11902236,0.05078075,5.0
