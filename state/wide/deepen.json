@@ -599,6 +599,11 @@
   "result": "added 214 days; closes differ by 0.15% at the median and 0.61% at the ninth decile over 31 days",
   "want_from": 1633651200
  },
+ "LINEA": {
+  "at": 1795074918,
+  "result": "not used: only 3 days in common",
+  "want_from": 1637366400
+ },
  "LINK": {
   "at": 1791378076,
   "result": "added 1105 days; closes differ by 0.05% at the median and 0.12% at the ninth decile over 31 days",
@@ -628,6 +633,11 @@
   "at": 1792732825,
   "result": "added 1105 days; closes differ by 0.34% at the median and 0.58% at the ninth decile over 31 days",
   "want_from": 1635033600
+ },
+ "ME": {
+  "at": 1795074918,
+  "result": "added 49 days; closes differ by 0.80% at the median and 2.07% at the ninth decile over 31 days",
+  "want_from": 1637366400
  },
  "MEGA": {
   "at": 1791767043,
@@ -868,6 +878,11 @@
   "at": 1791853490,
   "result": "added 0 days; closes differ by 0.36% at the median and 0.82% at the ninth decile over 25 days",
   "want_from": 1634169600
+ },
+ "REKT": {
+  "at": 1795074918,
+  "result": "not listed, to be asked once more",
+  "want_from": 1637366400
  },
  "RENDER": {
   "at": 1791378076,

@@ -1,29 +1,41 @@
 {
  "coinbase": {
-  "coins": 2,
-  "days_added": 1105,
+  "coins": 1,
+  "days_added": 49,
   "failed": [],
-  "mismatch": [],
-  "not_listed": 2
+  "mismatch": [
+   "LINEA: only 3 days in common"
+  ],
+  "not_listed": 1
  },
  "funding": {
-  "days_added": 78,
-  "failed": [],
-  "symbols": 78
+  "days_added": 48,
+  "failed": [
+   "PF_ICPUSD: http 503",
+   "PF_LDOUSD: http 503",
+   "PF_LTCUSD: http 503",
+   "PF_METAXUSD: http 503",
+   "PF_MOONSHOTXUSD: http 503",
+   "PF_MUBARAKUSD: http 503",
+   "PF_NATGASUSD: http 503",
+   "PF_NIGHTUSD: http 503",
+   "PF_ONDOUSD: http 503",
+   "PF_OURAXUSD and any after it: not asked, the time allowed for funding had run out"
+  ],
+  "symbols": 48
  },
  "kraken": {
-  "days_added": 1284,
+  "days_added": 1793,
   "failed": [],
   "joined_today": [
-   "BREV",
-   "INFI",
-   "SNX"
+   "ME",
+   "REKT",
+   "LINEA"
   ],
-  "listed": 250,
-  "on_the_list": 251,
-  "pairs_read": 250,
+  "listed": 253,
+  "on_the_list": 254,
+  "pairs_read": 253,
   "pegged_skipped": [
-   "APXUSD",
    "AUSD",
    "CASH",
    "FIDD",
@@ -37,10 +49,10 @@
    "USDSUI",
    "USTABLES"
   ],
-  "qualified_today": 182,
+  "qualified_today": 187,
   "quoted": 635,
   "quotes_failed": "",
-  "quotes_written": 250,
+  "quotes_written": 253,
   "unquoted": [],
   "usd_pairs": 638
  },
@@ -57,7 +69,7 @@
    "ok": true
   }
  },
- "ran": 1794988527,
- "ran_utc": "2026-11-18 07:55Z",
+ "ran": 1795074918,
+ "ran_utc": "2026-11-19 07:55Z",
  "settings_not_used": []
 }
