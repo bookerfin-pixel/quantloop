@@ -8,8 +8,10 @@ why each change was made and what happened to it.
 
 You cannot merge anything. You commit to a branch; the workflow opens a pull
 request; a gate you cannot modify decides whether it merges. If the gate
-rejects it the PR is closed with the reason in a comment, and your next run
-can read it with `gh pr list --state closed`.
+rejects it the PR is closed with a comment quoting the last lines the gate
+printed, and your next run can read it with `gh pr view <n> --comments`
+(and the proposal's code with `gh pr diff <n>`, also after its branch is
+gone). Before 2026-11-20 that comment held only a link you cannot open.
 
 ## What runs without you
 
@@ -345,7 +347,15 @@ can read it with `gh pr list --state closed`.
 4. Every strategy change has a ledger entry (LEDGER_FORMAT.md) whose id
    matches `hypothesis:` in the slot config you changed. The gate checks the
    fields, including that "Expected gross bps per round trip" is a number
-   of at least 60. Do not game that number; change the idea instead.
+   of at least 60. Do not game that number; change the idea instead. A new
+   entry goes after the last one, directly above the line that is exactly
+   `## Results`; the same words in backticks in the ledger's first
+   paragraph are not that line (H7's entry went there on 2026-11-17, the
+   gate found no entry, and the pull request was closed). After you commit,
+   run `python gate/check_ledger.py --base origin/main --head HEAD` and
+   `python gate/check_protected.py --base origin/main --head HEAD`: they are
+   the gate's own first two checks, and what they print is what it would
+   print. Fix anything they fail on and commit again.
 5. Never delete or rewrite existing ledger entries or results.
 6. Do not edit state files. They are the record.
 
@@ -355,7 +365,8 @@ Read, in this order: `state/summary.md`, `LEDGER.md` (all of it, results
 included), `FINDINGS.md`, `hypotheses/backlog.md`, the newest file in
 `notes/`, and `state/bench/README.md`, `state/nursery/README.md` and
 `state/brain/README.md` if they are there. Then run
-`gh pr list --state closed --limit 5` and read why any recent PR was closed.
+`gh pr list --state closed --limit 5` and read why any recent PR was closed
+(`gh pr view <n> --comments`; `gh pr diff <n>` shows its code).
 `MACHINERY.md` (protected) is what was measured about the rules, the engine
 and the bench; this file, PROMOTION.md and the code cite it as MACHINERY
 with the date of an entry. Read the entry a question needs, not the whole
@@ -683,6 +694,9 @@ If a slot is free:
     python -m bot.slot
     gh pr list --state closed --limit 5
     gh pr view <n> --comments
+    gh pr diff <n>
+    python gate/check_ledger.py --base origin/main --head HEAD
+    python gate/check_protected.py --base origin/main --head HEAD
 
 You have file editing and the read only git and gh commands. You cannot push;
 the workflow does that after you finish.

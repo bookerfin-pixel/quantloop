@@ -12,6 +12,10 @@ on:
       pr_number:
         required: true
         type: string
+    outputs:
+      why:
+        description: "When the gate fails, the last lines it printed: the closing comment carries them, so the agent learns why."
+        value: ${{ jobs.gate.outputs.why }}
 
 permissions:
   contents: read
@@ -23,6 +27,8 @@ jobs:
     timeout-minutes: 20
     env:
       PR: ${{ inputs.pr_number || github.event.pull_request.number }}
+    outputs:
+      why: ${{ steps.why.outputs.why }}
     steps:
       - name: Check out base (main)
         uses: actions/checkout@v4
@@ -53,16 +59,52 @@ jobs:
 
       - name: 1. Protected paths and forbidden code
         working-directory: pr
-        run: python ../base/gate/check_protected.py --base origin/main --head HEAD
+        shell: bash
+        run: |
+          set -o pipefail
+          echo "== 1. Protected paths and forbidden code ==" >> "$RUNNER_TEMP/gate.log"
+          python ../base/gate/check_protected.py --base origin/main --head HEAD 2>&1 | tee -a "$RUNNER_TEMP/gate.log"
 
       - name: 2. Ledger entry
         working-directory: pr
-        run: python ../base/gate/check_ledger.py --base origin/main --head HEAD
+        shell: bash
+        run: |
+          set -o pipefail
+          echo "== 2. Ledger entry ==" >> "$RUNNER_TEMP/gate.log"
+          python ../base/gate/check_ledger.py --base origin/main --head HEAD 2>&1 | tee -a "$RUNNER_TEMP/gate.log"
 
       - name: 3. Tests
         working-directory: pr
-        run: python -m pytest tests -q
+        shell: bash
+        run: |
+          set -o pipefail
+          echo "== 3. Tests ==" >> "$RUNNER_TEMP/gate.log"
+          python -m pytest tests -q 2>&1 | tee -a "$RUNNER_TEMP/gate.log"
 
       - name: 4. Backtest plausibility
         working-directory: pr
-        run: python ../base/gate/backtest_gate.py
+        shell: bash
+        run: |
+          set -o pipefail
+          echo "== 4. Backtest plausibility ==" >> "$RUNNER_TEMP/gate.log"
+          python ../base/gate/backtest_gate.py 2>&1 | tee -a "$RUNNER_TEMP/gate.log"
+
+      # The agent cannot open this run's log, so a failure used to reach it as a link it could not follow, and it
+      # could not tell a slip in its ledger entry from a failing test. The last lines the checks printed go out
+      # as this workflow's `why`, for agent.yml's closing comment. The delimiter is made here, after the PR's own
+      # code has run, so nothing that code printed can end the output early.
+      - name: Why it failed
+        id: why
+        if: failure()
+        shell: bash
+        run: |
+          end="GATE_SAID_$(openssl rand -hex 16)"
+          {
+            echo "why<<$end"
+            if [ -s "$RUNNER_TEMP/gate.log" ]; then
+              tail -n 60 "$RUNNER_TEMP/gate.log" | cut -c1-300 | tr -d '\r'
+            else
+              echo "the gate stopped before its first check (checkout or install failed)"
+            fi
+            echo "$end"
+          } >> "$GITHUB_OUTPUT"

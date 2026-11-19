@@ -229,13 +229,40 @@ jobs:
     permissions:
       contents: write
       pull-requests: write
+      actions: read           # to read the gate job's own log when its lines did not come through, and nothing else
     steps:
+      # The gate's last lines ride in through the environment, never into the script itself: they include
+      # whatever the proposal's own code printed.
       - name: Close with reason
         env:
           GH_TOKEN: ${{ github.token }}
           PR: ${{ needs.propose.outputs.pr }}
           RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          RESULT: ${{ needs.gate.result }}
+          WHY: ${{ needs.gate.outputs.why }}
         run: |
-          gh pr comment "$PR" --repo "$GITHUB_REPOSITORY" --body "Gate failed (result: ${{ needs.gate.result }}). Details: $RUN_URL . Closed automatically; the next agent run reads this comment."
+          if [ -z "$WHY" ]; then
+            # the lines did not come through as an output: read the end of the gate job's log instead
+            job="$(gh api "repos/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID/jobs" --jq '.jobs[] | select(.name | startswith("gate")) | .id' 2>/dev/null | head -1 || true)"
+            if [ -n "$job" ]; then
+              WHY="$(gh api "repos/$GITHUB_REPOSITORY/actions/jobs/$job/logs" 2>/dev/null | tail -n 60 | cut -c1-300 || true)"
+            fi
+          fi
+          {
+            echo "Gate failed (result: $RESULT). Details: $RUN_URL . Closed automatically; the next agent run reads this comment."
+            echo
+            if [ -n "$WHY" ]; then
+              echo "What the gate printed last:"
+              echo
+              echo '```'
+              printf '%s\n' "$WHY"
+              echo '```'
+            else
+              echo "The gate left no lines to quote (it was cancelled, or stopped before its checks)."
+            fi
+            echo
+            echo "The proposal's code can still be read after its branch is gone: gh pr diff $PR"
+          } > "$RUNNER_TEMP/comment.md"
+          gh pr comment "$PR" --repo "$GITHUB_REPOSITORY" --body-file "$RUNNER_TEMP/comment.md"
           gh pr close "$PR" --repo "$GITHUB_REPOSITORY" --delete-branch
           echo "closed PR #$PR after gate failure" | tee -a "$GITHUB_STEP_SUMMARY"
