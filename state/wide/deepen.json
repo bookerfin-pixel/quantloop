@@ -204,6 +204,11 @@
   "result": "not listed",
   "want_from": 1635638400
  },
+ "BLUR": {
+  "at": 1795160641,
+  "result": "added 655 days; closes differ by 0.22% at the median and 0.51% at the ninth decile over 31 days",
+  "want_from": 1637452800
+ },
  "BMT": {
   "at": 1792732825,
   "result": "not listed",
@@ -804,6 +809,11 @@
   "result": "not used: closes differ by 1.61% at the median and 2.43% at the ninth decile over 31 days",
   "want_from": 1634428800
  },
+ "PONKE": {
+  "at": 1795160641,
+  "result": "not listed, to be asked once more",
+  "want_from": 1637452800
+ },
  "PONS": {
   "at": 1791507774,
   "result": "not used: only 2 days in common",
@@ -880,9 +890,9 @@
   "want_from": 1634169600
  },
  "REKT": {
-  "at": 1795074918,
-  "result": "not listed, to be asked once more",
-  "want_from": 1637366400
+  "at": 1795160641,
+  "result": "not listed",
+  "want_from": 1637452800
  },
  "RENDER": {
   "at": 1791378076,
@@ -1213,6 +1223,11 @@
   "at": 1791767043,
   "result": "added 1105 days; closes differ by 0.08% at the median and 0.34% at the ninth decile over 31 days",
   "want_from": 1634083200
+ },
+ "YB": {
+  "at": 1795160641,
+  "result": "added 0 days; closes differ by 0.39% at the median and 1.46% at the ninth decile over 31 days",
+  "want_from": 1637452800
  },
  "ZAMA": {
   "at": 1791378076,

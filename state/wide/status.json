@@ -1,60 +1,46 @@
 {
  "coinbase": {
-  "coins": 1,
-  "days_added": 49,
+  "coins": 2,
+  "days_added": 655,
   "failed": [],
-  "mismatch": [
-   "LINEA: only 3 days in common"
-  ],
-  "not_listed": 1
+  "mismatch": [],
+  "not_listed": 2
  },
  "funding": {
-  "days_added": 48,
-  "failed": [
-   "PF_ICPUSD: http 503",
-   "PF_LDOUSD: http 503",
-   "PF_LTCUSD: http 503",
-   "PF_METAXUSD: http 503",
-   "PF_MOONSHOTXUSD: http 503",
-   "PF_MUBARAKUSD: http 503",
-   "PF_NATGASUSD: http 503",
-   "PF_NIGHTUSD: http 503",
-   "PF_ONDOUSD: http 503",
-   "PF_OURAXUSD and any after it: not asked, the time allowed for funding had run out"
-  ],
-  "symbols": 48
+  "days_added": 115,
+  "failed": [],
+  "symbols": 79
  },
  "kraken": {
-  "days_added": 1793,
+  "days_added": 2094,
   "failed": [],
   "joined_today": [
-   "ME",
-   "REKT",
-   "LINEA"
+   "PONKE",
+   "YB",
+   "BLUR"
   ],
-  "listed": 253,
-  "on_the_list": 254,
-  "pairs_read": 253,
+  "listed": 256,
+  "on_the_list": 257,
+  "pairs_read": 256,
   "pegged_skipped": [
    "AUSD",
    "CASH",
    "FIDD",
-   "FRNT",
    "OUSD",
    "SOFID",
    "USAT",
    "USDGO",
    "USDPT",
-   "USDSM",
    "USDSUI",
-   "USTABLES"
+   "USTABLES",
+   "XLA"
   ],
-  "qualified_today": 187,
+  "qualified_today": 202,
   "quoted": 635,
   "quotes_failed": "",
-  "quotes_written": 253,
+  "quotes_written": 256,
   "unquoted": [],
-  "usd_pairs": 638
+  "usd_pairs": 639
  },
  "ok": true,
  "probes": {
@@ -69,7 +55,7 @@
    "ok": true
   }
  },
- "ran": 1795074918,
- "ran_utc": "2026-11-19 07:55Z",
+ "ran": 1795160641,
+ "ran_utc": "2026-11-20 07:44Z",
  "settings_not_used": []
 }
