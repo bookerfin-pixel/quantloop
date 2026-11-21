@@ -9269,3 +9269,13 @@ ts,account,pair,price,signal_weight,target_weight,current_weight,action,reason,h
 1795245046,challenger4,DOGE,0.05355,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: ratio to BTC z -0.94 not below -2.0,3.576
 1795245046,challenger4,DOT,0.64825,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: ratio to BTC z -1.31 not below -2.0,2.314
 1795245046,challenger4,LTC,39.08,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: ratio to BTC z -1.91 not below -2.0,2.559
+1795248644,challenger4,BTC,57666.35,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: BTC is the yardstick and is not held,0.009
+1795248644,challenger4,ETH,1621.585,0.25,0.25,0.2502,hold,"hold: weight change -0.000 below threshold 0.05 | stay long: ratio to BTC z -1.01 vs 720h mean (entry -2.0, exit -0.25); vol 94% -> weight 0.25",0.031
+1795248644,challenger4,SOL,67.035,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: ratio to BTC z -0.55 not below -2.0,0.746
+1795248644,challenger4,ADA,0.138037,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: ratio to BTC z -0.78 not below -2.0,2.173
+1795248644,challenger4,AVAX,6.2605,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: ratio to BTC z -1.06 not below -2.0,0.799
+1795248644,challenger4,LINK,8.29206,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: ratio to BTC z +0.20 not below -2.0,3.003
+1795248644,challenger4,XRP,0.88835,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: ratio to BTC z -0.25 not below -2.0,1.238
+1795248644,challenger4,DOGE,0.052629,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: ratio to BTC z -1.48 not below -2.0,0.247
+1795248644,challenger4,DOT,0.63725,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: ratio to BTC z -1.51 not below -2.0,2.354
+1795248644,challenger4,LTC,38.735,0.25,0.25,0.0,buy,"enter long: ratio to BTC z -2.09 vs 720h mean (entry -2.0, exit -0.25); vol 86% -> weight 0.25",1.291
