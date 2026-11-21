@@ -19,6 +19,11 @@
   "result": "added 1105 days; closes differ by 0.04% at the median and 0.26% at the ninth decile over 31 days",
   "want_from": 1633651200
  },
+ "AB": {
+  "at": 1795246872,
+  "result": "not listed, to be asked once more",
+  "want_from": 1637539200
+ },
  "ACT": {
   "at": 1794208226,
   "result": "not listed",
@@ -810,9 +815,9 @@
   "want_from": 1634428800
  },
  "PONKE": {
-  "at": 1795160641,
-  "result": "not listed, to be asked once more",
-  "want_from": 1637452800
+  "at": 1795246872,
+  "result": "not listed",
+  "want_from": 1637539200
  },
  "PONS": {
   "at": 1791507774,
