@@ -1,20 +1,18 @@
 {
   "cash": 7477.551336835318,
   "created_at": 1789530957,
-  "day": "2026-11-20",
-  "day_open_equity": 7527.452702371714,
-  "equity_rows": 1555,
+  "day": "2026-11-21",
+  "day_open_equity": 7477.551336835318,
+  "equity_rows": 1556,
   "fees_paid": 684.8768728991336,
   "fills_day": {
-    "counts": {
-      "XRP": 2
-    },
-    "day": "2026-11-20"
+    "counts": {},
+    "day": "2026-11-21"
   },
   "halted_day": "2026-11-05",
   "initial_cash": 10000.0,
-  "last_bar": 1795212000,
-  "last_run_ts": 1795216243,
+  "last_bar": 1795215600,
+  "last_run_ts": 1795219845,
   "marks": {},
   "n_trades": 486,
   "name": "champion",
