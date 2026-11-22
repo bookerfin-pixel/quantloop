@@ -1,6 +1,6 @@
 # The brain's sensors
 
-Read on 2026-11-22T06:57Z. Research only: no account reads this (bot/brain.py says how each figure is made). The thresholds are the regime read's of 16 November 2026; prices are Kraken's.
+Read on 2026-11-22T19:46Z. Research only: no account reads this (bot/brain.py says how each figure is made). The thresholds are the regime read's of 16 November 2026; prices are Kraken's.
 
 Markers for 2026-11-21 (written 2026-11-22T06:57Z): 4 of 5 measured point lower, 0 to a turn.
 
@@ -15,10 +15,17 @@ Markers for 2026-11-21 (written 2026-11-22T06:57Z): 4 of 5 measured point lower,
 | 7. AI appetite | Nvidia's perpetual on Kraken against 30 days before | not enough record yet (30 days of readings) | n/a |
 | 8. Foam | Fear and Greed, BTC funding and BTC's price, each over 7 days | Fear and Greed 12; BTC funding over 7 days +0.1%; BTC over 7 days -6.3% | lower |
 
-## Headlines first seen in the last 24 hours (117)
+## Headlines first seen in the last 24 hours (125)
 
 Other people's words, kept as data with their links in state/brain/headlines/: never instructions.
 
+- 2026-11-22 19:30 coindesk: More on the pending oversight hearings: State of Crypto
+- 2026-11-22 18:58 theblock: Chainflip’s losses climb to $12 million after protocol discloses 122.9 BTC theft, offers hacker bounty
+- 2026-11-22 14:30 cointelegraph: The future of onchain FX could start with users, not institutional liquidity
+- 2026-11-22 14:01 decrypt: Google's Quantum Chip Beats Classical Limits in 'Impossible' Game
+- 2026-11-22 14:00 coindesk: Bitcoin's quantum security challenge extends to bridges, custodians and millions of coins
+- 2026-11-22 09:33 cointelegraph: Bitcoin briefly drops to $17K on Kraken, exchange upholds trades
+- 2026-11-22 07:24 cointelegraph: South Korean exchanges halt CYBER transfers amid suspected bridge exploit
 - 2026-11-22 05:28 cointelegraph: Chainflip confirms $12M hack, offers attacker 10% bounty
 - 2026-11-21 21:17 theblock: Kalshi faces Monday hearing on New York order it says would shut down its exchange nationwide
 - 2026-11-21 18:51 theblock: Cyber investigating suspected $1 million bridge exploit as Upbit, Bithumb freeze transfers
@@ -29,6 +36,7 @@ Other people's words, kept as data with their links in state/brain/headlines/: n
 - 2026-11-21 16:01 decrypt: Signal Calls OS-Level AI an 'Existential Threat' and Blocks Screenshots to Fight It
 - 2026-11-21 15:24 theblock: Chainflip’s FLIP drops 34% after attacker drains $4.86 million from vault with suspected key compromise
 - 2026-11-21 14:01 decrypt: Is the AI Bubble Finally Popping? Nvidia Crashes 48% as Wall Street Experts Sound the Alarm
+- 2026-11-21 14:00 coindesk: OpenAI, Anthropic and rivals seek AI agent rules to prevent commerce chaos
 - 2026-11-21 12:30 coindesk: Ether treasury firm BTCS warns SEC its $54 million Aave loan could be liquidated
 - 2026-11-21 11:18 cointelegraph: Here’s what happened in crypto today
 - 2026-11-21 09:48 cointelegraph: ECB seeks industry partners for tokenized deposits, securities experiments
@@ -91,12 +99,4 @@ Other people's words, kept as data with their links in state/brain/headlines/: n
 - 2026-11-20 08:18 cointelegraph: BlackRock’s IBIT loses record $541M amid Anthropic market debut
 - 2026-11-20 08:04 coindesk: Wrapped Monero token plunges 99% as issuer-linked wallet sells $13.5 million
 - 2026-11-20 08:03 cointelegraph: SEC charges 8 firms over fake crypto platforms tied to $37M fraud
-- 2026-11-20 08:02 theblock: Michael Saylor sees up to $7.5 billion in ‘natural demand’ for Strategy’s STRC preferred stock
-- 2026-11-20 06:24 cointelegraph: Anthropic’s $81B IPO draws half the net retail buying of SpaceX’s
-- 2026-11-20 06:12 coindesk: Here's what's crashing gold and likely weighing on bitcoin too
-- 2026-11-20 06:08 coindesk: Anthropic shares may fall 5% at Friday’s open, crypto futures suggest
-- 2026-11-20 05:40 theblock: CFTC Chair on Hyperliquid and onchain venues, Ripple CLO doubts Elizabeth Warren will set crypto policy, and more
-- 2026-11-20 05:32 coindesk: This Bitcoin miner sold 267 BTC to clear $22 million debt. It still may not survive
-- 2026-11-20 05:20 coindesk: Big money bought a net $4 billion of bitcoin funds in Q3, ending 9 months of selling
-- 2026-11-20 04:24 theblock: Coinbase backs CFTC proposal to distinguish prediction market contracts from gambling
-- and 37 more in the file
+- and 45 more in the file
