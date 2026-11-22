@@ -20,9 +20,9 @@
   "want_from": 1633651200
  },
  "AB": {
-  "at": 1795246872,
-  "result": "not listed, to be asked once more",
-  "want_from": 1637539200
+  "at": 1795332362,
+  "result": "not listed",
+  "want_from": 1637625600
  },
  "ACT": {
   "at": 1794208226,
@@ -1153,6 +1153,11 @@
   "at": 1792113157,
   "result": "no candles",
   "want_from": 1634428800
+ },
+ "WCT": {
+  "at": 1795332362,
+  "result": "no candles, to be asked once more",
+  "want_from": 1637625600
  },
  "WIF": {
   "at": 1791507774,
