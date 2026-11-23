@@ -1,0 +1,9 @@
+# H7 in the nursery: on paper from the day it was first seen (bot/nursery.py). It has no ledger entry until it
+# takes a slot; its line in hypotheses/backlog.md says what it is and why.
+hypothesis: H7
+strategy: daily_trend
+params:
+  pairs: [BTC, ETH]
+  lookback_days: 30
+  decision_hour: 0
+  weight: 0.25
