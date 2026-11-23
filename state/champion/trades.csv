@@ -486,3 +486,4 @@ ts,account,pair,side,qty,price,ref_price,notional,fee,slippage_cost,reason,equit
 1795158654,champion,XRP,buy,1944.50813009,0.96778365,0.9673,1881.86317559,1.88186318,0.94046136,enter long: 72h return +1.38% vs entry band +1.0% and price above 24h EMA; realised vol 78% -> weight 0.25,7524.63037784,0.41352218,5.0
 1795176643,champion,XRP,sell,1944.50813009,0.94403275,0.944505,1835.67935258,1.83567935,0.91829883,exit: 72h return -1.93% fell below exit band -1.0%,7477.55133684,0.47644004,5.0
 1795410644,champion,LINK,buy,210.47899466,8.88158858,8.87715,1869.38783421,1.86938783,0.9342268,enter long: 72h return +1.44% vs entry band +1.0% and price above 24h EMA; realised vol 84% -> weight 0.25,7474.7477222,1.27293106,5.0
+1795435847,champion,SOL,buy,25.83494184,72.4812225,72.445,1872.54816771,1.87254817,0.93580618,enter long: 72h return +1.00% vs entry band +1.0% and price above 24h EMA; realised vol 82% -> weight 0.25,7487.38431648,0.69017876,5.0
