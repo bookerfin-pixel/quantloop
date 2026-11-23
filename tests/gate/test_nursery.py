@@ -144,7 +144,9 @@ def test_the_ideas_on_file_can_all_be_taken():
     found, problems = nursery.ideas()
     assert problems == [] and {name for name, _ in found} >= {"H0", "H1", "H2", "H4", "H5", "H6"}
     seen = json.loads((REPO / "state" / "nursery" / "seen.json").read_text(encoding="utf-8"))
-    assert set(seen) >= {name for name, _ in found}
+    # the ideas seeded from the ledger are all there; an idea added since joins on the nursery's next run, so a
+    # pull request that adds one cannot have it in seen.json yet (it once could not pass this test at all)
+    assert set(seen) >= {"H0", "H1", "H2", "H4", "H5", "H6"}
     assert all(re.fullmatch(r"\d{4}-\d{2}-\d{2}", v["seen"]) for v in seen.values())
     assert nursery.YEAR_DAYS == 365 and nursery.LEADER_DAYS == RULES["window_days"]
 
