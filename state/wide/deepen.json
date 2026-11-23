@@ -299,6 +299,11 @@
   "result": "added 1105 days; closes differ by 0.13% at the median and 0.54% at the ninth decile over 31 days",
   "want_from": 1633996800
  },
+ "CPOOL": {
+  "at": 1795421531,
+  "result": "not listed, to be asked once more",
+  "want_from": 1637712000
+ },
  "CRV": {
   "at": 1791378076,
   "result": "added 1105 days; closes differ by 0.20% at the median and 0.38% at the ninth decile over 31 days",
@@ -333,6 +338,11 @@
   "at": 1794120080,
   "result": "added 218 days; closes differ by 0.37% at the median and 2.00% at the ninth decile over 31 days",
   "want_from": 1636416000
+ },
+ "DGAI": {
+  "at": 1795421531,
+  "result": "not listed, to be asked once more",
+  "want_from": 1637712000
  },
  "DNA": {
   "at": 1793341532,
@@ -699,6 +709,11 @@
   "result": "added 777 days; closes differ by 0.07% at the median and 0.17% at the ninth decile over 31 days",
   "want_from": 1633651200
  },
+ "NES": {
+  "at": 1795421531,
+  "result": "not listed, to be asked once more",
+  "want_from": 1637712000
+ },
  "NIGHT": {
   "at": 1791507774,
   "result": "not listed",
@@ -763,6 +778,11 @@
   "at": 1793775465,
   "result": "not listed",
   "want_from": 1636070400
+ },
+ "PEARL": {
+  "at": 1795421531,
+  "result": "added 0 days; closes differ by 0.19% at the median and 1.49% at the ninth decile over 10 days",
+  "want_from": 1637712000
  },
  "PENDLE": {
   "at": 1791507774,
@@ -1155,9 +1175,9 @@
   "want_from": 1634428800
  },
  "WCT": {
-  "at": 1795332362,
-  "result": "no candles, to be asked once more",
-  "want_from": 1637625600
+  "at": 1795421531,
+  "result": "no candles",
+  "want_from": 1637712000
  },
  "WIF": {
   "at": 1791507774,
