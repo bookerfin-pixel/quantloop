@@ -69,3 +69,4 @@ ts,account,pair,side,qty,price,ref_price,notional,fee,slippage_cost,reason,equit
 1795223457,challenger4,ETH,buy,1.16622203,1620.7149525,1619.905,1890.11348502,1.89011349,0.94458445,"enter long: ratio to BTC z -2.03 vs 720h mean (entry -2.0, exit -0.25); vol 85% -> weight 0.25",7557.61924213,0.03086601,5.0
 1795248644,challenger4,LTC,buy,48.76597776,38.7543675,38.735,1889.89462379,1.88989462,0.94447507,"enter long: ratio to BTC z -2.09 vs 720h mean (entry -2.0, exit -0.25); vol 86% -> weight 0.25",7556.74412545,1.29082225,5.0
 1795299045,challenger4,DOT,buy,2971.63286793,0.64547257,0.64515,1918.10751922,1.91810752,0.95857447,"enter long: ratio to BTC z -2.07 vs 720h mean (entry -2.0, exit -0.25); vol 92% -> weight 0.25",7669.55339488,2.32504069,5.0
+1795500643,challenger4,LTC,sell,48.76597776,41.81908,41.84,2039.34832542,2.03934833,1.02018425,flat: ratio to BTC z -0.15 not below -0.25,7924.76192583,2.39005736,5.0
