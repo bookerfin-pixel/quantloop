@@ -1,24 +1,20 @@
 {
  "coinbase": {
-  "coins": 1,
+  "coins": 0,
   "days_added": 0,
   "failed": [],
   "mismatch": [],
-  "not_listed": 3
+  "not_listed": 0
  },
  "funding": {
-  "days_added": 818,
+  "days_added": 82,
   "failed": [],
   "symbols": 82
  },
  "kraken": {
-  "days_added": 1221,
+  "days_added": 261,
   "failed": [],
-  "joined_today": [
-   "CPOOL",
-   "NES",
-   "DGAI"
-  ],
+  "joined_today": [],
   "listed": 261,
   "on_the_list": 262,
   "pairs_read": 261,
@@ -37,7 +33,7 @@
    "USTABLES",
    "XLA"
   ],
-  "qualified_today": 183,
+  "qualified_today": 209,
   "quoted": 636,
   "quotes_failed": "",
   "quotes_written": 261,
@@ -57,7 +53,7 @@
    "ok": true
   }
  },
- "ran": 1795421531,
- "ran_utc": "2026-11-23 08:12Z",
+ "ran": 1795479655,
+ "ran_utc": "2026-11-24 00:20Z",
  "settings_not_used": []
 }
