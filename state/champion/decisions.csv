@@ -16467,3 +16467,13 @@ ts,account,pair,price,signal_weight,target_weight,current_weight,action,reason,h
 1795587052,champion,DOGE,0.054771,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: price below 24h EMA,1.935
 1795587052,champion,DOT,0.6476,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return +0.54% not above entry band +1.0% and price below 24h EMA,3.088
 1795587052,champion,LTC,40.53,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: price below 24h EMA,2.467
+1795590647,champion,BTC,59233.55,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return +0.22% not above entry band +1.0% and price below 24h EMA,0.008
+1795590647,champion,ETH,1659.735,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -0.11% not above entry band +1.0% and price below 24h EMA,0.03
+1795590647,champion,SOL,68.785,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -0.41% not above entry band +1.0% and price below 24h EMA,0.727
+1795590647,champion,ADA,0.143425,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: price below 24h EMA,1.499
+1795590647,champion,AVAX,6.51,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return -0.06% not above entry band +1.0% and price below 24h EMA,3.072
+1795590647,champion,LINK,8.764135,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: price below 24h EMA,1.295
+1795590647,champion,XRP,0.92067,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: 72h return +0.52% not above entry band +1.0% and price below 24h EMA,1.086
+1795590647,champion,DOGE,0.054814,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: price below 24h EMA,0.21
+1795590647,champion,DOT,0.6504,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: price below 24h EMA,3.075
+1795590647,champion,LTC,40.475,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | flat: price below 24h EMA,1.235
