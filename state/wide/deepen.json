@@ -199,6 +199,11 @@
   "result": "added 0 days; closes differ by 0.15% at the median and 0.44% at the ninth decile over 31 days",
   "want_from": 1636934400
  },
+ "BIGTIME": {
+  "at": 1795597672,
+  "result": "added 420 days; closes differ by 0.34% at the median and 1.19% at the ninth decile over 31 days",
+  "want_from": 1637884800
+ },
  "BILL": {
   "at": 1791940519,
   "result": "added 0 days; closes differ by 0.12% at the median and 0.35% at the ninth decile over 31 days",
@@ -300,9 +305,9 @@
   "want_from": 1633996800
  },
  "CPOOL": {
-  "at": 1795421531,
-  "result": "not listed, to be asked once more",
-  "want_from": 1637712000
+  "at": 1795597672,
+  "result": "not listed",
+  "want_from": 1637884800
  },
  "CRV": {
   "at": 1791378076,
@@ -334,15 +339,25 @@
   "result": "added 1105 days; closes differ by 0.16% at the median and 0.39% at the ninth decile over 31 days",
   "want_from": 1633651200
  },
+ "DBR": {
+  "at": 1795597672,
+  "result": "no candles, to be asked once more",
+  "want_from": 1637884800
+ },
+ "DEEP": {
+  "at": 1795597672,
+  "result": "no candles, to be asked once more",
+  "want_from": 1637884800
+ },
  "DEGEN": {
   "at": 1794120080,
   "result": "added 218 days; closes differ by 0.37% at the median and 2.00% at the ninth decile over 31 days",
   "want_from": 1636416000
  },
  "DGAI": {
-  "at": 1795421531,
-  "result": "not listed, to be asked once more",
-  "want_from": 1637712000
+  "at": 1795597672,
+  "result": "not listed",
+  "want_from": 1637884800
  },
  "DNA": {
   "at": 1793341532,
@@ -393,6 +408,11 @@
   "at": 1793602097,
   "result": "not listed",
   "want_from": 1635897600
+ },
+ "ETC": {
+  "at": 1795597672,
+  "result": "added 1105 days; closes differ by 0.12% at the median and 0.36% at the ninth decile over 31 days",
+  "want_from": 1637884800
  },
  "ETH": {
   "at": 1791378076,
@@ -710,9 +730,9 @@
   "want_from": 1633651200
  },
  "NES": {
-  "at": 1795421531,
-  "result": "not listed, to be asked once more",
-  "want_from": 1637712000
+  "at": 1795597672,
+  "result": "not listed",
+  "want_from": 1637884800
  },
  "NIGHT": {
   "at": 1791507774,
