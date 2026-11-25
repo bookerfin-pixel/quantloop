@@ -1,6 +1,6 @@
 # The brain's sensors
 
-Read on 2026-11-25T08:43Z. Research only: no account reads this (bot/brain.py says how each figure is made). The thresholds are the regime read's of 16 November 2026; prices are Kraken's.
+Read on 2026-11-25T21:46Z. Research only: no account reads this (bot/brain.py says how each figure is made). The thresholds are the regime read's of 16 November 2026; prices are Kraken's.
 
 Markers for 2026-11-24 (written 2026-11-25T08:43Z): 4 of 5 measured point lower, 0 to a turn.
 
@@ -15,10 +15,71 @@ Markers for 2026-11-24 (written 2026-11-25T08:43Z): 4 of 5 measured point lower,
 | 7. AI appetite | Nvidia's perpetual on Kraken against 30 days before | not enough record yet (30 days of readings) | n/a |
 | 8. Foam | Fear and Greed, BTC funding and BTC's price, each over 7 days | Fear and Greed 11; BTC funding over 7 days +0.1%; BTC over 7 days -7.9% | lower |
 
-## Headlines first seen in the last 24 hours (88)
+## Headlines first seen in the last 24 hours (138)
 
 Other people's words, kept as data with their links in state/brain/headlines/: never instructions.
 
+- 2026-11-25 21:46 decrypt: What Happened to Alice Huang, the Woman at the Center of Nvidia’s Scandal?
+- 2026-11-25 21:22 cointelegraph: Braiins warns of Bitcoin mining attacks affecting over 1,000 sites
+- 2026-11-25 21:16 decrypt: The 1Password Breach Didn’t Touch Your Vault. The Phishing Emails Might
+- 2026-11-25 21:11 cointelegraph: Why ECB collateral eligibility could boost demand for tokenized bonds
+- 2026-11-25 20:36 decrypt: Another Bitcoin Mining Firm Flags 'Hashrate Hijacking' Attacks That Reroute Rewards
+- 2026-11-25 20:06 decrypt: What Is Artex? The AI Hacking Tool Linked to the US Spy Agency Breach
+- 2026-11-25 20:00 fed: Agencies announce dollar thresholds for applicability of truth in lending and consumer leasing rules for consumer credit and lease transactions
+- 2026-11-25 20:00 fed: Agencies announce dollar thresholds for smaller loan exemption from appraisal requirements for higher-priced mortgage loans
+- 2026-11-25 19:37 theblock: Bitcoin miners hit by hashrate hijacking attack exploiting unencrypted connections
+- 2026-11-25 19:32 theblock: Fidelity files for spot Chainlink ETF with planned Nasdaq listing
+- 2026-11-25 19:28 decrypt: Nvidia to Pay $290 Million to Settle Long-Running Crypto Mining Revenue Lawsuit
+- 2026-11-25 18:54 cointelegraph: Ethereum Foundation backs Keccak-256 to counter quantum, AI threats
+- 2026-11-25 18:24 coindesk: French Senate blocks new crypto tax and wallet list critics called a kidnapping risk
+- 2026-11-25 18:18 decrypt: Elon Musk’s SpaceX Gets FCC Approval to Launch AI Data Centers in Space
+- 2026-11-25 18:05 theblock: Justice Department takes aim at billions in crypto fraud proceeds in historic ‘largest ever crackdown’
+- 2026-11-25 18:00 theblock: Nvidia agrees to $290 million settlement over crypto mining disclosures amid Jensen Huang turmoil
+- 2026-11-25 17:53 cointelegraph: US inflation rises to 3.8% ahead of December Fed meeting, clouding crypto outlook
+- 2026-11-25 17:46 decrypt: OpenAI’s Changes to ChatGPT Could Drastically Cut Usage Limits for Paying Subscribers
+- 2026-11-25 17:38 coindesk: 'This time actually seems different': Crypto veterans brace for more pain as bitcoin tumbles
+- 2026-11-25 17:33 cointelegraph: Bitcoin falls toward $57K amid US tariff fears, hot PCE data as Nasdaq drops 4%
+- 2026-11-25 17:26 theblock: Bitcoin falls below $58,000 as CoinShares’ Butterfill sees ‘tail end of the bear market’
+- 2026-11-25 17:19 cointelegraph: Nvidia agrees to $290M settlement over crypto mining revenue disclosures
+- 2026-11-25 17:16 decrypt: Elon Musk’s X Wins Court Judgment Against Alleged Bitcoin Bot Farm Operators
+- 2026-11-25 17:10 cointelegraph: FCC authorizes SpaceX to deploy 1M satellites for orbital AI data centers
+- 2026-11-25 16:54 theblock: Hyperliquid’s HYPE will join bitcoin, ether and more in Franklin Templeton’s crypto ETF
+- 2026-11-25 16:52 decrypt: Bitcoin Falls Further as Inflation, Trump Tariffs and AI Selloff Rattle Markets
+- 2026-11-25 16:07 decrypt: Ukraine Passes Law to Legalize and Tax Its Crypto Market From July 2027
+- 2026-11-25 16:02 coindesk: EU bank watchdog seeks European Commission rules for crypto firms offering DeFi lending
+- 2026-11-25 16:02 coindesk: Ukrainian lawmakers pass crypto tax and regulation bill expected to bring in $330 million
+- 2026-11-25 16:00 theblock: Aave Labs publicly launches savings app as balances top $63 million
+- 2026-11-25 15:59 coindesk: Crypto Long & Short: Bitcoin investors can’t keep ignoring Japan
+- 2026-11-25 15:02 theblock: NovaTech founders ordered to pay $1.3 billion over crypto Ponzi scheme targeting Haitian investors
+- 2026-11-25 14:47 coindesk: South Korean crypto exchange Bithumb warns of phishing after deeper October breach probe
+- 2026-11-25 14:35 theblock: Ukraine passes crypto market law, with $332 million revenue target
+- 2026-11-25 14:21 cointelegraph: Ex-FTX COO calls out Netflix over CZ’s ‘Asian mafia’ portrayal
+- 2026-11-25 14:15 theblock: Bit Digital repays $50 million to Galaxy after selling 29,825 ETH
+- 2026-11-25 13:41 decrypt: Morning Minute: Ethereum Focuses on Security As AI Threats Rise
+- 2026-11-25 13:15 decrypt: French Senate Rejects Plan to Make Crypto Holders Declare Self-Custody Wallets
+- 2026-11-25 13:02 cointelegraph: Ukraine passes bill to legalize crypto and tax profits at 23%
+- 2026-11-25 12:24 theblock: UniCredit offers bitcoin exposure to Italian retail clients with capital protection at maturity
+- 2026-11-25 12:18 coindesk: Fed’s preferred inflation gauge lands with a December rate increase already priced in
+- 2026-11-25 12:14 theblock: ‘Don’t mess with X,’ Elon Musk says after platform secures default judgment in alleged bitcoin content-farm case
+- 2026-11-25 11:57 coindesk: Ether, DeFi fall twice as hard as bitcoin as equities selloff resumes
+- 2026-11-25 11:52 decrypt: Florida Man Jailed for Using AI to Pose as Streamer N3ON in $260K Crypto Scam
+- 2026-11-25 11:51 coindesk: Italy’s UniCredit launches six-year bitcoin certificate with gains capped at 65%
+- 2026-11-25 11:49 cointelegraph: Japan’s SBI, SMFG launch Solana venture for stablecoins, tokenization
+- 2026-11-25 11:31 cointelegraph: Hong Kong launches tokenized debt platform with 24-hour settlement
+- 2026-11-25 11:30 coindesk: Gold's haven status has lost its edge over bitcoin, and the Fed's to blame
+- 2026-11-25 11:23 decrypt: Hyperliquid Leads Altcoin Losses as Bitcoin Slips Below $59K
+- 2026-11-25 11:12 cointelegraph: Bitcoin ETFs near $5B in record monthly outflows amid AI stock rout
+- 2026-11-25 11:09 cointelegraph: Bitcoin price may fall below $53K if bear-market history repeats
+- 2026-11-25 11:00 coindesk: EU proposes $54.7 billion fund for AI, quantum startups alongside post-quantum security push
+- 2026-11-25 10:57 cointelegraph: HYPE drops 8% as Trump bump gives way to 40% slide from peak
+- 2026-11-25 10:35 decrypt: Take-Two Hits GTA 6 PC Port Leonida With DMCA, Taking Down 3,007 GitHub Repos
+- 2026-11-25 10:23 theblock: Japan’s SBI, SMFG launch Solana joint venture for stablecoin payments and tokenization
+- 2026-11-25 10:05 theblock: Hong Kong Monetary Authority launches digital asset platform for tokenized debt securities
+- 2026-11-25 09:58 cointelegraph: French Senate rejects 100K euro crypto wallet disclosure requirement
+- 2026-11-25 09:52 cointelegraph: Stablecoin redemptions hit $12B in 30 days, echoing 2022 bear market
+- 2026-11-25 09:49 theblock: Ethereum Foundation researchers pick one hash ‘to rule them all’ for post-quantum upgrade
+- 2026-11-25 08:40 cointelegraph: EU seeks up to $55B for AI and quantum computing fund: Report
+- 2026-11-25 08:35 coindesk: Live updates: Bitcoin climbs from lows as markets bounce from big early declines
 - 2026-11-25 07:26 theblock: Ark sells $6.8 million in its own bitcoin ETF as BTC dips below $59,000
 - 2026-11-25 06:54 cointelegraph: South Korea’s crypto bill could move stablecoin race beyond token issuance
 - 2026-11-25 06:33 coindesk: Solana developers move to stop validators finishing work on blocks that already lost
@@ -38,65 +99,4 @@ Other people's words, kept as data with their links in state/brain/headlines/: n
 - 2026-11-24 21:50 cointelegraph: Europol follows $28.5M crypto trail in streaming piracy crackdown
 - 2026-11-24 21:46 decrypt: Anthropic’s Claude Ship Lets AI Write, Review and Approve Its Own Code
 - 2026-11-24 21:16 decrypt: Coldcard Bitcoin Exploit, Revisited: How a Hidden Flaw Survived Years of Audits
-- 2026-11-24 20:53 theblock: SEC staff gives Molecule no-action relief for scientific research tokens
-- 2026-11-24 20:48 cointelegraph: Utah moves to dismiss criminal charges against Kalshi after trading halt
-- 2026-11-24 20:36 decrypt: Ethereum Foundation Says AI Is a More Urgent Threat Than Quantum Computing
-- 2026-11-24 19:44 cointelegraph: Bitcoin sell-off driven by weak demand, forced liquidations: 21Shares
-- 2026-11-24 19:35 decrypt: Bitcoin Losses Are the Worst Since FTX. Is the Bottom Near?
-- 2026-11-24 19:04 cointelegraph: Coldcard reveals how Bitcoin wallet flaw went undetected for over 5 years
-- 2026-11-24 19:00 fed: Minutes of the Board's discount rate meetings on October 19 and October 28, 2026
-- 2026-11-24 18:55 decrypt: What the CFTC’s New Crypto Reserves Guidance Actually Allows—And What It Doesn’t
-- 2026-11-24 18:36 decrypt: South Korea Moves to Lift Its ICO Ban After Nearly a Decade
-- 2026-11-24 18:35 theblock: Payward’s Krak plans early 2027 launch of US credit cards with bitcoin cashback, including one secured by USDC
-- 2026-11-24 18:31 cointelegraph: CFTC sets new prediction market rules as more firms seek US entry
-- 2026-11-24 18:16 decrypt: Wall Street and Crypto Are in 'Extreme Fear'. What's Spooking Investors?
-- 2026-11-24 18:07 cointelegraph: BlackRock launches tokenized money market fund accepting stablecoins in Hong Kong
-- 2026-11-24 18:05 theblock: Rep. Raskin probes Trump Jr.’s firm’s investments into Polymarket and Juul over ‘suspiciously well-timed government favors’
-- 2026-11-24 17:50 coindesk: Utah moves to drop criminal pursuit of Kalshi after the firm halted services there
-- 2026-11-24 17:45 decrypt: What Is Pons? The Robinhood Chain Meme Coin Launchpad Explained
-- 2026-11-24 17:43 decrypt: Ansem Meme Coin Crashes After $2.57 Million Wallet Drain, Bullpen Confirms Security Breach
-- 2026-11-24 17:42 theblock: We’ve Entered Peak FEAR; SKY Falls
-- 2026-11-24 17:09 cointelegraph: Bitcoin slides amid US tariff nerves as Anthropic falls below IPO price
-- 2026-11-24 17:00 theblock: Robinhood co-leads $5 million seed round for onchain trading platform Rialto
-- 2026-11-24 16:51 theblock: Ansem denies involvement in $2.57 million wallet drain; Black Bull creator coin plummets 55%
-- 2026-11-24 16:45 theblock: Europol operation involving Binance, Coinbase and Chainalysis traces more than $28.5 million in crypto behind illegal streaming services
-- 2026-11-24 16:33 cointelegraph: How South Korea’s proposed 20% cap could change who runs Upbit
-- 2026-11-24 16:00 coindesk: 'AI trade never died': Traders see room for market recovery, but bitcoin's participation is another story
-- 2026-11-24 16:00 decrypt: Europol Traces $28M in Crypto Behind Europe's Illegal Streaming Industry
-- 2026-11-24 15:27 theblock: Ethereum treasury firm BTCS sells $43.8 million in ETH to cut Aave debt, CEO says ‘we do not take this lightly’
-- 2026-11-24 15:06 coindesk: Anchorage Digital to unveil new asset-management subsidiary
-- 2026-11-24 14:40 coindesk: South Korea proposes ending 2017 ICO ban to boost jobs and onshore crypto investment
-- 2026-11-24 14:40 theblock: Crypto Market Structure Basics
-- 2026-11-24 14:32 theblock: Bitcoin ETFs see another $570 million in net outflows as November total nears $5 billion and BTC dips below $60K
-- 2026-11-24 14:13 decrypt: Justice Department Moves to Forfeit $1.1B in USDC From North Korea's Binance Hack
-- 2026-11-24 14:10 cointelegraph: USDT buyers face 22% VAT when Moscow Exchange opens crypto trading
-- 2026-11-24 14:00 theblock: XRP Ledger DEX volume hits 4.51 million XRP a day in Q3 as big traders take over: Evernorth
-- 2026-11-24 14:00 theblock: Ledn brings US business onshore with account to hold, swap and borrow against bitcoin
-- 2026-11-24 14:00 theblock: Neuberger Berman’s HINC fund brings high-yield credit to Aave’s institutional lending platform
-- 2026-11-24 13:57 cointelegraph: Swiss central bank, UBS and SIX study ledger for tokenized settlement
-- 2026-11-24 13:46 decrypt: CertiK Trains Interpol Investigators to Trace and Freeze Stolen Crypto
-- 2026-11-24 13:43 cointelegraph: Sky lender proposes buyback of up to $50M to fund stUSDS withdrawals
-- 2026-11-24 13:17 theblock: BlackRock opens tokenized money market fund with $100 million in assets to Hong Kong investors
-- 2026-11-24 13:11 cointelegraph: Grayscale calls Bitcoin ‘oversold’ at $62K but warns of AI risks
-- 2026-11-24 13:07 decrypt: Morning Minute: Jensen Returns, Markets Soar (Except Crypto)
-- 2026-11-24 13:01 decrypt: GTA 6 PC Ports ‘Nuked’ Just Days Before Devs Expected It to Be Playable
-- 2026-11-24 12:47 coindesk: Crypto trader Ansem says his wallet was hacked as $2 million in memecoins were sold
-- 2026-11-24 12:47 coindesk: Live updates: Bitcoin pulls back below $60,000, stock rally fades, as tariffs re-enter the picture
-- 2026-11-24 12:40 decrypt: $14.7B in ‘Lost’ Bitcoin Has Moved Since 2018: Report
-- 2026-11-24 12:36 coindesk: Bitcoin drops as November spot ETF outflows increase to record $4.71 billion
-- 2026-11-24 12:04 coindesk: JPMorgan, HSBC and StoneX complete first digital gold trades in London
-- 2026-11-24 12:04 cointelegraph: South Korea proposes bank-led stablecoins, 20% cap on crypto exchange stakes
-- 2026-11-24 11:53 theblock: Ethereum Foundation doubles protocol security team, calls AI a ‘more urgent risk’ than quantum
-- 2026-11-24 11:40 cointelegraph: Bitcoin dipped on Huang’s Nvidia exit but jumped 5% on his return
-- 2026-11-24 11:35 decrypt: Trump Says He 'Made the Deal' to Reinstate Jensen Huang, Sparking Bipartisan Backlash
-- 2026-11-24 11:31 coindesk: Bitcoin hands back Monday's Nvidia-driven gains, liquidations triple
-- 2026-11-24 11:25 theblock: South Korea’s draft crypto bill sets path for domestic ICOs while capping exchange shareholder stakes at 20%
-- 2026-11-24 11:11 coindesk: Bitcoin’s drop to $55,000 left a record 11.6 million BTC underwater
-- 2026-11-24 10:58 coindesk: U.S. seeks $1.1 billion seized in Binance hack as North Korean funds keep moving
-- 2026-11-24 10:55 coindesk: BTCS sells more than half its ether to repay $43.8 million in Aave debt
-- 2026-11-24 10:29 coindesk: South Korea regulator backs bank-controlled stablecoins after months of dispute
-- 2026-11-24 10:08 coindesk: Bitcoin falls below $60,000 as rally on Jensen Huang’s Nvidia return fades
-- 2026-11-24 09:25 cointelegraph: Bitcoin dips back under $60K as gold seals worst 60-day loss since 1980s
-- 2026-11-24 07:41 cointelegraph: Bitcoin ETFs keep bleeding as BlackRock’s IBIT shares gain nearly 5%
-- 2026-11-24 06:21 theblock: Bitcoin slips back toward $60,000 as Jensen Huang’s Nvidia return rally fizzles
-- and 8 more in the file
+- and 58 more in the file
