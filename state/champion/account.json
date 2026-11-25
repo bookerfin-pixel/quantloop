@@ -1,37 +1,55 @@
 {
-  "cash": 3533.009657587095,
+  "cash": 0.0,
   "created_at": 1789530957,
   "day": "2026-11-25",
   "day_open_equity": 7110.982023383988,
-  "equity_rows": 1671,
-  "fees_paid": 714.2247592266641,
+  "equity_rows": 1672,
+  "fees_paid": 719.31343234327,
   "fills_day": {
     "counts": {
-      "LINK": 1,
-      "LTC": 1
+      "ADA": 1,
+      "DOGE": 1,
+      "LINK": 2,
+      "LTC": 2,
+      "XRP": 1
     },
     "day": "2026-11-25"
   },
   "halted_day": "2026-11-05",
   "initial_cash": 10000.0,
-  "last_bar": 1795629600,
-  "last_run_ts": 1795633846,
+  "last_bar": 1795633200,
+  "last_run_ts": 1795637446,
   "marks": {
+    "ADA": [
+      0.1461925,
+      1795637446
+    ],
+    "DOGE": [
+      0.055725449999999996,
+      1795637446
+    ],
     "LINK": [
-      9.03917,
-      1795633846
+      9.059125,
+      1795637446
     ],
     "LTC": [
-      42.295,
-      1795633846
+      42.32,
+      1795637446
+    ],
+    "XRP": [
+      0.9367449999999999,
+      1795637446
     ]
   },
-  "n_trades": 513,
+  "n_trades": 518,
   "name": "champion",
   "positions": {
-    "LINK": 198.66365879729247,
-    "LTC": 43.862184085592276
+    "ADA": 9830.030287920674,
+    "DOGE": 25697.245564015415,
+    "LINK": 158.69238903908513,
+    "LTC": 33.96942132226381,
+    "XRP": 1534.1172921839382
   },
-  "slippage_paid": 364.82224032442525,
+  "slippage_paid": 367.36569553834556,
   "strategy_sig": "params:\n  ema_exit_buffer: 0.02\n  ema_hours: 24\n  entry_return: 0.01\n  exit_return: -0.01\n  lookback_hours: 72\n  max_weight: 0.25\n  target_vol_annual: 0.3\n  vol_lookback_hours: 168\nstrategy: ts_momentum\n"
 }
