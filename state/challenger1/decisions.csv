@@ -2749,3 +2749,23 @@ ts,account,pair,price,signal_weight,target_weight,current_weight,action,reason,h
 1795619448,challenger1,DOGE,0.052956,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | cash: holds nothing,0.038
 1795619448,challenger1,DOT,0.62735,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | cash: holds nothing,0.797
 1795619448,challenger1,LTC,40.035,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | cash: holds nothing,1.249
+1795622400,challenger1,BTC,58273.0,0.0,0.0,0.0,hold,replayed after a missed run | hold: weight change +0.000 below threshold 0.05 | cash: holds nothing,0.0
+1795622400,challenger1,ETH,1646.53,0.0,0.0,0.0,hold,replayed after a missed run | hold: weight change +0.000 below threshold 0.05 | cash: holds nothing,0.0
+1795622400,challenger1,SOL,67.63,0.0,0.0,0.0,hold,replayed after a missed run | hold: weight change +0.000 below threshold 0.05 | cash: holds nothing,0.0
+1795622400,challenger1,ADA,0.138774,0.0,0.0,0.0,hold,replayed after a missed run | hold: weight change +0.000 below threshold 0.05 | cash: holds nothing,0.0
+1795622400,challenger1,AVAX,6.348,0.0,0.0,0.0,hold,replayed after a missed run | hold: weight change +0.000 below threshold 0.05 | cash: holds nothing,0.0
+1795622400,challenger1,LINK,8.63001,0.0,0.0,0.0,hold,replayed after a missed run | hold: weight change +0.000 below threshold 0.05 | cash: holds nothing,0.0
+1795622400,challenger1,XRP,0.90145,0.0,0.0,0.0,hold,replayed after a missed run | hold: weight change +0.000 below threshold 0.05 | cash: holds nothing,0.0
+1795622400,challenger1,DOGE,0.05332,0.0,0.0,0.0,hold,replayed after a missed run | hold: weight change +0.000 below threshold 0.05 | cash: holds nothing,0.0
+1795622400,challenger1,DOT,0.6296,0.0,0.0,0.0,hold,replayed after a missed run | hold: weight change +0.000 below threshold 0.05 | cash: holds nothing,0.0
+1795622400,challenger1,LTC,40.29,0.0,0.0,0.0,hold,replayed after a missed run | hold: weight change +0.000 below threshold 0.05 | cash: holds nothing,0.0
+1795626646,challenger1,BTC,59102.7,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | cash: holds nothing,1.506
+1795626646,challenger1,ETH,1656.245,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | cash: holds nothing,0.03
+1795626646,challenger1,SOL,68.32,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | cash: holds nothing,1.464
+1795626646,challenger1,ADA,0.141688,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | cash: holds nothing,3.141
+1795626646,challenger1,AVAX,6.428,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | cash: holds nothing,3.111
+1795626646,challenger1,LINK,8.77263,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | cash: holds nothing,4.195
+1795626646,challenger1,XRP,0.91424,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | cash: holds nothing,1.094
+1795626646,challenger1,DOGE,0.054129,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | cash: holds nothing,0.092
+1795626646,challenger1,DOT,0.6457,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | cash: holds nothing,1.549
+1795626646,challenger1,LTC,41.19,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | cash: holds nothing,2.428
