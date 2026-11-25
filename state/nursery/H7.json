@@ -1,8 +1,19 @@
 {
- "days": 0,
+ "basket": -0.02368798923394555,
+ "confidence": null,
+ "costs": 0.0,
+ "days": 1,
+ "early_kill_day": null,
+ "exposure": 0.0,
+ "fills": 0,
  "idea": "H7",
+ "max_drawdown": 0.0,
+ "net": 0.0,
  "seen": "2026-11-24",
+ "skill": 0.006232409620512561,
+ "skill_t": null,
  "slot": null,
  "strategy": "daily_trend",
+ "usual": 0.2631042069025151,
  "version": 1
 }
