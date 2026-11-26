@@ -5029,3 +5029,13 @@ ts,account,pair,price,signal_weight,target_weight,current_weight,action,reason,h
 1795698640,challenger2,DOGE,0.056803,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | cash: holds nothing,0.264
 1795698640,challenger2,DOT,0.67285,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | cash: holds nothing,0.743
 1795698640,challenger2,LTC,43.585,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | cash: holds nothing,1.147
+1795702246,challenger2,BTC,60815.55,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | cash: holds nothing,0.008
+1795702246,challenger2,ETH,1703.12,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | cash: holds nothing,0.705
+1795702246,challenger2,SOL,71.305,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | cash: holds nothing,0.701
+1795702246,challenger2,ADA,0.1493,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | cash: holds nothing,1.541
+1795702246,challenger2,AVAX,6.6355,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | cash: holds nothing,2.261
+1795702246,challenger2,LINK,9.25148,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | cash: holds nothing,1.535
+1795702246,challenger2,XRP,0.951775,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | cash: holds nothing,0.053
+1795702246,challenger2,DOGE,0.056914,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | cash: holds nothing,0.053
+1795702246,challenger2,DOT,0.67265,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | cash: holds nothing,2.23
+1795702246,challenger2,LTC,43.805,0.0,0.0,0.0,hold,hold: weight change +0.000 below threshold 0.05 | cash: holds nothing,1.141
