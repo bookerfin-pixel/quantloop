@@ -3,7 +3,7 @@
   "created_at": 1789530957,
   "day": "2026-11-26",
   "day_open_equity": 7220.656675524632,
-  "equity_rows": 1692,
+  "equity_rows": 1693,
   "fees_paid": 736.4360000426635,
   "fills_day": {
     "counts": {
@@ -20,12 +20,12 @@
   },
   "halted_day": "2026-11-05",
   "initial_cash": 10000.0,
-  "last_bar": 1795705200,
-  "last_run_ts": 1795709455,
+  "last_bar": 1795708800,
+  "last_run_ts": 1795713049,
   "marks": {
     "LTC": [
-      43.46,
-      1795709455
+      43.425,
+      1795713049
     ]
   },
   "n_trades": 539,
