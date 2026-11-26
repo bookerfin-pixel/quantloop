@@ -340,14 +340,14 @@
   "want_from": 1633651200
  },
  "DBR": {
-  "at": 1795597672,
-  "result": "no candles, to be asked once more",
-  "want_from": 1637884800
+  "at": 1795683171,
+  "result": "no candles",
+  "want_from": 1637971200
  },
  "DEEP": {
-  "at": 1795597672,
-  "result": "no candles, to be asked once more",
-  "want_from": 1637884800
+  "at": 1795683171,
+  "result": "no candles",
+  "want_from": 1637971200
  },
  "DEGEN": {
   "at": 1794120080,
@@ -669,6 +669,11 @@
   "result": "added 1105 days; closes differ by 0.12% at the median and 0.31% at the ninth decile over 31 days",
   "want_from": 1633651200
  },
+ "MANTRA": {
+  "at": 1795683171,
+  "result": "not listed, to be asked once more",
+  "want_from": 1637971200
+ },
  "MASK": {
   "at": 1792732825,
   "result": "added 1105 days; closes differ by 0.34% at the median and 0.58% at the ninth decile over 31 days",
@@ -718,6 +723,11 @@
   "at": 1791378076,
   "result": "added 0 days; closes differ by 0.11% at the median and 0.25% at the ninth decile over 31 days",
   "want_from": 1633651200
+ },
+ "MOODENG": {
+  "at": 1795683171,
+  "result": "added 14 days; closes differ by 0.25% at the median and 0.88% at the ninth decile over 31 days",
+  "want_from": 1637971200
  },
  "MORPHO": {
   "at": 1791507774,
@@ -1083,6 +1093,11 @@
   "at": 1791507774,
   "result": "no candles",
   "want_from": 1633824000
+ },
+ "TEL": {
+  "at": 1795683171,
+  "result": "not listed, to be asked once more",
+  "want_from": 1637971200
  },
  "TIA": {
   "at": 1791378076,
