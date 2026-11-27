@@ -1,24 +1,41 @@
 # The brain's sensors
 
-Read on 2026-11-26T21:39Z. Research only: no account reads this (bot/brain.py says how each figure is made). The thresholds are the regime read's of 16 November 2026; prices are Kraken's.
+Read on 2026-11-27T08:42Z. Research only: no account reads this (bot/brain.py says how each figure is made). The thresholds are the regime read's of 16 November 2026; prices are Kraken's.
 
-Markers for 2026-11-25 (written 2026-11-26T08:29Z): 4 of 5 measured point lower, 0 to a turn.
+Markers for 2026-11-26 (written 2026-11-27T08:42Z): 4 of 5 measured point lower, 0 to a turn.
 
 | marker | measured as | reading | points |
 |---|---|---|---|
 | 1. BTC against its 52 week low | last weekly close against the lowest of the 52 weeks before | $61,170 (week to 2026-11-22) against $59,490 | neither |
 | 2. BTC against its 200 week average | weekly close against the average of the last 200 | $61,170 against $68,167 | lower |
-| 3. BTC's own trend | close against the close 30 days before | -24.5% (BTC $60,369) | lower |
-| 4. Stablecoin supply | change in the total over 30 days | -5.8% ($284.2 billion) | lower |
+| 3. BTC's own trend | close against the close 30 days before | -25.1% (BTC $60,499) | lower |
+| 4. Stablecoin supply | change in the total over 30 days | -5.7% ($284.0 billion) | lower |
 | 5. US spot BTC ETF flows | not collected: no free feed yet | not collected | n/a |
 | 6. The Fed and the dollar | not collected: needs a FRED key | not collected | n/a |
 | 7. AI appetite | Nvidia's perpetual on Kraken against 30 days before | not enough record yet (30 days of readings) | n/a |
-| 8. Foam | Fear and Greed, BTC funding and BTC's price, each over 7 days | Fear and Greed 13; BTC funding over 7 days +0.1%; BTC over 7 days -4.2% | lower |
+| 8. Foam | Fear and Greed, BTC funding and BTC's price, each over 7 days | Fear and Greed 11; BTC funding over 7 days +0.1%; BTC over 7 days -2.3% | lower |
 
-## Headlines first seen in the last 24 hours (120)
+## Headlines first seen in the last 24 hours (57)
 
 Other people's words, kept as data with their links in state/brain/headlines/: never instructions.
 
+- 2026-11-27 08:04 cointelegraph: ESMA to overhaul EU’s MiCA crypto register in 2027
+- 2026-11-27 07:51 theblock: Ethereum devs schedule Glamsterdam upgrade for Hoodi testnet on Dec. 15
+- 2026-11-27 07:33 coindesk: Monero suffers biggest single-day slide in over 5 months. Here’s why
+- 2026-11-27 07:19 cointelegraph: New York AG secures $1.37B court judgment against NovaTech founders
+- 2026-11-27 05:22 cointelegraph: Japan’s crypto security group taps SEAL to speed up hack response
+- 2026-11-27 05:06 coindesk: Ripple's lending plan moves closer to tapping XRP Ledger's $800 million in stablecoins
+- 2026-11-27 04:47 cointelegraph: Ethereum devs set Glamsterdam’s Hoodi rollout for mid-December after delays
+- 2026-11-27 04:45 coindesk: Binance says customer withdrawals are fully restored, four weeks after the $6.3 billion hack
+- 2026-11-27 04:29 coindesk: Ethereum's much-awaited Glamsterdam upgrade cleared for December test. Here's what to know
+- 2026-11-27 04:18 theblock: China, Japan, South Korea and ASEAN to form working group on digital payments, crypto regulation
+- 2026-11-27 02:20 theblock: JPMorgan flags bitcoin ‘capitulation,’ Democrats push back on SEC’s crypto plans, and more
+- 2026-11-27 01:47 cointelegraph: AI is driving a flood of crypto bug reports. Now it’s helping sort them
+- 2026-11-27 00:35 cointelegraph: Privacy coins face diverging fortunes as KuCoin moves to drop Monero
+- 2026-11-26 22:39 cointelegraph: ‘Very racist’ Netflix SBF series, BitMart’s $319M shortfall: Asia Express
+- 2026-11-26 22:01 decrypt: Vibecoded GTA 6 PC Ports Are Now Rendering In-Game Graphics Despite Take-Two Crackdown
+- 2026-11-26 21:42 cointelegraph: BNB Chain details new layer-1 for trading, private finance and AI
+- 2026-11-26 21:33 cointelegraph: Binance completes withdrawal recovery four weeks after $6.3B hack
 - 2026-11-26 21:13 cointelegraph: UK is ‘getting it wrong’ on DeFi regulation, says Coinbase
 - 2026-11-26 21:01 decrypt: What Is Self-Custody? How to Hold Your Own Crypto Keys
 - 2026-11-26 20:05 cointelegraph: Japan weighs tighter oversight of DeFi, self-custodial wallets
@@ -59,44 +76,3 @@ Other people's words, kept as data with their links in state/brain/headlines/: n
 - 2026-11-26 09:40 theblock: Switzerland approves 57 jurisdictions for crypto data exchange from 2028
 - 2026-11-26 09:18 cointelegraph: Switzerland’s first spot Bitcoin ETF ticks up 0.6% in opening hour
 - 2026-11-26 08:50 theblock: Spot bitcoin ETFs on track for worst month on record as bear market drags on
-- 2026-11-26 08:01 coindesk: $7 billion of bitcoin options expire Friday, and the biggest bets look starkly different from October
-- 2026-11-26 07:09 coindesk: Zcash developers want users to move $300 million out of an older privacy system
-- 2026-11-26 06:30 theblock: Europe’s only spot bitcoin ETF starts trading in Switzerland, BIT says
-- 2026-11-26 06:19 coindesk: Over 1,000 Bitcoin miners were tricked into working for a thief by a fake internet route
-- 2026-11-26 05:53 cointelegraph: UK regulator plans tighter DeFi rules, citing $6.3B Binance hack: Report
-- 2026-11-26 05:45 theblock: Fidelity files for Chainlink ETF, Musk’s X wins ruling in alleged bitcoin content-farm case, and more
-- 2026-11-26 05:30 coindesk: Ripple is worth $90 a share to one fund and $300 to another, SEC filings show
-- 2026-11-26 05:29 cointelegraph: Sky proposes emergency vote on $25M transfer amid liquidity stress
-- 2026-11-26 05:16 theblock: Galaxy walks back bitcoin’s June-bottom call, warns of deeper losses below $58,525
-- 2026-11-26 04:55 cointelegraph: 1Password hacker stole customer names and emails, but vaults safe
-- 2026-11-26 04:46 coindesk: Bill to lock up U.S. government bitcoin for 20 years advances to full House
-- 2026-11-26 04:24 cointelegraph: Senate Democrats urge SEC to scrap crypto, tokenized stock exemptions
-- 2026-11-26 03:03 theblock: House Committee advances Strategic Bitcoin Reserve bill with narrow path to passage
-- 2026-11-26 02:22 theblock: LayerZero adds Samsung Card, Kakao Pay, ZAN as validators for upcoming Zero blockchain
-- 2026-11-26 01:33 cointelegraph: AI labs likely sitting on cryptography ‘bombshells,’ computer scientist says
-- 2026-11-25 22:38 decrypt: China's Google Just Released Its Fast New AI Model for Free
-- 2026-11-25 22:20 theblock: Sens. Warren, Van Hollen lead push to scrap SEC’s Regulation Crypto and innovation exemption
-- 2026-11-25 21:53 cointelegraph: Switzerland clears 57 jurisdictions for crypto tax data sharing
-- 2026-11-25 21:46 decrypt: What Happened to Alice Huang, the Woman at the Center of Nvidia’s Scandal?
-- 2026-11-25 21:22 cointelegraph: Braiins warns of Bitcoin mining attacks affecting over 1,000 sites
-- 2026-11-25 21:16 decrypt: The 1Password Breach Didn’t Touch Your Vault. The Phishing Emails Might
-- 2026-11-25 21:11 cointelegraph: Why ECB collateral eligibility could boost demand for tokenized bonds
-- 2026-11-25 20:36 decrypt: Another Bitcoin Mining Firm Flags 'Hashrate Hijacking' Attacks That Reroute Rewards
-- 2026-11-25 20:06 decrypt: What Is Artex? The AI Hacking Tool Linked to the US Spy Agency Breach
-- 2026-11-25 20:00 fed: Agencies announce dollar thresholds for applicability of truth in lending and consumer leasing rules for consumer credit and lease transactions
-- 2026-11-25 20:00 fed: Agencies announce dollar thresholds for smaller loan exemption from appraisal requirements for higher-priced mortgage loans
-- 2026-11-25 19:37 theblock: Bitcoin miners hit by hashrate hijacking attack exploiting unencrypted connections
-- 2026-11-25 19:32 theblock: Fidelity files for spot Chainlink ETF with planned Nasdaq listing
-- 2026-11-25 19:28 decrypt: Nvidia to Pay $290 Million to Settle Long-Running Crypto Mining Revenue Lawsuit
-- 2026-11-25 18:54 cointelegraph: Ethereum Foundation backs Keccak-256 to counter quantum, AI threats
-- 2026-11-25 18:24 coindesk: French Senate blocks new crypto tax and wallet list critics called a kidnapping risk
-- 2026-11-25 18:18 decrypt: Elon Musk’s SpaceX Gets FCC Approval to Launch AI Data Centers in Space
-- 2026-11-25 18:05 theblock: Justice Department takes aim at billions in crypto fraud proceeds in historic ‘largest ever crackdown’
-- 2026-11-25 18:00 theblock: Nvidia agrees to $290 million settlement over crypto mining disclosures amid Jensen Huang turmoil
-- 2026-11-25 17:53 cointelegraph: US inflation rises to 3.8% ahead of December Fed meeting, clouding crypto outlook
-- 2026-11-25 17:53 cointelegraph: US inflation rises to 3.8% ahead of December Fed meeting, clouding crypto outlook
-- 2026-11-25 17:46 decrypt: OpenAI’s Changes to ChatGPT Could Drastically Cut Usage Limits for Paying Subscribers
-- 2026-11-25 17:38 coindesk: 'This time actually seems different': Crypto veterans brace for more pain as bitcoin tumbles
-- 2026-11-25 17:33 cointelegraph: Bitcoin falls toward $57K amid US tariff fears, hot PCE data as Nasdaq drops 4%
-- 2026-11-25 17:26 theblock: Bitcoin falls below $58,000 as CoinShares’ Butterfill sees ‘tail end of the bear market’
-- and 40 more in the file
