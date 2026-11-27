@@ -1,28 +1,27 @@
 {
  "coinbase": {
-  "coins": 1,
-  "days_added": 14,
+  "coins": 0,
+  "days_added": 0,
   "failed": [],
   "mismatch": [],
-  "not_listed": 2
+  "not_listed": 4
  },
  "funding": {
-  "days_added": 168,
+  "days_added": 85,
   "failed": [],
   "symbols": 85
  },
  "kraken": {
-  "days_added": 1548,
+  "days_added": 863,
   "failed": [],
   "joined_today": [
-   "MOODENG",
-   "MANTRA",
-   "TEL"
+   "SSV"
   ],
-  "listed": 268,
-  "on_the_list": 269,
-  "pairs_read": 268,
+  "listed": 269,
+  "on_the_list": 270,
+  "pairs_read": 269,
   "pegged_skipped": [
+   "APXUSD",
    "AUSD",
    "CASH",
    "FIDD",
@@ -32,14 +31,15 @@
    "USAT",
    "USDGO",
    "USDPT",
+   "USDSM",
    "USDSUI",
    "USTABLES",
    "XLA"
   ],
-  "qualified_today": 194,
+  "qualified_today": 175,
   "quoted": 635,
   "quotes_failed": "",
-  "quotes_written": 268,
+  "quotes_written": 269,
   "unquoted": [],
   "usd_pairs": 639
  },
@@ -56,7 +56,7 @@
    "ok": true
   }
  },
- "ran": 1795683171,
- "ran_utc": "2026-11-26 08:52Z",
+ "ran": 1795770231,
+ "ran_utc": "2026-11-27 09:03Z",
  "settings_not_used": []
 }

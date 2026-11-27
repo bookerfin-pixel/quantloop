@@ -554,6 +554,11 @@
   "result": "not listed",
   "want_from": 1635292800
  },
+ "INFI": {
+  "at": 1795770231,
+  "result": "not listed, to be asked once more",
+  "want_from": 1638057600
+ },
  "INIT": {
   "at": 1792905418,
   "result": "not listed",
@@ -670,9 +675,9 @@
   "want_from": 1633651200
  },
  "MANTRA": {
-  "at": 1795683171,
-  "result": "not listed, to be asked once more",
-  "want_from": 1637971200
+  "at": 1795770231,
+  "result": "not listed",
+  "want_from": 1638057600
  },
  "MASK": {
   "at": 1792732825,
@@ -1049,6 +1054,11 @@
   "result": "no candles",
   "want_from": 1633824000
  },
+ "SSV": {
+  "at": 1795770231,
+  "result": "not listed, to be asked once more",
+  "want_from": 1638057600
+ },
  "STBL": {
   "at": 1792213106,
   "result": "not listed",
@@ -1095,9 +1105,9 @@
   "want_from": 1633824000
  },
  "TEL": {
-  "at": 1795683171,
-  "result": "not listed, to be asked once more",
-  "want_from": 1637971200
+  "at": 1795770231,
+  "result": "not listed",
+  "want_from": 1638057600
  },
  "TIA": {
   "at": 1791378076,
