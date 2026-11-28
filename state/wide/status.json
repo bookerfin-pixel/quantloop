@@ -4,24 +4,23 @@
   "days_added": 0,
   "failed": [],
   "mismatch": [],
-  "not_listed": 4
+  "not_listed": 3
  },
  "funding": {
-  "days_added": 85,
+  "days_added": 451,
   "failed": [],
   "symbols": 85
  },
  "kraken": {
-  "days_added": 863,
+  "days_added": 989,
   "failed": [],
   "joined_today": [
-   "SSV"
+   "PORTAL"
   ],
-  "listed": 269,
-  "on_the_list": 270,
-  "pairs_read": 269,
+  "listed": 270,
+  "on_the_list": 271,
+  "pairs_read": 270,
   "pegged_skipped": [
-   "APXUSD",
    "AUSD",
    "CASH",
    "FIDD",
@@ -36,10 +35,10 @@
    "USTABLES",
    "XLA"
   ],
-  "qualified_today": 175,
-  "quoted": 635,
+  "qualified_today": 174,
+  "quoted": 636,
   "quotes_failed": "",
-  "quotes_written": 269,
+  "quotes_written": 270,
   "unquoted": [],
   "usd_pairs": 639
  },
@@ -56,7 +55,7 @@
    "ok": true
   }
  },
- "ran": 1795770231,
- "ran_utc": "2026-11-27 09:03Z",
+ "ran": 1795854340,
+ "ran_utc": "2026-11-28 08:25Z",
  "settings_not_used": []
 }

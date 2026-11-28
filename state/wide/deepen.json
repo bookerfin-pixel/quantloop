@@ -555,9 +555,9 @@
   "want_from": 1635292800
  },
  "INFI": {
-  "at": 1795770231,
-  "result": "not listed, to be asked once more",
-  "want_from": 1638057600
+  "at": 1795854340,
+  "result": "not listed",
+  "want_from": 1638144000
  },
  "INIT": {
   "at": 1792905418,
@@ -884,6 +884,11 @@
   "result": "no candles",
   "want_from": 1636761600
  },
+ "PORTAL": {
+  "at": 1795854340,
+  "result": "not listed, to be asked once more",
+  "want_from": 1638144000
+ },
  "POWR": {
   "at": 1793515806,
   "result": "added 1088 days; closes differ by 0.47% at the median and 1.28% at the ninth decile over 31 days",
@@ -1055,9 +1060,9 @@
   "want_from": 1633824000
  },
  "SSV": {
-  "at": 1795770231,
-  "result": "not listed, to be asked once more",
-  "want_from": 1638057600
+  "at": 1795854340,
+  "result": "not listed",
+  "want_from": 1638144000
  },
  "STBL": {
   "at": 1792213106,
