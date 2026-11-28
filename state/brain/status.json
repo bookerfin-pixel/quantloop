@@ -1,34 +1,36 @@
 {
  "failed": [],
  "fng": {
-  "added": 0,
+  "added": 1,
   "holes_left": 0,
-  "last": "2026-11-27",
+  "last": "2026-11-28",
   "revised": 0
  },
  "headlines": {
-  "coindesk": 9,
-  "cointelegraph": 10,
-  "decrypt": 10,
+  "coindesk": 0,
+  "cointelegraph": 1,
+  "decrypt": 1,
   "fed": 0,
-  "theblock": 4
+  "theblock": 1
  },
  "markers": {
-  "newest_close": "2026-11-26",
-  "written": []
+  "newest_close": "2026-11-27",
+  "written": [
+   "2026-11-27"
+  ]
  },
  "ok": true,
  "perps": {
   "read": 9
  },
- "ran": 1795814634,
- "ran_utc": "2026-11-27T21:23Z",
+ "ran": 1795852584,
+ "ran_utc": "2026-11-28T07:56Z",
  "red": false,
  "stablecoins": {
-  "added": 0,
+  "added": 1,
   "holes_left": 0,
-  "last": "2026-11-26",
-  "revised": 772
+  "last": "2026-11-27",
+  "revised": 2095
  },
  "version": 1
 }
